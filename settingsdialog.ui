@@ -334,6 +334,144 @@ height: 35px;
       <attribute name="title">
        <string>About</string>
       </attribute>
+      <widget class="QWidget" name="aboutLayoutWidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>17</x>
+         <y>18</y>
+         <width>750</width>
+         <height>216</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>750</width>
+         <height>0</height>
+        </size>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QWidget" name="widget" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QLabel" name="labelAboutImage">
+             <property name="maximumSize">
+              <size>
+               <width>250</width>
+               <height>180</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resources.qrc">:/res/launchermn.jpg</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widgetAbout" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <widget class="QLabel" name="labelKfxVersion">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>321</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>KeeperFX v</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelKfxWebsite">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>30</y>
+             <width>171</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;a href=&quot;https://keeperfx.net&quot;&gt;https://keeperfx.net&lt;/a&gt;</string>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelLibrariesTitle">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>90</y>
+             <width>191</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Launcher Libraries:</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelLibraries">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>110</y>
+             <width>221</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;a href=&quot;https://www.qt.io/product/qt6&quot;&gt;Qt6&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/lief-project/LIEF&quot;&gt;libLIEF&lt;/a&gt;,
+&lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7z&lt;/a&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelKfxLauncherVersion">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>70</y>
+             <width>441</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>KeeperFX Launcher v</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
    </item>
@@ -351,6 +489,8 @@ height: 35px;
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
