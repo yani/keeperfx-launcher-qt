@@ -179,11 +179,10 @@ void LauncherMainWindow::showLoadingSpinner()
 
 void LauncherMainWindow::hideLoadingSpinner(bool showOnlineContent)
 {
+    // Hide the spinner
     ui->spinnerLabel->hide();
 
     if(showOnlineContent){
-
-        //QCoreApplication::processEvents();
 
         // Show workshop items if there are some
         if(ui->KfxWorkshopItemList->children().length() > 0){

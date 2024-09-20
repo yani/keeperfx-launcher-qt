@@ -16,6 +16,7 @@ SaveFile::SaveFile(const QString &filePath)
     fileName = QFileInfo(file).fileName();
 
     try {
+
         // Check the header of the savefile
         if (!checkFileHeader(file)) {
             file.close();
