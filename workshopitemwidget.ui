@@ -82,7 +82,7 @@
        <widget class="QLabel" name="titleLabel">
         <property name="font">
          <font>
-          <family>Arial</family>
+          
           <pointsize>10</pointsize>
          </font>
         </property>
@@ -95,7 +95,7 @@
        <widget class="QLabel" name="typeLabel">
         <property name="font">
          <font>
-          <family>Arial</family>
+          
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -113,7 +113,7 @@
        <widget class="QLabel" name="dateLabel">
         <property name="font">
          <font>
-          <family>Arial</family>
+          
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -131,7 +131,7 @@
        <widget class="QLabel" name="authorLabel">
         <property name="font">
          <font>
-          <family>Arial</family>
+          
           <pointsize>9</pointsize>
          </font>
         </property>
