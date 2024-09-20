@@ -392,80 +392,36 @@ height: 35px;
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <widget class="QLabel" name="labelKfxVersion">
+          <widget class="QLabel" name="labelAbout">
            <property name="geometry">
             <rect>
-             <x>10</x>
+             <x>0</x>
              <y>10</y>
-             <width>321</width>
-             <height>17</height>
+             <width>451</width>
+             <height>181</height>
             </rect>
            </property>
            <property name="text">
-            <string>KeeperFX v</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelKfxWebsite">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>30</y>
-             <width>171</width>
-             <height>17</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>&lt;a href=&quot;https://keeperfx.net&quot;&gt;https://keeperfx.net&lt;/a&gt;</string>
-           </property>
-           <property name="openExternalLinks">
-            <bool>true</bool>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelLibrariesTitle">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>90</y>
-             <width>191</width>
-             <height>17</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Launcher Libraries:</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelLibraries">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>110</y>
-             <width>221</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>&lt;a href=&quot;https://www.qt.io/product/qt6&quot;&gt;Qt6&lt;/a&gt;,
+            <string>KeeperFX v&lt;kfx_version&gt;&lt;br/&gt;
+&lt;a href=&quot;https://keeperfx.net&quot;&gt;https://keeperfx.net&lt;/a&gt;&lt;br/&gt;
+&lt;br/&gt;
+KeeperFX Launcher v&lt;launcher_version&gt;&lt;br/&gt;
+Launcher libraries:&lt;br/&gt;
+&lt;a href=&quot;https://www.qt.io/product/qt6&quot;&gt;Qt6&lt;/a&gt;,
 &lt;a href=&quot;https://github.com/lief-project/LIEF&quot;&gt;libLIEF&lt;/a&gt;,
-&lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7z&lt;/a&gt;</string>
+&lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7z&lt;/a&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+Join us on the &lt;a href=&quot;https://discord.gg/WxgE8WZBku&quot;&gt;Keeper Klan Discord&lt;/a&gt;</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::TextFormat::RichText</enum>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelKfxLauncherVersion">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>70</y>
-             <width>441</width>
-             <height>17</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>KeeperFX Launcher v</string>
            </property>
           </widget>
          </widget>

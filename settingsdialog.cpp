@@ -13,9 +13,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Make sure this widget starts at the first tab
     ui->tabWidget->setCurrentIndex(0);
 
-    // Set version in about
-    ui->labelKfxLauncherVersion->setText(ui->labelKfxLauncherVersion->text() + LAUNCHER_VERSION);
-    ui->labelKfxVersion->setText(ui->labelKfxVersion->text() + KfxVersion::currentVersion.string);
+    // Set versions in about
+    ui->labelAbout->setText(ui->labelAbout->text()
+                                .replace("<kfx_version>", KfxVersion::currentVersion.string)
+                                .replace("<launcher_version>", LAUNCHER_VERSION));
 }
 
 SettingsDialog::~SettingsDialog()
