@@ -1,10 +1,9 @@
 #include <QApplication>
+#include <QGuiApplication>
+#include <QSslConfiguration>
 
 #include "launchermainwindow.h"
-
 #include "version.h"
-
-#include "downloader.h"
 
 int main(int argc, char *argv[])
 {
@@ -34,7 +33,7 @@ int main(int argc, char *argv[])
     sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
     QSslConfiguration::setDefaultConfiguration(sslConfig);
 
-    // Create the main window
+    // Create the main window and show it
     LauncherMainWindow mainWindow;
     mainWindow.show();
 
