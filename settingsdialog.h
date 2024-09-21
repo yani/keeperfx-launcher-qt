@@ -16,4 +16,8 @@ public:
 
 private:
     Ui::SettingsDialog *ui;
+
+    QList<QWidget *> monitorNumberOverlays;
+    void showMonitorNumberOverlays();
+    void hideMonitorNumberOverlays();
 };
