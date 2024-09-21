@@ -9,10 +9,10 @@ public:
 
     static QStringList getInstallPaths();
     static QStringList getFilePathCases(QString dir, QString fileName);
-    static bool isValidDkDir(QDir *dir);
+    static bool isValidDkDir(QDir dir);
     static bool isValidDkDirPath(QString path);
-    static QDir* findExistingDkInstallDir();
-    static bool copyDkDirToDir(QDir *dir, QDir *toDir);
+    static QDir findExistingDkInstallDir();
+    static bool copyDkDirToDir(QDir dir, QDir toDir);
     static bool isCurrentAppDirValidDkDir();
 
 private:

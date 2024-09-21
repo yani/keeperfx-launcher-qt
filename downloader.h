@@ -13,6 +13,7 @@
 class Downloader
 {
 public:
+    // 'localFileOutput' needs to be a pointer here
     static void download(QUrl url, QFile *localFileOutput,
                          std::function<void(qint64, qint64)> progressCallback = nullptr,
                          std::function<void(bool)> completionCallback = nullptr);

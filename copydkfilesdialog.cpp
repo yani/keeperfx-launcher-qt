@@ -19,11 +19,11 @@ CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     setFixedSize(size()); // Prevent resizing by setting fixed size
 
     // Automatically check for a DK install directory
-    QDir *existingDkInstallDir = DkFiles::findExistingDkInstallDir();
-    if(existingDkInstallDir){
-        qDebug() << "Automatically detected DK dir:" << existingDkInstallDir->absolutePath();
+    QDir existingDkInstallDir = DkFiles::findExistingDkInstallDir();
+    if(!existingDkInstallDir.isEmpty()){
+        qDebug() << "Automatically detected DK dir:" << existingDkInstallDir.absolutePath();
         ui->copyButton->setDisabled(false);
-        ui->browseInput->setText(existingDkInstallDir->absolutePath());
+        ui->browseInput->setText(existingDkInstallDir.absolutePath());
     }
 }
 
@@ -51,7 +51,7 @@ void CopyDkFilesDialog::on_browseButton_clicked()
 
 void CopyDkFilesDialog::on_copyButton_clicked()
 {
-    QDir *dkDir = new QDir(ui->browseInput->text());
+    QDir dkDir(ui->browseInput->text());
 
     // Check if given dir is a valid DK dir
     if(!DkFiles::isValidDkDir(dkDir)){
@@ -66,7 +66,7 @@ void CopyDkFilesDialog::on_copyButton_clicked()
     }
 
     // Copy the files
-    QDir *toDir = new QDir(QCoreApplication::applicationDirPath());
+    QDir toDir(QCoreApplication::applicationDirPath());
     if(!DkFiles::copyDkDirToDir(dkDir, toDir)){
         QMessageBox::warning(this, "Failed to copy files", "Something went wrong while copying the files.");
         return;

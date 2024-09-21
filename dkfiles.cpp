@@ -96,7 +96,7 @@ QStringList DkFiles::getFilePathCases(QString dir, QString fileName)
     return returnStrings;
 }
 
-bool DkFiles::isValidDkDir(QDir *dir)
+bool DkFiles::isValidDkDir(QDir dir)
 {
     // Check for DATA files
     for (const QString& dataFileName : dataFiles)
@@ -105,8 +105,8 @@ bool DkFiles::isValidDkDir(QDir *dir)
 
         for (const QString& dataFilePath : getFilePathCases("data", dataFileName))
         {
-            QFile *file = new QFile(dir->absolutePath() + "/" + dataFilePath);
-            if(file->exists()){
+            QFile file(dir.absolutePath() + "/" + dataFilePath);
+            if(file.exists()){
                 dataFileFound = true;
                 break;
             }
@@ -124,8 +124,8 @@ bool DkFiles::isValidDkDir(QDir *dir)
 
         for (const QString& soundFilePath : getFilePathCases("sound", soundFileName))
         {
-            QFile *file = new QFile(dir->absolutePath() + "/" + soundFilePath);
-            if(file->exists()){
+            QFile file(dir.absolutePath() + "/" + soundFilePath);
+            if(file.exists()){
                 soundFileFound = true;
                 break;
             }
@@ -141,25 +141,25 @@ bool DkFiles::isValidDkDir(QDir *dir)
 
 bool DkFiles::isValidDkDirPath(QString path)
 {
-    QDir *dir = new QDir(path);
-    return (dir->exists() && isValidDkDir(dir));
+    QDir dir(path);
+    return (dir.exists() && isValidDkDir(dir));
 }
 
-QDir* DkFiles::findExistingDkInstallDir()
+QDir DkFiles::findExistingDkInstallDir()
 {
     for (const QString& path : getInstallPaths())
     {
-        QDir *dir = new QDir(path);
+        QDir dir(path);
 
-        if(dir->exists() && isValidDkDir(dir)){
+        if(dir.exists() && isValidDkDir(dir)){
             return dir;
         }
     }
 
-    return nullptr;
+    return QDir();
 }
 
-bool DkFiles::copyDkDirToDir(QDir *dir, QDir *toDir)
+bool DkFiles::copyDkDirToDir(QDir dir, QDir toDir)
 {
     // Double check that the given directory is a valid DK dir
     if(!isValidDkDir(dir)){
@@ -167,19 +167,19 @@ bool DkFiles::copyDkDirToDir(QDir *dir, QDir *toDir)
     }
 
     // Make sure the directories exist in the app dir
-    QDir dataDir(toDir->absolutePath() + "/data");
+    QDir dataDir(toDir.absolutePath() + "/data");
     if (!dataDir.exists()){
         if(!dataDir.mkpath(".")){
             return false;
         }
     }
-    QDir soundDir(toDir->absolutePath() + "/sound");
+    QDir soundDir(toDir.absolutePath() + "/sound");
     if (!soundDir.exists()){
         if(!soundDir.mkpath(".")){
             return false;
         }
     }
-    QDir musicDir(toDir->absolutePath() + "/music");
+    QDir musicDir(toDir.absolutePath() + "/music");
     if (!musicDir.exists()){
         if(!musicDir.mkpath(".")){
             return false;
@@ -191,16 +191,16 @@ bool DkFiles::copyDkDirToDir(QDir *dir, QDir *toDir)
     {
         for (const QString& dataFilePath : getFilePathCases("data", dataFileName))
         {
-            QFile *file = new QFile(dir->absolutePath() + "/" + dataFilePath);
-            if(file->exists()){
+            QFile file(dir.absolutePath() + "/" + dataFilePath);
+            if(file.exists()){
                 QString copyDest = dataDir.absolutePath() + "/" + dataFileName.toLower();
-                QFile *copyDestFile = new QFile(copyDest);
-                if(copyDestFile->exists()){
-                    if(copyDestFile->remove() == false){
+                QFile copyDestFile(copyDest);
+                if(copyDestFile.exists()){
+                    if(copyDestFile.remove() == false){
                         return false;
                     }
                 }
-                if(file->copy(copyDest) == false) {
+                if(file.copy(copyDest) == false) {
                     return false;
                 }
                 break;
@@ -213,16 +213,16 @@ bool DkFiles::copyDkDirToDir(QDir *dir, QDir *toDir)
     {
         for (const QString& soundFilePath : getFilePathCases("sound", soundFileName))
         {
-            QFile *file = new QFile(dir->absolutePath() + "/" + soundFilePath);
-            if(file->exists()){
+            QFile file(dir.absolutePath() + "/" + soundFilePath);
+            if(file.exists()){
                 QString copyDest = soundDir.absolutePath() + "/" + soundFileName.toLower();
-                QFile *copyDestFile = new QFile(copyDest);
-                if(copyDestFile->exists()){
-                    if(copyDestFile->remove() == false){
+                QFile copyDestFile(copyDest);
+                if(copyDestFile.exists()){
+                    if(copyDestFile.remove() == false){
                         return false;
                     }
                 }
-                if(file->copy(copyDest) == false) {
+                if(file.copy(copyDest) == false) {
                     return false;
                 }
                 break;
@@ -233,28 +233,31 @@ bool DkFiles::copyDkDirToDir(QDir *dir, QDir *toDir)
     // Copy MUSIC files
     for (const QString& musicFileName : musicFiles)
     {
-        QFile *musicFile;
+        // Get the destination file
+        QString destFilePath = toDir.absolutePath() + "/music/" + musicFileName.toLower();
+        QFile destFile(destFilePath);
 
-        QString destFilePath = QCoreApplication::applicationDirPath() + "/" + musicFileName.toLower();
-
-        QFile *destFile = new QFile(destFilePath);
-        if(destFile->exists()){
-            if(destFile->remove() == false){
+        // Remove music file if it already exists
+        // We always want a clean install
+        if(destFile.exists()){
+            if(destFile.remove() == false){
                 return false;
             }
         }
 
         // Lowercase
-        musicFile = new QFile(musicDir.absolutePath() + "/" + musicFileName.toLower());
-        if(musicFile->exists()){
-            musicFile->copy(destFilePath);
+        // Music files are in the root Digital OG DK dir, and not in "/music"
+        QFile musicFileLowercase(dir.absolutePath() + "/" + musicFileName.toLower());
+        if(musicFileLowercase.exists()){
+            musicFileLowercase.copy(destFilePath);
             continue;
         }
 
         // Uppercase
-        musicFile = new QFile(dir->absolutePath() + "/" + musicFileName.toUpper());
-        if(musicFile->exists()){
-            musicFile->copy(destFilePath);
+        // Music files are in the root Digital OG DK dir, and not in "/music"
+        QFile musicFileUppercase(dir.absolutePath() + "/" + musicFileName.toUpper());
+        if(musicFileUppercase.exists()){
+            musicFileUppercase.copy(destFilePath);
         }
     }
 
@@ -263,6 +266,6 @@ bool DkFiles::copyDkDirToDir(QDir *dir, QDir *toDir)
 
 bool DkFiles::isCurrentAppDirValidDkDir()
 {
-    QDir *dir = new QDir(QCoreApplication::applicationDirPath());
+    QDir dir(QCoreApplication::applicationDirPath());
     return isValidDkDir(dir);
 }
