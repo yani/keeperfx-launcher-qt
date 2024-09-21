@@ -148,15 +148,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // We do this so we can already show the GUI at this point (which shows a loading spinner)
     // The function within the thread will invoke updating the GUI, so it's thread safe
     QThread::create([this]() { loadLatestFromKfxNet(); })->start();
-
-    SaveFile *test = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0000.sav");
-    SaveFile *test1 = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0001.sav");
-    SaveFile *test2 = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0002.sav");
-    SaveFile *test3 = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0003.sav");
-    SaveFile *test4 = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0004.sav");
-    SaveFile *test5 = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0005.sav");
-    SaveFile *test6 = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0006.sav");
-    SaveFile *test7 = new SaveFile("/home/yani/Games/keeperfx/save/fx1g0007.sav");
 }
 
 LauncherMainWindow::~LauncherMainWindow()
