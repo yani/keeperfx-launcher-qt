@@ -135,7 +135,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Handle buttons that should be aware of the current installation
     // This will enable/disable specific buttons whether the logfile and the KFX binary exist
-    // It will also start checking periodically for changes
+    updateAwareButtons();
+
+    // Start checking the installation aware buttons periodically
     // This continious checking is not required but it's an interesting little gimmick
     QTimer *buttonAwareTimer = new QTimer();
     connect(buttonAwareTimer, &QTimer::timeout, this, &LauncherMainWindow::updateAwareButtons);
