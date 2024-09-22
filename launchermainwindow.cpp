@@ -21,8 +21,6 @@
 #include "settingsdialog.h"
 #include "workshopitemwidget.h"
 
-#include "savefile.h"
-
 #define MAX_WORKSHOP_ITEMS_SHOWN 4
 #define MAX_NEWS_ARTICLES_SHOWN 3
 

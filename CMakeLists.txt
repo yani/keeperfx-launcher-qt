@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Network)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network Gui)
 
-add_subdirectory( ${CMAKE_SOURCE_DIR}/deps/bit7z-4.0.8/)
+add_subdirectory(${CMAKE_SOURCE_DIR}/deps/bit7z-4.0.8/)
 
 # Set the path to the LIEF library and include directory
 set(LIEF_DIR ${CMAKE_SOURCE_DIR}/deps/LIEF-0.15.1-Linux-x86_64)
