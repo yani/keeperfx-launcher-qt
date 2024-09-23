@@ -64,7 +64,8 @@ bool SaveFile::isValid() {
 }
 
 QString SaveFile::toString() {
-    return fileName + ": " + saveName + " (" + campaignName + ")";
+    // return fileName + ": " + saveName + " (" + campaignName + ")";
+    return saveName + " (" + campaignName + ")";
 }
 
 bool SaveFile::checkFileHeader(QFile& file) {

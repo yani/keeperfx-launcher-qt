@@ -18,6 +18,7 @@
 #include "installkfxdialog.h"
 #include "kfxversion.h"
 #include "newsarticlewidget.h"
+#include "savefile.h"
 #include "settingsdialog.h"
 #include "workshopitemwidget.h"
 
@@ -191,6 +192,7 @@ void LauncherMainWindow::hideLoadingSpinner(bool showOnlineContent)
 
 void LauncherMainWindow::setupPlayExtraMenu()
 {
+
     QMenu *menu = new QMenu(this);
 
     // Play map action
@@ -205,11 +207,41 @@ void LauncherMainWindow::setupPlayExtraMenu()
         qDebug() << "Play campaign selected!";
     });
 
-    // Load game action
-    menu->addAction(tr("Load game"), [this]() {
-        // Handle load game logic here
-        qDebug() << "Load game selected!";
-    });
+
+    // Add 'Load game'
+    QMenu *saveFilesMenu = menu->addMenu(tr("Load game"));
+    menu->addMenu(saveFilesMenu);
+
+    // Check if the save file dir exists
+    QDir saveFileDir(QApplication::applicationDirPath() + "/save");
+    if (saveFileDir.exists() == false) {
+        saveFilesMenu->setDisabled(true);
+    } else {
+        // Get the save files
+        QStringList saveFileFilter;
+        saveFileFilter << "fx1g*.sav";
+        QStringList saveFiles = saveFileDir.entryList(saveFileFilter, QDir::Files);
+        if (!saveFiles.isEmpty()) {
+
+            // Add save files to the submenu
+            for (const QString &saveFileFilename : saveFiles) {
+
+                // Get save file
+                SaveFile *saveFile = new SaveFile(saveFileDir.absoluteFilePath(saveFileFilename));
+                if(saveFile->isValid()){
+                    // Add to menu
+                    saveFilesMenu->addAction(saveFile->toString(), [this, saveFile]() {
+
+                        // Handle loading the save file
+                        qDebug() << "Loading save file:" << saveFile;
+                    });
+                }
+            }
+        } else {
+            // Disable the submenu if no save files are found
+            saveFilesMenu->setDisabled(true);
+        }
+    }
 
     // Direct connect (MP) action
     menu->addAction(tr("Direct connect (MP)"), [this]() {
@@ -218,7 +250,7 @@ void LauncherMainWindow::setupPlayExtraMenu()
     });
 
     // Run packetsave action
-    menu->addAction(tr("Run packetsave"), [this]() {
+    menu->addAction(tr("Run packetfile"), [this]() {
         // Handle run packetsave logic here
         qDebug() << "Run packetsave selected!";
     });
