@@ -20,12 +20,15 @@ int main(int argc, char *argv[])
     qDebug() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
     qDebug() << "Launcher Version:" << LAUNCHER_VERSION;
 
-    // DEBUG OS
+    // DEBUG: OS
     #ifdef WIN32
         qDebug() << "Launcher Build: Windows";
     #else
         qDebug() << "Launcher Build: UNIX";
     #endif
+
+    // DEBUG: Platform
+    qDebug() << "Platform:" << QGuiApplication::platformName();
 
     // Disable SSL verification
     // TODO: eventually add SSL certs
