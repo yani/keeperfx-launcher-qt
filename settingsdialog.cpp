@@ -37,7 +37,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::setupDisplayMonitorDropdown()
 {
-    // Get the placeholder combo box
+    // Get some details of the placeholder combo box and delete it
     QComboBox *oldComboBox = ui->comboBoxDisplayMonitor;
     QRect geometry = oldComboBox->geometry();
     QWidget *parentWidget = oldComboBox->parentWidget();
@@ -80,10 +80,12 @@ void SettingsDialog::showMonitorNumberOverlays()
     qDebug() << "Show monitor number overlays";
 
     // We can't show the overlays on wayland
-    /*if (QGuiApplication::platformName() == "wayland") {
+    // They will stack like windows and we can't change their position
+    // TODO: monitor when this is possible on wayland and allow it again
+    if (QGuiApplication::platformName() == "wayland") {
         qDebug() << "Monitor overlays not shown because running under 'wayland'";
         return;
-    }*/
+    }
 
     // Get the list of all screens
     QList<QScreen *> screens = QGuiApplication::screens();
@@ -97,10 +99,9 @@ void SettingsDialog::showMonitorNumberOverlays()
         QWidget *overlay = new QWidget;
         overlay->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
                                 | Qt::BypassWindowManagerHint | Qt::X11BypassWindowManagerHint);
-        //overlay->setAttribute(Qt::WA_TranslucentBackground);
         overlay->setScreen(screen);
 
-        // Set background color to black with some transparency
+        // Set background color to black with
         QPalette palette = overlay->palette();
         palette.setColor(QPalette::Window, QColor(0, 0, 0));
         overlay->setAutoFillBackground(true);
