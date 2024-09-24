@@ -237,6 +237,133 @@ height: 35px;
       <attribute name="title">
        <string>Graphics</string>
       </attribute>
+      <widget class="QCheckBox" name="checkBox">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>190</y>
+         <width>291</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Smoothen video</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelResolution">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Resolution</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxResolution">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>37</y>
+         <width>221</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxDisplayMode">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>87</y>
+         <width>221</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>Fullscreen</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Windowed</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="labelDisplayMode">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>90</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Display mode</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxDisplayMonitor">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>137</y>
+         <width>221</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>&lt;PLACEHOLDER&gt;</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="labelDisplayMonitor">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Display monitor</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab3_sound">
       <attribute name="title">

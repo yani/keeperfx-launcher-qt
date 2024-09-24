@@ -54,6 +54,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         newsarticlewidget.h newsarticlewidget.cpp newsarticlewidget.ui
         clickablehighlightedwidget.h clickablehighlightedwidget.cpp
         savefile.h savefile.cpp
+        popupsignalcombobox.h
 
     )
 else()

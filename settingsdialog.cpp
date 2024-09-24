@@ -3,8 +3,11 @@
 
 #include "version.h"
 #include "kfxversion.h"
+#include "popupsignalcombobox.h"
 
 #include <QScreen>
+#include <QEvent>
+#include <QMouseEvent>
 
 SettingsDialog::SettingsDialog(QWidget *parent)
     : QDialog(parent)
@@ -20,6 +23,30 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->labelAbout->setText(ui->labelAbout->text()
                                 .replace("<kfx_version>", KfxVersion::currentVersion.string)
                                 .replace("<launcher_version>", LAUNCHER_VERSION));
+
+
+
+    // Handle the 'display monitor' dropdown
+    setupDisplayMonitorDropdown();
+}
+
+SettingsDialog::~SettingsDialog()
+{
+    delete ui;
+}
+
+void SettingsDialog::setupDisplayMonitorDropdown()
+{
+    // Get the placeholder combo box
+    QComboBox *oldComboBox = ui->comboBoxDisplayMonitor;
+    QRect geometry = oldComboBox->geometry();
+    QWidget *parentWidget = oldComboBox->parentWidget();
+    delete ui->comboBoxDisplayMonitor;
+
+    // Create the combobox that handles the popup signal
+    // This signal is used to show and hide monitor display numers
+    PopupSignalComboBox *popupComboBoxMonitorDisplay = new PopupSignalComboBox(parentWidget);
+    popupComboBoxMonitorDisplay->setGeometry(geometry);
 
     // Get the list of available screens
     QList<QScreen *> screens = QGuiApplication::screens();
@@ -39,19 +66,25 @@ SettingsDialog::SettingsDialog(QWidget *parent)
                                          screen->geometry().width(),
                                          screen->geometry().height());
 
-        qDebug() << name;
+        popupComboBoxMonitorDisplay->addItem(name);
     }
 
-    showMonitorNumberOverlays();
-}
-
-SettingsDialog::~SettingsDialog()
-{
-    delete ui;
+    // Connect slots to show and hide monitor overlays
+    //connect(ui->comboBoxDisplayMonitor, &QComboBox::activated, this, &SettingsDialog::showMonitorNumberOverlays);
+    QObject::connect(popupComboBoxMonitorDisplay, &PopupSignalComboBox::popupOpened, this, &SettingsDialog::showMonitorNumberOverlays);
+    QObject::connect(popupComboBoxMonitorDisplay, &PopupSignalComboBox::popupClosed, this, &SettingsDialog::hideMonitorNumberOverlays);
 }
 
 void SettingsDialog::showMonitorNumberOverlays()
 {
+    qDebug() << "Show monitor number overlays";
+
+    // We can't show the overlays on wayland
+    /*if (QGuiApplication::platformName() == "wayland") {
+        qDebug() << "Monitor overlays not shown because running under 'wayland'";
+        return;
+    }*/
+
     // Get the list of all screens
     QList<QScreen *> screens = QGuiApplication::screens();
 
@@ -93,7 +126,11 @@ void SettingsDialog::showMonitorNumberOverlays()
     }
 }
 
-void SettingsDialog::hideMonitorNumberOverlays() {
+void SettingsDialog::hideMonitorNumberOverlays()
+{
+    qDebug() << "Hide monitor number overlays";
+
+    // Remove all the overlays
     for (QWidget *overlay : monitorNumberOverlays) {
         overlay->hide();
         delete overlay;
