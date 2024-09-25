@@ -145,6 +145,18 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Create a refresh shortcut (F5) for refreshing the main panel
     connect(new QShortcut(QKeySequence(Qt::Key_F5), this), &QShortcut::activated, this, &LauncherMainWindow::loadLatestFromKfxNet);
 
+    // Move window to the center of the main screen
+    // TODO: allow user to set a launcher startup monitor
+    QList<QScreen *> screens = QGuiApplication::screens();
+    if (screens.isEmpty() == false) {
+        QRect geometry = screens[0]->geometry();
+        this->setScreen(screens[0]);
+        this->move(
+            // We use left() and top() here because the position is absolute and not relative to the screen
+            geometry.left() + ((geometry.width() - this->width()) / 2),
+            geometry.top() + ((geometry.height() - this->height()) / 2));
+    }
+
     // Create a thread for loading the latest stuff from the website
     // We do this so we can already show the GUI at this point (which shows a loading spinner)
     // The function within the thread will invoke updating the GUI, so it's thread safe
