@@ -55,6 +55,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         clickablehighlightedwidget.h clickablehighlightedwidget.cpp
         savefile.h savefile.cpp
         popupsignalcombobox.h
+        settings.h settings.cpp
 
     )
 else()

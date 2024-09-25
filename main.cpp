@@ -1,20 +1,16 @@
 #include <QApplication>
 #include <QGuiApplication>
 #include <QSslConfiguration>
+#include <QSettings>
 
 #include "launchermainwindow.h"
+#include "settings.h"
 #include "version.h"
 
 int main(int argc, char *argv[])
 {
     // Create the App
     QApplication app(argc, argv);
-
-    // Set application details
-    // This is used for QSettings which is used for persistant user settings
-    QCoreApplication::setOrganizationName("KeeperFX");
-    QCoreApplication::setOrganizationDomain("keeperfx.net");
-    QCoreApplication::setApplicationName("KeeperFX");
 
     // DEBUG: Log some stuff
     qDebug() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
@@ -35,6 +31,9 @@ int main(int argc, char *argv[])
     QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
     sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
     QSslConfiguration::setDefaultConfiguration(sslConfig);
+
+    // Load the launcher and kfx settings
+    Settings::load();
 
     // Create the main window and show it
     LauncherMainWindow mainWindow;
