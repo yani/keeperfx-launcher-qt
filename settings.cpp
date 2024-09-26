@@ -37,4 +37,7 @@ void Settings::load()
         QSettings::IniFormat, QSettings::UserScope, "KeeperFX", "KeeperFX");
     launcherSettings = new QSettings(
         QSettings::IniFormat, QSettings::UserScope,"KeeperFX","Launcher");
+
+    qDebug() << "KeeperFX Settings File (User):" << kfxSettings->fileName();
+    qDebug() << "Launcher Settings File (User):" << launcherSettings->fileName();
 }
