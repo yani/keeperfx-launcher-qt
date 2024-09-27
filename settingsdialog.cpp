@@ -112,6 +112,11 @@ void SettingsDialog::loadSettings()
     ui->lineEditGameturns->setText(Settings::getLauncherSetting("CMD_OPT_FPS").toString());
     ui->lineEditCommandChar->setText(Settings::getKfxSetting("COMMAND_CHAR").toString());
     ui->checkBoxDeltaTime->setChecked(Settings::getKfxSetting("DELTA_TIME") == true);
+
+    // ================ GRAPHICS ==================
+    popupComboBoxMonitorDisplay->setCurrentIndex(
+        popupComboBoxMonitorDisplay->findData(Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
+    ui->checkBoxSmoothenVideo->setChecked(Settings::getLauncherSetting("CMD_OPT_VID_SMOOTH") == true);
 }
 
 void SettingsDialog::saveSettings()
@@ -126,6 +131,10 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("CMD_OPT_FPS", ui->lineEditGameturns->text());
     Settings::setKfxSetting("COMMAND_CHAR", ui->lineEditCommandChar->text());
     Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
+
+    // ================ GRAPHICS ==================
+    Settings::setLauncherSetting("CMD_OPT_VID_SMOOTH", ui->checkBoxSmoothenVideo->isChecked());
+    Settings::setKfxSetting("DISPLAY_NUMBER", popupComboBoxMonitorDisplay->currentData().toString());
 
     // Close the settings screen
     this->close();
@@ -203,7 +212,7 @@ void SettingsDialog::setupDisplayMonitorDropdown()
 
     // Create the combobox that handles the popup signal
     // This signal is used to show and hide monitor display numers
-    PopupSignalComboBox *popupComboBoxMonitorDisplay = new PopupSignalComboBox(parentWidget);
+    popupComboBoxMonitorDisplay = new PopupSignalComboBox(parentWidget);
     popupComboBoxMonitorDisplay->setGeometry(geometry);
 
     // Get the list of available screens
@@ -223,7 +232,7 @@ void SettingsDialog::setupDisplayMonitorDropdown()
                        + QString::number(screen->geometry().width()) + "x"
                        + QString::number(screen->geometry().height());
 
-        popupComboBoxMonitorDisplay->addItem(name);
+        popupComboBoxMonitorDisplay->addItem(name, QString::number(number));
     }
 
     // Connect slots to show and hide monitor overlays

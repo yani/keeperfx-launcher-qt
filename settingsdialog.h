@@ -2,6 +2,8 @@
 
 #include <QDialog>
 
+#include "popupsignalcombobox.h"
+
 namespace Ui {
 class SettingsDialog;
 }
@@ -25,7 +27,10 @@ private:
     void cancel();
 
     void addSettingsChangedHandler();
+
+    PopupSignalComboBox *popupComboBoxMonitorDisplay;
     void setupDisplayMonitorDropdown();
+
     QList<QWidget *> monitorNumberOverlays;
     void showMonitorNumberOverlays();
     void hideMonitorNumberOverlays();

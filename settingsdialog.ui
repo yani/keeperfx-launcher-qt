@@ -281,7 +281,7 @@ height: 35px;
       <attribute name="title">
        <string>Graphics</string>
       </attribute>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="checkBoxSmoothenVideo">
        <property name="geometry">
         <rect>
          <x>30</x>
