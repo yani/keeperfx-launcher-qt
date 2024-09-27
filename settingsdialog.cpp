@@ -5,9 +5,11 @@
 #include "kfxversion.h"
 #include "popupsignalcombobox.h"
 
-#include <QScreen>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QScreen>
+#include <QPushButton>
+#include <QMessageBox>
 
 SettingsDialog::SettingsDialog(QWidget *parent)
     : QDialog(parent)
@@ -24,15 +26,108 @@ SettingsDialog::SettingsDialog(QWidget *parent)
                                 .replace("<kfx_version>", KfxVersion::currentVersion.string)
                                 .replace("<launcher_version>", LAUNCHER_VERSION));
 
-
-
-    // Handle the 'display monitor' dropdown
+    // Setup the 'display monitor' dropdown
     setupDisplayMonitorDropdown();
+
+    // Connect the dialog buttons
+    connect(ui->buttonBox->button(QDialogButtonBox::Save),
+        &QPushButton::clicked,
+        this,
+        &SettingsDialog::saveSettings);
+    connect(ui->buttonBox->button(QDialogButtonBox::Cancel),
+        &QPushButton::clicked,
+        this,
+        &SettingsDialog::cancel);
+    connect(ui->buttonBox->button(QDialogButtonBox::RestoreDefaults),
+        &QPushButton::clicked,
+        this,
+        &SettingsDialog::restoreSettings);
+
+    // Add handler to remember when a setting has changed
+    // This should be executed at the end when the widgets in the dialog are final
+    // (After setupDisplayMonitorDropdown for example)
+    addSettingsChangedHandler();
+
+    // Load the settings
+    loadSettings();
 }
 
 SettingsDialog::~SettingsDialog()
 {
     delete ui;
+}
+
+void SettingsDialog::loadSettings()
+{
+    // Load all settings
+}
+
+void SettingsDialog::saveSettings()
+{
+    // Close the settings screen
+    this->close();
+}
+
+void SettingsDialog::restoreSettings()
+{
+    // restore
+}
+
+void SettingsDialog::addSettingsChangedHandler()
+{
+    // Find all QCheckBox
+    QList<QCheckBox *> checkBoxes = ui->tabWidget->findChildren<QCheckBox *>();
+    for (QCheckBox *checkBox : checkBoxes) {
+        connect(checkBox, &QCheckBox::stateChanged, this, [this]() {
+            this->settingHasChanged = true;
+        });
+    }
+
+    // Find all QComboBox
+    QList<QComboBox *> comboBoxes = ui->tabWidget->findChildren<QComboBox *>();
+    for (QComboBox *comboBox : comboBoxes) {
+        connect(comboBox, &QComboBox::currentIndexChanged, this, [this]() {
+            this->settingHasChanged = true;
+        });
+    }
+
+    // Find all QLineEdit
+    QList<QLineEdit *> lineEdits = ui->tabWidget->findChildren<QLineEdit *>();
+    for (QLineEdit *lineEdit : lineEdits) {
+        connect(lineEdit, &QLineEdit::textChanged, this, [this]() {
+            this->settingHasChanged = true;
+        });
+    }
+
+    // Find all PopupSignalComboBox
+    QList<PopupSignalComboBox *> popupComboBoxes = ui->tabWidget->findChildren<PopupSignalComboBox *>();
+    for (PopupSignalComboBox *popupComboBox : popupComboBoxes) {
+        qDebug() <<
+        connect(popupComboBox, &PopupSignalComboBox::currentIndexChanged, this, [this]() {
+            this->settingHasChanged = true;
+        });
+    }
+}
+
+void SettingsDialog::cancel()
+{
+    // Check if any settings have been changed
+    if (settingHasChanged == true) {
+
+        // Ask if the user is sure
+        int result = QMessageBox::question(this,
+                                           "KeeperFX Settings",
+                                           "One or more settings have been changed. Are you sure "
+                                           "you want to return without saving?");
+
+        // Cancel close if user is not sure
+        if (result != QMessageBox::Yes) {
+            return;
+        }
+    }
+
+    // Close the settings screen
+    this->close();
 }
 
 void SettingsDialog::setupDisplayMonitorDropdown()

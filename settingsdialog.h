@@ -17,6 +17,15 @@ public:
 private:
     Ui::SettingsDialog *ui;
 
+    bool settingHasChanged = false;
+
+    void loadSettings();
+    void saveSettings();
+    void restoreSettings();
+    void cancel();
+
+    void addSettingsChangedHandler();
+
     void setupDisplayMonitorDropdown();
 
     QList<QWidget *> monitorNumberOverlays;
