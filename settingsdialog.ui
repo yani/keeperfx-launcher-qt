@@ -276,6 +276,24 @@ height: 35px;
         <string>Enable delta time</string>
        </property>
       </widget>
+      <widget class="QCheckBox" name="checkBoxFreezeGameNoFocus">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>140</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Freeze game when not focused</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab2_gfx">
       <attribute name="title">
@@ -285,7 +303,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>190</y>
+         <y>360</y>
          <width>291</width>
          <height>23</height>
         </rect>
@@ -297,8 +315,8 @@ height: 35px;
       <widget class="QLabel" name="labelResolution">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>40</y>
+         <x>141</x>
+         <y>30</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -312,12 +330,12 @@ height: 35px;
         <string>Resolution</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBoxResolution">
+      <widget class="QComboBox" name="comboBoxResolution1">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>37</y>
-         <width>221</width>
+         <x>140</x>
+         <y>60</y>
+         <width>191</width>
          <height>25</height>
         </rect>
        </property>
@@ -327,12 +345,12 @@ height: 35px;
         </font>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBoxDisplayMode">
+      <widget class="QComboBox" name="comboBoxDisplayMode1">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>87</y>
-         <width>221</width>
+         <x>350</x>
+         <y>60</y>
+         <width>151</width>
          <height>25</height>
         </rect>
        </property>
@@ -341,22 +359,12 @@ height: 35px;
          <family>Arial</family>
         </font>
        </property>
-       <item>
-        <property name="text">
-         <string>Fullscreen</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Windowed</string>
-        </property>
-       </item>
       </widget>
       <widget class="QLabel" name="labelDisplayMode">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>90</y>
+         <x>351</x>
+         <y>30</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -373,8 +381,8 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxDisplayMonitor">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>137</y>
+         <x>180</x>
+         <y>260</y>
          <width>221</width>
          <height>25</height>
         </rect>
@@ -389,7 +397,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>140</y>
+         <y>264</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -401,6 +409,268 @@ height: 35px;
        </property>
        <property name="text">
         <string>Display monitor</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelResolution_3">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>64</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>View 1</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelResolution_4">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>104</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>View 2</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelResolution_5">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>144</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>View 3</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxResolution2">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>100</y>
+         <width>191</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxResolution3">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>140</y>
+         <width>191</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxDisplayMode2">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>100</y>
+         <width>151</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxDisplayMode3">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>140</y>
+         <width>151</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>190</y>
+         <width>441</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel { color: #777; }</string>
+       </property>
+       <property name="text">
+        <string>&lt;i&gt;Switch between views by pressing &lt;strong&gt;Alt + R&lt;/strong&gt;&lt;/i&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelResizeMovies">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>314</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Resize Movies</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxResizeMovies">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>310</y>
+         <width>221</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelCreatureFlowerSize">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>262</y>
+         <width>171</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Creature flower size (px)</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditCreatureFlowerSize">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>260</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelHandSize">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>314</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Hand size %</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditHandSize">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>310</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditLineBoxSize">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>360</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelLineBoxSize">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>364</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Select box line size %</string>
        </property>
       </widget>
      </widget>

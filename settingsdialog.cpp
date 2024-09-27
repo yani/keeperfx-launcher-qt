@@ -73,15 +73,77 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Languages
     QMap<QString, QString> screenshotMap = {
-                                          {"PNG (Portable Network Graphics)", "PNG"},
-                                          {"JPG (Joint photographic experts group)", "JPG"},
-                                          {"BMP (Windows bitmap)", "BMP"},
-                                          {"RAW (HSI 'mhwanh')", "RAW"},
-                                          };
+                                            {"PNG (Portable Network Graphics)", "PNG"},
+                                            {"JPG (Joint photographic experts group)", "JPG"},
+                                            {"BMP (Windows bitmap)", "BMP"},
+                                            {"RAW (HSI 'mhwanh')", "RAW"},
+                                            };
 
     // Add languages
     for (auto it = screenshotMap.begin(); it != screenshotMap.end(); ++it) {
         ui->comboBoxScreenshots->addItem(it.key(), it.value());
+    }
+
+    // Map: Resize movies
+    QMap<QString, QString> resizeMoviesMap = {
+        {"Yes", "true"},
+        {"No", "false"},
+        {"Fit", "FIT"},
+        {"Stretch", "STRETCH"},
+        {"Crop", "CROP"},
+        {"Pixel perfect", "PIXELPERFECT"},
+        {"4BY3", "4BY3"},
+        {"4BY3PP", "4BY3PP"},
+    };
+
+    // Add languages
+    for (auto it = resizeMoviesMap.begin(); it != resizeMoviesMap.end(); ++it) {
+        ui->comboBoxResizeMovies->addItem(it.key(), it.value());
+    }
+
+    // Map: Resolutions
+    QMap<QString, QString> resolutionsMap = {
+        {"Match desktop", "MATCH_DESKTOP"},
+        {"640 x 400 (8:5)", "640x400"},
+        {"640 x 480 (4:3)", "640x480"},
+        {"800 x 600 (4:3)", "800x600"},
+        {"1024 x 768 (4:3)", "1024x768"},
+        {"1280 x 720 (16:9)", "1280x720"},
+        {"1280 x 800 (8:5)", "1280x800"},
+        {"1280 x 1024 (5:4)", "1280x1024"},
+        {"1366 x 768 (16:9)", "1366x768"},
+        {"1440 x 900 (8:5)", "1440x900"},
+        {"1536 x 864 (16:9)", "1536x864"},
+        {"1600 x 900 (16:9)", "1600x900"},
+        {"1600 x 1200 (4:3)", "1600x1200"},
+        {"1920 x 1080 (16:9)", "1920x1080"},
+        {"1920 x 1200 (8:5)", "1920x1200"},
+        {"2560 x 1440 (16:9)", "2560x1440"},
+        {"2560 x 1600 (16:10)", "2560x1600"},
+        {"2880 x 1800 (16:10)", "2880x1800"},
+        {"3440 x 1440 (21:9)", "3440x1440"},
+        {"3840 x 2160 (16:9)", "3840x2160"},
+        {"4096 x 2160 (17:9)", "4096x2160"},
+    };
+
+    // Add Resolutions
+    for (auto it = resolutionsMap.begin(); it != resolutionsMap.end(); ++it) {
+        ui->comboBoxResolution1->addItem(it.key(), it.value());
+        ui->comboBoxResolution2->addItem(it.key(), it.value());
+        ui->comboBoxResolution3->addItem(it.key(), it.value());
+    }
+
+    // Map: Display mode
+    QMap<QString, QString> displayModesMap = {
+        {"Fullscreen", "x32"},
+        {"Windowed", "w32"},
+    };
+
+    // Add display modes
+    for (auto it = displayModesMap.begin(); it != displayModesMap.end(); ++it) {
+        ui->comboBoxDisplayMode1->addItem(it.key(), it.value());
+        ui->comboBoxDisplayMode2->addItem(it.key(), it.value());
+        ui->comboBoxDisplayMode3->addItem(it.key(), it.value());
     }
 
     // Load the settings
@@ -100,6 +162,7 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::loadSettings()
 {
     // ================ GAME ==================
+
     ui->comboBoxLanguage->setCurrentIndex(
         ui->comboBoxLanguage->findData(Settings::getKfxSetting("LANGUAGE").toString()));
     ui->checkBoxSkipIntro->setChecked(Settings::getLauncherSetting("CMD_OPT_NO_INTRO") == true);
@@ -112,11 +175,70 @@ void SettingsDialog::loadSettings()
     ui->lineEditGameturns->setText(Settings::getLauncherSetting("CMD_OPT_FPS").toString());
     ui->lineEditCommandChar->setText(Settings::getKfxSetting("COMMAND_CHAR").toString());
     ui->checkBoxDeltaTime->setChecked(Settings::getKfxSetting("DELTA_TIME") == true);
+    ui->checkBoxFreezeGameNoFocus->setChecked(Settings::getKfxSetting("FREEZE_GAME_ON_FOCUS_LOST")
+                                              == true);
 
     // ================ GRAPHICS ==================
-    popupComboBoxMonitorDisplay->setCurrentIndex(
-        popupComboBoxMonitorDisplay->findData(Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
-    ui->checkBoxSmoothenVideo->setChecked(Settings::getLauncherSetting("CMD_OPT_VID_SMOOTH") == true);
+
+    popupComboBoxMonitorDisplay->setCurrentIndex(popupComboBoxMonitorDisplay->findData(
+        Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
+    ui->checkBoxSmoothenVideo->setChecked(Settings::getLauncherSetting("CMD_OPT_VID_SMOOTH")
+                                          == true);
+    ui->comboBoxResizeMovies->setCurrentIndex(
+        ui->comboBoxResizeMovies->findData(Settings::getKfxSetting("RESIZE_MOVIES").toString()));
+
+    // Loop trough the resolutions
+    int resolutionIndex = 0;
+    for (QString resolutionString :
+         Settings::getKfxSetting("INGAME_RES").toString().trimmed().split(" ")) {
+        // Vars
+        QString res, mode;
+
+        // Check for DESKTOP and DESKTOP_FULL
+        if (resolutionString == "DESKTOP" || resolutionString == "DESKTOP_FULL") {
+            res = "MATCH_DESKTOP";
+            if (resolutionString == "DESKTOP") {
+                mode = "w32";
+            } else if (resolutionString == "DESKTOP_FULL") {
+                mode = "x32";
+            }
+        } else {
+
+            // Use regex to split res and mode
+            QRegularExpressionMatch match = QRegularExpression("(x32|w32)$").match(resolutionString);
+            if (match.hasMatch() == false) {
+                qWarning() << "Invalid resolution in 'keeperfx.cfg':" << resolutionString;
+                resolutionIndex++;
+                continue;
+            }
+
+            // Get vars based on matches
+            res = resolutionString.left(match.capturedStart(1)); // Part before x32/w32
+            mode = match.captured(1);
+        }
+
+        // Update the widgets
+        switch (resolutionIndex) {
+        case 0:
+            ui->comboBoxResolution1->setCurrentIndex(ui->comboBoxResolution1->findData(res));
+            ui->comboBoxDisplayMode1->setCurrentIndex(ui->comboBoxDisplayMode1->findData(mode));
+            break;
+        case 1:
+            ui->comboBoxResolution2->setCurrentIndex(ui->comboBoxResolution2->findData(res));
+            ui->comboBoxDisplayMode2->setCurrentIndex(ui->comboBoxDisplayMode2->findData(mode));
+            break;
+        case 2:
+            ui->comboBoxResolution3->setCurrentIndex(ui->comboBoxResolution3->findData(res));
+            ui->comboBoxDisplayMode3->setCurrentIndex(ui->comboBoxDisplayMode3->findData(mode));
+            break;
+        }
+
+        resolutionIndex++;
+    }
+
+    ui->lineEditCreatureFlowerSize->setText(Settings::getKfxSetting("CREATURE_STATUS_SIZE").toString());
+    ui->lineEditLineBoxSize->setText(Settings::getKfxSetting("LINE_BOX_SIZE").toString());
+    ui->lineEditHandSize->setText(Settings::getKfxSetting("HAND_SIZE").toString());
 }
 
 void SettingsDialog::saveSettings()
@@ -124,17 +246,71 @@ void SettingsDialog::saveSettings()
     // ================ GAME ==================
     Settings::setKfxSetting("LANGUAGE", ui->comboBoxLanguage->currentData().toString());
     Settings::setLauncherSetting("CMD_OPT_NO_INTRO", ui->checkBoxSkipIntro->isChecked());
-    Settings::setKfxSetting("DISABLE_SPLASH_SCREENS", ui->checkBoxDisplaySplashScreens->isChecked() == false);
+    Settings::setKfxSetting("DISABLE_SPLASH_SCREENS",
+                            ui->checkBoxDisplaySplashScreens->isChecked() == false);
     Settings::setLauncherSetting("CMD_OPT_ALEX", ui->checkBoxCheats->isChecked());
     Settings::setKfxSetting("CENSORSHIP", ui->checkBoxCensorship->isChecked());
     Settings::setKfxSetting("SCREENSHOT", ui->comboBoxScreenshots->currentData().toString());
     Settings::setLauncherSetting("CMD_OPT_FPS", ui->lineEditGameturns->text());
     Settings::setKfxSetting("COMMAND_CHAR", ui->lineEditCommandChar->text());
     Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
+    Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
 
     // ================ GRAPHICS ==================
     Settings::setLauncherSetting("CMD_OPT_VID_SMOOTH", ui->checkBoxSmoothenVideo->isChecked());
     Settings::setKfxSetting("DISPLAY_NUMBER", popupComboBoxMonitorDisplay->currentData().toString());
+    Settings::setKfxSetting("RESIZE_MOVIES", ui->comboBoxResizeMovies->currentData().toString());
+
+    // Save the resolutions
+    QString resolutionString = "";
+    for (int i = 0; i < 3; i++) {
+        // Get vars
+        QString res, mode;
+        switch (i) {
+        case 0:
+            res = ui->comboBoxResolution1->currentData().toString();
+            mode = ui->comboBoxDisplayMode1->currentData().toString();
+            break;
+        case 1:
+            res = ui->comboBoxResolution2->currentData().toString();
+            mode = ui->comboBoxDisplayMode2->currentData().toString();
+            break;
+        case 2:
+            res = ui->comboBoxResolution3->currentData().toString();
+            mode = ui->comboBoxDisplayMode3->currentData().toString();
+            break;
+        }
+
+        // Check if user wants to match their desktop size
+        if (res == "MATCH_DESKTOP") {
+            resolutionString += "DESKTOP";
+
+            // Check for fullscreen
+            if (mode == "x32") {
+                resolutionString += "_FULL";
+            }
+        } else {
+            // Add absolute resoltion size
+            resolutionString += res;
+            resolutionString += mode;
+        }
+
+        // Add spaces in between
+        if (i != 2) {
+            resolutionString += " ";
+        }
+    }
+
+    Settings::setKfxSetting("INGAME_RES", resolutionString);
+    Settings::setKfxSetting("FRONTEND_RES", resolutionString);
+    Settings::setKfxSetting("CREATURE_STATUS_SIZE", ui->lineEditCreatureFlowerSize->text());
+    Settings::setKfxSetting("LINE_BOX_SIZE", ui->lineEditLineBoxSize->text());
+    Settings::setKfxSetting("HAND_SIZE", ui->lineEditHandSize->text());
+
+
+
+
+
 
     // Close the settings screen
     this->close();
