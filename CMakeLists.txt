@@ -56,6 +56,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         savefile.h savefile.cpp
         popupsignalcombobox.h
         settings.h settings.cpp
+        settingscfgformat.h settingscfgformat.cpp
 
     )
 else()

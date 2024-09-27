@@ -3,6 +3,8 @@
 #include <QCoreApplication>
 #include <QSettings>
 
+#include "settingscfgformat.h"
+
 QSettings *Settings::kfxSettings;
 QSettings *Settings::launcherSettings;
 
@@ -33,11 +35,17 @@ QFile Settings::getKfxConfigFile()
 
 void Settings::load()
 {
-    kfxSettings = new QSettings(
-        QSettings::IniFormat, QSettings::UserScope, "KeeperFX", "KeeperFX");
-    launcherSettings = new QSettings(
-        QSettings::IniFormat, QSettings::UserScope,"KeeperFX","Launcher");
+    // Get the CFG format used by the original keeperfx.cfg
+    QSettings::Format settingsCfgFormat = SettingsCfgFormat::registerFormat();
 
+    // Create the Settings objects
+    // This will setup a handle that will create the files if they don't exist and a setting is set
+    kfxSettings = new QSettings(
+        settingsCfgFormat, QSettings::UserScope, "keeperfx", "keeperfx");
+    launcherSettings = new QSettings(
+        settingsCfgFormat, QSettings::UserScope, "keeperfx", "launcher");
+
+    // Log the paths
     qDebug() << "KeeperFX Settings File (User):" << kfxSettings->fileName();
     qDebug() << "Launcher Settings File (User):" << launcherSettings->fileName();
 }
