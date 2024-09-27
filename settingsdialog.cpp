@@ -49,26 +49,39 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Languages
     QMap<QString, QString> languageMap = {
-        {"English", "ENG"},
-        {"Italiano", "ITA"},
-        {"Fran\u00E7ais", "FRE"},
-        {"Espa\u00F1ol", "SPA"},
-        {"Nederlands", "DUT"},
-        {"Deutsch", "GER"},
-        {"Polski", "POL"},
-        {"Svenska", "SWE"},
-        {"\u65E5\u672C\u8A9E", "JAP"},
-        {"\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "RUS"},
-        {"\uD55C\uAD6D\uC5B4", "KOR"},
-        {"\u7B80\u4F53\u4E2D\u6587", "CHI"},
-        {"\u7E41\u9AD4\u4E2D\u6587", "CHT"},
-        {"\u010Ce\u0161ka", "CZE"},
-        {"Lat\u012Bna", "LAT"},
-    };
+                                          {"English", "ENG"},
+                                          {"Italiano", "ITA"},
+                                          {"Fran\u00E7ais", "FRE"},
+                                          {"Espa\u00F1ol", "SPA"},
+                                          {"Nederlands", "DUT"},
+                                          {"Deutsch", "GER"},
+                                          {"Polski", "POL"},
+                                          {"Svenska", "SWE"},
+                                          {"\u65E5\u672C\u8A9E", "JAP"},
+                                          {"\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "RUS"},
+                                          {"\uD55C\uAD6D\uC5B4", "KOR"},
+                                          {"\u7B80\u4F53\u4E2D\u6587", "CHI"},
+                                          {"\u7E41\u9AD4\u4E2D\u6587", "CHT"},
+                                          {"\u010Ce\u0161ka", "CZE"},
+                                          {"Lat\u012Bna", "LAT"},
+                                          };
 
     // Add languages
     for (auto it = languageMap.begin(); it != languageMap.end(); ++it) {
         ui->comboBoxLanguage->addItem(it.key(), it.value());
+    }
+
+    // Map: Languages
+    QMap<QString, QString> screenshotMap = {
+                                          {"PNG (Portable Network Graphics)", "PNG"},
+                                          {"JPG (Joint photographic experts group)", "JPG"},
+                                          {"BMP (Windows bitmap)", "BMP"},
+                                          {"RAW (HSI 'mhwanh')", "RAW"},
+                                          };
+
+    // Add languages
+    for (auto it = screenshotMap.begin(); it != screenshotMap.end(); ++it) {
+        ui->comboBoxScreenshots->addItem(it.key(), it.value());
     }
 
     // Load the settings
@@ -87,22 +100,32 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::loadSettings()
 {
     // ================ GAME ==================
-    ui->comboBoxLanguage->setCurrentIndex(ui->comboBoxLanguage->findData(Settings::getKfxSetting("LANGUAGE")));
-    ui->checkBoxSkipIntro->setChecked(Settings::getLauncherSetting("CMD_OPT_SKIP_INTRO") == true);
-    ui->checkBoxDisplaySplashScreens->setChecked(Settings::getKfxSetting("SKIP_HEART_ZOOM") == true);
-    ui->checkBoxCheats->setChecked(Settings::getLauncherSetting("CMD_OPT_CHEATS") == true);
-
+    ui->comboBoxLanguage->setCurrentIndex(
+        ui->comboBoxLanguage->findData(Settings::getKfxSetting("LANGUAGE").toString()));
+    ui->checkBoxSkipIntro->setChecked(Settings::getLauncherSetting("CMD_OPT_NO_INTRO") == true);
+    ui->checkBoxDisplaySplashScreens->setChecked(Settings::getKfxSetting("DISABLE_SPLASH_SCREENS")
+                                                 == false);
+    ui->checkBoxCheats->setChecked(Settings::getLauncherSetting("CMD_OPT_ALEX") == true);
+    ui->checkBoxCensorship->setChecked(Settings::getKfxSetting("CENSORSHIP") == true);
+    ui->comboBoxScreenshots->setCurrentIndex(
+        ui->comboBoxScreenshots->findData(Settings::getKfxSetting("SCREENSHOT").toString()));
+    ui->lineEditGameturns->setText(Settings::getLauncherSetting("CMD_OPT_FPS").toString());
+    ui->lineEditCommandChar->setText(Settings::getKfxSetting("COMMAND_CHAR").toString());
+    ui->checkBoxDeltaTime->setChecked(Settings::getKfxSetting("DELTA_TIME") == true);
 }
 
 void SettingsDialog::saveSettings()
 {
     // ================ GAME ==================
     Settings::setKfxSetting("LANGUAGE", ui->comboBoxLanguage->currentData().toString());
-    Settings::setLauncherSetting("CMD_OPT_SKIP_INTRO", ui->checkBoxSkipIntro->isChecked());
-    Settings::setKfxSetting("SKIP_HEART_ZOOM", ui->checkBoxDisplaySplashScreens->isChecked());
-    Settings::setLauncherSetting("CMD_OPT_CHEATS", ui->checkBoxCheats->isChecked());
-
-
+    Settings::setLauncherSetting("CMD_OPT_NO_INTRO", ui->checkBoxSkipIntro->isChecked());
+    Settings::setKfxSetting("DISABLE_SPLASH_SCREENS", ui->checkBoxDisplaySplashScreens->isChecked() == false);
+    Settings::setLauncherSetting("CMD_OPT_ALEX", ui->checkBoxCheats->isChecked());
+    Settings::setKfxSetting("CENSORSHIP", ui->checkBoxCensorship->isChecked());
+    Settings::setKfxSetting("SCREENSHOT", ui->comboBoxScreenshots->currentData().toString());
+    Settings::setLauncherSetting("CMD_OPT_FPS", ui->lineEditGameturns->text());
+    Settings::setKfxSetting("COMMAND_CHAR", ui->lineEditCommandChar->text());
+    Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
 
     // Close the settings screen
     this->close();

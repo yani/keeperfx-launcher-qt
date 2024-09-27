@@ -137,26 +137,6 @@ height: 35px;
          <family>Arial</family>
         </font>
        </property>
-       <item>
-        <property name="text">
-         <string>PNG (Portable Network Graphics)</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>JPG (Joint photographic experts group)</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>BMP (Windows bitmap)</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>RAW (HSI 'mhwanh')</string>
-        </property>
-       </item>
       </widget>
       <widget class="QLabel" name="labelScreenshot">
        <property name="geometry">
@@ -227,7 +207,7 @@ height: 35px;
         </font>
        </property>
       </widget>
-      <widget class="QLabel" name="labelGameturns_2">
+      <widget class="QLabel" name="labelCommandChar">
        <property name="geometry">
         <rect>
          <x>460</x>
@@ -574,7 +554,7 @@ height: 35px;
         <string>Enable API</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEditCommandChar_3">
+      <widget class="QLineEdit" name="lineEditApiPort">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -592,7 +572,7 @@ height: 35px;
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="labelGameturns_5">
+      <widget class="QLabel" name="labelApiPort">
        <property name="geometry">
         <rect>
          <x>30</x>
