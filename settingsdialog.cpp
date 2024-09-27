@@ -214,21 +214,19 @@ void SettingsDialog::setupDisplayMonitorDropdown()
         QScreen *screen = screens.at(i);
 
         int index = i;
-        int number = i + 1;
+        int number = index + 1;
         int roundedRefreshRate = qRound(screen->refreshRate());
 
-        QString name = QString::asprintf("#%d %s %dhz - %dx%d",
-                                         number,
-                                         screen->model().toUtf8().constData(),
-                                         roundedRefreshRate,
-                                         screen->geometry().width(),
-                                         screen->geometry().height());
+        QString name = "#" + QString::number(number) + " " +
+                       ((screen->model().isEmpty() == false) ? screen->model(): "-") + " "
+                       + QString::number(roundedRefreshRate) + "hz "
+                       + QString::number(screen->geometry().width()) + "x"
+                       + QString::number(screen->geometry().height());
 
         popupComboBoxMonitorDisplay->addItem(name);
     }
 
     // Connect slots to show and hide monitor overlays
-    //connect(ui->comboBoxDisplayMonitor, &QComboBox::activated, this, &SettingsDialog::showMonitorNumberOverlays);
     QObject::connect(popupComboBoxMonitorDisplay, &PopupSignalComboBox::popupOpened, this, &SettingsDialog::showMonitorNumberOverlays);
     QObject::connect(popupComboBoxMonitorDisplay, &PopupSignalComboBox::popupClosed, this, &SettingsDialog::hideMonitorNumberOverlays);
 }
