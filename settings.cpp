@@ -26,12 +26,12 @@ QVariant Settings::getKfxSetting(QAnyStringView key)
 
 void Settings::setKfxSetting(QAnyStringView key, const QVariant &value)
 {
-    if (value == true) {
+    if (value.typeId() == QMetaType::Type::Bool && value == true) {
         kfxSettings->setValue(key, "TRUE");
         return;
     }
 
-    if (value == false) {
+    if (value.typeId() == QMetaType::Type::Bool && value == false) {
         kfxSettings->setValue(key, "FALSE");
         return;
     }
