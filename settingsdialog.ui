@@ -41,7 +41,7 @@ height: 35px;
         <rect>
          <x>210</x>
          <y>40</y>
-         <width>221</width>
+         <width>191</width>
          <height>25</height>
         </rect>
        </property>
@@ -50,11 +50,6 @@ height: 35px;
          <family>Arial</family>
         </font>
        </property>
-       <item>
-        <property name="text">
-         <string>English</string>
-        </property>
-       </item>
       </widget>
       <widget class="QLabel" name="labelLanguage">
        <property name="geometry">
@@ -96,7 +91,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>140</y>
+         <y>190</y>
          <width>321</width>
          <height>23</height>
         </rect>
@@ -114,7 +109,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>190</y>
+         <y>240</y>
          <width>321</width>
          <height>23</height>
         </rect>
@@ -132,8 +127,8 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>240</y>
-         <width>221</width>
+         <y>290</y>
+         <width>191</width>
          <height>25</height>
         </rect>
        </property>
@@ -167,7 +162,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>243</y>
+         <y>293</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -185,7 +180,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>300</y>
+         <y>350</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -203,7 +198,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>320</y>
+         <y>370</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -221,8 +216,8 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>310</y>
-         <width>221</width>
+         <y>360</y>
+         <width>191</width>
          <height>25</height>
         </rect>
        </property>
@@ -230,6 +225,75 @@ height: 35px;
         <font>
          <family>Arial</family>
         </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelGameturns_2">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>42</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Command character</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditCommandChar">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>40</y>
+         <width>41</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxDisplaySplashScreens">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Display splash screens</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxDeltaTime">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>90</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enable delta time</string>
        </property>
       </widget>
      </widget>
@@ -340,11 +404,6 @@ height: 35px;
          <family>Arial</family>
         </font>
        </property>
-       <item>
-        <property name="text">
-         <string>&lt;PLACEHOLDER&gt;</string>
-        </property>
-       </item>
       </widget>
       <widget class="QLabel" name="labelDisplayMonitor">
        <property name="geometry">
@@ -374,6 +433,42 @@ height: 35px;
       <attribute name="title">
        <string>Input</string>
       </attribute>
+      <widget class="QCheckBox" name="checkBoxUnlockCursor_2">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>290</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Lock cursor in possession</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxUnlockCursor">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>250</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Unlock cursor when game is paused</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab5_mp">
       <attribute name="title">
@@ -387,8 +482,8 @@ height: 35px;
       <widget class="QCheckBox" name="checkBoxCheckForUpdates">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>30</y>
+         <x>30</x>
+         <y>40</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -400,8 +495,8 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxRelease">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>65</y>
+         <x>120</x>
+         <y>75</y>
          <width>171</width>
          <height>25</height>
         </rect>
@@ -420,8 +515,8 @@ height: 35px;
       <widget class="QCheckBox" name="checkBoxCrashReporting">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>190</y>
+         <x>30</x>
+         <y>200</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -433,8 +528,8 @@ height: 35px;
       <widget class="QLabel" name="labelRelease">
        <property name="geometry">
         <rect>
-         <x>40</x>
-         <y>70</y>
+         <x>50</x>
+         <y>80</y>
          <width>191</width>
          <height>17</height>
         </rect>
@@ -446,8 +541,8 @@ height: 35px;
       <widget class="QCheckBox" name="checkBoxWebsiteIntegration">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>130</y>
+         <x>30</x>
+         <y>140</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -457,7 +552,66 @@ height: 35px;
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tab7_about">
+     <widget class="QWidget" name="tab7_api">
+      <attribute name="title">
+       <string>API</string>
+      </attribute>
+      <widget class="QCheckBox" name="checkBoxEnableAPI">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enable API</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditCommandChar_3">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>90</y>
+         <width>121</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelGameturns_5">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>92</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>API port</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab8_about">
       <attribute name="title">
        <string>About</string>
       </attribute>

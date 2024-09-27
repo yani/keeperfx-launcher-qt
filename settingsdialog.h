@@ -25,9 +25,7 @@ private:
     void cancel();
 
     void addSettingsChangedHandler();
-
     void setupDisplayMonitorDropdown();
-
     QList<QWidget *> monitorNumberOverlays;
     void showMonitorNumberOverlays();
     void hideMonitorNumberOverlays();

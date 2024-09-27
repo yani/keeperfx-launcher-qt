@@ -4,6 +4,7 @@
 #include "version.h"
 #include "kfxversion.h"
 #include "popupsignalcombobox.h"
+#include "settings.h"
 
 #include <QEvent>
 #include <QMouseEvent>
@@ -16,6 +17,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     , ui(new Ui::SettingsDialog)
 {
     ui->setupUi(this);
+
+    // Reset setting has changed variable
+    settingHasChanged = false;
 
     // Make sure this widget starts at the first tab
     // When working in Qt's UI editor you can change it to another tab by accident
@@ -43,13 +47,36 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         this,
         &SettingsDialog::restoreSettings);
 
-    // Add handler to remember when a setting has changed
-    // This should be executed at the end when the widgets in the dialog are final
-    // (After setupDisplayMonitorDropdown for example)
-    addSettingsChangedHandler();
+    // Map: Languages
+    QMap<QString, QString> languageMap = {
+        {"English", "ENG"},
+        {"Italiano", "ITA"},
+        {"Fran\u00E7ais", "FRE"},
+        {"Espa\u00F1ol", "SPA"},
+        {"Nederlands", "DUT"},
+        {"Deutsch", "GER"},
+        {"Polski", "POL"},
+        {"Svenska", "SWE"},
+        {"\u65E5\u672C\u8A9E", "JAP"},
+        {"\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "RUS"},
+        {"\uD55C\uAD6D\uC5B4", "KOR"},
+        {"\u7B80\u4F53\u4E2D\u6587", "CHI"},
+        {"\u7E41\u9AD4\u4E2D\u6587", "CHT"},
+        {"\u010Ce\u0161ka", "CZE"},
+        {"Lat\u012Bna", "LAT"},
+    };
+
+    // Add languages
+    for (auto it = languageMap.begin(); it != languageMap.end(); ++it) {
+        ui->comboBoxLanguage->addItem(it.key(), it.value());
+    }
 
     // Load the settings
     loadSettings();
+
+    // Add handler to remember when a setting has changed
+    // This should be executed at the end when the widgets and their contents are final
+    addSettingsChangedHandler();
 }
 
 SettingsDialog::~SettingsDialog()
@@ -59,11 +86,24 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::loadSettings()
 {
-    // Load all settings
+    // ================ GAME ==================
+    ui->comboBoxLanguage->setCurrentIndex(ui->comboBoxLanguage->findData(Settings::getKfxSetting("LANGUAGE")));
+    ui->checkBoxSkipIntro->setChecked(Settings::getLauncherSetting("CMD_OPT_SKIP_INTRO") == true);
+    ui->checkBoxDisplaySplashScreens->setChecked(Settings::getKfxSetting("SKIP_HEART_ZOOM") == true);
+    ui->checkBoxCheats->setChecked(Settings::getLauncherSetting("CMD_OPT_CHEATS") == true);
+
 }
 
 void SettingsDialog::saveSettings()
 {
+    // ================ GAME ==================
+    Settings::setKfxSetting("LANGUAGE", ui->comboBoxLanguage->currentData().toString());
+    Settings::setLauncherSetting("CMD_OPT_SKIP_INTRO", ui->checkBoxSkipIntro->isChecked());
+    Settings::setKfxSetting("SKIP_HEART_ZOOM", ui->checkBoxDisplaySplashScreens->isChecked());
+    Settings::setLauncherSetting("CMD_OPT_CHEATS", ui->checkBoxCheats->isChecked());
+
+
+
     // Close the settings screen
     this->close();
 }
