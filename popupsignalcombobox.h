@@ -19,6 +19,10 @@ protected:
     }
 
     void hidePopup() override {
+
+        // For some reason this is triggered when the widget is hidden (by a tab switch for example)
+        // It shouldn't really be an issue but it should be fixed at some point
+
         emit popupClosed();      // Emit custom signal
         QComboBox::hidePopup();  // Call the base class implementation
     }
