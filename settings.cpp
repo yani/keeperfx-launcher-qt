@@ -63,7 +63,7 @@ void Settings::copyNewKfxSettingsFromDefault()
 
     // File not loaded
     if (defaultKfxSettings->allKeys().isEmpty()) {
-        qDebug() << "Default keeperfx.cfg file not loaded while trying to copy defaults";
+        qDebug() << "Default keeperfx.cfg file not loaded. File not found or it contains no keys";
         return;
     }
 
