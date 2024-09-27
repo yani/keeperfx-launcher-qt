@@ -10,11 +10,32 @@ QSettings *Settings::launcherSettings;
 
 QVariant Settings::getKfxSetting(QAnyStringView key)
 {
-    return kfxSettings->value(key);
+    QVariant var = kfxSettings->value(key);
+    QString varString = var.toString();
+
+    if (varString == "ON" || varString == "YES" || varString == "TRUE") {
+        return true;
+    }
+
+    if (varString == "OFF" || varString == "NO" || varString == "FALSE") {
+        return false;
+    }
+
+    return var;
 }
 
 void Settings::setKfxSetting(QAnyStringView key, const QVariant &value)
 {
+    if (value == true) {
+        kfxSettings->setValue(key, "TRUE");
+        return;
+    }
+
+    if (value == false) {
+        kfxSettings->setValue(key, "FALSE");
+        return;
+    }
+
     kfxSettings->setValue(key, value);
 }
 
