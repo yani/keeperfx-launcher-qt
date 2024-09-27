@@ -17,6 +17,7 @@ public:
     static QFile getKfxConfigFile();
 
     static void load();
+    static void copyNewKfxSettingsFromDefault();
 
 private:
 

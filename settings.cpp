@@ -49,3 +49,35 @@ void Settings::load()
     qDebug() << "KeeperFX Settings File (User):" << kfxSettings->fileName();
     qDebug() << "Launcher Settings File (User):" << launcherSettings->fileName();
 }
+
+void Settings::copyNewKfxSettingsFromDefault()
+{
+    // Get the CFG format used by the original keeperfx.cfg
+    QSettings::Format settingsCfgFormat = SettingsCfgFormat::registerFormat();
+
+    // Try and load default KFX settings
+    // 'keeperfx.cfg' from the app dir
+    QSettings *defaultKfxSettings = new QSettings(QCoreApplication::applicationDirPath()
+                                                      + "/keeperfx.cfg",
+                                                  settingsCfgFormat);
+
+    // File not loaded
+    if (defaultKfxSettings->allKeys().isEmpty()) {
+        qDebug() << "Default keeperfx.cfg file not loaded while trying to copy defaults";
+        return;
+    }
+
+    // Step 2: Loop through all keys in defaultKfxSettings
+    foreach (const QString &key, defaultKfxSettings->allKeys()) {
+
+        // Step 3: Check if kfxSettings does not contain the key
+        if (!kfxSettings->contains(key)) {
+
+            // Copy the setting from defaultKfxSettings to kfxSettings
+            QVariant value = defaultKfxSettings->value(key);
+            kfxSettings->setValue(key, value);
+
+            qDebug() << "Copied kfx setting from defaults:" << key << "=" << value.toString();
+        }
+    }
+}

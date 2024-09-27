@@ -33,7 +33,9 @@ int main(int argc, char *argv[])
     QSslConfiguration::setDefaultConfiguration(sslConfig);
 
     // Load the launcher and kfx settings
+    // Also try and copy over defaults
     Settings::load();
+    Settings::copyNewKfxSettingsFromDefault();
 
     // Create the main window and show it
     LauncherMainWindow mainWindow;
