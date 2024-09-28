@@ -161,7 +161,9 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::loadSettings()
 {
-    // ================ GAME ==================
+    // ========================================================================
+    // ================================ GAME ==================================
+    // ========================================================================
 
     ui->comboBoxLanguage->setCurrentIndex(
         ui->comboBoxLanguage->findData(Settings::getKfxSetting("LANGUAGE").toString()));
@@ -178,7 +180,9 @@ void SettingsDialog::loadSettings()
     ui->checkBoxFreezeGameNoFocus->setChecked(Settings::getKfxSetting("FREEZE_GAME_ON_FOCUS_LOST")
                                               == true);
 
-    // ================ GRAPHICS ==================
+    // ============================================================================
+    // ================================ GRAPHICS ==================================
+    // ============================================================================
 
     popupComboBoxMonitorDisplay->setCurrentIndex(popupComboBoxMonitorDisplay->findData(
         Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
@@ -239,11 +243,21 @@ void SettingsDialog::loadSettings()
     ui->lineEditCreatureFlowerSize->setText(Settings::getKfxSetting("CREATURE_STATUS_SIZE").toString());
     ui->lineEditLineBoxSize->setText(Settings::getKfxSetting("LINE_BOX_SIZE").toString());
     ui->lineEditHandSize->setText(Settings::getKfxSetting("HAND_SIZE").toString());
+
+    // =========================================================================
+    // ================================ SOUND ==================================
+    // =========================================================================
+
+
 }
 
 void SettingsDialog::saveSettings()
 {
-    // ================ GAME ==================
+
+    // ========================================================================
+    // ================================ GAME ==================================
+    // ========================================================================
+
     Settings::setKfxSetting("LANGUAGE", ui->comboBoxLanguage->currentData().toString());
     Settings::setLauncherSetting("CMD_OPT_NO_INTRO", ui->checkBoxSkipIntro->isChecked());
     Settings::setKfxSetting("DISABLE_SPLASH_SCREENS",
@@ -256,7 +270,11 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
     Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
 
-    // ================ GRAPHICS ==================
+
+    // ============================================================================
+    // ================================ GRAPHICS ==================================
+    // ============================================================================
+
     Settings::setLauncherSetting("CMD_OPT_VID_SMOOTH", ui->checkBoxSmoothenVideo->isChecked());
     Settings::setKfxSetting("DISPLAY_NUMBER", popupComboBoxMonitorDisplay->currentData().toString());
     Settings::setKfxSetting("RESIZE_MOVIES", ui->comboBoxResizeMovies->currentData().toString());
@@ -307,8 +325,9 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("LINE_BOX_SIZE", ui->lineEditLineBoxSize->text());
     Settings::setKfxSetting("HAND_SIZE", ui->lineEditHandSize->text());
 
-
-
+    // =========================================================================
+    // ================================ SOUND ==================================
+    // =========================================================================
 
 
 
