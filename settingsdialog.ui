@@ -197,7 +197,7 @@ height: 35px;
         <rect>
          <x>210</x>
          <y>360</y>
-         <width>191</width>
+         <width>91</width>
          <height>25</height>
         </rect>
        </property>
@@ -211,7 +211,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>460</x>
-         <y>42</y>
+         <y>43</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -678,6 +678,142 @@ height: 35px;
       <attribute name="title">
        <string>Sound</string>
       </attribute>
+      <widget class="QCheckBox" name="checkBoxEnableSound">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enable sound</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxUseCDMusic">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>90</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Use CD music instead of local files</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxPauseMusicWhenPaused">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Pause music when game is paused</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxEnableAtmoSounds">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>40</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enable atmospheric sounds</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxAtmoFrequency">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>75</y>
+         <width>131</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelAtmoFrequency">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>80</y>
+         <width>101</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Frequency</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxAtmoVolume">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>110</y>
+         <width>131</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelAtmoVolume">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>115</y>
+         <width>101</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Volume</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxMuteAudioWhenNotFocused">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>190</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Mute audio when game is not focused</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab4_input">
       <attribute name="title">
@@ -746,7 +882,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>120</x>
-         <y>75</y>
+         <y>80</y>
          <width>171</width>
          <height>25</height>
         </rect>
@@ -779,7 +915,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>80</y>
+         <y>85</y>
          <width>191</width>
          <height>17</height>
         </rect>
