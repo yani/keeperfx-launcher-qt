@@ -352,7 +352,7 @@ void SettingsDialog::saveSettings()
     // ================================ SOUND ==================================
     // =========================================================================
 
-    Settings::setLauncherSetting("CMD_OPT_NO_SOUND", ui->checkBoxEnableSound->isChecked());
+    Settings::setLauncherSetting("CMD_OPT_NO_SOUND", ui->checkBoxEnableSound->isChecked() == false);
     Settings::setLauncherSetting("CMD_OPT_USE_CD_MUSIC", ui->checkBoxUseCDMusic->isChecked());
     Settings::setKfxSetting("PAUSE_MUSIC_WHEN_GAME_PAUSED", ui->checkBoxPauseMusicWhenPaused->isChecked());
     Settings::setKfxSetting("MUTE_AUDIO_ON_FOCUS_LOST", ui->checkBoxMuteAudioWhenNotFocused->isChecked());
