@@ -111,3 +111,27 @@ void Settings::copyNewKfxSettingsFromDefault()
         }
     }
 }
+
+void Settings::copyMissingLauncherSettings()
+{
+    QMap<QString, QVariant> defaultLauncherSettingsMap = {
+        {"CMD_OPT_NO_SOUND", false},
+        {"CMD_OPT_USE_CD_MUSIC", false},
+        {"CMD_OPT_NO_INTRO", false},
+        {"CMD_OPT_ALEX", false},
+        {"CMD_OPT_FPS", "20"},
+        {"CMD_OPT_VID_SMOOTH", false},
+    };
+
+    // Loop trough default launcher settings
+    for (auto it = defaultLauncherSettingsMap.begin(); it != defaultLauncherSettingsMap.end(); ++it) {
+
+        // Check if we are missing this setting
+        if (!launcherSettings->contains(it.key())) {
+
+            // Copy the setting
+            launcherSettings->setValue(it.key(), it.value());
+            qDebug() << "Copied launcher setting from defaults:" << it.key() << "=" << it.value().toString();
+        }
+    }
+}

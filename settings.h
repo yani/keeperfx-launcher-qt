@@ -18,6 +18,7 @@ public:
 
     static void load();
     static void copyNewKfxSettingsFromDefault();
+    static void copyMissingLauncherSettings();
 
 private:
 

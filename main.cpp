@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     // Also try and copy over defaults
     Settings::load();
     Settings::copyNewKfxSettingsFromDefault();
+    Settings::copyMissingLauncherSettings();
 
     // Create the main window and show it
     LauncherMainWindow mainWindow;
