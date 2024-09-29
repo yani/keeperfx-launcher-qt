@@ -11,7 +11,7 @@ QSettings *Settings::launcherSettings;
 QVariant Settings::getKfxSetting(QAnyStringView key)
 {
     QVariant value = kfxSettings->value(key);
-    QString valueString = var.toString();
+    QString valueString = value.toString();
 
     if (valueString == "ON" || valueString == "YES" || valueString == "TRUE") {
         return true;
