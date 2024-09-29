@@ -161,6 +161,19 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Load the settings
     loadSettings();
 
+    // Set input masks (number only textboxes)
+    ui->lineEditApiPort->setValidator(new QIntValidator(0, 65535, this));
+    ui->lineEditCreatureFlowerSize->setValidator(new QIntValidator(0, 512, this));
+    ui->lineEditHandSize->setValidator(new QIntValidator(0, 500, this));
+    ui->lineEditLineBoxSize->setValidator(new QIntValidator(0, 500, this));
+    ui->lineEditGameturns->setValidator(new QIntValidator(0, 512, this));
+    ui->lineEditMouseSens->setValidator(new QIntValidator(0, 500, this));
+
+    // Set other input masks
+    ui->lineEditCommandChar->setValidator(
+        // Matches any printable ASCII character (from space to tilde)
+        new QRegularExpressionValidator(QRegularExpression("[ -~]"), this));
+
     // Add handler to remember when a setting has changed
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
