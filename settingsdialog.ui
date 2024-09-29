@@ -819,11 +819,11 @@ height: 35px;
       <attribute name="title">
        <string>Input</string>
       </attribute>
-      <widget class="QCheckBox" name="checkBoxUnlockCursor_2">
+      <widget class="QCheckBox" name="checkBoxLockCursorPossession">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>290</y>
+         <x>30</x>
+         <y>230</y>
          <width>321</width>
          <height>23</height>
         </rect>
@@ -837,11 +837,11 @@ height: 35px;
         <string>Lock cursor in possession</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBoxUnlockCursor">
+      <widget class="QCheckBox" name="checkBoxUnlockCursorWhenPaused">
        <property name="geometry">
         <rect>
-         <x>60</x>
-         <y>250</y>
+         <x>30</x>
+         <y>190</y>
          <width>321</width>
          <height>23</height>
         </rect>
@@ -853,6 +853,91 @@ height: 35px;
        </property>
        <property name="text">
         <string>Unlock cursor when game is paused</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxAltInput">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>150</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Alternative Input</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxScreenEdgePanning">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>270</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Screen edge camera panning</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelMouseSens">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>44</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Mouse sensitivity %</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditMouseSens">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>40</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelMouseSensInfo">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>80</y>
+         <width>441</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel { color: #777; }</string>
+       </property>
+       <property name="text">
+        <string>&lt;i&gt;Setting the sensitivity to &lt;strong&gt;0&lt;/strong&gt; enables raw mouse input&lt;/i&gt;</string>
        </property>
       </widget>
      </widget>

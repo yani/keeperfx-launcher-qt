@@ -272,6 +272,17 @@ void SettingsDialog::loadSettings()
         ui->comboBoxAtmoFrequency->findData(Settings::getKfxSetting("ATMOS_FREQUENCY").toString()));
     ui->comboBoxAtmoVolume->setCurrentIndex(
         ui->comboBoxAtmoVolume->findData(Settings::getKfxSetting("ATMOS_VOLUME").toString()));
+
+    // =========================================================================
+    // ================================ INPUT ==================================
+    // =========================================================================
+
+    ui->lineEditMouseSens->setText(Settings::getKfxSetting("POINTER_SENSITIVITY").toString());
+    ui->checkBoxAltInput->setChecked(Settings::getLauncherSetting("CMD_OPT_ALT_INPUT") == true);
+    ui->checkBoxUnlockCursorWhenPaused->setChecked(Settings::getKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED") == true);
+    ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
+    ui->checkBoxScreenEdgePanning->setChecked(Settings::getKfxSetting("CURSOR_EDGE_CAMERA_PANNING") == true);
+
 }
 
 void SettingsDialog::saveSettings()
@@ -359,6 +370,16 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("ATMOSPHERIC_SOUNDS", ui->checkBoxEnableAtmoSounds->isChecked());
     Settings::setKfxSetting("ATMOS_FREQUENCY", ui->comboBoxAtmoFrequency->currentData().toString());
     Settings::setKfxSetting("ATMOS_VOLUME", ui->comboBoxAtmoVolume->currentData().toString());
+
+    // =========================================================================
+    // ================================ INPUT ==================================
+    // =========================================================================
+
+    Settings::setKfxSetting("POINTER_SENSITIVITY", ui->lineEditMouseSens->text());
+    Settings::setLauncherSetting("CMD_OPT_ALT_INPUT", ui->checkBoxAltInput->isChecked() == true);
+    Settings::setKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED", ui->checkBoxUnlockCursorWhenPaused->isChecked() == true);
+    Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
+    Settings::setKfxSetting("CURSOR_EDGE_CAMERA_PANNING", ui->checkBoxScreenEdgePanning->isChecked() == true);
 
     // Close the settings screen
     this->close();

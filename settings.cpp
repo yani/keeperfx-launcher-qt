@@ -114,13 +114,13 @@ void Settings::copyNewKfxSettingsFromDefault()
 
 void Settings::copyMissingLauncherSettings()
 {
-    QMap<QString, QVariant> defaultLauncherSettingsMap = {
-        {"CMD_OPT_NO_SOUND", false},
-        {"CMD_OPT_USE_CD_MUSIC", false},
-        {"CMD_OPT_NO_INTRO", false},
-        {"CMD_OPT_ALEX", false},
-        {"CMD_OPT_FPS", "20"},
-        {"CMD_OPT_VID_SMOOTH", false},
+    QMap<QString, QVariant> defaultLauncherSettingsMap = {{"CMD_OPT_NO_SOUND", false},
+                                                          {"CMD_OPT_USE_CD_MUSIC", false},
+                                                          {"CMD_OPT_NO_INTRO", false},
+                                                          {"CMD_OPT_ALEX", false},
+                                                          {"CMD_OPT_FPS", "20"},
+                                                          {"CMD_OPT_VID_SMOOTH", false},
+                                                          {"CMD_OPT_ALT_INPUT", false},
     };
 
     // Loop trough default launcher settings
