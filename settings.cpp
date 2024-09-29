@@ -10,18 +10,18 @@ QSettings *Settings::launcherSettings;
 
 QVariant Settings::getKfxSetting(QAnyStringView key)
 {
-    QVariant var = kfxSettings->value(key);
-    QString varString = var.toString();
+    QVariant value = kfxSettings->value(key);
+    QString valueString = var.toString();
 
-    if (varString == "ON" || varString == "YES" || varString == "TRUE") {
+    if (valueString == "ON" || valueString == "YES" || valueString == "TRUE") {
         return true;
     }
 
-    if (varString == "OFF" || varString == "NO" || varString == "FALSE") {
+    if (valueString == "OFF" || valueString == "NO" || valueString == "FALSE") {
         return false;
     }
 
-    return var;
+    return value;
 }
 
 void Settings::setKfxSetting(QAnyStringView key, const QVariant &value)
@@ -88,16 +88,25 @@ void Settings::copyNewKfxSettingsFromDefault()
         return;
     }
 
-    // Step 2: Loop through all keys in defaultKfxSettings
+    // Loop through all keys in the default 'keeperfx.cfg'
     foreach (const QString &key, defaultKfxSettings->allKeys()) {
 
-        // Step 3: Check if kfxSettings does not contain the key
+        // Get the value
+        QVariant value = defaultKfxSettings->value(key);
+        QString valueString = value.toString();
+
+        // Fix RESIZE_MOVIES
+        if (key == "RESIZE_MOVIES") {
+            if (valueString == "ON" || valueString == "YES" || valueString == "TRUE") {
+                value = "FIT";
+            }
+        }
+
+        // Check if user kfx settings misses this key
         if (!kfxSettings->contains(key)) {
 
-            // Copy the setting from defaultKfxSettings to kfxSettings
-            QVariant value = defaultKfxSettings->value(key);
+            // Copy the setting
             kfxSettings->setValue(key, value);
-
             qDebug() << "Copied kfx setting from defaults:" << key << "=" << value.toString();
         }
     }

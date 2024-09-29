@@ -86,9 +86,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Resize movies
     QMap<QString, QString> resizeMoviesMap = {
-        {"Yes", "true"},
+        {"Fit (default)", "FIT"},
         {"No", "false"},
-        {"Fit", "FIT"},
         {"Stretch", "STRETCH"},
         {"Crop", "CROP"},
         {"Pixel perfect", "PIXELPERFECT"},
