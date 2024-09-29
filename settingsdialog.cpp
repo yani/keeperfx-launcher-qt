@@ -145,6 +145,19 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxDisplayMode3->addItem(it.key(), it.value());
     }
 
+    // Map: Atmospheric dropdown
+    QMap<QString, QString> atmoMap = {
+        {"Low", "LOW"},
+        {"Medium", "MEDIUM"},
+        {"High", "HIGH"},
+    };
+
+    // Add atmo settings
+    for (auto it = atmoMap.begin(); it != atmoMap.end(); ++it) {
+        ui->comboBoxAtmoFrequency->addItem(it.key(), it.value());
+        ui->comboBoxAtmoVolume->addItem(it.key(), it.value());
+    }
+
     // Load the settings
     loadSettings();
 
@@ -247,7 +260,18 @@ void SettingsDialog::loadSettings()
     // ================================ SOUND ==================================
     // =========================================================================
 
-
+    ui->checkBoxEnableSound->setChecked(Settings::getLauncherSetting("CMD_OPT_NO_SOUND") == false);
+    ui->checkBoxUseCDMusic->setChecked(Settings::getLauncherSetting("CMD_OPT_USE_CD_MUSIC") == true);
+    ui->checkBoxPauseMusicWhenPaused->setChecked(
+        Settings::getKfxSetting("PAUSE_MUSIC_WHEN_GAME_PAUSED") == true);
+    ui->checkBoxMuteAudioWhenNotFocused->setChecked(
+        Settings::getKfxSetting("MUTE_AUDIO_ON_FOCUS_LOST") == true);
+    ui->checkBoxEnableAtmoSounds->setChecked(
+        Settings::getKfxSetting("ATMOSPHERIC_SOUNDS") == true);
+    ui->comboBoxAtmoFrequency->setCurrentIndex(
+        ui->comboBoxAtmoFrequency->findData(Settings::getKfxSetting("ATMOS_FREQUENCY").toString()));
+    ui->comboBoxAtmoVolume->setCurrentIndex(
+        ui->comboBoxAtmoVolume->findData(Settings::getKfxSetting("ATMOS_VOLUME").toString()));
 }
 
 void SettingsDialog::saveSettings()
@@ -328,7 +352,13 @@ void SettingsDialog::saveSettings()
     // ================================ SOUND ==================================
     // =========================================================================
 
-
+    Settings::setLauncherSetting("CMD_OPT_NO_SOUND", ui->checkBoxEnableSound->isChecked());
+    Settings::setLauncherSetting("CMD_OPT_USE_CD_MUSIC", ui->checkBoxUseCDMusic->isChecked());
+    Settings::setKfxSetting("PAUSE_MUSIC_WHEN_GAME_PAUSED", ui->checkBoxPauseMusicWhenPaused->isChecked());
+    Settings::setKfxSetting("MUTE_AUDIO_ON_FOCUS_LOST", ui->checkBoxMuteAudioWhenNotFocused->isChecked());
+    Settings::setKfxSetting("ATMOSPHERIC_SOUNDS", ui->checkBoxEnableAtmoSounds->isChecked());
+    Settings::setKfxSetting("ATMOS_FREQUENCY", ui->comboBoxAtmoFrequency->currentData().toString());
+    Settings::setKfxSetting("ATMOS_VOLUME", ui->comboBoxAtmoVolume->currentData().toString());
 
     // Close the settings screen
     this->close();
