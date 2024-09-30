@@ -328,6 +328,11 @@ void SettingsDialog::loadSettings()
     ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
     ui->checkBoxScreenEdgePanning->setChecked(Settings::getKfxSetting("CURSOR_EDGE_CAMERA_PANNING") == true);
 
+    // ===============================================================================
+    // ================================ MULTIPLAYER ==================================
+    // ===============================================================================
+
+    ui->lineEditMasterServer->setText(Settings::getKfxSetting("MASTERSERVER_HOST").toString());
 }
 
 void SettingsDialog::saveSettings()
@@ -430,6 +435,14 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED", ui->checkBoxUnlockCursorWhenPaused->isChecked() == true);
     Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
     Settings::setKfxSetting("CURSOR_EDGE_CAMERA_PANNING", ui->checkBoxScreenEdgePanning->isChecked() == true);
+
+    // ===============================================================================
+    // ================================ MULTIPLAYER ==================================
+    // ===============================================================================
+
+    Settings::setKfxSetting("MASTERSERVER_HOST", ui->lineEditMasterServer->text());
+
+
 
     // Close the settings screen
     this->close();

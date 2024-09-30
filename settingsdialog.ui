@@ -978,6 +978,34 @@ height: 35px;
       <attribute name="title">
        <string>Multiplayer</string>
       </attribute>
+      <widget class="QLineEdit" name="lineEditMasterServer">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>40</y>
+         <width>321</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelMasterServer">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>43</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Masterserver</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab6_launcher">
       <attribute name="title">
