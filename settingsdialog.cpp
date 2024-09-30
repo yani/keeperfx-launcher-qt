@@ -167,12 +167,28 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->lineEditHandSize->setValidator(new QIntValidator(0, 500, this));
     ui->lineEditLineBoxSize->setValidator(new QIntValidator(0, 500, this));
     ui->lineEditGameturns->setValidator(new QIntValidator(0, 512, this));
-    ui->lineEditMouseSens->setValidator(new QIntValidator(0, 500, this));
 
     // Set other input masks
     ui->lineEditCommandChar->setValidator(
         // Matches any printable ASCII character (from space to tilde)
         new QRegularExpressionValidator(QRegularExpression("[ -~]"), this));
+
+    // Connect the raw mouse input checkbox
+    connect(ui->checkBoxRawMouseInput, &QCheckBox::stateChanged, this, [this]() {
+        bool isChecked = ui->checkBoxRawMouseInput->isChecked();
+        ui->horizontalSliderMouseSens->setEnabled(!isChecked);
+        ui->labelMouseSensPercentage->setEnabled(!isChecked);
+        ui->labelMouseSens->setEnabled(!isChecked);
+        ui->horizontalSliderMouseSens->setValue(isChecked ? 1 : 100);
+        ui->labelMouseSensPercentage->setText(isChecked ? "" : QString("%1%").arg(ui->horizontalSliderMouseSens->value()));
+    });
+
+    // Connect the slider to update the label when moved
+    connect(ui->horizontalSliderMouseSens, &QSlider::valueChanged, this, [this](int value) {
+        if (!ui->checkBoxRawMouseInput->isChecked()) {
+            ui->labelMouseSensPercentage->setText(QString("%1 %").arg(value));
+        }
+    });
 
     // Add handler to remember when a setting has changed
     // This should be executed at the end when the widgets and their contents are final
@@ -290,7 +306,23 @@ void SettingsDialog::loadSettings()
     // ================================ INPUT ==================================
     // =========================================================================
 
-    ui->lineEditMouseSens->setText(Settings::getKfxSetting("POINTER_SENSITIVITY").toString());
+    int mouseSens = Settings::getKfxSetting("POINTER_SENSITIVITY").toInt();
+    if (mouseSens == 0) {
+        ui->checkBoxRawMouseInput->setChecked(true);
+        ui->horizontalSliderMouseSens->setDisabled(true);
+        ui->labelMouseSensPercentage->setDisabled(true);
+        ui->labelMouseSens->setDisabled(true);
+        ui->horizontalSliderMouseSens->setValue(1);
+        ui->labelMouseSensPercentage->setText("");
+    } else {
+        ui->checkBoxRawMouseInput->setChecked(false);
+        ui->horizontalSliderMouseSens->setDisabled(false);
+        ui->labelMouseSensPercentage->setDisabled(false);
+        ui->labelMouseSens->setDisabled(false);
+        ui->horizontalSliderMouseSens->setValue(mouseSens);
+        ui->labelMouseSensPercentage->setText(QString::number(mouseSens) + "%");
+    }
+
     ui->checkBoxAltInput->setChecked(Settings::getLauncherSetting("CMD_OPT_ALT_INPUT") == true);
     ui->checkBoxUnlockCursorWhenPaused->setChecked(Settings::getKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED") == true);
     ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
@@ -388,7 +420,12 @@ void SettingsDialog::saveSettings()
     // ================================ INPUT ==================================
     // =========================================================================
 
-    Settings::setKfxSetting("POINTER_SENSITIVITY", ui->lineEditMouseSens->text());
+    if(ui->checkBoxRawMouseInput->isChecked()){
+        Settings::setKfxSetting("POINTER_SENSITIVITY", 0);
+    } else {
+        Settings::setKfxSetting("POINTER_SENSITIVITY", ui->horizontalSliderMouseSens->value());
+    }
+
     Settings::setLauncherSetting("CMD_OPT_ALT_INPUT", ui->checkBoxAltInput->isChecked() == true);
     Settings::setKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED", ui->checkBoxUnlockCursorWhenPaused->isChecked() == true);
     Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
