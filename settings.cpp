@@ -119,8 +119,8 @@ void Settings::copyMissingLauncherSettings()
         // Launcher settings
         {"CHECK_FOR_UPDATES_ENABLED", true},
         {"CHECK_FOR_UPDATES_RELEASE", "STABLE"},
-        {"WEBSITE_INTEGRATION_ENABLED", false},
-        {"CRASH_REPORTING_ENABLED", false},
+        {"WEBSITE_INTEGRATION_ENABLED", true},
+        {"CRASH_REPORTING_ENABLED", true},
 
         // Game executable parameters
         // These also go in the launcher config
