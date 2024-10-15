@@ -190,6 +190,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         }
     });
 
+    // Connect the API enabled checkbox
+    connect(ui->checkBoxEnableAPI, &QCheckBox::stateChanged, this, [this]() {
+        bool isChecked = ui->checkBoxEnableAPI->isChecked();
+        ui->labelApiPort->setDisabled(!isChecked);
+        ui->lineEditApiPort->setDisabled(!isChecked);
+    });
+
     // Add handler to remember when a setting has changed
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
@@ -333,6 +340,23 @@ void SettingsDialog::loadSettings()
     // ===============================================================================
 
     ui->lineEditMasterServer->setText(Settings::getKfxSetting("MASTERSERVER_HOST").toString());
+
+    // =======================================================================
+    // ================================ API ==================================
+    // =======================================================================
+
+    bool isApiEnabled = Settings::getKfxSetting("API_ENABLED") == true;
+    ui->checkBoxEnableAPI->setChecked(isApiEnabled);
+    if (isApiEnabled) {
+        ui->labelApiPort->setDisabled(false);
+        ui->lineEditApiPort->setDisabled(false);
+    } else {
+        ui->labelApiPort->setDisabled(true);
+        ui->lineEditApiPort->setDisabled(true);
+    }
+
+    ui->lineEditApiPort->setText(Settings::getKfxSetting("API_PORT").toString());
+
 }
 
 void SettingsDialog::saveSettings()
@@ -442,6 +466,12 @@ void SettingsDialog::saveSettings()
 
     Settings::setKfxSetting("MASTERSERVER_HOST", ui->lineEditMasterServer->text());
 
+    // =======================================================================
+    // ================================ API ==================================
+    // =======================================================================
+
+    Settings::setKfxSetting("API_ENABLED", ui->checkBoxEnableAPI->isChecked() == true);
+    Settings::setKfxSetting("API_PORT", ui->lineEditApiPort->text());
 
 
     // Close the settings screen
