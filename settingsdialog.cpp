@@ -215,14 +215,14 @@ void SettingsDialog::loadSettings()
 
     ui->comboBoxLanguage->setCurrentIndex(
         ui->comboBoxLanguage->findData(Settings::getKfxSetting("LANGUAGE").toString()));
-    ui->checkBoxSkipIntro->setChecked(Settings::getLauncherSetting("CMD_OPT_NO_INTRO") == true);
+    ui->checkBoxSkipIntro->setChecked(Settings::getLauncherSetting("GAME_PARAM_NO_INTRO") == true);
     ui->checkBoxDisplaySplashScreens->setChecked(Settings::getKfxSetting("DISABLE_SPLASH_SCREENS")
                                                  == false);
-    ui->checkBoxCheats->setChecked(Settings::getLauncherSetting("CMD_OPT_ALEX") == true);
+    ui->checkBoxCheats->setChecked(Settings::getLauncherSetting("GAME_PARAM_ALEX") == true);
     ui->checkBoxCensorship->setChecked(Settings::getKfxSetting("CENSORSHIP") == true);
     ui->comboBoxScreenshots->setCurrentIndex(
         ui->comboBoxScreenshots->findData(Settings::getKfxSetting("SCREENSHOT").toString()));
-    ui->lineEditGameturns->setText(Settings::getLauncherSetting("CMD_OPT_FPS").toString());
+    ui->lineEditGameturns->setText(Settings::getLauncherSetting("GAME_PARAM_FPS").toString());
     ui->lineEditCommandChar->setText(Settings::getKfxSetting("COMMAND_CHAR").toString());
     ui->checkBoxDeltaTime->setChecked(Settings::getKfxSetting("DELTA_TIME") == true);
     ui->checkBoxFreezeGameNoFocus->setChecked(Settings::getKfxSetting("FREEZE_GAME_ON_FOCUS_LOST")
@@ -234,7 +234,7 @@ void SettingsDialog::loadSettings()
 
     popupComboBoxMonitorDisplay->setCurrentIndex(popupComboBoxMonitorDisplay->findData(
         Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
-    ui->checkBoxSmoothenVideo->setChecked(Settings::getLauncherSetting("CMD_OPT_VID_SMOOTH")
+    ui->checkBoxSmoothenVideo->setChecked(Settings::getLauncherSetting("GAME_PARAM_VID_SMOOTH")
                                           == true);
     ui->comboBoxResizeMovies->setCurrentIndex(
         ui->comboBoxResizeMovies->findData(Settings::getKfxSetting("RESIZE_MOVIES").toString()));
@@ -296,8 +296,8 @@ void SettingsDialog::loadSettings()
     // ================================ SOUND ==================================
     // =========================================================================
 
-    ui->checkBoxEnableSound->setChecked(Settings::getLauncherSetting("CMD_OPT_NO_SOUND") == false);
-    ui->checkBoxUseCDMusic->setChecked(Settings::getLauncherSetting("CMD_OPT_USE_CD_MUSIC") == true);
+    ui->checkBoxEnableSound->setChecked(Settings::getLauncherSetting("GAME_PARAM_NO_SOUND") == false);
+    ui->checkBoxUseCDMusic->setChecked(Settings::getLauncherSetting("GAME_PARAM_USE_CD_MUSIC") == true);
     ui->checkBoxPauseMusicWhenPaused->setChecked(
         Settings::getKfxSetting("PAUSE_MUSIC_WHEN_GAME_PAUSED") == true);
     ui->checkBoxMuteAudioWhenNotFocused->setChecked(
@@ -330,7 +330,7 @@ void SettingsDialog::loadSettings()
         ui->labelMouseSensPercentage->setText(QString::number(mouseSens) + "%");
     }
 
-    ui->checkBoxAltInput->setChecked(Settings::getLauncherSetting("CMD_OPT_ALT_INPUT") == true);
+    ui->checkBoxAltInput->setChecked(Settings::getLauncherSetting("GAME_PARAM_ALT_INPUT") == true);
     ui->checkBoxUnlockCursorWhenPaused->setChecked(Settings::getKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED") == true);
     ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
     ui->checkBoxScreenEdgePanning->setChecked(Settings::getKfxSetting("CURSOR_EDGE_CAMERA_PANNING") == true);
@@ -367,13 +367,13 @@ void SettingsDialog::saveSettings()
     // ========================================================================
 
     Settings::setKfxSetting("LANGUAGE", ui->comboBoxLanguage->currentData().toString());
-    Settings::setLauncherSetting("CMD_OPT_NO_INTRO", ui->checkBoxSkipIntro->isChecked());
+    Settings::setLauncherSetting("GAME_PARAM_NO_INTRO", ui->checkBoxSkipIntro->isChecked());
     Settings::setKfxSetting("DISABLE_SPLASH_SCREENS",
                             ui->checkBoxDisplaySplashScreens->isChecked() == false);
-    Settings::setLauncherSetting("CMD_OPT_ALEX", ui->checkBoxCheats->isChecked());
+    Settings::setLauncherSetting("GAME_PARAM_ALEX", ui->checkBoxCheats->isChecked());
     Settings::setKfxSetting("CENSORSHIP", ui->checkBoxCensorship->isChecked());
     Settings::setKfxSetting("SCREENSHOT", ui->comboBoxScreenshots->currentData().toString());
-    Settings::setLauncherSetting("CMD_OPT_FPS", ui->lineEditGameturns->text());
+    Settings::setLauncherSetting("GAME_PARAM_FPS", ui->lineEditGameturns->text());
     Settings::setKfxSetting("COMMAND_CHAR", ui->lineEditCommandChar->text());
     Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
     Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
@@ -383,7 +383,7 @@ void SettingsDialog::saveSettings()
     // ================================ GRAPHICS ==================================
     // ============================================================================
 
-    Settings::setLauncherSetting("CMD_OPT_VID_SMOOTH", ui->checkBoxSmoothenVideo->isChecked());
+    Settings::setLauncherSetting("GAME_PARAM_VID_SMOOTH", ui->checkBoxSmoothenVideo->isChecked());
     Settings::setKfxSetting("DISPLAY_NUMBER", popupComboBoxMonitorDisplay->currentData().toString());
     Settings::setKfxSetting("RESIZE_MOVIES", ui->comboBoxResizeMovies->currentData().toString());
 
@@ -437,8 +437,8 @@ void SettingsDialog::saveSettings()
     // ================================ SOUND ==================================
     // =========================================================================
 
-    Settings::setLauncherSetting("CMD_OPT_NO_SOUND", ui->checkBoxEnableSound->isChecked() == false);
-    Settings::setLauncherSetting("CMD_OPT_USE_CD_MUSIC", ui->checkBoxUseCDMusic->isChecked());
+    Settings::setLauncherSetting("GAME_PARAM_NO_SOUND", ui->checkBoxEnableSound->isChecked() == false);
+    Settings::setLauncherSetting("GAME_PARAM_USE_CD_MUSIC", ui->checkBoxUseCDMusic->isChecked());
     Settings::setKfxSetting("PAUSE_MUSIC_WHEN_GAME_PAUSED", ui->checkBoxPauseMusicWhenPaused->isChecked());
     Settings::setKfxSetting("MUTE_AUDIO_ON_FOCUS_LOST", ui->checkBoxMuteAudioWhenNotFocused->isChecked());
     Settings::setKfxSetting("ATMOSPHERIC_SOUNDS", ui->checkBoxEnableAtmoSounds->isChecked());
@@ -455,7 +455,7 @@ void SettingsDialog::saveSettings()
         Settings::setKfxSetting("POINTER_SENSITIVITY", ui->horizontalSliderMouseSens->value());
     }
 
-    Settings::setLauncherSetting("CMD_OPT_ALT_INPUT", ui->checkBoxAltInput->isChecked() == true);
+    Settings::setLauncherSetting("GAME_PARAM_ALT_INPUT", ui->checkBoxAltInput->isChecked() == true);
     Settings::setKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED", ui->checkBoxUnlockCursorWhenPaused->isChecked() == true);
     Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
     Settings::setKfxSetting("CURSOR_EDGE_CAMERA_PANNING", ui->checkBoxScreenEdgePanning->isChecked() == true);

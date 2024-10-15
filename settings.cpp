@@ -114,13 +114,22 @@ void Settings::copyNewKfxSettingsFromDefault()
 
 void Settings::copyMissingLauncherSettings()
 {
-    QMap<QString, QVariant> defaultLauncherSettingsMap = {{"CMD_OPT_NO_SOUND", false},
-                                                          {"CMD_OPT_USE_CD_MUSIC", false},
-                                                          {"CMD_OPT_NO_INTRO", false},
-                                                          {"CMD_OPT_ALEX", false},
-                                                          {"CMD_OPT_FPS", "20"},
-                                                          {"CMD_OPT_VID_SMOOTH", false},
-                                                          {"CMD_OPT_ALT_INPUT", false},
+    QMap<QString, QVariant> defaultLauncherSettingsMap = {
+
+        // Launcher settings
+        {"CHECK_FOR_UPDATES_ENABLED", true},
+        {"CHECK_FOR_UPDATES_RELEASE", "STABLE"},
+        {"WEBSITE_INTEGRATION_ENABLED", false},
+        {"CRASH_REPORTING_ENABLED", false},
+
+        // Game executable parameters
+        // These also go in the launcher config
+        {"GAME_PARAM_NO_SOUND", false},
+        {"GAME_PARAM_USE_CD_MUSIC", false},
+        {"GAME_PARAM_NO_INTRO", false},
+        {"GAME_PARAM_ALEX", false},
+        {"GAME_PARAM_FPS", "20"},
+        {"GAME_PARAM_VID_SMOOTH", false},
     };
 
     // Loop trough default launcher settings
