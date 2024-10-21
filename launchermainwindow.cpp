@@ -37,7 +37,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     clearLatestFromKfxNet();
 
     // Disable resizing and remove maximize button
-    // This does not work on X11 or Wayland
+    // This does not work on Wayland (for now)
     setFixedSize(size());
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
@@ -348,8 +348,8 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 void LauncherMainWindow::clearLatestFromKfxNet()
 {
     // Delete all news articles and labels within the parent widget.
-    // We don't delete all childeren because the layout is part of it too.
-    // We also don't use delete later because we check if the list is empty afterwards.
+    // We don't delete all childeren in the main window because the layout is part of it too.
+    // We also don't use "delete later" because we check if the list is empty afterwards.
 
     for (NewsArticleWidget *widget : ui->KfxNewsList->findChildren<NewsArticleWidget*>()) {
         delete widget;
