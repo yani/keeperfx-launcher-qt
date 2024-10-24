@@ -19,6 +19,7 @@
 #include "kfxversion.h"
 #include "newsarticlewidget.h"
 #include "savefile.h"
+#include "settings.h"
 #include "settingsdialog.h"
 #include "workshopitemwidget.h"
 
@@ -367,6 +368,12 @@ void LauncherMainWindow::clearLatestFromKfxNet()
 
 void LauncherMainWindow::loadLatestFromKfxNet()
 {
+    // Check if website integration is disabled
+    if (Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == false) {
+        hideLoadingSpinner(false);
+        return;
+    }
+
     // Make sure we're not already loading
     if (isLoadingLatestFromKfxNet) {
         return;
