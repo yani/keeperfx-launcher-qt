@@ -147,15 +147,26 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Atmospheric dropdown
     QMap<QString, QString> atmoMap = {
-        {"Low", "LOW"},
-        {"Medium", "MEDIUM"},
-        {"High", "HIGH"},
-    };
+                                      {"Low", "LOW"},
+                                      {"Medium", "MEDIUM"},
+                                      {"High", "HIGH"},
+                                      };
 
     // Add atmo settings
     for (auto it = atmoMap.begin(); it != atmoMap.end(); ++it) {
         ui->comboBoxAtmoFrequency->addItem(it.key(), it.value());
         ui->comboBoxAtmoVolume->addItem(it.key(), it.value());
+    }
+
+    // Map: Release dropdown
+    QMap<QString, QString> releaseMap = {
+                                      {"Stable (Default)", "STABLE"},
+                                      {"Alpha", "ALPHA"},
+                                      };
+
+    // Add atmo settings
+    for (auto it = releaseMap.begin(); it != releaseMap.end(); ++it) {
+        ui->comboBoxRelease->addItem(it.key(), it.value());
     }
 
     // Load the settings
@@ -357,6 +368,14 @@ void SettingsDialog::loadSettings()
 
     ui->lineEditApiPort->setText(Settings::getKfxSetting("API_PORT").toString());
 
+    // ============================================================================
+    // ================================ LAUNCHER ==================================
+    // ============================================================================
+
+    ui->checkBoxCheckForUpdates->setChecked(Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") == true);
+    ui->comboBoxRelease->setCurrentIndex(ui->comboBoxRelease->findData(Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()));
+    ui->checkBoxWebsiteIntegration->setChecked(Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == true);
+    ui->checkBoxCrashReporting->setChecked(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true);
 }
 
 void SettingsDialog::saveSettings()
@@ -473,6 +492,14 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("API_ENABLED", ui->checkBoxEnableAPI->isChecked() == true);
     Settings::setKfxSetting("API_PORT", ui->lineEditApiPort->text());
 
+    // ============================================================================
+    // ================================ LAUNCHER ==================================
+    // ============================================================================
+
+    Settings::setLauncherSetting("CHECK_FOR_UPDATES_ENABLED", ui->checkBoxCheckForUpdates->isChecked() == true);
+    Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", ui->comboBoxRelease->currentData().toString());
+    Settings::setLauncherSetting("WEBSITE_INTEGRATION_ENABLED", ui->checkBoxWebsiteIntegration->isChecked() == true);
+    Settings::setLauncherSetting("CRASH_REPORTING_ENABLED", ui->checkBoxCrashReporting->isChecked() == true);
 
     // Close the settings screen
     this->close();
