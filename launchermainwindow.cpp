@@ -43,79 +43,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
-    // Check if KeeperFX is installed
-    if(isKeeperFxInstalled() == false){
-
-        // Ask if user wants to install KeeperFX
-        qDebug() << "'keeperfx.exe' seems to be missing, asking if user wants a fresh install";
-        if(askForKeeperFxInstall() == true)
-        {
-            // Open automatic KeeperFX (web) installer
-            qDebug() << "User wants fresh install, opening kfx install dialog";
-            InstallKfxDialog installKfxDialog(this);
-            installKfxDialog.exec();
-        }
-    }
-
-    // Check if we need to copy over DK files
-    // Only do this if keeperfx is installed
-    if(
-        isKeeperFxInstalled() == true &&
-        DkFiles::isCurrentAppDirValidDkDir() == false
-    ){
-        // Open copy DK files dialog
-        qDebug() << "One or more original DK files not found, opening copy dialog";
-        CopyDkFilesDialog copyDkFilesWindow(this);
-        copyDkFilesWindow.exec();
-    }
-
-    // Load keeperfx version if keeperfx is installed
-    if(isKeeperFxInstalled()){
-        if(KfxVersion::loadCurrentVersion() == true){
-
-            // Version successfully loaded
-            // Add the version to the the GUI
-            qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
-            ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
-            this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
-
-        } else {
-
-            // Failed to get KeeperFX version
-            // Asking the user if they want to reinstall
-            qDebug() << "Failed to load keeperfx version";
-            int result = QMessageBox::question(this, "KeeperFX Error",
-                            "The launcher failed to grab the version of KeeperFX. It's possible your installation is corrupted."
-                            "\n\nDo you want to automatically reinstall KeeperFX?");
-
-            if(result == QMessageBox::Yes){
-
-                // Start Automatic KeeperFX (web) installation
-                qDebug() << "User wants to reinstall KeeperFX";
-                InstallKfxDialog installKfxDialog(this);
-                installKfxDialog.exec();
-
-                // Try and get the version again
-                if(KfxVersion::loadCurrentVersion() == true){
-
-                    // Version successfully loaded
-                    // Add the version to the the GUI
-                    qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
-                    ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
-                    this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
-
-                } else {
-
-                    // Still an error even after reinstalling KeeperFX
-                    // We can't fix this so we'll tell the user to report it
-                    QMessageBox::warning(this,
-                        "KeeperFX Error",
-                        "The launcher failed to grab the version of KeeperFX. Please report this error to the KeeperFX team.");
-                }
-            }
-        }
-    }
-
     // Load animated loading spinner GIF
     QMovie* movie = new QMovie(":/res/spinner.gif");
     if (movie->isValid()) {
@@ -155,13 +82,86 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         this->move(
             // We use left() and top() here because the position is absolute and not relative to the screen
             geometry.left() + ((geometry.width() - this->width()) / 2),
-            geometry.top() + ((geometry.height() - this->height()) / 2));
+            geometry.top() + ((geometry.height() - this->height()) / 2) - 50); // minus 50 to put it a bit higher
     }
 
     // Create a thread for loading the latest stuff from the website
     // We do this so we can already show the GUI at this point (which shows a loading spinner)
     // The function within the thread will invoke updating the GUI, so it's thread safe
     QThread::create([this]() { loadLatestFromKfxNet(); })->start();
+
+    // Check if KeeperFX is installed
+    if(isKeeperFxInstalled() == false){
+
+        // Ask if user wants to install KeeperFX
+        qDebug() << "'keeperfx.exe' seems to be missing, asking if user wants a fresh install";
+        if(askForKeeperFxInstall() == true)
+        {
+            // Open automatic KeeperFX (web) installer
+            qDebug() << "User wants fresh install, opening kfx install dialog";
+            InstallKfxDialog installKfxDialog(this);
+            installKfxDialog.exec();
+        }
+    }
+
+    // Check if we need to copy over DK files
+    // Only do this if keeperfx is installed
+    if(
+        isKeeperFxInstalled() == true &&
+        DkFiles::isCurrentAppDirValidDkDir() == false
+        ){
+        // Open copy DK files dialog
+        qDebug() << "One or more original DK files not found, opening copy dialog";
+        CopyDkFilesDialog copyDkFilesWindow(this);
+        copyDkFilesWindow.exec();
+    }
+
+    // Load keeperfx version if keeperfx is installed
+    if(isKeeperFxInstalled()){
+        if(KfxVersion::loadCurrentVersion() == true){
+
+            // Version successfully loaded
+            // Add the version to the the GUI
+            qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
+            ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
+            this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
+
+        } else {
+
+            // Failed to get KeeperFX version
+            // Asking the user if they want to reinstall
+            qDebug() << "Failed to load keeperfx version";
+            int result = QMessageBox::question(this, "KeeperFX Error",
+                                               "The launcher failed to grab the version of KeeperFX. It's possible your installation is corrupted."
+                                               "\n\nDo you want to automatically reinstall KeeperFX?");
+
+            if(result == QMessageBox::Yes){
+
+                // Start Automatic KeeperFX (web) installation
+                qDebug() << "User wants to reinstall KeeperFX";
+                InstallKfxDialog installKfxDialog(this);
+                installKfxDialog.exec();
+
+                // Try and get the version again
+                if(KfxVersion::loadCurrentVersion() == true){
+
+                    // Version successfully loaded
+                    // Add the version to the the GUI
+                    qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
+                    ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
+                    this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
+
+                } else {
+
+                    // Still an error even after reinstalling KeeperFX
+                    // We can't fix this so we'll tell the user to report it
+                    QMessageBox::warning(this,
+                                         "KeeperFX Error",
+                                         "The launcher failed to grab the version of KeeperFX. Please report this error to the KeeperFX team.");
+                }
+            }
+        }
+    }
 }
 
 LauncherMainWindow::~LauncherMainWindow()
@@ -220,7 +220,6 @@ void LauncherMainWindow::setupPlayExtraMenu()
         qDebug() << "Play campaign selected!";
     });
 
-
     // Add 'Load game'
     QMenu *saveFilesMenu = menu->addMenu(tr("Load game"));
     menu->addMenu(saveFilesMenu);
@@ -269,13 +268,19 @@ void LauncherMainWindow::setupPlayExtraMenu()
     });
 
     // Run heavylog action
+    QFile heavyLogBin(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
     menu->addAction(tr("Run heavylog"), [this]() {
         // Handle run heavylog logic here
         qDebug() << "Run heavylog selected!";
-    });
+    })->setDisabled(
+        heavyLogBin.exists() == false
+    );
 
     // Attach the menu to the button
     ui->playExtraButton->setMenu(menu);
+
+    // TODO: disabled until implemented
+    menu->setDisabled(true); // TODO: disabled until implemented
 }
 
 void LauncherMainWindow::updateAwareButtons() {
