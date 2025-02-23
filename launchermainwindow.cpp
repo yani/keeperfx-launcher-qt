@@ -176,6 +176,7 @@ void LauncherMainWindow::showLoadingSpinner()
     ui->KfxWorkshopItemList->hide();
     ui->latestWorkshopItemsLabel->hide();
     ui->latestNewsLabel->hide();
+    ui->LogoWidget->hide();
 
     // Show the spinner
     // Because all the rest is hidden this will nicely show in the middle
@@ -200,6 +201,10 @@ void LauncherMainWindow::hideLoadingSpinner(bool showOnlineContent)
             ui->latestNewsLabel->show();
             ui->KfxNewsList->show();
         }
+    }
+    else
+    {
+        ui->LogoWidget->show();
     }
 }
 
