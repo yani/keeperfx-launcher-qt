@@ -32,4 +32,6 @@ public:
     static Version getVersionFromString(QString versionString);
 
     static bool loadCurrentVersion();
+
+    static bool isVersionLowerOrEqual(const QString &fileVersion, const QString &currentVersion);
 };

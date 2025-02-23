@@ -57,6 +57,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         popupsignalcombobox.h
         settings.h settings.cpp
         settingscfgformat.h settingscfgformat.cpp
+        fileremover.h
+        fileremoverdialog.h fileremoverdialog.cpp fileremoverdialog.ui
 
     )
 else()

@@ -39,4 +39,6 @@ private:
     bool isLoadingLatestFromKfxNet = false;
     void loadLatestFromKfxNet();
     void clearLatestFromKfxNet();
+
+    void checkForFileRemoval();
 };

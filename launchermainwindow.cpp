@@ -15,6 +15,8 @@
 #include "apiclient.h"
 #include "copydkfilesdialog.h"
 #include "dkfiles.h"
+#include "fileremover.h"
+#include "fileremoverdialog.h"
 #include "installkfxdialog.h"
 #include "kfxversion.h"
 #include "newsarticlewidget.h"
@@ -91,12 +93,10 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     QThread::create([this]() { loadLatestFromKfxNet(); })->start();
 
     // Check if KeeperFX is installed
-    if(isKeeperFxInstalled() == false){
-
+    if (isKeeperFxInstalled() == false) {
         // Ask if user wants to install KeeperFX
         qDebug() << "'keeperfx.exe' seems to be missing, asking if user wants a fresh install";
-        if(askForKeeperFxInstall() == true)
-        {
+        if (askForKeeperFxInstall() == true) {
             // Open automatic KeeperFX (web) installer
             qDebug() << "User wants fresh install, opening kfx install dialog";
             InstallKfxDialog installKfxDialog(this);
@@ -106,10 +106,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Check if we need to copy over DK files
     // Only do this if keeperfx is installed
-    if(
-        isKeeperFxInstalled() == true &&
-        DkFiles::isCurrentAppDirValidDkDir() == false
-        ){
+    if (isKeeperFxInstalled() == true && DkFiles::isCurrentAppDirValidDkDir() == false) {
         // Open copy DK files dialog
         qDebug() << "One or more original DK files not found, opening copy dialog";
         CopyDkFilesDialog copyDkFilesWindow(this);
@@ -117,9 +114,8 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     }
 
     // Load keeperfx version if keeperfx is installed
-    if(isKeeperFxInstalled()){
-        if(KfxVersion::loadCurrentVersion() == true){
-
+    if (isKeeperFxInstalled()) {
+        if (KfxVersion::loadCurrentVersion() == true) {
             // Version successfully loaded
             // Add the version to the the GUI
             qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
@@ -127,41 +123,45 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
 
         } else {
-
             // Failed to get KeeperFX version
             // Asking the user if they want to reinstall
             qDebug() << "Failed to load keeperfx version";
-            int result = QMessageBox::question(this, "KeeperFX Error",
-                                               "The launcher failed to grab the version of KeeperFX. It's possible your installation is corrupted."
-                                               "\n\nDo you want to automatically reinstall KeeperFX?");
+            int result
+                = QMessageBox::question(this,
+                                        "KeeperFX Error",
+                                        "The launcher failed to grab the version of KeeperFX. It's "
+                                        "possible your installation is corrupted."
+                                        "\n\nDo you want to automatically reinstall KeeperFX?");
 
-            if(result == QMessageBox::Yes){
-
+            if (result == QMessageBox::Yes) {
                 // Start Automatic KeeperFX (web) installation
                 qDebug() << "User wants to reinstall KeeperFX";
                 InstallKfxDialog installKfxDialog(this);
                 installKfxDialog.exec();
 
                 // Try and get the version again
-                if(KfxVersion::loadCurrentVersion() == true){
-
+                if (KfxVersion::loadCurrentVersion() == true) {
                     // Version successfully loaded
                     // Add the version to the the GUI
                     qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
                     ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
-                    this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
+                    this->setWindowTitle("KeeperFX Launcher - v"
+                                         + KfxVersion::currentVersion.string);
 
                 } else {
-
                     // Still an error even after reinstalling KeeperFX
                     // We can't fix this so we'll tell the user to report it
                     QMessageBox::warning(this,
                                          "KeeperFX Error",
-                                         "The launcher failed to grab the version of KeeperFX. Please report this error to the KeeperFX team.");
+                                         "The launcher failed to grab the version of KeeperFX. "
+                                         "Please report this error to the KeeperFX team.");
                 }
             }
         }
     }
+
+    // Check if there are any files that should be removed
+    checkForFileRemoval();
 }
 
 LauncherMainWindow::~LauncherMainWindow()
@@ -511,4 +511,32 @@ void LauncherMainWindow::loadLatestFromKfxNet()
         this->hideLoadingSpinner(true);
         isLoadingLatestFromKfxNet = false;
     });
+}
+
+void LauncherMainWindow::checkForFileRemoval()
+{
+    // Remove 'save/deleteme.txt'
+    // We remove it manually because this will almost always be present after an install (or update)
+    QFile saveDeleteMeFile(QCoreApplication::applicationDirPath() + "/save/deleteme.txt");
+    if (saveDeleteMeFile.exists()) {
+        saveDeleteMeFile.remove();
+    }
+
+    // Check if 'files-to-remove.txt' file exists
+    QFile fileRemovalFile(QCoreApplication::applicationDirPath() + "/files-to-remove.txt");
+    if (fileRemovalFile.exists()) {
+
+        // Get files to remove based on KfxVersion
+        QStringList filesToRemove = FileRemover::processFile(fileRemovalFile,
+                                                             KfxVersion::currentVersion.string);
+
+        // If there are files that should be removed
+        if(filesToRemove.length() > 0){
+            qDebug() << "Files found that should be removed:" << filesToRemove;
+
+            // TODO: show user a list of files to remove
+            FileRemoverDialog fileRemoverDialog(this, filesToRemove);
+            fileRemoverDialog.exec();
+        }
+    }
 }

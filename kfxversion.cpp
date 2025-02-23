@@ -130,3 +130,29 @@ bool KfxVersion::loadCurrentVersion()
 
     return true;
 }
+
+bool KfxVersion::isVersionLowerOrEqual(const QString &version1, const QString &version2) {
+
+    // Get version parts
+    QStringList version1Parts = version1.split(".");
+    QStringList version2Parts = version2.split(".");
+
+    // Normalize version parts to equal sizes
+    int maxLength = qMax(version1Parts.size(), version2Parts.size());
+    while (version1Parts.size() < maxLength) version1Parts.append("0");
+    while (version2Parts.size() < maxLength) version2Parts.append("0");
+
+    // Loop trough the version parts
+    for (int i = 0; i < maxLength; ++i) {
+
+        // Check if version is newer or older
+        if (version1Parts[i].toInt() < version2Parts[i].toInt()) {
+            return true;
+        } else if (version1Parts[i].toInt() > version2Parts[i].toInt()) {
+            return false;
+        }
+    }
+
+    // Versions are equal
+    return true;
+}
