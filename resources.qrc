@@ -3,5 +3,7 @@
         <file>res/spinner.gif</file>
         <file>res/launchermn.jpg</file>
         <file>res/horny-face.png</file>
+        <file>res/cert/release_certificate_2025.cer</file>
+        <file>res/cert/test_certificate.cer</file>
     </qresource>
 </RCC>

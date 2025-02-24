@@ -61,6 +61,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         fileremover.h
         fileremoverdialog.h fileremoverdialog.cpp fileremoverdialog.ui
         crc32.h
+        certificate.h certificate.cpp
 
     )
 else()

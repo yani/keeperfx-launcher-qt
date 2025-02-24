@@ -12,6 +12,7 @@
 #include <QtConcurrent/QtConcurrentRun>
 #include <QMenu>
 
+#include "certificate.h"
 #include "apiclient.h"
 #include "copydkfilesdialog.h"
 #include "crc32.h"
@@ -170,6 +171,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Check if there are any files that should be removed
     checkForFileRemoval();
+
+    // Verify the binaries against known certificates
+    verifyBinaryCertificates();
 }
 
 LauncherMainWindow::~LauncherMainWindow()
@@ -599,5 +603,50 @@ void LauncherMainWindow::checkForKfxUpdate()
                 }
             }
         })->start();
+    }
+}
+
+void LauncherMainWindow::verifyBinaryCertificates()
+{
+    // List of files to check
+    QStringList filesToCheck = {
+        "keeperfx.exe",
+        "keeperfx_hvlog.exe",
+        "launcher.exe",
+    };
+
+    QStringList failedFiles;
+
+    // Loop through and load each certificate
+    for (const QString &filePath : filesToCheck) {
+        // Load file
+        QFile file(QApplication::applicationDirPath() + "/" + filePath);
+
+        // Make sure file exists
+        if (file.exists() == false) {
+            continue;
+        }
+
+        // Verify
+        if (Certificate::verify(file) == false) {
+            failedFiles.append(filePath);
+        }
+    }
+
+    // If any files have been failed to verify
+    if (failedFiles.empty() == false) {
+
+        // Create file list
+        QString fileListString;
+        for (const QString &filePath : failedFiles) {
+            fileListString.append(filePath + "\n");
+        }
+
+        // Show messagebox alerting the user
+        QMessageBox::warning(this,
+             "KeeperFX Verification Error",
+             "The launcher failed to verify the signature of:\n\n"
+                 + fileListString +
+                 "\nIt is highly suggested to only use official KeeperFX files.");
     }
 }
