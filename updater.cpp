@@ -1,10 +1,13 @@
 #include "updater.h"
+#include "apiclient.h"
+#include "kfxversion.h"
 
 #include <QFile>
 #include <QFileInfo>
 #include <QTextEdit>
 #include <QProgressBar>
 #include <QCoreApplication>
+#include <QJsonObject>
 
 #include <bit7z/bitextractor.hpp>
 #include <bit7z/bitabstractarchivehandler.hpp>
@@ -83,5 +86,11 @@ bool Updater::updateFromArchive(
         return false;
     }
 
+    return true;
+}
+
+bool updateFromGameFileMap(QMap<QString, QString> fileMap,
+                           std::function<bool(uint64_t processed_size)> progressCallback)
+{
     return true;
 }

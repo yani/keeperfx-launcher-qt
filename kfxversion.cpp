@@ -1,9 +1,11 @@
 #include "kfxversion.h"
+#include "apiclient.h"
 
 #include <QCoreApplication>
 #include <QRegularExpression>
 
 #include <LIEF/PE.hpp>
+#include <qjsonobject.h>
 
 KfxVersion::Version KfxVersion::currentVersion;
 
@@ -155,4 +157,84 @@ bool KfxVersion::isVersionLowerOrEqual(const QString &version1, const QString &v
 
     // Versions are equal
     return true;
+}
+
+bool KfxVersion::isNewerVersion(const QString &version1, const QString &version2)
+{
+    // Get version parts
+    QStringList version1Parts = version1.split(".");
+    QStringList version2Parts = version2.split(".");
+
+    // Normalize version parts to equal sizes
+    int maxLength = qMax(version1Parts.size(), version2Parts.size());
+    while (version1Parts.size() < maxLength) version1Parts.append("0");
+    while (version2Parts.size() < maxLength) version2Parts.append("0");
+
+    // Loop trough the version parts
+    for (int i = 0; i < maxLength; ++i) {
+
+        // Check if version is newer
+        if (version1Parts[i].toInt() > version2Parts[i].toInt()) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+std::optional<KfxVersion::VersionInfo> KfxVersion::getLatestVersion(KfxVersion::ReleaseType type)
+{
+    // Only check version for stable and alpha
+    if (type != KfxVersion::ReleaseType::STABLE && type != KfxVersion::ReleaseType::ALPHA) {
+        return std::nullopt;
+    }
+
+    // Variables
+    QString version;
+    QString downloadUrl;
+
+    // Handle stable
+    if (type == KfxVersion::ReleaseType::STABLE) {
+        // Get release
+        QJsonObject stableRelease = ApiClient::getLatestStable();
+        if (stableRelease.isEmpty()) {
+            return std::nullopt;
+        }
+
+        // Set vars
+        version = stableRelease["version"].toString();
+        downloadUrl = stableRelease["download_url"].toString();
+    }
+
+    // Handle alpha
+    if (type == KfxVersion::ReleaseType::ALPHA) {
+        // Get release
+        QJsonObject alphaRelease = ApiClient::getLatestAlpha();
+        if (alphaRelease.isEmpty()) {
+            return std::nullopt;
+        }
+
+        // Set vars
+        version = alphaRelease["version"].toString();
+        downloadUrl = alphaRelease["download_url"].toString();
+    }
+
+    // Return latest version information
+    return VersionInfo{version, downloadUrl, type};
+}
+
+std::optional<QMap<QString, QString>> KfxVersion::getGameFileMap(KfxVersion::ReleaseType type, QString version)
+{
+    // Only check version for stable and alpha
+    if (type != KfxVersion::ReleaseType::STABLE && type != KfxVersion::ReleaseType::ALPHA) {
+        return std::nullopt;
+    }
+
+    // Get release file map
+    auto fileMap = ApiClient::getGameFileList(type, version);
+    if (!fileMap) {
+        return std::nullopt;
+    }
+
+    return fileMap;
 }

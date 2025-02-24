@@ -1,5 +1,7 @@
 #pragma once
 
+#include "kfxversion.h"
+
 #include <QUrl>
 #include <QImage>
 #include <QJsonDocument>
@@ -17,4 +19,6 @@ public:
 
     static QUrl getDownloadUrlStable();
     static QUrl getDownloadUrlAlpha();
+
+    static std::optional<QMap<QString, QString>> getGameFileList(KfxVersion::ReleaseType type, QString version);
 };

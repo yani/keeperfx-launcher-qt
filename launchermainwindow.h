@@ -1,8 +1,10 @@
 #pragma once
 
+#include "kfxversion.h"
+
 #include <QMainWindow>
-#include <qapplication.h>
-#include <qtimer.h>
+#include <QApplication>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -14,6 +16,9 @@ class LauncherMainWindow : public QMainWindow
 {
     Q_OBJECT
 
+signals:
+    void updateFound(KfxVersion::VersionInfo versionInfo, std::optional<QMap<QString, QString>> fileMap);
+
 public:
     LauncherMainWindow(QWidget *parent = nullptr);
     ~LauncherMainWindow();
@@ -22,6 +27,8 @@ private slots:
     void on_logFileButton_clicked();
     void on_workshopButton_clicked();
     void on_settingsButton_clicked();
+
+    void onUpdateFound(KfxVersion::VersionInfo versionInfo, std::optional<QMap<QString, QString>> fileMap);
 
 private:
     Ui::LauncherMainWindow *ui;
@@ -41,4 +48,6 @@ private:
     void clearLatestFromKfxNet();
 
     void checkForFileRemoval();
+
+    void checkForKfxUpdate();
 };

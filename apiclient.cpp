@@ -1,5 +1,6 @@
 #include "apiclient.h"
 
+#include <QMap>
 #include <QImage>
 #include <QEventLoop>
 #include <QJsonObject>
@@ -137,4 +138,48 @@ QUrl ApiClient::getDownloadUrlAlpha()
 
     // Return
     return QUrl(downloadUrlString);
+}
+
+std::optional<QMap<QString, QString>> ApiClient::getGameFileList(KfxVersion::ReleaseType type,
+                                                                 QString version)
+{
+    // Get type as string
+    QString typeString;
+    if (type == KfxVersion::ReleaseType::STABLE) {
+        typeString = "stable";
+    } else if (type == KfxVersion::ReleaseType::ALPHA) {
+        typeString = "alpha";
+    } else {
+        return std::nullopt;
+    }
+
+    // Get URL
+    QUrl url("v1/release/" + typeString + "/" + version + "/files");
+
+    // Get the JSON response
+    QJsonDocument jsonDoc = ApiClient::getJsonResponse(url);
+    if (jsonDoc.isObject() == false) {
+        return std::nullopt;
+    }
+
+    // Convert to JSON object
+    QJsonObject jsonObj = jsonDoc.object();
+
+    // Make sure object is valid
+    if (jsonObj["success"].toBool() != true || jsonObj["release_type"].toString() != typeString
+        || jsonObj["version"].toString() != version || jsonObj.contains("files") == false) {
+        return std::nullopt;
+    }
+
+    // Create path -> checksum map
+    QMap<QString, QString> map;
+
+    // Loop trough all files
+    QJsonObject fileObj = jsonObj["files"].toObject();
+    foreach (const QString &path, fileObj.keys()) {
+        // Add to map
+        map[path] = fileObj.value(path).toString();
+    }
+
+    return map;
 }

@@ -14,6 +14,7 @@
 
 #include "apiclient.h"
 #include "copydkfilesdialog.h"
+#include "crc32.h"
 #include "dkfiles.h"
 #include "fileremover.h"
 #include "fileremoverdialog.h"
@@ -23,6 +24,7 @@
 #include "savefile.h"
 #include "settings.h"
 #include "settingsdialog.h"
+#include "updater.h"
 #include "workshopitemwidget.h"
 
 #define MAX_WORKSHOP_ITEMS_SHOWN 4
@@ -159,6 +161,12 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             }
         }
     }
+
+    // Handle when an update is found
+    connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
+
+    // Check for update
+    checkForKfxUpdate();
 
     // Check if there are any files that should be removed
     checkForFileRemoval();
@@ -534,9 +542,62 @@ void LauncherMainWindow::checkForFileRemoval()
         if(filesToRemove.length() > 0){
             qDebug() << "Files found that should be removed:" << filesToRemove;
 
-            // TODO: show user a list of files to remove
+            // Show file removal dialog
             FileRemoverDialog fileRemoverDialog(this, filesToRemove);
             fileRemoverDialog.exec();
         }
+    }
+}
+
+void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo,
+                                       std::optional<QMap<QString, QString>> fileMap)
+{
+    //FileRemoverDialog fileRemoverDialog(this, list);
+    //fileRemoverDialog.exec();
+}
+
+void LauncherMainWindow::checkForKfxUpdate()
+{
+    // TODO: remove this:
+    KfxVersion::currentVersion.string = "0.0.0";
+
+    // Check for updates if they are enabled
+    if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") == true) {
+        // Spawn a thread
+        // We don't want any slow internet connections block our main thread
+        QThread::create([this]() {
+
+            // Get release type
+            QString typeString = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
+            KfxVersion::ReleaseType type = KfxVersion::getReleaseTypefromString(typeString);
+
+            // Only update to stable and alpha
+            if (type != KfxVersion::ReleaseType::STABLE && type != KfxVersion::ReleaseType::ALPHA) {
+                qDebug() << "Invalid auto update release type:" << typeString;
+                return;
+            }
+
+            // Get latest version for this release type
+            auto latestVersionInfo = KfxVersion::getLatestVersion(type);
+            if (latestVersionInfo) {
+
+                // Check if type of release is different or version is newer
+                if (type != KfxVersion::currentVersion.type
+                    || KfxVersion::isNewerVersion(latestVersionInfo->version,
+                                                  KfxVersion::currentVersion.string)) {
+                    qDebug() << "Update found:" << latestVersionInfo->version;
+
+                    // Try to get filemap for this update
+                    auto fileMap = KfxVersion::getGameFileMap(latestVersionInfo->type,
+                                                              latestVersionInfo->version);
+
+                    // Emit signal for update
+                    emit this->updateFound(latestVersionInfo.value(), fileMap);
+
+                } else {
+                    qDebug() << "No updates found.";
+                }
+            }
+        })->start();
     }
 }
