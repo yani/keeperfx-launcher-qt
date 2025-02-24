@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
 {
     // Create the App
     QApplication app(argc, argv);
+    QApplication::setApplicationName("KeeperFX Launcher");
+    QApplication::setApplicationVersion(LAUNCHER_VERSION);
 
     // DEBUG: Log some stuff
     qDebug() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
