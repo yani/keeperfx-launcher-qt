@@ -1,6 +1,10 @@
 #include "newsarticlewidget.h"
 #include "ui_newsarticlewidget.h"
 
+#include <QCryptographicHash>
+#include <QDir>
+#include <QFile>
+
 #include "apiclient.h"
 
 NewsArticleWidget::NewsArticleWidget(QWidget *parent)
@@ -38,8 +42,36 @@ void NewsArticleWidget::setExcerpt(QString excerpt)
 
 void NewsArticleWidget::setImage(QUrl imageUrl)
 {
-    QImage image = ApiClient::downloadImage(imageUrl);
-    if(image.isNull()){
+    // Create a dedicated temp directory
+    QString cacheDir = QDir::temp().filePath("kfx-launcher-img-cache");
+    QDir().mkpath(cacheDir); // Ensure the directory exists
+
+    // Generate a shorter hash (using first 16 chars of SHA-256)
+    QByteArray urlHash = QCryptographicHash::hash(imageUrl.toString().toUtf8(),
+                                                  QCryptographicHash::Sha256)
+                             .toHex()
+                             .left(16);
+    QString ext = QFileInfo(imageUrl.toString()).suffix();
+    if (ext.isEmpty())
+        ext = "png"; // Default to PNG if no extension found
+
+    QString cachePath = cacheDir + "/" + urlHash + "." + ext;
+
+    // Get image
+    QImage image;
+    if (QFile::exists(cachePath)) {
+        image.load(cachePath);
+        qDebug() << "Image loaded from cache:" << cachePath;
+    } else {
+        image = ApiClient::downloadImage(imageUrl);
+        if (!image.isNull()) {
+            image.save(cachePath);
+            qDebug() << "Image saved in cache:" << cachePath;
+        }
+    }
+
+    // Make sure image exists
+    if (image.isNull()) {
         return;
     }
 
