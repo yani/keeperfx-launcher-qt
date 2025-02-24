@@ -164,10 +164,8 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         }
     }
 
-    // Handle when an update is found
+    // Check for updates
     connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
-
-    // Check for update
     checkForKfxUpdate();
 
     // Check if there are any files that should be removed
