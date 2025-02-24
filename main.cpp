@@ -6,6 +6,7 @@
 #include "launchermainwindow.h"
 #include "settings.h"
 #include "version.h"
+#include "launcheroptions.h"
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +28,9 @@ int main(int argc, char *argv[])
 
     // DEBUG: Platform
     qDebug() << "Platform:" << QGuiApplication::platformName();
+
+    // Parse launcher options
+    LauncherOptions::processApp(app);
 
     // Disable SSL verification
     // TODO: eventually add SSL certs

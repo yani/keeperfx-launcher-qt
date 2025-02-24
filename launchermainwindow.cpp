@@ -27,6 +27,7 @@
 #include "settingsdialog.h"
 #include "updater.h"
 #include "workshopitemwidget.h"
+#include "launcheroptions.h"
 
 #define MAX_WORKSHOP_ITEMS_SHOWN 4
 #define MAX_NEWS_ARTICLES_SHOWN 3
@@ -608,6 +609,12 @@ void LauncherMainWindow::checkForKfxUpdate()
 
 void LauncherMainWindow::verifyBinaryCertificates()
 {
+    // Check if we need to skip verification
+    if (LauncherOptions::isSet("skip-verify") == true) {
+        qDebug() << "Skipping certificate file verification (skip-verify)";
+        return;
+    }
+
     // List of files to check
     QStringList filesToCheck = {
         "keeperfx.exe",
