@@ -17,6 +17,9 @@ find_package(ZLIB REQUIRED)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/bit7z-4.0.8/)
 
+# Set custom UI directory
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/ui)
+
 # Set the path to the LIEF library and include directory
 set(LIEF_DIR ${CMAKE_SOURCE_DIR}/deps/LIEF-0.15.1-Linux-x86_64)
 set(LIEF_INCLUDE_DIR ${LIEF_DIR}/include)
@@ -28,42 +31,14 @@ include_directories(${LIEF_INCLUDE_DIR})
 # Specify the path to the LIEF shared library
 link_directories(${LIEF_LIB_DIR})
 
-
-set(PROJECT_SOURCES
-        main.cpp
-        launchermainwindow.cpp
-        launchermainwindow.h
-        launchermainwindow.ui
-)
+file(GLOB PROJECT_SOURCES src/*.cpp src/*.h)
+file(GLOB UI_FILES ui/*.ui)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(keeperfx-launcher-qt
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        version.h
-
-        settingsdialog.h settingsdialog.cpp settingsdialog.ui
-        copydkfilesdialog.h copydkfilesdialog.cpp copydkfilesdialog.ui
-        dkfiles.h dkfiles.cpp
-        downloader.h downloader.cpp
-        installkfxdialog.h installkfxdialog.cpp installkfxdialog.ui
-        updater.h updater.cpp
-        resources.qrc
-        kfxversion.h kfxversion.cpp
-        apiclient.h apiclient.cpp
-        workshopitemwidget.h workshopitemwidget.cpp workshopitemwidget.ui
-        newsarticlewidget.h newsarticlewidget.cpp newsarticlewidget.ui
-        clickablehighlightedwidget.h clickablehighlightedwidget.cpp
-        savefile.h savefile.cpp
-        popupsignalcombobox.h
-        settings.h settings.cpp
-        settingscfgformat.h settingscfgformat.cpp
-        fileremover.h
-        fileremoverdialog.h fileremoverdialog.cpp fileremoverdialog.ui
-        crc32.h
-        certificate.h certificate.cpp
-        launcheroptions.h launcheroptions.cpp
-
+        ${UI_FILES}
     )
 else()
     add_executable(keeperfx-launcher-qt
