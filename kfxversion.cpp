@@ -3,9 +3,9 @@
 
 #include <QCoreApplication>
 #include <QRegularExpression>
+#include <QJsonObject>
 
 #include <LIEF/PE.hpp>
-#include <qjsonobject.h>
 
 KfxVersion::Version KfxVersion::currentVersion;
 
