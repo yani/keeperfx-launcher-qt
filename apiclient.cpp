@@ -77,7 +77,7 @@ QJsonObject ApiClient::getLatestStable(){
 
     // URL of the API endpoint
     // API endpoints can be found at: https://github.com/dkfans/keeperfx-website
-    QUrl url("v1/stable/latest");
+    QUrl url("v1/release/stable/latest");
 
     // Get the JSON response
     QJsonDocument jsonDoc = ApiClient::getJsonResponse(url);
@@ -94,7 +94,7 @@ QJsonObject ApiClient::getLatestAlpha(){
 
     // URL of the API endpoint
     // API endpoints can be found at: https://github.com/dkfans/keeperfx-website
-    QUrl url("v1/alpha/latest");
+    QUrl url("v1/release/alpha/latest");
 
     // Get the JSON response
     QJsonDocument jsonDoc = ApiClient::getJsonResponse(url);
