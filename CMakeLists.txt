@@ -13,6 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Network)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network Gui)
+find_package(ZLIB REQUIRED)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/bit7z-4.0.8/)
 
@@ -59,6 +60,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         settingscfgformat.h settingscfgformat.cpp
         fileremover.h
         fileremoverdialog.h fileremoverdialog.cpp fileremoverdialog.ui
+        crc32.h
 
     )
 else()
@@ -76,6 +78,7 @@ target_link_libraries(
     Qt6::Gui
     bit7z
     LIEF #linux only
+    ZLIB::ZLIB
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
