@@ -20,7 +20,7 @@ uint64_t Updater::testArchiveAndGetSize(QFile *archiveFile)
 
     // Load the library
 #ifdef WIN32
-    bit7z::Bit7zLibrary lib{ "7z.dll" };
+    bit7z::Bit7zLibrary lib{ "7za.dll" };
 #else
     bit7z::Bit7zLibrary lib{ "7z.so" };
 #endif

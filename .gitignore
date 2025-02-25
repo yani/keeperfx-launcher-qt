@@ -1,52 +1,30 @@
-# This file is used to ignore files which are generated
-# ----------------------------------------------------------------------------
 
+# TODO files
 TODO
 
+# Project dirs
 /build
+/deps
 
+# Generated
 *~
 *.autosave
-*.a
-*.core
-*.moc
-*.o
-*.obj
-*.orig
-*.rej
-*.so
-*.so.*
-*_pch.h.cpp
-*_resource.rc
-*.qm
 .#*
 *.*#
 core
 !core/
-tags
 .DS_Store
 .directory
 *.debug
 Makefile*
-*.prl
-*.app
-moc_*.cpp
-ui_*.h
-qrc_*.cpp
 Thumbs.db
-*.res
-*.rc
 /.qmake.cache
 /.qmake.stash
 
-# qtcreator generated files
+# IDE files
 *.pro.user*
 CMakeLists.txt.user*
-
-# xemacs temporary files
 *.flc
-
-# Vim temporary files
 .*.swp
 
 # Visual Studio generated files
@@ -70,9 +48,4 @@ CMakeLists.txt.user*
 
 # Python byte code
 *.pyc
-
-# Binaries
-# --------
-*.dll
-*.exe
 
