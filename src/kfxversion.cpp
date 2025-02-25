@@ -45,13 +45,23 @@ QString KfxVersion::getVersionString(QFile binary){
         return QString();
     }
 
-    // Capture the resource manager details
+    // Get the versions
+    auto versions = manager->version();
+    if (versions.empty()) {
+        qDebug() << "Error: No version information found in resources.";
+        return QString();
+    }
+
+    // Capture the first version entry (assuming there's at least one)
     std::ostringstream oss;
-    oss << *manager->version(); // not the best way but meh
+    oss << versions.front(); // Get the first ResourceVersion
+
     QString resourcesInfo = QString::fromStdString(oss.str());
 
+    qDebug() << "RESOURCE INFO:" << resourcesInfo;
+
     // Define regex pattern to match 'ProductVersion'
-    QRegularExpression regex (R"('ProductVersion':\s*'([^']*)')");
+    QRegularExpression regex (R"(ProductVersion:\s*(.+?)\s*\n)");
     QRegularExpressionMatch match = regex.match(resourcesInfo);
 
     // Get regex match

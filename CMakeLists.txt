@@ -21,7 +21,7 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/deps/bit7z-4.0.8/)
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/ui)
 
 # Set the path to the LIEF library and include directory
-set(LIEF_DIR ${CMAKE_SOURCE_DIR}/deps/LIEF-0.15.1-Linux-x86_64)
+set(LIEF_DIR ${CMAKE_SOURCE_DIR}/deps/LIEF-0.17.0-Linux-x86_64)
 set(LIEF_INCLUDE_DIR ${LIEF_DIR}/include)
 set(LIEF_LIB_DIR ${LIEF_DIR}/lib)
 
