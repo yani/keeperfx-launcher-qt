@@ -185,7 +185,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         new QRegularExpressionValidator(QRegularExpression("[ -~]"), this));
 
     // Connect the raw mouse input checkbox
-    connect(ui->checkBoxRawMouseInput, &QCheckBox::stateChanged, this, [this]() {
+    connect(ui->checkBoxRawMouseInput, &QCheckBox::checkStateChanged, this, [this]() {
         bool isChecked = ui->checkBoxRawMouseInput->isChecked();
         ui->horizontalSliderMouseSens->setEnabled(!isChecked);
         ui->labelMouseSensPercentage->setEnabled(!isChecked);
@@ -202,7 +202,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     });
 
     // Connect the API enabled checkbox
-    connect(ui->checkBoxEnableAPI, &QCheckBox::stateChanged, this, [this]() {
+    connect(ui->checkBoxEnableAPI, &QCheckBox::checkStateChanged, this, [this]() {
         bool isChecked = ui->checkBoxEnableAPI->isChecked();
         ui->labelApiPort->setDisabled(!isChecked);
         ui->lineEditApiPort->setDisabled(!isChecked);
@@ -515,7 +515,7 @@ void SettingsDialog::addSettingsChangedHandler()
     // Find all QCheckBox
     QList<QCheckBox *> checkBoxes = ui->tabWidget->findChildren<QCheckBox *>();
     for (QCheckBox *checkBox : checkBoxes) {
-        connect(checkBox, &QCheckBox::stateChanged, this, [this]() {
+        connect(checkBox, &QCheckBox::checkStateChanged, this, [this]() {
             this->settingHasChanged = true;
         });
     }
