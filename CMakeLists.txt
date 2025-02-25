@@ -39,10 +39,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         ${UI_FILES}
+        resources.qrc
     )
 else()
     add_executable(keeperfx-launcher-qt
         ${PROJECT_SOURCES}
+        resources.qrc
     )
 endif()
 
