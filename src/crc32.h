@@ -5,7 +5,11 @@
 #include <QString>
 #include <QDebug>
 
+#ifdef WIN32
+#include <QtZlib/zlib.h>
+#else
 #include <zlib.h> // Ensure Qt is compiled with zlib support
+#endif
 
 namespace CRC32 {
 
