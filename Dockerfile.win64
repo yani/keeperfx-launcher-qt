@@ -45,3 +45,8 @@ RUN cd /opt && \
     $CROSS_TRIPLE-cmake . && \
     make && \
     make install
+
+# Download mxedeployqt
+RUN cd /opt && \
+    wget https://raw.githubusercontent.com/saidinesh5/mxedeployqt/refs/heads/master/mxedeployqt && \
+    chmod +x mxedeployqt
