@@ -2,11 +2,50 @@
 #include <QGuiApplication>
 #include <QSslConfiguration>
 #include <QSettings>
+#include <QFileInfo>
 
 #include "launchermainwindow.h"
 #include "settings.h"
 #include "version.h"
 #include "launcheroptions.h"
+
+
+void launcherLogFileHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    // Set logfile to '<application filename>.log'
+    static QFile logFile(
+        QFileInfo(QCoreApplication::applicationFilePath()).baseName() + ".log");
+
+    // Check if static logfile is already open
+    // and open it if it isn't
+    if (!logFile.isOpen()) {
+        logFile.open(QIODevice::Append | QIODevice::Text);
+    }
+
+    QTextStream out(&logFile);
+    QString timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    QString typeStr;
+
+    switch (type) {
+    case QtDebugMsg:
+        typeStr = "[DEBUG]"; break;
+    case QtInfoMsg:
+        typeStr = "[INFO]"; break;
+    case QtWarningMsg:
+        typeStr = "[WARNING]"; break;
+    case QtCriticalMsg:
+        typeStr = "[CRITICAL]"; break;
+    case QtFatalMsg:
+        typeStr = "[FATAL]"; break;
+    }
+
+    out << timeStamp << " " << typeStr << ": " << msg << Qt::endl;
+    out.flush(); // Ensure data is written immediately
+
+    if (type == QtFatalMsg) {
+        abort();
+    }
+}
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +53,14 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QApplication::setApplicationName("KeeperFX Launcher");
     QApplication::setApplicationVersion(LAUNCHER_VERSION);
+
+    // Parse launcher options
+    LauncherOptions::processApp(app);
+
+    // Check if we need to write debug logs to a logfile
+    if(LauncherOptions::isSet("log-debug") == true){
+        qInstallMessageHandler(launcherLogFileHandler);
+    }
 
     // DEBUG: Log some stuff
     qDebug() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
@@ -28,9 +75,6 @@ int main(int argc, char *argv[])
 
     // DEBUG: Platform
     qDebug() << "Platform:" << QGuiApplication::platformName();
-
-    // Parse launcher options
-    LauncherOptions::processApp(app);
 
     // Disable SSL verification
     // TODO: eventually add SSL certs
