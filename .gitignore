@@ -5,6 +5,7 @@ TODO
 # Project dirs
 /build
 /deps
+/release
 
 # Generated
 *~
