@@ -15,7 +15,8 @@ using namespace Qt::StringLiterals;
 #include "version.h"
 #include "launcheroptions.h"
 
-void setDarkTheme() {
+void setDarkTheme()
+{
     qApp->setStyle(QStyleFactory::create("Fusion"));
     QPalette darkPalette;
     darkPalette.setColor(QPalette::Window, QColor(53, 53, 53));
@@ -31,6 +32,9 @@ void setDarkTheme() {
     darkPalette.setColor(QPalette::Link, QColor(42, 130, 218));
     darkPalette.setColor(QPalette::Highlight, QColor(42, 130, 218));
     darkPalette.setColor(QPalette::HighlightedText, Qt::black);
+    darkPalette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(110, 110, 110));
+    darkPalette.setColor(QPalette::Disabled, QPalette::Text, QColor(100, 100, 100));
+    darkPalette.setColor(QPalette::Disabled, QPalette::WindowText, QColor(100, 100, 100));
     qApp->setPalette(darkPalette);
 }
 
