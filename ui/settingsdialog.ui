@@ -161,7 +161,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>350</y>
-         <width>151</width>
+         <width>171</width>
          <height>17</height>
         </rect>
        </property>
@@ -212,7 +212,7 @@ height: 35px;
         <rect>
          <x>460</x>
          <y>43</y>
-         <width>151</width>
+         <width>161</width>
          <height>17</height>
         </rect>
        </property>
@@ -228,7 +228,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditCommandChar">
        <property name="geometry">
         <rect>
-         <x>610</x>
+         <x>630</x>
          <y>40</y>
          <width>41</width>
          <height>25</height>
@@ -579,7 +579,7 @@ height: 35px;
         <rect>
          <x>460</x>
          <y>262</y>
-         <width>171</width>
+         <width>191</width>
          <height>17</height>
         </rect>
        </property>
@@ -595,7 +595,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditCreatureFlowerSize">
        <property name="geometry">
         <rect>
-         <x>650</x>
+         <x>660</x>
          <y>260</y>
          <width>61</width>
          <height>25</height>
@@ -612,7 +612,7 @@ height: 35px;
         <rect>
          <x>460</x>
          <y>314</y>
-         <width>151</width>
+         <width>171</width>
          <height>17</height>
         </rect>
        </property>
@@ -628,7 +628,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditHandSize">
        <property name="geometry">
         <rect>
-         <x>650</x>
+         <x>660</x>
          <y>310</y>
          <width>61</width>
          <height>25</height>
@@ -643,7 +643,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditLineBoxSize">
        <property name="geometry">
         <rect>
-         <x>650</x>
+         <x>660</x>
          <y>360</y>
          <width>61</width>
          <height>25</height>
@@ -660,7 +660,7 @@ height: 35px;
         <rect>
          <x>460</x>
          <y>364</y>
-         <width>151</width>
+         <width>181</width>
          <height>17</height>
         </rect>
        </property>
@@ -912,7 +912,7 @@ height: 35px;
       <widget class="QSlider" name="horizontalSliderMouseSens">
        <property name="geometry">
         <rect>
-         <x>170</x>
+         <x>180</x>
          <y>90</y>
          <width>221</width>
          <height>21</height>
@@ -940,7 +940,7 @@ height: 35px;
       <widget class="QLabel" name="labelMouseSensPercentage">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>410</x>
          <y>90</y>
          <width>151</width>
          <height>17</height>
@@ -981,7 +981,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditMasterServer">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>180</x>
          <y>40</y>
          <width>321</width>
          <height>25</height>
@@ -1027,7 +1027,7 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxRelease">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>130</x>
          <y>80</y>
          <width>171</width>
          <height>25</height>
@@ -1052,7 +1052,7 @@ height: 35px;
         <rect>
          <x>50</x>
          <y>85</y>
-         <width>61</width>
+         <width>71</width>
          <height>17</height>
         </rect>
        </property>
@@ -1099,7 +1099,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditApiPort">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>120</x>
          <y>90</y>
          <width>121</width>
          <height>25</height>
@@ -1119,7 +1119,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>92</y>
-         <width>151</width>
+         <width>91</width>
          <height>17</height>
         </rect>
        </property>
