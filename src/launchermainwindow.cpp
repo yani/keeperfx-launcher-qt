@@ -50,7 +50,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
     // Load animated loading spinner GIF
-    QMovie* movie = new QMovie(":/res/spinner.gif");
+    QMovie* movie = new QMovie(":/res/img/spinner.gif");
     if (movie->isValid()) {
         // Load GIF into the placeholder label
         ui->spinnerLabel->setMovie(movie);

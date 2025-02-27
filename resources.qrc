@@ -1,9 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/spinner.gif</file>
-        <file>res/launchermn.jpg</file>
-        <file>res/horny-face.png</file>
         <file>res/cert/release_certificate_2025.cer</file>
         <file>res/cert/test_certificate.cer</file>
+        <file>res/font/Ubuntu-R.ttf</file>
+        <file>res/img/horny-face.png</file>
+        <file>res/img/launchermn.jpg</file>
+        <file>res/img/spinner.gif</file>
     </qresource>
 </RCC>

@@ -88,7 +88,7 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="resources.qrc">:/res/horny-face.png</pixmap>
+              <pixmap resource="../resources.qrc">:/res/img/horny-face.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -465,7 +465,7 @@ width: 0px;
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

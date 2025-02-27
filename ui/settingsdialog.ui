@@ -1174,7 +1174,7 @@ height: 35px;
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="resources.qrc">:/res/launchermn.jpg</pixmap>
+              <pixmap resource="../resources.qrc">:/res/img/launchermn.jpg</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -1249,7 +1249,7 @@ Join us on the &lt;a href=&quot;https://discord.gg/WxgE8WZBku&quot;&gt;Keeper Kl
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>
