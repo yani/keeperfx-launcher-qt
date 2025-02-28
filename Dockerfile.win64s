@@ -1,8 +1,12 @@
 FROM ubuntu:22.04
 
+# MXE binary path
 ENV PATH="${PATH}:/opt/mxe/usr/bin"
 
-ARG CROSS_TRIPLE="x86_64-w64-mingw32.shared"
+# MXE compiler target
+ARG CROSS_TRIPLE="x86_64-w64-mingw32.static"
+
+# CMake version to download
 ARG CMAKE_VERSION=3.31.5
 
 # Download packages
@@ -17,7 +21,7 @@ RUN set -eux && \
     libxml-parser-perl lzip make nano openssl p7zip-full patch perl \
     pkg-config ruby scons sed unzip wget xz-utils libgl-dev \
     python3 python3-mako python3-pkg-resources python3-setuptools python-is-python3 \
-    libz-dev ninja-build \
+    libz-dev ninja-build upx \
     && \
     apt -y autoremove && \
     apt -y autoclean && \
@@ -42,11 +46,12 @@ RUN cd /opt/mxe && \
 RUN cd /opt && \
     git clone https://github.com/lief-project/LIEF.git && \
     cd /opt/LIEF && \
-    $CROSS_TRIPLE-cmake . && \
+    $CROSS_TRIPLE-cmake . -DLIEF_STATIC_LIB=ON -DLIEF_EXAMPLES=OFF && \
     make && \
     make install
 
 # Download mxedeployqt
+# If we ever switch back to shared/dynamic releases
 RUN cd /opt && \
     wget https://raw.githubusercontent.com/saidinesh5/mxedeployqt/refs/heads/master/mxedeployqt && \
     chmod +x mxedeployqt
