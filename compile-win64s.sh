@@ -39,22 +39,25 @@ while (("$#")); do
     shift
 done
 
-# Check if the Docker image exists
+# Build Docker image if it does not exist
 if [[ "$(docker images -q kfx-launcher-win64-compiler 2> /dev/null)" == "" ]]; then
     echo "Docker image kfx-launcher-win64-compiler does not exist. Building the image..."
     docker build -t kfx-launcher-win64-compiler -f Dockerfile.win64s .
 else
-    echo "Docker image 'kfx-launcher-win64-compiler' already exists. Skipping build."
+    echo "Docker image 'kfx-launcher-win64-compiler' already exists. No need to build again."
 fi
 
-# Handle console mode
+# Make sure Docker image exists
+if [[ "$(docker images -q kfx-launcher-win64-compiler 2> /dev/null)" == "" ]]; then
+    echo "Docker image 'kfx-launcher-win64-compiler' does not exist"
+    exit 1
+fi
+
+# Handle mode
 if [ "$MODE" == "console" ]; then
     docker run --rm -it -v "$(pwd)":/project kfx-launcher-win64-compiler bash
     exit 0
-fi
-
-# Convert mode to uppercase for CMake
-if [ "$MODE" == "debug" ]; then
+elif [ "$MODE" == "debug" ]; then
     CMAKE_BUILD_TYPE="Debug"
 elif [ "$MODE" == "release" ]; then
     CMAKE_BUILD_TYPE="Release"
@@ -63,10 +66,8 @@ else
     usage
 fi
 
-echo "Compiling $CMAKE_BUILD_TYPE"
-
-# Clean up any previous builds
-docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "rm -rf /project/release/win64"
+# Start compiling
+echo "Compiling $CMAKE_BUILD_TYPE..."
 
 # Run the Docker container and compile the project
 docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "
@@ -75,16 +76,27 @@ docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "
     x86_64-w64-mingw32.static-cmake --build build/mingw-win64 --config $CMAKE_BUILD_TYPE $VERBOSE
     "
 
+# Make sure executable is built
+if ! docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "[ -f /project/build/mingw-win64/keeperfx-launcher-qt.exe ]"; then
+    echo "Executable 'keeperfx-launcher-qt.exe' not built"
+    exit 1
+fi
+
 # Handle release
 if [ "$MODE" == "release" ]; then
+
+    # Clean up any previous builds
+    if [ -d "$(pwd)/release/win64" ]; then
+        docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "rm -rf /project/release/win64"
+    fi
+
+    # Copy release files over
     docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "
         mkdir -p /project/release/win64/ &&
         cp /project/build/mingw-win64/*.exe /project/release/win64/ &&
         cp /project/build/mingw-win64/*.dll /project/release/win64/
-        "
-
-    # echo "Stripping binaries..."
-    # docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "strip /project/release/win64/keeperfx-launcher-qt.exe"
+    "
 fi
 
+# Done
 echo "Build complete."

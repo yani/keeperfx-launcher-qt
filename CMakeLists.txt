@@ -144,3 +144,11 @@ elseif (WINDOWS)
         ${CMAKE_SOURCE_DIR}/ext/7za.dll
         $<TARGET_FILE_DIR:keeperfx-launcher-qt>)
 endif()
+
+# Strip unnecessary symbols
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_custom_command(TARGET keeperfx-launcher-qt POST_BUILD
+        COMMAND ${CMAKE_STRIP} --strip-all $<TARGET_FILE:keeperfx-launcher-qt>
+        COMMENT "Stripping unnecessary symbols from the binary"
+    )
+endif()
