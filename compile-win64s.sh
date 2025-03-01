@@ -49,10 +49,14 @@ while (("$#")); do
     shift
 done
 
+# Get current user and group ID
+USER_ID=$(id -u)
+GROUP_ID=$(id -g)
+
 # Build Docker image if it does not exist
 if [[ "$(docker images -q kfx-launcher-win64-compiler 2> /dev/null)" == "" ]]; then
     echo "Docker image kfx-launcher-win64-compiler does not exist. Building the image..."
-    docker build -t kfx-launcher-win64-compiler -f Dockerfile.win64s .
+    docker build --build-arg USER_ID=$USER_ID --build-arg GROUP_ID=$GROUP_ID -t kfx-launcher-win64-compiler -f Dockerfile.win64s .
 else
     echo "Docker image 'kfx-launcher-win64-compiler' already exists. No need to build again."
 fi
@@ -65,7 +69,7 @@ fi
 
 # Handle mode
 if [ "$MODE" == "console" ]; then
-    docker run --rm -it -v "$(pwd)":/project kfx-launcher-win64-compiler bash
+    docker run --rm -it -v "$(pwd)":/project -u $USER_ID:$GROUP_ID kfx-launcher-win64-compiler bash
     exit 0
 elif [ "$MODE" == "debug" ]; then
     CMAKE_BUILD_TYPE="Debug"
@@ -80,14 +84,14 @@ fi
 echo "Compiling $CMAKE_BUILD_TYPE..."
 
 # Run the Docker container and compile the project
-docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "
+docker run --rm -v "$(pwd)":/project -u $USER_ID:$GROUP_ID kfx-launcher-win64-compiler bash -c "
     cd /project &&
     x86_64-w64-mingw32.static-cmake -Bbuild/mingw-win64 -H. -DWINDOWS=TRUE -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$BUILD_SHARED_LIBS -Wno-dev &&
     x86_64-w64-mingw32.static-cmake --build build/mingw-win64 --config $CMAKE_BUILD_TYPE $VERBOSE
     "
 
 # Make sure executable is built
-if ! docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "[ -f /project/build/mingw-win64/keeperfx-launcher-qt.exe ]"; then
+if ! [ -f "$(pwd)/build/mingw-win64/keeperfx-launcher-qt.exe" ]; then
     echo "Executable 'keeperfx-launcher-qt.exe' not built"
     exit 1
 fi
@@ -97,15 +101,13 @@ if [ "$MODE" == "release" ]; then
 
     # Clean up any previous builds
     if [ -d "$(pwd)/release/win64" ]; then
-        docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "rm -rf /project/release/win64"
+        rm -rf "$(pwd)/release/win64"
     fi
 
-    # Copy release files over
-    docker run --rm -v "$(pwd)":/project kfx-launcher-win64-compiler bash -c "
-        mkdir -p /project/release/win64/ &&
-        cp /project/build/mingw-win64/*.exe /project/release/win64/ &&
-        cp /project/build/mingw-win64/*.dll /project/release/win64/
-    "
+    # Make release dir and move files
+    mkdir -p "$(pwd)/release/win64/"
+    cp "$(pwd)/build/mingw-win64/keeperfx-launcher-qt.exe" "$(pwd)/release/win64/keeperfx-launcher-qt.exe"
+    cp "$(pwd)/build/mingw-win64/7za.dll" "$(pwd)/release/win64/7za.dll"
 fi
 
 # Done

@@ -9,6 +9,12 @@ ARG CROSS_TRIPLE="x86_64-w64-mingw32.static"
 # CMake version to download
 ARG CMAKE_VERSION=3.31.5
 
+# Create normal user
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+RUN groupadd -g ${GROUP_ID} builduser && \
+    useradd -u ${USER_ID} -g builduser -m -s /bin/bash builduser
+
 # Download packages
 RUN set -eux && \
     export DEBIAN_FRONTEND=noninteractive && \
@@ -50,8 +56,9 @@ RUN cd /opt && \
     make && \
     make install
 
-# Download mxedeployqt
-# If we ever switch back to shared/dynamic releases
-RUN cd /opt && \
-    wget https://raw.githubusercontent.com/saidinesh5/mxedeployqt/refs/heads/master/mxedeployqt && \
-    chmod +x mxedeployqt
+# Ensure the user can access /opt
+RUN chown -R builduser:builduser /opt
+
+# Switch to the created user
+USER builduser
+WORKDIR /project
