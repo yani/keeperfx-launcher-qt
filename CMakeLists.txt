@@ -17,8 +17,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # MinGW/GCC Release flags
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -Wl,--gc-sections -Wl,--emit-relocs -Wl,--dynamicbase")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -s -DNDEBUG -ffunction-sections -fdata-sections")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -static -Os -s")
 endif()
 
 # Set custom UI directory
@@ -143,12 +142,4 @@ elseif (WINDOWS)
         COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_SOURCE_DIR}/ext/7za.dll
         $<TARGET_FILE_DIR:keeperfx-launcher-qt>)
-endif()
-
-# Strip unnecessary symbols
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    add_custom_command(TARGET keeperfx-launcher-qt POST_BUILD
-        COMMAND ${CMAKE_STRIP} --strip-all $<TARGET_FILE:keeperfx-launcher-qt>
-        COMMENT "Stripping unnecessary symbols from the binary"
-    )
 endif()
