@@ -3,6 +3,7 @@
 #include <QSslConfiguration>
 #include <QSettings>
 #include <QFileInfo>
+#include <QProcess>
 
 #include <QPalette>
 #include <QStyleFactory>
@@ -89,6 +90,19 @@ int main(int argc, char *argv[])
     if(LauncherOptions::isSet("log-debug") == true){
         qInstallMessageHandler(launcherLogFileHandler);
     }
+
+    // Detect if we need to switch from wayland to xcb (on UNIX)
+    // We prefer xcb because wayland is missing a few features we'd like:
+    // - position our window in the middle of the screen
+    // - show the monitor number on the screen when selecting what monitor to play the game on
+    #ifdef Q_OS_UNIX
+        if (qgetenv("QT_QPA_PLATFORM") != "xcb" && QGuiApplication::platformName() == "wayland") {
+            qDebug() << "Switching from 'wayland' to 'xcb' by spawning child process";
+            qunsetenv("SESSION_MANAGER"); // Prevent child Qt application from reusing the session manager
+            qputenv("QT_QPA_PLATFORM", "xcb");
+            return QProcess::execute(argv[0], QStringList());
+        }
+    #endif
 
     // DEBUG: Log some stuff
     qDebug() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
