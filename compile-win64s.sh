@@ -22,10 +22,20 @@ if [ $# -lt 1 ]; then
     usage
 fi
 
+# Make sure $(pwd) is populated
+if [[ -n "$(pwd)" ]]; then
+    echo "Current directory: $(pwd)"
+else
+    echo "Failed to retrieve the current directory"
+    exit 1
+fi
+
+# Variables
 MODE="$1"
 VERBOSE=""
 BUILD_SHARED_LIBS=ON
 
+# Handle options
 shift # Remove first argument
 while (("$#")); do
     case "$1" in
