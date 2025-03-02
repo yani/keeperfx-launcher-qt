@@ -43,7 +43,11 @@ void launcherLogFileHandler(QtMsgType type, const QMessageLogContext &context, c
 {
     // Set logfile to '<application filename>.log'
     static QFile logFile(
-        QFileInfo(QCoreApplication::applicationFilePath()).baseName() + ".log");
+            QCoreApplication::applicationDirPath()
+            + "/"
+            + QFileInfo(QCoreApplication::applicationFilePath()).baseName()
+            + ".log"
+        );
 
     // Check if static logfile is already open
     // and open it if it isn't
