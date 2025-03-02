@@ -131,15 +131,15 @@ install(TARGETS keeperfx-launcher-qt
 # Finalize executable
 qt_finalize_executable(keeperfx-launcher-qt)
 
-# Copy 7z library
+# Copy compiled libraries
 if (LINUX)
-    add_custom_command(TARGET keeperfx-launcher-qt POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_SOURCE_DIR}/ext/7z.so
-        $<TARGET_FILE_DIR:keeperfx-launcher-qt>)
+    file(GLOB COMPILED_LIBS "${CMAKE_SOURCE_DIR}/ext/*.so")
 elseif (WINDOWS)
-    add_custom_command(TARGET keeperfx-launcher-qt POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_SOURCE_DIR}/ext/7za.dll
-        $<TARGET_FILE_DIR:keeperfx-launcher-qt>)
+    file(GLOB COMPILED_LIBS "${CMAKE_SOURCE_DIR}/ext/*.dll")
 endif()
+foreach(LIB ${COMPILED_LIBS})
+    add_custom_command(TARGET keeperfx-launcher-qt POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy "${LIB}" $<TARGET_FILE_DIR:keeperfx-launcher-qt>
+        VERBATIM
+    )
+endforeach()
