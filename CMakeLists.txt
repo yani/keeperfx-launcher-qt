@@ -77,13 +77,23 @@ endif()
 file(GLOB PROJECT_SOURCES src/*.cpp src/*.h)
 file(GLOB UI_FILES ui/*.ui)
 
-# Add files to executable
-qt_add_executable(keeperfx-launcher-qt
-    MANUAL_FINALIZATION
-    ${PROJECT_SOURCES}
-    ${UI_FILES}
-    resources.qrc
-)
+if(WINDOWS)
+    qt_add_executable(keeperfx-launcher-qt
+        MANUAL_FINALIZATION
+        WIN32
+        ${PROJECT_SOURCES}
+        ${UI_FILES}
+        resources.qrc
+        app.rc
+    )
+else()
+    qt_add_executable(keeperfx-launcher-qt
+        MANUAL_FINALIZATION
+        ${PROJECT_SOURCES}
+        ${UI_FILES}
+        resources.qrc
+    )
+endif()
 
 # Link libraries
 target_link_libraries(
