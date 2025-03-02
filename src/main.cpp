@@ -98,9 +98,17 @@ int main(int argc, char *argv[])
     #ifdef Q_OS_UNIX
         if (qgetenv("QT_QPA_PLATFORM") != "xcb" && QGuiApplication::platformName() == "wayland") {
             qDebug() << "Switching from 'wayland' to 'xcb' by spawning child process";
-            qunsetenv("SESSION_MANAGER"); // Prevent child Qt application from reusing the session manager
+            // Prevent child Qt application from reusing the session manager
+            qunsetenv("SESSION_MANAGER");
+            // Set platform to xcb
             qputenv("QT_QPA_PLATFORM", "xcb");
-            return QProcess::execute(argv[0], QStringList());
+            // Convert argv to QStringList
+            QStringList argumentList;
+            for (int i = 1; i < argc; ++i) { // Start from 1 to skip the program name
+                argumentList << QString::fromLocal8Bit(argv[i]);
+            }
+            // Run new process and pipe return value
+            return QProcess::execute(argv[0], argumentList);
         }
     #endif
 
