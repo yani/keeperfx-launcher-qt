@@ -1,20 +1,20 @@
 #include "installkfxdialog.h"
 #include "ui_installkfxdialog.h"
 
-#include <QMessageBox>
 #include <QDateTime>
+#include <QFileInfo>
+#include <QMessageBox>
 #include <QScrollBar>
 #include <QStandardPaths>
-#include <QFileInfo>
 #include <QtConcurrent/QtConcurrent>
 
 #include "apiclient.h"
 #include "downloader.h"
 #include "updater.h"
 
-#include <bit7z/bitextractor.hpp>
 #include <bit7z/bitabstractarchivehandler.hpp>
 #include <bit7z/bitarchivereader.hpp>
+#include <bit7z/bitextractor.hpp>
 
 InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     : QDialog(parent)
@@ -78,23 +78,25 @@ void InstallKfxDialog::on_installButton_clicked()
     // Get download URL for stable
     appendLog("Getting download URL for stable release");
     QUrl downloadUrlStable = ApiClient::getDownloadUrlStable();
-    if(downloadUrlStable.isEmpty()){
+    if (downloadUrlStable.isEmpty()) {
         appendLog("Failed to get download URL for stable release");
         return;
     }
     appendLog("Stable release URL: " + downloadUrlStable.toString());
 
     // Get output for stable
-    QString outputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrlStable.fileName() + ".tmp";
+    QString outputFilePath = QCoreApplication::applicationDirPath() + "/"
+                             + downloadUrlStable.fileName() + ".tmp";
     QFile *outputFile = new QFile(outputFilePath);
 
     // Download stable
-    appendLog("Downloading stable release...");
-    Downloader::download(downloadUrlStable, outputFile,
+    Downloader *downloader = new Downloader(this);
+    downloader->download(
+        downloadUrlStable,
+        outputFile,
 
         // Progress update
         [this](qint64 bytesReceived, qint64 bytesTotal) {
-
             if (bytesTotal > 0) {
                 this->ui->progressBar->setMaximum(static_cast<int>(bytesTotal / 1024 / 1024));
                 this->ui->progressBar->setValue(static_cast<int>(bytesReceived / 1024 / 1024));
@@ -104,7 +106,6 @@ void InstallKfxDialog::on_installButton_clicked()
 
         // Completion
         [this, outputFile, installAlpha](bool success) {
-
             if (!success) {
                 this->setInstallFailed("Stable release download failed");
                 return;
@@ -114,14 +115,17 @@ void InstallKfxDialog::on_installButton_clicked()
             this->clearProgressBar();
 
             // Test the archive and get the output size
+            this->ui->progressBar->setFormat("Testing archive...");
             this->appendLog("Testing stable release archive...");
             uint64_t archiveSize = Updater::testArchiveAndGetSize(outputFile);
-            if(archiveSize < 0){
+            if (archiveSize < 0) {
                 this->setInstallFailed("Stable release archive test failed. It may be corrupted.");
                 return;
             } else {
                 double archiveSizeInMiB = static_cast<double>(archiveSize) / (1024 * 1024);
-                QString archiveSizeString = QString::number(archiveSizeInMiB, 'f', 2); // Format to 2 decimal places
+                QString archiveSizeString = QString::number(archiveSizeInMiB,
+                                                            'f',
+                                                            2); // Format to 2 decimal places
                 this->appendLog("Total size: " + archiveSizeString + "MiB");
             }
 
@@ -131,11 +135,13 @@ void InstallKfxDialog::on_installButton_clicked()
 
             // Extract the archive
             this->appendLog("Extracting...");
-            bool updateResult = Updater::updateFromArchive(outputFile, [this](uint64_t processed_size){
-                // Update progress bar
-                this->ui->progressBar->setValue(static_cast<int>(processed_size));
-                return true; // Continue extraction
-            });
+            bool updateResult = Updater::updateFromArchive(outputFile,
+                                                           [this](uint64_t processed_size) {
+                                                               // Update progress bar
+                                                               this->ui->progressBar->setValue(
+                                                                   static_cast<int>(processed_size));
+                                                               return true; // Continue extraction
+                                                           });
 
             // Clean up
             outputFile->remove();
@@ -144,7 +150,7 @@ void InstallKfxDialog::on_installButton_clicked()
             this->clearProgressBar();
 
             // Check if extraction was a success
-            if(updateResult == false){
+            if (updateResult == false) {
                 this->setInstallFailed("Stable release extraction failed");
                 return;
             } else {
@@ -152,11 +158,12 @@ void InstallKfxDialog::on_installButton_clicked()
             }
 
             // If we are only installing the stable
-            if(installAlpha == false){
-
+            if (installAlpha == false) {
                 // Success
                 this->appendLog("Done!");
-                QMessageBox::information(this, "KeeperFX", "KeeperFX has been successfully installed!");
+                QMessageBox::information(this,
+                                         "KeeperFX",
+                                         "KeeperFX has been successfully installed!");
                 this->accept();
                 return;
             }
@@ -164,34 +171,38 @@ void InstallKfxDialog::on_installButton_clicked()
             // Get download URL for alpha
             this->appendLog("Getting download URL for alpha patch");
             QUrl downloadUrlAlpha = ApiClient::getDownloadUrlAlpha();
-            if(downloadUrlAlpha.isEmpty()){
+            if (downloadUrlAlpha.isEmpty()) {
                 this->setInstallFailed("Failed to get download URL for alpha patch");
                 return;
             }
             this->appendLog("Alpha patch URL: " + downloadUrlAlpha.toString());
 
             // Get output for stable
-            QString alphaArchiveOutputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp";
+            QString alphaArchiveOutputFilePath = QCoreApplication::applicationDirPath() + "/"
+                                                 + downloadUrlAlpha.fileName() + ".tmp";
             QFile *alphaArchiveOutputFile = new QFile(alphaArchiveOutputFilePath);
 
             // Download stable
             this->appendLog("Downloading alpha patch...");
-            Downloader::download(downloadUrlAlpha, alphaArchiveOutputFile,
+            Downloader *downloader = new Downloader(this);
+            downloader->download(
+                downloadUrlAlpha,
+                alphaArchiveOutputFile,
 
-                // Progress updatestable
+                // Progress update
                 [this](qint64 bytesReceived, qint64 bytesTotal) {
-
-                 if (bytesTotal > 0) {
-                     this->ui->progressBar->setTextVisible(true);
-                     this->ui->progressBar->setMaximum(static_cast<int>(bytesTotal / 1024 / 1024));
-                     this->ui->progressBar->setValue(static_cast<int>(bytesReceived / 1024 / 1024));
-                     this->ui->progressBar->setFormat(QString("Downloading: %p% (%vMiB)"));
-                 }
+                    if (bytesTotal > 0) {
+                        this->ui->progressBar->setTextVisible(true);
+                        this->ui->progressBar->setMaximum(
+                            static_cast<int>(bytesTotal / 1024 / 1024));
+                        this->ui->progressBar->setValue(
+                            static_cast<int>(bytesReceived / 1024 / 1024));
+                        this->ui->progressBar->setFormat(QString("Downloading: %p% (%vMiB)"));
+                    }
                 },
 
-                    // Completion
-                    [this, alphaArchiveOutputFile](bool success) {
-
+                // Completion
+                [this, alphaArchiveOutputFile](bool success) {
                     if (!success) {
                         this->ui->progressBar->setValue(0);
                         this->ui->progressBar->setTextVisible(false);
@@ -209,12 +220,15 @@ void InstallKfxDialog::on_installButton_clicked()
                     // Test the archive and get the output size
                     this->appendLog("Testing alpha patch archive...");
                     uint64_t archiveSize = Updater::testArchiveAndGetSize(alphaArchiveOutputFile);
-                    if(archiveSize < 0){
-                        this->setInstallFailed("Alpha patch archive test failed. It may be corrupted.");
+                    if (archiveSize < 0) {
+                        this->setInstallFailed(
+                            "Alpha patch archive test failed. It may be corrupted.");
                         return;
                     } else {
                         double archiveSizeInMiB = static_cast<double>(archiveSize) / (1024 * 1024);
-                        QString archiveSizeString = QString::number(archiveSizeInMiB, 'f', 2); // Format to 2 decimal places
+                        QString archiveSizeString = QString::number(archiveSizeInMiB,
+                                                                    'f',
+                                                                    2); // Format to 2 decimal places
                         this->appendLog("Total size: " + archiveSizeString + "MiB");
                     }
 
@@ -224,11 +238,14 @@ void InstallKfxDialog::on_installButton_clicked()
 
                     // Extract the archive
                     this->appendLog("Extracting...");
-                    bool updateResult = Updater::updateFromArchive(alphaArchiveOutputFile, [this](uint64_t processed_size){
-                        // Update progress bar
-                        this->ui->progressBar->setValue(static_cast<int>(processed_size));
-                        return true; // Continue extraction
-                    });
+                    bool updateResult
+                        = Updater::updateFromArchive(alphaArchiveOutputFile,
+                                                     [this](uint64_t processed_size) {
+                                                         // Update progress bar
+                                                         this->ui->progressBar->setValue(
+                                                             static_cast<int>(processed_size));
+                                                         return true; // Continue extraction
+                                                     });
 
                     this->clearProgressBar();
 
@@ -236,7 +253,7 @@ void InstallKfxDialog::on_installButton_clicked()
                     alphaArchiveOutputFile->remove();
 
                     // Check if extraction was a success
-                    if(updateResult == false){
+                    if (updateResult == false) {
                         this->setInstallFailed("Alpha patch extraction failed");
                         return;
                     } else {
@@ -246,13 +263,13 @@ void InstallKfxDialog::on_installButton_clicked()
                     // Success
                     this->appendLog("Done!");
                     this->clearProgressBar();
-                    QMessageBox::information(this, "KeeperFX", "KeeperFX has been successfully installed!");
+                    QMessageBox::information(this,
+                                             "KeeperFX",
+                                             "KeeperFX has been successfully installed!");
                     this->accept();
                     return;
-                }
-            );
-        }
-    );
+                });
+        });
 }
 
 void InstallKfxDialog::clearProgressBar()
@@ -275,18 +292,18 @@ void InstallKfxDialog::on_versionComboBox_currentIndexChanged(int index)
     // 0 => Stable
     // 1 => Alpha
 
-    if(index == 1)
-    {
-        int result = QMessageBox::question(this, "KeeperFX Alpha builds",
+    if (index == 1) {
+        int result = QMessageBox::question(
+            this,
+            "KeeperFX Alpha builds",
             "Alpha patches may contain new features and changes, but often contain "
             "bugs and unfinished functionality. These patches are mostly meant "
             "for testers, and it is suggested to be part of the Keeper Klan discord "
             "if you use them.\n\n"
-            "Are you sure you want to use Alpha patches?"
-        );
+            "Are you sure you want to use Alpha patches?");
 
         // Check whether or not user is sure
-        if (result != QMessageBox::Yes){
+        if (result != QMessageBox::Yes) {
             // Set back to Stable if they are not sure
             ui->versionComboBox->setCurrentIndex(0);
         }
@@ -302,16 +319,15 @@ void InstallKfxDialog::on_cancelButton_clicked()
 void InstallKfxDialog::closeEvent(QCloseEvent *event)
 {
     // Ask if user is sure
-    int result = QMessageBox::question(this, "Confirmation", "Are you sure?\n\nYou will be unable to play KeeperFX.");
+    int result = QMessageBox::question(this,
+                                       "Confirmation",
+                                       "Are you sure?\n\nYou will be unable to play KeeperFX.");
     if (result == QMessageBox::Yes) {
-
         // Allow the dialog to close
         event->accept();
 
     } else {
-
         // Ignore the close event
         event->ignore();
     }
 }
-

@@ -1,20 +1,29 @@
 #pragma once
 
-#include <QUrl>
-#include <QString>
-#include <QProgressBar>
-#include <QJsonDocument>
-#include <QFile>
-
+#include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QNetworkRequest>
+#include <QFile>
+#include <functional>
 
-class Downloader
-{
+class Downloader : public QObject {
+    Q_OBJECT
+
 public:
-    // 'localFileOutput' needs to be a pointer here
-    static void download(QUrl url, QFile *localFileOutput,
-                         std::function<void(qint64, qint64)> progressCallback = nullptr,
-                         std::function<void(bool)> completionCallback = nullptr);
+    explicit Downloader(QObject *parent = nullptr);
+    ~Downloader();
+
+    void download(const QUrl &url, QFile *localFileOutput, std::function<void(qint64, qint64)> progressCallback, std::function<void(bool)> completionCallback);
+
+private slots:
+    void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
+    void onReadyRead();
+    void onFinished();
+
+private:
+    QNetworkAccessManager *manager;
+    QNetworkReply *reply;
+    QFile *localFileOutput;
+    std::function<void(qint64, qint64)> progressCallback;
+    std::function<void(bool)> completionCallback;
 };
