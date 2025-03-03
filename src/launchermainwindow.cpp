@@ -63,19 +63,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Show the loading spinner during startup
     showLoadingSpinner();
 
-    // Load the extra menu for the button next to the play button
-    setupPlayExtraMenu();
-
-    // Handle buttons that should be aware of the current installation
-    // This will enable/disable specific buttons whether the logfile and the KFX binary exist
-    updateAwareButtons();
-
-    // Start checking the installation aware buttons periodically
-    // This continious checking is not required but it's an interesting little gimmick
-    QTimer *buttonAwareTimer = new QTimer();
-    connect(buttonAwareTimer, &QTimer::timeout, this, &LauncherMainWindow::updateAwareButtons);
-    buttonAwareTimer->start(2500);
-
     // Create a refresh shortcut (F5) for refreshing the main panel
     connect(new QShortcut(QKeySequence(Qt::Key_F5), this), &QShortcut::activated, this, &LauncherMainWindow::loadLatestFromKfxNet);
 
@@ -164,15 +151,31 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         }
     }
 
-    // Check for updates
-    connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
-    checkForKfxUpdate();
+    // Load settings
+    Settings::load();
+
+    // Load the extra menu for the button next to the play button
+    setupPlayExtraMenu();
+
+    // Handle buttons that should be aware of the current installation
+    // This will enable/disable specific buttons whether the logfile and the KFX binary exist
+    updateAwareButtons();
+
+    // Start checking the installation aware buttons periodically
+    // This continious checking is not required but it's an interesting little gimmick
+    QTimer *buttonAwareTimer = new QTimer();
+    connect(buttonAwareTimer, &QTimer::timeout, this, &LauncherMainWindow::updateAwareButtons);
+    buttonAwareTimer->start(2500);
+
+    // Verify the binaries against known certificates
+    verifyBinaryCertificates();
 
     // Check if there are any files that should be removed
     checkForFileRemoval();
 
-    // Verify the binaries against known certificates
-    verifyBinaryCertificates();
+    // Check for updates
+    connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
+    checkForKfxUpdate();
 }
 
 LauncherMainWindow::~LauncherMainWindow()
