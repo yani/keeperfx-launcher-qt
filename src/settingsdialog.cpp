@@ -539,7 +539,6 @@ void SettingsDialog::addSettingsChangedHandler()
     // Find all PopupSignalComboBox
     QList<PopupSignalComboBox *> popupComboBoxes = ui->tabWidget->findChildren<PopupSignalComboBox *>();
     for (PopupSignalComboBox *popupComboBox : popupComboBoxes) {
-        qDebug() <<
         connect(popupComboBox, &PopupSignalComboBox::currentIndexChanged, this, [this]() {
             this->settingHasChanged = true;
         });
