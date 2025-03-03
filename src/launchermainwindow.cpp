@@ -368,6 +368,9 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 
     SettingsDialog settingsDialog(this);
     settingsDialog.exec();
+
+    // Check for updates when settings are closed
+    checkForKfxUpdate();
 }
 
 void LauncherMainWindow::clearLatestFromKfxNet()
@@ -564,48 +567,48 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo,
 
 void LauncherMainWindow::checkForKfxUpdate()
 {
-    // TODO: remove this:
-    KfxVersion::currentVersion.string = "0.0.0";
-
     // Check for updates if they are enabled
-    if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") == true) {
-        // Spawn a thread
-        // We don't want any slow internet connections block our main thread
-        QThread::create([this]() {
-
-            // Get release type
-            QString typeString = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
-            KfxVersion::ReleaseType type = KfxVersion::getReleaseTypefromString(typeString);
-
-            // Only update to stable and alpha
-            if (type != KfxVersion::ReleaseType::STABLE && type != KfxVersion::ReleaseType::ALPHA) {
-                qDebug() << "Invalid auto update release type:" << typeString;
-                return;
-            }
-
-            // Get latest version for this release type
-            auto latestVersionInfo = KfxVersion::getLatestVersion(type);
-            if (latestVersionInfo) {
-
-                // Check if type of release is different or version is newer
-                if (type != KfxVersion::currentVersion.type
-                    || KfxVersion::isNewerVersion(latestVersionInfo->version,
-                                                  KfxVersion::currentVersion.string)) {
-                    qDebug() << "Update found:" << latestVersionInfo->version;
-
-                    // Try to get filemap for this update
-                    auto fileMap = KfxVersion::getGameFileMap(latestVersionInfo->type,
-                                                              latestVersionInfo->version);
-
-                    // Emit signal for update
-                    emit this->updateFound(latestVersionInfo.value(), fileMap);
-
-                } else {
-                    qDebug() << "No updates found.";
-                }
-            }
-        })->start();
+    if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") != true) {
+        qInfo() << "Checking for updates is disabled";
+        return;
     }
+
+    // Spawn a thread
+    // We don't want any slow internet connections block our main thread
+    QThread::create([this]() {
+
+        // Get release type
+        QString typeString = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
+        KfxVersion::ReleaseType type = KfxVersion::getReleaseTypefromString(typeString);
+
+        // Only update to stable and alpha
+        if (type != KfxVersion::ReleaseType::STABLE && type != KfxVersion::ReleaseType::ALPHA) {
+            qDebug() << "Invalid auto update release type:" << typeString;
+            return;
+        }
+
+        // Get latest version for this release type
+        auto latestVersionInfo = KfxVersion::getLatestVersion(type);
+        if (latestVersionInfo) {
+
+            // Check if type of release is different or version is newer
+            if (type != KfxVersion::currentVersion.type
+                || KfxVersion::isNewerVersion(latestVersionInfo->version,
+                                              KfxVersion::currentVersion.string)) {
+                qDebug() << "Update found:" << latestVersionInfo->version;
+
+                // Try to get filemap for this update
+                auto fileMap = KfxVersion::getGameFileMap(latestVersionInfo->type,
+                                                          latestVersionInfo->version);
+
+                // Emit signal for update
+                emit this->updateFound(latestVersionInfo.value(), fileMap);
+
+            } else {
+                qDebug() << "No updates found.";
+            }
+        }
+    })->start();
 }
 
 void LauncherMainWindow::verifyBinaryCertificates()
