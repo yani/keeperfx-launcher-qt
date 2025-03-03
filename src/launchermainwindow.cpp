@@ -109,7 +109,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         if (KfxVersion::loadCurrentVersion() == true) {
             // Version successfully loaded
             // Add the version to the the GUI
-            qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
+            qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.string;
             ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
             this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
 
@@ -134,7 +134,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
                 if (KfxVersion::loadCurrentVersion() == true) {
                     // Version successfully loaded
                     // Add the version to the the GUI
-                    qDebug() << "KeeperFX version:" << KfxVersion::currentVersion.string;
+                    qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.string;
                     ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
                     this->setWindowTitle("KeeperFX Launcher - v"
                                          + KfxVersion::currentVersion.string);
