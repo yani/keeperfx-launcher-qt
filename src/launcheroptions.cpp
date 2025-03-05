@@ -14,13 +14,16 @@ void LauncherOptions::processApp(QApplication &app)
     LauncherOptions::parser.addHelpOption();
     LauncherOptions::parser.addVersionOption();
 
-    // --log-debug option
-    QCommandLineOption logDebugOption("log-debug", "Log the debug output of the launcher to a file");
-    parser.addOption(logDebugOption);
+    // Define options
+    QVector<QCommandLineOption> options = {
+        {"log-debug", "Log the debug output of the launcher to a file"},
+        {"skip-verify", "Skip the certificate verification process"}
+    };
 
-    // --skip-verify option
-    QCommandLineOption skipVerifyOption("skip-verify", "Skip the certificate verification process");
-    parser.addOption(skipVerifyOption);
+    // Add options to the parser
+    for (const auto &option : options) {
+        parser.addOption(option);
+    }
 
     // Process
     parser.process(app);
