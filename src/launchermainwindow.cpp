@@ -84,6 +84,12 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // The function within the thread will invoke updating the GUI, so it's thread safe
     QThread::create([this]() { loadLatestFromKfxNet(); })->start();
 
+    // Autostart install procedure when '--install' launcher option is set
+    if(LauncherOptions::isSet("install")){
+        InstallKfxDialog installKfxDialog(this);
+        installKfxDialog.exec();
+    }
+
     // Check if KeeperFX is installed
     if (isKeeperFxInstalled() == false) {
         // Ask if user wants to install KeeperFX

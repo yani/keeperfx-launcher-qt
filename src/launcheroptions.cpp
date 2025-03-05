@@ -15,10 +15,13 @@ void LauncherOptions::processApp(QApplication &app)
     LauncherOptions::parser.addVersionOption();
 
     // Define options
+    // clang-format off
     QVector<QCommandLineOption> options = {
         {"log-debug", "Log the debug output of the launcher to a file"},
-        {"skip-verify", "Skip the certificate verification process"}
+        {"skip-verify", "Skip the certificate verification process"},
+        {"install", "Start the KeeperFX install procedure"}
     };
+    // clang-format on
 
     // Add options to the parser
     for (const auto &option : options) {
