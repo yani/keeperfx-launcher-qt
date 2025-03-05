@@ -12,8 +12,8 @@
 #include <QtConcurrent/QtConcurrentRun>
 #include <QMenu>
 
-#include "certificate.h"
 #include "apiclient.h"
+#include "certificate.h"
 #include "copydkfilesdialog.h"
 #include "crc32.h"
 #include "dkfiles.h"
@@ -21,13 +21,14 @@
 #include "fileremoverdialog.h"
 #include "installkfxdialog.h"
 #include "kfxversion.h"
+#include "launcheroptions.h"
 #include "newsarticlewidget.h"
 #include "savefile.h"
 #include "settings.h"
 #include "settingsdialog.h"
+#include "updatedialog.h"
 #include "updater.h"
 #include "workshopitemwidget.h"
-#include "launcheroptions.h"
 
 #define MAX_WORKSHOP_ITEMS_SHOWN 4
 #define MAX_NEWS_ARTICLES_SHOWN 3
@@ -558,11 +559,10 @@ void LauncherMainWindow::checkForFileRemoval()
     }
 }
 
-void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo,
-                                       std::optional<QMap<QString, QString>> fileMap)
+void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
 {
-    //FileRemoverDialog fileRemoverDialog(this, list);
-    //fileRemoverDialog.exec();
+    UpdateDialog updateDialog(this, versionInfo);
+    updateDialog.exec();
 }
 
 void LauncherMainWindow::checkForKfxUpdate()
@@ -570,6 +570,13 @@ void LauncherMainWindow::checkForKfxUpdate()
     // Check for updates if they are enabled
     if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") != true) {
         qInfo() << "Checking for updates is disabled";
+        return;
+    }
+
+    // Only update from stable and alpha
+    if (KfxVersion::currentVersion.type != KfxVersion::ReleaseType::STABLE &&
+        KfxVersion::currentVersion.type != KfxVersion::ReleaseType::ALPHA) {
+        qDebug() << "Not updating because we are not on stable or alpha version";
         return;
     }
 
@@ -597,12 +604,8 @@ void LauncherMainWindow::checkForKfxUpdate()
                                               KfxVersion::currentVersion.string)) {
                 qDebug() << "Update found:" << latestVersionInfo->version;
 
-                // Try to get filemap for this update
-                auto fileMap = KfxVersion::getGameFileMap(latestVersionInfo->type,
-                                                          latestVersionInfo->version);
-
                 // Emit signal for update
-                emit this->updateFound(latestVersionInfo.value(), fileMap);
+                emit this->updateFound(latestVersionInfo.value());
 
             } else {
                 qDebug() << "No updates found.";

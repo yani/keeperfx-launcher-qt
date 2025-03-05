@@ -17,7 +17,7 @@ class LauncherMainWindow : public QMainWindow
     Q_OBJECT
 
 signals:
-    void updateFound(KfxVersion::VersionInfo versionInfo, std::optional<QMap<QString, QString>> fileMap);
+    void updateFound(KfxVersion::VersionInfo versionInfo);
 
 public:
     LauncherMainWindow(QWidget *parent = nullptr);
@@ -28,7 +28,7 @@ private slots:
     void on_workshopButton_clicked();
     void on_settingsButton_clicked();
 
-    void onUpdateFound(KfxVersion::VersionInfo versionInfo, std::optional<QMap<QString, QString>> fileMap);
+    void onUpdateFound(KfxVersion::VersionInfo versionInfo);
 
 private:
     Ui::LauncherMainWindow *ui;
