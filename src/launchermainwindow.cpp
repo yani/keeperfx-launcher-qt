@@ -373,11 +373,17 @@ bool LauncherMainWindow::askForKeeperFxInstall()
 
 void LauncherMainWindow::on_settingsButton_clicked() {
 
+    // Remember
+    QString oldReleaseVersion = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
+
+    // Open settings dialog
     SettingsDialog settingsDialog(this);
     settingsDialog.exec();
 
-    // Check for updates when settings are closed
-    checkForKfxUpdate();
+    // Check for updates when settings are closed and update release version has changed
+    if(oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()){
+        checkForKfxUpdate();
+    }
 }
 
 void LauncherMainWindow::clearLatestFromKfxNet()
