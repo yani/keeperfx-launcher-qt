@@ -9,6 +9,8 @@
 #include <QNetworkReply>
 #include <QNetworkRequestFactory>
 
+#define API_BASE_URL "https://keeperfx.net/api"
+
 QImage ApiClient::downloadImage(QUrl url)
 {
     // Initialize the network request and manager
@@ -44,14 +46,29 @@ QImage ApiClient::downloadImage(QUrl url)
     return image;
 }
 
-QJsonDocument ApiClient::getJsonResponse(QUrl url) {
+QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath)
+{
+    // Strip '/api' and slashes from the endpoint path
+    QString endpointPathString = endpointPath.toString();
+    if (endpointPathString.startsWith("/api")) {
+        endpointPathString.remove(0, 4);
+    }
+    if (endpointPathString.startsWith("/")) {
+        endpointPathString.remove(0, 1);
+    }
 
-    qDebug() << "ApiClient call:" << url.toString();
+    // Create full URL for logging
+    QString endpointUrlString = QString(API_BASE_URL) + "/" + endpointPathString;
+    qDebug() << "ApiClient: GET" << endpointUrlString;
 
+    // Setup network manager and API
     QNetworkAccessManager manager;
-    QNetworkRequestFactory api{{"https://keeperfx.net/api"}};
+    QNetworkRequestFactory api{{API_BASE_URL}};
 
-    QNetworkReply *reply = manager.get(api.createRequest(url.toString()));
+    // Get the request
+    QNetworkReply *reply = manager.get(
+        api.createRequest(endpointPathString)
+    );
 
     // Create an event loop to wait for the request to finish
     QEventLoop loop;
@@ -60,12 +77,13 @@ QJsonDocument ApiClient::getJsonResponse(QUrl url) {
 
     // Check for errors
     if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "ApiClient request failed, error:" << reply->errorString();
+        qWarning() << "ApiClient [ERROR]" << endpointUrlString << "->" << reply->errorString();
         reply->deleteLater();
         return QJsonDocument();  // Return an empty QJsonDocument on error
     }
 
-    qDebug() << "ApiClient:" << url.toString() << "-> Success";
+    // We retrieved something!
+    qDebug() << "ApiClient:" << endpointUrlString << "-> Success";
 
     // Read the response and parse it as JSON
     QByteArray response = reply->readAll();
