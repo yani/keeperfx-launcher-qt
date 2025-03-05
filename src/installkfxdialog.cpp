@@ -10,6 +10,7 @@
 
 #include "apiclient.h"
 #include "downloader.h"
+#include "settings.h"
 #include "updater.h"
 
 #include <bit7z/bitabstractarchivehandler.hpp>
@@ -74,6 +75,13 @@ void InstallKfxDialog::on_installButton_clicked()
 
     // Show progress bar text
     this->ui->progressBar->setTextVisible(true);
+
+    // Remember that we want this release version
+    if (installAlpha) {
+        Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", "ALPHA");
+    } else {
+        Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", "STABLE");
+    }
 
     // Get download URL for stable
     appendLog("Getting download URL for stable release");
