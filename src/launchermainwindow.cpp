@@ -11,6 +11,7 @@
 #include <QShortcut>
 #include <QtConcurrent/QtConcurrentRun>
 #include <QMenu>
+#include <QObject>
 
 #include "apiclient.h"
 #include "certificate.h"
@@ -574,8 +575,24 @@ void LauncherMainWindow::checkForFileRemoval()
 
 void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
 {
+    // Start updater
     UpdateDialog updateDialog(this, versionInfo);
     updateDialog.exec();
+
+    // Reload current version
+    if (KfxVersion::loadCurrentVersion() == true) {
+        // Version successfully loaded
+        // Add the version to the the GUI
+        qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
+        ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
+        this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
+    }
+
+    // Verify the binaries against known certificates
+    verifyBinaryCertificates();
+
+    // Check if there are any files that should be removed
+    checkForFileRemoval();
 }
 
 void LauncherMainWindow::checkForKfxUpdate()
