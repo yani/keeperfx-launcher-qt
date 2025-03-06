@@ -698,35 +698,29 @@ void LauncherMainWindow::verifyBinaryCertificates()
 
 void LauncherMainWindow::on_playButton_clicked()
 {
-    QProcess *process = new QProcess();
+    // Get the game binary
     QString keeperfxBin = QApplication::applicationDirPath() + "/keeperfx.exe";
 
-#ifdef Q_OS_WINDOWS
-    QStringList params;
-    process->start(keeperfxBin, params);
-#else
-    qDebug() << "try start";
+    // Get the game parameters
+    QStringList params = Settings::getGameSettingsParameters();
 
-    qDebug() << "Running as user:" << qgetenv("USER");
+    // Add '-config' parameter with our custom keeperfx.cfg
+    QFileInfo configFileInfo(Settings::getKfxConfigFile());
+    params << "-config" << QDir::toNativeSeparators(configFileInfo.absoluteFilePath());
 
-    // Make sure no weird Qt environment shenanigans
-    //QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-    //env.insert("PATH", "/usr/bin:/bin:/usr/local/bin");
-    //process->setProcessEnvironment(env);
+    // Create the process
+    QProcess *process = new QProcess();
+    process->setWorkingDirectory(QApplication::applicationDirPath());
 
-    if (!QFile::exists("/usr/bin/wine")) {
-        qWarning() << "Error: /usr/bin/wine does not exist!";
-        return;
-    } else if (!QFileInfo("/usr/bin/wine").isExecutable()) {
-        qWarning() << "Error: /usr/bin/wine is not executable!";
-        return;
-    }
+    qDebug() << params;
 
-
-    QStringList params;
-    params << keeperfxBin;
-    process->start("/usr/bin/wine", params);
-#endif
+    // Start the process
+    #ifdef Q_OS_WINDOWS
+        process->start(keeperfxBin, params);
+    #else
+        params.prepend(keeperfxBin);
+        process->start("wine", params);
+    #endif
 
     // Wait for process to start and check errors
     if (!process->waitForStarted()) {
