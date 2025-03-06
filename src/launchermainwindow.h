@@ -27,6 +27,7 @@ private slots:
     void on_logFileButton_clicked();
     void on_workshopButton_clicked();
     void on_settingsButton_clicked();
+    void on_playButton_clicked();
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
 

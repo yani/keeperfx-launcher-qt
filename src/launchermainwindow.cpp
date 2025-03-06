@@ -12,6 +12,7 @@
 #include <QtConcurrent/QtConcurrentRun>
 #include <QMenu>
 #include <QObject>
+#include <QProcess>
 
 #include "apiclient.h"
 #include "certificate.h"
@@ -692,5 +693,44 @@ void LauncherMainWindow::verifyBinaryCertificates()
              "The launcher failed to verify the signature of:\n\n"
                  + fileListString +
                  "\nIt is highly suggested to only use official KeeperFX files.");
+    }
+}
+
+void LauncherMainWindow::on_playButton_clicked()
+{
+    QProcess *process = new QProcess();
+    QString keeperfxBin = QApplication::applicationDirPath() + "/keeperfx.exe";
+
+#ifdef Q_OS_WINDOWS
+    QStringList params;
+    process->start(keeperfxBin, params);
+#else
+    qDebug() << "try start";
+
+    qDebug() << "Running as user:" << qgetenv("USER");
+
+    // Make sure no weird Qt environment shenanigans
+    //QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    //env.insert("PATH", "/usr/bin:/bin:/usr/local/bin");
+    //process->setProcessEnvironment(env);
+
+    if (!QFile::exists("/usr/bin/wine")) {
+        qWarning() << "Error: /usr/bin/wine does not exist!";
+        return;
+    } else if (!QFileInfo("/usr/bin/wine").isExecutable()) {
+        qWarning() << "Error: /usr/bin/wine is not executable!";
+        return;
+    }
+
+
+    QStringList params;
+    params << keeperfxBin;
+    process->start("/usr/bin/wine", params);
+#endif
+
+    // Wait for process to start and check errors
+    if (!process->waitForStarted()) {
+        qDebug() << "Error: Process failed to start. Error:" << process->errorString();
+        return;
     }
 }
