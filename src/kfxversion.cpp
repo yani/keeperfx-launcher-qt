@@ -61,11 +61,12 @@ QString KfxVersion::getVersionString(QFile binary){
     qDebug() << "RESOURCE INFO:" << resourcesInfo;
 
     // Define regex pattern to match 'ProductVersion'
-    QRegularExpression regex (R"(ProductVersion:\s*(.+?)\s*\n)");
+    QRegularExpression regex (R"(ProductVersion:\s*(.+?)\s*?[\\\n])");
     QRegularExpressionMatch match = regex.match(resourcesInfo);
 
     // Get regex match
     if (match.hasMatch()) {
+        qDebug() << match.captured(1);
         return match.captured(1);
     } else {
         qDebug() << "Error: Version not found in PE file";
@@ -100,8 +101,11 @@ KfxVersion::VersionInfo KfxVersion::getVersionFromString(QString versionString)
     versionInfo.version = match.captured(0);
 
     // Get the type of the release
-    if (versionInfo.version == versionString && versionInfo.version.count('.') == 2) {
+    if (versionInfo.version == versionString) {
         versionInfo.type = KfxVersion::ReleaseType::STABLE;
+        // Make sure only x.y.z are taken from stable version
+        versionInfo.version = versionInfo.version.split('.').mid(0, 3).join('.');
+        versionInfo.fullString = versionInfo.version;
     } else if (versionString.toLower().contains("alpha")) {
         versionInfo.type = KfxVersion::ReleaseType::ALPHA;
     } else if (versionString.toLower().contains("prototype")) {
