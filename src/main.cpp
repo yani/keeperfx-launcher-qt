@@ -130,6 +130,12 @@ int main(int argc, char *argv[])
     // Info: Platform
     qInfo() << "Platform:" << QGuiApplication::platformName();
 
+    #ifdef Q_OS_LINUX
+        if (QString("root") == QString(qgetenv("USER").toLower())) {
+            qInfo() << "Running as root";
+        }
+    #endif
+
     // Disable SSL verification
     // TODO: eventually add SSL certs
     QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
