@@ -67,6 +67,8 @@ InstallKfxDialog::~InstallKfxDialog()
 
 void InstallKfxDialog::on_installButton_clicked()
 {
+    this->ui->installButton->setDisabled(true);
+
     // Variable(s)
     bool installAlpha = ui->versionComboBox->currentIndex() == 1;
 
@@ -289,6 +291,7 @@ void InstallKfxDialog::clearProgressBar()
 
 void InstallKfxDialog::setInstallFailed(const QString &reason)
 {
+    this->ui->installButton->setDisabled(false);
     this->clearProgressBar();
     this->appendLog(reason);
 

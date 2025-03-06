@@ -115,6 +115,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="cancelButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>28</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>100</width>
@@ -134,7 +140,7 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>0</height>
+          <height>28</height>
          </size>
         </property>
         <property name="maximumSize">

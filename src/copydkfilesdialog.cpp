@@ -12,7 +12,6 @@ CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     , ui(new Ui::CopyDkFilesDialog)
 {
     ui->setupUi(this);
-    ui->copyButton->setDisabled(true);
 
     // Disable resizing and remove maximize button
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
@@ -22,7 +21,7 @@ CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     QDir existingDkInstallDir = DkFiles::findExistingDkInstallDir();
     if(!existingDkInstallDir.isEmpty()){
         qDebug() << "Automatically detected DK dir:" << existingDkInstallDir.absolutePath();
-        ui->copyButton->setDisabled(false);
+        ui->autoFoundLabel->setText("A suitable DK installation has been automatically detected.");
         ui->browseInput->setText(existingDkInstallDir.absolutePath());
     }
 }
@@ -41,16 +40,20 @@ void CopyDkFilesDialog::on_browseButton_clicked()
     if (DkFiles::isValidDkDirPath(dirPath)) {
         // Set the directory path in the QLineEdit (browseInput)
         ui->browseInput->setText(dirPath);
-        ui->copyButton->setDisabled(false);
     } else {
         ui->browseInput->setText("");
-        ui->copyButton->setDisabled(true);
         QMessageBox::warning(this, "Original DK files not found", "The chosen directory does not contain all of the required files. Please select an original Dungeon Keeper installation.");
     }
 }
 
 void CopyDkFilesDialog::on_copyButton_clicked()
 {
+    // Make sure box is set
+    if(ui->browseInput->text().isEmpty()){
+        QMessageBox::information(this, "Select a directory", "Please select an original Dungeon Keeper installation location.");
+        return;
+    }
+
     QDir dkDir(ui->browseInput->text());
 
     // Check if given dir is a valid DK dir

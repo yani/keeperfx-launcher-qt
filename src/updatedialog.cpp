@@ -91,6 +91,7 @@ void UpdateDialog::appendLog(const QString &string)
 
 void UpdateDialog::setUpdateFailed(const QString &reason)
 {
+    this->ui->updateButton->setDisabled(false);
     this->clearProgressBar();
     this->appendLog(reason);
 
@@ -99,6 +100,8 @@ void UpdateDialog::setUpdateFailed(const QString &reason)
 
 void UpdateDialog::on_updateButton_clicked()
 {
+    this->ui->updateButton->setDisabled(true);
+
     // Tell user we start the installation
     appendLog("Updating to version " + this->versionInfo.fullString);
 
@@ -281,7 +284,7 @@ void UpdateDialog::updateUsingArchive(QString downloadUrlString)
             this->appendLog("Done!");
             QMessageBox::information(this,
                                      "KeeperFX",
-                                     "KeeperFX has been successfully updated to version" + this->versionInfo.version + "!");
+                                     "KeeperFX has been successfully updated to version " + this->versionInfo.version + "!");
             this->accept();
             return;
         });

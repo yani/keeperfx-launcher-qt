@@ -1236,6 +1236,12 @@ Join us on the &lt;a href=&quot;https://discord.gg/WxgE8WZBku&quot;&gt;Keeper Kl
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <family>Arial</family>
