@@ -8,6 +8,33 @@
 QSettings *Settings::kfxSettings;
 QSettings *Settings::launcherSettings;
 
+QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
+
+    // Launcher settings
+    {"CHECK_FOR_UPDATES_ENABLED", true},
+    {"CHECK_FOR_UPDATES_RELEASE", "STABLE"},
+    {"WEBSITE_INTEGRATION_ENABLED", true},
+    {"CRASH_REPORTING_ENABLED", true},
+
+    // Game executable parameters
+    // These also go in the launcher config
+    {"GAME_PARAM_NO_SOUND", false},
+    {"GAME_PARAM_USE_CD_MUSIC", false},
+    {"GAME_PARAM_NO_INTRO", false},
+    {"GAME_PARAM_ALEX", false},
+    {"GAME_PARAM_FPS", "20"},
+    {"GAME_PARAM_VID_SMOOTH", false},
+};
+
+QMap<QString, QString> Settings::gameSettingsParameterMap = {
+    {"GAME_PARAM_NO_SOUND", "-nosound"},
+    {"GAME_PARAM_USE_CD_MUSIC", "-cd"},
+    {"GAME_PARAM_NO_INTRO", "-nointro"},
+    {"GAME_PARAM_ALEX", "-alex"},
+    {"GAME_PARAM_VID_SMOOTH", "-vidsmooth"},
+    // {"GAME_PARAM_FPS", "-fps %d"}, // Hardcoded
+};
+
 QVariant Settings::getKfxSetting(QAnyStringView key)
 {
     QVariant value = kfxSettings->value(key);
@@ -114,24 +141,6 @@ void Settings::copyNewKfxSettingsFromDefault()
 
 void Settings::copyMissingLauncherSettings()
 {
-    QMap<QString, QVariant> defaultLauncherSettingsMap = {
-
-        // Launcher settings
-        {"CHECK_FOR_UPDATES_ENABLED", true},
-        {"CHECK_FOR_UPDATES_RELEASE", "STABLE"},
-        {"WEBSITE_INTEGRATION_ENABLED", true},
-        {"CRASH_REPORTING_ENABLED", true},
-
-        // Game executable parameters
-        // These also go in the launcher config
-        {"GAME_PARAM_NO_SOUND", false},
-        {"GAME_PARAM_USE_CD_MUSIC", false},
-        {"GAME_PARAM_NO_INTRO", false},
-        {"GAME_PARAM_ALEX", false},
-        {"GAME_PARAM_FPS", "20"},
-        {"GAME_PARAM_VID_SMOOTH", false},
-    };
-
     // Loop trough default launcher settings
     for (auto it = defaultLauncherSettingsMap.begin(); it != defaultLauncherSettingsMap.end(); ++it) {
 
@@ -143,4 +152,26 @@ void Settings::copyMissingLauncherSettings()
             qDebug() << "Copied launcher setting from defaults:" << it.key() << "=" << it.value().toString();
         }
     }
+}
+
+QStringList Settings::getGameSettingsParameters()
+{
+    QStringList paramList;
+
+    // Loop trough parameters
+    for (auto it = Settings::gameSettingsParameterMap.begin(); it != Settings::gameSettingsParameterMap.end(); ++it) {
+        if (Settings::getLauncherSetting(it.key()).toBool() == true) {
+            paramList << it.value();
+        }
+    }
+
+    // Add FPS
+    QString fps = Settings::getLauncherSetting("GAME_PARAM_FPS").toString();
+    if (fps != Settings::defaultLauncherSettingsMap["GAME_PARAM_FPS"]) {
+        paramList << "-fps " + fps;
+    }
+
+    qDebug() << paramList;
+
+    return paramList;
 }

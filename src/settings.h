@@ -20,7 +20,11 @@ public:
     static void copyNewKfxSettingsFromDefault();
     static void copyMissingLauncherSettings();
 
+    static QStringList getGameSettingsParameters();
+
 private:
+    static QMap<QString, QVariant> defaultLauncherSettingsMap;
+    static QMap<QString, QString> gameSettingsParameterMap;
 
     static QSettings *kfxSettings;
     static QSettings *launcherSettings;
