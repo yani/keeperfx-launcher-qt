@@ -698,6 +698,8 @@ void LauncherMainWindow::verifyBinaryCertificates()
 
 void LauncherMainWindow::on_playButton_clicked()
 {
+    qInfo() << "Starting game...";
+
     // Get the game binary
     QString keeperfxBin = QApplication::applicationDirPath() + "/keeperfx.exe";
 
@@ -705,17 +707,20 @@ void LauncherMainWindow::on_playButton_clicked()
     QStringList params = Settings::getGameSettingsParameters();
 
     // If version is too old for custom -config path we'll use the default 'keeperfx.cfg' instead
-    if (Settings::useOldConfigFilePath()) {
+    if (Settings::useOldConfigFilePath() == false) {
         // Add '-config' parameter with our custom keeperfx.cfg
         QFileInfo configFileInfo(Settings::getKfxConfigFile());
         params << "-config" << QDir::toNativeSeparators(configFileInfo.absoluteFilePath());
+    } else {
+        qInfo() << "Game version too old for custom config path";
     }
 
     // Create the process
     QProcess *process = new QProcess();
     process->setWorkingDirectory(QApplication::applicationDirPath());
 
-    qDebug() << params;
+    // Log parameters
+    qInfo() << "Game parameters:" << params.join(" ");
 
     // Start the process
     #ifdef Q_OS_WINDOWS
