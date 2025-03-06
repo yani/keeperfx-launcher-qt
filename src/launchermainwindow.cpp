@@ -381,7 +381,8 @@ void LauncherMainWindow::on_settingsButton_clicked() {
     settingsDialog.exec();
 
     // Check for updates when settings are closed and update release version has changed
-    if(oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()){
+    if (oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()) {
+        qDebug() << "Game release version changed so asking for update";
         checkForKfxUpdate();
     }
 }
