@@ -7,6 +7,7 @@
 class Settings
 {
 public:
+    static const QString MinKfxVersionForNewConfigLoc;
 
     static QVariant getKfxSetting(QAnyStringView key);
     static void setKfxSetting(QAnyStringView key, const QVariant &value);
@@ -21,6 +22,8 @@ public:
     static void copyMissingLauncherSettings();
 
     static QStringList getGameSettingsParameters();
+
+    static bool useOldConfigFilePath();
 
 private:
     static QMap<QString, QVariant> defaultLauncherSettingsMap;

@@ -704,9 +704,12 @@ void LauncherMainWindow::on_playButton_clicked()
     // Get the game parameters
     QStringList params = Settings::getGameSettingsParameters();
 
-    // Add '-config' parameter with our custom keeperfx.cfg
-    QFileInfo configFileInfo(Settings::getKfxConfigFile());
-    params << "-config" << QDir::toNativeSeparators(configFileInfo.absoluteFilePath());
+    // If version is too old for custom -config path we'll use the default 'keeperfx.cfg' instead
+    if (Settings::useOldConfigFilePath()) {
+        // Add '-config' parameter with our custom keeperfx.cfg
+        QFileInfo configFileInfo(Settings::getKfxConfigFile());
+        params << "-config" << QDir::toNativeSeparators(configFileInfo.absoluteFilePath());
+    }
 
     // Create the process
     QProcess *process = new QProcess();
