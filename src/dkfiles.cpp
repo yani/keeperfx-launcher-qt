@@ -15,6 +15,7 @@
         "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\Data",
         "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\DATA",
         "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper",
+        "Z:\\home\\<user>\\.steam\\steam\\steamapps\\common\\Dungeon Keeper", // When running under Wine
     };
 #else
     // Common DK installation paths under UNIX
@@ -65,14 +66,18 @@ QStringList DkFiles::getInstallPaths() {
     // Paths to return
     QStringList paths;
 
-    // Get the user's home directory path
-    QString userHome = QDir::homePath();
+    // Loop through the paths and replace some vars
+    for (const QString &installPath : installPaths) {
 
-    // Loop through the paths and replace <userhome>
-    for (const QString& path : installPaths) {
-        paths.append(
-            (QString(path)).replace("<userhome>", userHome)
-            );
+        // Load path
+        QString path = installPath;
+
+        // Replace some default vars
+        path.replace("<user>", qgetenv("USER"));
+        path.replace("<userhome>", QDir::homePath());
+
+        // Add to list
+        paths.append(path);
     }
 
     return paths;
