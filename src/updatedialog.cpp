@@ -89,7 +89,7 @@ void UpdateDialog::closeEvent(QCloseEvent *event)
     // Ask if user is sure
     int result = QMessageBox::question(this,
                                        "Confirmation",
-                                       "Are you sure you don't want to update?");
+                                       "Are you sure you want to cancel the update?");
     if (result == QMessageBox::Yes) {
         // Allow the dialog to close
         event->accept();
