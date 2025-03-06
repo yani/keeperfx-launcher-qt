@@ -377,6 +377,7 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 
     // Remember
     QString oldReleaseVersion = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
+    bool websiteIntegration = Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED").toBool();
 
     // Open settings dialog
     SettingsDialog settingsDialog(this);
@@ -386,6 +387,12 @@ void LauncherMainWindow::on_settingsButton_clicked() {
     if (oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()) {
         qDebug() << "Game release version changed so asking for update";
         checkForKfxUpdate();
+    }
+
+    // Website integration
+    if (websiteIntegration != Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED").toBool()) {
+        showLoadingSpinner(); // This also hides everything
+        loadLatestFromKfxNet();
     }
 }
 
