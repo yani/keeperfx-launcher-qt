@@ -116,9 +116,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         if (KfxVersion::loadCurrentVersion() == true) {
             // Version successfully loaded
             // Add the version to the the GUI
-            qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.string;
-            ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
-            this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.string);
+            qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
+            ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
+            this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
 
         } else {
             // Failed to get KeeperFX version
@@ -141,10 +141,10 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
                 if (KfxVersion::loadCurrentVersion() == true) {
                     // Version successfully loaded
                     // Add the version to the the GUI
-                    qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.string;
-                    ui->versionLabel->setText("v" + KfxVersion::currentVersion.string);
+                    qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
+                    ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
                     this->setWindowTitle("KeeperFX Launcher - v"
-                                         + KfxVersion::currentVersion.string);
+                                         + KfxVersion::currentVersion.fullString);
 
                 } else {
                     // Still an error even after reinstalling KeeperFX
@@ -559,7 +559,7 @@ void LauncherMainWindow::checkForFileRemoval()
 
         // Get files to remove based on KfxVersion
         QStringList filesToRemove = FileRemover::processFile(fileRemovalFile,
-                                                             KfxVersion::currentVersion.string);
+                                                             KfxVersion::currentVersion.version);
 
         // If there are files that should be removed
         if(filesToRemove.length() > 0){
@@ -614,7 +614,7 @@ void LauncherMainWindow::checkForKfxUpdate()
             // Check if type of release is different or version is newer
             if (type != KfxVersion::currentVersion.type
                 || KfxVersion::isNewerVersion(latestVersionInfo->version,
-                                              KfxVersion::currentVersion.string)) {
+                                              KfxVersion::currentVersion.version)) {
                 qDebug() << "Update found:" << latestVersionInfo->version;
 
                 // Emit signal for update

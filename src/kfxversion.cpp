@@ -7,7 +7,7 @@
 
 #include <LIEF/PE.hpp>
 
-KfxVersion::Version KfxVersion::currentVersion;
+KfxVersion::VersionInfo KfxVersion::currentVersion;
 
 QString KfxVersion::getVersionString(QFile binary){
 
@@ -81,56 +81,43 @@ QString KfxVersion::getVersionStringFromAppDir()
     );
 }
 
-KfxVersion::Version KfxVersion::getVersionFromString(QString versionString)
+KfxVersion::VersionInfo KfxVersion::getVersionFromString(QString versionString)
 {
-    // Use regex to get version parts of the string
-    QRegularExpression regex (R"(([0-9]+)\.([0-9]+)\.([0-9]+)(?:\.([0-9]+)?))");
+    VersionInfo versionInfo;
+    versionInfo.fullString = versionString;
+
+    // Use regex to get the version from the string
+    // Catches 1.2.3 and 1.2.3.4
+    QRegularExpression regex (R"([0-9]+\.[0-9]+\.[0-9]+(?:\.[0-9]+)?)");
     QRegularExpressionMatch match = regex.match(versionString);
 
     // Check if regex has a match
     if (match.hasMatch() == false) {
-        return Version{};
+        return versionInfo;
     }
 
-    // Create the version
-    Version version = {
-        .major = match.captured(1).toInt(),
-        .minor = match.captured(2).toInt(),
-        .patch = match.captured(3).toInt(),
-        .type = ReleaseType::STABLE,
-        .string = versionString
-    };
-
-    // Get the build
-    if(match.captured(4).isEmpty() == false){
-        version.build = match.captured(4).toInt();
-    }
+    // Get version
+    versionInfo.version = match.captured(0);
 
     // Get the type of the release
-    if(versionString.toLower().contains("alpha")){
-        version.type = KfxVersion::ReleaseType::ALPHA;
-    } else if(versionString.toLower().contains("prototype")){
-        version.type = KfxVersion::ReleaseType::PROTOTYPE;
+    if (versionInfo.version == versionString && versionInfo.version.count('.') == 2) {
+        versionInfo.type = KfxVersion::ReleaseType::STABLE;
+    } else if (versionString.toLower().contains("alpha")) {
+        versionInfo.type = KfxVersion::ReleaseType::ALPHA;
+    } else if (versionString.toLower().contains("prototype")) {
+        versionInfo.type = KfxVersion::ReleaseType::PROTOTYPE;
+    } else {
+        versionInfo.type = KfxVersion::ReleaseType::UNKNOWN;
     }
 
-    // Stable releases don't need the build version
-    if(version.type == ReleaseType::STABLE){
-        version.string =
-            QString::number(version.major)
-            + "."
-            + QString::number(version.minor)
-            + "."
-            + QString::number(version.patch);
-    }
-
-    return version;
+    return versionInfo;
 }
 
 bool KfxVersion::loadCurrentVersion()
 {
     // Get the version
     QString versionString = getVersionStringFromAppDir();
-    Version version = getVersionFromString(versionString);
+    VersionInfo version = getVersionFromString(versionString);
 
     // Check if version is valid
     if(version.type == ReleaseType::UNKNOWN){
@@ -202,6 +189,7 @@ std::optional<KfxVersion::VersionInfo> KfxVersion::getLatestVersion(KfxVersion::
     // Variables
     QString version;
     QString downloadUrl;
+    QString fullVersionString;
 
     // Handle stable
     if (type == KfxVersion::ReleaseType::STABLE) {
@@ -214,6 +202,7 @@ std::optional<KfxVersion::VersionInfo> KfxVersion::getLatestVersion(KfxVersion::
         // Set vars
         version = stableRelease["version"].toString();
         downloadUrl = stableRelease["download_url"].toString();
+        fullVersionString = version;
     }
 
     // Handle alpha
@@ -227,10 +216,16 @@ std::optional<KfxVersion::VersionInfo> KfxVersion::getLatestVersion(KfxVersion::
         // Set vars
         version = alphaRelease["version"].toString();
         downloadUrl = alphaRelease["download_url"].toString();
+        fullVersionString = version + " Alpha";
     }
 
     // Return latest version information
-    return VersionInfo{version, downloadUrl, type};
+    return VersionInfo{
+        .type = type,
+        .version = version,
+        .fullString = fullVersionString,
+        .downloadUrl = downloadUrl
+    };
 }
 
 std::optional<QMap<QString, QString>> KfxVersion::getGameFileMap(KfxVersion::ReleaseType type, QString version)

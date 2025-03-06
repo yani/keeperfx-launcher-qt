@@ -24,28 +24,19 @@ public:
         return (value == -1) ? UNKNOWN : static_cast<ReleaseType>(value);
     }
 
-    struct Version
-    {
-        int major = 0;
-        int minor = 0;
-        int patch = 0;
-        int build = 0;
-        ReleaseType type = ReleaseType::UNKNOWN;
-        QString string;
-    };
-
     struct VersionInfo
     {
-        QString version;
-        QString downloadUrl;
-        KfxVersion::ReleaseType type;
+        ReleaseType type = ReleaseType::UNKNOWN;
+        QString version = "0.0.0";
+        QString fullString = QString();
+        QString downloadUrl = QString();
     };
 
-    static Version currentVersion;
+    static VersionInfo currentVersion;
 
     static QString getVersionString(QFile binary);
     static QString getVersionStringFromAppDir();
-    static Version getVersionFromString(QString versionString);
+    static VersionInfo getVersionFromString(QString versionString);
 
     static bool loadCurrentVersion();
 

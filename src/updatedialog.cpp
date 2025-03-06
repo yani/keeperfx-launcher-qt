@@ -10,7 +10,7 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo)
     ui->setupUi(this);
 
     // Get current version string
-    QString currentVersionString = KfxVersion::currentVersion.string;
+    QString currentVersionString = KfxVersion::currentVersion.version;
     if (KfxVersion::currentVersion.type == KfxVersion::ReleaseType::ALPHA) {
         currentVersionString += " Alpha";
     }

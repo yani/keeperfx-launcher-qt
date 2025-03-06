@@ -27,7 +27,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Set versions in about label
     ui->labelAbout->setText(ui->labelAbout->text()
-                                .replace("<kfx_version>", KfxVersion::currentVersion.string)
+                                .replace("<kfx_version>", KfxVersion::currentVersion.fullString)
                                 .replace("<launcher_version>", LAUNCHER_VERSION));
 
     // Setup the 'display monitor' dropdown
