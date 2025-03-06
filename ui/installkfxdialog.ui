@@ -33,9 +33,7 @@
    <item>
     <widget class="QLabel" name="infoLabel">
      <property name="font">
-      <font>
-       
-      </font>
+      <font/>
      </property>
      <property name="styleSheet">
       <string notr="true">QLabel {
@@ -152,6 +150,9 @@
         <property name="text">
          <string>Cancel</string>
         </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -170,6 +171,12 @@
         </property>
         <property name="text">
          <string>Install</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

@@ -49,7 +49,6 @@
      </property>
      <property name="font">
       <font>
-       
        <pointsize>11</pointsize>
       </font>
      </property>
@@ -112,6 +111,9 @@ If you want to use a digital version you will have to install it first.</string>
         <property name="text">
          <string>Cancel</string>
         </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -124,6 +126,12 @@ If you want to use a digital version you will have to install it first.</string>
         </property>
         <property name="text">
          <string>Copy</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

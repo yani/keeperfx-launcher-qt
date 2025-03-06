@@ -103,6 +103,9 @@ Please review the files and remove them.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/h
         <property name="text">
          <string>Cancel</string>
         </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -115,6 +118,12 @@ Please review the files and remove them.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/h
         </property>
         <property name="text">
          <string>Remove All</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
