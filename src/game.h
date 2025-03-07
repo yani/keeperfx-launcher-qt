@@ -24,7 +24,12 @@ public:
 
     static QString getStringFromStartType(StartType startType);
 
-    bool start(StartType startType, QVariant data1 = QVariant(), QVariant data2 = QVariant(), QVariant data3 = QVariant());
+    bool start(StartType startType,
+               QVariant data1 = QVariant(),
+               QVariant data2 = QVariant(),
+               QVariant data3 = QVariant());
+
+    QString getErrorString();
 
 signals:
     void gameEnded(int exitCode, QProcess::ExitStatus exitStatus);
@@ -34,4 +39,5 @@ private slots:
 
 private:
     QProcess *process;
+    QString errorString;
 };

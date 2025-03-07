@@ -5,31 +5,46 @@
 #include <QDebug>
 #include "settings.h"
 
-Game::Game(QObject *parent) : QObject(parent), process(new QProcess(this))
+Game::Game(QObject *parent)
+    : QObject(parent)
+    , process(new QProcess(this))
 {
     // Setup the process
     process->setWorkingDirectory(QApplication::applicationDirPath());
 
     // Connect the process finished signal to the onProcessFinished slot
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Game::onProcessFinished);
+    connect(process,
+            QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+            this,
+            &Game::onProcessFinished);
 }
 
 QString Game::getStringFromStartType(StartType startType)
 {
     switch (startType) {
-        case NORMAL: return "Normal";
-        case HVLOG: return "Heavy Log";
-        case DIRECT_CONNECT: return "Direct Connect";
-        case LOAD_MAP: return "Load Map";
-        case LOAD_CAMPAIGN: return "Load Campaign";
-        case LOAD_SAVE: return "Load Save";
-        case LOAD_PACKETSAVE: return "Load Packetsave";
+    case NORMAL:
+        return "Normal";
+    case HVLOG:
+        return "Heavy Log";
+    case DIRECT_CONNECT:
+        return "Direct Connect";
+    case LOAD_MAP:
+        return "Load Map";
+    case LOAD_CAMPAIGN:
+        return "Load Campaign";
+    case LOAD_SAVE:
+        return "Load Save";
+    case LOAD_PACKETSAVE:
+        return "Load Packetsave";
     }
     return "Unknown start type";
 }
 
 bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant data3)
 {
+    // Refresh error
+    this->errorString = QString();
+
     // Log some stuff
     qInfo() << "Starting gaming ->" << Game::getStringFromStartType(startType);
     qDebug() << "Data[1]" << data1.toString();
@@ -65,7 +80,8 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 
     // Wait for process to start and check errors
     if (!process->waitForStarted()) {
-        qDebug() << "Error: Process failed to start. Error:" << process->errorString();
+        this->errorString = process->errorString();
+        qDebug() << "Error: Process failed to start:" << process->errorString();
         return false;
     }
 
@@ -75,4 +91,9 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     emit gameEnded(exitCode, exitStatus);
+}
+
+QString Game::getErrorString()
+{
+    return this->errorString;
 }

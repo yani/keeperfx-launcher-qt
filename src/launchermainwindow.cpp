@@ -727,10 +727,19 @@ void LauncherMainWindow::on_playButton_clicked()
         refreshPlayButtons();
         refreshLogfileButton();
 
+        // Get the error
+        QString errorString = game->getErrorString();
+
         // Show messagebox alerting the user
-        QMessageBox::warning(this,
-                             "KeeperFX",
-                             "Failed to start KeeperFX.");
+        if(errorString.isEmpty() == false){
+            QMessageBox::warning(this,
+                                 "KeeperFX",
+                                 "Failed to start KeeperFX.\n\nError:\n" + errorString);
+        } else {
+            QMessageBox::warning(this,
+                                 "KeeperFX",
+                                 "Failed to start KeeperFX. Unknown error.");
+        }
     }
 }
 
