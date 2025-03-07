@@ -17,7 +17,6 @@
 #include "apiclient.h"
 #include "certificate.h"
 #include "copydkfilesdialog.h"
-#include "crc32.h"
 #include "dkfiles.h"
 #include "fileremover.h"
 #include "fileremoverdialog.h"
@@ -30,7 +29,6 @@
 #include "settings.h"
 #include "settingsdialog.h"
 #include "updatedialog.h"
-#include "updater.h"
 #include "workshopitemwidget.h"
 
 #define MAX_WORKSHOP_ITEMS_SHOWN 4
@@ -170,12 +168,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Handle buttons that should be aware of the current installation
     // This will enable/disable specific buttons whether the logfile and the KFX binary exist
     updateAwareButtons();
-
-    // Start checking the installation aware buttons periodically
-    // This continious checking is not required but it's an interesting little gimmick
-    QTimer *buttonAwareTimer = new QTimer();
-    connect(buttonAwareTimer, &QTimer::timeout, this, &LauncherMainWindow::updateAwareButtons);
-    buttonAwareTimer->start(2500);
 
     // Verify the binaries against known certificates
     verifyBinaryCertificates();
@@ -602,6 +594,9 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
 
     // Check if there are any files that should be removed
     checkForFileRemoval();
+
+    // Update play and logfile buttons
+    updateAwareButtons();
 }
 
 void LauncherMainWindow::checkForKfxUpdate()
