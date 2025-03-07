@@ -30,6 +30,7 @@ private slots:
     void on_playButton_clicked();
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
+    void onGameEnded();
 
 private:
     Ui::LauncherMainWindow *ui;

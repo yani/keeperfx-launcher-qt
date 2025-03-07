@@ -21,6 +21,7 @@
 #include "dkfiles.h"
 #include "fileremover.h"
 #include "fileremoverdialog.h"
+#include "game.h"
 #include "installkfxdialog.h"
 #include "kfxversion.h"
 #include "launcheroptions.h"
@@ -705,41 +706,19 @@ void LauncherMainWindow::verifyBinaryCertificates()
 
 void LauncherMainWindow::on_playButton_clicked()
 {
-    qInfo() << "Starting game...";
+    // Disable the play buttons
+    ui->playButton->setDisabled(true);
+    ui->playExtraButton->setDisabled(true);
 
-    // Get the game binary
-    QString keeperfxBin = QApplication::applicationDirPath() + "/keeperfx.exe";
+    // Start the game
+    Game *game = new Game(this);
+    connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
+    game->start(Game::StartType::NORMAL);
+}
 
-    // Get the game parameters
-    QStringList params = Settings::getGameSettingsParameters();
-
-    // If version is too old for custom -config path we'll use the default 'keeperfx.cfg' instead
-    if (Settings::useOldConfigFilePath() == false) {
-        // Add '-config' parameter with our custom keeperfx.cfg
-        QFileInfo configFileInfo(Settings::getKfxConfigFile());
-        params << "-config" << QDir::toNativeSeparators(configFileInfo.absoluteFilePath());
-    } else {
-        qInfo() << "Game version too old for custom config path";
-    }
-
-    // Create the process
-    QProcess *process = new QProcess();
-    process->setWorkingDirectory(QApplication::applicationDirPath());
-
-    // Log parameters
-    qInfo() << "Game parameters:" << params.join(" ");
-
-    // Start the process
-    #ifdef Q_OS_WINDOWS
-        process->start(keeperfxBin, params);
-    #else
-        params.prepend(keeperfxBin);
-        process->start("wine", params);
-    #endif
-
-    // Wait for process to start and check errors
-    if (!process->waitForStarted()) {
-        qDebug() << "Error: Process failed to start. Error:" << process->errorString();
-        return;
-    }
+void LauncherMainWindow::onGameEnded()
+{
+    // Make the play buttons visible again
+    ui->playButton->setDisabled(false);
+    ui->playExtraButton->setDisabled(false);
 }
