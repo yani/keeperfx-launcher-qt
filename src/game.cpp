@@ -64,7 +64,11 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
     }
 
     // Log parameters
-    qInfo() << "Game parameters:" << params.join(" ");
+    if(params.count() > 0){
+        qInfo() << "Game parameters:" << params.join(" ");
+    } else {
+        qInfo() << "No game parameters set";
+    }
 
     // Get the game binary
     // For now it's only the .exe release
