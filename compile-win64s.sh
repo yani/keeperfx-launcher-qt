@@ -5,14 +5,15 @@ usage() {
     echo ""
     echo " KeeperFX Launcher - Win64 Compiler"
     echo ""
-    echo " Usage: $0 <debug|release|console> [--verbose]"
+    echo " Usage: $0 <debug|release|console> [--installer] [--verbose]"
     echo ""
     echo " Commands: "
-    echo "     $0 <debug|release>               compile debug or release version"
-    echo "     $0 console                       open a console in the compiler container"
+    echo "     $0 <debug|release>      compile debug or release version"
+    echo "     $0 console              open a console in the compiler container"
     echo ""
     echo " Options:"
-    echo "     --verbose             enable cmake verbosity"
+    echo "     --installer             also create an installer for the release"
+    echo "     --verbose               enable cmake verbosity"
     echo ""
     exit 1
 }
@@ -34,11 +35,15 @@ fi
 MODE="$1"
 VERBOSE=""
 BUILD_SHARED_LIBS=ON
+BUILD_INSTALLER=OFF
 
 # Handle options
 shift # Remove first argument
 while (("$#")); do
     case "$1" in
+        --installer)
+            BUILD_INSTALLER=ON
+            ;;
         --verbose)
             VERBOSE="--verbose"
             ;;
@@ -48,6 +53,12 @@ while (("$#")); do
     esac
     shift
 done
+
+# Disallow making installers for debug versions
+if [ "$MODE" == "debug" ] && [ "$BUILD_INSTALLER" == "ON" ]; then
+    echo "Making an installer for a debug version is not possible"
+    exit 1
+fi
 
 # Get current user and group ID
 USER_ID=$(id -u)
@@ -108,6 +119,11 @@ if [ "$MODE" == "release" ]; then
     mkdir -p "$(pwd)/release/win64/"
     cp "$(pwd)/build/mingw-win64/keeperfx-launcher-qt.exe" "$(pwd)/release/win64/keeperfx-launcher-qt.exe"
     cp "$(pwd)/build/mingw-win64/7za.dll" "$(pwd)/release/win64/7za.dll"
+
+    # Make an installer
+    if [ "$BUILD_INSTALLER" == "ON" ]; then
+        docker run --rm -i -v "$(pwd)":/work amake/innosetup windows-installer.iss
+    fi
 fi
 
 # Done
