@@ -14,6 +14,8 @@ SolidCompression=yes
 ArchitecturesAllowed=x64os
 ; Ensure no admin rights are needed
 PrivilegesRequired=lowest
+; Allow users to change the installation directory
+DisableDirPage=no
 ; Skip the final "Click to finish setup" screen
 DisableFinishedPage=yes
 
