@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QApplication>
 #include <QTimer>
+#include <QProcess>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -30,14 +31,15 @@ private slots:
     void on_playButton_clicked();
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
-    void onGameEnded();
+    void onGameEnded(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:
     Ui::LauncherMainWindow *ui;
 
     void setupPlayExtraMenu();
 
-    void updateAwareButtons();
+    void refreshPlayButtons();
+    void refreshLogfileButton();
 
     bool isKeeperFxInstalled();
     bool askForKeeperFxInstall();

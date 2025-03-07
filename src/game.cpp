@@ -74,6 +74,5 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 
 void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    Q_UNUSED(exitStatus);
-    emit gameEnded(exitCode);
+    emit gameEnded(exitCode, exitStatus);
 }

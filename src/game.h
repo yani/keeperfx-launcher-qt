@@ -27,7 +27,7 @@ public:
     bool start(StartType startType, QVariant data1 = QVariant(), QVariant data2 = QVariant(), QVariant data3 = QVariant());
 
 signals:
-    void gameEnded(int exitCode);
+    void gameEnded(int exitCode, QProcess::ExitStatus exitStatus);
 
 private slots:
     void onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);

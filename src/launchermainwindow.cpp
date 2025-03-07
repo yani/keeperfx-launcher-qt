@@ -167,7 +167,14 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Handle buttons that should be aware of the current installation
     // This will enable/disable specific buttons whether the logfile and the KFX binary exist
-    updateAwareButtons();
+    refreshPlayButtons();
+    refreshLogfileButton();
+
+    // Start checking periodically if the logfile exists
+    // This continious checking is not required but it's an interesting little gimmick
+    QTimer *logfileButtonRefreshTimer = new QTimer();
+    connect(logfileButtonRefreshTimer, &QTimer::timeout, this, &LauncherMainWindow::refreshLogfileButton);
+    logfileButtonRefreshTimer->start(2500);
 
     // Verify the binaries against known certificates
     verifyBinaryCertificates();
@@ -304,13 +311,12 @@ void LauncherMainWindow::setupPlayExtraMenu()
     menu->setDisabled(true); // TODO: disabled until implemented
 }
 
-void LauncherMainWindow::updateAwareButtons() {
-
-    // Handle play buttons
+void LauncherMainWindow::refreshPlayButtons() {
     ui->playButton->setDisabled(isKeeperFxInstalled() == false);
     ui->playExtraButton->setDisabled(isKeeperFxInstalled() == false);
+}
 
-    // Handle logfile button
+void LauncherMainWindow::refreshLogfileButton() {
     QFile logFile(QCoreApplication::applicationDirPath() + "/keeperfx.log");
     ui->logFileButton->setDisabled(logFile.exists() == false);
 }
@@ -595,8 +601,9 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
     // Check if there are any files that should be removed
     checkForFileRemoval();
 
-    // Update play and logfile buttons
-    updateAwareButtons();
+    // Refresh the play buttons
+    // It's possible an update is done that fixes the installation and adds the binary again
+    refreshPlayButtons();
 }
 
 void LauncherMainWindow::checkForKfxUpdate()
@@ -705,15 +712,31 @@ void LauncherMainWindow::on_playButton_clicked()
     ui->playButton->setDisabled(true);
     ui->playExtraButton->setDisabled(true);
 
-    // Start the game
+    // Create game object and hook the end event
     Game *game = new Game(this);
     connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
-    game->start(Game::StartType::NORMAL);
+
+    // Start the game
+    bool startStatus = game->start(Game::StartType::NORMAL);
+
+    // Make sure game is started
+    if (startStatus == false) {
+        qDebug() << "Game failed to start";
+
+        // Refresh the play and logfile buttons
+        refreshPlayButtons();
+        refreshLogfileButton();
+
+        // Show messagebox alerting the user
+        QMessageBox::warning(this,
+                             "KeeperFX",
+                             "Failed to start KeeperFX.");
+    }
 }
 
-void LauncherMainWindow::onGameEnded()
+void LauncherMainWindow::onGameEnded(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    // Make the play buttons visible again
-    ui->playButton->setDisabled(false);
-    ui->playExtraButton->setDisabled(false);
+    // Refresh the play and logfile buttons
+    refreshPlayButtons();
+    refreshLogfileButton();
 }
