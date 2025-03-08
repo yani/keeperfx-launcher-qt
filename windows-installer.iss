@@ -1,7 +1,7 @@
 [Setup]
 ; App
 AppName=KeeperFX
-AppVersion=1.0
+AppVerName=KeeperFX
 DefaultDirName={sd}\Games\KeeperFX
 DefaultGroupName=KeeperFX
 ; Where to build the installer
@@ -26,5 +26,12 @@ Source: "release\win64\7za.dll"; DestDir: "{app}"; Flags: ignoreversion
 [Icons]
 Name: "{group}\KeeperFX"; Filename: "{app}\keeperfx-launcher-qt.exe"
 
+; Run the custom installer of the launcher
+; We do it like this to provide a 'web installer'
 [Run]
 Filename: "{app}\keeperfx-launcher-qt.exe"; Parameters: "--install"; Flags: nowait shellexec
+
+; Remove complete KeeperFX directory on uninstall
+; Reason being that the launcher downloads KeeperFX and the uninstaller would otherwise only uninstall the launcher
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}"
