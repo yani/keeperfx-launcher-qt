@@ -29,6 +29,9 @@ InstallKfxDialog::InstallKfxDialog(QWidget *parent)
 
 void InstallKfxDialog::appendLog(const QString &string)
 {
+    // Log to debug output
+    qDebug() << "Install:" << string;
+
     // Add string to log with timestamp
     QDateTime currentDateTime = QDateTime::currentDateTime();
     QString timestampString = currentDateTime.toString("HH:mm:ss");
