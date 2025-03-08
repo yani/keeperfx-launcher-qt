@@ -46,7 +46,8 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
     this->errorString = QString();
 
     // Log some stuff
-    qInfo() << "Starting gaming ->" << Game::getStringFromStartType(startType);
+    qInfo() << "Setting up game for start";
+    qInfo() << "Start type:" << Game::getStringFromStartType(startType);
     qDebug() << "Data[1]" << data1.toString();
     qDebug() << "Data[2]" << data2.toString();
     qDebug() << "Data[3]" << data3.toString();
@@ -76,20 +77,26 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 
     // Start the process
     #ifdef Q_OS_WINDOWS
+        qInfo() << "Starting game (Windows)";
         process->start(keeperfxBin, params);
     #else
         if (qEnvironmentVariableIsSet("FLATPAK_ID")) {
+            qInfo() << "Starting game (Linux: Flatpak -> Wine)";
             // Run Wine outside Flatpak
             params.prepend(keeperfxBin);
             params.prepend("wine");
             params.prepend("--host");
             process->start("flatpak-spawn", params);
         } else {
+            qInfo() << "Starting game (Linux: Wine)";
             // Normal Wine execution
             params.prepend(keeperfxBin);
             process->start("wine", params);
         }
     #endif
+
+    // Log the full command line
+    qDebug() << "Full command: " + process->program() + " " + process->arguments().join(" ");
 
     // Wait for process to start and check errors
     if (!process->waitForStarted()) {
