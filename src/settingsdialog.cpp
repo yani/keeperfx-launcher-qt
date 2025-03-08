@@ -251,7 +251,6 @@ void SettingsDialog::loadSettings()
     // Resize movies
     // Small fix because "ON" defaults to "FIT", but we just want "FIT" here
     QString resizeMoviesString = Settings::getKfxSetting("RESIZE_MOVIES").toString();
-    qDebug() << "RESIZE_MOVIES" << resizeMoviesString;
     if (resizeMoviesString == "ON") {
         resizeMoviesString = "FIT";
     }
