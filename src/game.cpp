@@ -96,7 +96,7 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
     #endif
 
     // Log the full command line
-    qDebug() << "Full command: " + process->program() + " " + process->arguments().join(" ");
+    qDebug() << "Full command:" << process->program() + " " + process->arguments().join(" ");
 
     // Wait for process to start and check errors
     if (!process->waitForStarted()) {
