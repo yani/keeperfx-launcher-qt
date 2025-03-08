@@ -43,6 +43,14 @@ QVariant Settings::getKfxSetting(QAnyStringView key)
     QVariant value = kfxSettings->value(key);
     QString valueString = value.toString();
 
+    // Fix for 'RESIZE_MOVIES' KeeperFX setting
+    // This setting is set to "ON" by default which would make this a boolean
+    // However, ON should be a string here and is treated different than all the rest
+    // Therefor we simply return the value as a string
+    if (key.toString() == "RESIZE_MOVIES") {
+        return valueString;
+    }
+
     if (valueString == "ON" || valueString == "YES" || valueString == "TRUE") {
         return true;
     }

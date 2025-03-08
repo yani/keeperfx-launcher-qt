@@ -247,8 +247,16 @@ void SettingsDialog::loadSettings()
         Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
     ui->checkBoxSmoothenVideo->setChecked(Settings::getLauncherSetting("GAME_PARAM_VID_SMOOTH")
                                           == true);
+
+    // Resize movies
+    // Small fix because "ON" defaults to "FIT", but we just want "FIT" here
+    QString resizeMoviesString = Settings::getKfxSetting("RESIZE_MOVIES").toString();
+    qDebug() << "RESIZE_MOVIES" << resizeMoviesString;
+    if (resizeMoviesString == "ON") {
+        resizeMoviesString = "FIT";
+    }
     ui->comboBoxResizeMovies->setCurrentIndex(
-        ui->comboBoxResizeMovies->findData(Settings::getKfxSetting("RESIZE_MOVIES").toString()));
+        ui->comboBoxResizeMovies->findData(resizeMoviesString));
 
     // Loop trough the resolutions
     int resolutionIndex = 0;
