@@ -64,7 +64,7 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
     }
 
     // Log parameters
-    if(params.count() > 0){
+    if (params.count() > 0) {
         qInfo() << "Game parameters:" << params.join(" ");
     } else {
         qInfo() << "No game parameters set";
@@ -74,13 +74,22 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
     // For now it's only the .exe release
     QString keeperfxBin = QApplication::applicationDirPath() + "/keeperfx.exe";
 
-// Start the process
-#ifdef Q_OS_WINDOWS
-    process->start(keeperfxBin, params);
-#else
-    params.prepend(keeperfxBin);
-    process->start("wine", params);
-#endif
+    // Start the process
+    #ifdef Q_OS_WINDOWS
+        process->start(keeperfxBin, params);
+    #else
+        if (qEnvironmentVariableIsSet("FLATPAK_ID")) {
+            // Run Wine outside Flatpak
+            params.prepend(keeperfxBin);
+            params.prepend("wine");
+            params.prepend("--host");
+            process->start("flatpak-spawn", params);
+        } else {
+            // Normal Wine execution
+            params.prepend(keeperfxBin);
+            process->start("wine", params);
+        }
+    #endif
 
     // Wait for process to start and check errors
     if (!process->waitForStarted()) {

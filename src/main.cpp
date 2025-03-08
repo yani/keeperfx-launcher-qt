@@ -130,11 +130,20 @@ int main(int argc, char *argv[])
     // Info: Platform
     qInfo() << "Platform:" << QGuiApplication::platformName();
 
+    // Info: Root on linux
     #ifdef Q_OS_LINUX
         if (QString("root") == QString(qgetenv("USER").toLower())) {
             qInfo() << "Running as root";
         }
     #endif
+
+    // Info: Running as flatpak
+    // This can be the case if you are developing in a QtCreator flatpak
+    // We need this info to start the game with a different command
+    // The flatpak should be given the '--filesystem=host' permission
+    if (qEnvironmentVariableIsSet("FLATPAK_ID")) {
+        qInfo() << "Running inside Flatpak: " << qgetenv("FLATPAK_ID");
+    }
 
     // Disable SSL verification
     // TODO: eventually add SSL certs
