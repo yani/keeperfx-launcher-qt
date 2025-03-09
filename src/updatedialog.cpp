@@ -148,11 +148,19 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 
         // Construct the full path to the local file
         QString localFilePath = QCoreApplication::applicationDirPath() + filePath;
-
         QFile file(localFilePath);
-        if (!file.open(QIODevice::ReadOnly)) {
-            appendLog("Failed to open file: " + localFilePath);
+
+        // Check if local file exists
+        if (file.exists() == false) {
+            updateList.append(filePath);
             continue;
+        }
+
+        // Make sure local file is readable
+        // It needs to be for the checksum to work
+        if (!file.open(QIODevice::ReadOnly)) {
+            this->setUpdateFailed("Failed to open file: " + localFilePath);
+            return;
         }
 
         // Calculate CRC32 checksum
