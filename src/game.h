@@ -20,7 +20,7 @@ public:
         LOAD_PACKETSAVE,
     };
 
-    explicit Game(QObject *parent = nullptr);
+    explicit Game(QWidget *parent = nullptr);
 
     static QString getStringFromStartType(StartType startType);
 
@@ -38,6 +38,7 @@ private slots:
     void onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:
+    QWidget *parentWidget;
     QProcess *process;
     QString errorString;
 };

@@ -1,13 +1,15 @@
 #include "game.h"
 #include <QApplication>
-#include <QFileInfo>
-#include <QDir>
 #include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include "crashdialog.h"
 #include "settings.h"
 
-Game::Game(QObject *parent)
+Game::Game(QWidget *parent)
     : QObject(parent)
     , process(new QProcess(this))
+    , parentWidget(parent)
 {
     // Setup the process
     process->setWorkingDirectory(QApplication::applicationDirPath());
@@ -110,6 +112,12 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 
 void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
+    if (exitStatus == QProcess::ExitStatus::NormalExit) {
+    //if (exitStatus == QProcess::ExitStatus::CrashExit) {
+        CrashDialog crashDialog(this->parentWidget);
+        crashDialog.exec();
+    }
+
     emit gameEnded(exitCode, exitStatus);
 }
 
