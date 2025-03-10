@@ -249,39 +249,10 @@ void LauncherMainWindow::setupPlayExtraMenu()
     });
 
     // Add 'Load game'
-    QMenu *saveFilesMenu = menu->addMenu(tr("Load game"));
+    // We store this menu in the main window so we can reload the saves when the game ends
+    this->saveFilesMenu = menu->addMenu(tr("Load game"));
     menu->addMenu(saveFilesMenu);
-
-    // Check if the save file dir exists
-    QDir saveFileDir(QApplication::applicationDirPath() + "/save");
-    if (saveFileDir.exists() == false) {
-        saveFilesMenu->setDisabled(true);
-    } else {
-        // Get the save files
-        QStringList saveFileFilter;
-        saveFileFilter << "fx1g*.sav";
-        QStringList saveFiles = saveFileDir.entryList(saveFileFilter, QDir::Files);
-        if (!saveFiles.isEmpty()) {
-
-            // Add save files to the submenu
-            for (const QString &saveFileFilename : saveFiles) {
-
-                // Get save file
-                SaveFile *saveFile = new SaveFile(saveFileDir.absoluteFilePath(saveFileFilename));
-                if(saveFile->isValid()){
-                    // Add to menu
-                    saveFilesMenu->addAction(saveFile->toString(), [this, saveFile]() {
-
-                        // Handle loading the save file
-                        qDebug() << "Loading save file:" << saveFile;
-                    });
-                }
-            }
-        } else {
-            // Disable the submenu if no save files are found
-            saveFilesMenu->setDisabled(true);
-        }
-    }
+    refreshSaveFilesMenu();
 
     // Direct connect (MP) action
     menu->addAction(tr("Direct connect (MP)"), [this]() {
@@ -309,6 +280,27 @@ void LauncherMainWindow::setupPlayExtraMenu()
 
     // TODO: disabled until implemented
     menu->setDisabled(true); // TODO: disabled until implemented
+}
+
+void LauncherMainWindow::refreshSaveFilesMenu()
+{
+    // Clear any old loaded saves
+    this->saveFilesMenu->clear();
+
+    // Add saves to 'Load game'
+    QList<SaveFile *> saveFileList = SaveFile::getAll();
+    if (saveFileList.empty()) {
+        this->saveFilesMenu->setDisabled(true);
+    } else {
+        this->saveFilesMenu->setDisabled(false);
+        for (SaveFile *saveFile : saveFileList) {
+            this->saveFilesMenu->addAction(saveFile->toString(), [this, saveFile]() {
+
+                // Handle loading the save file
+                qDebug() << "Loading save file:" << saveFile;
+            });
+        }
+    }
 }
 
 void LauncherMainWindow::refreshPlayButtons() {
@@ -745,7 +737,7 @@ void LauncherMainWindow::on_playButton_clicked()
 
 void LauncherMainWindow::onGameEnded(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    // Refresh the play and logfile buttons
     refreshPlayButtons();
     refreshLogfileButton();
+    refreshSaveFilesMenu();
 }

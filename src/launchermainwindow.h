@@ -37,6 +37,8 @@ private:
     Ui::LauncherMainWindow *ui;
 
     void setupPlayExtraMenu();
+    QMenu *saveFilesMenu;
+    void refreshSaveFilesMenu();
 
     void refreshPlayButtons();
     void refreshLogfileButton();

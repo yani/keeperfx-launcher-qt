@@ -18,10 +18,9 @@ public:
     QString campaignName;
 
     bool isValid();
-
     QString toString();
 
-private:
+    static QList<SaveFile *> getAll();
+    static bool checkFileHeader(QFile& file);
 
-    bool checkFileHeader(QFile& file);
 };

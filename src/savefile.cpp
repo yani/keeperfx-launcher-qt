@@ -1,5 +1,8 @@
 #include "savefile.h"
 
+#include <QApplication>
+#include <QDir>
+
 // Constructor
 SaveFile::SaveFile(const QString &filePath)
 {
@@ -49,10 +52,10 @@ SaveFile::SaveFile(const QString &filePath)
             pos++;
         }
 
-        qDebug() << "Savefile loaded:" << toString();
+        qDebug() << "Savefile object created:" << toString();
 
     } catch (QException& ex) {
-        qWarning() << "Save file exception: " << ex.what();
+        qWarning() << "Savefile exception: " << ex.what();
     }
 
     // Make sure the file handle is closed again
@@ -66,6 +69,39 @@ bool SaveFile::isValid() {
 QString SaveFile::toString() {
     // return fileName + ": " + saveName + " (" + campaignName + ")";
     return saveName + " (" + campaignName + ")";
+}
+
+QList<SaveFile *> SaveFile::getAll()
+{
+    QList<SaveFile *> list;
+
+    // Check if the save file dir exists
+    QDir saveFileDir(QApplication::applicationDirPath() + "/save");
+    if (saveFileDir.exists() == false) {
+        return list; // Empty list
+    }
+
+    // Create the filename filter
+    QStringList saveFileFilter;
+    saveFileFilter << "fx1g*.sav";
+
+    // Get savefile paths
+    QStringList saveFiles = saveFileDir.entryList(saveFileFilter, QDir::Files);
+    if (saveFiles.isEmpty()) {
+        return list; // Empty list
+    }
+
+    // Loop trough all files
+    for (const QString &saveFileFilename : saveFiles) {
+        // Try to load this file as a SaveFile
+        SaveFile *saveFile = new SaveFile(saveFileDir.absoluteFilePath(saveFileFilename));
+
+        if (saveFile->isValid()) {
+            list << saveFile;
+        }
+    }
+
+    return list;
 }
 
 bool SaveFile::checkFileHeader(QFile& file) {
