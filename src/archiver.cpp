@@ -1,4 +1,5 @@
 #include "archiver.h"
+
 #ifdef WIN32
 #include "helper.h" // For 64bit check on lib dll
 #endif
@@ -9,34 +10,44 @@
 #include <bit7z/bitextractor.hpp>
 #include <bit7z/bitabstractarchivehandler.hpp>
 #include <bit7z/bitarchivereader.hpp>
+#include <bit7z/bitfilecompressor.hpp>
 
 std::optional<bit7z::Bit7zLibrary> Archiver::lib;
 
 // Initialize the library if it's not already loaded
 void Archiver::loadBit7zLib()
 {
-    if (!lib) { // Only load if it's not already initialized
-#ifdef WIN32
-        bit7z::tstring libPath;
-        if (QFile(QCoreApplication::applicationDirPath() + "/7za.dll").exists()) {
-            libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString()
-                                   + "/7za.dll");
-        } else if (QFile(QCoreApplication::applicationDirPath() + "/7z.dll").exists()) {
-            libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString() + "/7z.dll");
-        } else {
-            qWarning() << "Failed to find 7zip lib to load";
-            return;
-        }
+    // Only load if it's not already initialized
+    if (Archiver::lib) {
+        return;
+    }
 
-        if (!Helper::is64BitDLL(libPath)) {
-            qWarning() << "Not a 64 bit dll:" << libPath;
-        }
+#ifdef WIN32
+    bit7z::tstring libPath;
+    if (QFile(QCoreApplication::applicationDirPath() + "/7za.dll").exists()) {
+        libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString()
+                               + "/7za.dll");
+    } else if (QFile(QCoreApplication::applicationDirPath() + "/7z.dll").exists()) {
+        libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString() + "/7z.dll");
+    } else {
+        qWarning() << "Failed to find 7zip lib to load";
+        return;
+    }
+
+    if (!Helper::is64BitDLL(libPath)) {
+        qWarning() << "Not a 64 bit dll:" << libPath;
+    }
 #else
-        bit7z::tstring libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString()
-                                              + "/7z.so");
+    bit7z::tstring libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString()
+                                          + "/7z.so");
 #endif
-        qDebug() << "7z lib path:" << libPath;
-        lib.emplace(libPath); // Initialize the static library
+
+    qDebug() << "7z lib path:" << libPath;
+    lib.emplace(libPath); // Initialize the static library
+
+    // Make sure lib is loaded now
+    if (!Archiver::lib) {
+        throw std::runtime_error("Failed to load bit7z library");
     }
 }
 
@@ -44,13 +55,40 @@ bit7z::BitArchiveReader Archiver::getReader(std::string filePath)
 {
     // Make sure library is loaded
     Archiver::loadBit7zLib();
-    if (!Archiver::lib) {
-        throw std::runtime_error("Failed to load bit7z library");
-    }
 
     // Create the reader
     // For now only 7z because we use .tmp file extension
     return bit7z::BitArchiveReader{*lib, filePath, bit7z::BitFormat::SevenZip};
+}
+
+bit7z::BitFileCompressor Archiver::getCompressor()
+{
+    // Make sure library is loaded
+    Archiver::loadBit7zLib();
+
+    // Create the compressor
+    // For now only 7z
+    return bit7z::BitFileCompressor{*lib, bit7z::BitFormat::SevenZip};
+}
+
+bool Archiver::compressSingleFile(QFile *inputFile, std::string outputPath)
+{
+    bit7z::BitFileCompressor compressor = Archiver::getCompressor();
+
+    qDebug() << inputFile->fileName().toStdString();
+    qDebug() << outputPath;
+
+    try {
+        compressor.compress({inputFile->fileName().toStdString()}, outputPath);
+
+        return true;
+
+    } catch ( const bit7z::BitException& ex ) {
+
+        qWarning() << "Failed to compress single file:" << ex.what();
+    }
+
+    return false;
 }
 
 uint64_t Archiver::testArchiveAndGetSize(QFile *archiveFile)
