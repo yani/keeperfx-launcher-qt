@@ -1,4 +1,5 @@
 #include "updatedialog.h"
+#include "archiver.h"
 #include "downloader.h"
 #include "updater.h"
 
@@ -251,7 +252,7 @@ void UpdateDialog::updateUsingArchive(QString downloadUrlString)
             // Test the archive and get the output size
             this->ui->progressBar->setFormat("Testing archive...");
             this->appendLog("Testing archive...");
-            uint64_t archiveSize = Updater::testArchiveAndGetSize(outputFile);
+            uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
             if (archiveSize < 0) {
                 this->setUpdateFailed("Archive test failed. It may be corrupted.");
                 return;

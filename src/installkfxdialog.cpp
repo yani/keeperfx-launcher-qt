@@ -9,13 +9,10 @@
 #include <QtConcurrent/QtConcurrent>
 
 #include "apiclient.h"
+#include "archiver.h"
 #include "downloader.h"
 #include "settings.h"
 #include "updater.h"
-
-#include <bit7z/bitabstractarchivehandler.hpp>
-#include <bit7z/bitarchivereader.hpp>
-#include <bit7z/bitextractor.hpp>
 
 InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     : QDialog(parent)
@@ -130,7 +127,7 @@ void InstallKfxDialog::on_installButton_clicked()
             // Test the archive and get the output size
             this->ui->progressBar->setFormat("Testing archive...");
             this->appendLog("Testing stable release archive...");
-            uint64_t archiveSize = Updater::testArchiveAndGetSize(outputFile);
+            uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
             if (archiveSize < 0) {
                 this->setInstallFailed("Stable release archive test failed. It may be corrupted.");
                 return;
@@ -232,7 +229,7 @@ void InstallKfxDialog::on_installButton_clicked()
 
                     // Test the archive and get the output size
                     this->appendLog("Testing alpha patch archive...");
-                    uint64_t archiveSize = Updater::testArchiveAndGetSize(alphaArchiveOutputFile);
+                    uint64_t archiveSize = Archiver::testArchiveAndGetSize(alphaArchiveOutputFile);
                     if (archiveSize < 0) {
                         this->setInstallFailed(
                             "Alpha patch archive test failed. It may be corrupted.");
