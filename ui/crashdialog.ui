@@ -7,69 +7,108 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>575</height>
+    <height>554</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>KeeperFX Crash Report</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>64</width>
-         <height>64</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>64</width>
-         <height>64</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../resources.qrc">:/res/img/creatr_portrt_troll.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-       <property name="margin">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="titleLabel">
-       <property name="font">
-        <font>
-         <family>Verdana</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>KeeperFX has crashed</string>
-       </property>
-       <property name="margin">
-        <number>10</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QWidget" name="topWidget" native="true">
+     <property name="styleSheet">
+      <string notr="true">#topWidget {
+    background-color: #272727;
+    border: 1px solid red;
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>7</number>
+      </property>
+      <property name="topMargin">
+       <number>7</number>
+      </property>
+      <property name="rightMargin">
+       <number>7</number>
+      </property>
+      <property name="bottomMargin">
+       <number>7</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QWidget" name="widgetSpacerLeft" native="true"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="mistressLabel">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../resources.qrc">:/res/img/dead_body_mistress.png</pixmap>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="titleLabel">
+          <property name="font">
+           <font>
+            <family>Verdana</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+ color: #FF0000;
+}</string>
+          </property>
+          <property name="text">
+           <string>KeeperFX has crashed</string>
+          </property>
+          <property name="margin">
+           <number>10</number>
+          </property>
+          <property name="indent">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="hornyLabel">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../resources.qrc">:/res/img/dead_body_horny.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTop|Qt::AlignmentFlag::AlignTrailing</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widgetSpacerRight" native="true"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
-    <widget class="QLabel" name="infoLabel">
+    <widget class="QLabel" name="crashInfoLabel">
      <property name="font">
       <font/>
      </property>
@@ -79,7 +118,13 @@
 }</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;KeeperFX has crashed and failed to recover.&lt;br/&gt;You can select the release version and the installer will do all the work. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;It seems that KeeperFX has crashed and is unable to recover. If you wish to submit technical details about this crash to the KeeperFX developers, you can describe your problem below and click 'Send'. If you add contact details we can contact you later. Additional information such as KeeperFX logfiles and configuration will be sent too.
+&lt;br /&gt;&lt;br/&gt;
+You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfans/keeperfx/issues&quot;&gt;https://github.com/dkfans/keeperfx/issues&lt;/a&gt;
+&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
      <property name="margin">
       <number>10</number>
@@ -87,73 +132,84 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="infoLabel">
      <property name="text">
-      <string>Information</string>
+      <string>Information (Optional)</string>
      </property>
      <property name="margin">
+      <number>3</number>
+     </property>
+     <property name="indent">
       <number>10</number>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget_7" native="true">
+    <widget class="QWidget" name="infoWidget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>15</number>
       </property>
       <item>
-       <widget class="QTextEdit" name="textEdit"/>
+       <widget class="QTextEdit" name="infoTextEdit">
+        <property name="placeholderText">
+         <string>Please explain what happened, and if possible the steps to reproduce this crash.</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="saveFileLabel">
      <property name="text">
-      <string>Savefile</string>
+      <string>Savefile (Optional)</string>
      </property>
      <property name="margin">
+      <number>3</number>
+     </property>
+     <property name="indent">
       <number>10</number>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="saveFileWidget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>20</number>
       </property>
       <item>
-       <widget class="QComboBox" name="comboBox_2"/>
-      </item>
-      <item>
-       <widget class="QWidget" name="widget_8" native="true"/>
-      </item>
-      <item>
-       <widget class="QWidget" name="widget_5" native="true"/>
+       <widget class="QComboBox" name="saveFileComboBox">
+        <property name="placeholderText">
+         <string>If you have a game save that could provide us with more information. You can add it here.</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="contactInfoLabel">
      <property name="text">
-      <string>Contact Information</string>
+      <string>Contact Information (Optional)</string>
      </property>
      <property name="margin">
+      <number>3</number>
+     </property>
+     <property name="indent">
       <number>10</number>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget_6" native="true">
+    <widget class="QWidget" name="contactInfoWidget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <property name="topMargin">
        <number>0</number>
@@ -162,28 +218,33 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="contactInfoLineEdit">
+        <property name="placeholderText">
+         <string>Discord handle, KeeperFX.net username, email address, etc</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="label_5">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
- color: #AAA;
-}</string>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>15</height>
+      </size>
      </property>
-     <property name="text">
-      <string>Additional information such as KeeperFX logfiles and configuration will be sent. </string>
-     </property>
-     <property name="margin">
-      <number>10</number>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget_2" native="true">
+    <widget class="QWidget" name="buttonsWidget" native="true">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -191,11 +252,8 @@
       </size>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="topMargin">
-       <number>9</number>
-      </property>
       <item>
-       <widget class="QWidget" name="widget_4" native="true"/>
+       <widget class="QWidget" name="buttonsWidgetSpacer" native="true"/>
       </item>
       <item>
        <widget class="QPushButton" name="cancelButton">
@@ -220,7 +278,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="installButton">
+       <widget class="QPushButton" name="sendButton">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -245,7 +303,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QWidget" name="widget_3" native="true"/>
+       <widget class="QWidget" name="buttonsWidgetSpacerRight" native="true"/>
       </item>
      </layout>
     </widget>
