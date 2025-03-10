@@ -112,10 +112,15 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 
 void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    if (exitStatus == QProcess::ExitStatus::NormalExit) {
+    // TODO: make this CRASH EXIT again
     //if (exitStatus == QProcess::ExitStatus::CrashExit) {
-        CrashDialog crashDialog(this->parentWidget);
-        crashDialog.exec();
+    if (exitStatus == QProcess::ExitStatus::NormalExit) {
+
+        // Open crash dialog if enabled
+        if(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true){
+            CrashDialog crashDialog(this->parentWidget);
+            crashDialog.exec();
+        }
     }
 
     emit gameEnded(exitCode, exitStatus);
