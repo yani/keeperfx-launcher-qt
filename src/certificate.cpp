@@ -59,7 +59,7 @@ bool Certificate::verify(QFile &file)
 
         std::unique_ptr<LIEF::PE::Binary> binary = LIEF::PE::Parser::parse(filePath.toStdString());
         if (binary == nullptr) {
-            qWarning() << "Failed to parse PE file.";
+            qWarning() << "Failed to parse PE file:" << filePath;
             return false;
         }
 
@@ -77,7 +77,7 @@ bool Certificate::verify(QFile &file)
                     if (signedCertificate == cert) {
 
                         // Success
-                        qDebug() << "Certificate verified successfully.";
+                        qInfo() << "Certificate verified successfully:" << filePath;
                         return true;
                     }
                 }
@@ -85,7 +85,7 @@ bool Certificate::verify(QFile &file)
         }
 
         // Fail
-        qWarning() << "No matching certificate found.";
+        qWarning() << "No matching certificate found:" << filePath;
         return false;
 
     } catch (const std::exception &e) {
