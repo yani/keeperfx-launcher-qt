@@ -10,9 +10,11 @@ class ApiClient
 {
 
 public:
+    enum class HttpMethod { GET, POST };
 
     static QImage downloadImage(QUrl url);
-    static QJsonDocument getJsonResponse(QUrl url);
+
+    static QJsonDocument getJsonResponse(QUrl endpointPath, HttpMethod method = HttpMethod::GET, const QByteArray &postData = QByteArray());
 
     static QJsonObject getLatestStable();
     static QJsonObject getLatestAlpha();

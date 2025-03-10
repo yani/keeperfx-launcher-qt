@@ -46,7 +46,7 @@ QImage ApiClient::downloadImage(QUrl url)
     return image;
 }
 
-QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath)
+QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath, HttpMethod method, const QByteArray &postData)
 {
     // Strip '/api' and slashes from the endpoint path
     QString endpointPathString = endpointPath.toString();
@@ -59,16 +59,20 @@ QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath)
 
     // Create full URL for logging
     QString endpointUrlString = QString(API_BASE_URL) + "/" + endpointPathString;
-    qDebug() << "ApiClient: GET" << endpointUrlString;
+    qDebug() << "ApiClient:" << (method == HttpMethod::GET ? "GET" : "POST") << endpointUrlString;
 
     // Setup network manager and API
     QNetworkAccessManager manager;
-    QNetworkRequestFactory api{{API_BASE_URL}};
+    QNetworkRequest apiRequest(QUrl(QString(API_BASE_URL) + "/" + endpointPathString));
+    apiRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    // Get the request
-    QNetworkReply *reply = manager.get(
-        api.createRequest(endpointPathString)
-    );
+    // Create the network reply object
+    QNetworkReply *reply = nullptr;
+    if (method == HttpMethod::GET) {
+        reply = manager.get(apiRequest);
+    } else if (method == HttpMethod::POST) {
+        reply = manager.post(apiRequest, postData);
+    }
 
     // Create an event loop to wait for the request to finish
     QEventLoop loop;
