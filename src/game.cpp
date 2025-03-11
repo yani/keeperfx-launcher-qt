@@ -19,6 +19,9 @@ Game::Game(QWidget *parent)
             QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
             this,
             &Game::onProcessFinished);
+    /*connect(process, &QProcess::readyReadStandardOutput, this, &Game::handleProcessOutput);
+    connect(process, &QProcess::readyReadStandardError, this, &Game::handleProcessOutput);*/
+
 }
 
 QString Game::getStringFromStartType(StartType startType)
@@ -112,13 +115,23 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 
 void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    // TODO: make this CRASH EXIT again
-    //if (exitStatus == QProcess::ExitStatus::CrashExit) {
-    if (exitStatus == QProcess::ExitStatus::NormalExit) {
+    // Check for crash
+    if (exitStatus == QProcess::ExitStatus::CrashExit || exitCode != 0) {
 
         // Open crash dialog if enabled
         if(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true){
+
+            // Create dialog
             CrashDialog crashDialog(this->parentWidget);
+
+            // Check if there is process output and add it to the dialog object
+            QString stdErrorString = this->process->readAllStandardError();
+            if (stdErrorString.isEmpty() == false) {
+                qDebug() << "Process StdError:" << stdErrorString;
+                crashDialog.setStdErrorString(stdErrorString);
+            }
+
+            // Open the crash dialog
             crashDialog.exec();
         }
     }

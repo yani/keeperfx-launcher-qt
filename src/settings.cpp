@@ -18,6 +18,7 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"CHECK_FOR_UPDATES_RELEASE", "STABLE"},
     {"WEBSITE_INTEGRATION_ENABLED", true},
     {"CRASH_REPORTING_ENABLED", true},
+    {"CRASH_REPORTING_CONTACT", ""},
 
     // Game executable parameters
     // These also go in the launcher config
