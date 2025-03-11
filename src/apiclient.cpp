@@ -10,6 +10,7 @@
 #include <QNetworkRequestFactory>
 
 #define API_BASE_URL "https://keeperfx.net/api"
+//#define API_BASE_URL "http://127.0.0.1:5500/api"
 
 QImage ApiClient::downloadImage(QUrl url)
 {
@@ -46,7 +47,7 @@ QImage ApiClient::downloadImage(QUrl url)
     return image;
 }
 
-QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath, HttpMethod method, const QByteArray &postData)
+QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath, HttpMethod method, QJsonObject jsonPostObject)
 {
     // Strip '/api' and slashes from the endpoint path
     QString endpointPathString = endpointPath.toString();
@@ -71,7 +72,8 @@ QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath, HttpMethod method, c
     if (method == HttpMethod::GET) {
         reply = manager.get(apiRequest);
     } else if (method == HttpMethod::POST) {
-        reply = manager.post(apiRequest, postData);
+        QJsonDocument jsonPostDoc(jsonPostObject);
+        reply = manager.post(apiRequest, jsonPostDoc.toJson());
     }
 
     // Create an event loop to wait for the request to finish

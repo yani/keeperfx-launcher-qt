@@ -5,6 +5,7 @@
 #include <QUrl>
 #include <QImage>
 #include <QJsonDocument>
+#include <QJsonObject>
 
 class ApiClient
 {
@@ -14,7 +15,7 @@ public:
 
     static QImage downloadImage(QUrl url);
 
-    static QJsonDocument getJsonResponse(QUrl endpointPath, HttpMethod method = HttpMethod::GET, const QByteArray &postData = QByteArray());
+    static QJsonDocument getJsonResponse(QUrl endpointPath, HttpMethod method = HttpMethod::GET, QJsonObject jsonPostObject = QJsonObject());
 
     static QJsonObject getLatestStable();
     static QJsonObject getLatestAlpha();
