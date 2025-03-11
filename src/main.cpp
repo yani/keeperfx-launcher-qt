@@ -154,8 +154,6 @@ int main(int argc, char *argv[])
     // Load the launcher and kfx settings
     // Also try and copy over defaults
     Settings::load();
-    Settings::copyNewKfxSettingsFromDefault();
-    Settings::copyMissingLauncherSettings();
 
     // Force dark theme
     setDarkTheme();

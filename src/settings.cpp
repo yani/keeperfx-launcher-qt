@@ -100,16 +100,26 @@ void Settings::load()
 
     // KeeperFX settings
     if (Settings::useOldConfigFilePath()) {
+
         // Use 'keeperfx.cfg' in app folder if kfx version is too old
         // This is bad because eventually we don't want to change any files in the
         // application folder. But older kfx versions do not allow passing a custom config path.
         kfxSettings = new QSettings(QCoreApplication::applicationDirPath() + "/keeperfx.cfg",
                                     settingsCfgFormat);
+
     } else {
+
         // Put kfx settings in a user folder
         kfxSettings = new QSettings(
             settingsCfgFormat, QSettings::UserScope, "keeperfx", "keeperfx");
+
+        // Copy any settings that are present in the 'keeperfx.cfg' file in the application dir
+        copyMissingDefaultSettings();
     }
+
+    // Copy missing alpha settings
+    // This would be the '_keeperfx.cfg' file
+    copyMissingAlphaSettings();
 
     // Launcher settings
     // Will create a file in a user folder
@@ -119,30 +129,23 @@ void Settings::load()
     // Log the paths
     qDebug() << "KeeperFX Settings File (User):" << kfxSettings->fileName();
     qDebug() << "Launcher Settings File (User):" << launcherSettings->fileName();
+
+    // Copy missing launcher settings
+    Settings::copyMissingLauncherSettings();
 }
 
-void Settings::copyNewKfxSettingsFromDefault()
+void Settings::copyMissingSettings(QSettings *fromSettingsFile, QSettings *toSettingsFile)
 {
-    // Get the CFG format used by the original keeperfx.cfg
-    QSettings::Format settingsCfgFormat = SettingsCfgFormat::registerFormat();
-
-    // Try and load default KFX settings
-    // 'keeperfx.cfg' from the app dir
-    QSettings *defaultKfxSettings = new QSettings(QCoreApplication::applicationDirPath()
-                                                      + "/keeperfx.cfg",
-                                                  settingsCfgFormat);
-
     // File not loaded
-    if (defaultKfxSettings->allKeys().isEmpty()) {
-        qDebug() << "Default keeperfx.cfg file not loaded. File not found or it contains no keys";
+    if (fromSettingsFile->allKeys().isEmpty()) {
+        qDebug() << "New settings file not loaded. File not found or it contains no keys";
         return;
     }
 
-    // Loop through all keys in the default 'keeperfx.cfg'
-    foreach (const QString &key, defaultKfxSettings->allKeys()) {
-
+    // Loop through all keys in the new settings file default 'keeperfx.cfg'
+    foreach (const QString &key, fromSettingsFile->allKeys()) {
         // Get the value
-        QVariant value = defaultKfxSettings->value(key);
+        QVariant value = fromSettingsFile->value(key);
         QString valueString = value.toString();
 
         // Fix RESIZE_MOVIES
@@ -153,13 +156,37 @@ void Settings::copyNewKfxSettingsFromDefault()
         }
 
         // Check if user kfx settings misses this key
-        if (!kfxSettings->contains(key)) {
-
+        if (!toSettingsFile->contains(key)) {
             // Copy the setting
-            kfxSettings->setValue(key, value);
-            qDebug() << "Copied kfx setting from defaults:" << key << "=" << value.toString();
+            toSettingsFile->setValue(key, value);
+            qDebug() << "Copied setting:" << key << "=" << value.toString();
         }
     }
+}
+
+void Settings::copyMissingDefaultSettings()
+{
+    // Try and load default KFX settings
+    // 'keeperfx.cfg' from the app dir
+    QSettings *defaultKfxSettings = new QSettings(
+        QCoreApplication::applicationDirPath() + "/keeperfx.cfg",
+        SettingsCfgFormat::registerFormat()
+        );
+
+    copyMissingSettings(defaultKfxSettings, kfxSettings);
+
+}
+
+void Settings::copyMissingAlphaSettings()
+{
+    // Try and load default KFX settings
+    // 'keeperfx.cfg' from the app dir
+    QSettings *newAlphaSettings = new QSettings(
+        QCoreApplication::applicationDirPath() + "/_keeperfx.cfg",
+        SettingsCfgFormat::registerFormat()
+    );
+
+    copyMissingSettings(newAlphaSettings, kfxSettings);
 }
 
 void Settings::copyMissingLauncherSettings()

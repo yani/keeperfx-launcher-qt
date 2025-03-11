@@ -1,6 +1,7 @@
 #include "updatedialog.h"
 #include "archiver.h"
 #include "downloader.h"
+#include "settings.h"
 #include "updater.h"
 
 #include <QFile>
@@ -472,14 +473,21 @@ void UpdateDialog::onFileDownloadProgress()
 
         // If all files have been updated
         if (copiedFiles == updateList.count()) {
-            this->appendLog("Done!");
             this->clearProgressBar();
+
+            // Copy new settings
+            this->appendLog("Copying any new settings");
+            Settings::load();
+
+            // Success!
+            this->appendLog("Done!");
             QMessageBox::information(this,
                                      "KeeperFX",
                                      "KeeperFX has been successfully updated to version "
                                          + this->versionInfo.version + "!");
             this->accept();
             return;
+
         } else {
             this->setUpdateFailed("Failed to move all downloaded files");
         }

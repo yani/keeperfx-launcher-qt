@@ -18,8 +18,6 @@ public:
     static QFile getKfxConfigFile();
 
     static void load();
-    static void copyNewKfxSettingsFromDefault();
-    static void copyMissingLauncherSettings();
 
     static QStringList getGameSettingsParameters();
 
@@ -31,4 +29,9 @@ private:
 
     static QSettings *kfxSettings;
     static QSettings *launcherSettings;
+
+    static void copyMissingSettings(QSettings *fromSettingsFile, QSettings *toSettingsFile);
+    static void copyMissingDefaultSettings();
+    static void copyMissingAlphaSettings();
+    static void copyMissingLauncherSettings();
 };
