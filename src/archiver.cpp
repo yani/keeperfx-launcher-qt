@@ -11,6 +11,7 @@
 #include <bit7z/bitabstractarchivehandler.hpp>
 #include <bit7z/bitarchivereader.hpp>
 #include <bit7z/bitfilecompressor.hpp>
+#include <bit7z/bitfileextractor.hpp>
 
 std::optional<bit7z::Bit7zLibrary> Archiver::lib;
 
@@ -59,6 +60,17 @@ bit7z::BitArchiveReader Archiver::getReader(std::string filePath)
     // Create the reader
     // For now only 7z because we use .tmp file extension
     return bit7z::BitArchiveReader{*lib, filePath, bit7z::BitFormat::SevenZip};
+}
+
+bit7z::BitFileExtractor Archiver::getExtractor()
+{
+
+    // Make sure library is loaded
+    Archiver::loadBit7zLib();
+
+    // Create the reader
+    // For now only 7z because we use .tmp file extension
+    return bit7z::BitFileExtractor{*lib, bit7z::BitFormat::SevenZip};
 }
 
 bit7z::BitFileCompressor Archiver::getCompressor()

@@ -1,15 +1,22 @@
 #pragma once
 
+#include <functional>
+
+#include <QObject>
 #include <QFile>
 #include <QString>
 
-class Updater
+class Updater : public QObject
 {
+    Q_OBJECT
 
 public:
-    static bool updateFromArchive(QFile *archiveFile,
-                                  std::function<bool(uint64_t processed_size)> progressCallback);
-    static bool updateFromGameFileMap(QMap<QString, QString> fileMap,
-                                  std::function<bool(uint64_t processed_size)> progressCallback);
+    explicit Updater(QObject *parent = nullptr);
+    void updateFromArchive(QFile *archiveFile);
+
+signals:
+    void progress(uint64_t processedSize);
+    void updateComplete();
+    void updateFailed(const QString &error);
 
 };

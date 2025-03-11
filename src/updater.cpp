@@ -1,45 +1,53 @@
 #include "updater.h"
 #include "archiver.h"
 
-#include <QFile>
 #include <QFileInfo>
-#include <QTextEdit>
-#include <QProgressBar>
 #include <QCoreApplication>
 #include <QJsonObject>
+#include <QDebug>
+#include <QThread>
 
 #include <bit7z/bitextractor.hpp>
 #include <bit7z/bitabstractarchivehandler.hpp>
 #include <bit7z/bitarchivereader.hpp>
 
-bool Updater::updateFromArchive(
-    QFile *archiveFile,
-    std::function<bool(uint64_t processed_size)> progressCallback
-) {
-    try {
+Updater::Updater(QObject *parent)
+    : QObject(parent)
+{
+}
 
-        // Get file info for the archive file
-        QFileInfo archiveFileInfo(archiveFile->filesystemFileName());
+void Updater::updateFromArchive(QFile *archiveFile)
+{
+    QThread::create([this, archiveFile]() {
 
-        // Get archive reader
-        bit7z::BitArchiveReader archive(Archiver::getReader(
-            archiveFileInfo.absoluteFilePath().toStdString()
-        ));
+        try {
+            // Get file info for the archive file
+            QFileInfo archiveFileInfo(archiveFile->fileName());
 
-        // Destination folder for extraction
-        std::string outputDir = QCoreApplication::applicationDirPath().toStdString();
+            // Get archive reader
+            bit7z::BitArchiveReader archive(Archiver::getReader(
+                archiveFileInfo.absoluteFilePath().toStdString()
+                ));
 
-        // Set progress callback
-        archive.setProgressCallback(progressCallback);
+            // Destination folder for extraction
+            std::string outputDir = QCoreApplication::applicationDirPath().toStdString();
 
-        // Extract it
-        archive.extractTo(outputDir);
+            // Set progress callback
+            archive.setProgressCallback([this](uint64_t processedSize) -> bool {
+                emit progress(processedSize);
+                return true; // Continue processing
+            });
 
-    } catch ( const bit7z::BitException& ex ) {
+            // Extract it
+            archive.extractTo(outputDir);
 
-        qWarning() << "bit7z BitException:" << ex.what();
-        return false;
-    }
+            emit updateComplete();
 
-    return true;
+        } catch (const bit7z::BitException &ex) {
+
+            qWarning() << "bit7z BitException:" << ex.what();
+            emit updateFailed(QString::fromStdString(ex.what()));
+        }
+
+    })->start();
 }

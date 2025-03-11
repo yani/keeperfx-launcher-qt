@@ -15,16 +15,11 @@ Downloader::~Downloader() {
     }
 }
 
-void Downloader::download(const QUrl &url, QFile *localFileOutput, std::function<void(qint64, qint64)> progressCallback, std::function<void(bool)> completionCallback) {
-    this->progressCallback = progressCallback;
-    this->completionCallback = completionCallback;
-
+void Downloader::download(const QUrl &url, QFile *localFileOutput) {
     this->localFileOutput = localFileOutput;
     if (!localFileOutput->open(QIODevice::WriteOnly)) {
         qDebug() << "Failed to open file for writing:" << localFileOutput->errorString();
-        if (completionCallback) {
-            completionCallback(false);
-        }
+        emit downloadCompleted(false);
         delete localFileOutput;
         localFileOutput = nullptr;
         return;
@@ -39,9 +34,7 @@ void Downloader::download(const QUrl &url, QFile *localFileOutput, std::function
 }
 
 void Downloader::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
-    if (progressCallback) {
-        progressCallback(bytesReceived, bytesTotal);
-    }
+    emit downloadProgress(bytesReceived, bytesTotal);
 }
 
 void Downloader::onReadyRead() {
@@ -63,14 +56,14 @@ void Downloader::onFinished() {
         qDebug() << "Download failed:" << reply->errorString();
     }
 
-    if (completionCallback) {
-        completionCallback(success);
-    }
+    emit downloadCompleted(success);
 
+    // Disconnect connected signals
     disconnect(reply, &QNetworkReply::downloadProgress, this, &Downloader::onDownloadProgress);
     disconnect(reply, &QNetworkReply::readyRead, this, &Downloader::onReadyRead);
     disconnect(reply, &QNetworkReply::finished, this, &Downloader::onFinished);
 
+    // Cleanup
     reply->deleteLater();
     reply = nullptr;
 }

@@ -3,11 +3,14 @@
 #include <QDialog>
 #include <QCloseEvent>
 
+#include "kfxversion.h"
+
 namespace Ui {
 class InstallKfxDialog;
 }
 
-class InstallKfxDialog : public QDialog {
+class InstallKfxDialog : public QDialog
+{
     Q_OBJECT
 
 public:
@@ -19,13 +22,37 @@ private slots:
     void on_versionComboBox_currentIndexChanged(int index);
     void on_cancelButton_clicked();
 
-private:
-    Ui::InstallKfxDialog *ui;
+    void onAppendLog(const QString &string);
+    void onInstallFailed(const QString &reason);
+    void onClearProgressBar();
+    void updateProgressBarDownload(qint64 bytesReceived, qint64 bytesTotal);
 
+    void onStableDownloadFinished(bool success);
+    void onStableExtractComplete();
+
+    void onAlphaDownloadFinished(bool success);
+    void onAlphaExtractComplete();
+
+signals:
     void appendLog(const QString &string);
-    void updateProgress(int value);
-    void setProgressMaximum(int value);
-    void clearProgressBar();
     void setInstallFailed(const QString &reason);
+    void clearProgressBar();
+    void updateProgressBar(int value);
+    void setProgressMaximum(int value);
+    void setProgressBarFormat(QString format);
+
+private:
+    void startStableDownload();
+    void onStableArchiveTestComplete(uint64_t archiveSize);
+
+    void startAlphaDownload();
+    void onAlphaArchiveTestComplete(uint64_t archiveSize);
+
+    void testAndExtractArchive(bool isStable);
     void closeEvent(QCloseEvent *event) override;
+
+    Ui::InstallKfxDialog *ui;
+    KfxVersion::ReleaseType installReleaseType;
+    QUrl downloadUrlStable;
+    QUrl downloadUrlAlpha;
 };
