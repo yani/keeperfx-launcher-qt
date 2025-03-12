@@ -122,9 +122,11 @@ if [ "$MODE" == "release" ]; then
 
     # Make an installer
     if [ "$BUILD_INSTALLER" == "ON" ]; then
+        echo "Building installer..."
         docker run --rm -i -v "$(pwd)":/work amake/innosetup windows-installer.iss
     fi
 fi
 
 # Done
+echo ""
 echo "Build complete."
