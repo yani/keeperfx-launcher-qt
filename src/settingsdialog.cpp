@@ -383,6 +383,7 @@ void SettingsDialog::loadSettings()
     ui->comboBoxRelease->setCurrentIndex(ui->comboBoxRelease->findData(Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()));
     ui->checkBoxWebsiteIntegration->setChecked(Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == true);
     ui->checkBoxCrashReporting->setChecked(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true);
+    ui->checkBoxOpenOnGameScreen->setChecked(Settings::getLauncherSetting("OPEN_ON_GAME_SCREEN") == true);
 }
 
 void SettingsDialog::saveSettings()
@@ -507,6 +508,7 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", ui->comboBoxRelease->currentData().toString());
     Settings::setLauncherSetting("WEBSITE_INTEGRATION_ENABLED", ui->checkBoxWebsiteIntegration->isChecked() == true);
     Settings::setLauncherSetting("CRASH_REPORTING_ENABLED", ui->checkBoxCrashReporting->isChecked() == true);
+    Settings::setLauncherSetting("OPEN_ON_GAME_SCREEN", ui->checkBoxOpenOnGameScreen->isChecked() == true);
 
     // Close the settings screen
     this->close();

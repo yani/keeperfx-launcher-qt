@@ -1073,6 +1073,19 @@ height: 35px;
         <string>Enable website integration</string>
        </property>
       </widget>
+      <widget class="QCheckBox" name="checkBoxOpenOnGameScreen">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>260</y>
+         <width>361</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Open on same screen as game</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab7_api">
       <attribute name="title">

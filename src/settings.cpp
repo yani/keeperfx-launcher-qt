@@ -19,6 +19,7 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"WEBSITE_INTEGRATION_ENABLED", true},
     {"CRASH_REPORTING_ENABLED", true},
     {"CRASH_REPORTING_CONTACT", ""},
+    {"OPEN_ON_GAME_SCREEN", false},
 
     // Game executable parameters
     // These also go in the launcher config

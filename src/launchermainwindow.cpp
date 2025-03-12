@@ -69,11 +69,21 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     connect(new QShortcut(QKeySequence(Qt::Key_F5), this), &QShortcut::activated, this, &LauncherMainWindow::loadLatestFromKfxNet);
 
     // Move window to the center of the main screen
-    // TODO: allow user to set a launcher startup monitor
     QList<QScreen *> screens = QGuiApplication::screens();
     if (screens.isEmpty() == false) {
-        QRect geometry = screens[0]->geometry();
-        this->setScreen(screens[0]);
+        int screenIndex = 0;
+
+        // Set launcher to same screen as game
+        if (Settings::getLauncherSetting("OPEN_ON_GAME_SCREEN").toBool() == true) {
+            screenIndex = Settings::getKfxSetting("DISPLAY_NUMBER").toInt() - 1;
+            if (screenIndex >= screens.size()) {
+                screenIndex = 0;
+            }
+        }
+
+        // Set in middle
+        QRect geometry = screens[screenIndex]->geometry();
+        this->setScreen(screens[screenIndex]);
         this->move(
             // We use left() and top() here because the position is absolute and not relative to the screen
             geometry.left() + ((geometry.width() - this->width()) / 2),
