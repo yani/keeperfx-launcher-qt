@@ -95,6 +95,68 @@ int main(int argc, char *argv[])
         qInstallMessageHandler(launcherLogFileHandler);
     }
 
+    // Create an argument list of our current launcher arguments
+    // We do this because we might start a new instance of the launcher
+    QStringList launcherArgumentList;
+    for (int i = 1; i < argc; ++i) { // Start from 1 to skip the program name
+        launcherArgumentList << QString::fromLocal8Bit(argv[i]);
+    }
+
+    // Create Qt objects for this application binary
+    QFile appFile(QCoreApplication::applicationFilePath());
+    QFileInfo appFileInfo(QCoreApplication::applicationFilePath());
+
+    // Check if this launcher instance is a new launcher binary
+    // We do this because when the launcher gets updated it drops a binary with "-new" in its name
+    // This way we can check if we are the new instance of the launcher and overwrite the old one
+    if (appFileInfo.baseName() == "keeperfx-launcher-qt-new") {
+        qDebug() << "We are the \"-new\" launcher and should copy ourselves";
+
+        // Get original binary path
+#ifdef Q_OS_WINDOWS
+        QString defaultAppBinString(QCoreApplication::applicationDirPath()
+                                    + "/keeperfx-launcher-qt.exe");
+#else
+        QString defaultAppBinString(QCoreApplication::applicationDirPath()
+                                    + "/keeperfx-launcher-qt");
+#endif
+
+        // Make sure original launcher is removed
+        QFile defaultAppBinFile(defaultAppBinString);
+        if (defaultAppBinFile.exists()) {
+            defaultAppBinFile.remove();
+            qDebug() << "Default launcher removed";
+        }
+
+        // Copy this updated launcher in place of the old one
+        appFile.copy(defaultAppBinString);
+        qDebug() << "Copied \"-new\" launcher as default launcher";
+
+        // Start the copied launcher
+        QProcess::startDetached(defaultAppBinString, launcherArgumentList);
+        return 0;
+
+    } else if (appFileInfo.baseName() == "keeperfx-launcher-qt") {
+        // We are the default launcher binary
+        // So we can remove the "-new" one if it exists
+
+        // Get original binary path
+#ifdef Q_OS_WINDOWS
+        QString newAppBinString(QCoreApplication::applicationDirPath()
+                                + "/keeperfx-launcher-qt-new.exe");
+#else
+        QString newAppBinString(QCoreApplication::applicationDirPath()
+                                + "/keeperfx-launcher-qt-new");
+#endif
+
+        // Check if copied launcher exists and remove it
+        QFile newAppBin(newAppBinString);
+        if (newAppBin.exists()) {
+            newAppBin.remove();
+            qDebug() << "Launcher \"-new\" removed";
+        }
+    }
+
     // Detect if we need to switch from wayland to xcb (on UNIX)
     // We prefer xcb because wayland is missing a few features we'd like:
     // - position our window in the middle of the screen
@@ -106,19 +168,15 @@ int main(int argc, char *argv[])
             qunsetenv("SESSION_MANAGER");
             // Set platform to xcb
             qputenv("QT_QPA_PLATFORM", "xcb");
-            // Convert argv to QStringList
-            QStringList argumentList;
-            for (int i = 1; i < argc; ++i) { // Start from 1 to skip the program name
-                argumentList << QString::fromLocal8Bit(argv[i]);
-            }
             // Run new process and pipe return value
-            return QProcess::execute(argv[0], argumentList);
+            return QProcess::execute(argv[0], launcherArgumentList);
         }
     #endif
 
     // Info: Log some stuff
-    qInfo() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
-    qInfo() << "Launcher Version:" << LAUNCHER_VERSION;
+        qInfo() << "Launcher Binary:" << QCoreApplication::applicationFilePath();
+        qInfo() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
+        qInfo() << "Launcher Version:" << LAUNCHER_VERSION;
 
     // Info: OS
     #ifdef WIN32
