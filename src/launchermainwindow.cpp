@@ -587,6 +587,22 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
         this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
     }
 
+    // Get the executable path of a possible updated launcher
+#ifdef Q_OS_WINDOWS
+    QString newAppBinString(QCoreApplication::applicationDirPath()
+                            + "/keeperfx-launcher-qt-new.exe");
+#else
+    QString newAppBinString(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt-new");
+#endif
+
+    // Check if new launcher update exists
+    QFile newAppBin(newAppBinString);
+    if (newAppBin.exists()) {
+        // Start the new launcher
+        QProcess::startDetached(newAppBinString, LauncherOptions::argumentList);
+        QApplication::quit();
+    }
+
     // Verify the binaries against known certificates
     verifyBinaryCertificates();
 

@@ -91,15 +91,14 @@ int main(int argc, char *argv[])
     LauncherOptions::processApp(app);
 
     // Check if we need to write debug logs to a logfile
-    if(LauncherOptions::isSet("log-debug") == true){
+    if (LauncherOptions::isSet("log-debug") == true) {
         qInstallMessageHandler(launcherLogFileHandler);
     }
 
     // Create an argument list of our current launcher arguments
     // We do this because we might start a new instance of the launcher
-    QStringList launcherArgumentList;
     for (int i = 1; i < argc; ++i) { // Start from 1 to skip the program name
-        launcherArgumentList << QString::fromLocal8Bit(argv[i]);
+        LauncherOptions::argumentList << QString::fromLocal8Bit(argv[i]);
     }
 
     // Create Qt objects for this application binary
@@ -133,7 +132,7 @@ int main(int argc, char *argv[])
         qDebug() << "Copied \"-new\" launcher as default launcher";
 
         // Start the copied launcher
-        QProcess::startDetached(defaultAppBinString, launcherArgumentList);
+        QProcess::startDetached(defaultAppBinString, LauncherOptions::argumentList);
         return 0;
 
     } else if (appFileInfo.baseName() == "keeperfx-launcher-qt") {
@@ -169,7 +168,7 @@ int main(int argc, char *argv[])
             // Set platform to xcb
             qputenv("QT_QPA_PLATFORM", "xcb");
             // Run new process and pipe return value
-            return QProcess::execute(argv[0], launcherArgumentList);
+            return QProcess::execute(argv[0], LauncherOptions::argumentList);
         }
     #endif
 
