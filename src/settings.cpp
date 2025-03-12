@@ -108,6 +108,8 @@ void Settings::load()
         kfxSettings = new QSettings(QCoreApplication::applicationDirPath() + "/keeperfx.cfg",
                                     settingsCfgFormat);
 
+        qInfo() << "KeeperFX Settings File (App):" << kfxSettings->fileName();
+
     } else {
 
         // Put kfx settings in a user folder
@@ -116,6 +118,8 @@ void Settings::load()
 
         // Copy any settings that are present in the 'keeperfx.cfg' file in the application dir
         copyMissingDefaultSettings();
+
+        qInfo() << "KeeperFX Settings File (User):" << kfxSettings->fileName();
     }
 
     // Copy missing alpha settings
@@ -128,8 +132,7 @@ void Settings::load()
         settingsCfgFormat, QSettings::UserScope, "keeperfx", "launcher");
 
     // Log the paths
-    qDebug() << "KeeperFX Settings File (User):" << kfxSettings->fileName();
-    qDebug() << "Launcher Settings File (User):" << launcherSettings->fileName();
+    qInfo() << "Launcher Settings File (User):" << launcherSettings->fileName();
 
     // Copy missing launcher settings
     Settings::copyMissingLauncherSettings();
