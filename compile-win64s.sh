@@ -125,6 +125,9 @@ if [ "$MODE" == "release" ]; then
         echo "Building installer..."
         docker run --rm -i -v "$(pwd)":/work amake/innosetup windows-installer.iss
     fi
+
+    # Show release directory output
+    ls -lh "$(pwd)/release/win64/"
 fi
 
 # Done
