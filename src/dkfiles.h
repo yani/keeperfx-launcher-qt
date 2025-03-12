@@ -1,5 +1,7 @@
 #pragma once
 
+#include <optional>
+
 #include <QStringList>
 #include <QDir>
 
@@ -11,7 +13,7 @@ public:
     static QStringList getFilePathCases(QString dir, QString fileName);
     static bool isValidDkDir(QDir dir);
     static bool isValidDkDirPath(QString path);
-    static QDir findExistingDkInstallDir();
+    static std::optional<QDir> findExistingDkInstallDir();
     static bool copyDkDirToDir(QDir dir, QDir toDir);
     static bool isCurrentAppDirValidDkDir();
 

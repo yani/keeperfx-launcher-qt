@@ -18,11 +18,11 @@ CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     setFixedSize(size()); // Prevent resizing by setting fixed size
 
     // Automatically check for a DK install directory
-    QDir existingDkInstallDir = DkFiles::findExistingDkInstallDir();
-    if(!existingDkInstallDir.isEmpty()){
-        qDebug() << "Automatically detected DK dir:" << existingDkInstallDir.absolutePath();
+    auto existingDkInstallDir = DkFiles::findExistingDkInstallDir();
+    if (existingDkInstallDir) {
+        qDebug() << "Automatically detected DK dir:" << existingDkInstallDir->absolutePath();
         ui->autoFoundLabel->setText("A suitable DK installation has been automatically detected.");
-        ui->browseInput->setText(existingDkInstallDir.absolutePath());
+        ui->browseInput->setText(existingDkInstallDir->absolutePath());
     }
 }
 
@@ -44,6 +44,9 @@ void CopyDkFilesDialog::on_browseButton_clicked()
         ui->browseInput->setText("");
         QMessageBox::warning(this, "Original DK files not found", "The chosen directory does not contain all of the required files. Please select an original Dungeon Keeper installation.");
     }
+
+    // Hide the auto found text
+    ui->autoFoundLabel->setText("");
 }
 
 void CopyDkFilesDialog::on_copyButton_clicked()

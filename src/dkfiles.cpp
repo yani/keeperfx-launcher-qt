@@ -150,10 +150,9 @@ bool DkFiles::isValidDkDirPath(QString path)
     return (dir.exists() && isValidDkDir(dir));
 }
 
-QDir DkFiles::findExistingDkInstallDir()
+std::optional<QDir> DkFiles::findExistingDkInstallDir()
 {
-    for (const QString& path : getInstallPaths())
-    {
+    for (const QString& path : getInstallPaths()) {
         QDir dir(path);
 
         if(dir.exists() && isValidDkDir(dir)){
@@ -161,7 +160,7 @@ QDir DkFiles::findExistingDkInstallDir()
         }
     }
 
-    return QDir();
+    return std::nullopt;
 }
 
 bool DkFiles::copyDkDirToDir(QDir dir, QDir toDir)
