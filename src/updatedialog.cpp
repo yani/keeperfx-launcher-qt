@@ -401,9 +401,9 @@ void UpdateDialog::onFileDownloadProgress()
 
         // Define rename rules
         QMap<QString, QString> renameRules = {
-                                              {"/keeperfx.cfg", "/_keeperfx.cfg"},
-                                              {"/keeperfx-launcher-qt.ex", "/keeperfx-launcher-qt-new.exe"},
-                                              };
+            {"/keeperfx.cfg", "/_keeperfx.cfg"},
+            {"/keeperfx-launcher-qt.exe", "/keeperfx-launcher-qt-new.exe"},
+        };
 
         // Set progress bar
         emit setProgressBarFormat(QString("Copying: %p%"));
