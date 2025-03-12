@@ -18,6 +18,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Hide 'Multiplayer' tab until a future update requires it
+    ui->tabWidget->tabBar()->setTabVisible(4, false);
+
     // Reset setting has changed variable
     settingHasChanged = false;
 
