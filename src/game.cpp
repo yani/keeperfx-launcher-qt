@@ -84,7 +84,12 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
 
     // Get the game binary
     // For now it's only the .exe release
-    QString keeperfxBin = QApplication::applicationDirPath() + "/keeperfx.exe";
+    QString keeperfxBin;
+    if (Settings::getLauncherSetting("GAME_HEAVY_LOG_ENABLED").toBool() == true) {
+        keeperfxBin = QApplication::applicationDirPath() + "/keeperfx_hvlog.exe";
+    } else {
+        keeperfxBin = QApplication::applicationDirPath() + "/keeperfx.exe";
+    }
 
     // Start the process
     #ifdef Q_OS_WINDOWS

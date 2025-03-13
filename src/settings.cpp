@@ -18,6 +18,7 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"CRASH_REPORTING_ENABLED", true},
     {"CRASH_REPORTING_CONTACT", ""},
     {"OPEN_ON_GAME_SCREEN", false},
+    {"GAME_HEAVY_LOG_ENABLED", false},
 
     // Game executable parameters
     // These also go in the launcher config

@@ -291,12 +291,24 @@ void LauncherMainWindow::setupPlayExtraMenu()
                     })
         ->setDisabled(true); // TODO: disabled until implemented
 
-    // Run heavylog action
+    // Heavylog toggle
     QFile heavyLogBin(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
     if (heavyLogBin.exists()) {
-        menu->addAction(tr("Run heavylog"), [this]() {
-            // Handle run heavylog logic here
-            qDebug() << "Run heavylog selected!";
+        // Create menu item
+        QAction *heavyLogAction = menu->addAction(tr("Heavylog"));
+        heavyLogAction->setCheckable(true);
+        // Store if heavylog is enabled
+        bool heavyLogEnabled = Settings::getLauncherSetting("GAME_HEAVY_LOG_ENABLED").toBool();
+        // Set toggle state of menu item
+        heavyLogAction->setChecked(heavyLogEnabled);
+        // Update play button
+        ui->playButton->setText(heavyLogEnabled ? "  Play (hvlog)" : "Play");
+        // Connect heavylog toggle
+        connect(heavyLogAction, &QAction::triggered, this, [this, heavyLogAction]() {
+            bool enabled = heavyLogAction->isChecked();
+            ui->playButton->setText(enabled ? "  Play (hvlog)" : "Play");
+            // Update settings to remember this
+            Settings::setLauncherSetting("GAME_HEAVY_LOG_ENABLED", enabled);
         });
     }
 
