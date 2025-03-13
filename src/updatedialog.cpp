@@ -290,6 +290,13 @@ void UpdateDialog::onUpdateComplete()
     emit appendLog("Extraction completed");
     emit clearProgressBar();
 
+    // Remove temp archive
+    emit appendLog("Removing temporary archive");
+    QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(versionInfo.downloadUrl).fileName() + ".tmp");
+    if (archiveFile->exists()) {
+        archiveFile->remove();
+    }
+
     emit appendLog("Done!");
     QMessageBox::information(this, "KeeperFX", "KeeperFX has been successfully updated to version " + versionInfo.version + "!");
     accept();

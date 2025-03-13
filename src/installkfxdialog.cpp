@@ -143,6 +143,13 @@ void InstallKfxDialog::onStableExtractComplete()
     emit appendLog("Extraction completed");
     emit clearProgressBar();
 
+    // Remove temp archive
+    emit appendLog("Removing temporary archive");
+    QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlStable.fileName() + ".tmp");
+    if (archiveFile->exists()) {
+        archiveFile->remove();
+    }
+
     if (this->installReleaseType == KfxVersion::ReleaseType::ALPHA) {
         startAlphaDownload();
     } else {
@@ -229,6 +236,13 @@ void InstallKfxDialog::onAlphaExtractComplete()
 {
     emit appendLog("Extraction completed");
     emit clearProgressBar();
+
+    // Remove temp archive
+    emit appendLog("Removing temporary archive");
+    QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp");
+    if (archiveFile->exists()) {
+        archiveFile->remove();
+    }
 
     emit appendLog("Done!");
     QMessageBox::information(this, "KeeperFX", "KeeperFX has been successfully installed!");
