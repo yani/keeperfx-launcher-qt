@@ -18,6 +18,8 @@ PrivilegesRequired=lowest
 DisableDirPage=no
 ; Skip the final "Click to finish setup" screen
 DisableFinishedPage=yes
+; Add extra bytes to the calculated total size (because we download KeeperFX ourselves)
+ExtraDiskSpaceRequired=640329910
 
 [Files]
 Source: "release\win64\keeperfx-launcher-qt.exe"; DestDir: "{app}"; Flags: ignoreversion
