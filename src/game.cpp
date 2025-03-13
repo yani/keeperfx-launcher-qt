@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include "crashdialog.h"
+#include "kfxversion.h"
 #include "settings.h"
 
 Game::Game(QWidget *parent)
@@ -33,10 +34,10 @@ QString Game::getStringFromStartType(StartType startType)
         return "Heavy Log";
     case DIRECT_CONNECT:
         return "Direct Connect";
-    case LOAD_MAP:
-        return "Load Map";
-    case LOAD_CAMPAIGN:
-        return "Load Campaign";
+    case MAP:
+        return "Map";
+    case CAMPAIGN:
+        return "Campaign";
     case LOAD_SAVE:
         return "Load Save";
     case LOAD_PACKETSAVE:
@@ -61,12 +62,17 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
     QStringList params = Settings::getGameSettingsParameters();
 
     // If version is too old for custom -config path we'll use the default 'keeperfx.cfg' instead
-    if (Settings::useOldConfigFilePath() == false) {
+    if (KfxVersion::hasFunctionality("absolute_config_path") == true) {
         // Add '-config' parameter with our custom keeperfx.cfg
         QFileInfo configFileInfo(Settings::getKfxConfigFile());
         params << "-config" << QDir::toNativeSeparators(configFileInfo.absoluteFilePath());
     } else {
         qWarning() << "Game version too old for custom config path";
+    }
+
+    // Campaign
+    if (startType == StartType::CAMPAIGN) {
+        params << "-campaign" << data1.toString();
     }
 
     // Log parameters

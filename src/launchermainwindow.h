@@ -1,5 +1,6 @@
 #pragma once
 
+#include "game.h"
 #include "kfxversion.h"
 
 #include <QMainWindow>
@@ -35,10 +36,17 @@ private slots:
 
 private:
     Ui::LauncherMainWindow *ui;
+    Game *game;
+
+    void startGame(Game::StartType startType, QVariant data1 = QVariant(), QVariant data2 = QVariant(), QVariant data3 = QVariant());
 
     void setupPlayExtraMenu();
+
     QMenu *saveFilesMenu;
     void refreshSaveFilesMenu();
+
+    QMenu *campaignMenu;
+    void refreshCampaignMenu();
 
     void refreshPlayButtons();
     void refreshLogfileButton();

@@ -14,8 +14,8 @@ public:
         NORMAL,
         HVLOG,
         DIRECT_CONNECT,
-        LOAD_MAP,
-        LOAD_CAMPAIGN,
+        MAP,
+        CAMPAIGN,
         LOAD_SAVE,
         LOAD_PACKETSAVE,
     };

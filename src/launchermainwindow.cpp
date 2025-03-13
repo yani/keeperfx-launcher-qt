@@ -15,6 +15,7 @@
 #include <QProcess>
 
 #include "apiclient.h"
+#include "campaign.h"
 #include "certificate.h"
 #include "copydkfilesdialog.h"
 #include "dkfiles.h"
@@ -37,6 +38,7 @@
 LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LauncherMainWindow)
+    , game(new Game(parent))
 {
     ui->setupUi(this);
 
@@ -195,6 +197,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Check for updates
     connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
     checkForKfxUpdate();
+
+    // Hook game-end event
+    connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
 }
 
 LauncherMainWindow::~LauncherMainWindow()
@@ -243,57 +248,68 @@ void LauncherMainWindow::hideLoadingSpinner(bool showOnlineContent)
 
 void LauncherMainWindow::setupPlayExtraMenu()
 {
-
     QMenu *menu = new QMenu(this);
 
     // Play map action
-    menu->addAction(tr("Play map"), [this]() {
-        // Handle play map logic here
-        qDebug() << "Play map selected!";
-    });
+    menu->addAction(tr("Play map"),
+                    [this]() {
+                        // Handle play map logic here
+                        qDebug() << "Play map selected!";
+                    })
+        ->setDisabled(true); // TODO: disabled until implemented
 
     // Play campaign action
-    menu->addAction(tr("Play campaign"), [this]() {
-        // Handle play campaign logic here
-        qDebug() << "Play campaign selected!";
-    });
+    if (KfxVersion::hasFunctionality("start_campaign_directly") == true) {
+        this->campaignMenu = menu->addMenu(tr("Play campaign"));
+        menu->addMenu(campaignMenu);
+        refreshCampaignMenu();
+    }
 
     // Add 'Load game'
     // We store this menu in the main window so we can reload the saves when the game ends
-    this->saveFilesMenu = menu->addMenu(tr("Load game"));
-    menu->addMenu(saveFilesMenu);
-    refreshSaveFilesMenu();
+    if (KfxVersion::hasFunctionality("load_save_directly") == true) {
+        this->saveFilesMenu = menu->addMenu(tr("Load save game"));
+        menu->addMenu(saveFilesMenu);
+        refreshSaveFilesMenu();
+    }
 
     // Direct connect (MP) action
-    menu->addAction(tr("Direct connect (MP)"), [this]() {
-        // Handle direct connect logic here
-        qDebug() << "Direct connect (MP) selected!";
-    });
+    if (KfxVersion::hasFunctionality("direct_connect") == true) {
+        menu->addAction(tr("Direct connect (MP)"),
+                        [this]() {
+                            // Handle direct connect logic here
+                            qDebug() << "Direct connect (MP) selected!";
+                        })
+            ->setDisabled(true); // TODO: disabled until implemented
+    }
 
     // Run packetsave action
-    menu->addAction(tr("Run packetfile"), [this]() {
-        // Handle run packetsave logic here
-        qDebug() << "Run packetsave selected!";
-    });
+    menu->addAction(tr("Run packetfile"),
+                    [this]() {
+                        // Handle run packetsave logic here
+                        qDebug() << "Run packetsave selected!";
+                    })
+        ->setDisabled(true); // TODO: disabled until implemented
 
     // Run heavylog action
     QFile heavyLogBin(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
-    menu->addAction(tr("Run heavylog"), [this]() {
-        // Handle run heavylog logic here
-        qDebug() << "Run heavylog selected!";
-    })->setDisabled(
-        heavyLogBin.exists() == false
-    );
+    if (heavyLogBin.exists()) {
+        menu->addAction(tr("Run heavylog"), [this]() {
+            // Handle run heavylog logic here
+            qDebug() << "Run heavylog selected!";
+        });
+    }
 
     // Attach the menu to the button
     ui->playExtraButton->setMenu(menu);
-
-    // TODO: disabled until implemented
-    menu->setDisabled(true); // TODO: disabled until implemented
 }
 
 void LauncherMainWindow::refreshSaveFilesMenu()
 {
+    if (KfxVersion::hasFunctionality("load_save_directly") == false) {
+        return;
+    }
+
     // Clear any old loaded saves
     this->saveFilesMenu->clear();
 
@@ -305,9 +321,34 @@ void LauncherMainWindow::refreshSaveFilesMenu()
         this->saveFilesMenu->setDisabled(false);
         for (SaveFile *saveFile : saveFileList) {
             this->saveFilesMenu->addAction(saveFile->toString(), [this, saveFile]() {
-
                 // Handle loading the save file
                 qDebug() << "Loading save file:" << saveFile;
+                // TODO: startGame(Game::StartType::LOAD_SAVE, saveFile->saveName);
+            });
+        }
+    }
+}
+
+void LauncherMainWindow::refreshCampaignMenu()
+{
+    if (KfxVersion::hasFunctionality("start_campaign_directly") == false) {
+        return;
+    }
+
+    // Clear any old loaded campaigns in the list
+    this->campaignMenu->clear();
+
+    // Add campaigns to 'Start campaign'
+    QList<Campaign *> campaignList = Campaign::getAll();
+    if (campaignList.empty()) {
+        this->campaignMenu->setDisabled(true);
+    } else {
+        this->campaignMenu->setDisabled(false);
+        for (Campaign *campaign : campaignList) {
+            this->campaignMenu->addAction(campaign->toString(), [this, campaign]() {
+                // Start campaign
+                qDebug() << "Starting campaign:" << campaign->toString();
+                startGame(Game::StartType::CAMPAIGN, campaign->campaignShortName);
             });
         }
     }
@@ -724,18 +765,14 @@ void LauncherMainWindow::verifyBinaryCertificates()
     }
 }
 
-void LauncherMainWindow::on_playButton_clicked()
+void LauncherMainWindow::startGame(Game::StartType startType, QVariant data1, QVariant data2, QVariant data3)
 {
     // Disable the play buttons
     ui->playButton->setDisabled(true);
     ui->playExtraButton->setDisabled(true);
 
-    // Create game object and hook the end event
-    Game *game = new Game(this);
-    connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
-
     // Start the game
-    bool startStatus = game->start(Game::StartType::NORMAL);
+    bool startStatus = game->start(startType, data1, data2, data3);
 
     // Make sure game is started
     if (startStatus == false) {
@@ -749,16 +786,18 @@ void LauncherMainWindow::on_playButton_clicked()
         QString errorString = game->getErrorString();
 
         // Show messagebox alerting the user
-        if(errorString.isEmpty() == false){
-            QMessageBox::warning(this,
-                                 "KeeperFX",
-                                 "Failed to start KeeperFX.\n\nError:\n" + errorString);
+        if (errorString.isEmpty() == false) {
+            qDebug() << "Game start error:" << errorString;
+            QMessageBox::warning(this, "KeeperFX", "Failed to start KeeperFX.\n\nError:\n" + errorString);
         } else {
-            QMessageBox::warning(this,
-                                 "KeeperFX",
-                                 "Failed to start KeeperFX. Unknown error.");
+            QMessageBox::warning(this, "KeeperFX", "Failed to start KeeperFX. Unknown error.");
         }
     }
+}
+
+void LauncherMainWindow::on_playButton_clicked()
+{
+    startGame(Game::StartType::NORMAL);
 }
 
 void LauncherMainWindow::onGameEnded(int exitCode, QProcess::ExitStatus exitStatus)
@@ -766,4 +805,7 @@ void LauncherMainWindow::onGameEnded(int exitCode, QProcess::ExitStatus exitStat
     refreshPlayButtons();
     refreshLogfileButton();
     refreshSaveFilesMenu();
+
+    // Not really required but good to occasionally refresh
+    refreshCampaignMenu();
 }
