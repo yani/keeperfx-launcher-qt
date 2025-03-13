@@ -21,7 +21,7 @@ DisableFinishedPage=yes
 
 [Files]
 Source: "release\win64\keeperfx-launcher-qt.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\win64\7za.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "release\win64\*.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\KeeperFX"; Filename: "{app}\keeperfx-launcher-qt.exe"
