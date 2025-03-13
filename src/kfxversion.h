@@ -32,6 +32,9 @@ public:
         QString downloadUrl = QString();
     };
 
+    static const QMap<QString, QString> versionFunctionaltyMap;
+    static bool hasFunctionality(QString functionalityString);
+
     static VersionInfo currentVersion;
 
     static QString getVersionString(QFile binary);
@@ -41,6 +44,7 @@ public:
     static bool loadCurrentVersion();
 
     static bool isVersionLowerOrEqual(const QString &fileVersion, const QString &currentVersion);
+    static bool isVersionHigherOrEqual(const QString &fileVersion, const QString &currentVersion);
     static bool isNewerVersion(const QString &fileVersion, const QString &currentVersion);
 
     static std::optional<VersionInfo> getLatestVersion(ReleaseType type);

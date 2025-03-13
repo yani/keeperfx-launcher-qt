@@ -9,8 +9,6 @@
 QSettings *Settings::kfxSettings;
 QSettings *Settings::launcherSettings;
 
-const QString Settings::MinKfxVersionForNewConfigLoc("1.2.0.4399");
-
 QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
 
     // Launcher settings
@@ -100,8 +98,7 @@ void Settings::load()
     QSettings::Format settingsCfgFormat = SettingsCfgFormat::registerFormat();
 
     // KeeperFX settings
-    if (Settings::useOldConfigFilePath()) {
-
+    if (KfxVersion::hasFunctionality("absolute_config_path") == false) {
         // Use 'keeperfx.cfg' in app folder if kfx version is too old
         // This is bad because eventually we don't want to change any files in the
         // application folder. But older kfx versions do not allow passing a custom config path.
@@ -111,7 +108,6 @@ void Settings::load()
         qInfo() << "KeeperFX Settings File (App):" << kfxSettings->fileName();
 
     } else {
-
         // Put kfx settings in a user folder
         kfxSettings = new QSettings(
             settingsCfgFormat, QSettings::UserScope, "keeperfx", "keeperfx");
@@ -226,12 +222,4 @@ QStringList Settings::getGameSettingsParameters()
     }
 
     return paramList;
-}
-
-bool Settings::useOldConfigFilePath()
-{
-    return KfxVersion::isVersionLowerOrEqual(
-        KfxVersion::currentVersion.version,
-        Settings::MinKfxVersionForNewConfigLoc
-    );
 }

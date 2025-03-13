@@ -7,6 +7,13 @@
 
 #include <LIEF/PE.hpp>
 
+#define MIN_VERSION_NEW_CONFIG
+
+const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
+    {"absolute_config_path", "9.9.9"},    // TODO: https://github.com/dkfans/keeperfx/pull/3915
+    {"start_campaign_directly", "9.9.9"}, // TODO: https://github.com/dkfans/keeperfx/issues/3924
+};
+
 KfxVersion::VersionInfo KfxVersion::currentVersion;
 
 QString KfxVersion::getVersionString(QFile binary){
@@ -160,6 +167,33 @@ bool KfxVersion::isVersionLowerOrEqual(const QString &version1, const QString &v
     return true;
 }
 
+bool KfxVersion::isVersionHigherOrEqual(const QString &version1, const QString &version2)
+{
+    // Get version parts
+    QStringList version1Parts = version1.split(".");
+    QStringList version2Parts = version2.split(".");
+
+    // Normalize version parts to equal sizes
+    int maxLength = qMax(version1Parts.size(), version2Parts.size());
+    while (version1Parts.size() < maxLength)
+        version1Parts.append("0");
+    while (version2Parts.size() < maxLength)
+        version2Parts.append("0");
+
+    // Loop trough the version parts
+    for (int i = 0; i < maxLength; ++i) {
+        // Check if version is newer or older
+        if (version1Parts[i].toInt() > version2Parts[i].toInt()) {
+            return true;
+        } else if (version1Parts[i].toInt() < version2Parts[i].toInt()) {
+            return false;
+        }
+    }
+
+    // Versions are equal
+    return true;
+}
+
 bool KfxVersion::isNewerVersion(const QString &version1, const QString &version2)
 {
     // Get version parts
@@ -246,4 +280,9 @@ std::optional<QMap<QString, QString>> KfxVersion::getGameFileMap(KfxVersion::Rel
     }
 
     return fileMap;
+}
+
+bool KfxVersion::hasFunctionality(QString functionalityString)
+{
+    return isVersionHigherOrEqual(currentVersion.version, versionFunctionaltyMap.value(functionalityString));
 }
