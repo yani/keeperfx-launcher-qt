@@ -27,6 +27,7 @@ private slots:
 
     void onFileDownloadProgress();
     void onArchiveDownloadFinished(bool success);
+    void onArchiveTestComplete(uint64_t archiveSize);
     void onUpdateComplete();
 
     void onAppendLog(const QString &string);
@@ -53,8 +54,6 @@ private:
     QStringList updateList;
     void updateUsingFilemap(QMap<QString, QString> fileMap);
     void updateUsingArchive(QString downloadUrl);
-
-    void onArchiveTestComplete(uint64_t archiveSize);
 
     QDir tempDir;
     int totalFiles;

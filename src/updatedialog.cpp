@@ -12,6 +12,7 @@
 #include <QNetworkReply>
 #include <QStandardPaths>
 #include <QThread>
+#include <QThreadPool>
 
 #include <zlib.h>
 
@@ -255,12 +256,11 @@ void UpdateDialog::onArchiveDownloadFinished(bool success)
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(versionInfo.downloadUrl).fileName() + ".tmp");
 
     // Test archive
-    emit appendLog("Testing stable release archive...");
-    QThread::create([this, outputFile]() {
+    emit appendLog("Testing archive...");
+    QThreadPool::globalInstance()->start([this, outputFile]() {
         uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
-        onArchiveTestComplete(archiveSize);
-    })->start();
-
+        QMetaObject::invokeMethod(this, "onArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
+    });
 }
 
 void UpdateDialog::onArchiveTestComplete(uint64_t archiveSize){

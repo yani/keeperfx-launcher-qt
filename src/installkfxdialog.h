@@ -28,9 +28,11 @@ private slots:
     void updateProgressBarDownload(qint64 bytesReceived, qint64 bytesTotal);
 
     void onStableDownloadFinished(bool success);
+    void onStableArchiveTestComplete(uint64_t archiveSize);
     void onStableExtractComplete();
 
     void onAlphaDownloadFinished(bool success);
+    void onAlphaArchiveTestComplete(uint64_t archiveSize);
     void onAlphaExtractComplete();
 
 signals:
@@ -43,10 +45,8 @@ signals:
 
 private:
     void startStableDownload();
-    void onStableArchiveTestComplete(uint64_t archiveSize);
 
     void startAlphaDownload();
-    void onAlphaArchiveTestComplete(uint64_t archiveSize);
 
     void testAndExtractArchive(bool isStable);
     void closeEvent(QCloseEvent *event) override;

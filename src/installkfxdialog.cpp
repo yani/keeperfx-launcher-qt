@@ -94,16 +94,14 @@ void InstallKfxDialog::onStableDownloadFinished(bool success)
     emit appendLog("KeeperFX stable release successfully downloaded");
     emit clearProgressBar();
 
-    // TODO: use temp file
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/"
-                                  + downloadUrlStable.fileName() + ".tmp");
+    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + this->downloadUrlStable.fileName() + ".tmp");
 
     // Test archive
     emit appendLog("Testing stable release archive...");
-    QThread::create([this, outputFile]() {
+    QThreadPool::globalInstance()->start([this, outputFile]() {
         uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
-        emit onStableArchiveTestComplete(archiveSize);
-    })->start();
+        QMetaObject::invokeMethod(this, "onStableArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
+    });
 }
 
 void InstallKfxDialog::onStableArchiveTestComplete(uint64_t archiveSize) {
@@ -190,16 +188,14 @@ void InstallKfxDialog::onAlphaDownloadFinished(bool success)
 
     emit appendLog("KeeperFX alpha patch successfully downloaded");
 
-    // TODO: use temp file
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/"
-                                  + downloadUrlAlpha.fileName() + ".tmp");
+    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp");
 
     // Test archive
     emit appendLog("Testing alpha patch archive...");
-    QThread::create([this, outputFile]() {
+    QThreadPool::globalInstance()->start([this, outputFile]() {
         uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
-        emit onAlphaArchiveTestComplete(archiveSize);
-    })->start();
+        QMetaObject::invokeMethod(this, "onAlphaArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
+    });
 }
 
 void InstallKfxDialog::onAlphaArchiveTestComplete(uint64_t archiveSize)
