@@ -19,6 +19,8 @@ public:
     QString getMapName();
     Map::Format getFormat();
 
+    static QList<Map *> getAll(const Map::Type type, const QString campaignOrMapPackName);
+
 private:
     Map::Type type;
     QString campaignOrMapPackName;
@@ -30,4 +32,5 @@ private:
 
     void loadLif(QFile &file);
     void loadLof(QFile &file);
+    void loadTxtWorkaround(QFile &file);
 };
