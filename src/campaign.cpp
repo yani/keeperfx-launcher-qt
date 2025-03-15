@@ -17,17 +17,24 @@ Campaign::Campaign(const QString &filePath)
 
     // Load the campaign file variables
     QFileInfo fileInfo(file);
-    fileName = fileInfo.fileName();
-    campaignShortName = fileInfo.baseName();
+    this->fileName = fileInfo.fileName();
+    this->campaignShortName = fileInfo.baseName();
 
     // Load the campaign settings file
     settings = new QSettings(fileInfo.absoluteFilePath(), QSettings::IniFormat);
     if (settings->status() != QSettings::NoError) {
-        qWarning() << "Failed to load campaign:" << fileName;
+        qWarning() << "Failed to load campaign:" << this->fileName;
         return;
     }
 
-    campaignName = settings->value("common/NAME").toString();
+    // Make sure campaign has a name
+    QString campaignNameString = settings->value("common/NAME").toString();
+    if (campaignNameString.isEmpty()) {
+        qWarning() << "Unable to find campaign name:" << this->campaignShortName;
+        return;
+    }
+
+    this->campaignName = campaignNameString;
 }
 
 bool Campaign::isValid()
