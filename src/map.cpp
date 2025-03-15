@@ -49,21 +49,26 @@ Map::Map(const Map::Type type, const QString campaignOrMapPackName, const int ma
     // Ex: 123 -> "00123", 12345 -> "12345"
     QString mapNumberString = QString("%1").arg(this->mapNumber, 5, 10, QChar('0'));
 
-    // Load LOF (KFX Format)
-    QFile mapLofLower(mapDirString + "/map" + mapNumberString + ".lof");
-    QFile mapLofUpper(mapDirString + "/MAP" + mapNumberString + ".LOF");
-    if (mapLofLower.exists()) {
-        loadLof(mapLofLower);
-    } else if (mapLofUpper.exists()) {
-        loadLof(mapLofUpper);
-    } else {
-        // Load LIF (DK Format)
-        QFile mapLifLower(mapDirString + "/map" + mapNumberString + ".lif");
-        QFile mapLifUpper(mapDirString + "/MAP" + mapNumberString + ".LIF");
-        if (mapLifLower.exists()) {
-            loadLif(mapLifLower);
-        } else if (mapLifUpper.exists()) {
-            loadLif(mapLifUpper);
+    // Create the filename filter
+    QStringList mapFileFilter;
+    mapFileFilter << QString("*" + mapNumberString + ".*");
+
+    // Loop trough map files
+    for (const QString mapFileNameString : campaignOrMapPackDir.entryList(mapFileFilter, QDir::Files)) {
+        QString mapFileNameStringLowerCase = mapFileNameString.toLower();
+
+        // Check for LOF file
+        if (mapFileNameStringLowerCase.endsWith("lof")) {
+            QFile mapFile(campaignOrMapPackDirString + "/" + mapFileNameString);
+            loadLof(mapFile);
+            break;
+        }
+
+        // Check for LIF file
+        if (mapFileNameStringLowerCase.endsWith("lif")) {
+            QFile mapFile(campaignOrMapPackDirString + "/" + mapFileNameString);
+            loadLif(mapFile);
+            break;
         }
     }
 }
@@ -114,7 +119,8 @@ void Map::loadLif(QFile &file)
     }
 
     // Get map name from the first line
-    QString firstLineMapName = data.split("\n")[0].split(", ")[1];
+    // We do some string splits that are crossplatform
+    QString firstLineMapName = data.split("\r")[0].split("\n")[0].split(", ")[1];
     if (firstLineMapName.isEmpty() == false) {
         this->mapName = firstLineMapName;
         this->format = Map::Format::DK;
