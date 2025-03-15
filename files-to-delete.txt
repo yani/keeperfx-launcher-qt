@@ -1,0 +1,39 @@
+# Files to delete
+# These are files that should not be present anymore starting from a specific version.
+# The launcher will ask if the user wants to remove these files.
+
+[<version the new launcher gets added>]
+launch.sh
+
+[1.2.0.4379]
+SMACKW32.DLL
+MSS32.DLL
+WSND7R.DLL
+campgns\pstunded\text_eng.dat
+campgns\pstunded\text_pol.dat
+
+[1.1.0]
+fxdata/banner.zip
+fxdata/boom_barrel.zip
+fxdata/fern.zip
+fxdata/gemtraps.zip
+fxdata/gimly.zip
+fxdata/goldenarmor.zip
+fxdata/knightstatue.zip
+fxdata/lanternpost.zip
+fxdata/mushrooms.zip
+fxdata/torches.zip
+fxdata/trapcolors.zip
+fxdata/waterplants.zip
+fxdata/whiteflag.zip
+fxdata/windbanner.zip
+fxdata/creatures.zip
+fxdata/decorative_objects.zip
+fxdata/natural_features.zip
+fxdata/trapsdoors.zip
+
+[1.0.0]
+SDL.dll
+SDL_net.dll
+SDL_mixer.dll
+keeperfx.dll
