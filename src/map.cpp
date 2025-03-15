@@ -136,7 +136,7 @@ void Map::loadLif(QFile &file)
 
     // Get mapname from a format that a translation ID
     if (data.contains("\n") && data.contains(";")) {
-        this->mapName = data.mid(data.indexOf(";") + 1);
+        this->mapName = data.mid(data.indexOf(";") + 1).split("\r")[0].split("\n")[0];
         this->format = Map::Format::DK;
         return;
     }
@@ -194,6 +194,11 @@ QString Map::getMapName()
 Map::Format Map::getFormat()
 {
     return this->format;
+}
+
+int Map::getMapNumber()
+{
+    return this->mapNumber;
 }
 
 bool Map::isValid()
@@ -255,8 +260,26 @@ QList<Map *> Map::getAll(const Map::Type type, const QString campaignOrMapPackNa
 
         // Add map to list
         list << map;
-        qDebug() << "Map:" << map->getMapName();
+        qDebug() << "Map loaded:" << map->toString();
     }
 
     return list;
+}
+
+QString Map::toString()
+{
+    if (this->isValid() == false) {
+        return QString("Invalid map");
+    }
+
+    QString typeString;
+    if (type == Map::Type::CAMPAIGN) {
+        typeString = "campgns";
+    } else if (type == Map::Type::STANDALONE) {
+        typeString = "levels";
+    }
+
+    QString mapNumberString = QString("%1").arg(this->mapNumber, 5, 10, QChar('0'));
+
+    return QString(this->mapName + " (" + typeString + "/" + this->campaignOrMapPackName + "/map" + mapNumberString + ")");
 }

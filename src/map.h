@@ -18,8 +18,11 @@ public:
     bool isValid();
     QString getMapName();
     Map::Format getFormat();
+    int getMapNumber();
 
     static QList<Map *> getAll(const Map::Type type, const QString campaignOrMapPackName);
+
+    QString toString();
 
 private:
     Map::Type type;
