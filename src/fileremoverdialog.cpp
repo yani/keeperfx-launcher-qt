@@ -14,6 +14,11 @@ FileRemoverDialog::FileRemoverDialog(QWidget *parent, QStringList &list)
     // Setup the UI
     ui->setupUi(this);
 
+    // Disable resizing and remove maximize button
+    setFixedSize(size());
+    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
+    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
     // Load the list of files
     this->model = new QStringListModel(this);
     this->model->setStringList(list);

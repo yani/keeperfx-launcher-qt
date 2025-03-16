@@ -15,6 +15,11 @@ CrashDialog::CrashDialog(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Disable resizing and remove maximize button
+    setFixedSize(size());
+    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
+    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
     // Load save file list
     if (saveFileList.empty() == true) {
         ui->saveFileComboBox->setDisabled(true);

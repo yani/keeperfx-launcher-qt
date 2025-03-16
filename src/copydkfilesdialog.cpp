@@ -14,6 +14,11 @@ CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     ui->setupUi(this);
 
     // Disable resizing and remove maximize button
+    setFixedSize(size());
+    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
+    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
+    // Disable resizing and remove maximize button
     setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
     setFixedSize(size()); // Prevent resizing by setting fixed size
 

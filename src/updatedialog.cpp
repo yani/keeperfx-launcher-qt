@@ -26,6 +26,11 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo)
     // Setup this UI
     ui->setupUi(this);
 
+    // Disable resizing and remove maximize button
+    setFixedSize(size());
+    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
+    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
     // Store version info in this dialog
     this->versionInfo = versionInfo;
 

@@ -20,6 +20,11 @@ InstallKfxDialog::InstallKfxDialog(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Disable resizing and remove maximize button
+    setFixedSize(size());
+    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
+    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
     // Setup signals and slots
     connect(this, &InstallKfxDialog::appendLog, this, &InstallKfxDialog::onAppendLog);
     connect(this, &InstallKfxDialog::clearProgressBar, this, &InstallKfxDialog::onClearProgressBar);

@@ -18,6 +18,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Disable resizing and remove maximize button
+    setFixedSize(size());
+    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
+    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
     // Hide 'Multiplayer' tab until a future update requires it
     ui->tabWidget->tabBar()->setTabVisible(4, false);
 
