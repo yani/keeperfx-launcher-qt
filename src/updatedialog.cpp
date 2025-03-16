@@ -70,7 +70,7 @@ UpdateDialog::~UpdateDialog()
 void UpdateDialog::onAppendLog(const QString &string)
 {
     // Log to debug output
-    qDebug() << "Install:" << string;
+    qDebug() << "Update log:" << string;
 
     // Add string to log with timestamp
     QDateTime currentDateTime = QDateTime::currentDateTime();
@@ -296,6 +296,10 @@ void UpdateDialog::onUpdateComplete()
     if (archiveFile->exists()) {
         archiveFile->remove();
     }
+
+    // Handle any settings update
+    emit appendLog("Copying over any new settings");
+    Settings::load();
 
     emit appendLog("Done!");
     QMessageBox::information(this, "KeeperFX", "KeeperFX has been successfully updated to version " + versionInfo.version + "!");

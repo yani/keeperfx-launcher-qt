@@ -151,6 +151,10 @@ void InstallKfxDialog::onStableExtractComplete()
     if (this->installReleaseType == KfxVersion::ReleaseType::ALPHA) {
         startAlphaDownload();
     } else {
+        // Handle any settings update
+        emit appendLog("Loading settings");
+        Settings::load();
+
         emit appendLog("Done!");
         QMessageBox::information(this, "KeeperFX", "KeeperFX has been successfully installed!");
         accept();
@@ -240,9 +244,13 @@ void InstallKfxDialog::onAlphaExtractComplete()
         archiveFile->remove();
     }
 
+    // Handle any settings update
+    emit appendLog("Loading settings");
+    Settings::load();
+
     emit appendLog("Done!");
     QMessageBox::information(this, "KeeperFX", "KeeperFX has been successfully installed!");
-    accept();
+    this->accept();
 }
 
 void InstallKfxDialog::updateProgressBarDownload(qint64 bytesReceived, qint64 bytesTotal)
@@ -257,7 +265,7 @@ void InstallKfxDialog::updateProgressBarDownload(qint64 bytesReceived, qint64 by
 void InstallKfxDialog::onAppendLog(const QString &string)
 {
     // Log to debug output
-    qDebug() << "Install:" << string;
+    qDebug() << "Install log:" << string;
 
     // Add string to log with timestamp
     QDateTime currentDateTime = QDateTime::currentDateTime();
@@ -326,6 +334,8 @@ void InstallKfxDialog::closeEvent(QCloseEvent *event)
     int result = QMessageBox::question(this,
                                        "Confirmation",
                                        "Are you sure?\n\nYou will be unable to play KeeperFX.");
+
+    // Handle answer
     if (result == QMessageBox::Yes) {
         event->accept();
     } else {

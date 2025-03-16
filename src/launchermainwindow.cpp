@@ -101,24 +101,21 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     if(LauncherOptions::isSet("install")){
         InstallKfxDialog installKfxDialog(this);
         installKfxDialog.exec();
-    }
-
-    // Check if KeeperFX is installed
-    if (isKeeperFxInstalled() == false) {
-        // Ask if user wants to install KeeperFX
-        qDebug() << "'keeperfx.exe' seems to be missing, asking if user wants a fresh install";
-        if (askForKeeperFxInstall() == true) {
-            // Open automatic KeeperFX (web) installer
-            qDebug() << "User wants fresh install, opening kfx install dialog";
-            InstallKfxDialog installKfxDialog(this);
-            installKfxDialog.exec();
+    } else {
+        // If '--install' is not forced we check if we need to install
+        if (isKeeperFxInstalled() == false) {
+            qDebug() << "'keeperfx.exe' seems to be missing, asking if user wants a fresh install";
+            if (askForKeeperFxInstall() == true) {
+                qDebug() << "User wants fresh install, opening kfx install dialog";
+                InstallKfxDialog installKfxDialog(this);
+                installKfxDialog.exec();
+            }
         }
     }
 
     // Check if we need to copy over DK files
     // Only do this if keeperfx is installed
     if (isKeeperFxInstalled() == true && DkFiles::isCurrentAppDirValidDkDir() == false) {
-        // Open copy DK files dialog
         qDebug() << "One or more original DK files not found, opening copy dialog";
         CopyDkFilesDialog copyDkFilesWindow(this);
         copyDkFilesWindow.exec();
@@ -133,7 +130,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         } else {
             // Failed to get KeeperFX version
             // Asking the user if they want to reinstall
-            qDebug() << "Failed to load keeperfx version";
+            qDebug() << "Failed to load KeeperFX version";
             int result
                 = QMessageBox::question(this,
                                         "KeeperFX Error",
@@ -163,9 +160,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             }
         }
     }
-
-    // Load settings
-    Settings::load();
 
     // Load the extra menu for the button next to the play button
     setupPlayExtraMenu();
