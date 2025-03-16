@@ -127,11 +127,8 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Load keeperfx version if keeperfx is installed
     if (isKeeperFxInstalled()) {
         if (KfxVersion::loadCurrentVersion() == true) {
-            // Version successfully loaded
-            // Add the version to the the GUI
-            qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
-            ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
-            this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
+            // Refresh GUI
+            refreshKfxVersionInGui();
 
         } else {
             // Failed to get KeeperFX version
@@ -152,12 +149,8 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
                 // Try and get the version again
                 if (KfxVersion::loadCurrentVersion() == true) {
-                    // Version successfully loaded
-                    // Add the version to the the GUI
-                    qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
-                    ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
-                    this->setWindowTitle("KeeperFX Launcher - v"
-                                         + KfxVersion::currentVersion.fullString);
+                    // Refresh GUI
+                    refreshKfxVersionInGui();
 
                 } else {
                     // Still an error even after reinstalling KeeperFX
@@ -643,11 +636,7 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
 
     // Reload current version
     if (KfxVersion::loadCurrentVersion() == true) {
-        // Version successfully loaded
-        // Add the version to the the GUI
-        qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
-        ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
-        this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
+        refreshKfxVersionInGui();
     }
 
     // Get the executable path of a possible updated launcher
@@ -820,4 +809,11 @@ void LauncherMainWindow::onGameEnded(int exitCode, QProcess::ExitStatus exitStat
 
     // Not really required but good to occasionally refresh
     refreshCampaignMenu();
+}
+
+void LauncherMainWindow::refreshKfxVersionInGui()
+{
+    qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
+    ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
+    this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
 }

@@ -65,4 +65,6 @@ private:
     void checkForKfxUpdate();
 
     void verifyBinaryCertificates();
+
+    void refreshKfxVersionInGui();
 };
