@@ -206,9 +206,9 @@ int main(int argc, char *argv[])
 // Info: Running under Wine
 #ifdef Q_OS_WINDOWS
     if (Helper::isRunningUnderWine()) {
-        qInfo() "Running under Wine";
-        qInfo() "Wine version:" << Helper::getWineVersion();
-        qInfo() "Wine host:" << Helper::getWineHostMachineName();
+        qInfo() << "Running under Wine";
+        qInfo() << "Wine version:" << Helper::getWineVersion();
+        qInfo() << "Wine host:" << Helper::getWineHostMachineName();
     }
 #endif
 
