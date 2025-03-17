@@ -20,6 +20,8 @@ public:
 private:
 
     static const QStringList installPaths;
+    static const QStringList wineInstallPaths;
+
     static const QStringList dataFiles;
     static const QStringList soundFiles;
     static const QStringList musicFiles;

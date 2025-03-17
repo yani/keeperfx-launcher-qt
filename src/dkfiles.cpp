@@ -5,30 +5,38 @@
 #include <QFile>
 #include <QOperatingSystemVersion>
 #include <QRegularExpression>
+#include <QSettings>
 #include <QStandardPaths>
 #include <QUrl>
 
-#ifdef WIN32
-    // Common DK installation paths under Windows
-    const QStringList DkFiles::installPaths = {
-        "C:\\GOG Games\\Dungeon Keeper Gold",
-        "C:\\Program Files (x86)\\GOG Galaxy\\Games\\Dungeon Keeper Gold",
-        "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\Data",
-        "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\DATA",
-        "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper",
-        "Z:\\home\\<user>\\.steam\\steam\\steamapps\\common\\Dungeon Keeper", // When running under Wine
-    };
+#include "helper.h"
+
+#ifdef Q_OS_WINDOWS
+// Common DK installation paths under Windows
+const QStringList DkFiles::installPaths = {
+    "C:\\GOG Games\\Dungeon Keeper Gold",
+    "C:\\Program Files (x86)\\GOG Galaxy\\Games\\Dungeon Keeper Gold",
+    "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\Data",
+    "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\DATA",
+    "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper",
+};
+
+// Common Dk installation paths when running under Wine
+// These would map to the UNIX filesystem of the host
+const QStringList DkFiles::wineInstallPaths = {
+    "Z:\\home\\" + qgetenv("USER") + "\\.steam\\steam\\steamapps\\common\\Dungeon Keeper",
+};
 #else
-    // Common DK installation paths under UNIX
-    const QStringList DkFiles::installPaths = {
-        "<userhome>/.wine/drive_c/GOG Games/Dungeon Keeper Gold",
-        "<userhome>/.wine/drive_c/Program Files (x86)/GOG Galaxy/Games/Dungeon Keeper Gold",
-        "<userhome>/.wine/drive_c/Program Files (x86)/Origin Games/Dungeon Keeper/Data",
-        "<userhome>/.wine/drive_c/Program Files (x86)/Origin Games/Dungeon Keeper/DATA",
-        "<userhome>/.wine/drive_c/Program Files (x86)/Origin Games/Dungeon Keeper",
-        "<userhome>/.steam/steam/steamapps/common/Dungeon Keeper",
-        "<userhome>/Games/dungeon-keeper/drive_c/KeeperFX", // A Common Lutris location
-    };
+// Common DK installation paths under UNIX
+const QStringList DkFiles::installPaths = {
+    QDir::homePath() + "/.wine/drive_c/GOG Games/Dungeon Keeper Gold",
+    QDir::homePath() + "/.wine/drive_c/Program Files (x86)/GOG Galaxy/Games/Dungeon Keeper Gold",
+    QDir::homePath() + "/.wine/drive_c/Program Files (x86)/Origin Games/Dungeon Keeper/Data",
+    QDir::homePath() + "/.wine/drive_c/Program Files (x86)/Origin Games/Dungeon Keeper/DATA",
+    QDir::homePath() + "/.wine/drive_c/Program Files (x86)/Origin Games/Dungeon Keeper",
+    QDir::homePath() + "/.steam/steam/steamapps/common/Dungeon Keeper",
+    QDir::homePath() + "/Games/dungeon-keeper/drive_c/KeeperFX", // A Common Lutris location
+};
 #endif
 
 // Files under ./data/
@@ -65,21 +73,13 @@ const QStringList DkFiles::musicFiles = {
 QStringList DkFiles::getInstallPaths() {
 
     // Paths to return
-    QStringList paths;
+    QStringList paths = installPaths;
 
-    // Loop through the paths and replace some vars
-    for (const QString &installPath : installPaths) {
-
-        // Load path
-        QString path = installPath;
-
-        // Replace some default vars
-        path.replace("<user>", qgetenv("USER"));
-        path.replace("<userhome>", QDir::homePath());
-
-        // Add to list
-        paths.append(path);
+#ifdef Q_OS_WINDOWS
+    if (Helper::isRunningUnderWine()) {
+        paths.append(wineInstallPaths);
     }
+#endif
 
     return paths;
 }
@@ -88,16 +88,16 @@ QStringList DkFiles::getFilePathCases(QString dir, QString fileName)
 {
     QStringList(returnStrings);
 
-    #ifdef WIN32
-        // Windows doesn't care about filepath cases
-        returnStrings.append(dir + "/" + fileName);
-    #else
-        // Unix is normal and cares about filepath cases
-        returnStrings.append(dir.toLower() + "/" + fileName.toUpper());
-        returnStrings.append(dir.toUpper() + "/" + fileName.toUpper());
-        returnStrings.append(dir.toLower() + "/" + fileName.toLower());
-        returnStrings.append(dir.toUpper() + "/" + fileName.toLower());
-    #endif
+#ifdef Q_OS_WINDOWS
+    // Windows doesn't care about filepath cases
+    returnStrings.append(dir + "/" + fileName);
+#else
+    // Unix is normal and cares about filepath cases
+    returnStrings.append(dir.toLower() + "/" + fileName.toUpper());
+    returnStrings.append(dir.toUpper() + "/" + fileName.toUpper());
+    returnStrings.append(dir.toLower() + "/" + fileName.toLower());
+    returnStrings.append(dir.toUpper() + "/" + fileName.toLower());
+#endif
 
     return returnStrings;
 }
