@@ -1,11 +1,12 @@
 #include "dkfiles.h"
 
-#include <QDir>
-#include <QUrl>
-#include <QFile>
-#include <QStandardPaths>
 #include <QCoreApplication>
+#include <QDir>
+#include <QFile>
 #include <QOperatingSystemVersion>
+#include <QRegularExpression>
+#include <QStandardPaths>
+#include <QUrl>
 
 #ifdef WIN32
     // Common DK installation paths under Windows
@@ -152,12 +153,19 @@ bool DkFiles::isValidDkDirPath(QString path)
 
 std::optional<QDir> DkFiles::findExistingDkInstallDir()
 {
+    // Search hardcoded paths
     for (const QString& path : getInstallPaths()) {
         QDir dir(path);
 
         if(dir.exists() && isValidDkDir(dir)){
             return dir;
         }
+    }
+
+    // Search for path in a possible Steam installation
+    std::optional<QDir> steamInstallDir = findSteamDkInstallDir();
+    if (steamInstallDir) {
+        return steamInstallDir;
     }
 
     return std::nullopt;
@@ -272,4 +280,70 @@ bool DkFiles::isCurrentAppDirValidDkDir()
 {
     QDir dir(QCoreApplication::applicationDirPath());
     return isValidDkDir(dir);
+}
+
+std::optional<QDir> DkFiles::findSteamDkInstallDir()
+{
+    // Search for Steam installation
+    qDebug() << "Searching for Steam installation";
+
+#ifdef Q_OS_WINDOWS
+    // Open the Steam registry key
+    QSettings steamRegistry("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Valve\\Steam", QSettings::NativeFormat);
+    QString steamPath = steamRegistry.value("InstallPath").toString();
+#else
+    QString steamPath = QDir::homePath() + "/.steam/steam";
+#endif
+
+    // Check if steam is found
+    if (steamPath.isEmpty()) {
+        qDebug() << "Steam installation not found";
+        return std::nullopt;
+    }
+
+    // Log Steam path
+    qDebug() << "Steam installation found:" << steamPath;
+
+    // Get the libraryfolders.vdf file for library paths
+    QString libraryFoldersFile = steamPath + "/steamapps/libraryfolders.vdf";
+    QFile file(libraryFoldersFile);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "Failed to open libraryfolders.vdf";
+        return std::nullopt;
+    }
+
+    QStringList libraryPaths;
+    libraryPaths.append(steamPath); // Add the default Steam path
+
+    // Read the libraryfolders.vdg file
+    QTextStream in(&file);
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QRegularExpression regex("path\"\\s+\"([^\"]+)\"");
+        QRegularExpressionMatch match = regex.match(line);
+        if (match.hasMatch() == true) {
+            QString libraryPath = match.captured(1);
+            qDebug() << "Steam library found:" << libraryPath;
+            libraryPaths.append(libraryPath);
+        }
+    }
+    file.close();
+
+    // Check if some paths are found
+    if (libraryPaths.empty()) {
+        return std::nullopt;
+    }
+
+    // Search library locations for DK
+    for (const QString& libraryPath : libraryPaths) {
+        QString possibleDkInstallPath = libraryPath + "/steamapps/common/Dungeon Keeper";
+        QDir dir(possibleDkInstallPath);
+
+        // Check if its a valid dir
+        if (dir.exists() && isValidDkDir(dir)) {
+            return dir;
+        }
+    }
+
+    return std::nullopt;
 }

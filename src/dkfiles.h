@@ -24,4 +24,5 @@ private:
     static const QStringList soundFiles;
     static const QStringList musicFiles;
 
+    static std::optional<QDir> findSteamDkInstallDir();
 };
