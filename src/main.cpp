@@ -1,9 +1,9 @@
 #include <QApplication>
-#include <QGuiApplication>
-#include <QSslConfiguration>
-#include <QSettings>
 #include <QFileInfo>
+#include <QGuiApplication>
 #include <QProcess>
+#include <QSettings>
+#include <QSslConfiguration>
 
 #include <QPalette>
 #include <QStyleFactory>
@@ -11,10 +11,11 @@
 
 using namespace Qt::StringLiterals;
 
+#include "helper.h"
 #include "launchermainwindow.h"
+#include "launcheroptions.h"
 #include "settings.h"
 #include "version.h"
-#include "launcheroptions.h"
 
 void setDarkTheme()
 {
@@ -160,39 +161,39 @@ int main(int argc, char *argv[])
     // We prefer xcb because wayland is missing a few features we'd like:
     // - position our window in the middle of the screen
     // - show the monitor number on the screen when selecting what monitor to play the game on
-    #ifdef Q_OS_UNIX
-        if (qgetenv("QT_QPA_PLATFORM") != "xcb" && QGuiApplication::platformName() == "wayland") {
-            qDebug() << "Switching from 'wayland' to 'xcb' by spawning child process";
-            // Prevent child Qt application from reusing the session manager
-            qunsetenv("SESSION_MANAGER");
-            // Set platform to xcb
-            qputenv("QT_QPA_PLATFORM", "xcb");
-            // Run new process and pipe return value
-            return QProcess::execute(argv[0], LauncherOptions::argumentList);
-        }
-    #endif
+#ifdef Q_OS_UNIX
+    if (qgetenv("QT_QPA_PLATFORM") != "xcb" && QGuiApplication::platformName() == "wayland") {
+        qDebug() << "Switching from 'wayland' to 'xcb' by spawning child process";
+        // Prevent child Qt application from reusing the session manager
+        qunsetenv("SESSION_MANAGER");
+        // Set platform to xcb
+        qputenv("QT_QPA_PLATFORM", "xcb");
+        // Run new process and pipe return value
+        return QProcess::execute(argv[0], LauncherOptions::argumentList);
+    }
+#endif
 
     // Info: Log some stuff
-        qInfo() << "Launcher Binary:" << QCoreApplication::applicationFilePath();
-        qInfo() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
-        qInfo() << "Launcher Version:" << LAUNCHER_VERSION;
+    qInfo() << "Launcher Binary:" << QCoreApplication::applicationFilePath();
+    qInfo() << "Launcher Directory:" << QCoreApplication::applicationDirPath();
+    qInfo() << "Launcher Version:" << LAUNCHER_VERSION;
 
     // Info: OS
-    #ifdef WIN32
-        qInfo() << "Launcher Build: Windows";
-    #else
-        qInfo() << "Launcher Build: UNIX";
-    #endif
+#ifdef Q_OS_WINDOWS
+    qInfo() << "Launcher Build: Windows";
+#else
+    qInfo() << "Launcher Build: UNIX";
+#endif
 
     // Info: Platform
     qInfo() << "Platform:" << QGuiApplication::platformName();
 
     // Info: Root on linux
-    #ifdef Q_OS_LINUX
-        if (QString("root") == QString(qgetenv("USER").toLower())) {
-            qInfo() << "Running as root";
-        }
-    #endif
+#ifdef Q_OS_LINUX
+    if (QString("root") == QString(qgetenv("USER").toLower())) {
+        qInfo() << "Running as root";
+    }
+#endif
 
     // Info: Running as flatpak
     // This can be the case if you are developing in a QtCreator flatpak
@@ -201,6 +202,15 @@ int main(int argc, char *argv[])
     if (qEnvironmentVariableIsSet("FLATPAK_ID")) {
         qInfo() << "Running inside Flatpak: " << qgetenv("FLATPAK_ID");
     }
+
+// Info: Running under Wine
+#ifdef Q_OS_WINDOWS
+    if (Helper::isRunningUnderWine()) {
+        qInfo() "Running under Wine";
+        qInfo() "Wine version:" << Helper::getWineVersion();
+        qInfo() "Wine host:" << Helper::getWineHostMachineName();
+    }
+#endif
 
     // Disable SSL verification
     // TODO: eventually add SSL certs
