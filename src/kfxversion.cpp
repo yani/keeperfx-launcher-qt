@@ -10,10 +10,10 @@
 #define MIN_VERSION_NEW_CONFIG
 
 const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
-    {"absolute_config_path", "9.9.9"},    // TODO: https://github.com/dkfans/keeperfx/pull/3915
-    {"start_campaign_directly", "9.9.9"}, // TODO: https://github.com/dkfans/keeperfx/issues/3924
-    {"load_save_directly", "9.9.9"},      // TODO: https://github.com/dkfans/keeperfx/issues/3481
-    {"direct_connect", "1.0.0"},          // '-connect' parameter
+    {"absolute_config_path", "1.2.0.4408"}, // '-config' absolute path
+    {"start_campaign_directly", "9.9.9"},   // TODO: https://github.com/dkfans/keeperfx/issues/3924
+    {"load_save_directly", "9.9.9"},        // TODO: https://github.com/dkfans/keeperfx/issues/3481
+    {"direct_connect", "1.0.0"},            // '-connect' parameter
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;
