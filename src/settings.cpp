@@ -219,7 +219,7 @@ QStringList Settings::getGameSettingsParameters()
     // Add FPS
     QString fps = Settings::getLauncherSetting("GAME_PARAM_FPS").toString();
     if (fps != Settings::defaultLauncherSettingsMap["GAME_PARAM_FPS"]) {
-        paramList << QString("-fps " + fps);
+        paramList << "-fps" << fps;
     }
 
     return paramList;
