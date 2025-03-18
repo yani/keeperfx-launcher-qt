@@ -135,9 +135,14 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Add Resolutions
     for (auto it = resolutionsMap.begin(); it != resolutionsMap.end(); ++it) {
+        // Ingame views
         ui->comboBoxResolution1->addItem(it.key(), it.value());
         ui->comboBoxResolution2->addItem(it.key(), it.value());
         ui->comboBoxResolution3->addItem(it.key(), it.value());
+        // Front end views
+        ui->comboBoxResolution1_2->addItem(it.key(), it.value());
+        ui->comboBoxResolution2_2->addItem(it.key(), it.value());
+        ui->comboBoxResolution3_2->addItem(it.key(), it.value());
     }
 
     // Map: Display mode
@@ -148,9 +153,14 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Add display modes
     for (auto it = displayModesMap.begin(); it != displayModesMap.end(); ++it) {
+        // Ingame views
         ui->comboBoxDisplayMode1->addItem(it.key(), it.value());
         ui->comboBoxDisplayMode2->addItem(it.key(), it.value());
         ui->comboBoxDisplayMode3->addItem(it.key(), it.value());
+        // Front end views
+        ui->comboBoxDisplayMode1_2->addItem(it.key(), it.value());
+        ui->comboBoxDisplayMode2_2->addItem(it.key(), it.value());
+        ui->comboBoxDisplayMode3_2->addItem(it.key(), it.value());
     }
 
     // Map: Atmospheric dropdown
@@ -202,7 +212,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->labelMouseSensPercentage->setText(isChecked ? "" : QString("%1%").arg(ui->horizontalSliderMouseSens->value()));
     });
 
-    // Connect the slider to update the label when moved
+    // Connect the mouse sensitivity slider to update the label when moved
     connect(ui->horizontalSliderMouseSens, &QSlider::valueChanged, this, [this](int value) {
         if (!ui->checkBoxRawMouseInput->isChecked()) {
             ui->labelMouseSensPercentage->setText(QString("%1 %").arg(value));
@@ -265,7 +275,7 @@ void SettingsDialog::loadSettings()
     ui->comboBoxResizeMovies->setCurrentIndex(
         ui->comboBoxResizeMovies->findData(resizeMoviesString));
 
-    // Loop trough the resolutions
+    // Loop trough the in-game resolutions
     int resolutionIndex = 0;
     for (QString resolutionString :
          Settings::getKfxSetting("INGAME_RES").toString().trimmed().split(" ")) {
@@ -308,6 +318,53 @@ void SettingsDialog::loadSettings()
         case 2:
             ui->comboBoxResolution3->setCurrentIndex(ui->comboBoxResolution3->findData(res));
             ui->comboBoxDisplayMode3->setCurrentIndex(ui->comboBoxDisplayMode3->findData(mode));
+            break;
+        }
+
+        resolutionIndex++;
+    }
+
+    // Loop trough the front end resolutions
+    resolutionIndex = 0;
+    for (QString resolutionString : Settings::getKfxSetting("FRONTEND_RES").toString().trimmed().split(" ")) {
+        // Vars
+        QString res, mode;
+
+        // Check for DESKTOP and DESKTOP_FULL
+        if (resolutionString == "DESKTOP" || resolutionString == "DESKTOP_FULL") {
+            res = "MATCH_DESKTOP";
+            if (resolutionString == "DESKTOP") {
+                mode = "w32";
+            } else if (resolutionString == "DESKTOP_FULL") {
+                mode = "x32";
+            }
+        } else {
+            // Use regex to split res and mode
+            QRegularExpressionMatch match = QRegularExpression("(x32|w32)$").match(resolutionString);
+            if (match.hasMatch() == false) {
+                qWarning() << "Invalid resolution in 'keeperfx.cfg':" << resolutionString;
+                resolutionIndex++;
+                continue;
+            }
+
+            // Get vars based on matches
+            res = resolutionString.left(match.capturedStart(1)); // Part before x32/w32
+            mode = match.captured(1);
+        }
+
+        // Update the widgets
+        switch (resolutionIndex) {
+        case 0:
+            ui->comboBoxResolution1_2->setCurrentIndex(ui->comboBoxResolution1->findData(res));
+            ui->comboBoxDisplayMode1_2->setCurrentIndex(ui->comboBoxDisplayMode1->findData(mode));
+            break;
+        case 1:
+            ui->comboBoxResolution2_2->setCurrentIndex(ui->comboBoxResolution2->findData(res));
+            ui->comboBoxDisplayMode2_2->setCurrentIndex(ui->comboBoxDisplayMode2->findData(mode));
+            break;
+        case 2:
+            ui->comboBoxResolution3_2->setCurrentIndex(ui->comboBoxResolution3->findData(res));
+            ui->comboBoxDisplayMode3_2->setCurrentIndex(ui->comboBoxDisplayMode3->findData(mode));
             break;
         }
 
@@ -422,7 +479,7 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("DISPLAY_NUMBER", popupComboBoxMonitorDisplay->currentData().toString());
     Settings::setKfxSetting("RESIZE_MOVIES", ui->comboBoxResizeMovies->currentData().toString());
 
-    // Save the resolutions
+    // Save the in-game resolutions
     QString resolutionString = "";
     for (int i = 0; i < 3; i++) {
         // Get vars
@@ -461,9 +518,49 @@ void SettingsDialog::saveSettings()
             resolutionString += " ";
         }
     }
-
     Settings::setKfxSetting("INGAME_RES", resolutionString);
+
+    // Save the front end resolutions
+    resolutionString = "";
+    for (int i = 0; i < 3; i++) {
+        // Get vars
+        QString res, mode;
+        switch (i) {
+        case 0:
+            res = ui->comboBoxResolution1_2->currentData().toString();
+            mode = ui->comboBoxDisplayMode1_2->currentData().toString();
+            break;
+        case 1:
+            res = ui->comboBoxResolution2_2->currentData().toString();
+            mode = ui->comboBoxDisplayMode2_2->currentData().toString();
+            break;
+        case 2:
+            res = ui->comboBoxResolution3_2->currentData().toString();
+            mode = ui->comboBoxDisplayMode3_2->currentData().toString();
+            break;
+        }
+
+        // Check if user wants to match their desktop size
+        if (res == "MATCH_DESKTOP") {
+            resolutionString += "DESKTOP";
+
+            // Check for fullscreen
+            if (mode == "x32") {
+                resolutionString += "_FULL";
+            }
+        } else {
+            // Add absolute resoltion size
+            resolutionString += res;
+            resolutionString += mode;
+        }
+
+        // Add spaces in between
+        if (i != 2) {
+            resolutionString += " ";
+        }
+    }
     Settings::setKfxSetting("FRONTEND_RES", resolutionString);
+
     Settings::setKfxSetting("CREATURE_STATUS_SIZE", ui->lineEditCreatureFlowerSize->text());
     Settings::setKfxSetting("LINE_BOX_SIZE", ui->lineEditLineBoxSize->text());
     Settings::setKfxSetting("HAND_SIZE", ui->lineEditHandSize->text());
