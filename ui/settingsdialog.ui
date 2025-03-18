@@ -1405,6 +1405,7 @@ KeeperFX Launcher v&lt;launcher_version&gt;&lt;br/&gt;
 Launcher libraries:&lt;br/&gt;
 &lt;a href=&quot;https://www.qt.io/product/qt6&quot;&gt;Qt6&lt;/a&gt;,
 &lt;a href=&quot;https://github.com/lief-project/LIEF&quot;&gt;libLIEF&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/rikyoz/bit7z&quot;&gt;bit7z&lt;/a&gt;,
 &lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7z&lt;/a&gt;
 &lt;br/&gt;
 &lt;br/&gt;
