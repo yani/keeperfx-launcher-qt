@@ -9,10 +9,10 @@ else
 fi
 
 # Grab translations
-find $(pwd)/ui/ -name "*.ui" -exec sh -c 'sed -n "/notr=\"true\"/!s/.*<string>\(.*\)<\/string>.*/_\(\"\1\"\);/p" {} > {}.tmp.cpp' \;
-xgettext -c++ -k_ --from-code=UTF-8 -o "$(pwd)/i18n/ui.pot" $(find "$(pwd)/ui/" -name "*.ui.tmp.cpp")
+find "$(pwd)/ui/" -name "*.ui" -exec sh -c 'sed -n "/notr=\"true\"/!s/.*<string>\(.*\)<\/string>.*/_\(\"\1\"\);/p" {} > {}.tmp.cpp' \;
+xgettext --omit-header -c++ -k_ --from-code=UTF-8 --escape -o "$(pwd)/i18n/ui.pot" $(find "$(pwd)/ui/" -name "*.ui.tmp.cpp")
 find $(pwd)/ui/ -name "*.ui.tmp.cpp" -exec rm {} \;
-xgettext --omit-header --qt -c++ -ktr -o "$(pwd)/i18n/translations.pot" $(find "$(pwd)/src/" -name "*.cpp") "$(pwd)/i18n/ui.pot"
+xgettext --omit-header --qt -c++ -ktr --from-code=UTF-8 --escape -o "$(pwd)/i18n/translations.pot" $(find "$(pwd)/src/" -name "*.cpp") "$(pwd)/i18n/ui.pot"
 rm $(pwd)/i18n/ui.pot
 
 # Remove information about temporary files
