@@ -78,7 +78,7 @@
          </font>
         </property>
         <property name="text">
-         <string>&lt;TITLE_PLACEHOLDER&gt;</string>
+         <string notr="true">&lt;TITLE_PLACEHOLDER&gt;</string>
         </property>
        </widget>
       </item>
@@ -94,7 +94,7 @@
          <string notr="true">QLabel { color: #777; }</string>
         </property>
         <property name="text">
-         <string>&lt;DATE_PLACEHOLDER&gt;</string>
+         <string notr="true">&lt;DATE_PLACEHOLDER&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
@@ -119,7 +119,7 @@
          <string notr="true">QLabel { color: #777; }</string>
         </property>
         <property name="text">
-         <string>&lt;EXCERPT_PLACEHOLDER&gt;</string>
+         <string notr="true">&lt;EXCERPT_PLACEHOLDER&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>

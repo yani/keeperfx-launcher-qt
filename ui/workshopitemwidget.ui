@@ -87,7 +87,7 @@
          </font>
         </property>
         <property name="text">
-         <string>&lt;TITLE_PLACEHOLDER&gt;</string>
+         <string notr="true">&lt;TITLE_PLACEHOLDER&gt;</string>
         </property>
        </widget>
       </item>
@@ -105,7 +105,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>&lt;TYPE_PLACEHOLDER&gt;</string>
+         <string notr="true">&lt;TYPE_PLACEHOLDER&gt;</string>
         </property>
        </widget>
       </item>
@@ -123,7 +123,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>&lt;DATE_PLACEHOLDER&gt;</string>
+         <string notr="true">&lt;DATE_PLACEHOLDER&gt;</string>
         </property>
        </widget>
       </item>
@@ -141,7 +141,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>&lt;AUTHOR_PLACEHOLDER&gt;</string>
+         <string notr="true">&lt;AUTHOR_PLACEHOLDER&gt;</string>
         </property>
        </widget>
       </item>
