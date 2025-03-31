@@ -15,6 +15,7 @@ using namespace Qt::StringLiterals;
 #include "launchermainwindow.h"
 #include "launcheroptions.h"
 #include "settings.h"
+#include "translator.h"
 #include "version.h"
 
 void setDarkTheme()
@@ -221,6 +222,14 @@ int main(int argc, char *argv[])
     // Load the launcher and kfx settings
     // Also try and copy over defaults
     Settings::load();
+
+    // Load translator
+    qDebug() << "System locale:" << QLocale::system().name();
+    qDebug() << "Launcher language:" << Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
+    Translator *translator = new Translator;
+    //translator->loadPotTranslations(Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString());
+    translator->loadPotTranslations("nl");
+    app.installTranslator(translator);
 
     // Force dark theme
     setDarkTheme();
