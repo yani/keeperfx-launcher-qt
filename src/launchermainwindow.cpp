@@ -131,12 +131,11 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             // Failed to get KeeperFX version
             // Asking the user if they want to reinstall
             qDebug() << "Failed to load KeeperFX version";
-            int result
-                = QMessageBox::question(this,
-                                        "KeeperFX Error",
-                                        "The launcher failed to grab the version of KeeperFX. It's "
-                                        "possible your installation is corrupted."
-                                        "\n\nDo you want to automatically reinstall KeeperFX?");
+            int result = QMessageBox::question(this, "KeeperFX Error",
+                    tr("The launcher failed to grab the version of KeeperFX.") + " " +
+                    tr("It's possible your installation is corrupted.") + "\n\n" +
+                    tr("Do you want to automatically reinstall KeeperFX?")
+            );
 
             if (result == QMessageBox::Yes) {
                 // Start Automatic KeeperFX (web) installation
@@ -152,10 +151,10 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
                 } else {
                     // Still an error even after reinstalling KeeperFX
                     // We can't fix this so we'll tell the user to report it
-                    QMessageBox::warning(this,
-                                         "KeeperFX Error",
-                                         "The launcher failed to grab the version of KeeperFX. "
-                                         "Please report this error to the KeeperFX team.");
+                    QMessageBox::warning(this, "KeeperFX Error",
+                        tr("The launcher failed to grab the version of KeeperFX.") + " " +
+                        tr("Please report this error to the KeeperFX team.")
+                                         );
                 }
             }
         }
@@ -289,11 +288,11 @@ void LauncherMainWindow::setupPlayExtraMenu()
         // Set toggle state of menu item
         heavyLogAction->setChecked(heavyLogEnabled);
         // Update play button
-        ui->playButton->setText(heavyLogEnabled ? "  Play (hvlog)" : "Play");
+        ui->playButton->setText(heavyLogEnabled ? "  " + tr("Play (hvlog)") : tr("Play"));
         // Connect heavylog toggle
         connect(heavyLogAction, &QAction::triggered, this, [this, heavyLogAction]() {
             bool enabled = heavyLogAction->isChecked();
-            ui->playButton->setText(enabled ? "  Play (hvlog)" : "Play");
+            ui->playButton->setText(enabled ? "  " + tr("Play (hvlog)") : tr("Play"));
             // Update settings to remember this
             Settings::setLauncherSetting("GAME_HEAVY_LOG_ENABLED", enabled);
         });
@@ -395,8 +394,7 @@ bool LauncherMainWindow::askForKeeperFxInstall()
 {
     // Ask if user wants to install KeeperFX
     int result = QMessageBox::question(this, "KeeperFX",
-        "The launcher is unable to find 'keeperfx.exe'."
-        "\n\nDo you want to download and install KeeperFX?"
+        tr("The launcher is unable to find 'keeperfx.exe'.") + "\n\n" + tr("Do you want to download and install KeeperFX?")
     );
 
     // Check if user declines
@@ -404,7 +402,7 @@ bool LauncherMainWindow::askForKeeperFxInstall()
 
         // Ask if they are sure
         result = QMessageBox::question(this, "Confirmation",
-                                       "Are you sure?\n\nYou will be unable to play KeeperFX.");
+                                       tr("Are you sure?") + "\n\n" + tr("You will be unable to play KeeperFX."));
         if(result == QMessageBox::Yes){
 
             // User does not want to install KeeperFX
@@ -754,11 +752,11 @@ void LauncherMainWindow::verifyBinaryCertificates()
         }
 
         // Show messagebox alerting the user
-        QMessageBox::warning(this,
-             "KeeperFX Verification Error",
-             "The launcher failed to verify the signature of:\n\n"
-                 + fileListString +
-                 "\nIt is highly suggested to only use official KeeperFX files.");
+        QMessageBox::warning(this, "KeeperFX Verification Error",
+            tr("The launcher failed to verify the signature of:") + "\n\n" +
+            fileListString + "\n" +
+            tr("It is highly suggested to only use official KeeperFX files.")
+        );
     }
 }
 
@@ -785,9 +783,9 @@ void LauncherMainWindow::startGame(Game::StartType startType, QVariant data1, QV
         // Show messagebox alerting the user
         if (errorString.isEmpty() == false) {
             qDebug() << "Game start error:" << errorString;
-            QMessageBox::warning(this, "KeeperFX", "Failed to start KeeperFX.\n\nError:\n" + errorString);
+            QMessageBox::warning(this, "KeeperFX", tr("Failed to start KeeperFX.") + "\n\n" + tr("Error:") + "\n" + errorString);
         } else {
-            QMessageBox::warning(this, "KeeperFX", "Failed to start KeeperFX. Unknown error.");
+            QMessageBox::warning(this, "KeeperFX", tr("Failed to start KeeperFX.") + " " + tr("Unknown error."));
         }
     }
 }
