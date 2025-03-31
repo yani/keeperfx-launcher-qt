@@ -166,7 +166,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Handle buttons that should be aware of the current installation
     // This will enable/disable specific buttons whether the logfile and the KFX binary exist
-    refreshPlayButtons();
+    refreshInstallationAwareButtons();
     refreshLogfileButton();
 
     // Start checking periodically if the logfile exists
@@ -353,9 +353,11 @@ void LauncherMainWindow::refreshCampaignMenu()
     }
 }
 
-void LauncherMainWindow::refreshPlayButtons() {
-    ui->playButton->setDisabled(isKeeperFxInstalled() == false);
-    ui->playExtraButton->setDisabled(isKeeperFxInstalled() == false);
+void LauncherMainWindow::refreshInstallationAwareButtons() {
+    bool isKfxInstalled = isKeeperFxInstalled();
+    ui->settingsButton->setDisabled(isKfxInstalled == false);
+    ui->playButton->setDisabled(isKfxInstalled == false);
+    ui->playExtraButton->setDisabled(isKfxInstalled == false);
 }
 
 void LauncherMainWindow::refreshLogfileButton() {
@@ -655,9 +657,9 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
     // Check if there are any files that should be removed
     checkForFileRemoval();
 
-    // Refresh the play buttons
+    // Refresh the installation-aware buttons
     // It's possible an update is done that fixes the installation and adds the binary again
-    refreshPlayButtons();
+    refreshInstallationAwareButtons();
 }
 
 void LauncherMainWindow::checkForKfxUpdate()
@@ -773,8 +775,8 @@ void LauncherMainWindow::startGame(Game::StartType startType, QVariant data1, QV
     if (startStatus == false) {
         qDebug() << "Game failed to start";
 
-        // Refresh the play and logfile buttons
-        refreshPlayButtons();
+        // Refresh the installation-aware and logfile buttons
+        refreshInstallationAwareButtons();
         refreshLogfileButton();
 
         // Get the error
@@ -797,7 +799,7 @@ void LauncherMainWindow::on_playButton_clicked()
 
 void LauncherMainWindow::onGameEnded(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    refreshPlayButtons();
+    refreshInstallationAwareButtons();
     refreshLogfileButton();
     refreshSaveFilesMenu();
 

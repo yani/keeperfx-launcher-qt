@@ -48,7 +48,7 @@ private:
     QMenu *campaignMenu;
     void refreshCampaignMenu();
 
-    void refreshPlayButtons();
+    void refreshInstallationAwareButtons();
     void refreshLogfileButton();
 
     bool isKeeperFxInstalled();
