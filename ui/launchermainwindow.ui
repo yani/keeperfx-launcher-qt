@@ -60,7 +60,7 @@
         <item>
          <widget class="QLabel" name="spinnerLabel">
           <property name="text">
-           <string>&lt;SPINNER_PLACEHOLDER&gt;</string>
+           <string notr="true">&lt;SPINNER_PLACEHOLDER&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -153,7 +153,7 @@
               <font/>
              </property>
              <property name="text">
-              <string>&lt;ITEM_PLACEHOLDER&gt;</string>
+              <string notr="true">&lt;ITEM_PLACEHOLDER&gt;</string>
              </property>
             </widget>
            </item>
@@ -163,7 +163,7 @@
               <font/>
              </property>
              <property name="text">
-              <string>&lt;ITEM_PLACEHOLDER&gt;</string>
+              <string notr="true">&lt;ITEM_PLACEHOLDER&gt;</string>
              </property>
             </widget>
            </item>
@@ -173,7 +173,7 @@
               <font/>
              </property>
              <property name="text">
-              <string>&lt;ITEM_PLACEHOLDER&gt;</string>
+              <string notr="true">&lt;ITEM_PLACEHOLDER&gt;</string>
              </property>
             </widget>
            </item>
@@ -183,7 +183,7 @@
               <font/>
              </property>
              <property name="text">
-              <string>&lt;ITEM_PLACEHOLDER&gt;</string>
+              <string notr="true">&lt;ITEM_PLACEHOLDER&gt;</string>
              </property>
             </widget>
            </item>
@@ -239,7 +239,7 @@
               <font/>
              </property>
              <property name="text">
-              <string>&lt;NEWS_PLACEHOLDER&gt;</string>
+              <string notr="true">&lt;NEWS_PLACEHOLDER&gt;</string>
              </property>
             </widget>
            </item>
@@ -249,7 +249,7 @@
               <font/>
              </property>
              <property name="text">
-              <string>&lt;NEWS_PLACEHOLDER&gt;</string>
+              <string notr="true">&lt;NEWS_PLACEHOLDER&gt;</string>
              </property>
             </widget>
            </item>
@@ -364,7 +364,7 @@
 }</string>
             </property>
             <property name="text">
-             <string>&lt;VERSION_PLACEHOLDER&gt;</string>
+             <string notr="true">&lt;VERSION_PLACEHOLDER&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
