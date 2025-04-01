@@ -65,9 +65,13 @@ QString KfxVersion::getVersionString(QFile binary){
     std::ostringstream oss;
     oss << versions.front(); // Get the first ResourceVersion
 
+    // Get as string
     QString resourcesInfo = QString::fromStdString(oss.str());
 
-    qDebug() << "RESOURCE INFO:" << resourcesInfo;
+    // Make sure string is not empty
+    if(resourcesInfo.isEmpty()){
+        return QString();
+    }
 
     // Define regex pattern to match 'ProductVersion'
     QRegularExpression regex (R"(ProductVersion:\s*(.+?)\s*?[\\\n])");
@@ -75,7 +79,7 @@ QString KfxVersion::getVersionString(QFile binary){
 
     // Get regex match
     if (match.hasMatch()) {
-        qDebug() << match.captured(1);
+        qDebug() << "Grabbed 'ProductVersion'" << match.captured(1) << "from" << filePath;
         return match.captured(1);
     } else {
         qDebug() << "Error: Version not found in PE file";
