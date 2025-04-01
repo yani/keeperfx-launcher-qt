@@ -448,15 +448,10 @@ void SettingsDialog::loadSettings()
 
     bool isApiEnabled = Settings::getKfxSetting("API_ENABLED") == true;
     ui->checkBoxEnableAPI->setChecked(isApiEnabled);
-    if (isApiEnabled) {
-        ui->labelApiPort->setDisabled(false);
-        ui->lineEditApiPort->setDisabled(false);
-    } else {
-        ui->labelApiPort->setDisabled(true);
-        ui->lineEditApiPort->setDisabled(true);
-    }
-
     ui->lineEditApiPort->setText(Settings::getKfxSetting("API_PORT").toString());
+
+    ui->labelApiPort->setDisabled(!isApiEnabled);
+    ui->lineEditApiPort->setDisabled(!isApiEnabled);
 
     // ============================================================================
     // ================================ LAUNCHER ==================================
