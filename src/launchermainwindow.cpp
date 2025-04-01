@@ -753,7 +753,7 @@ void LauncherMainWindow::verifyBinaryCertificates()
 
         // Show messagebox alerting the user
         QMessageBox::warning(this, "KeeperFX Verification Error",
-            tr("The launcher failed to verify the signature of:") + "\n\n" +
+            tr("The launcher failed to verify the signature of") + ":\n\n" +
             fileListString + "\n" +
             tr("It is highly suggested to only use official KeeperFX files.")
         );
@@ -783,7 +783,7 @@ void LauncherMainWindow::startGame(Game::StartType startType, QVariant data1, QV
         // Show messagebox alerting the user
         if (errorString.isEmpty() == false) {
             qDebug() << "Game start error:" << errorString;
-            QMessageBox::warning(this, "KeeperFX", tr("Failed to start KeeperFX.") + "\n\n" + tr("Error:") + "\n" + errorString);
+            QMessageBox::warning(this, "KeeperFX", tr("Failed to start KeeperFX.") + "\n\n" + tr("Error") + ":\n" + errorString);
         } else {
             QMessageBox::warning(this, "KeeperFX", tr("Failed to start KeeperFX.") + " " + tr("Unknown error."));
         }

@@ -94,11 +94,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Resize movies
     QMap<QString, QString> resizeMoviesMap = {
-        {"Fit (default)", "FIT"},
-        {"Off", "OFF"},
-        {"Stretch", "STRETCH"},
-        {"Crop", "CROP"},
-        {"Pixel perfect", "PIXELPERFECT"},
+        {tr("Fit (default)"), "FIT"},
+        {tr("Off"), "OFF"},
+        {tr("Stretch"), "STRETCH"},
+        {tr("Crop"), "CROP"},
+        {tr("Pixel perfect"), "PIXELPERFECT"},
         {"4BY3", "4BY3"},
         {"4BY3PP", "4BY3PP"},
     };
@@ -110,7 +110,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Resolutions
     QMap<QString, QString> resolutionsMap = {
-        {"Match desktop", "MATCH_DESKTOP"},
+        {tr("Match desktop"), "MATCH_DESKTOP"},
         {"640 x 400 (8:5)", "640x400"},
         {"640 x 480 (4:3)", "640x480"},
         {"800 x 600 (4:3)", "800x600"},
@@ -147,8 +147,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Display mode
     QMap<QString, QString> displayModesMap = {
-        {"Fullscreen", "x32"},
-        {"Windowed", "w32"},
+        {tr("Fullscreen"), "x32"},
+        {tr("Windowed"), "w32"},
     };
 
     // Add display modes
@@ -165,9 +165,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Atmospheric dropdown
     QMap<QString, QString> atmoMap = {
-                                      {"Low", "LOW"},
-                                      {"Medium", "MEDIUM"},
-                                      {"High", "HIGH"},
+                                      {tr("Low"), "LOW"},
+                                      {tr("Medium"), "MEDIUM"},
+                                      {tr("High"), "HIGH"},
                                       };
 
     // Add atmo settings
@@ -178,8 +178,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Release dropdown
     QMap<QString, QString> releaseMap = {
-                                      {"Stable (Default)", "STABLE"},
-                                      {"Alpha", "ALPHA"},
+                                      {tr("Stable (Default)"), "STABLE"},
+                                      {tr("Alpha"), "ALPHA"},
                                       };
 
     // Add atmo settings
@@ -665,10 +665,10 @@ void SettingsDialog::cancel()
     if (settingHasChanged == true) {
 
         // Ask if the user is sure
-        int result = QMessageBox::question(this,
-                                           "KeeperFX Settings",
-                                           "One or more settings have been changed. Are you sure "
-                                           "you want to return without saving?");
+        int result = QMessageBox::question(this, tr("KeeperFX Settings"),
+            tr("One or more settings have been changed.") + " " +
+            tr("Are you sure you want to return without saving?")
+        );
 
         // Cancel close if user is not sure
         if (result != QMessageBox::Yes) {
