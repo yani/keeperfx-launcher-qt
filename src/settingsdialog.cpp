@@ -226,6 +226,15 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditApiPort->setDisabled(!isChecked);
     });
 
+    // Connect the atmospheric sounds enabled checkbox
+    connect(ui->checkBoxEnableAtmoSounds, &QCheckBox::checkStateChanged, this, [this]() {
+        bool isChecked = ui->checkBoxEnableAtmoSounds->isChecked();
+        ui->labelAtmoFrequency->setDisabled(!isChecked);
+        ui->labelAtmoVolume->setDisabled(!isChecked);
+        ui->comboBoxAtmoFrequency->setDisabled(!isChecked);
+        ui->comboBoxAtmoVolume->setDisabled(!isChecked);
+    });
+
     // Add handler to remember when a setting has changed
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
@@ -385,12 +394,21 @@ void SettingsDialog::loadSettings()
         Settings::getKfxSetting("PAUSE_MUSIC_WHEN_GAME_PAUSED") == true);
     ui->checkBoxMuteAudioWhenNotFocused->setChecked(
         Settings::getKfxSetting("MUTE_AUDIO_ON_FOCUS_LOST") == true);
+
+    // Atmospheric sounds
     ui->checkBoxEnableAtmoSounds->setChecked(
         Settings::getKfxSetting("ATMOSPHERIC_SOUNDS") == true);
     ui->comboBoxAtmoFrequency->setCurrentIndex(
         ui->comboBoxAtmoFrequency->findData(Settings::getKfxSetting("ATMOS_FREQUENCY").toString()));
     ui->comboBoxAtmoVolume->setCurrentIndex(
         ui->comboBoxAtmoVolume->findData(Settings::getKfxSetting("ATMOS_VOLUME").toString()));
+
+    // Atmospheric checkbox disable / enable extra info
+    bool isAtmoSoundsEnabled = Settings::getKfxSetting("ATMOSPHERIC_SOUNDS") == true;
+    ui->labelAtmoFrequency->setDisabled(!isAtmoSoundsEnabled);
+    ui->labelAtmoVolume->setDisabled(!isAtmoSoundsEnabled);
+    ui->comboBoxAtmoFrequency->setDisabled(!isAtmoSoundsEnabled);
+    ui->comboBoxAtmoVolume->setDisabled(!isAtmoSoundsEnabled);
 
     // =========================================================================
     // ================================ INPUT ==================================
