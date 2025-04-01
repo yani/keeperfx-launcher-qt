@@ -1,0 +1,76 @@
+msgid "OK"
+msgstr ""
+
+msgid "&OK"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "&Cancel"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "&Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "&No"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "&Apply"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "&Close"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "&Help"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "&Reset"
+msgstr ""
+
+msgid "Retry"
+msgstr ""
+
+msgid "&Retry"
+msgstr ""
+
+msgid "Ignore"
+msgstr ""
+
+msgid "&Ignore"
+msgstr ""
+
+msgid "Abort"
+msgstr ""
+
+msgid "&Abort"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "&Save"
+msgstr ""
+
+msgid "Restore Defaults"
+msgstr ""
+
+
