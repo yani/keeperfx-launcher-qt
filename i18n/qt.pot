@@ -1,76 +1,99 @@
+#: Qt default
 msgid "OK"
 msgstr ""
 
+#: Qt default
 msgid "&OK"
 msgstr ""
 
+#: Qt default
 msgid "Cancel"
 msgstr ""
 
+#: Qt default
 msgid "&Cancel"
 msgstr ""
 
+#: Qt default
 msgid "Yes"
 msgstr ""
 
+#: Qt default
 msgid "&Yes"
 msgstr ""
 
+#: Qt default
 msgid "No"
 msgstr ""
 
+#: Qt default
 msgid "&No"
 msgstr ""
 
+#: Qt default
 msgid "Apply"
 msgstr ""
 
+#: Qt default
 msgid "&Apply"
 msgstr ""
 
+#: Qt default
 msgid "Close"
 msgstr ""
 
+#: Qt default
 msgid "&Close"
 msgstr ""
 
+#: Qt default
 msgid "Help"
 msgstr ""
 
+#: Qt default
 msgid "&Help"
 msgstr ""
 
+#: Qt default
 msgid "Reset"
 msgstr ""
 
+#: Qt default
 msgid "&Reset"
 msgstr ""
 
+#: Qt default
 msgid "Retry"
 msgstr ""
 
+#: Qt default
 msgid "&Retry"
 msgstr ""
 
+#: Qt default
 msgid "Ignore"
 msgstr ""
 
+#: Qt default
 msgid "&Ignore"
 msgstr ""
 
+#: Qt default
 msgid "Abort"
 msgstr ""
 
+#: Qt default
 msgid "&Abort"
 msgstr ""
 
+#: Qt default
 msgid "Save"
 msgstr ""
 
+#: Qt default
 msgid "&Save"
 msgstr ""
 
+#: Qt default
 msgid "Restore Defaults"
 msgstr ""
-
-
