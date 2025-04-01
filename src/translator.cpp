@@ -10,7 +10,7 @@ Translator::Translator(QObject *parent)
     translations = QMap<QString, QString>();
 }
 
-void Translator::loadPotTranslations(const QString &languageCode)
+void Translator::loadPoTranslations(const QString &languageCode)
 {
     QString fileName = QString(":/i18n/i18n/translations_%1.po").arg(languageCode);
     QFile file(fileName);
