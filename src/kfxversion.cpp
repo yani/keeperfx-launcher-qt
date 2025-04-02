@@ -13,7 +13,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"absolute_config_path", "1.2.0.4408"}, // '-config' absolute path
     {"start_campaign_directly", "9.9.9"},   // TODO: https://github.com/dkfans/keeperfx/issues/3924
     {"load_save_directly", "9.9.9"},        // TODO: https://github.com/dkfans/keeperfx/issues/3481
-    {"direct_connect", "1.0.0"},            // '-connect' parameter
+    {"direct_enet_connect", "1.0.0"},       // '-connect' parameter
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;

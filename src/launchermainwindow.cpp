@@ -260,7 +260,7 @@ void LauncherMainWindow::setupPlayExtraMenu()
     }
 
     // Direct connect (MP) action
-    if (KfxVersion::hasFunctionality("direct_connect") == true) {
+    if (KfxVersion::hasFunctionality("direct_enet_connect") == true) {
         menu->addAction(tr("Direct connect (MP)"),
                         [this]() {
                             // Handle direct connect logic here
