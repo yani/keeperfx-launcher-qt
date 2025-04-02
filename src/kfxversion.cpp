@@ -14,6 +14,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"start_campaign_directly", "9.9.9"},   // TODO: https://github.com/dkfans/keeperfx/issues/3924
     {"load_save_directly", "9.9.9"},        // TODO: https://github.com/dkfans/keeperfx/issues/3481
     {"direct_enet_connect", "1.0.0"},       // '-connect' parameter
+    {"enet_ipv6_support", "9.9.9"},         // TODO
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;

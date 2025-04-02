@@ -75,6 +75,11 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
         params << "-campaign" << data1.toString();
     }
 
+    // Direct Connect (MP)
+    if (startType == StartType::DIRECT_CONNECT) {
+        params << "-connect" << QString(data1.toString() + ":" + data2.toString());
+    }
+
     // Log parameters
     if (params.count() > 0) {
         qInfo() << "Game parameters:" << params.join(" ");

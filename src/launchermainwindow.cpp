@@ -18,6 +18,7 @@
 #include "campaign.h"
 #include "certificate.h"
 #include "copydkfilesdialog.h"
+#include "directconnectdialog.h"
 #include "dkfiles.h"
 #include "fileremover.h"
 #include "fileremoverdialog.h"
@@ -262,11 +263,14 @@ void LauncherMainWindow::setupPlayExtraMenu()
     // Direct connect (MP) action
     if (KfxVersion::hasFunctionality("direct_enet_connect") == true) {
         menu->addAction(tr("Direct connect (MP)"),
-                        [this]() {
-                            // Handle direct connect logic here
-                            qDebug() << "Direct connect (MP) selected!";
-                        })
-            ->setDisabled(true); // TODO: disabled until implemented
+            [this]() {
+                qDebug() << "Direct connect (MP) selected!";
+                // Open the dialog
+                DirectConnectDialog dialog(this);
+                if (dialog.exec() == QDialog::Accepted) {
+                    startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
+                }
+        });
     }
 
     // Run packetsave action
