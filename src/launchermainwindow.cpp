@@ -28,6 +28,7 @@
 #include "launcheroptions.h"
 #include "newsarticlewidget.h"
 #include "savefile.h"
+#include "scannetworkdialog.h"
 #include "settings.h"
 #include "settingsdialog.h"
 #include "updatedialog.h"
@@ -272,6 +273,19 @@ void LauncherMainWindow::setupPlayExtraMenu()
                 }
         });
     }
+
+    // Scan local network (MP)
+    menu->addAction(tr("Scan local network (MP)"),
+        [this]() {
+            qDebug() << "Scan local network (MP) selected!";
+            // Open the scan dialog
+            ScanNetworkDialog dialog(this);
+            if (dialog.exec() == QDialog::Accepted) {
+                // Start the game
+                startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
+            }
+        }
+    );
 
     // Run packetsave action
     menu->addAction(tr("Run packetfile"),
