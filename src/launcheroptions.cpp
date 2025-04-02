@@ -2,8 +2,6 @@
 
 QCommandLineParser LauncherOptions::parser;
 
-QStringList LauncherOptions::argumentList;
-
 bool LauncherOptions::isSet(const QString option)
 {
     return LauncherOptions::parser.isSet(option);

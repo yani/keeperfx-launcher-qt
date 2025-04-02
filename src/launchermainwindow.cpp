@@ -674,9 +674,13 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
     // Check if new launcher update exists
     QFile newAppBin(newAppBinString);
     if (newAppBin.exists()) {
+        qDebug() << "New launcher found:" << newAppBinString;
+        qDebug() << "Starting new launcher";
         // Start the new launcher
-        QProcess::startDetached(newAppBinString, LauncherOptions::argumentList);
+        // This needs to be detached because we are going the remove the current running launcher
+        QProcess::startDetached(newAppBinString, QCoreApplication::arguments());
         QApplication::quit();
+        return;
     }
 
     // Verify the binaries against known certificates

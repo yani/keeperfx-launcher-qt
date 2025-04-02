@@ -13,6 +13,4 @@ public:
 
     static bool isSet(const QString option);
     static void processApp(QApplication &app);
-
-    static QStringList argumentList;
 };

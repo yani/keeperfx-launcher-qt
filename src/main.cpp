@@ -8,6 +8,7 @@
 #include <QPalette>
 #include <QStyleFactory>
 #include <QFontDatabase>
+#include <QThread>
 
 using namespace Qt::StringLiterals;
 
@@ -97,12 +98,6 @@ int main(int argc, char *argv[])
         qInstallMessageHandler(launcherLogFileHandler);
     }
 
-    // Create an argument list of our current launcher arguments
-    // We do this because we might start a new instance of the launcher
-    for (int i = 1; i < argc; ++i) { // Start from 1 to skip the program name
-        LauncherOptions::argumentList << QString::fromLocal8Bit(argv[i]);
-    }
-
     // Create Qt objects for this application binary
     QFile appFile(QCoreApplication::applicationFilePath());
     QFileInfo appFileInfo(QCoreApplication::applicationFilePath());
@@ -125,8 +120,23 @@ int main(int argc, char *argv[])
         // Make sure original launcher is removed
         QFile defaultAppBinFile(defaultAppBinString);
         if (defaultAppBinFile.exists()) {
-            defaultAppBinFile.remove();
-            qDebug() << "Default launcher removed";
+
+            // Try a few times to delete it
+            int removalTries = 0;
+            do {
+                if(defaultAppBinFile.remove() == true){
+                    qDebug() << "Old launcher removed";
+                    break;
+                }
+                removalTries++;
+                QThread::msleep(200);
+            }
+            while(removalTries < 15);
+
+            // Check if "-new" launcher is removed
+            if(defaultAppBinFile.exists()){
+                qWarning() << "Failed to remove old launcher:" << defaultAppBinString;
+            }
         }
 
         // Copy this updated launcher in place of the old one
@@ -134,14 +144,15 @@ int main(int argc, char *argv[])
         qDebug() << "Copied \"-new\" launcher as default launcher";
 
         // Start the copied launcher
-        QProcess::startDetached(defaultAppBinString, LauncherOptions::argumentList);
+        // This one needs to be detached because we're removing the "-new" binary
+        QProcess::startDetached(defaultAppBinString, QCoreApplication::arguments());
         return 0;
 
     } else if (appFileInfo.baseName() == "keeperfx-launcher-qt") {
         // We are the default launcher binary
         // So we can remove the "-new" one if it exists
 
-        // Get original binary path
+        // Get -new binary path
 #ifdef Q_OS_WINDOWS
         QString newAppBinString(QCoreApplication::applicationDirPath()
                                 + "/keeperfx-launcher-qt-new.exe");
@@ -150,11 +161,26 @@ int main(int argc, char *argv[])
                                 + "/keeperfx-launcher-qt-new");
 #endif
 
-        // Check if copied launcher exists and remove it
+        // Check if "-new" launcher exists and remove it
         QFile newAppBin(newAppBinString);
         if (newAppBin.exists()) {
-            newAppBin.remove();
-            qDebug() << "Launcher \"-new\" removed";
+
+            // Try a few times to delete it
+            int removalTries = 0;
+            do {
+                if(newAppBin.remove() == true){
+                    qDebug() << "Launcher \"-new\" removed";
+                    break;
+                }
+                removalTries++;
+                QThread::msleep(200);
+            }
+            while(removalTries < 15);
+
+            // Check if "-new" launcher is removed
+            if(newAppBin.exists()){
+                qWarning() << "Failed to remove '-new' launcher:" << newAppBinString;
+            }
         }
     }
 
@@ -170,7 +196,7 @@ int main(int argc, char *argv[])
         // Set platform to xcb
         qputenv("QT_QPA_PLATFORM", "xcb");
         // Run new process and pipe return value
-        return QProcess::execute(argv[0], LauncherOptions::argumentList);
+        return QProcess::execute(QCoreApplication::applicationFilePath(), QCoreApplication::arguments());
     }
 #endif
 
