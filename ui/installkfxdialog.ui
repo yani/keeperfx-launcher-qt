@@ -32,9 +32,6 @@
    </item>
    <item>
     <widget class="QLabel" name="infoLabel">
-     <property name="font">
-      <font/>
-     </property>
      <property name="styleSheet">
       <string notr="true">QLabel {
  color: #AAA;
@@ -71,12 +68,6 @@
       </item>
       <item>
        <widget class="QComboBox" name="versionComboBox">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>150</height>
-         </size>
-        </property>
         <item>
          <property name="text">
           <string>Stable (default)</string>
