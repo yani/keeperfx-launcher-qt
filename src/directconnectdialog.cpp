@@ -23,7 +23,7 @@ DirectConnectDialog::DirectConnectDialog(QWidget *parent)
     // Port validator: allows only numbers (0-65535)
     ui->portLineEdit->setValidator(new QIntValidator(0, 65535, this));
 
-    // IP validator: allows IPv6 characters, and IPv6 characters if KeeperFX has that functionality
+    // IP validator: allows IPv4 characters, and IPv6 characters if KeeperFX has that functionality
     ui->ipLineEdit->setValidator(new QRegularExpressionValidator(
         KfxVersion::hasFunctionality("enet_ipv6_support") ?
         QRegularExpression("^[0-9a-fA-F:.]*$") :
