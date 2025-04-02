@@ -38,7 +38,12 @@
 }</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;It is possible to automatically download and install KeeperFX.&lt;br/&gt;You can select the release version and the installer will do all the work. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Select your version, and this installer will download and install KeeperFX.
+
+Choose the stable release for reliability or the alpha version if you want to help us out with testing. </string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
      <property name="margin">
       <number>10</number>
