@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>470</width>
-    <height>249</height>
+    <height>216</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,10 @@
       <string>Direct Connect</string>
      </property>
      <property name="margin">
-      <number>10</number>
+      <number>7</number>
+     </property>
+     <property name="indent">
+      <number>2</number>
      </property>
     </widget>
    </item>
@@ -47,7 +50,10 @@
       <bool>true</bool>
      </property>
      <property name="margin">
-      <number>10</number>
+      <number>5</number>
+     </property>
+     <property name="indent">
+      <number>5</number>
      </property>
     </widget>
    </item>
