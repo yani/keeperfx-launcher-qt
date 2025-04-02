@@ -418,6 +418,7 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 
     // Remember
     QString oldReleaseVersion = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
+    bool oldUpdateCheckEnabled = Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool();
     QString oldLauncherLanguage = Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
     bool websiteIntegration = Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED").toBool();
 
@@ -448,11 +449,14 @@ void LauncherMainWindow::on_settingsButton_clicked() {
         }
     }
 
-    // Check for updates when settings are closed and update release version has changed and enabled
-    if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool() == true &&
-        oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
-    ) {
-        qDebug() << "Game release version changed so asking for update";
+    // Check for updates when settings are closed
+    if(Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool() == true && (
+            // Check for updates was disabled and has been enabled now
+            oldUpdateCheckEnabled == false ||
+            // Version has changed
+            oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
+    )){
+        qDebug() << "Settings regarding updates have been enabled or changed so asking for update";
         checkForKfxUpdate();
     }
 
