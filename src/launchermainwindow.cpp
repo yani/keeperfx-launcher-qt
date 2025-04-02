@@ -418,14 +418,40 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 
     // Remember
     QString oldReleaseVersion = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
+    QString oldLauncherLanguage = Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
     bool websiteIntegration = Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED").toBool();
 
     // Open settings dialog
     SettingsDialog settingsDialog(this);
     settingsDialog.exec();
 
-    // Check for updates when settings are closed and update release version has changed
-    if (oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()) {
+    // Check if launcher language has changed
+    if(oldLauncherLanguage != Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString()){
+
+        // Ask user if they want to restart their launcher
+        qDebug() << "Launcher language has changed so asking for launcher restart";
+        int result = QMessageBox::question(this, "Language has changed",
+            tr("The launcher has to restart to change its language.") + " " +
+                                               tr("Do you want to do that now?")
+            );
+        if (result == QMessageBox::Yes) {
+
+            qDebug() << "Restarting launcher to change the language";
+
+            // Hide this launcher's window and pipe the exit code from the new launcher process to the exit of this one
+            // We do this because we want to allow users to keep a handle on the original process
+            this->hide();
+            QCoreApplication::exit(
+                QProcess::execute(QCoreApplication::applicationFilePath(), QCoreApplication::arguments())
+            );
+            return;
+        }
+    }
+
+    // Check for updates when settings are closed and update release version has changed and enabled
+    if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool() == true &&
+        oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
+    ) {
         qDebug() << "Game release version changed so asking for update";
         checkForKfxUpdate();
     }

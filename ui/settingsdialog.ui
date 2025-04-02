@@ -1195,7 +1195,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>40</y>
+         <y>90</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1207,9 +1207,9 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxRelease">
        <property name="geometry">
         <rect>
-         <x>130</x>
-         <y>80</y>
-         <width>171</width>
+         <x>210</x>
+         <y>120</y>
+         <width>191</width>
          <height>25</height>
         </rect>
        </property>
@@ -1218,7 +1218,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>200</y>
+         <y>230</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1231,7 +1231,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>85</y>
+         <y>125</y>
          <width>71</width>
          <height>17</height>
         </rect>
@@ -1244,7 +1244,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>140</y>
+         <y>180</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1257,13 +1257,41 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>260</y>
+         <y>280</y>
          <width>361</width>
          <height>23</height>
         </rect>
        </property>
        <property name="text">
         <string>Open on same screen as game</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelLauncherLanguage">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>43</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Launcher language</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxLauncherLanguage">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>40</y>
+         <width>191</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
        </property>
       </widget>
      </widget>

@@ -55,7 +55,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         this,
         &SettingsDialog::restoreSettings);
 
-    // Map: Languages
+    // Map: Game languages
     QMap<QString, QString> languageMap = {
                                           {"English", "ENG"},
                                           {"Italiano", "ITA"},
@@ -74,9 +74,33 @@ SettingsDialog::SettingsDialog(QWidget *parent)
                                           {"Lat\u012Bna", "LAT"},
                                           };
 
-    // Add languages
+    // Add Game languages
     for (auto it = languageMap.begin(); it != languageMap.end(); ++it) {
         ui->comboBoxLanguage->addItem(it.key(), it.value());
+    }
+
+    // Map: Launcher languages
+    QMap<QString, QString> launcherLanguageMap = {
+        {"English", "en"},
+        //{"Italiano", "it"},
+        //{"Fran\u00E7ais", "fr"},
+        //{"Espa\u00F1ol", "es"},
+        {"Nederlands", "nl"},
+        //{"Deutsch", "de"},
+        //{"Polski", "pl"},
+        //{"Svenska", "sv"},
+        //{"\u65E5\u672C\u8A9E", "ja"},
+        //{"\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "ru"},
+        //{"\uD55C\uAD6D\uC5B4", "ko"},
+        //{"\u7B80\u4F53\u4E2D\u6587", "zh-Hans"},
+        //{"\u7E41\u9AD4\u4E2D\u6587", "zh-Hant"},
+        //{"\u010Ce\u0161ka", "cs"},
+        //{"Lat\u012Bna", "la"},
+    };
+
+    // Add launcher languages
+    for (auto it = launcherLanguageMap.begin(); it != launcherLanguageMap.end(); ++it) {
+        ui->comboBoxLauncherLanguage->addItem(it.key(), it.value());
     }
 
     // Map: Languages
@@ -457,6 +481,7 @@ void SettingsDialog::loadSettings()
     // ================================ LAUNCHER ==================================
     // ============================================================================
 
+    ui->comboBoxLauncherLanguage->setCurrentIndex(ui->comboBoxLauncherLanguage->findData(Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString()));
     ui->checkBoxCheckForUpdates->setChecked(Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") == true);
     ui->comboBoxRelease->setCurrentIndex(ui->comboBoxRelease->findData(Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()));
     ui->checkBoxWebsiteIntegration->setChecked(Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == true);
@@ -622,6 +647,7 @@ void SettingsDialog::saveSettings()
     // ================================ LAUNCHER ==================================
     // ============================================================================
 
+    Settings::setLauncherSetting("LAUNCHER_LANGUAGE", ui->comboBoxLauncherLanguage->currentData().toString());
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_ENABLED", ui->checkBoxCheckForUpdates->isChecked() == true);
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", ui->comboBoxRelease->currentData().toString());
     Settings::setLauncherSetting("WEBSITE_INTEGRATION_ENABLED", ui->checkBoxWebsiteIntegration->isChecked() == true);

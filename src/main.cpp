@@ -227,8 +227,7 @@ int main(int argc, char *argv[])
     qDebug() << "System locale:" << QLocale::system().name();
     qDebug() << "Launcher language:" << Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
     Translator *translator = new Translator;
-    //translator->loadPoTranslations(Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString());
-    translator->loadPoTranslations("nl");
+    translator->loadPoTranslations(Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString());
     app.installTranslator(translator);
 
     // Force dark theme
