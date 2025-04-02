@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/main.c:36
+msgid "Logfile"
+msgstr "Logbestand"
+
+#: src/settings.c:45
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/errors.c:10
+msgid "Play"
+msgstr "Speel"
+
+#: src/errors.c:10
+msgid "Latest workshop items"
+msgstr "Nieuwe workshop items"
+
+#: src/errors.c:10
+msgid "Latest News"
+msgstr "Laatste Nieuws"
+
+#: src/errors.c:10
+msgid "Enable cheats"
+msgstr "Cheats"
+
+
+#: src/errors.c:10
+msgid "Enable censorship"
+msgstr "Censureer"
+
+#: src/errors.c:10
+msgid "New KeeperFX Version found!"
+msgstr "Nieuwe KeeperFX versie beschikbaar!"
+
+
+#: src/errors.c:10
+msgid "Cancel"
+msgstr "Annuleer"
+
+
+#: src/errors.c:10
+msgid "Update"
+msgstr "Updaten"
+
+#: src/errors.c:10
+msgid "No"
+msgstr "Nee"
+
+#: src/errors.c:10
+msgid "Yes"
+msgstr "Ja"
+
+#: src/errors.c:10
+msgid "Are you sure you want to cancel the update?"
+msgstr "Ben je zeker dat je de update wilt annuleren?"
