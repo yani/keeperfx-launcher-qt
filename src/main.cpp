@@ -249,12 +249,18 @@ int main(int argc, char *argv[])
     // Also try and copy over defaults
     Settings::load();
 
-    // Load translator
-    qDebug() << "System locale:" << QLocale::system().name();
-    qDebug() << "Launcher language:" << Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
-    Translator *translator = new Translator;
-    translator->loadPoTranslations(Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString());
-    app.installTranslator(translator);
+    // Log system and launcher language
+    QString launcherLanguage = Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
+    qInfo() << "System locale:" << QLocale::system().name();
+    qInfo() << "Launcher language:" << launcherLanguage;
+
+    // Load translator if the launcher language is not English
+    if(launcherLanguage != "en"){
+        qInfo() << "Loading launcher translation:" << launcherLanguage;
+        Translator *translator = new Translator;
+        translator->loadPoTranslations(launcherLanguage);
+        app.installTranslator(translator);
+    }
 
     // Force dark theme
     setDarkTheme();
