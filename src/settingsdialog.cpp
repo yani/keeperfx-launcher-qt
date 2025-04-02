@@ -250,6 +250,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditApiPort->setDisabled(!isChecked);
     });
 
+    // Connect the game update checkbox
+    connect(ui->checkBoxCheckForUpdates, &QCheckBox::checkStateChanged, this, [this]() {
+        bool isChecked = ui->checkBoxCheckForUpdates->isChecked();
+        ui->labelRelease->setDisabled(!isChecked);
+        ui->comboBoxRelease->setDisabled(!isChecked);
+    });
+
     // Connect the atmospheric sounds enabled checkbox
     connect(ui->checkBoxEnableAtmoSounds, &QCheckBox::checkStateChanged, this, [this]() {
         bool isChecked = ui->checkBoxEnableAtmoSounds->isChecked();
@@ -482,7 +489,12 @@ void SettingsDialog::loadSettings()
     // ============================================================================
 
     ui->comboBoxLauncherLanguage->setCurrentIndex(ui->comboBoxLauncherLanguage->findData(Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString()));
-    ui->checkBoxCheckForUpdates->setChecked(Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") == true);
+
+    bool isUpdateCheckEnabled = Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool();
+    ui->checkBoxCheckForUpdates->setChecked(isUpdateCheckEnabled);
+    ui->labelRelease->setDisabled(!isUpdateCheckEnabled);
+    ui->comboBoxRelease->setDisabled(!isUpdateCheckEnabled);
+
     ui->comboBoxRelease->setCurrentIndex(ui->comboBoxRelease->findData(Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()));
     ui->checkBoxWebsiteIntegration->setChecked(Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == true);
     ui->checkBoxCrashReporting->setChecked(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true);
