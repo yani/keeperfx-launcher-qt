@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>582</width>
-    <height>331</height>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,7 +38,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>Scan your local LAN network for open ENET lobbies.</string>
+      <string>Scan your local LAN network for open ENET lobbies. The other person should be on the same network and must have opened a game lobby in KeeperFX. (Multiplayer -&gt; ENET -&gt; Create Game). When the other person has an open lobby this tool should be able to find their IP address.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
