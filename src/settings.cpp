@@ -43,6 +43,7 @@ QMap<QString, QString> Settings::gameSettingsParameterMap = {
 
 QVariant Settings::getKfxSetting(QAnyStringView key)
 {
+    // Get value as a string
     QVariant value = kfxSettings->value(key);
     QString valueString = value.toString();
 
@@ -54,14 +55,17 @@ QVariant Settings::getKfxSetting(QAnyStringView key)
         return valueString;
     }
 
+    // True strings
     if (valueString == "ON" || valueString == "YES" || valueString == "TRUE") {
         return true;
     }
 
+    // False strings
     if (valueString == "OFF" || valueString == "NO" || valueString == "FALSE") {
         return false;
     }
 
+    // Return the string value directly
     return value;
 }
 
