@@ -41,6 +41,24 @@ QMap<QString, QString> Settings::gameSettingsParameterMap = {
     // {"GAME_PARAM_FPS", "-fps %d"}, // Hardcoded
 };
 
+QMap<QString, QString> Settings::localeToGameLanguageMap = {
+    {"en", "ENG"},
+    {"it", "ITA"},
+    {"fr", "FRE"},
+    {"es", "SPA"},
+    {"nl", "DUT"},
+    {"de", "GER"},
+    {"pl", "POL"},
+    {"sv", "SWE"},
+    {"ja", "JAP"},
+    {"ru", "RUS"},
+    {"ko", "KOR"},
+    {"cs", "CZE"},
+    {"la", "LAT"},
+    {"zh-Hans", "CHI"}, // Simplified Chinese
+    {"zh-Hant", "CHT"}, // Traditional Chinese
+};
+
 QVariant Settings::getKfxSetting(QAnyStringView key)
 {
     // Get value as a string
@@ -229,4 +247,20 @@ QStringList Settings::getGameSettingsParameters()
     }
 
     return paramList;
+}
+
+bool Settings::autoSetGameLanguageToLocaleLanguage()
+{
+    // Get system locale language as string
+    QString localeLanguage = QLocale::system().bcp47Name();
+
+    // Check if we have this language in our map
+    if (localeToGameLanguageMap[localeLanguage].isEmpty()) {
+        return false;
+    }
+
+    // Update game language
+    Settings::setKfxSetting("GAME_LANGUAGE", localeToGameLanguageMap[localeLanguage]);
+
+    return true;
 }

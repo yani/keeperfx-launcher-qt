@@ -19,9 +19,12 @@ public:
 
     static QStringList getGameSettingsParameters();
 
+    static bool autoSetGameLanguageToLocaleLanguage();
+
 private:
     static QMap<QString, QVariant> defaultLauncherSettingsMap;
     static QMap<QString, QString> gameSettingsParameterMap;
+    static QMap<QString, QString> localeToGameLanguageMap;
 
     static QSettings *kfxSettings;
     static QSettings *launcherSettings;

@@ -253,6 +253,9 @@ void InstallKfxDialog::onAlphaExtractComplete()
     emit appendLog(tr("Loading settings"));
     Settings::load();
 
+    emit appendLog(tr("Setting game language to system language"));
+    Settings::autoSetGameLanguageToLocaleLanguage();
+
     emit appendLog(tr("Done!"));
     QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!"));
     this->accept();
