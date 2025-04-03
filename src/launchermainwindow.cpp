@@ -20,6 +20,7 @@
 #include "copydkfilesdialog.h"
 #include "directconnectdialog.h"
 #include "dkfiles.h"
+#include "enetservertestdialog.h"
 #include "fileremover.h"
 #include "fileremoverdialog.h"
 #include "game.h"
@@ -286,6 +287,14 @@ void LauncherMainWindow::setupPlayExtraMenu()
             }
         }
     );
+
+    // Scan local network (MP)
+    menu->addAction(tr("Test internet lobby (MP)"), [this]() {
+        qDebug() << "Test internet lobby (MP) selected!";
+        // Open the scan dialog
+        EnetServerTestDialog dialog(this);
+        dialog.exec();
+    });
 
     // Run packetsave action
     menu->addAction(tr("Run packetfile"),

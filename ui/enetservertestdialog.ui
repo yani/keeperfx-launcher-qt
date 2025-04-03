@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EnetServerTestDialog</class>
+ <widget class="QDialog" name="EnetServerTestDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>654</width>
+    <height>465</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="font">
+      <font>
+       <family>Verdana</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Multiplayer Lobby Portforwarding Test</string>
+     </property>
+     <property name="margin">
+      <number>10</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="infoLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+ color: #AAA;
+}</string>
+     </property>
+     <property name="text">
+      <string>This tool checks if your KeeperFX multiplayer lobby can be reached from the internet. You don’t need to use this for local games, as those are already accessible within your network.
+
+To host a game online, you must open port 5556 in your router. The steps depend on your router and internet provider, so check online for instructions or ask your provider for help.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="margin">
+      <number>10</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="infoLabelIpv4">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+ color: #AAA;
+}</string>
+     </property>
+     <property name="text">
+      <string>KeeperFX only works with IPv4. If you don’t have an IPv4 address or have a &quot;shared&quot; one (CGNAT), you won’t be able to host an online game. You can ask your internet provider if they can give you an IPv4 address.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="margin">
+      <number>10</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="logTextArea">
+     <property name="font">
+      <font>
+       <family>Monospace</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::LineWrapMode::NoWrap</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QWidget" name="widget_4" native="true"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="closeButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Close</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="testButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Test</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_3" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
