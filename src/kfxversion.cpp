@@ -10,11 +10,17 @@
 #define MIN_VERSION_NEW_CONFIG
 
 const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
-    {"absolute_config_path", "1.2.0.4408"}, // '-config' absolute path
-    {"start_campaign_directly", "9.9.9"},   // TODO: https://github.com/dkfans/keeperfx/issues/3924
-    {"load_save_directly", "9.9.9"},        // TODO: https://github.com/dkfans/keeperfx/issues/3481
-    {"direct_enet_connect", "1.0.0"},       // '-connect' parameter
-    {"enet_ipv6_support", "9.9.9"},         // TODO
+
+    // In KFX already
+    {"direct_enet_connect", "1.0.0"}, // '-connect' parameter
+
+    // Absolute Config path is temporary disabled because we still want support for multiple KFX installations
+    {"absolute_config_path", "999.999.999"}, // '-config' absolute path was added in 1.2.0.4408
+
+    // Not yet supported
+    {"start_campaign_directly", "999.999.999"}, // https://github.com/dkfans/keeperfx/issues/3924
+    {"load_save_directly", "999.999.999"}, // TODO: https://github.com/dkfans/keeperfx/issues/3481
+    {"enet_ipv6_support", "999.999.999"},  // TODO
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;
