@@ -17,6 +17,7 @@
 #include "apiclient.h"
 #include "campaign.h"
 #include "certificate.h"
+#include "clickablelabel.h"
 #include "copydkfilesdialog.h"
 #include "directconnectdialog.h"
 #include "dkfiles.h"
@@ -55,6 +56,17 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     setFixedSize(size());
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
+    // Create clickable version label
+    ClickableLabel *clickableVersionLabel = new ClickableLabel(this);
+    clickableVersionLabel->setBaseColor(QColor("#999999"));
+    clickableVersionLabel->setFont(ui->versionLabel->font());
+    connect(clickableVersionLabel, &ClickableLabel::clicked, this, &LauncherMainWindow::checkForKfxUpdate);
+
+    // Replace version label with clickable one
+    ui->versionLabel->parentWidget()->layout()->replaceWidget(ui->versionLabel, clickableVersionLabel);
+    ui->versionLabel->deleteLater();
+    ui->versionLabel = clickableVersionLabel;
 
     // Load animated loading spinner GIF
     QMovie* movie = new QMovie(":/res/img/spinner.gif");
