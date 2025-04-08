@@ -87,6 +87,11 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Show the loading spinner during startup
     showLoadingSpinner();
 
+    // Load the latest workshop items and news from the website
+    // We do this a bit early for performance reasons which
+    // also makes it so everything is already loaded if the user is installing
+    loadLatestFromKfxNet();
+
     // Create a refresh shortcut (F5) for refreshing the main panel
     connect(new QShortcut(QKeySequence(Qt::Key_F5), this), &QShortcut::activated, this, &LauncherMainWindow::loadLatestFromKfxNet);
 
@@ -111,10 +116,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             geometry.left() + ((geometry.width() - this->width()) / 2),
             geometry.top() + ((geometry.height() - this->height()) / 2) - 50); // minus 50 to put it a bit higher
     }
-
-    // Create a thread for loading the latest stuff from the website
-    // We do this so we can already show the GUI at this point (which shows a loading spinner)
-    QThread::create([this]() { loadLatestFromKfxNet(); })->start();
 
     // Autostart install procedure when '--install' launcher option is set
     if(LauncherOptions::isSet("install")){
@@ -548,26 +549,20 @@ void LauncherMainWindow::loadLatestFromKfxNet()
     // Clear the existing data in the lists
     clearLatestFromKfxNet();
 
-    // API call: Latest Workshop Items
-    auto fetchWorkshopItems = QtConcurrent::run([this]() {
-        return ApiClient::getJsonResponse(QUrl("/v1/workshop/latest"));
-    });
+    // Create thread so we don't block the main thread
+    QThread::create([this]() {
+        // Get latest workshop items and news from the website
+        // We use QtConcurrent so they are loaded in separate threads
+        auto fetchWorkshopItems = QtConcurrent::run([this]() { return ApiClient::getJsonResponse(QUrl("/v1/workshop/latest")); });
+        auto fetchLatestNews = QtConcurrent::run([this]() { return ApiClient::getJsonResponse(QUrl("/v1/news/latest")); });
 
-    // API call: Latest KfxNews
-    auto fetchLatestNews = QtConcurrent::run([this]() {
-        return ApiClient::getJsonResponse(QUrl("/v1/news/latest"));
-    });
+        // Wait for both threads to finish
+        fetchWorkshopItems.waitForFinished();
+        fetchLatestNews.waitForFinished();
 
-    // Wait for both threads to finish
-    fetchWorkshopItems.waitForFinished();
-    fetchLatestNews.waitForFinished();
-
-    // Process the results
-    QJsonDocument workshopItems = fetchWorkshopItems.result();
-    QJsonDocument latestNews = fetchLatestNews.result();
-
-    // Emit a signal to pass the data to the main thread
-    emit kfxNetRetrieval(workshopItems, latestNews);
+        // Emit a signal to pass the data to the main thread
+        emit kfxNetRetrieval(fetchWorkshopItems.result(), fetchLatestNews.result());
+    })->start();
 }
 
 void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews)
