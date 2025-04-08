@@ -871,3 +871,10 @@ void LauncherMainWindow::refreshKfxVersionInGui()
     ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
     this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
 }
+
+void LauncherMainWindow::on_openFolderButton_clicked()
+{
+    // Use default file browser to open Application Folder
+    QUrl url = QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + QDir::separator());
+    QDesktopServices::openUrl(url);
+}

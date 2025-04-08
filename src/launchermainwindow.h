@@ -30,6 +30,7 @@ private slots:
     void on_workshopButton_clicked();
     void on_settingsButton_clicked();
     void on_playButton_clicked();
+    void on_openFolderButton_clicked();
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
     void onGameEnded(int exitCode, QProcess::ExitStatus exitStatus);
