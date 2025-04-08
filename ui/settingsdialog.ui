@@ -1470,7 +1470,7 @@ Join us on the &lt;a href=&quot;https://discord.gg/WxgE8WZBku&quot;&gt;Keeper Kl
       </font>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::RestoreDefaults|QDialogButtonBox::StandardButton::Save</set>
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Save</set>
      </property>
     </widget>
    </item>
