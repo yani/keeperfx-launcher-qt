@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QRegularExpression>
 #include <QStandardPaths>
 #include <QThread>
 #include <QThreadPool>
@@ -166,6 +167,9 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
         QString filePath = it.key();
         QString expectedChecksum = it.value();
 
+        // Removed any leading zeros in the checksum
+        expectedChecksum.replace(QRegularExpression("^0+(?!$)"), "");
+
         // Construct the full path to the local file
         QString localFilePath = QCoreApplication::applicationDirPath() + filePath;
         QFile file(localFilePath);
@@ -191,6 +195,8 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 
         // Compare checksums
         if (localChecksum != expectedChecksum) {
+            qDebug() << "Checksum difference:" << filePath << ":" << localChecksum << "->"
+                     << expectedChecksum;
             updateList.append(filePath);
         }
 
