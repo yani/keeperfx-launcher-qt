@@ -3,10 +3,11 @@
 #include "game.h"
 #include "kfxversion.h"
 
-#include <QMainWindow>
 #include <QApplication>
-#include <QTimer>
+#include <QJsonDocument>
+#include <QMainWindow>
 #include <QProcess>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,6 +21,7 @@ class LauncherMainWindow : public QMainWindow
 
 signals:
     void updateFound(KfxVersion::VersionInfo versionInfo);
+    void kfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNew);
 
 public:
     LauncherMainWindow(QWidget *parent = nullptr);
@@ -34,6 +36,7 @@ private slots:
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
     void onGameEnded(int exitCode, QProcess::ExitStatus exitStatus);
+    void onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews);
 
 private:
     Ui::LauncherMainWindow *ui;

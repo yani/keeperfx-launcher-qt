@@ -46,6 +46,11 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Connect signals and slots
+    connect(this, &LauncherMainWindow::kfxNetRetrieval, this, &LauncherMainWindow::onKfxNetRetrieval);
+    connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
+    connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
+
     // Clear placeholders
     ui->versionLabel->setText("");
     ui->spinnerLabel->setText("");
@@ -109,7 +114,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Create a thread for loading the latest stuff from the website
     // We do this so we can already show the GUI at this point (which shows a loading spinner)
-    // The function within the thread will invoke updating the GUI, so it's thread safe
     QThread::create([this]() { loadLatestFromKfxNet(); })->start();
 
     // Autostart install procedure when '--install' launcher option is set
@@ -196,11 +200,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     checkForFileRemoval();
 
     // Check for updates
-    connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
     checkForKfxUpdate();
-
-    // Hook game-end event
-    connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
 }
 
 LauncherMainWindow::~LauncherMainWindow()
@@ -566,101 +566,93 @@ void LauncherMainWindow::loadLatestFromKfxNet()
     QJsonDocument workshopItems = fetchWorkshopItems.result();
     QJsonDocument latestNews = fetchLatestNews.result();
 
-    // TODO: we should first load all the remote images that need to be shown
-    //       and only then should we invoke adding the new widgets
-    //       that way the main thread is locked the least
+    // Emit a signal to pass the data to the main thread
+    emit kfxNetRetrieval(workshopItems, latestNews);
+}
 
-    // Make sure this runs on the main thread
-    // We do it like this so we can add the widgets on the main thread
-    // even if we are running from a seperate thread
-    QMetaObject::invokeMethod(this, [this, workshopItems, latestNews]() {
+void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews)
+{
+    if (workshopItems.isEmpty() == false) {
+        QJsonObject workshopItemsObj = workshopItems.object();
+        QJsonArray workshopItemsArray = workshopItemsObj["workshop_items"].toArray();
 
-        if(workshopItems.isEmpty() == false){
+        int count = 0;
+        for (const QJsonValue &workshopItemValue : workshopItemsArray) {
+            // Variables
+            QJsonObject workshopItem = workshopItemValue.toObject();
+            QJsonObject submitterObj = workshopItem["submitter"].toObject();
 
-            QJsonObject workshopItemsObj = workshopItems.object();
-            QJsonArray workshopItemsArray = workshopItemsObj["workshop_items"].toArray();
+            // Create the widget
+            WorkshopItemWidget *workshopItemWidget = new WorkshopItemWidget(ui->KfxWorkshopItemList);
+            workshopItemWidget->setTitle(workshopItem["name"].toString());
+            workshopItemWidget->setType(workshopItem["category"].toString());
+            workshopItemWidget->setDate(workshopItem["created_timestamp"].toString());
+            workshopItemWidget->setAuthor(submitterObj["username"].toString());
+            workshopItemWidget->setTargetUrl(workshopItem["url"].toString());
 
-            int count = 0;
-            for(const QJsonValue &workshopItemValue: workshopItemsArray){
+            // Set the size of the widget
+            // TODO: make this dynamic (as it doesn't look good with a bigger window)
+            workshopItemWidget->setMaximumWidth(250);
+            workshopItemWidget->setMaximumHeight(110);
 
-                // Variables
-                QJsonObject workshopItem = workshopItemValue.toObject();
-                QJsonObject submitterObj = workshopItem["submitter"].toObject();
-
-                // Create the widget
-                WorkshopItemWidget *workshopItemWidget = new WorkshopItemWidget(ui->KfxWorkshopItemList);
-                workshopItemWidget->setTitle(workshopItem["name"].toString());
-                workshopItemWidget->setType(workshopItem["category"].toString());
-                workshopItemWidget->setDate(workshopItem["created_timestamp"].toString());
-                workshopItemWidget->setAuthor(submitterObj["username"].toString());
-                workshopItemWidget->setTargetUrl(workshopItem["url"].toString());
-
-                // Set the size of the widget
-                // TODO: make this dynamic (as it doesn't look good with a bigger window)
-                workshopItemWidget->setMaximumWidth(250);
-                workshopItemWidget->setMaximumHeight(110);
-
-                if(workshopItem["thumbnail"].isNull() == false){
-                    workshopItemWidget->setImage(QUrl(workshopItem["thumbnail"].toString()));
-                } else {
-                    // The API returns a default image for items without one so we can just pass it
-                    workshopItemWidget->setImage(QUrl(workshopItem["image"].toString()));
-                }
-
-                // Add the widget to the list
-                ui->KfxWorkshopItemList->layout()->addWidget(workshopItemWidget);
-
-                // Only allow the max amount of items
-                if(++count >= MAX_WORKSHOP_ITEMS_SHOWN){
-                    break;
-                }
-            }
-        }
-
-        if(latestNews.isEmpty() == false){
-
-            QJsonObject newsArticlesObj = latestNews.object();
-            QJsonArray newsArticlesArray = newsArticlesObj["articles"].toArray();
-
-            int count = 0;
-            for(const QJsonValue &newsArticleValue: newsArticlesArray){
-
-                // Get the json object
-                QJsonObject newsArticle = newsArticleValue.toObject();
-
-                // Create the widget
-                NewsArticleWidget *newsArticleWidget = new NewsArticleWidget(ui->KfxNewsList);
-                newsArticleWidget->setTitle(newsArticle["title"].toString());
-                newsArticleWidget->setDate(newsArticle["created_timestamp"].toString());
-                newsArticleWidget->setTargetUrl(newsArticle["url"].toString());
-
-                if(newsArticle["excerpt"].isNull() == false){
-                    newsArticleWidget->setExcerpt(newsArticle["excerpt"].toString());
-                } else {
-                    newsArticleWidget->setExcerpt("");
-                }
-
-                // Set the size of the widget
-                // TODO: make this dynamic (as it doesn't look good with a bigger window)
-                newsArticleWidget->setMaximumWidth(510);
-                newsArticleWidget->setMaximumHeight(110);
-
+            if (workshopItem["thumbnail"].isNull() == false) {
+                workshopItemWidget->setImage(QUrl(workshopItem["thumbnail"].toString()));
+            } else {
                 // The API returns a default image for items without one so we can just pass it
-                newsArticleWidget->setImage(QUrl(newsArticle["image"].toString()));
+                workshopItemWidget->setImage(QUrl(workshopItem["image"].toString()));
+            }
 
-                // Add the widget to the list
-                ui->KfxNewsList->layout()->addWidget(newsArticleWidget);
+            // Add the widget to the list
+            ui->KfxWorkshopItemList->layout()->addWidget(workshopItemWidget);
 
-                // Only allow the max amount of items
-                if(++count >= MAX_NEWS_ARTICLES_SHOWN){
-                    break;
-                }
+            // Only allow the max amount of items
+            if (++count >= MAX_WORKSHOP_ITEMS_SHOWN) {
+                break;
             }
         }
+    }
 
-        this->hideLoadingSpinner(true);
-        isLoadingLatestFromKfxNet = false;
-    });
+    if (latestNews.isEmpty() == false) {
+        QJsonObject newsArticlesObj = latestNews.object();
+        QJsonArray newsArticlesArray = newsArticlesObj["articles"].toArray();
+
+        int count = 0;
+        for (const QJsonValue &newsArticleValue : newsArticlesArray) {
+            // Get the json object
+            QJsonObject newsArticle = newsArticleValue.toObject();
+
+            // Create the widget
+            NewsArticleWidget *newsArticleWidget = new NewsArticleWidget(ui->KfxNewsList);
+            newsArticleWidget->setTitle(newsArticle["title"].toString());
+            newsArticleWidget->setDate(newsArticle["created_timestamp"].toString());
+            newsArticleWidget->setTargetUrl(newsArticle["url"].toString());
+
+            if (newsArticle["excerpt"].isNull() == false) {
+                newsArticleWidget->setExcerpt(newsArticle["excerpt"].toString());
+            } else {
+                newsArticleWidget->setExcerpt("");
+            }
+
+            // Set the size of the widget
+            // TODO: make this dynamic (as it doesn't look good with a bigger window)
+            newsArticleWidget->setMaximumWidth(510);
+            newsArticleWidget->setMaximumHeight(110);
+
+            // The API returns a default image for items without one so we can just pass it
+            newsArticleWidget->setImage(QUrl(newsArticle["image"].toString()));
+
+            // Add the widget to the list
+            ui->KfxNewsList->layout()->addWidget(newsArticleWidget);
+
+            // Only allow the max amount of items
+            if (++count >= MAX_NEWS_ARTICLES_SHOWN) {
+                break;
+            }
+        }
+    }
+
+    this->hideLoadingSpinner(true);
+    isLoadingLatestFromKfxNet = false;
 }
 
 void LauncherMainWindow::checkForFileRemoval()
