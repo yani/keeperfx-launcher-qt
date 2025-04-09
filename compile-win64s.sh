@@ -64,6 +64,14 @@ fi
 USER_ID=$(id -u)
 GROUP_ID=$(id -g)
 
+# Get launcher version
+HEADER_FILE="$(pwd)/src/version.h"
+VERSION_MAJOR=$(grep -E "#define LAUNCHER_VERSION_MAJOR" "$HEADER_FILE" | awk '{print $3}')
+VERSION_MINOR=$(grep -E "#define LAUNCHER_VERSION_MINOR" "$HEADER_FILE" | awk '{print $3}')
+VERSION_PATCH=$(grep -E "#define LAUNCHER_VERSION_PATCH" "$HEADER_FILE" | awk '{print $3}')
+VERSION="$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH"
+echo "Launcher Version: $VERSION"
+
 # Build Docker image if it does not exist
 if [[ "$(docker images -q kfx-launcher-win64-compiler 2> /dev/null)" == "" ]]; then
     echo "Docker image kfx-launcher-win64-compiler does not exist. Building the image..."
@@ -124,7 +132,13 @@ if [ "$MODE" == "release" ]; then
     if [ "$BUILD_INSTALLER" == "ON" ]; then
         echo "Building installer..."
         docker run --rm -i -v "$(pwd)":/work amake/innosetup windows-installer.iss
+        # Rename installer to include launcher version
+        mv "$(pwd)/release/win64/keeperfx-web-installer.exe" "$(pwd)/release/win64/keeperfx-launcher-qt-$VERSION-web-installer.exe"
     fi
+
+    # Package files
+    echo "Packaging release"
+    7z a "$(pwd)/release/win64/keeperfx-launcher-qt-$VERSION.7z" "$(pwd)/release/win64/keeperfx-launcher-qt.exe" "$(pwd)/release/win64/7za.dll"
 
     # Show release directory output
     ls -lh "$(pwd)/release/win64/"
