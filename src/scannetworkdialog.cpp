@@ -80,10 +80,8 @@ void ScanNetworkDialog::on_scanButton_clicked()
         ui->tableWidget->setRowCount(0);
 
         // Show that we are scanning
-        ui->progressBar->setTextVisible(true);
         ui->progressBar->setFormat(tr("Scanning..."));
         QCoreApplication::processEvents(); // Force format update
-        QThread::msleep(50);
 
         // Start the scan
         scanner->startScan(this->port);
