@@ -20,7 +20,7 @@ public:
     int getPort();
 
 private slots:
-    void on_cancelButton_clicked();
+    void on_closeButton_clicked();
     void on_scanButton_clicked();
     void on_connectButton_clicked();
     void handleServerFound(const QString &ip, const QString &hostname);
@@ -30,7 +30,10 @@ private slots:
 
 private:
     Ui::ScanNetworkDialog *ui;
-    EnetLanScanner scanner;
+    EnetLanScanner *scanner;
+
     QString ip;
     int port;
+
+    bool isScanning = false;
 };

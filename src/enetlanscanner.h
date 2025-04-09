@@ -1,19 +1,32 @@
 #pragma once
 
-#include <QObject>
-#include <QUdpSocket>
-#include <QNetworkInterface>
-#include <QThreadPool>
-#include <QHostInfo>
+#include <QAtomicInt>
 #include <QDebug>
+#include <QHostInfo>
 #include <QMutex>
+#include <QNetworkInterface>
+#include <QObject>
+#include <QThreadPool>
+#include <QUdpSocket>
 
 class EnetLanScanner : public QObject
 {
     Q_OBJECT
 public:
     explicit EnetLanScanner(QObject *parent = nullptr)
-        : QObject(parent), udpSocket(new QUdpSocket), totalTargets(0), scannedTargets(0), responseTimeout(500) {}
+        : QObject(parent)
+        , udpSocket(new QUdpSocket)
+        , totalTargets(0)
+        , scannedTargets(0)
+        , responseTimeout(500)
+        , stopRequested(0)
+    {}
+
+    ~EnetLanScanner()
+    {
+        stopScan();
+        QThreadPool::globalInstance()->waitForDone(); // Ensure all threads are completed
+    }
 
     void startScan(quint16 port, int threadCount = 32, int timeout = 500)
     {
@@ -31,7 +44,8 @@ public:
                     break;
                 }
             }
-            if (!localAddress.isNull()) break;
+            if (!localAddress.isNull())
+                break;
         }
 
         // Make sure we found a local IP
@@ -41,7 +55,7 @@ public:
         }
 
         // Show some info
-        qDebug() << "Scanning from" << localAddress.toString() << "with subnet" << subnetMask.toString();
+        qDebug() << "Scanning block containing" << localAddress.toString() << "with subnet mask" << subnetMask.toString();
 
         // Generate list of IPs to scan
         QList<QHostAddress> targets = getIpsInSubnet(localAddress, subnetMask);
@@ -49,11 +63,16 @@ public:
         scannedTargets = 0;
         QThreadPool::globalInstance()->setMaxThreadCount(threadCount);
 
+        // Reset stop request flag
+        stopRequested.fetchAndStoreOrdered(0);
+
         // Create threads for each IP
         for (QHostAddress &ip : targets) {
             QThreadPool::globalInstance()->start([this, ip, port]() { sendUdpPacket(ip, port); });
         }
     }
+
+    void stopScan() { stopRequested.fetchAndStoreOrdered(1); }
 
 signals:
     void serverFound(QString ip, QString hostname);
@@ -66,6 +85,7 @@ private:
     int scannedTargets;
     int responseTimeout;
     QMutex progressMutex;
+    QAtomicInt stopRequested;
 
     QList<QHostAddress> getIpsInSubnet(const QHostAddress &ip, const QHostAddress &mask)
     {
@@ -83,6 +103,11 @@ private:
 
     void sendUdpPacket(QHostAddress target, quint16 port)
     {
+        // Check if stop has been requested
+        if (stopRequested.fetchAndAddOrdered(0) == 1) {
+            return;
+        }
+
         // Get IP string
         QString targetIp = target.toString();
 
@@ -95,11 +120,13 @@ private:
         if (socket.waitForReadyRead(responseTimeout)) {
             qDebug() << "ENET response from:" << targetIp;
 
+            // Check if stop has been requested
+            if (stopRequested.fetchAndAddOrdered(0) == 1) {
+                return;
+            }
+
             // Emit signal with hostname
-            emit serverFound(
-                targetIp,
-                QHostInfo::fromName(targetIp).hostName()
-            );
+            emit serverFound(targetIp, QHostInfo::fromName(targetIp).hostName());
         }
 
         // Update progress

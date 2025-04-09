@@ -5,7 +5,7 @@
 ScanNetworkDialog::ScanNetworkDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ScanNetworkDialog)
-    , scanner(new EnetLanScanner)
+    , scanner(new EnetLanScanner(this))
 {
     ui->setupUi(this);
 
@@ -27,9 +27,9 @@ ScanNetworkDialog::ScanNetworkDialog(QWidget *parent)
     ui->connectButton->setDisabled(true);
 
     // Connect scanner signals to slots
-    connect(&scanner, &EnetLanScanner::serverFound, this, &ScanNetworkDialog::handleServerFound);
-    connect(&scanner, &EnetLanScanner::scanProgress, this, &ScanNetworkDialog::handleScanProgress);
-    connect(&scanner, &EnetLanScanner::scanComplete, this, &ScanNetworkDialog::handleScanComplete);
+    connect(scanner, &EnetLanScanner::serverFound, this, &ScanNetworkDialog::handleServerFound);
+    connect(scanner, &EnetLanScanner::scanProgress, this, &ScanNetworkDialog::handleScanProgress);
+    connect(scanner, &EnetLanScanner::scanComplete, this, &ScanNetworkDialog::handleScanComplete);
 
     // Enable/disable connect button if a row is selected
     connect(ui->tableWidget, &QTableWidget::itemSelectionChanged, this, &ScanNetworkDialog::updateConnectButton);
@@ -40,6 +40,14 @@ ScanNetworkDialog::ScanNetworkDialog(QWidget *parent)
 
 ScanNetworkDialog::~ScanNetworkDialog()
 {
+    // Make sure scanner is stopped
+    scanner->stopScan();
+
+    // Delete the scanner
+    delete scanner;
+    scanner = nullptr;
+
+    // Delete UI
     delete ui;
 }
 
@@ -51,23 +59,49 @@ int ScanNetworkDialog::getPort(){
     return this->port;
 }
 
-void ScanNetworkDialog::on_cancelButton_clicked()
+void ScanNetworkDialog::on_closeButton_clicked()
 {
     this->close();
 }
 
 void ScanNetworkDialog::on_scanButton_clicked()
 {
-    // Disable buttons
-    ui->scanButton->setDisabled(true);
-    ui->connectButton->setDisabled(true);
+    if (isScanning == false) { // "Scan"
+        isScanning = true;
 
-    // Clear table
-    // Removes all rows without clearing headers
-    ui->tableWidget->setRowCount(0);
+        // Change scan button into Stop button
+        ui->scanButton->setText(tr("Stop Scan"));
 
-    // Start the scan
-    scanner.startScan(this->port);
+        // Connect button during scan
+        ui->connectButton->setDisabled(true);
+
+        // Clear table
+        // Removes all rows without clearing headers
+        ui->tableWidget->setRowCount(0);
+
+        // Show that we are scanning
+        ui->progressBar->setTextVisible(true);
+        ui->progressBar->setFormat(tr("Scanning..."));
+        QCoreApplication::processEvents(); // Force format update
+        QThread::msleep(50);
+
+        // Start the scan
+        scanner->startScan(this->port);
+
+    } else { // "Stop Scan"
+        isScanning = false;
+
+        // Stop the scan
+        scanner->stopScan();
+
+        // Change Stop button into scan button again
+        ui->scanButton->setText(tr("Scan"));
+
+        // Clear progress bar
+        ui->progressBar->setValue(0);
+        ui->progressBar->setMaximum(1);
+        ui->progressBar->setFormat("");
+    }
 }
 
 void ScanNetworkDialog::handleServerFound(const QString &ip, const QString &hostname)
@@ -83,6 +117,11 @@ void ScanNetworkDialog::handleServerFound(const QString &ip, const QString &host
 
 void ScanNetworkDialog::handleScanProgress(int scanned, int total)
 {
+    // Ignore progress if user stopped the scan
+    if (isScanning == false) {
+        return;
+    }
+
     // Setup progress bar
     if(ui->progressBar->maximum() != total){
         ui->progressBar->setMaximum(total);
@@ -97,13 +136,16 @@ void ScanNetworkDialog::handleScanComplete()
 {
     qDebug() << "ENET lobby Scan complete";
 
-    // Enable scan button again
-    ui->scanButton->setDisabled(false);
+    // Change Stop button into scan button again
+    ui->scanButton->setText(tr("Scan"));
 
     // Clear progress bar
     ui->progressBar->setValue(0);
     ui->progressBar->setMaximum(1);
     ui->progressBar->setFormat("");
+
+    // Remember that we are not scanning anymore
+    isScanning = false;
 }
 
 void ScanNetworkDialog::on_connectButton_clicked()
