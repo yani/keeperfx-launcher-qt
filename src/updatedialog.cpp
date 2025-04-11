@@ -1,6 +1,7 @@
 #include "updatedialog.h"
 #include "archiver.h"
 #include "downloader.h"
+#include "launcheroptions.h"
 #include "settings.h"
 #include "updater.h"
 
@@ -356,12 +357,21 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
     // Set Variables
     totalFiles = updateList.size();
     downloadedFiles = 0;
+    bool skipLauncherUpdate = LauncherOptions::isSet("skip-launcher-update");
 
     // Set progress bar to track total files
     emit setProgressMaximum(totalFiles);
     emit setProgressBarFormat(QString(tr("Downloading") + ": %p%"));
 
     for (const QString &filePath : updateList) {
+        // Check if we need to skip the launcher binary itself
+        if (skipLauncherUpdate) {
+            if (filePath == "/keeperfx-launcher-qt.exe") {
+                qDebug() << "Skipping launcher update:" << filePath;
+                continue;
+            }
+        }
+
         QUrl url(baseUrl + filePath);
         QNetworkRequest request(url);
 
@@ -434,9 +444,18 @@ void UpdateDialog::onFileDownloadProgress()
         // Vars
         QDir appDir(QCoreApplication::applicationDirPath());
         int copiedFiles = 0;
+        bool skipLauncherUpdate = LauncherOptions::isSet("skip-launcher-update");
 
         // Move and rename files
         for (const QString &filePath : updateList) {
+            // Check if we need to skip the launcher binary itself
+            if (skipLauncherUpdate) {
+                if (filePath == "/keeperfx-launcher-qt.exe") {
+                    qDebug() << "Skipping launcher update:" << filePath;
+                    continue;
+                }
+            }
+
             QString srcFilePath = tempDir.absolutePath() + filePath;
 
             // Make sure source file exists
