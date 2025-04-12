@@ -6,6 +6,7 @@
 #include "version.h"
 #include "settings.h"
 
+#include <QDir>
 #include <QMessageBox>
 
 CrashDialog::CrashDialog(QWidget *parent)
@@ -103,32 +104,24 @@ void CrashDialog::on_sendButton_clicked()
         // Get selected savefile
         SaveFile *saveFile = saveFileList.at(saveFileIndex - 1);
         if (saveFile) {
-
-            // Get savefile archive output
-            QString outputPath(QCoreApplication::applicationDirPath()
-                               + "/.crashreport-savefile.7z.tmp");
-            QFile saveFileArchive(outputPath);
+            // Variables for temporary archive for savefile
+            QString tempArchivePath = QDir::temp().filePath("crashreport-savefile.7z.tmp");
+            QFile tempArchive(tempArchivePath);
 
             // Make sure archive output file does not exist
-            if (saveFileArchive.exists()) {
-                saveFileArchive.remove();
+            if (tempArchive.exists()) {
+                tempArchive.remove();
             }
 
             // Compress the save into the archive
-            bool saveFileArchiveResult = Archiver::compressSingleFile(&saveFile->file,
-                                                                      outputPath.toStdString());
-            if (saveFileArchiveResult) {
-
-
+            if (Archiver::compressSingleFile(&saveFile->file, tempArchivePath.toStdString())) {
                 // Make sure archive exists and can be opened
-                if (saveFileArchive.exists() && saveFileArchive.open(QIODevice::ReadOnly)) {
-
-
+                if (tempArchive.exists() && tempArchive.open(QIODevice::ReadOnly)) {
                     // Add savefile data to post object
                     jsonPostObject["save_file_name"] = saveFile->fileName + ".7z";
-                    jsonPostObject["save_file_data"] = QString(saveFileArchive.readAll().toBase64());
-                    saveFileArchive.close();
-                    saveFileArchive.remove();
+                    jsonPostObject["save_file_data"] = QString(tempArchive.readAll().toBase64());
+                    tempArchive.close();
+                    tempArchive.remove();
                 }
             } else {
                 qDebug() << "Failed to create temporary savefile archive";
@@ -146,6 +139,8 @@ void CrashDialog::on_sendButton_clicked()
         this->close();
         return;
     }
+
+    // Get object
     QJsonObject jsonObj = jsonDoc.object();
 
     // Make sure response was succesful
