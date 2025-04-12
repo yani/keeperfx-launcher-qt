@@ -80,7 +80,7 @@ void CrashDialog::on_sendButton_clicked()
     // keeperfx.cfg
     QFile kfxConfigFile = Settings::getKfxConfigFile();
     if (kfxConfigFile.exists() && kfxConfigFile.open(QIODevice::ReadOnly)) {
-        jsonPostObject["config_file"] = QString(kfxConfigFile.readAll());
+        jsonPostObject["game_config"] = QString(kfxConfigFile.readAll());
         kfxConfigFile.close();
     }
 
