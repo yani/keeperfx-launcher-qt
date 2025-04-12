@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>554</height>
+    <height>561</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -210,37 +210,29 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
    </item>
    <item>
     <widget class="QWidget" name="contactInfoWidget" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <widget class="QLineEdit" name="contactInfoLineEdit">
+       <widget class="QLineEdit" name="contactInfoDiscordLineEdit">
         <property name="placeholderText">
-         <string>Discord handle, KeeperFX.net username, email address, etc</string>
+         <string>Discord handle</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="contactInfoKfxNetLineEdit">
+        <property name="placeholderText">
+         <string>KeeperFX.net username</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="contactInfoEmailLineEdit">
+        <property name="placeholderText">
+         <string>Email Address</string>
         </property>
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QWidget" name="widget" native="true">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>15</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>50</height>
-      </size>
-     </property>
     </widget>
    </item>
    <item>

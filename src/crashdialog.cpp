@@ -33,7 +33,9 @@ CrashDialog::CrashDialog(QWidget *parent)
     }
 
     // Load preset contact details
-    ui->contactInfoLineEdit->setText(Settings::getLauncherSetting("CRASH_REPORTING_CONTACT").toString());
+    ui->contactInfoDiscordLineEdit->setText(Settings::getLauncherSetting("CRASH_REPORTING_CONTACT_DISCORD").toString());
+    ui->contactInfoKfxNetLineEdit->setText(Settings::getLauncherSetting("CRASH_REPORTING_CONTACT_KEEPERFX_NET").toString());
+    ui->contactInfoEmailLineEdit->setText(Settings::getLauncherSetting("CRASH_REPORTING_CONTACT_EMAIL").toString());
 }
 
 CrashDialog::~CrashDialog()
@@ -69,13 +71,39 @@ void CrashDialog::on_sendButton_clicked()
         jsonPostObject["description"] = infoDetails;
     }
 
-    // Contact details
-    QString contactDetails = ui->contactInfoLineEdit->text();
-    if (contactDetails.isEmpty() == false) {
-        jsonPostObject["contact_details"] = contactDetails;
-        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT", contactDetails);
+    // Create contact details list
+    QStringList contactDetails;
+
+    // Contact details (Discord)
+    QString contactDetailsDiscord = ui->contactInfoDiscordLineEdit->text();
+    if (contactDetailsDiscord.isEmpty() == false) {
+        contactDetails << ("Discord: " + contactDetailsDiscord);
+        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT_DISCORD", contactDetailsDiscord);
     } else {
-        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT", "");
+        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT_DISCORD", "");
+    }
+
+    // Contact details (KeeperFX.net)
+    QString contactDetailsKfxNet = ui->contactInfoKfxNetLineEdit->text();
+    if (contactDetailsKfxNet.isEmpty() == false) {
+        contactDetails << ("KfxNet: " + contactDetailsKfxNet);
+        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT_KEEPERFX_NET", contactDetailsKfxNet);
+    } else {
+        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT_KEEPERFX_NET", "");
+    }
+
+    // Contact details (Email)
+    QString contactDetailsEmail = ui->contactInfoEmailLineEdit->text();
+    if (contactDetailsEmail.isEmpty() == false) {
+        contactDetails << ("Email: " + contactDetailsEmail);
+        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT_EMAIL", contactDetailsEmail);
+    } else {
+        Settings::setLauncherSetting("CRASH_REPORTING_CONTACT_EMAIL", "");
+    }
+
+    // Add contact details
+    if (contactDetails.isEmpty() == false) {
+        jsonPostObject["contact_details"] = contactDetails.join(" - ");
     }
 
     // keeperfx.cfg
