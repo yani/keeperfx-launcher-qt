@@ -133,12 +133,12 @@ if [ "$MODE" == "release" ]; then
         echo "Building installer..."
         docker run --rm -i -v "$(pwd)":/work amake/innosetup windows-installer.iss
         # Rename installer to include launcher version
-        mv "$(pwd)/release/win64/keeperfx-web-installer.exe" "$(pwd)/release/win64/keeperfx-launcher-qt-$VERSION-web-installer.exe"
+        mv "$(pwd)/release/win64/keeperfx-web-installer.exe" "$(pwd)/release/win64/keeperfx-launcher-qt-$VERSION-win64-web-installer.exe"
     fi
 
     # Package files
     echo "Packaging release"
-    7z a "$(pwd)/release/win64/keeperfx-launcher-qt-$VERSION.7z" "$(pwd)/release/win64/keeperfx-launcher-qt.exe" "$(pwd)/release/win64/7za.dll"
+    7z a "$(pwd)/release/win64/keeperfx-launcher-qt-$VERSION-win64.7z" "$(pwd)/release/win64/keeperfx-launcher-qt.exe" "$(pwd)/release/win64/7za.dll"
 
     # Show release directory output
     ls -lh "$(pwd)/release/win64/"
