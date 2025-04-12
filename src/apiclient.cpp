@@ -1,16 +1,28 @@
 #include "apiclient.h"
 
-#include <QMap>
-#include <QImage>
+#include "launcheroptions.h"
+
 #include <QEventLoop>
+#include <QImage>
 #include <QJsonObject>
+#include <QMap>
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequestFactory>
 
-#define API_BASE_URL "https://keeperfx.net/api"
-//#define API_BASE_URL "http://127.0.0.1:5500/api"
+#define API_ENDPOINT "https://keeperfx.net/api"
+
+QString ApiClient::getApiEndpoint()
+{
+    // Check if custom endpoint is set
+    if (LauncherOptions::isSet("api-endpoint")) {
+        return LauncherOptions::getValue("api-endpoint");
+    }
+
+    // Return default endpoint
+    return QString(API_ENDPOINT);
+}
 
 QImage ApiClient::downloadImage(QUrl url)
 {
@@ -59,12 +71,12 @@ QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath, HttpMethod method, Q
     }
 
     // Create full URL for logging
-    QString endpointUrlString = QString(API_BASE_URL) + "/" + endpointPathString;
+    QString endpointUrlString = ApiClient::getApiEndpoint() + "/" + endpointPathString;
     qDebug() << "ApiClient:" << (method == HttpMethod::GET ? "GET" : "POST") << endpointUrlString;
 
     // Setup network manager and API
     QNetworkAccessManager manager;
-    QNetworkRequest apiRequest(QUrl(QString(API_BASE_URL) + "/" + endpointPathString));
+    QNetworkRequest apiRequest(QUrl(ApiClient::getApiEndpoint() + "/" + endpointPathString));
     apiRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     // Create the network reply object

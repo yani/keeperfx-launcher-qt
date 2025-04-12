@@ -7,6 +7,11 @@ bool LauncherOptions::isSet(const QString option)
     return LauncherOptions::parser.isSet(option);
 }
 
+QString LauncherOptions::getValue(const QString option)
+{
+    return LauncherOptions::parser.value(option);
+}
+
 void LauncherOptions::processApp(QApplication &app)
 {
     // Set up the command line parser
@@ -17,10 +22,15 @@ void LauncherOptions::processApp(QApplication &app)
     // Define options
     // clang-format off
     QVector<QCommandLineOption> options = {
+
+        // Toggle options
         {"log-debug",               "Log the debug output of the launcher to a file"},
         {"skip-verify",             "Skip the certificate verification process"},
         {"install",                 "Start the KeeperFX install procedure"},
         {"skip-launcher-update",    "Do not update the launcher itself"},
+
+        // Parameters
+        {"api-endpoint", "Specify the API endpoint", "url"},
     };
     // clang-format on
 
