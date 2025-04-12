@@ -538,7 +538,7 @@ height: 35px;
         <string notr="true">QLabel { color: #777; }</string>
        </property>
        <property name="text">
-        <string>&lt;i&gt;Switch between views by pressing &lt;strong&gt;Alt + R&lt;/strong&gt;&lt;/i&gt;</string>
+        <string>&lt;i&gt;Switch between in-game views by pressing &lt;strong&gt;Alt + R&lt;/strong&gt;&lt;/i&gt;</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResizeMovies">
