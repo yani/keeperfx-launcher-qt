@@ -1453,6 +1453,25 @@ Join us on the &lt;a href=&quot;https://discord.gg/WxgE8WZBku&quot;&gt;Keeper Kl
         </item>
        </layout>
       </widget>
+      <widget class="QLabel" name="labelContributors">
+       <property name="geometry">
+        <rect>
+         <x>35</x>
+         <y>240</y>
+         <width>781</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string notr="true">&lt;PLACEHOLDER_CONTRIBUTORS&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>

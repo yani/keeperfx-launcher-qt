@@ -269,6 +269,27 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Add handler to remember when a setting has changed
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
+
+    // Load contributors
+    QFile contributorsFile(":/res/contributors.txt");
+    if (contributorsFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QStringList contributors = QString::fromUtf8(contributorsFile.readAll()).split('\n', Qt::SkipEmptyParts);
+
+        // Make links
+        for (QString &c : contributors) {
+            c = QString("<a href=\"https://github.com/%1\">%1</a>").arg(c.trimmed());
+        }
+
+        // Setup label properties
+        ui->labelContributors->setTextFormat(Qt::RichText);
+        ui->labelContributors->setTextInteractionFlags(Qt::TextBrowserInteraction);
+        ui->labelContributors->setOpenExternalLinks(true);
+
+        // Set text
+        ui->labelContributors->setText(tr("KeeperFX Contributors") + ": " + contributors.join(", "));
+    } else {
+        ui->labelContributors->setText(""); // Hide
+    }
 }
 
 SettingsDialog::~SettingsDialog()

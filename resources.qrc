@@ -9,6 +9,7 @@
         <file>res/img/creatr_portrt_troll.png</file>
         <file>res/img/dead_body_horny.png</file>
         <file>res/img/dead_body_mistress.png</file>
+        <file>res/contributors.txt</file>
     </qresource>
     <qresource prefix="/i18n">
         <file>i18n/translations_nl.po</file>
