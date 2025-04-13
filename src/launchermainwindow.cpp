@@ -93,7 +93,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     loadLatestFromKfxNet();
 
     // Create a refresh shortcut (F5) for refreshing the main panel
-    connect(new QShortcut(QKeySequence(Qt::Key_F5), this), &QShortcut::activated, this, &LauncherMainWindow::loadLatestFromKfxNet);
+    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::Key_F5), this);
+    shortcut->setAutoRepeat(false);
+    connect(shortcut, &QShortcut::activated, this, &LauncherMainWindow::loadLatestFromKfxNet);
 
     // Move window to the center of the main screen
     QList<QScreen *> screens = QGuiApplication::screens();
