@@ -50,10 +50,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         &QPushButton::clicked,
         this,
         &SettingsDialog::cancel);
-    connect(ui->buttonBox->button(QDialogButtonBox::RestoreDefaults),
+    /*connect(ui->buttonBox->button(QDialogButtonBox::RestoreDefaults),
         &QPushButton::clicked,
         this,
-        &SettingsDialog::restoreSettings);
+        &SettingsDialog::restoreSettings);*/
 
     // Map: Game languages
     QMap<QString, QString> languageMap = {
