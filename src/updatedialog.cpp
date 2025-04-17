@@ -240,7 +240,7 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 
 void UpdateDialog::updateUsingArchive(QString downloadUrlString)
 {
-    emit appendLog(tr("Downloading archive URL")+ ": " + downloadUrlString);
+    emit appendLog(tr("Downloading archive") + ": " + downloadUrlString);
 
     QUrl downloadUrl(downloadUrlString);
 
