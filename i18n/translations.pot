@@ -114,7 +114,7 @@ msgid "Confirmation"
 msgstr ""
 
 #: /src/fileremoverdialog.cpp:42
-#: /src/launchermainwindow.cpp:447
+#: /src/launchermainwindow.cpp:448
 #: /src/copydkfilesdialog.cpp:119
 #: /src/installkfxdialog.cpp:344
 msgid "Are you sure?"
@@ -310,88 +310,84 @@ msgstr ""
 msgid "Please report this error to the KeeperFX team."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:258
-msgid "Play map"
-msgstr ""
-
-#: /src/launchermainwindow.cpp:267
+#: /src/launchermainwindow.cpp:268
 msgid "Play campaign"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:275
+#: /src/launchermainwindow.cpp:276
 msgid "Load save game"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:282
+#: /src/launchermainwindow.cpp:283
 msgid "Direct connect (MP)"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:294
+#: /src/launchermainwindow.cpp:295
 msgid "Scan local network (MP)"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:307
+#: /src/launchermainwindow.cpp:308
 msgid "Test internet lobby (MP)"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:315
+#: /src/launchermainwindow.cpp:316
 msgid "Run packetfile"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:326
+#: /src/launchermainwindow.cpp:327
 msgid "Heavylog"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:333
-#: /src/launchermainwindow.cpp:337
+#: /src/launchermainwindow.cpp:334
+#: /src/launchermainwindow.cpp:338
 msgid "Play (hvlog)"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:333
-#: /src/launchermainwindow.cpp:337
+#: /src/launchermainwindow.cpp:334
+#: /src/launchermainwindow.cpp:338
 #: /ui/launchermainwindow.ui
 msgid "Play"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:439
+#: /src/launchermainwindow.cpp:440
 msgid "The launcher is unable to find 'keeperfx.exe'."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:439
+#: /src/launchermainwindow.cpp:440
 msgid "Do you want to download and install KeeperFX?"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:447
+#: /src/launchermainwindow.cpp:448
 #: /src/installkfxdialog.cpp:344
 msgid "You will be unable to play KeeperFX."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:477
+#: /src/launchermainwindow.cpp:478
 msgid "The launcher has to restart to change its language."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:478
+#: /src/launchermainwindow.cpp:479
 msgid "Do you want to do that now?"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:817
+#: /src/launchermainwindow.cpp:818
 msgid "The launcher failed to verify the signature of"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:819
+#: /src/launchermainwindow.cpp:820
 msgid "It is highly suggested to only use official KeeperFX files."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:847
-#: /src/launchermainwindow.cpp:849
+#: /src/launchermainwindow.cpp:848
+#: /src/launchermainwindow.cpp:850
 msgid "Failed to start KeeperFX."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:847
+#: /src/launchermainwindow.cpp:848
 msgid "Error"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:849
+#: /src/launchermainwindow.cpp:850
 msgid "Unknown error."
 msgstr ""
 
@@ -453,7 +449,7 @@ msgid "%1 files need to be updated"
 msgstr ""
 
 #: /src/updatedialog.cpp:243
-msgid "Downloading archive URL"
+msgid "Downloading archive"
 msgstr ""
 
 #: /src/updatedialog.cpp:261
