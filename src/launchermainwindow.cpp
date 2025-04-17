@@ -255,12 +255,13 @@ void LauncherMainWindow::setupPlayExtraMenu()
     QMenu *menu = new QMenu(this);
 
     // Play map action
-    menu->addAction(tr("Play map"),
+    // TODO: disabled until implemented
+    /*menu->addAction(tr("Play map"),
                     [this]() {
                         // Handle play map logic here
                         qDebug() << "Play map selected!";
                     })
-        ->setDisabled(true); // TODO: disabled until implemented
+        ->setDisabled(true); // TODO: disabled until implemented*/
 
     // Play campaign action
     if (KfxVersion::hasFunctionality("start_campaign_directly") == true) {
