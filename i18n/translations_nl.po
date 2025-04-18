@@ -357,7 +357,7 @@ msgstr "Je zult KeeperFX niet kunnen spelen."
 
 #: /src/launchermainwindow.cpp:478
 msgid "The launcher has to restart to change its language."
-msgstr "De launcher moet opnieuw opstarten om de taal te wijzigen."
+msgstr "De launcher moet herstart worden om de taal te wijzigen."
 
 #: /src/launchermainwindow.cpp:479
 msgid "Do you want to do that now?"
