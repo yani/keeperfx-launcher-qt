@@ -31,41 +31,78 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="infoLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>4</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>4</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="infoLabel">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
  color: #AAA;
 }</string>
-     </property>
-     <property name="text">
-      <string>This tool checks if your KeeperFX multiplayer lobby can be reached from the internet. You don’t need to use this for local games, as those are already accessible within your network.
-
-To host a game online, you must open port 5556 in your router. The steps depend on your router and internet provider, so check online for instructions or ask your provider for help.</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-     <property name="margin">
-      <number>10</number>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="infoLabelIpv4">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
+        </property>
+        <property name="text">
+         <string>This tool checks if your KeeperFX multiplayer lobby can be reached from the internet. You don't need to use this for local games, as those are already accessible within your network.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="infoLabel2">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
  color: #AAA;
 }</string>
-     </property>
-     <property name="text">
-      <string>KeeperFX only works with IPv4. If you don’t have an IPv4 address or have a &quot;shared&quot; one (CGNAT), you won’t be able to host an online game. You can ask your internet provider if they can give you an IPv4 address.</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-     <property name="margin">
-      <number>10</number>
-     </property>
+        </property>
+        <property name="text">
+         <string>To host a game online, you must open port 5556 in your router. How to do this is different for every router and internet provider, so check online for instructions or ask your provider for help.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>5</number>
+        </property>
+        <property name="indent">
+         <number>-1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="infoLabelIpv4">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+ color: #AAA;
+}</string>
+        </property>
+        <property name="text">
+         <string>KeeperFX only works with IPv4. If you don't have an IPv4 address or you are using a shared one (CGNAT), you won't be able to host an online game. You can ask your internet provider if they can give you an IPv4 address.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>

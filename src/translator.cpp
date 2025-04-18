@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QMap>
 #include <QString>
+#include <QTextDocument>
 
 Translator::Translator(QObject *parent)
     : QTranslator(parent) {
@@ -62,12 +63,26 @@ void Translator::loadPoTranslations(const QString &languageCode)
 }
 
 QString Translator::translate(const char *context, const char *sourceText, const char *disambiguation, int n) const {
+    // Get source as string
     QString source(sourceText);
+
+    // Check if this source has a translation
     if (translations.contains(source)) {
         QString output(translations.value(source));
-        if(output.isEmpty() == false){
-            return translations.value(source);
+        if (output.isEmpty() == false) {
+            return output;
         }
     }
+
+    // Check if this source has a translation that is HTML escaped
+    if (translations.contains(source.toHtmlEscaped())) {
+        QString output(translations.value(source.toHtmlEscaped()));
+        if (output.isEmpty() == false) {
+            QTextDocument outputDoc;
+            outputDoc.setHtml(output);
+            return outputDoc.toPlainText();
+        }
+    }
+
     return source;
 }

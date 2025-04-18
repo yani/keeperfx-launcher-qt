@@ -47,14 +47,14 @@
 }</string>
      </property>
      <property name="text">
-      <string>&lt;table&gt;
+      <string notr="true">&lt;table&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align: left;&quot;&gt;Current version:&lt;/td&gt;
-&lt;td style=&quot;text-align: left; padding-left: 35px;&quot;&gt;&lt;CURRENT_VERSION&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;%1:&lt;/td&gt;
+&lt;td style=&quot;text-align: left; padding-left: 35px;&quot;&gt;%2&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align: left;&quot;&gt;New version:&lt;/td&gt;
-&lt;td style=&quot;text-align: left; padding-left: 35px;&quot;&gt;&lt;strong&gt;&lt;NEW_VERSION&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;%3:&lt;/td&gt;
+&lt;td style=&quot;text-align: left; padding-left: 35px;&quot;&gt;&lt;strong&gt;%4&lt;/strong&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;</string>
      </property>

@@ -107,7 +107,7 @@ msgid "Restore Defaults"
 msgstr ""
 
 #: /src/fileremoverdialog.cpp:41
-#: /src/updatedialog.cpp:331
+#: /src/updatedialog.cpp:329
 #: /src/copydkfilesdialog.cpp:118
 #: /src/installkfxdialog.cpp:343
 msgid "Confirmation"
@@ -391,189 +391,197 @@ msgstr ""
 msgid "Unknown error."
 msgstr ""
 
-#: /src/updatedialog.cpp:58
+#: /src/updatedialog.cpp:53
+msgid "Current version"
+msgstr ""
+
+#: /src/updatedialog.cpp:53
+msgid "New version"
+msgstr ""
+
+#: /src/updatedialog.cpp:56
 msgid "Update path"
 msgstr ""
 
-#: /src/updatedialog.cpp:108
-#: /src/updatedialog.cpp:364
+#: /src/updatedialog.cpp:106
+#: /src/updatedialog.cpp:362
 #: /src/installkfxdialog.cpp:269
 msgid "Downloading"
 msgstr ""
 
-#: /src/updatedialog.cpp:124
+#: /src/updatedialog.cpp:122
 msgid "Update failed"
 msgstr ""
 
-#: /src/updatedialog.cpp:134
+#: /src/updatedialog.cpp:132
 #, qt-format
 msgid "Updating to version %1"
 msgstr ""
 
-#: /src/updatedialog.cpp:137
+#: /src/updatedialog.cpp:135
 msgid "Trying to get filemap"
 msgstr ""
 
-#: /src/updatedialog.cpp:144
+#: /src/updatedialog.cpp:142
 #, qt-format
 msgid "Filemap with %1 files retrieved"
 msgstr ""
 
-#: /src/updatedialog.cpp:148
+#: /src/updatedialog.cpp:146
 msgid "No filemap found"
 msgstr ""
 
-#: /src/updatedialog.cpp:156
+#: /src/updatedialog.cpp:154
 msgid "Comparing filemap against local files"
 msgstr ""
 
-#: /src/updatedialog.cpp:160
+#: /src/updatedialog.cpp:158
 msgid "Comparing"
 msgstr ""
 
-#: /src/updatedialog.cpp:187
+#: /src/updatedialog.cpp:185
 msgid "Failed to open file"
 msgstr ""
 
-#: /src/updatedialog.cpp:213
+#: /src/updatedialog.cpp:211
 msgid "No changes in the files have been detected"
 msgstr ""
 
-#: /src/updatedialog.cpp:214
+#: /src/updatedialog.cpp:212
 msgid "Switching to archive download"
 msgstr ""
 
-#: /src/updatedialog.cpp:221
+#: /src/updatedialog.cpp:219
 #, qt-format
 msgid "%1 files need to be updated"
 msgstr ""
 
-#: /src/updatedialog.cpp:243
+#: /src/updatedialog.cpp:241
 msgid "Downloading archive"
 msgstr ""
 
-#: /src/updatedialog.cpp:261
+#: /src/updatedialog.cpp:259
 msgid "Archive download failed."
 msgstr ""
 
-#: /src/updatedialog.cpp:265
+#: /src/updatedialog.cpp:263
 msgid "Archive successfully downloaded"
 msgstr ""
 
-#: /src/updatedialog.cpp:271
+#: /src/updatedialog.cpp:269
 msgid "Testing archive..."
 msgstr ""
 
-#: /src/updatedialog.cpp:285
+#: /src/updatedialog.cpp:283
 #: /src/installkfxdialog.cpp:125
 #: /src/installkfxdialog.cpp:221
 msgid "Total size"
 msgstr ""
 
-#: /src/updatedialog.cpp:289
+#: /src/updatedialog.cpp:287
 msgid "Extracting"
 msgstr ""
 
-#: /src/updatedialog.cpp:290
+#: /src/updatedialog.cpp:288
 #: /src/installkfxdialog.cpp:130
 #: /src/installkfxdialog.cpp:226
 msgid "Extracting..."
 msgstr ""
 
-#: /src/updatedialog.cpp:302
+#: /src/updatedialog.cpp:300
 #: /src/installkfxdialog.cpp:146
 #: /src/installkfxdialog.cpp:242
 msgid "Extraction completed"
 msgstr ""
 
-#: /src/updatedialog.cpp:306
+#: /src/updatedialog.cpp:304
 #: /src/installkfxdialog.cpp:150
 #: /src/installkfxdialog.cpp:246
 msgid "Removing temporary archive"
 msgstr ""
 
-#: /src/updatedialog.cpp:313
+#: /src/updatedialog.cpp:311
 msgid "Copying over any new settings"
 msgstr ""
 
-#: /src/updatedialog.cpp:316
-#: /src/updatedialog.cpp:503
+#: /src/updatedialog.cpp:314
+#: /src/updatedialog.cpp:501
 #: /src/installkfxdialog.cpp:163
 #: /src/installkfxdialog.cpp:259
 msgid "Done!"
 msgstr ""
 
-#: /src/updatedialog.cpp:318
-#: /src/updatedialog.cpp:504
+#: /src/updatedialog.cpp:316
+#: /src/updatedialog.cpp:502
 #, qt-format
 msgid "KeeperFX has been successfully updated to version %1!"
 msgstr ""
 
-#: /src/updatedialog.cpp:331
+#: /src/updatedialog.cpp:329
 msgid "Are you sure you want to cancel the update?"
 msgstr ""
 
-#: /src/updatedialog.cpp:344
+#: /src/updatedialog.cpp:342
 msgid "Temp directory path"
 msgstr ""
 
-#: /src/updatedialog.cpp:353
+#: /src/updatedialog.cpp:351
 msgid "Failed to create temp directory"
 msgstr ""
 
-#: /src/updatedialog.cpp:396
+#: /src/updatedialog.cpp:394
 msgid "Downloaded"
 msgstr ""
 
-#: /src/updatedialog.cpp:398
+#: /src/updatedialog.cpp:396
 msgid "Failed to write"
 msgstr ""
 
-#: /src/updatedialog.cpp:401
+#: /src/updatedialog.cpp:399
 msgid "Failed to write file"
 msgstr ""
 
-#: /src/updatedialog.cpp:404
+#: /src/updatedialog.cpp:402
 msgid "Failed to download"
 msgstr ""
 
-#: /src/updatedialog.cpp:423
+#: /src/updatedialog.cpp:421
 msgid "All files downloaded successfully"
 msgstr ""
 
-#: /src/updatedialog.cpp:426
+#: /src/updatedialog.cpp:424
 msgid "Moving files to KeeperFX directory"
 msgstr ""
 
-#: /src/updatedialog.cpp:430
+#: /src/updatedialog.cpp:428
 msgid "The temporary directory does not exist"
 msgstr ""
 
-#: /src/updatedialog.cpp:441
+#: /src/updatedialog.cpp:439
 msgid "Copying"
 msgstr ""
 
-#: /src/updatedialog.cpp:464
+#: /src/updatedialog.cpp:462
 msgid "File does not exist"
 msgstr ""
 
-#: /src/updatedialog.cpp:471
+#: /src/updatedialog.cpp:469
 msgid "Renaming file during copy"
 msgstr ""
 
-#: /src/updatedialog.cpp:485
+#: /src/updatedialog.cpp:483
 msgid "File moved"
 msgstr ""
 
-#: /src/updatedialog.cpp:487
+#: /src/updatedialog.cpp:485
 msgid "Failed to move file"
 msgstr ""
 
-#: /src/updatedialog.cpp:499
+#: /src/updatedialog.cpp:497
 msgid "Copying any new settings"
 msgstr ""
 
-#: /src/updatedialog.cpp:510
+#: /src/updatedialog.cpp:508
 msgid "Failed to move all downloaded files"
 msgstr ""
 
@@ -1139,10 +1147,23 @@ msgstr ""
 
 #: /ui/enetservertestdialog.ui
 msgid ""
-"KeeperFX only works with IPv4. If you don\342\200\231t have an IPv4 address "
-"or have a &quot;shared&quot; one (CGNAT), you won\342\200\231t be able to "
-"host an online game. You can ask your internet provider if they can give you "
-"an IPv4 address."
+"This tool checks if your KeeperFX multiplayer lobby can be reached from the "
+"internet. You don't need to use this for local games, as those are already "
+"accessible within your network."
+msgstr ""
+
+#: /ui/enetservertestdialog.ui
+msgid ""
+"To host a game online, you must open port 5556 in your router. How to do "
+"this is different for every router and internet provider, so check online "
+"for instructions or ask your provider for help."
+msgstr ""
+
+#: /ui/enetservertestdialog.ui
+msgid ""
+"KeeperFX only works with IPv4. If you don't have an IPv4 address or you are "
+"using a shared one (CGNAT), you won't be able to host an online game. You "
+"can ask your internet provider if they can give you an IPv4 address."
 msgstr ""
 
 #: /ui/enetservertestdialog.ui

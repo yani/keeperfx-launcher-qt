@@ -381,9 +381,9 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxDisplayMonitor">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>200</x>
          <y>260</y>
-         <width>221</width>
+         <width>201</width>
          <height>25</height>
         </rect>
        </property>
@@ -562,9 +562,9 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxResizeMovies">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>200</x>
          <y>310</y>
-         <width>221</width>
+         <width>201</width>
          <height>25</height>
         </rect>
        </property>
@@ -579,7 +579,7 @@ height: 35px;
         <rect>
          <x>440</x>
          <y>262</y>
-         <width>191</width>
+         <width>201</width>
          <height>17</height>
         </rect>
        </property>
@@ -595,7 +595,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditCreatureFlowerSize">
        <property name="geometry">
         <rect>
-         <x>640</x>
+         <x>650</x>
          <y>260</y>
          <width>61</width>
          <height>25</height>
@@ -612,7 +612,7 @@ height: 35px;
         <rect>
          <x>440</x>
          <y>314</y>
-         <width>171</width>
+         <width>201</width>
          <height>17</height>
         </rect>
        </property>
@@ -628,7 +628,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditHandSize">
        <property name="geometry">
         <rect>
-         <x>640</x>
+         <x>650</x>
          <y>310</y>
          <width>61</width>
          <height>25</height>
@@ -643,7 +643,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditLineBoxSize">
        <property name="geometry">
         <rect>
-         <x>640</x>
+         <x>650</x>
          <y>360</y>
          <width>61</width>
          <height>25</height>
@@ -660,7 +660,7 @@ height: 35px;
         <rect>
          <x>440</x>
          <y>364</y>
-         <width>181</width>
+         <width>201</width>
          <height>17</height>
         </rect>
        </property>
@@ -881,7 +881,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>90</y>
-         <width>321</width>
+         <width>391</width>
          <height>23</height>
         </rect>
        </property>
@@ -899,7 +899,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>140</y>
-         <width>321</width>
+         <width>391</width>
          <height>23</height>
         </rect>
        </property>
@@ -945,7 +945,7 @@ height: 35px;
         <rect>
          <x>450</x>
          <y>80</y>
-         <width>101</width>
+         <width>141</width>
          <height>17</height>
         </rect>
        </property>
@@ -968,7 +968,7 @@ height: 35px;
         <rect>
          <x>450</x>
          <y>115</y>
-         <width>101</width>
+         <width>141</width>
          <height>17</height>
         </rect>
        </property>
@@ -981,7 +981,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>190</y>
-         <width>321</width>
+         <width>381</width>
          <height>23</height>
         </rect>
        </property>
@@ -1004,7 +1004,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>230</y>
-         <width>321</width>
+         <width>381</width>
          <height>23</height>
         </rect>
        </property>
@@ -1022,7 +1022,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>190</y>
-         <width>321</width>
+         <width>381</width>
          <height>23</height>
         </rect>
        </property>
@@ -1040,7 +1040,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>150</y>
-         <width>321</width>
+         <width>381</width>
          <height>23</height>
         </rect>
        </property>
@@ -1058,7 +1058,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>270</y>
-         <width>321</width>
+         <width>381</width>
          <height>23</height>
         </rect>
        </property>
@@ -1140,7 +1140,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>40</y>
-         <width>321</width>
+         <width>381</width>
          <height>23</height>
         </rect>
        </property>
@@ -1161,9 +1161,9 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditMasterServer">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>200</x>
          <y>40</y>
-         <width>321</width>
+         <width>271</width>
          <height>25</height>
         </rect>
        </property>
@@ -1173,7 +1173,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>43</y>
-         <width>151</width>
+         <width>161</width>
          <height>17</height>
         </rect>
        </property>
@@ -1232,7 +1232,7 @@ height: 35px;
         <rect>
          <x>50</x>
          <y>125</y>
-         <width>71</width>
+         <width>141</width>
          <height>17</height>
         </rect>
        </property>
@@ -1271,7 +1271,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>43</y>
-         <width>151</width>
+         <width>171</width>
          <height>17</height>
         </rect>
        </property>
@@ -1320,7 +1320,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditApiPort">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>140</x>
          <y>90</y>
          <width>121</width>
          <height>25</height>
@@ -1340,7 +1340,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>92</y>
-         <width>91</width>
+         <width>111</width>
          <height>17</height>
         </rect>
        </property>
