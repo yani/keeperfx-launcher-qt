@@ -362,32 +362,38 @@ msgstr ""
 msgid "You will be unable to play KeeperFX."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:478
-msgid "The launcher has to restart to change its language."
+#: /src/launchermainwindow.cpp:477
+msgid "Language has changed"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:479
-msgid "Do you want to do that now?"
+#: /src/launchermainwindow.cpp:477
+msgid ""
+"The launcher has to restart to change its language. Do you want to do that "
+"now?"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:818
-msgid "The launcher failed to verify the signature of"
+#: /src/launchermainwindow.cpp:815
+msgid "KeeperFX Verification Error"
+msgstr ""
+
+#: /src/launchermainwindow.cpp:816
+msgid "The launcher failed to verify the signature of:"
 msgstr ""
 
 #: /src/launchermainwindow.cpp:820
 msgid "It is highly suggested to only use official KeeperFX files."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:848
-#: /src/launchermainwindow.cpp:850
+#: /src/launchermainwindow.cpp:847
+#: /src/launchermainwindow.cpp:849
 msgid "Failed to start KeeperFX."
 msgstr ""
 
-#: /src/launchermainwindow.cpp:848
+#: /src/launchermainwindow.cpp:847
 msgid "Error"
 msgstr ""
 
-#: /src/launchermainwindow.cpp:850
+#: /src/launchermainwindow.cpp:849
 msgid "Unknown error."
 msgstr ""
 

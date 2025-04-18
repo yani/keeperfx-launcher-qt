@@ -474,10 +474,7 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 
         // Ask user if they want to restart their launcher
         qDebug() << "Launcher language has changed so asking for launcher restart";
-        int result = QMessageBox::question(this, "Language has changed",
-            tr("The launcher has to restart to change its language.") + " " +
-                                               tr("Do you want to do that now?")
-            );
+        int result = QMessageBox::question(this, tr("Language has changed"), tr("The launcher has to restart to change its language. Do you want to do that now?"));
         if (result == QMessageBox::Yes) {
 
             qDebug() << "Restarting launcher to change the language";
@@ -814,11 +811,13 @@ void LauncherMainWindow::verifyBinaryCertificates()
         }
 
         // Show messagebox alerting the user
-        QMessageBox::warning(this, "KeeperFX Verification Error",
-            tr("The launcher failed to verify the signature of") + ":\n\n" +
-            fileListString + "\n" +
-            tr("It is highly suggested to only use official KeeperFX files.")
-        );
+        QMessageBox::warning(this,
+                             tr("KeeperFX Verification Error"),
+                             tr("The launcher failed to verify the signature of:")
+                                 + "\n\n"
+                                 + fileListString
+                                 + "\n"
+                                 + tr("It is highly suggested to only use official KeeperFX files."));
     }
 }
 
