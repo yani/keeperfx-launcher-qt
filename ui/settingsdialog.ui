@@ -41,7 +41,7 @@ height: 35px;
         <rect>
          <x>210</x>
          <y>40</y>
-         <width>191</width>
+         <width>181</width>
          <height>25</height>
         </rect>
        </property>
@@ -128,7 +128,7 @@ height: 35px;
         <rect>
          <x>210</x>
          <y>290</y>
-         <width>191</width>
+         <width>181</width>
          <height>25</height>
         </rect>
        </property>
@@ -210,7 +210,7 @@ height: 35px;
       <widget class="QLabel" name="labelCommandChar">
        <property name="geometry">
         <rect>
-         <x>460</x>
+         <x>430</x>
          <y>43</y>
          <width>161</width>
          <height>17</height>
@@ -228,7 +228,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditCommandChar">
        <property name="geometry">
         <rect>
-         <x>630</x>
+         <x>600</x>
          <y>40</y>
          <width>41</width>
          <height>25</height>
@@ -261,7 +261,7 @@ height: 35px;
       <widget class="QCheckBox" name="checkBoxDeltaTime">
        <property name="geometry">
         <rect>
-         <x>460</x>
+         <x>430</x>
          <y>90</y>
          <width>321</width>
          <height>23</height>
@@ -279,7 +279,7 @@ height: 35px;
       <widget class="QCheckBox" name="checkBoxFreezeGameNoFocus">
        <property name="geometry">
         <rect>
-         <x>460</x>
+         <x>430</x>
          <y>140</y>
          <width>321</width>
          <height>23</height>

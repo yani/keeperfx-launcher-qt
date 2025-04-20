@@ -13,14 +13,15 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
 
     // In KFX already
     {"direct_enet_connect", "1.0.0"}, // '-connect' parameter
+    {"splash_screen_ordering", "1.2.0.4427"},
 
     // Absolute Config path is temporary disabled because we still want support for multiple KFX installations
     {"absolute_config_path", "999.999.999"}, // '-config' absolute path was added in 1.2.0.4408
 
     // Not yet supported
     {"start_campaign_directly", "999.999.999"}, // https://github.com/dkfans/keeperfx/issues/3924
-    {"load_save_directly", "999.999.999"}, // TODO: https://github.com/dkfans/keeperfx/issues/3481
-    {"enet_ipv6_support", "999.999.999"},  // TODO
+    {"load_save_directly", "999.999.999"},      // TODO: https://github.com/dkfans/keeperfx/issues/3481
+    {"enet_ipv6_support", "999.999.999"},       // TODO
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;
