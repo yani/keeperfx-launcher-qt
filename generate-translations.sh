@@ -8,22 +8,35 @@ else
     exit 1
 fi
 
+# Get binaries
+lupdate_bin="/usr/lib/qt6/bin/lupdate"
+lconvert_bin="/usr/lib/qt6/bin/lconvert"
+
+# Check if "lupdate" bin exists
+if [[ ! -x "$lupdate_bin" ]]; then
+    echo "Error: $lupdate_bin not found or not executable."
+    echo "Install it using: sudo apt install qt6-tools-dev-tools"
+    exit 1
+fi
+
+# Check if "lconvert" bin exists
+if [[ ! -x "$lconvert_bin" ]]; then
+    echo "Error: $lconvert_bin not found or not executable."
+    echo "Install it using: sudo apt install qt6-tools-dev-tools"
+    exit 1
+fi
+
 # Grab translations
-find "$(pwd)/ui/" -name "*.ui" -exec sh -c 'sed -n "/notr=\"true\"/!s/.*<string>\(.*\)<\/string>.*/_\(\"\1\"\);/p" {} > {}.tmp.cpp' \;
-xgettext --omit-header -c++ -k_ --from-code=UTF-8 --escape -o "$(pwd)/i18n/ui.pot" $(find "$(pwd)/ui/" -name "*.ui.tmp.cpp")
-find $(pwd)/ui/ -name "*.ui.tmp.cpp" -exec rm {} \;
-xgettext --omit-header --qt -c++ -ktr --from-code=UTF-8 --escape -o "$(pwd)/i18n/translations.pot" "$(pwd)/i18n/qt.pot" $(find "$(pwd)/src/" -name "*.cpp") "$(pwd)/i18n/ui.pot"
-rm $(pwd)/i18n/ui.pot
+$lupdate_bin "$(pwd)/src" "$(pwd)/ui" -ts "$(pwd)/i18n/translations.ts"
 
-# Remove information about temporary files
-sed -i 's|\.ui\.tmp\.cpp:[0-9]\+|.ui|g' "$(pwd)/i18n/translations.pot"
+# Convert translations to POT
+$lconvert_bin -i "$(pwd)/i18n/translations.ts" -o "$(pwd)/i18n/translations.pot"
 
-# Remove personal path from translation file
-sed -i 's|'"$(pwd)"'||g' "$(pwd)/i18n/translations.pot"
-
-# Count translations
-count=$(grep -c 'msgid "' "$(pwd)/i18n/translations.pot")
-echo "Translation strings: $count"
+# Remove leftover translation file
+rm "$(pwd)/i18n/translations.ts"
 
 # Done
+echo
+echo "POT file: $(pwd)/i18n/translations.pot"
+echo
 echo "Done"
