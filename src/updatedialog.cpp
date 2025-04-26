@@ -39,21 +39,21 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo)
     // Get current version string
     QString currentVersionString = KfxVersion::currentVersion.version;
     if (KfxVersion::currentVersion.type == KfxVersion::ReleaseType::ALPHA) {
-        currentVersionString += " " + tr("Alpha");
+        currentVersionString += " " + tr("Alpha", "Appended to version string");
     }
 
     // Get new version string
     QString newVersionString = this->versionInfo.version;
     if (this->versionInfo.type == KfxVersion::ReleaseType::ALPHA) {
-        newVersionString += " " + tr("Alpha");
+        newVersionString += " " + tr("Alpha", "Appended to version string");
     }
 
     // Update version text in UI
     QString infoLabelText = ui->infoLabel->text();
-    ui->infoLabel->setText(infoLabelText.arg(tr("Current version")).arg(currentVersionString).arg(tr("New version")).arg(newVersionString));
+    ui->infoLabel->setText(infoLabelText.arg(tr("Current version:", "Label")).arg(currentVersionString).arg(tr("New version:", "Label")).arg(newVersionString));
 
     // Log the update path
-    emit appendLog(tr("Update path") + ": " + QCoreApplication::applicationDirPath());
+    emit appendLog(tr("Update path: %1", "Log Message").arg(QCoreApplication::applicationDirPath()));
 
     // Connect signals to slots
     connect(this, &UpdateDialog::fileDownloadProgress, this, &UpdateDialog::onFileDownloadProgress);
@@ -103,7 +103,7 @@ void UpdateDialog::updateProgressBar(qint64 bytesReceived, qint64 bytesTotal)
     if (bytesTotal > 0) {
         ui->progressBar->setMaximum(static_cast<int>(bytesTotal / 1024 / 1024));
         ui->progressBar->setValue(static_cast<int>(bytesReceived / 1024 / 1024));
-        ui->progressBar->setFormat(QString(tr("Downloading") + ": %p% (%vMiB)"));
+        ui->progressBar->setFormat(tr("Downloading: %p% (%vMiB)", "Progress bar"));
     }
 }
 
@@ -119,7 +119,7 @@ void UpdateDialog::onUpdateFailed(const QString &reason)
     ui->updateButton->setDisabled(false);
     onClearProgressBar();
     onAppendLog(reason);
-    QMessageBox::warning(this, tr("Update failed"), reason);
+    QMessageBox::warning(this, tr("Update failed", "MessageBox Title"), reason);
 }
 
 void UpdateDialog::on_updateButton_clicked()
@@ -129,21 +129,21 @@ void UpdateDialog::on_updateButton_clicked()
     ui->progressBar->setTextVisible(true);
 
     // Tell user we start the installation
-    emit appendLog(tr("Updating to version %1").arg(versionInfo.fullString));
+    emit appendLog(tr("Updating to version %1", "Log Message").arg(versionInfo.fullString));
 
     // Try and get filemap
-    emit appendLog(tr("Trying to get filemap"));
+    emit appendLog(tr("Trying to get filemap", "Log Message"));
     auto fileMap = KfxVersion::getGameFileMap(versionInfo.type, versionInfo.version);
 
     // Check if filemap is found
     if (fileMap.has_value() && !fileMap->isEmpty()) {
         // Show filecount log
         QString fileCount = QString::number(fileMap->count());
-        emit appendLog(tr("Filemap with %1 files retrieved").arg(fileCount));
+        emit appendLog(tr("Filemap with %1 files retrieved", "Log Message (%1=count)").arg(fileCount));
         // Update using filemap
         updateUsingFilemap(fileMap.value());
     } else {
-        emit appendLog(tr("No filemap found"));
+        emit appendLog(tr("No filemap found", "Log Message"));
         // Update using download URL
         updateUsingArchive(versionInfo.downloadUrl);
     }
@@ -151,11 +151,11 @@ void UpdateDialog::on_updateButton_clicked()
 
 void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 {
-    emit appendLog(tr("Comparing filemap against local files"));
+    emit appendLog(tr("Comparing filemap against local files", "Log Message"));
 
     // Set progress bar
     emit setProgressMaximum(fileMap.count() - 1);
-    emit setProgressBarFormat(QString(tr("Comparing") + ": %p%"));
+    emit setProgressBarFormat(tr("Comparing: %p%", "Progress bar (%p=percentage)"));
 
     // Create fresh file list
     updateList = QStringList();
@@ -182,7 +182,7 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
         // Make sure local file is readable
         // It needs to be for the checksum to work
         if (!file.open(QIODevice::ReadOnly)) {
-            emit setUpdateFailed(tr("Failed to open file") + ": " + localFilePath);
+            emit setUpdateFailed(tr("Failed to open file: %1", "Failure message (%1=local filepath)").arg(localFilePath));
             return;
         }
 
@@ -208,15 +208,15 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 
     // If no files are found
     if (updateList.count() == 0) {
-        emit appendLog(tr("No changes in the files have been detected"));
-        emit appendLog(tr("Switching to archive download"));
+        emit appendLog(tr("No changes in the files have been detected", "Log Message"));
+        emit appendLog(tr("Switching to archive download", "Log Message"));
         // Switch to archive download
         updateUsingArchive(versionInfo.downloadUrl);
         return;
     }
 
     // Log filecount
-    emit appendLog(tr("%1 files need to be updated").arg(updateList.count()));
+    emit appendLog(tr("%1 files need to be updated", "Log Message (%1=count)").arg(updateList.count()));
 
     // Get type as string
     QString typeString;
@@ -238,7 +238,7 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 
 void UpdateDialog::updateUsingArchive(QString downloadUrlString)
 {
-    emit appendLog(tr("Downloading archive") + ": " + downloadUrlString);
+    emit appendLog(tr("Downloading archive: %1", "Log Message (%1=archive download URL)").arg(downloadUrlString));
 
     QUrl downloadUrl(downloadUrlString);
 
@@ -256,17 +256,17 @@ void UpdateDialog::updateUsingArchive(QString downloadUrlString)
 void UpdateDialog::onArchiveDownloadFinished(bool success)
 {
     if (!success) {
-        emit setUpdateFailed(tr("Archive download failed."));
+        emit setUpdateFailed(tr("Archive download failed.", "Log Message"));
         return;
     }
 
-    emit appendLog(tr("Archive successfully downloaded"));
+    emit appendLog(tr("Archive successfully downloaded", "Log Message"));
     emit clearProgressBar();
 
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(versionInfo.downloadUrl).fileName() + ".tmp");
 
     // Test archive
-    emit appendLog(tr("Testing archive..."));
+    emit appendLog(tr("Testing archive...", "Log Message"));
     QThreadPool::globalInstance()->start([this, outputFile]() {
         uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
         QMetaObject::invokeMethod(this, "onArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
@@ -280,12 +280,12 @@ void UpdateDialog::onArchiveTestComplete(uint64_t archiveSize){
     // Show total size
     double archiveSizeInMiB = static_cast<double>(archiveSize) / (1024 * 1024);
     QString archiveSizeString = QString::number(archiveSizeInMiB, 'f', 2); // Format to 2 decimal places
-    emit appendLog(tr("Total size") + ": " + archiveSizeString + "MiB");
+    emit appendLog(tr("Total size: %1MiB", "Log Message").arg(archiveSizeString));
 
     // Start extraction process
     emit setProgressMaximum(static_cast<int>(archiveSize));
-    emit setProgressBarFormat(tr("Extracting") + ": %p%");
-    emit appendLog(tr("Extracting..."));
+    emit setProgressBarFormat(tr("Extracting: %p%", "Progress bar"));
+    emit appendLog(tr("Extracting...", "Log Message"));
 
     Updater *updater = new Updater(this);
     connect(updater, &Updater::progress, this, &UpdateDialog::updateProgress);
@@ -297,24 +297,22 @@ void UpdateDialog::onArchiveTestComplete(uint64_t archiveSize){
 
 void UpdateDialog::onUpdateComplete()
 {
-    emit appendLog(tr("Extraction completed"));
+    emit appendLog(tr("Extraction completed", "Log Message"));
     emit clearProgressBar();
 
     // Remove temp archive
-    emit appendLog(tr("Removing temporary archive"));
+    emit appendLog(tr("Removing temporary archive", "Log Message"));
     QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(versionInfo.downloadUrl).fileName() + ".tmp");
     if (archiveFile->exists()) {
         archiveFile->remove();
     }
 
     // Handle any settings update
-    emit appendLog(tr("Copying over any new settings"));
+    emit appendLog(tr("Copying over any new settings", "Log Message"));
     Settings::load();
 
-    emit appendLog(tr("Done!"));
-    QMessageBox::information(this, "KeeperFX",
-        tr("KeeperFX has been successfully updated to version %1!").arg(versionInfo.version)
-    );
+    emit appendLog(tr("Done!", "Log Message"));
+    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version));
     accept();
 }
 
@@ -326,7 +324,7 @@ void UpdateDialog::on_cancelButton_clicked()
 void UpdateDialog::closeEvent(QCloseEvent *event)
 {
     // Ask if user is sure
-    int result = QMessageBox::question(this, tr("Confirmation"), tr("Are you sure you want to cancel the update?"));
+    int result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure you want to cancel the update?", "MessageBox Text"));
     if (result == QMessageBox::Yes) {
         event->accept();
     } else {
@@ -339,7 +337,7 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
     // Create temp dir
     tempDir = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation)
                    + "/kfx-update-" + versionInfo.version);
-    emit appendLog(tr("Temp directory path") + ": " + tempDir.absolutePath());
+    emit appendLog(tr("Temp directory path: %1", "Log Message (%1=temp dir path)").arg(tempDir.absolutePath()));
 
     // Make temp directory
     if (!tempDir.exists()) {
@@ -348,7 +346,7 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
 
     // Make sure temp directory exists now
     if (!tempDir.exists()) {
-        emit setUpdateFailed(tr("Failed to create temp directory"));
+        emit setUpdateFailed(tr("Failed to create temp directory", "Failure message"));
         return;
     }
 
@@ -359,7 +357,7 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
 
     // Set progress bar to track total files
     emit setProgressMaximum(totalFiles);
-    emit setProgressBarFormat(QString(tr("Downloading") + ": %p%"));
+    emit setProgressBarFormat(tr("Downloading: %p%", "Progress bar"));
 
     for (const QString &filePath : updateList) {
         // Check if we need to skip the launcher binary itself
@@ -391,15 +389,15 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
 
                     // Verify file is written
                     if (bytesWritten == fileData.size()) {
-                        emit appendLog(tr("Downloaded") + ": " + filePath);
+                        emit appendLog(tr("Downloaded: %1", "Log Message (%1=filepath)").arg(filePath));
                     } else {
-                        emit appendLog(tr("Failed to write") + ": " + tempFilePath);
+                        emit appendLog(tr("Failed to write: %1", "Log Message (%1=filepath)").arg(tempFilePath));
                     }
                 } else {
-                    emit appendLog(tr("Failed to write file") + ": " + tempFilePath);
+                    emit appendLog(tr("Failed to open file for writing: %1", "Log Message (%1=filepath)").arg(tempFilePath));
                 }
             } else {
-                emit appendLog(tr("Failed to download") + ": " + filePath + " - " + reply->errorString());
+                emit appendLog(tr("Failed to download: %1 -> %2", "Log Message (%1=filepath,%2=error message)").arg(filePath).arg(reply->errorString()));
             }
             reply->deleteLater();
 
@@ -418,14 +416,14 @@ void UpdateDialog::onFileDownloadProgress()
     if (downloadedFiles == totalFiles) {
         // Show user
         emit clearProgressBar();
-        emit appendLog(tr("All files downloaded successfully"));
+        emit appendLog(tr("All files downloaded successfully", "Log Message"));
 
         // Start copying files to KeeperFX dir
-        emit appendLog(tr("Moving files to KeeperFX directory"));
+        emit appendLog(tr("Moving files to KeeperFX directory", "Log Message"));
 
         // Make sure temp dir exists
         if (!tempDir.exists()) {
-            emit setUpdateFailed(tr("The temporary directory does not exist"));
+            emit setUpdateFailed(tr("The temporary directory does not exist", "Log Message"));
             return;
         }
 
@@ -436,7 +434,7 @@ void UpdateDialog::onFileDownloadProgress()
         };
 
         // Set progress bar
-        emit setProgressBarFormat(QString(tr("Copying") + ": %p%"));
+        emit setProgressBarFormat(tr("Copying: %p%", "Progress bar"));
         emit setProgressMaximum(totalFiles);
 
         // Vars
@@ -459,14 +457,14 @@ void UpdateDialog::onFileDownloadProgress()
             // Make sure source file exists
             QFile srcFile(srcFilePath);
             if (!srcFile.exists()) {
-                emit appendLog(tr("File does not exist") + ": " + srcFilePath);
+                emit appendLog(tr("File does not exist: %1", "Log Message (%1=filepath)").arg(srcFilePath));
                 return;
             }
 
             // Use the new name if exists, otherwise use the same name
             QString destFileName = renameRules.value(filePath, filePath);
             if (destFileName != filePath) {
-                emit appendLog(tr("Renaming file during copy") + ": " + filePath + " -> " + destFileName);
+                emit appendLog(tr("Renaming file during copy: %1 -> %2", "Log Message (%1=filepath,2%=renamed filepath)").arg(filePath).arg(destFileName));
             }
 
             // Get destination path
@@ -480,9 +478,9 @@ void UpdateDialog::onFileDownloadProgress()
 
             // Move file
             if (QFile::rename(srcFilePath, destFilePath)) {
-                emit appendLog(tr("File moved") + ": " + filePath);
+                emit appendLog(tr("File moved: %1", "Log Message (%1=filepath)").arg(filePath));
             } else {
-                emit appendLog(tr("Failed to move file") + ": " + filePath);
+                emit appendLog(tr("Failed to move file: %1", "Log Message (%1=filepath)").arg(filePath));
                 return;
             }
 
@@ -494,18 +492,17 @@ void UpdateDialog::onFileDownloadProgress()
             emit clearProgressBar();
 
             // Copy new settings
-            emit appendLog(tr("Copying any new settings"));
+            emit appendLog(tr("Copying any new settings", "Log Message"));
             Settings::load();
 
             // Success!
             emit appendLog(tr("Done!"));
-            QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully updated to version %1!").arg(versionInfo.version)
-            );
+            QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version));
             accept();
             return;
 
         } else {
-            emit setUpdateFailed(tr("Failed to move all downloaded files"));
+            emit setUpdateFailed(tr("Failed to move all downloaded files", "Failure message"));
         }
     }
 }

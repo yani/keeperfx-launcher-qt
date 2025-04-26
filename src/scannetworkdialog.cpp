@@ -17,7 +17,7 @@ ScanNetworkDialog::ScanNetworkDialog(QWidget *parent)
     // Setup table
     ui->tableWidget->setColumnCount(2);
     QStringList headers;
-    headers << tr("IP Address") << tr("Hostname");
+    headers << tr("IP Address", "Table Header") << tr("Hostname", "Table Header");
     ui->tableWidget->setHorizontalHeaderLabels(headers);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setVisible(false);
@@ -70,7 +70,7 @@ void ScanNetworkDialog::on_scanButton_clicked()
         isScanning = true;
 
         // Change scan button into Stop button
-        ui->scanButton->setText(tr("Stop Scan"));
+        ui->scanButton->setText(tr("Stop Scan", "Button text"));
 
         // Connect button during scan
         ui->connectButton->setDisabled(true);
@@ -80,7 +80,7 @@ void ScanNetworkDialog::on_scanButton_clicked()
         ui->tableWidget->setRowCount(0);
 
         // Show that we are scanning
-        ui->progressBar->setFormat(tr("Scanning..."));
+        ui->progressBar->setFormat(tr("Scanning...", "Progress bar"));
         QCoreApplication::processEvents(); // Force format update
 
         // Start the scan
@@ -93,7 +93,7 @@ void ScanNetworkDialog::on_scanButton_clicked()
         scanner->stopScan();
 
         // Change Stop button into scan button again
-        ui->scanButton->setText(tr("Scan"));
+        ui->scanButton->setText(tr("Scan", "Button text"));
 
         // Clear progress bar
         ui->progressBar->setValue(0);
@@ -123,7 +123,7 @@ void ScanNetworkDialog::handleScanProgress(int scanned, int total)
     // Setup progress bar
     if(ui->progressBar->maximum() != total){
         ui->progressBar->setMaximum(total);
-        ui->progressBar->setFormat(QString(tr("Scanning") + ": %p% (%v/%m)"));
+        ui->progressBar->setFormat(tr("Scanning: %p% (%v/%m)", "Progress bar"));
     }
 
     // Update progress bar
@@ -135,7 +135,7 @@ void ScanNetworkDialog::handleScanComplete()
     qDebug() << "ENET lobby Scan complete";
 
     // Change Stop button into scan button again
-    ui->scanButton->setText(tr("Scan"));
+    ui->scanButton->setText(tr("Scan", "Button text"));
 
     // Clear progress bar
     ui->progressBar->setValue(0);

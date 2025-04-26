@@ -29,7 +29,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Copy Dungeon Keeper Files</string>
+      <string comment="Header">Copy Dungeon Keeper Files</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
@@ -58,7 +58,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>KeeperFX requires the original Dungeon Keeper files for copyright reasons.
+      <string comment="Information">KeeperFX requires the original Dungeon Keeper files for copyright reasons.
 Please select the directory where these files are located.
 
 You can use your original CD, or a digital version from GOG, Steam or EA.

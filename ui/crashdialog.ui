@@ -118,7 +118,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;It seems that KeeperFX has crashed and is unable to recover. If you wish to submit technical details about this crash to the KeeperFX developers, you can describe your problem below and click 'Send'. If you add contact details we can contact you later. Additional information such as KeeperFX logfiles and configuration will be sent too.
+      <string comment="Information">&lt;html&gt;It seems that KeeperFX has crashed and is unable to recover. If you wish to submit technical details about this crash to the KeeperFX developers, you can describe your problem below and click 'Send'. If you add contact details we can contact you later. Additional information such as KeeperFX logfiles and configuration will be sent too.
 &lt;br /&gt;&lt;br/&gt;
 You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfans/keeperfx/issues&quot;&gt;https://github.com/dkfans/keeperfx/issues&lt;/a&gt;
 &lt;/html&gt;</string>
@@ -134,7 +134,7 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
    <item>
     <widget class="QLabel" name="infoLabel">
      <property name="text">
-      <string>Information (Optional)</string>
+      <string comment="Input box title">Information (Optional)</string>
      </property>
      <property name="margin">
       <number>3</number>
@@ -156,7 +156,7 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
       <item>
        <widget class="QTextEdit" name="infoTextEdit">
         <property name="placeholderText">
-         <string>Please explain what happened, and if possible the steps to reproduce this crash.</string>
+         <string comment="Information Placeholder">Please explain what happened, and if possible the steps to reproduce this crash.</string>
         </property>
        </widget>
       </item>

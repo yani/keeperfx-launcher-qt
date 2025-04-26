@@ -153,11 +153,12 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             // Failed to get KeeperFX version
             // Asking the user if they want to reinstall
             qDebug() << "Failed to load KeeperFX version";
-            int result = QMessageBox::question(this, "KeeperFX Error",
-                    tr("The launcher failed to grab the version of KeeperFX.") + " " +
-                    tr("It's possible your installation is corrupted.") + "\n\n" +
-                    tr("Do you want to automatically reinstall KeeperFX?")
-            );
+            int result = QMessageBox::question(this,
+                                               tr("KeeperFX Error", "MessageBox Title"),
+                                               tr("The launcher failed to grab the version of KeeperFX. "
+                                                  "It's possible your installation is corrupted.\n\n"
+                                                  "Do you want to automatically reinstall KeeperFX?",
+                                                  "MessageBox Text"));
 
             if (result == QMessageBox::Yes) {
                 // Start Automatic KeeperFX (web) installation
@@ -173,10 +174,11 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
                 } else {
                     // Still an error even after reinstalling KeeperFX
                     // We can't fix this so we'll tell the user to report it
-                    QMessageBox::warning(this, "KeeperFX Error",
-                        tr("The launcher failed to grab the version of KeeperFX.") + " " +
-                        tr("Please report this error to the KeeperFX team.")
-                                         );
+                    QMessageBox::warning(this,
+                                         tr("KeeperFX Error", "MessageBox Title"),
+                                         tr("The launcher failed to grab the version of KeeperFX. "
+                                            "Please report this error to the KeeperFX team.",
+                                            "MessageBox Text"));
                 }
             }
         }
@@ -265,7 +267,7 @@ void LauncherMainWindow::setupPlayExtraMenu()
 
     // Play campaign action
     if (KfxVersion::hasFunctionality("start_campaign_directly") == true) {
-        this->campaignMenu = menu->addMenu(tr("Play campaign"));
+        this->campaignMenu = menu->addMenu(tr("Play campaign", "Menu"));
         menu->addMenu(campaignMenu);
         refreshCampaignMenu();
     }
@@ -273,39 +275,36 @@ void LauncherMainWindow::setupPlayExtraMenu()
     // Add 'Load game'
     // We store this menu in the main window so we can reload the saves when the game ends
     if (KfxVersion::hasFunctionality("load_save_directly") == true) {
-        this->saveFilesMenu = menu->addMenu(tr("Load save game"));
+        this->saveFilesMenu = menu->addMenu(tr("Load save game", "Menu"));
         menu->addMenu(saveFilesMenu);
         refreshSaveFilesMenu();
     }
 
     // Direct connect (MP) action
     if (KfxVersion::hasFunctionality("direct_enet_connect") == true) {
-        menu->addAction(tr("Direct connect (MP)"),
-            [this]() {
-                qDebug() << "Direct connect (MP) selected!";
-                // Open the dialog
-                DirectConnectDialog dialog(this);
-                if (dialog.exec() == QDialog::Accepted) {
-                    startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
-                }
+        menu->addAction(tr("Direct connect (MP)", "Menu"), [this]() {
+            qDebug() << "Direct connect (MP) selected!";
+            // Open the dialog
+            DirectConnectDialog dialog(this);
+            if (dialog.exec() == QDialog::Accepted) {
+                startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
+            }
         });
     }
 
     // Scan local network (MP)
-    menu->addAction(tr("Scan local network (MP)"),
-        [this]() {
-            qDebug() << "Scan local network (MP) selected!";
-            // Open the scan dialog
-            ScanNetworkDialog dialog(this);
-            if (dialog.exec() == QDialog::Accepted) {
-                // Start the game
-                startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
-            }
+    menu->addAction(tr("Scan local network (MP)", "Menu"), [this]() {
+        qDebug() << "Scan local network (MP) selected!";
+        // Open the scan dialog
+        ScanNetworkDialog dialog(this);
+        if (dialog.exec() == QDialog::Accepted) {
+            // Start the game
+            startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
         }
-    );
+    });
 
     // Scan local network (MP)
-    menu->addAction(tr("Test internet lobby (MP)"), [this]() {
+    menu->addAction(tr("Test internet lobby (MP)", "Menu"), [this]() {
         qDebug() << "Test internet lobby (MP) selected!";
         // Open the scan dialog
         EnetServerTestDialog dialog(this);
@@ -313,7 +312,7 @@ void LauncherMainWindow::setupPlayExtraMenu()
     });
 
     // Run packetsave action
-    menu->addAction(tr("Run packetfile"),
+    menu->addAction(tr("Run packetfile", "Menu"),
                     [this]() {
                         // Handle run packetsave logic here
                         qDebug() << "Run packetsave selected!";
@@ -324,18 +323,18 @@ void LauncherMainWindow::setupPlayExtraMenu()
     QFile heavyLogBin(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
     if (heavyLogBin.exists()) {
         // Create menu item
-        QAction *heavyLogAction = menu->addAction(tr("Heavylog"));
+        QAction *heavyLogAction = menu->addAction(tr("Heavylog", "Menu"));
         heavyLogAction->setCheckable(true);
         // Store if heavylog is enabled
         bool heavyLogEnabled = Settings::getLauncherSetting("GAME_HEAVY_LOG_ENABLED").toBool();
         // Set toggle state of menu item
         heavyLogAction->setChecked(heavyLogEnabled);
         // Update play button
-        ui->playButton->setText(heavyLogEnabled ? "  " + tr("Play (hvlog)") : tr("Play"));
+        ui->playButton->setText(heavyLogEnabled ? "  " + tr("Play (hvlog)", "Button text") : tr("Play", "Button text"));
         // Connect heavylog toggle
         connect(heavyLogAction, &QAction::triggered, this, [this, heavyLogAction]() {
             bool enabled = heavyLogAction->isChecked();
-            ui->playButton->setText(enabled ? "  " + tr("Play (hvlog)") : tr("Play"));
+            ui->playButton->setText(enabled ? "  " + tr("Play (hvlog)", "Button text") : tr("Play", "Button text"));
             // Update settings to remember this
             Settings::setLauncherSetting("GAME_HEAVY_LOG_ENABLED", enabled);
         });
@@ -436,16 +435,13 @@ bool LauncherMainWindow::isKeeperFxInstalled()
 bool LauncherMainWindow::askForKeeperFxInstall()
 {
     // Ask if user wants to install KeeperFX
-    int result = QMessageBox::question(this, "KeeperFX",
-        tr("The launcher is unable to find 'keeperfx.exe'.") + "\n\n" + tr("Do you want to download and install KeeperFX?")
-    );
+    int result = QMessageBox::question(this, "KeeperFX", tr("The launcher is unable to find 'keeperfx.exe'.\n\nDo you want to download and install KeeperFX?", "MessageBox Text"));
 
     // Check if user declines
     if(result != QMessageBox::Yes){
 
         // Ask if they are sure
-        result = QMessageBox::question(this, "Confirmation",
-                                       tr("Are you sure?") + "\n\n" + tr("You will be unable to play KeeperFX."));
+        result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure?\n\nYou will be unable to play KeeperFX.", "MessageBox Text"));
         if(result == QMessageBox::Yes){
 
             // User does not want to install KeeperFX
@@ -474,7 +470,9 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 
         // Ask user if they want to restart their launcher
         qDebug() << "Launcher language has changed so asking for launcher restart";
-        int result = QMessageBox::question(this, tr("Language has changed"), tr("The launcher has to restart to change its language. Do you want to do that now?"));
+        int result = QMessageBox::question(this,
+                                           tr("Language has changed", "MessageBox Title"),
+                                           tr("The launcher has to restart to change its language. Do you want to do that now?", "MessageBox Text"));
         if (result == QMessageBox::Yes) {
 
             qDebug() << "Restarting launcher to change the language";
@@ -812,12 +810,13 @@ void LauncherMainWindow::verifyBinaryCertificates()
 
         // Show messagebox alerting the user
         QMessageBox::warning(this,
-                             tr("KeeperFX Verification Error"),
-                             tr("The launcher failed to verify the signature of:")
-                                 + "\n\n"
-                                 + fileListString
-                                 + "\n"
-                                 + tr("It is highly suggested to only use official KeeperFX files."));
+                             tr("KeeperFX Verification Error", "MessageBox Title"),
+                             tr("The launcher failed to verify the signature of:\n\n"
+                                "%1"
+                                "\n"
+                                "It is highly suggested to only use official KeeperFX files.",
+                                "MessageBox Text")
+                                 .arg(fileListString));
     }
 }
 
@@ -844,9 +843,14 @@ void LauncherMainWindow::startGame(Game::StartType startType, QVariant data1, QV
         // Show messagebox alerting the user
         if (errorString.isEmpty() == false) {
             qDebug() << "Game start error:" << errorString;
-            QMessageBox::warning(this, "KeeperFX", tr("Failed to start KeeperFX.") + "\n\n" + tr("Error") + ":\n" + errorString);
+            QMessageBox::warning(this,
+                                 tr("KeeperFX Error", "MessageBox Title"),
+                                 tr("Failed to start KeeperFX.\n\n"
+                                    "Error:\n",
+                                    "MessageBox Text")
+                                     .arg(errorString));
         } else {
-            QMessageBox::warning(this, "KeeperFX", tr("Failed to start KeeperFX.") + " " + tr("Unknown error."));
+            QMessageBox::warning(this, tr("KeeperFX Error", "MessageBox Title"), tr("Failed to start KeeperFX. Unknown error.", "MessageBox Text"));
         }
     }
 }
@@ -870,7 +874,7 @@ void LauncherMainWindow::refreshKfxVersionInGui()
 {
     qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
     ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
-    this->setWindowTitle("KeeperFX Launcher - v" + KfxVersion::currentVersion.fullString);
+    this->setWindowTitle(tr("KeeperFX Launcher", "Window Title") + " - v" + KfxVersion::currentVersion.fullString);
 }
 
 void LauncherMainWindow::on_openFolderButton_clicked()

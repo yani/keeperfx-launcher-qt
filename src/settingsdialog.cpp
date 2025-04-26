@@ -118,11 +118,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Resize movies
     QMap<QString, QString> resizeMoviesMap = {
-        {tr("Fit (default)"), "FIT"},
-        {tr("Off"), "OFF"},
-        {tr("Stretch"), "STRETCH"},
-        {tr("Crop"), "CROP"},
-        {tr("Pixel perfect"), "PIXELPERFECT"},
+        {tr("Fit (default)", "Resize Movies Dropdown"), "FIT"},
+        {tr("Off", "Resize Movies Dropdown"), "OFF"},
+        {tr("Stretch", "Resize Movies Dropdown"), "STRETCH"},
+        {tr("Crop", "Resize Movies Dropdown"), "CROP"},
+        {tr("Pixel perfect", "Resize Movies Dropdown"), "PIXELPERFECT"},
         {"4BY3", "4BY3"},
         {"4BY3PP", "4BY3PP"},
     };
@@ -134,7 +134,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Resolutions
     QMap<QString, QString> resolutionsMap = {
-        {tr("Match desktop"), "MATCH_DESKTOP"},
+        {tr("Match desktop", "Resolution Dropdown"), "MATCH_DESKTOP"},
         {"640 x 400 (8:5)", "640x400"},
         {"640 x 480 (4:3)", "640x480"},
         {"800 x 600 (4:3)", "800x600"},
@@ -171,8 +171,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Display mode
     QMap<QString, QString> displayModesMap = {
-        {tr("Fullscreen"), "x32"},
-        {tr("Windowed"), "w32"},
+        {tr("Fullscreen", "Display Mode Dropdown"), "x32"},
+        {tr("Windowed", "Display Mode Dropdown"), "w32"},
     };
 
     // Add display modes
@@ -286,7 +286,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->labelContributors->setOpenExternalLinks(true);
 
         // Set text
-        ui->labelContributors->setText(tr("KeeperFX Contributors") + ": " + contributors.join(", "));
+        ui->labelContributors->setText(tr("KeeperFX Contributors: %1", "Label Contributor List").arg(contributors.join(", ")));
     } else {
         ui->labelContributors->setText(""); // Hide
     }
@@ -737,10 +737,9 @@ void SettingsDialog::cancel()
     if (settingHasChanged == true) {
 
         // Ask if the user is sure
-        int result = QMessageBox::question(this, tr("KeeperFX Settings"),
-            tr("One or more settings have been changed.") + " " +
-            tr("Are you sure you want to return without saving?")
-        );
+        int result = QMessageBox::question(this,
+                                           tr("KeeperFX Settings", "MessageBox Title"),
+                                           tr("One or more settings have been changed. Are you sure you want to return without saving?", "MessageBox Text"));
 
         // Cancel close if user is not sure
         if (result != QMessageBox::Yes) {

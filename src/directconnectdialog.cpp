@@ -53,14 +53,14 @@ void DirectConnectDialog::on_sendButton_clicked()
 
     // Make sure IP is valid
     if(ipHostAddress.isNull() || ipHostAddress.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol){
-        QMessageBox::warning(this, "Direct Connect", tr("Invalid IP address"));
+        QMessageBox::warning(this, tr("Direct Connect", "MessageBox Title"), tr("Invalid IP address", "MessageBox Text"));
         return;
     }
 
     // Check if IP is IPv4 if IPv6 is not supported
     if(KfxVersion::hasFunctionality("enet_ipv6_support") == false){
         if(ipHostAddress.protocol() == QAbstractSocket::IPv6Protocol){
-            QMessageBox::warning(this, "Direct Connect", tr("IPv6 addresses are not supported."));
+            QMessageBox::warning(this, tr("Direct Connect", "MessageBox Title"), tr("IPv6 addresses are not supported.", "MessageBox Text"));
             return;
         }
     }

@@ -35,7 +35,7 @@ InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     connect(this, &InstallKfxDialog::setProgressBarFormat, ui->progressBar, &QProgressBar::setFormat);
 
     // Log the install path at the start
-    emit appendLog(tr("Install path") + ": " + QCoreApplication::applicationDirPath());
+    emit appendLog(tr("Install path: %1", "Log Message").arg(QCoreApplication::applicationDirPath()));
 }
 
 InstallKfxDialog::~InstallKfxDialog()
@@ -50,7 +50,7 @@ void InstallKfxDialog::on_installButton_clicked()
     ui->progressBar->setTextVisible(true);
 
     // Tell user we start the installation
-    emit appendLog(tr("Installation started"));
+    emit appendLog(tr("Installation started", "Log Message"));
 
     // Get release type to install
     // Also remember that we want this release version for later updates
@@ -69,15 +69,15 @@ void InstallKfxDialog::on_installButton_clicked()
 
 void InstallKfxDialog::startStableDownload()
 {
-    emit appendLog(tr("Getting download URL for stable release"));
+    emit appendLog(tr("Getting download URL for stable release", "Log Message"));
     downloadUrlStable = ApiClient::getDownloadUrlStable();
 
     if (downloadUrlStable.isEmpty()) {
-        emit appendLog(tr("Failed to get download URL for stable release"));
+        emit appendLog(tr("Failed to get download URL for stable release", "Log Message"));
         return;
     }
 
-    emit appendLog(tr("Stable release URL") + ": " + downloadUrlStable.toString());
+    emit appendLog(tr("Stable release URL: %1").arg(downloadUrlStable.toString()));
 
     QString outputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrlStable.fileName() + ".tmp";
     QFile *outputFile = new QFile(outputFilePath);
@@ -92,17 +92,17 @@ void InstallKfxDialog::startStableDownload()
 void InstallKfxDialog::onStableDownloadFinished(bool success)
 {
     if (!success) {
-        emit setInstallFailed(tr("Failed to download stable release"));
+        emit setInstallFailed(tr("Failed to download stable release", "Log Message"));
         return;
     }
 
-    emit appendLog(tr("KeeperFX stable release successfully downloaded"));
+    emit appendLog(tr("KeeperFX stable release successfully downloaded", "Log Message"));
     emit clearProgressBar();
 
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + this->downloadUrlStable.fileName() + ".tmp");
 
     // Test archive
-    emit appendLog(tr("Testing stable release archive..."));
+    emit appendLog(tr("Testing stable release archive...", "Log Message"));
     QThreadPool::globalInstance()->start([this, outputFile]() {
         uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
         QMetaObject::invokeMethod(this, "onStableArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
@@ -113,7 +113,7 @@ void InstallKfxDialog::onStableArchiveTestComplete(uint64_t archiveSize) {
 
     // Make sure test is successful and archive size is valid
     if (archiveSize < 0) {
-        emit setInstallFailed(tr("Stable release archive test failed. It may be corrupted."));
+        emit setInstallFailed(tr("Stable release archive test failed. It may be corrupted.", "Failure message"));
         return;
     }
 
@@ -122,12 +122,12 @@ void InstallKfxDialog::onStableArchiveTestComplete(uint64_t archiveSize) {
     QString archiveSizeString = QString::number(archiveSizeInMiB,
                                                 'f',
                                                 2); // Format to 2 decimal places
-    emit appendLog(tr("Total size") + ": " + archiveSizeString + "MiB");
+    emit appendLog(tr("Total size: %1MiB", "Log Message").arg(archiveSizeString));
 
     // Start extraction process
     emit setProgressMaximum(static_cast<int>(archiveSize));
-    emit setProgressBarFormat(tr("Extracting: %p%"));
-    emit appendLog(tr("Extracting..."));
+    emit setProgressBarFormat(tr("Extracting: %p%", "Progress bar"));
+    emit appendLog(tr("Extracting...", "Log Message"));
 
     // TODO: use temp file
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/"
@@ -143,11 +143,11 @@ void InstallKfxDialog::onStableArchiveTestComplete(uint64_t archiveSize) {
 
 void InstallKfxDialog::onStableExtractComplete()
 {
-    emit appendLog(tr("Extraction completed"));
+    emit appendLog(tr("Extraction completed", "Log Message"));
     emit clearProgressBar();
 
     // Remove temp archive
-    emit appendLog(tr("Removing temporary archive"));
+    emit appendLog(tr("Removing temporary archive", "Log Message"));
     QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlStable.fileName() + ".tmp");
     if (archiveFile->exists()) {
         archiveFile->remove();
@@ -157,26 +157,26 @@ void InstallKfxDialog::onStableExtractComplete()
         startAlphaDownload();
     } else {
         // Handle any settings update
-        emit appendLog(tr("Loading settings"));
+        emit appendLog(tr("Loading settings", "Log Message"));
         Settings::load();
 
-        emit appendLog(tr("Done!"));
-        QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!"));
+        emit appendLog(tr("Done!", "Log Message"));
+        QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
         accept();
     }
 }
 
 void InstallKfxDialog::startAlphaDownload()
 {
-    emit appendLog(tr("Getting download URL for alpha patch"));
+    emit appendLog(tr("Getting download URL for alpha patch", "Log Message"));
     downloadUrlAlpha = ApiClient::getDownloadUrlAlpha();
 
     if (downloadUrlAlpha.isEmpty()) {
-        emit setInstallFailed(tr("Failed to get download URL for alpha patch"));
+        emit setInstallFailed(tr("Failed to get download URL for alpha patch", "Failure message"));
         return;
     }
 
-    emit appendLog(tr("Alpha patch URL") + ": " + downloadUrlAlpha.toString());
+    emit appendLog(tr("Alpha patch URL: %1", "Log Message").arg(downloadUrlAlpha.toString()));
 
     QString outputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp";
     QFile *outputFile = new QFile(outputFilePath);
@@ -191,16 +191,16 @@ void InstallKfxDialog::startAlphaDownload()
 void InstallKfxDialog::onAlphaDownloadFinished(bool success)
 {
     if (!success) {
-        emit setInstallFailed(tr("Alpha patch download failed."));
+        emit setInstallFailed(tr("Alpha patch download failed.", "Failure message"));
         return;
     }
 
-    emit appendLog(tr("KeeperFX alpha patch successfully downloaded"));
+    emit appendLog(tr("KeeperFX alpha patch successfully downloaded", "Log Message"));
 
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp");
 
     // Test archive
-    emit appendLog(tr("Testing alpha patch archive..."));
+    emit appendLog(tr("Testing alpha patch archive...", "Log Message"));
     QThreadPool::globalInstance()->start([this, outputFile]() {
         uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
         QMetaObject::invokeMethod(this, "onAlphaArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
@@ -211,19 +211,19 @@ void InstallKfxDialog::onAlphaArchiveTestComplete(uint64_t archiveSize)
 {
     // Make sure test is successful and archive size is valid
     if (archiveSize < 0) {
-        emit setInstallFailed(tr("Alpha patch archive test failed. It may be corrupted."));
+        emit setInstallFailed(tr("Alpha patch archive test failed. It may be corrupted.", "Log Message"));
         return;
     }
 
     // Get size
     double archiveSizeInMiB = static_cast<double>(archiveSize) / (1024 * 1024);
     QString archiveSizeString = QString::number(archiveSizeInMiB, 'f', 2); // Format to 2 decimal places
-    emit appendLog(tr("Total size") + ": " + archiveSizeString + "MiB");
+    emit appendLog(tr("Total size: %1MiB", "Log Message").arg(archiveSizeString));
 
     // Start extraction process
     emit setProgressMaximum(static_cast<int>(archiveSize));
-    emit setProgressBarFormat(tr("Extracting: %p%"));
-    emit appendLog(tr("Extracting..."));
+    emit setProgressBarFormat(tr("Extracting: %p%", "Progress bar"));
+    emit appendLog(tr("Extracting...", "Log Message"));
 
     // TODO: use temp file
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/"
@@ -239,25 +239,25 @@ void InstallKfxDialog::onAlphaArchiveTestComplete(uint64_t archiveSize)
 
 void InstallKfxDialog::onAlphaExtractComplete()
 {
-    emit appendLog(tr("Extraction completed"));
+    emit appendLog(tr("Extraction completed", "Log Message"));
     emit clearProgressBar();
 
     // Remove temp archive
-    emit appendLog(tr("Removing temporary archive"));
+    emit appendLog(tr("Removing temporary archive", "Log Message"));
     QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp");
     if (archiveFile->exists()) {
         archiveFile->remove();
     }
 
     // Handle any settings update
-    emit appendLog(tr("Loading settings"));
+    emit appendLog(tr("Loading settings", "Log Message"));
     Settings::load();
 
-    emit appendLog(tr("Setting game language to system language"));
+    emit appendLog(tr("Setting game language to system language", "Log Message"));
     Settings::autoSetGameLanguageToLocaleLanguage();
 
-    emit appendLog(tr("Done!"));
-    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!"));
+    emit appendLog(tr("Done!", "Log Message"));
+    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
     this->accept();
 }
 
@@ -266,7 +266,7 @@ void InstallKfxDialog::updateProgressBarDownload(qint64 bytesReceived, qint64 by
     if (bytesTotal > 0) {
         ui->progressBar->setMaximum(static_cast<int>(bytesTotal / 1024 / 1024));
         ui->progressBar->setValue(static_cast<int>(bytesReceived / 1024 / 1024));
-        ui->progressBar->setFormat(QString(tr("Downloading") + ": %p% (%vMiB)"));
+        ui->progressBar->setFormat(tr("Downloading: %p% (%vMiB)", "Progress bar"));
     }
 }
 
@@ -308,21 +308,19 @@ void InstallKfxDialog::onInstallFailed(const QString &reason)
     ui->installButton->setDisabled(false);
     onClearProgressBar();
     onAppendLog(reason);
-    QMessageBox::warning(this, tr("Installation failed"), reason);
+    QMessageBox::warning(this, tr("Installation failed", "MessageBox Title"), reason);
 }
 
 void InstallKfxDialog::on_versionComboBox_currentIndexChanged(int index)
 {
     if (index == 1) {
-        int result = QMessageBox::question(
-            this,
-            tr("KeeperFX Alpha builds"),
-            tr("Alpha patches may contain new features and changes, but often contain "
-               "bugs and unfinished functionality. These patches are mostly meant "
-               "for testers, and it is suggested to be part of the Keeper Klan discord "
-               "if you use them.") +
-            "\n\n" +
-            tr("Are you sure you want to use Alpha patches?"));
+        int result = QMessageBox::question(this,
+                                           tr("KeeperFX Alpha builds", "MessageBox Title"),
+                                           tr("Alpha patches may contain new features and changes, but often contain "
+                                              "bugs and unfinished functionality. These patches are mostly meant "
+                                              "for testers, and it is suggested to be part of the Keeper Klan discord "
+                                              "if you use them.\n\nAre you sure you want to use Alpha patches?",
+                                              "MessageBox Text"));
 
         // Check whether or not user is sure
         if (result != QMessageBox::Yes) {
@@ -340,8 +338,7 @@ void InstallKfxDialog::on_cancelButton_clicked()
 void InstallKfxDialog::closeEvent(QCloseEvent *event)
 {
     // Ask if user is sure
-    int result = QMessageBox::question(this, tr("Confirmation"),
-        tr("Are you sure?") + "\n\n" + tr("You will be unable to play KeeperFX."));
+    int result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure?\n\nYou will be unable to play KeeperFX.", "MessageBox Text"));
 
     // Handle answer
     if (result == QMessageBox::Yes) {

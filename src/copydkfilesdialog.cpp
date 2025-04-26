@@ -26,7 +26,7 @@ CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     auto existingDkInstallDir = DkFiles::findExistingDkInstallDir();
     if (existingDkInstallDir) {
         qDebug() << "Automatically detected DK dir:" << existingDkInstallDir->absolutePath();
-        ui->autoFoundLabel->setText(tr("A suitable DK installation has been automatically detected."));
+        ui->autoFoundLabel->setText(tr("A suitable DK installation has been automatically detected.", "Label"));
         ui->browseInput->setText(existingDkInstallDir->absolutePath());
     }
 }
@@ -39,7 +39,7 @@ CopyDkFilesDialog::~CopyDkFilesDialog()
 void CopyDkFilesDialog::on_browseButton_clicked()
 {
     // Create a QFileDialog instance and set options
-    QString dirPath = QFileDialog::getExistingDirectory(this, tr("Select Directory containing Dungeon Keeper files"), "", QFileDialog::ShowDirsOnly);
+    QString dirPath = QFileDialog::getExistingDirectory(this, tr("Select Directory containing Dungeon Keeper files", "Directory Browse Dialog"), "", QFileDialog::ShowDirsOnly);
 
     // Check if a valid directory was selected
     if (DkFiles::isValidDkDirPath(dirPath)) {
@@ -48,9 +48,8 @@ void CopyDkFilesDialog::on_browseButton_clicked()
     } else {
         ui->browseInput->setText("");
         QMessageBox::warning(this,
-            tr("Original DK files not found"),
-            tr("The chosen directory does not contain all of the required files. Please select an original Dungeon Keeper installation.")
-        );
+                             tr("Original DK files not found", "MessageBox Title"),
+                             tr("The chosen directory does not contain all of the required files. Please select an original Dungeon Keeper installation.", "MessageBox Text"));
     }
 
     // Hide the auto found text
@@ -61,10 +60,7 @@ void CopyDkFilesDialog::on_copyButton_clicked()
 {
     // Make sure box is set
     if(ui->browseInput->text().isEmpty()){
-        QMessageBox::information(this,
-            tr("Select a directory"),
-            tr("Please select an original Dungeon Keeper installation location.")
-        );
+        QMessageBox::information(this, tr("Select a directory", "MessageBox Title"), tr("Please select an original Dungeon Keeper installation location.", "MessageBox Text"));
         return;
     }
 
@@ -73,36 +69,28 @@ void CopyDkFilesDialog::on_copyButton_clicked()
     // Check if given dir is a valid DK dir
     if(!DkFiles::isValidDkDir(dkDir)){
         QMessageBox::warning(this,
-            tr("Original DK files not found"),
-            tr("The chosen directory does not contain all of the required files. Please select an original Dungeon Keeper installation.")
-        );
+                             tr("Original DK files not found", "MessageBox Title"),
+                             tr("The chosen directory does not contain all of the required files. Please select an original Dungeon Keeper installation.", "MessageBox Text"));
         return;
     }
 
     // Check if app dir is writable
     QFileInfo appDirFileInfo(QCoreApplication::applicationDirPath());
     if(appDirFileInfo.isWritable() == false){
-        QMessageBox::warning(this,
-            tr("Failed to copy files"),
-            tr("The current directory is not writable.")
-        );
+        QMessageBox::warning(this, tr("Failed to copy files", "MessageBox Title"), tr("The current directory is not writable.", "MessageBox Text"));
     }
 
     // Copy the files
     QDir toDir(QCoreApplication::applicationDirPath());
     if(!DkFiles::copyDkDirToDir(dkDir, toDir)){
-        QMessageBox::warning(this,
-            tr("Failed to copy files"),
-            tr("Something went wrong while copying the files.")
-        );
+        QMessageBox::warning(this, tr("Failed to copy files", "MessageBox Title"), tr("Something went wrong while copying the files.", "MessageBox Text"));
         return;
     }
 
     // Success!
     QMessageBox::information(this,
-        tr("DK files copied!"),
-        tr("The required Dungeon Keeper files have been copied.\n\nYou can now play KeeperFX!")
-    );
+                             tr("DK files copied!", "MessageBox Title"),
+                             tr("The required Dungeon Keeper files have been copied.\n\nYou can now play KeeperFX!", "MessageBox Text"));
     this->accept();
 }
 
@@ -115,9 +103,8 @@ void CopyDkFilesDialog::on_cancelButton_clicked()
 void CopyDkFilesDialog::closeEvent(QCloseEvent *event)
 {
     int result = QMessageBox::question(this,
-        tr("Confirmation"),
-        tr("Are you sure?") + "\n\n" + tr("KeeperFX will not function correctly without these files.")
-    );
+                                       tr("Confirmation", "MessageBox Title"),
+                                       tr("Are you sure?\n\nKeeperFX will not function correctly without these files.", "MessageBox Text"));
 
     if (result == QMessageBox::Yes) {
         event->accept();  // Allow the dialog to close

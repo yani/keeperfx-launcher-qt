@@ -24,9 +24,9 @@ CrashDialog::CrashDialog(QWidget *parent)
     // Load save file list
     if (saveFileList.empty() == true) {
         ui->saveFileComboBox->setDisabled(true);
-        ui->saveFileComboBox->setPlaceholderText(tr("No saves found"));
+        ui->saveFileComboBox->setPlaceholderText(tr("No saves found", "Menu Placeholder"));
     } else {
-        ui->saveFileComboBox->addItem("None");
+        ui->saveFileComboBox->addItem(tr("None", "Default Savefile"));
         for (SaveFile *saveFile : saveFileList) {
             ui->saveFileComboBox->addItem(saveFile->toString());
         }
@@ -174,19 +174,20 @@ void CrashDialog::on_sendButton_clicked()
     // Make sure response was succesful
     bool success = jsonObj["success"].toBool();
     if (!success) {
-        QMessageBox::warning(this,  tr("Crash Report"), tr("Failed to submit crash report."));
+        QMessageBox::warning(this, tr("Crash Report", "MessageBox Title"), tr("Failed to submit crash report.", "MessageBox Text"));
         qWarning() << "Crash Report API response:" << jsonObj["error"].toString();
         this->close();
         return;
     }
 
     // Show success and the report ID number
-    QMessageBox::information(
-        this, tr("Crash Report"),
-        tr("Your crash report has been successfully submitted!") + "\n\n" +
-        tr("The KeeperFX team can not guarantee immediate results, but your feedback is very helpful for the developers working on KeeperFX.") + "\n\n" +
-        tr("Report ID") + ": " + QString::number(jsonObj["id"].toInt())
-    );
+    QMessageBox::information(this,
+                             tr("Crash Report", "MessageBox Title"),
+                             tr("Your crash report has been successfully submitted!\n\n"
+                                "The KeeperFX team can not guarantee immediate results, "
+                                "but your feedback is very helpful for the developers working on KeeperFX.\n\n"
+                                "Report ID: %1")
+                                 .arg(QString::number(jsonObj["id"].toInt())));
 
     // Accept crash dialog (close it)
     this->accept();

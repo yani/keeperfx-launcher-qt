@@ -38,10 +38,9 @@ void FileRemoverDialog::on_cancelButton_clicked()
 
 void FileRemoverDialog::closeEvent(QCloseEvent *event)
 {
-    int result = QMessageBox::question(this, tr("Confirmation"),
-        tr("Are you sure?") + "\n\n" +
-        tr("KeeperFX might not function correctly with these files.")
-    );
+    int result = QMessageBox::question(this,
+                                       tr("Confirmation", "MessageBox Title"),
+                                       tr("Are you sure?\n\nKeeperFX might not function correctly with these files.", "MessageBox Text"));
 
     if (result == QMessageBox::Yes) {
         event->accept(); // Allow the dialog to close
@@ -65,13 +64,13 @@ void FileRemoverDialog::on_removeButton_clicked()
             if (!file.remove()) {
 
                 // Something went wrong
-                QMessageBox::warning(this, "KeeperFX", tr("Something went wrong while removing unwanted files."));
+                QMessageBox::warning(this, "KeeperFX", tr("Something went wrong while removing unwanted files.", "MessageBox Text"));
                 return;
             }
         }
     }
 
     // Success
-    QMessageBox::information(this, "KeeperFX", tr("Unwanted files have been removed!"));
+    QMessageBox::information(this, "KeeperFX", tr("Unwanted files have been removed!", "MessageBox Text"));
     this->accept();
 }
