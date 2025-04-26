@@ -74,6 +74,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
                                           {"Lat\u012Bna", "LAT"},
                                           };
 
+    // Add Ukrainian Game Language
+    // We do this after the list of languages because this one was added later
+    if (KfxVersion::hasFunctionality("ukrainian_game_language") == true) {
+        languageMap["\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430"] = "UKR";
+    }
+
     // Add Game languages
     for (auto it = languageMap.begin(); it != languageMap.end(); ++it) {
         ui->comboBoxLanguage->addItem(it.key(), it.value());
