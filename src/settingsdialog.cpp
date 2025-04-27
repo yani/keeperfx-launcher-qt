@@ -298,7 +298,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     aboutString += libraries.join(", ");
     aboutString += "<br/>";
     aboutString += "<br/>";
-    aboutString += tr("Join us Discord: <a href=\"%1\">%2</a>", "About Label (%1=Discord URL, %2=Discord Name)").arg("https://discord.gg/WxgE8WZBku").arg("Keeper Klan Discord");
+    aboutString += tr("Join us Discord: %1", "About Label").arg(QString("<a href=\"%1\">%2</a>").arg("https://discord.gg/WxgE8WZBku").arg("Keeper Klan Discord"));
 
     // Load about page
     ui->labelAbout->setTextFormat(Qt::RichText);

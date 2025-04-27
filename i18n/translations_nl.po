@@ -1402,9 +1402,9 @@ msgstr "Launcher Libraries:"
 
 #: ../src/settingsdialog.cpp:301
 #, qt-format
-msgctxt "SettingsDialog|About Label (%1=Discord URL, %2=Discord Name)"
-msgid "Join us Discord: <a href=\"%1\">%2</a>"
-msgstr "Word lid van onze Discord: <a href=\"%1\">%2</a>"
+msgctxt "SettingsDialog|About Label"
+msgid "Join us Discord: %1"
+msgstr "Word lid van onze Discord: %1"
 
 #: ../src/settingsdialog.cpp:325
 #, qt-format
