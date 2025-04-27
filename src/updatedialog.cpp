@@ -496,7 +496,7 @@ void UpdateDialog::onFileDownloadProgress()
             Settings::load();
 
             // Success!
-            emit appendLog(tr("Done!"));
+            emit appendLog(tr("Done!", "Log Message"));
             QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version));
             accept();
             return;

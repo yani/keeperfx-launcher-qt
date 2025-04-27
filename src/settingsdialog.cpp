@@ -33,11 +33,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // When working in Qt's UI editor you can change it to another tab by accident
     ui->tabWidget->setCurrentIndex(0);
 
-    // Set versions in about label
-    ui->labelAbout->setText(ui->labelAbout->text()
-                                .replace("<kfx_version>", KfxVersion::currentVersion.fullString)
-                                .replace("<launcher_version>", LAUNCHER_VERSION));
-
     // Setup the 'display monitor' dropdown
     setupDisplayMonitorDropdown();
 
@@ -273,12 +268,50 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
 
+    // Libraries for about page
+
+    // Map: Release dropdown
+    QMap<QString, QString> aboutLibrariesMap = {
+        {"Qt6", "https://www.qt.io/product/qt6"},
+        {"libLIEF", "https://github.com/lief-project/LIEF"},
+        {"bit7z", "https://github.com/rikyoz/bit7z"},
+        {"7z", "https://www.7-zip.org/"},
+    };
+
+    QStringList libraries;
+    // Add release options
+    for (auto it = aboutLibrariesMap.begin(); it != aboutLibrariesMap.end(); ++it) {
+        libraries << "<a href=\"" + it.value() + "\">" + it.key() + "</a>";
+    }
+
+    // Load about page string
+    QString aboutString;
+    aboutString += tr("KeeperFX v%1", "About Label").arg(KfxVersion::currentVersion.fullString);
+    aboutString += "<br/>";
+    aboutString += "<a href=\"https://keeperfx.net\">https://keeperfx.net</a>";
+    aboutString += "<br/>";
+    aboutString += "<br/>";
+    aboutString += tr("KeeperFX Launcher v%1", "About Label").arg(LAUNCHER_VERSION);
+    aboutString += "<br/>";
+    aboutString += tr("Launcher Libraries:", "About Label");
+    aboutString += "<br/>";
+    aboutString += libraries.join(", ");
+    aboutString += "<br/>";
+    aboutString += "<br/>";
+    aboutString += tr("Join us Discord: <a href=\"%1\">%2</a>", "About Label (%1=Discord URL, %2=Discord Name)").arg("https://discord.gg/WxgE8WZBku").arg("Keeper Klan Discord");
+
+    // Load about page
+    ui->labelAbout->setTextFormat(Qt::RichText);
+    ui->labelAbout->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    ui->labelAbout->setOpenExternalLinks(true);
+    ui->labelAbout->setText(aboutString);
+
     // Load contributors
     QFile contributorsFile(":/res/contributors.txt");
     if (contributorsFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QStringList contributors = QString::fromUtf8(contributorsFile.readAll()).split('\n', Qt::SkipEmptyParts);
 
-        // Make links
+        // Convert string of contributors in GitHub links
         for (QString &c : contributors) {
             c = QString("<a href=\"https://github.com/%1\">%1</a>").arg(c.trimmed());
         }

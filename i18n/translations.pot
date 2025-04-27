@@ -1194,116 +1194,121 @@ msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1415
-msgctxt "SettingsDialog|"
-msgid ""
-"KeeperFX v<kfx_version><br/>\n"
-"<a href=\"https://keeperfx.net\">https://keeperfx.net</a><br/>\n"
-"<br/>\n"
-"KeeperFX Launcher v<launcher_version><br/>\n"
-"Launcher libraries:<br/>\n"
-"<a href=\"https://www.qt.io/product/qt6\">Qt6</a>,\n"
-"<a href=\"https://github.com/lief-project/LIEF\">libLIEF</a>,\n"
-"<a href=\"https://github.com/rikyoz/bit7z\">bit7z</a>,\n"
-"<a href=\"https://www.7-zip.org/\">7z</a>\n"
-"<br/>\n"
-"<br/>\n"
-"Join us on the <a href=\"https://discord.gg/WxgE8WZBku\">Keeper Klan "
-"Discord</a>"
-msgstr ""
-
-#: ../src/settingsdialog.cpp:127
+#: ../src/settingsdialog.cpp:122
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:128
+#: ../src/settingsdialog.cpp:123
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:129
+#: ../src/settingsdialog.cpp:124
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:130
+#: ../src/settingsdialog.cpp:125
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:131
+#: ../src/settingsdialog.cpp:126
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:143
+#: ../src/settingsdialog.cpp:138
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:180
+#: ../src/settingsdialog.cpp:175
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:181
+#: ../src/settingsdialog.cpp:176
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:197
+#: ../src/settingsdialog.cpp:192
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
+msgid "Low"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:193
+msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
+msgid "Medium"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:194
+msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
+msgid "High"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:197
+msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
 msgstr ""
 
 #: ../src/settingsdialog.cpp:198
-msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
+msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr ""
 
 #: ../src/settingsdialog.cpp:199
-msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
-msgid "High"
-msgstr ""
-
-#: ../src/settingsdialog.cpp:202
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
-msgid "Low"
+msgid "High"
 msgstr ""
 
 #: ../src/settingsdialog.cpp:203
-msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
-msgid "Medium"
-msgstr ""
-
-#: ../src/settingsdialog.cpp:204
-msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
-msgid "High"
-msgstr ""
-
-#: ../src/settingsdialog.cpp:208
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:209
+#: ../src/settingsdialog.cpp:204
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Alpha"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:292
+#: ../src/settingsdialog.cpp:289
+#, qt-format
+msgctxt "SettingsDialog|About Label"
+msgid "KeeperFX v%1"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:294
+#, qt-format
+msgctxt "SettingsDialog|About Label"
+msgid "KeeperFX Launcher v%1"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:296
+msgctxt "SettingsDialog|About Label"
+msgid "Launcher Libraries:"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:301
+#, qt-format
+msgctxt "SettingsDialog|About Label (%1=Discord URL, %2=Discord Name)"
+msgid "Join us Discord: <a href=\"%1\">%2</a>"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:325
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:744
+#: ../src/settingsdialog.cpp:777
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:745
+#: ../src/settingsdialog.cpp:778
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
@@ -1467,7 +1472,7 @@ msgctxt "UpdateDialog|Log Message"
 msgid "Copying over any new settings"
 msgstr ""
 
-#: ../src/updatedialog.cpp:314
+#: ../src/updatedialog.cpp:314 ../src/updatedialog.cpp:499
 msgctxt "UpdateDialog|Log Message"
 msgid "Done!"
 msgstr ""
@@ -1575,11 +1580,6 @@ msgstr ""
 #: ../src/updatedialog.cpp:495
 msgctxt "UpdateDialog|Log Message"
 msgid "Copying any new settings"
-msgstr ""
-
-#: ../src/updatedialog.cpp:499
-msgctxt "UpdateDialog|"
-msgid "Done!"
 msgstr ""
 
 #: ../src/updatedialog.cpp:505
