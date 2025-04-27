@@ -82,7 +82,7 @@ void InstallKfxDialog::startStableDownload()
         return;
     }
 
-    emit appendLog(tr("Stable release URL: %1").arg(downloadUrlStable.toString()));
+    emit appendLog(tr("Stable release URL: %1", "Log Message").arg(downloadUrlStable.toString()));
 
     QString outputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrlStable.fileName() + ".tmp";
     QFile *outputFile = new QFile(outputFilePath);

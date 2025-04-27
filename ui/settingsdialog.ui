@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>KeeperFX Settings</string>
+   <string comment="Window Title">KeeperFX Settings</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -34,7 +34,7 @@ height: 35px;
      </property>
      <widget class="QWidget" name="tab1_game">
       <attribute name="title">
-       <string>Game</string>
+       <string comment="Tab Title">Game</string>
       </attribute>
       <widget class="QComboBox" name="comboBoxLanguage">
        <property name="geometry">
@@ -283,7 +283,7 @@ height: 35px;
      </widget>
      <widget class="QWidget" name="tab2_gfx">
       <attribute name="title">
-       <string>Graphics</string>
+       <string comment="Tab Title">Graphics</string>
       </attribute>
       <widget class="QCheckBox" name="checkBoxSmoothenVideo">
        <property name="geometry">
@@ -842,7 +842,7 @@ height: 35px;
      </widget>
      <widget class="QWidget" name="tab3_sound">
       <attribute name="title">
-       <string>Sound</string>
+       <string comment="Tab Title">Sound</string>
       </attribute>
       <widget class="QCheckBox" name="checkBoxEnableSound">
        <property name="geometry">
@@ -983,7 +983,7 @@ height: 35px;
      </widget>
      <widget class="QWidget" name="tab4_input">
       <attribute name="title">
-       <string>Input</string>
+       <string comment="Tab Title">Input</string>
       </attribute>
       <widget class="QCheckBox" name="checkBoxLockCursorPossession">
        <property name="geometry">
@@ -1118,7 +1118,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>0%</string>
+        <string notr="true">0%</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxRawMouseInput">
@@ -1142,7 +1142,7 @@ height: 35px;
      </widget>
      <widget class="QWidget" name="tab5_mp">
       <attribute name="title">
-       <string>Multiplayer</string>
+       <string comment="Tab Title">Multiplayer</string>
       </attribute>
       <widget class="QLineEdit" name="lineEditMasterServer">
        <property name="geometry">
@@ -1175,7 +1175,7 @@ height: 35px;
      </widget>
      <widget class="QWidget" name="tab6_launcher">
       <attribute name="title">
-       <string>Launcher</string>
+       <string comment="Tab Title">Launcher</string>
       </attribute>
       <widget class="QCheckBox" name="checkBoxCheckForUpdates">
        <property name="geometry">
@@ -1283,7 +1283,7 @@ height: 35px;
      </widget>
      <widget class="QWidget" name="tab7_api">
       <attribute name="title">
-       <string>API</string>
+       <string comment="Tab Title">API</string>
       </attribute>
       <widget class="QCheckBox" name="checkBoxEnableAPI">
        <property name="geometry">
@@ -1342,7 +1342,7 @@ height: 35px;
      </widget>
      <widget class="QWidget" name="tab8_about">
       <attribute name="title">
-       <string>About</string>
+       <string comment="Tab Title">About</string>
       </attribute>
       <widget class="QWidget" name="aboutLayoutWidget" native="true">
        <property name="geometry">

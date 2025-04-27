@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>KeeperFX Crash Report</string>
+   <string comment="Window Title">KeeperFX Crash Report</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

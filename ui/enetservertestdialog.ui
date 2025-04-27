@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Test internet lobby</string>
+   <string comment="Window Title">Test internet lobby</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

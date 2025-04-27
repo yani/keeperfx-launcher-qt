@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Copy DK Files</string>
+   <string comment="Window Title">Copy DK Files</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -91,7 +91,7 @@ If you want to use a digital version you will have to install it first.</string>
       <item>
        <widget class="QPushButton" name="browseButton">
         <property name="text">
-         <string>Browse</string>
+         <string comment="Button">Browse</string>
         </property>
        </widget>
       </item>
@@ -122,7 +122,7 @@ If you want to use a digital version you will have to install it first.</string>
          </size>
         </property>
         <property name="text">
-         <string>Cancel</string>
+         <string comment="Button">Cancel</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -144,7 +144,7 @@ If you want to use a digital version you will have to install it first.</string>
          </size>
         </property>
         <property name="text">
-         <string>Copy</string>
+         <string comment="Button">Copy</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

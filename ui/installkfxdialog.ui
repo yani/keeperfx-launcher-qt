@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Install KeeperFX</string>
+   <string comment="Window Title">Install KeeperFX</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -139,7 +139,7 @@ Choose the stable release for reliability or the alpha version if you want to he
          </size>
         </property>
         <property name="text">
-         <string>Cancel</string>
+         <string comment="Button">Cancel</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -161,7 +161,7 @@ Choose the stable release for reliability or the alpha version if you want to he
          </size>
         </property>
         <property name="text">
-         <string>Install</string>
+         <string comment="Button">Install</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

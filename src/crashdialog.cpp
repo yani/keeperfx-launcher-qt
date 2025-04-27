@@ -186,7 +186,8 @@ void CrashDialog::on_sendButton_clicked()
                              tr("Your crash report has been successfully submitted!\n\n"
                                 "The KeeperFX team can not guarantee immediate results, "
                                 "but your feedback is very helpful for the developers working on KeeperFX.\n\n"
-                                "Report ID: %1")
+                                "Report ID: %1",
+                                "MessageBox Text")
                                  .arg(QString::number(jsonObj["id"].toInt())));
 
     // Accept crash dialog (close it)
