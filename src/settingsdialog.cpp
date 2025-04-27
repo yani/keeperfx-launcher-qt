@@ -193,26 +193,23 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxDisplayMode3_2->addItem(it.key(), it.value());
     }
 
-    // Map: Atmospheric dropdown
-    QMap<QString, QString> atmoMap = {
-                                      {tr("Low"), "LOW"},
-                                      {tr("Medium"), "MEDIUM"},
-                                      {tr("High"), "HIGH"},
-                                      };
+    // Atmosphere Frequency dropdown
+    ui->comboBoxAtmoFrequency->addItem(tr("Low", "Atmosphere Frequency Dropdown"), "LOW");
+    ui->comboBoxAtmoFrequency->addItem(tr("Medium", "Atmosphere Frequency Dropdown"), "MEDIUM");
+    ui->comboBoxAtmoFrequency->addItem(tr("High", "Atmosphere Frequency Dropdown"), "HIGH");
 
-    // Add atmo settings
-    for (auto it = atmoMap.begin(); it != atmoMap.end(); ++it) {
-        ui->comboBoxAtmoFrequency->addItem(it.key(), it.value());
-        ui->comboBoxAtmoVolume->addItem(it.key(), it.value());
-    }
+    // Atmosphere Volume dropdown
+    ui->comboBoxAtmoVolume->addItem(tr("Low", "Atmosphere Volume Dropdown"), "LOW");
+    ui->comboBoxAtmoVolume->addItem(tr("Medium", "Atmosphere Volume Dropdown"), "MEDIUM");
+    ui->comboBoxAtmoVolume->addItem(tr("High", "Atmosphere Volume Dropdown"), "HIGH");
 
     // Map: Release dropdown
     QMap<QString, QString> releaseMap = {
-                                      {tr("Stable (Default)"), "STABLE"},
-                                      {tr("Alpha"), "ALPHA"},
-                                      };
+        {tr("Stable (Default)", "Game Release Build"), "STABLE"},
+        {tr("Alpha", "Game Release Build"), "ALPHA"},
+    };
 
-    // Add atmo settings
+    // Add release options
     for (auto it = releaseMap.begin(); it != releaseMap.end(); ++it) {
         ui->comboBoxRelease->addItem(it.key(), it.value());
     }

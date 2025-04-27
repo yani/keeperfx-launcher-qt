@@ -25,6 +25,11 @@ InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
+    // Release dropdown
+    ui->versionComboBox->addItem(tr("Stable (Default)", "Game Release Build"), "STABLE");
+    ui->versionComboBox->addItem(tr("Alpha", "Game Release Build"), "ALPHA");
+    ui->versionComboBox->setCurrentIndex(ui->versionComboBox->findData("STABLE"));
+
     // Setup signals and slots
     connect(this, &InstallKfxDialog::appendLog, this, &InstallKfxDialog::onAppendLog);
     connect(this, &InstallKfxDialog::clearProgressBar, this, &InstallKfxDialog::onClearProgressBar);
@@ -54,10 +59,10 @@ void InstallKfxDialog::on_installButton_clicked()
 
     // Get release type to install
     // Also remember that we want this release version for later updates
-    if (ui->versionComboBox->currentIndex() == 0) {
+    if (ui->versionComboBox->currentData() == "STABLE") {
         this->installReleaseType = KfxVersion::ReleaseType::STABLE;
         Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", "STABLE");
-    } else if (ui->versionComboBox->currentIndex() == 1) {
+    } else if (ui->versionComboBox->currentData() == "ALPHA") {
         this->installReleaseType = KfxVersion::ReleaseType::ALPHA;
         Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", "ALPHA");
     }
@@ -313,7 +318,7 @@ void InstallKfxDialog::onInstallFailed(const QString &reason)
 
 void InstallKfxDialog::on_versionComboBox_currentIndexChanged(int index)
 {
-    if (index == 1) {
+    if (ui->versionComboBox->currentData() == "ALPHA") {
         int result = QMessageBox::question(this,
                                            tr("KeeperFX Alpha builds", "MessageBox Title"),
                                            tr("Alpha patches may contain new features and changes, but often contain "
@@ -325,7 +330,7 @@ void InstallKfxDialog::on_versionComboBox_currentIndexChanged(int index)
         // Check whether or not user is sure
         if (result != QMessageBox::Yes) {
             // Set back to Stable if they are not sure
-            ui->versionComboBox->setCurrentIndex(0);
+            ui->versionComboBox->setCurrentIndex(ui->versionComboBox->findData("STABLE"));
         }
     }
 }

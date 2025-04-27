@@ -67,7 +67,7 @@
 }</string>
           </property>
           <property name="text">
-           <string>KeeperFX has crashed</string>
+           <string comment="Header">KeeperFX has crashed</string>
           </property>
           <property name="margin">
            <number>10</number>
@@ -155,8 +155,18 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
       </property>
       <item>
        <widget class="QTextEdit" name="infoTextEdit">
+        <property name="html">
+         <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="placeholderText">
-         <string comment="Information Placeholder">Please explain what happened, and if possible the steps to reproduce this crash.</string>
+         <string comment="Textarea Placeholder">Please explain what happened, and if possible the steps to reproduce this crash.</string>
         </property>
        </widget>
       </item>
@@ -166,7 +176,7 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
    <item>
     <widget class="QLabel" name="saveFileLabel">
      <property name="text">
-      <string>Savefile (Optional)</string>
+      <string comment="Input box title">Savefile (Optional)</string>
      </property>
      <property name="margin">
       <number>3</number>
@@ -188,7 +198,7 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
       <item>
        <widget class="QComboBox" name="saveFileComboBox">
         <property name="placeholderText">
-         <string>If you have a game save that could provide us with more information. You can add it here.</string>
+         <string comment="Dropdown Placeholder Text">If you have a game save that could provide us with more information. You can add it here.</string>
         </property>
        </widget>
       </item>
@@ -198,7 +208,7 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
    <item>
     <widget class="QLabel" name="contactInfoLabel">
      <property name="text">
-      <string>Contact Information (Optional)</string>
+      <string comment="Input box title">Contact Information (Optional)</string>
      </property>
      <property name="margin">
       <number>3</number>
@@ -214,21 +224,21 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
       <item>
        <widget class="QLineEdit" name="contactInfoDiscordLineEdit">
         <property name="placeholderText">
-         <string>Discord handle</string>
+         <string comment="Input Placeholder">Discord handle</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLineEdit" name="contactInfoKfxNetLineEdit">
         <property name="placeholderText">
-         <string>KeeperFX.net username</string>
+         <string comment="Input Placeholder">KeeperFX.net username</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLineEdit" name="contactInfoEmailLineEdit">
         <property name="placeholderText">
-         <string>Email Address</string>
+         <string comment="Input Placeholder">Email Address</string>
         </property>
        </widget>
       </item>
@@ -262,7 +272,7 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
          </size>
         </property>
         <property name="text">
-         <string>Cancel</string>
+         <string comment="Button">Cancel</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -284,7 +294,7 @@ You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfan
          </size>
         </property>
         <property name="text">
-         <string>Send</string>
+         <string comment="Button">Send</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

@@ -26,7 +26,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Direct Connect</string>
+      <string comment="Header">Direct Connect</string>
      </property>
      <property name="margin">
       <number>7</number>
@@ -44,7 +44,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>Directly connect to an open ENET lobby. Enter the IP address of the host. Only ENET is supported.</string>
+      <string comment="Information Label">Directly connect to an open ENET lobby. Enter the IP address of the host. Only ENET is supported.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -69,7 +69,7 @@
       <item>
        <widget class="QLineEdit" name="ipLineEdit">
         <property name="placeholderText">
-         <string>IP Address</string>
+         <string comment="Input Placeholder">IP Address</string>
         </property>
        </widget>
       </item>
@@ -85,7 +85,7 @@
          <string>5556</string>
         </property>
         <property name="placeholderText">
-         <string>Port</string>
+         <string comment="Input Placeholder">Port</string>
         </property>
        </widget>
       </item>

@@ -23,7 +23,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Multiplayer Lobby Portforwarding Test</string>
+      <string comment="Header">Multiplayer Lobby Portforwarding Test</string>
      </property>
      <property name="margin">
       <number>10</number>
@@ -53,7 +53,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>This tool checks if your KeeperFX multiplayer lobby can be reached from the internet. You don't need to use this for local games, as those are already accessible within your network.</string>
+         <string comment="Information Label">This tool checks if your KeeperFX multiplayer lobby can be reached from the internet. You don't need to use this for local games, as those are already accessible within your network.</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -71,7 +71,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>To host a game online, you must open port 5556 in your router. How to do this is different for every router and internet provider, so check online for instructions or ask your provider for help.</string>
+         <string comment="Information Label">To host a game online, you must open port 5556 in your router. How to do this is different for every router and internet provider, so check online for instructions or ask your provider for help.</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -92,7 +92,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>KeeperFX only works with IPv4. If you don't have an IPv4 address or you are using a shared one (CGNAT), you won't be able to host an online game. You can ask your internet provider if they can give you an IPv4 address.</string>
+         <string comment="Information Label">KeeperFX only works with IPv4. If you don't have an IPv4 address or you are using a shared one (CGNAT), you won't be able to host an online game. You can ask your internet provider if they can give you an IPv4 address.</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -141,6 +141,16 @@
      <property name="readOnly">
       <bool>true</bool>
      </property>
+     <property name="html">
+      <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
     </widget>
    </item>
    <item>
@@ -170,7 +180,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Close</string>
+         <string comment="Button">Close</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -192,7 +202,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Test</string>
+         <string comment="Button">Test</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

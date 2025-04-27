@@ -29,7 +29,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Remove unwanted files</string>
+      <string comment="Header">Remove unwanted files</string>
      </property>
      <property name="margin">
       <number>10</number>
@@ -53,14 +53,12 @@
 }</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;
-&lt;p&gt;The KeeperFX launcher has found some files that might cause problems with KeeperFX.&lt;br /&gt;&lt;br /&gt;
+      <string comment="Information Label">The KeeperFX launcher has found some files that might cause problems with KeeperFX.
 
-This list is managed by the KeeperFX team and is meant to clean up files that are left over&lt;br/&gt;
-after KeeperFX updates.
+This list is managed by the KeeperFX team and is meant to clean up files that are left over
+after KeeperFX updates. 
 
-&lt;br/&gt;&lt;br/&gt;
-Please review the files and remove them.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+Please review the files and remove them.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
@@ -107,7 +105,7 @@ Please review the files and remove them.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/h
          </size>
         </property>
         <property name="text">
-         <string>Cancel</string>
+         <string comment="Button">Cancel</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -129,7 +127,7 @@ Please review the files and remove them.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/h
          </size>
         </property>
         <property name="text">
-         <string>Remove All</string>
+         <string comment="Button">Remove All</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

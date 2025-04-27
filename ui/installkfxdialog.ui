@@ -23,7 +23,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Download and Install KeeperFX</string>
+      <string comment="Header">Download and Install KeeperFX</string>
      </property>
      <property name="margin">
       <number>10</number>
@@ -38,7 +38,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>Select your version, and this installer will download and install KeeperFX.
+      <string comment="Information Label">Select your version, and this installer will download and install KeeperFX.
 
 Choose the stable release for reliability or the alpha version if you want to help us out with testing. </string>
      </property>
@@ -55,11 +55,11 @@ Choose the stable release for reliability or the alpha version if you want to he
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="versionLabel">
-        <property name="maximumSize">
-         <size>
-          <width>120</width>
-          <height>16777215</height>
-         </size>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="styleSheet">
          <string notr="true">QLabel {
@@ -67,23 +67,12 @@ Choose the stable release for reliability or the alpha version if you want to he
 }</string>
         </property>
         <property name="text">
-         <string>Release version:</string>
+         <string comment="Label">Release version:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="versionComboBox">
-        <item>
-         <property name="text">
-          <string>Stable (default)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Alpha</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="versionComboBox"/>
       </item>
      </layout>
     </widget>

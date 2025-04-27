@@ -66,7 +66,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Game language</string>
+        <string comment="Dropdown Title Label">Game language</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxSkipIntro">
@@ -84,7 +84,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Skip Intro</string>
+        <string comment="Checkbox Toggle">Skip Intro</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxCheats">
@@ -102,7 +102,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Enable cheats</string>
+        <string comment="Checkbox Toggle">Enable Cheats</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxCensorship">
@@ -120,7 +120,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Enable censorship</string>
+        <string comment="Checkbox Toggle">Enable Censorship</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxScreenshots">
@@ -153,16 +153,16 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Screenshot type</string>
+        <string comment="Dropdown Title Label">Screenshot type</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelGameturns">
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>350</y>
+         <y>356</y>
          <width>171</width>
-         <height>17</height>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
@@ -171,25 +171,11 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Gameturns per second</string>
+        <string comment="Textinput Title Label">Gameturns per second
+(default = 20)</string>
        </property>
-      </widget>
-      <widget class="QLabel" name="labelGameturnsInfo">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>370</y>
-         <width>151</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
-       <property name="text">
-        <string>(default = 20)</string>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEditGameturns">
@@ -222,7 +208,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Command character</string>
+        <string comment="Textinput Title Label">Command character</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEditCommandChar">
@@ -255,7 +241,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Display splash screens</string>
+        <string comment="Checkbox Toggle">Display splash screens</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxDeltaTime">
@@ -273,7 +259,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Enable delta time</string>
+        <string comment="Checkbox Toggle">Enable delta time</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxFreezeGameNoFocus">
@@ -291,7 +277,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Freeze game when not focused</string>
+        <string comment="Checkbox Toggle">Freeze game when not focused</string>
        </property>
       </widget>
      </widget>
@@ -309,7 +295,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Smoothen video</string>
+        <string comment="Checkbox Toggle">Smoothen video</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution">
@@ -327,7 +313,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Resolution</string>
+        <string comment="Dropdown Title Label">Resolution</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxResolution1">
@@ -365,7 +351,7 @@ height: 35px;
         <rect>
          <x>290</x>
          <y>30</y>
-         <width>151</width>
+         <width>131</width>
          <height>17</height>
         </rect>
        </property>
@@ -375,7 +361,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Display mode</string>
+        <string comment="Dropdown Title Label">Display mode</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxDisplayMonitor">
@@ -408,7 +394,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Display monitor</string>
+        <string comment="Dropdown Title Label">Display monitor</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution_3">
@@ -426,7 +412,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>View 1</string>
+        <string comment="Dropdown Title Label" extracomment="Should be kept very short">View 1</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution_4">
@@ -444,7 +430,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>View 2</string>
+        <string comment="Dropdown Title Label" extracomment="Should be kept very short">View 2</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution_5">
@@ -462,7 +448,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>View 3</string>
+        <string comment="Dropdown Title Label" extracomment="Should be kept very short">View 3</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxResolution2">
@@ -530,7 +516,7 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>190</y>
-         <width>441</width>
+         <width>651</width>
          <height>17</height>
         </rect>
        </property>
@@ -538,7 +524,7 @@ height: 35px;
         <string notr="true">QLabel { color: #777; }</string>
        </property>
        <property name="text">
-        <string>&lt;i&gt;Switch between in-game views by pressing &lt;strong&gt;Alt + R&lt;/strong&gt;&lt;/i&gt;</string>
+        <string comment="Information Label" extracomment="This is shown under the views configuration">&lt;i&gt;Switch between in-game views by pressing &lt;strong&gt;Alt + R&lt;/strong&gt;&lt;/i&gt;</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResizeMovies">
@@ -556,7 +542,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Resize Movies</string>
+        <string comment="Dropdown Title Label">Resize Movies</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxResizeMovies">
@@ -589,7 +575,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Creature flower size (px)</string>
+        <string comment="Textinput Title Label">Creature flower size (px)</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEditCreatureFlowerSize">
@@ -622,7 +608,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Hand size %</string>
+        <string comment="Textinput Title Label">Hand size %</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEditHandSize">
@@ -670,7 +656,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Select box line size %</string>
+        <string comment="Textinput Title Label">Select box line size %</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution_2">
@@ -688,7 +674,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Resolution</string>
+        <string comment="Dropdown Title Label">Resolution</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxDisplayMode1_2">
@@ -766,7 +752,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Menu</string>
+        <string comment="Dropdown Title Label" extracomment="Should be kept very short">Menu</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxResolution1_2">
@@ -799,7 +785,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Failsafe</string>
+        <string comment="Dropdown Title Label" extracomment="Should be kept very short">Failsafe</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution_8">
@@ -817,7 +803,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Movies</string>
+        <string comment="Dropdown Title Label" extracomment="Should be kept very short">Movies</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelDisplayMode_2">
@@ -835,7 +821,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Display mode</string>
+        <string comment="Dropdown Title Label">Display mode</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxResolution3_2">
@@ -873,7 +859,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Enable sound</string>
+        <string comment="Checkbox Toggle">Enable sound</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxUseCDMusic">
@@ -891,7 +877,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Use CD music instead of local files</string>
+        <string comment="Checkbox Toggle">Use CD music instead of local files</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxPauseMusicWhenPaused">
@@ -909,7 +895,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Pause music when game is paused</string>
+        <string comment="Checkbox Toggle">Pause music when game is paused</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxEnableAtmoSounds">
@@ -927,7 +913,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Enable atmospheric sounds</string>
+        <string comment="Checkbox Toggle">Enable atmospheric sounds</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxAtmoFrequency">
@@ -950,7 +936,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Frequency</string>
+        <string comment="Dropdown Title Label">Frequency</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxAtmoVolume">
@@ -973,7 +959,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Volume</string>
+        <string comment="Dropdown Title Label">Volume</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxMuteAudioWhenNotFocused">
@@ -991,7 +977,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Mute audio when game is not focused</string>
+        <string comment="Checkbox Toggle">Mute audio when game is not focused</string>
        </property>
       </widget>
      </widget>
@@ -1014,7 +1000,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Lock cursor in possession</string>
+        <string comment="Checkbox Toggle">Lock cursor in possession</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxUnlockCursorWhenPaused">
@@ -1032,7 +1018,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Unlock cursor when game is paused</string>
+        <string comment="Checkbox Toggle">Unlock cursor when game is paused</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxAltInput">
@@ -1050,7 +1036,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Alternative Input</string>
+        <string comment="Checkbox Toggle">Alternative Input</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxScreenEdgePanning">
@@ -1068,7 +1054,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Screen edge camera panning</string>
+        <string comment="Checkbox Toggle">Screen edge camera panning</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelMouseSens">
@@ -1086,7 +1072,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Mouse sensitivity</string>
+        <string comment="Slider Title Label">Mouse sensitivity</string>
        </property>
       </widget>
       <widget class="QSlider" name="horizontalSliderMouseSens">
@@ -1150,7 +1136,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Raw mouse input</string>
+        <string comment="Checkbox Toggle">Raw mouse input</string>
        </property>
       </widget>
      </widget>
@@ -1183,7 +1169,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Masterserver</string>
+        <string comment="Textinput Title Label">Masterserver</string>
        </property>
       </widget>
      </widget>
@@ -1201,7 +1187,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Check for KeeperFX updates</string>
+        <string comment="Checkbox Toggle">Check for KeeperFX updates</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxRelease">
@@ -1224,7 +1210,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Enable crash reporting</string>
+        <string comment="Checkbox Toggle">Enable crash reporting</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelRelease">
@@ -1237,7 +1223,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Release</string>
+        <string comment="Dropdown Title Label">Release</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxWebsiteIntegration">
@@ -1250,7 +1236,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Enable website integration</string>
+        <string comment="Checkbox Toggle">Enable website integration</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxOpenOnGameScreen">
@@ -1263,7 +1249,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Open on same screen as game</string>
+        <string comment="Checkbox Toggle">Open on same screen as game</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelLauncherLanguage">
@@ -1276,7 +1262,7 @@ height: 35px;
         </rect>
        </property>
        <property name="text">
-        <string>Launcher language</string>
+        <string comment="Dropdown Title Label">Launcher language</string>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxLauncherLanguage">
@@ -1314,7 +1300,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>Enable API</string>
+        <string comment="Checkbox Toggle">Enable API</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEditApiPort">
@@ -1350,7 +1336,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string>API port</string>
+        <string comment="Textinput Title Label">API port</string>
        </property>
       </widget>
      </widget>
