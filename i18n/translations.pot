@@ -124,69 +124,71 @@ msgid "KeeperFX has crashed"
 msgstr ""
 
 #: ../ui/crashdialog.ui:121
-msgctxt "CrashDialog|Information"
+msgctxt "CrashDialog|Information Label"
 msgid ""
-"<html>It seems that KeeperFX has crashed and is unable to recover. If you "
-"wish to submit technical details about this crash to the KeeperFX "
-"developers, you can describe your problem below and click 'Send'. If you add "
-"contact details we can contact you later. Additional information such as "
-"KeeperFX logfiles and configuration will be sent too.\n"
-"<br /><br/>\n"
-"You can also raise an issue on Github: <a "
-"href=\"https://github.com/dkfans/keeperfx/issues\">https://github.com/dkfans/keeperfx/issues</a>\n"
-"</html>"
+"It seems that KeeperFX has crashed and is unable to recover. If you wish to "
+"submit technical details about this crash to the KeeperFX developers, you "
+"can describe your problem below and click 'Send'. If you add contact details "
+"we can contact you later. Additional information such as KeeperFX logfiles "
+"and configuration will be sent too."
 msgstr ""
 
-#: ../ui/crashdialog.ui:137
+#: ../ui/crashdialog.ui:142
+#, qt-format
+msgctxt "CrashDialog|Information Label"
+msgid "You can also raise an issue on Github: %1"
+msgstr ""
+
+#: ../ui/crashdialog.ui:158
 msgctxt "CrashDialog|Input box title"
 msgid "Information (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:169
+#: ../ui/crashdialog.ui:190
 msgctxt "CrashDialog|Textarea Placeholder"
 msgid ""
 "Please explain what happened, and if possible the steps to reproduce this "
 "crash."
 msgstr ""
 
-#: ../ui/crashdialog.ui:179
+#: ../ui/crashdialog.ui:200
 msgctxt "CrashDialog|Input box title"
 msgid "Savefile (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:201
+#: ../ui/crashdialog.ui:222
 msgctxt "CrashDialog|Dropdown Placeholder Text"
 msgid ""
 "If you have a game save that could provide us with more information. You can "
 "add it here."
 msgstr ""
 
-#: ../ui/crashdialog.ui:211
+#: ../ui/crashdialog.ui:232
 msgctxt "CrashDialog|Input box title"
 msgid "Contact Information (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:227
+#: ../ui/crashdialog.ui:248
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Discord handle"
 msgstr ""
 
-#: ../ui/crashdialog.ui:234
+#: ../ui/crashdialog.ui:255
 msgctxt "CrashDialog|Input Placeholder"
 msgid "KeeperFX.net username"
 msgstr ""
 
-#: ../ui/crashdialog.ui:241
+#: ../ui/crashdialog.ui:262
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Email Address"
 msgstr ""
 
-#: ../ui/crashdialog.ui:275
+#: ../ui/crashdialog.ui:296
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/crashdialog.ui:297
+#: ../ui/crashdialog.ui:318
 msgctxt "CrashDialog|Button"
 msgid "Send"
 msgstr ""
@@ -201,17 +203,17 @@ msgctxt "CrashDialog|Default Savefile"
 msgid "None"
 msgstr ""
 
-#: ../src/crashdialog.cpp:177 ../src/crashdialog.cpp:185
+#: ../src/crashdialog.cpp:183 ../src/crashdialog.cpp:191
 msgctxt "CrashDialog|MessageBox Title"
 msgid "Crash Report"
 msgstr ""
 
-#: ../src/crashdialog.cpp:177
+#: ../src/crashdialog.cpp:183
 msgctxt "CrashDialog|MessageBox Text"
 msgid "Failed to submit crash report."
 msgstr ""
 
-#: ../src/crashdialog.cpp:186
+#: ../src/crashdialog.cpp:192
 #, qt-format
 msgctxt "CrashDialog|MessageBox Text"
 msgid ""
@@ -472,7 +474,7 @@ msgid ""
 "Select your version, and this installer will download and install KeeperFX.\n"
 "\n"
 "Choose the stable release for reliability or the alpha version if you want "
-"to help us out with testing. "
+"to help us out with testing."
 msgstr ""
 
 #: ../ui/installkfxdialog.ui:70

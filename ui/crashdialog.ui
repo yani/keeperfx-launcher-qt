@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>561</height>
+    <height>584</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -109,6 +109,12 @@
    </item>
    <item>
     <widget class="QLabel" name="crashInfoLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="font">
       <font/>
      </property>
@@ -118,16 +124,37 @@
 }</string>
      </property>
      <property name="text">
-      <string comment="Information">&lt;html&gt;It seems that KeeperFX has crashed and is unable to recover. If you wish to submit technical details about this crash to the KeeperFX developers, you can describe your problem below and click 'Send'. If you add contact details we can contact you later. Additional information such as KeeperFX logfiles and configuration will be sent too.
-&lt;br /&gt;&lt;br/&gt;
-You can also raise an issue on Github: &lt;a href=&quot;https://github.com/dkfans/keeperfx/issues&quot;&gt;https://github.com/dkfans/keeperfx/issues&lt;/a&gt;
-&lt;/html&gt;</string>
+      <string comment="Information Label">It seems that KeeperFX has crashed and is unable to recover. If you wish to submit technical details about this crash to the KeeperFX developers, you can describe your problem below and click 'Send'. If you add contact details we can contact you later. Additional information such as KeeperFX logfiles and configuration will be sent too.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
      <property name="margin">
       <number>10</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="crashInfoLabel2">
+     <property name="font">
+      <font/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+ color: #AAA;
+}</string>
+     </property>
+     <property name="text">
+      <string comment="Information Label">You can also raise an issue on Github: %1</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="margin">
+      <number>10</number>
+     </property>
+     <property name="indent">
+      <number>-1</number>
      </property>
     </widget>
    </item>

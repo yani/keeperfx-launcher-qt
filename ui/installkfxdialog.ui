@@ -40,7 +40,7 @@
      <property name="text">
       <string comment="Information Label">Select your version, and this installer will download and install KeeperFX.
 
-Choose the stable release for reliability or the alpha version if you want to help us out with testing. </string>
+Choose the stable release for reliability or the alpha version if you want to help us out with testing.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

@@ -32,6 +32,12 @@ CrashDialog::CrashDialog(QWidget *parent)
         }
     }
 
+    // Handle information label
+    ui->crashInfoLabel2->setTextFormat(Qt::RichText);
+    ui->crashInfoLabel2->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    ui->crashInfoLabel2->setOpenExternalLinks(true);
+    ui->crashInfoLabel2->setText(ui->crashInfoLabel2->text().arg(QString("<a href=\"%1\">%1</a>").arg("https://github.com/dkfans/keeperfx/issues")));
+
     // Load preset contact details
     ui->contactInfoDiscordLineEdit->setText(Settings::getLauncherSetting("CRASH_REPORTING_CONTACT_DISCORD").toString());
     ui->contactInfoKfxNetLineEdit->setText(Settings::getLauncherSetting("CRASH_REPORTING_CONTACT_KEEPERFX_NET").toString());
