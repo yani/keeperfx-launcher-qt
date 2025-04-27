@@ -50,88 +50,61 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         this,
         &SettingsDialog::restoreSettings);*/
 
-    // Map: Game languages
-    QMap<QString, QString> languageMap = {
-                                          {"English", "ENG"},
-                                          {"Italiano", "ITA"},
-                                          {"Fran\u00E7ais", "FRE"},
-                                          {"Espa\u00F1ol", "SPA"},
-                                          {"Nederlands", "DUT"},
-                                          {"Deutsch", "GER"},
-                                          {"Polski", "POL"},
-                                          {"Svenska", "SWE"},
-                                          {"\u65E5\u672C\u8A9E", "JAP"},
-                                          {"\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "RUS"},
-                                          {"\uD55C\uAD6D\uC5B4", "KOR"},
-                                          {"\u7B80\u4F53\u4E2D\u6587", "CHI"},
-                                          {"\u7E41\u9AD4\u4E2D\u6587", "CHT"},
-                                          {"\u010Ce\u0161ka", "CZE"},
-                                          {"Lat\u012Bna", "LAT"},
-                                          };
+    // Game languages dropdown
+    ui->comboBoxLanguage->addItem("English", "ENG");                                    // English
+    ui->comboBoxLanguage->addItem("Italiano", "ITA");                                   // Italian
+    ui->comboBoxLanguage->addItem("Fran\u00E7ais", "FRE");                              // French
+    ui->comboBoxLanguage->addItem("Espa\u00F1ol", "SPA");                               // Spanish
+    ui->comboBoxLanguage->addItem("Nederlands", "DUT");                                 // Dutch
+    ui->comboBoxLanguage->addItem("Deutsch", "GER");                                    // German
+    ui->comboBoxLanguage->addItem("Polski", "POL");                                     // Polish
+    ui->comboBoxLanguage->addItem("Svenska", "SWE");                                    // Swedish
+    ui->comboBoxLanguage->addItem("\u65E5\u672C\u8A9E", "JAP");                         // Japanese
+    ui->comboBoxLanguage->addItem("\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "RUS"); // Russian
+    ui->comboBoxLanguage->addItem("\uD55C\uAD6D\uC5B4", "KOR");                         // Korean
+    ui->comboBoxLanguage->addItem("\u7B80\u4F53\u4E2D\u6587", "CHI");                   // Chinese (Simplified)
+    ui->comboBoxLanguage->addItem("\u7E41\u9AD4\u4E2D\u6587", "CHT");                   // Chinese (Traditional)
+    ui->comboBoxLanguage->addItem("\u010Ce\u0161ka", "CZE");                            // Czech
+    ui->comboBoxLanguage->addItem("Lat\u012Bna", "LAT");                                // Latin
 
     // Add Ukrainian Game Language
     // We do this after the list of languages because this one was added later
     if (KfxVersion::hasFunctionality("ukrainian_game_language") == true) {
-        languageMap["\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430"] = "UKR";
+        ui->comboBoxLanguage->addItem("\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430", "UKR"); // Ukrainian
     }
 
-    // Add Game languages
-    for (auto it = languageMap.begin(); it != languageMap.end(); ++it) {
-        ui->comboBoxLanguage->addItem(it.key(), it.value());
-    }
+    // Launcher language dropdown (
+    ui->comboBoxLauncherLanguage->addItem("English", "en");    // English
+    ui->comboBoxLauncherLanguage->addItem("Nederlands", "nl"); // Dutch
+    //ui->comboBoxLauncherLanguage->addItem("Italiano", "it"); // Italian
+    //ui->comboBoxLauncherLanguage->addItem("Fran\u00E7ais", "fr"); // French
+    //ui->comboBoxLauncherLanguage->addItem("Espa\u00F1ol", "es"); // Spanish
+    //ui->comboBoxLauncherLanguage->addItem("Deutsch", "de"); // German
+    //ui->comboBoxLauncherLanguage->addItem("Polski", "pl"); // Polish
+    //ui->comboBoxLauncherLanguage->addItem("Svenska", "sv"); // Swedish
+    //ui->comboBoxLauncherLanguage->addItem("\u65E5\u672C\u8A9E", "ja"); // Japanese
+    //ui->comboBoxLauncherLanguage->addItem("\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "ru"); // Russian
+    //ui->comboBoxLauncherLanguage->addItem("\uD55C\uAD6D\uC5B4", "ko"); // Korean
+    //ui->comboBoxLauncherLanguage->addItem("\u7B80\u4F53\u4E2D\u6587", "zh-Hans"); // Chinese (Simplified)
+    //ui->comboBoxLauncherLanguage->addItem("\u7E41\u9AD4\u4E2D\u6587", "zh-Hant"); // Chinese (Traditional)
+    //ui->comboBoxLauncherLanguage->addItem("\u010Ce\u0161ka", "cs"); // Czech
+    //ui->comboBoxLauncherLanguage->addItem("Lat\u012Bna", "la"); // Latin
+    //ui->comboBoxLauncherLanguage->addItem("\u0423\u043A\u0440\u0430\u0454\u043D\u044C\u0441\u043A\u0430", "uk"); // Ukrainian
 
-    // Map: Launcher languages
-    QMap<QString, QString> launcherLanguageMap = {
-        {"English", "en"},
-        //{"Italiano", "it"},
-        //{"Fran\u00E7ais", "fr"},
-        //{"Espa\u00F1ol", "es"},
-        {"Nederlands", "nl"},
-        //{"Deutsch", "de"},
-        //{"Polski", "pl"},
-        //{"Svenska", "sv"},
-        //{"\u65E5\u672C\u8A9E", "ja"},
-        //{"\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "ru"},
-        //{"\uD55C\uAD6D\uC5B4", "ko"},
-        //{"\u7B80\u4F53\u4E2D\u6587", "zh-Hans"},
-        //{"\u7E41\u9AD4\u4E2D\u6587", "zh-Hant"},
-        //{"\u010Ce\u0161ka", "cs"},
-        //{"Lat\u012Bna", "la"},
-    };
+    // Screenshot type dropdown
+    ui->comboBoxScreenshots->addItem("PNG (Portable Network Graphics)", "PNG");
+    ui->comboBoxScreenshots->addItem("JPG (Joint photographic experts group)", "JPG");
+    ui->comboBoxScreenshots->addItem("BMP (Windows bitmap)", "BMP");
+    ui->comboBoxScreenshots->addItem("RAW (HSI 'mhwanh')", "RAW");
 
-    // Add launcher languages
-    for (auto it = launcherLanguageMap.begin(); it != launcherLanguageMap.end(); ++it) {
-        ui->comboBoxLauncherLanguage->addItem(it.key(), it.value());
-    }
-
-    // Map: Languages
-    QMap<QString, QString> screenshotMap = {
-                                            {"PNG (Portable Network Graphics)", "PNG"},
-                                            {"JPG (Joint photographic experts group)", "JPG"},
-                                            {"BMP (Windows bitmap)", "BMP"},
-                                            {"RAW (HSI 'mhwanh')", "RAW"},
-                                            };
-
-    // Add languages
-    for (auto it = screenshotMap.begin(); it != screenshotMap.end(); ++it) {
-        ui->comboBoxScreenshots->addItem(it.key(), it.value());
-    }
-
-    // Map: Resize movies
-    QMap<QString, QString> resizeMoviesMap = {
-        {tr("Fit (default)", "Resize Movies Dropdown"), "FIT"},
-        {tr("Off", "Resize Movies Dropdown"), "OFF"},
-        {tr("Stretch", "Resize Movies Dropdown"), "STRETCH"},
-        {tr("Crop", "Resize Movies Dropdown"), "CROP"},
-        {tr("Pixel perfect", "Resize Movies Dropdown"), "PIXELPERFECT"},
-        {"4BY3", "4BY3"},
-        {"4BY3PP", "4BY3PP"},
-    };
-
-    // Add languages
-    for (auto it = resizeMoviesMap.begin(); it != resizeMoviesMap.end(); ++it) {
-        ui->comboBoxResizeMovies->addItem(it.key(), it.value());
-    }
+    // Resize movies dropdown
+    ui->comboBoxResizeMovies->addItem(tr("Fit (default)", "Resize Movies Dropdown"), "FIT");
+    ui->comboBoxResizeMovies->addItem(tr("Off", "Resize Movies Dropdown"), "OFF");
+    ui->comboBoxResizeMovies->addItem(tr("Stretch", "Resize Movies Dropdown"), "STRETCH");
+    ui->comboBoxResizeMovies->addItem(tr("Crop", "Resize Movies Dropdown"), "CROP");
+    ui->comboBoxResizeMovies->addItem(tr("Pixel perfect", "Resize Movies Dropdown"), "PIXELPERFECT");
+    ui->comboBoxResizeMovies->addItem("4BY3", "4BY3");
+    ui->comboBoxResizeMovies->addItem("4BY3PP", "4BY3PP");
 
     // Map: Resolutions
     QMap<QString, QString> resolutionsMap = {
@@ -198,16 +171,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->comboBoxAtmoVolume->addItem(tr("Medium", "Atmosphere Volume Dropdown"), "MEDIUM");
     ui->comboBoxAtmoVolume->addItem(tr("High", "Atmosphere Volume Dropdown"), "HIGH");
 
-    // Map: Release dropdown
-    QMap<QString, QString> releaseMap = {
-        {tr("Stable (Default)", "Game Release Build"), "STABLE"},
-        {tr("Alpha", "Game Release Build"), "ALPHA"},
-    };
-
-    // Add release options
-    for (auto it = releaseMap.begin(); it != releaseMap.end(); ++it) {
-        ui->comboBoxRelease->addItem(it.key(), it.value());
-    }
+    // Release dropdown
+    ui->comboBoxRelease->addItem(tr("Stable (Default)", "Game Release Build"), "STABLE");
+    ui->comboBoxRelease->addItem(tr("Alpha", "Game Release Build"), "ALPHA");
 
     // Load the settings
     loadSettings();
@@ -268,9 +234,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
 
-    // Libraries for about page
-
-    // Map: Release dropdown
+    // Map: Libraries for about page
     QMap<QString, QString> aboutLibrariesMap = {
         {"Qt6", "https://www.qt.io/product/qt6"},
         {"libLIEF", "https://github.com/lief-project/LIEF"},
@@ -278,8 +242,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         {"7z", "https://www.7-zip.org/"},
     };
 
+    // Create libraries string
     QStringList libraries;
-    // Add release options
     for (auto it = aboutLibrariesMap.begin(); it != aboutLibrariesMap.end(); ++it) {
         libraries << "<a href=\"" + it.value() + "\">" + it.key() + "</a>";
     }
