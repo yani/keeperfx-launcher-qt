@@ -1,5 +1,7 @@
 #include "translator.h"
 
+#include "launcheroptions.h"
+
 #include <QDebug>
 #include <QFile>
 #include <QMap>
@@ -13,23 +15,35 @@ Translator::Translator(QObject *parent)
 
 void Translator::loadPoTranslations(const QString &languageCode)
 {
-    QString fileName = QString(":/i18n/i18n/translations_%1.po").arg(languageCode);
-    QFile file(fileName);
+    // Translation filepath in resources
+    QString translationFilePath = QString(":/i18n/i18n/translations_%1.po").arg(languageCode);
+
+    // Check if custom translation file is set
+    if (LauncherOptions::isSet("translation-file")) {
+        translationFilePath = LauncherOptions::getValue("translation-file");
+        qDebug() << "Loading translation file directly:" << translationFilePath;
+    }
+
+    // Open translation file
+    QFile file(translationFilePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << "Could not open translation file:" << fileName;
+        qWarning() << "Could not open translation file:" << translationFilePath;
         return;
     }
 
+    // Clear current translations
     translations.clear();
+
+    // Variables
     QTextStream in(&file);
     QString line;
     QString msgid;
     QString msgstr;
     bool inMsgid = false;
     bool inMsgstr = false;
-
     int translationsLoaded = 0;
 
+    // Loop trough PO file
     while (!in.atEnd()) {
         line = in.readLine().trimmed();
 

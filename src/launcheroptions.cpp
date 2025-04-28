@@ -30,7 +30,8 @@ void LauncherOptions::processApp(QApplication &app)
         {"skip-launcher-update",    "Do not update the launcher itself"},
 
         // Parameters
-        {"api-endpoint", "Specify the API endpoint", "url"},
+        {"api-endpoint",            "Specify the API endpoint",                    "url"},
+        {"translation-file",        "Force a PO translation file to be loaded",    "filepath"},
     };
     // clang-format on
 
