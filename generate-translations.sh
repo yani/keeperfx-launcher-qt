@@ -26,17 +26,37 @@ if [[ ! -x "$lconvert_bin" ]]; then
     exit 1
 fi
 
+# Check if xgettext is installed
+if ! command -v xgettext &> /dev/null; then
+    echo "Error: xgettext not found."
+    echo "Install it using: sudo apt install gettext"
+    exit 1
+fi
+
+# Check if msgfmt is installed
+if ! command -v msgfmt &> /dev/null; then
+    echo "Error: msgfmt not found."
+    echo "Install it using: sudo apt install gettext"
+    exit 1
+fi
+
 # Grab translations
-$lupdate_bin "$(pwd)/src" "$(pwd)/ui" -ts "$(pwd)/i18n/translations.ts"
+$lupdate_bin "$(pwd)/src" "$(pwd)/ui" -ts "$(pwd)/i18n/translations_temp.ts" > /dev/null
 
 # Convert translations to POT
-$lconvert_bin -i "$(pwd)/i18n/translations.ts" -o "$(pwd)/i18n/translations.pot"
+$lconvert_bin -i "$(pwd)/i18n/translations_temp.ts" -o "$(pwd)/i18n/translations_temp.pot" > /dev/null
 
-# Remove leftover translation file
-rm "$(pwd)/i18n/translations.ts"
+# Combine POT files into one translations file
+xgettext -o "$(pwd)/i18n/translations.pot" "$(pwd)/i18n/qt.pot" "$(pwd)/i18n/translations_temp.pot" > /dev/null
+
+# Remove leftover translation files
+rm "$(pwd)/i18n/translations_temp.ts" > /dev/null
+rm "$(pwd)/i18n/translations_temp.pot" > /dev/null
+
+# Count the number of translation strings
+translation_count=$(grep -c '^msgid "' "$(pwd)/i18n/translations.pot")
+translation_count=$((translation_count - 1))
 
 # Done
-echo
-echo "POT file: $(pwd)/i18n/translations.pot"
-echo
-echo "Done"
+echo "Total translation strings: $translation_count"
+echo "Output POT file: $(pwd)/i18n/translations.pot"
