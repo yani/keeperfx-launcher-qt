@@ -19,6 +19,7 @@ void Translator::loadPoTranslations(const QString &languageCode)
     QString translationFilePath = QString(":/i18n/i18n/translations_%1.po").arg(languageCode);
 
     // Check if custom translation file is set
+    // TODO: make a loadPoTranslationFile() function
     if (LauncherOptions::isSet("translation-file")) {
         translationFilePath = LauncherOptions::getValue("translation-file");
         qDebug() << "Loading translation file directly:" << translationFilePath;

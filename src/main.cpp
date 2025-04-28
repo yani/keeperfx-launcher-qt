@@ -254,8 +254,8 @@ int main(int argc, char *argv[])
     qInfo() << "System locale:" << QLocale::system().name();
     qInfo() << "Launcher language:" << launcherLanguage;
 
-    // Load translator if the launcher language is not English
-    if(launcherLanguage != "en"){
+    // Load translator if the launcher language is not English or a custom language file path is set
+    if (launcherLanguage != "en" || LauncherOptions::isSet("translation-file")) {
         qInfo() << "Loading launcher translation:" << launcherLanguage;
         Translator *translator = new Translator;
         translator->loadPoTranslations(launcherLanguage);
