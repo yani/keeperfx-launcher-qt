@@ -1,9 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-28 22:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Qt-Contexts: true\n"
+
+#: Qt default
+msgid "OK"
+msgstr ""
+
+#: Qt default
+msgid "&OK"
+msgstr ""
+
+#: Qt default
+msgid "Cancel"
+msgstr ""
+
+#: Qt default
+msgid "&Cancel"
+msgstr ""
+
+#: Qt default
+msgid "Yes"
+msgstr ""
+
+#: Qt default
+msgid "&Yes"
+msgstr ""
+
+#: Qt default
+msgid "No"
+msgstr ""
+
+#: Qt default
+msgid "&No"
+msgstr ""
+
+#: Qt default
+msgid "Apply"
+msgstr ""
+
+#: Qt default
+msgid "&Apply"
+msgstr ""
+
+#: Qt default
+msgid "Close"
+msgstr ""
+
+#: Qt default
+msgid "&Close"
+msgstr ""
+
+#: Qt default
+msgid "Help"
+msgstr ""
+
+#: Qt default
+msgid "&Help"
+msgstr ""
+
+#: Qt default
+msgid "Reset"
+msgstr ""
+
+#: Qt default
+msgid "&Reset"
+msgstr ""
+
+#: Qt default
+msgid "Retry"
+msgstr ""
+
+#: Qt default
+msgid "&Retry"
+msgstr ""
+
+#: Qt default
+msgid "Ignore"
+msgstr ""
+
+#: Qt default
+msgid "&Ignore"
+msgstr ""
+
+#: Qt default
+msgid "Abort"
+msgstr ""
+
+#: Qt default
+msgid "&Abort"
+msgstr ""
+
+#: Qt default
+msgid "Save"
+msgstr ""
+
+#: Qt default
+msgid "&Save"
+msgstr ""
+
+#: Qt default
+msgid "Restore Defaults"
+msgstr ""
 
 #: ../ui/copydkfilesdialog.ui:14
 msgctxt "CopyDkFilesDialog|Window Title"
@@ -123,7 +235,7 @@ msgctxt "CrashDialog|Header"
 msgid "KeeperFX has crashed"
 msgstr ""
 
-#: ../ui/crashdialog.ui:121
+#: ../ui/crashdialog.ui:127
 msgctxt "CrashDialog|Information Label"
 msgid ""
 "It seems that KeeperFX has crashed and is unable to recover. If you wish to "
@@ -133,62 +245,62 @@ msgid ""
 "and configuration will be sent too."
 msgstr ""
 
-#: ../ui/crashdialog.ui:142
+#: ../ui/crashdialog.ui:148
 #, qt-format
 msgctxt "CrashDialog|Information Label"
 msgid "You can also raise an issue on Github: %1"
 msgstr ""
 
-#: ../ui/crashdialog.ui:158
+#: ../ui/crashdialog.ui:164
 msgctxt "CrashDialog|Input box title"
 msgid "Information (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:190
+#: ../ui/crashdialog.ui:196
 msgctxt "CrashDialog|Textarea Placeholder"
 msgid ""
 "Please explain what happened, and if possible the steps to reproduce this "
 "crash."
 msgstr ""
 
-#: ../ui/crashdialog.ui:200
+#: ../ui/crashdialog.ui:206
 msgctxt "CrashDialog|Input box title"
 msgid "Savefile (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:222
+#: ../ui/crashdialog.ui:228
 msgctxt "CrashDialog|Dropdown Placeholder Text"
 msgid ""
 "If you have a game save that could provide us with more information. You can "
 "add it here."
 msgstr ""
 
-#: ../ui/crashdialog.ui:232
+#: ../ui/crashdialog.ui:238
 msgctxt "CrashDialog|Input box title"
 msgid "Contact Information (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:248
+#: ../ui/crashdialog.ui:254
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Discord handle"
 msgstr ""
 
-#: ../ui/crashdialog.ui:255
+#: ../ui/crashdialog.ui:261
 msgctxt "CrashDialog|Input Placeholder"
 msgid "KeeperFX.net username"
 msgstr ""
 
-#: ../ui/crashdialog.ui:262
+#: ../ui/crashdialog.ui:268
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Email Address"
 msgstr ""
 
-#: ../ui/crashdialog.ui:296
+#: ../ui/crashdialog.ui:302
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/crashdialog.ui:318
+#: ../ui/crashdialog.ui:324
 msgctxt "CrashDialog|Button"
 msgid "Send"
 msgstr ""
@@ -855,7 +967,7 @@ msgstr ""
 #: ../ui/scannetworkdialog.ui:41
 msgctxt "ScanNetworkDialog|Information Label"
 msgid ""
-"Scan your local LAN network for open ENET lobbies. The other person should "
+"Scan your local network (LAN) for open ENET lobbies. The other person should "
 "be on the same network and must have opened a game lobby in KeeperFX. "
 "(Multiplayer -> ENET -> Create Game). When the other person has an open "
 "lobby this tool should be able to find their IP address."
@@ -1196,121 +1308,121 @@ msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:122
+#: ../src/settingsdialog.cpp:101
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:123
+#: ../src/settingsdialog.cpp:102
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:124
+#: ../src/settingsdialog.cpp:103
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:125
+#: ../src/settingsdialog.cpp:104
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:126
+#: ../src/settingsdialog.cpp:105
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:138
+#: ../src/settingsdialog.cpp:111
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:175
+#: ../src/settingsdialog.cpp:148
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:176
+#: ../src/settingsdialog.cpp:149
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:192
+#: ../src/settingsdialog.cpp:165
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Low"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:193
+#: ../src/settingsdialog.cpp:166
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Medium"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:194
+#: ../src/settingsdialog.cpp:167
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "High"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:197
+#: ../src/settingsdialog.cpp:170
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:198
+#: ../src/settingsdialog.cpp:171
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:199
+#: ../src/settingsdialog.cpp:172
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "High"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:203
+#: ../src/settingsdialog.cpp:175
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:204
+#: ../src/settingsdialog.cpp:176
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Alpha"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:289
+#: ../src/settingsdialog.cpp:253
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX v%1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:294
+#: ../src/settingsdialog.cpp:258
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX Launcher v%1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:296
+#: ../src/settingsdialog.cpp:260
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:301
+#: ../src/settingsdialog.cpp:265
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "Join us Discord: %1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:325
+#: ../src/settingsdialog.cpp:289
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:777
+#: ../src/settingsdialog.cpp:741
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:778
+#: ../src/settingsdialog.cpp:742
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "

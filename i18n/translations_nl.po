@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-28 22:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,6 +12,106 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 3.4.2\n"
+
+#: Qt default
+msgid "OK"
+msgstr "Ok"
+
+#: Qt default
+msgid "&OK"
+msgstr "&Ok"
+
+#: Qt default
+msgid "Cancel"
+msgstr "Annuleer"
+
+#: Qt default
+msgid "&Cancel"
+msgstr "&Annuleer"
+
+#: Qt default
+msgid "Yes"
+msgstr "Ja"
+
+#: Qt default
+msgid "&Yes"
+msgstr "&Ja"
+
+#: Qt default
+msgid "No"
+msgstr "Nee"
+
+#: Qt default
+msgid "&No"
+msgstr "&Nee"
+
+#: Qt default
+msgid "Apply"
+msgstr "Toepassen"
+
+#: Qt default
+msgid "&Apply"
+msgstr "&Toepassen"
+
+#: Qt default
+msgid "Close"
+msgstr "Sluiten"
+
+#: Qt default
+msgid "&Close"
+msgstr "&Sluiten"
+
+#: Qt default
+msgid "Help"
+msgstr "Help"
+
+#: Qt default
+msgid "&Help"
+msgstr "&Help"
+
+#: Qt default
+msgid "Reset"
+msgstr "Reset"
+
+#: Qt default
+msgid "&Reset"
+msgstr "&Reset"
+
+#: Qt default
+msgid "Retry"
+msgstr "Opnieuw proberen"
+
+#: Qt default
+msgid "&Retry"
+msgstr "&Opnieuw proberen"
+
+#: Qt default
+msgid "Ignore"
+msgstr "Negeer"
+
+#: Qt default
+msgid "&Ignore"
+msgstr "&Negeer"
+
+#: Qt default
+msgid "Abort"
+msgstr "Abreken"
+
+#: Qt default
+msgid "&Abort"
+msgstr "&Afbreken"
+
+#: Qt default
+msgid "Save"
+msgstr "Opslaan"
+
+#: Qt default
+msgid "&Save"
+msgstr "&Opslaan"
+
+#: Qt default
+msgid "Restore Defaults"
+msgstr "Standaardinstellingen herstellen"
 
 #: ../ui/copydkfilesdialog.ui:14
 msgctxt "CopyDkFilesDialog|Window Title"
@@ -145,7 +246,7 @@ msgctxt "CrashDialog|Header"
 msgid "KeeperFX has crashed"
 msgstr "KeeperFX is gecrasht"
 
-#: ../ui/crashdialog.ui:121
+#: ../ui/crashdialog.ui:127
 msgctxt "CrashDialog|Information Label"
 msgid ""
 "It seems that KeeperFX has crashed and is unable to recover. If you wish to "
@@ -161,18 +262,18 @@ msgstr ""
 "met je opnemen. Aanvullende informatie, zoals KeeperFX-logbestanden en "
 "configuratie, wordt ook verzonden."
 
-#: ../ui/crashdialog.ui:142
+#: ../ui/crashdialog.ui:148
 #, qt-format
 msgctxt "CrashDialog|Information Label"
 msgid "You can also raise an issue on Github: %1"
 msgstr "Je kan je probleem ook op Github posten: %1"
 
-#: ../ui/crashdialog.ui:158
+#: ../ui/crashdialog.ui:164
 msgctxt "CrashDialog|Input box title"
 msgid "Information (Optional)"
 msgstr "Informatie (Optioneel)"
 
-#: ../ui/crashdialog.ui:190
+#: ../ui/crashdialog.ui:196
 msgctxt "CrashDialog|Textarea Placeholder"
 msgid ""
 "Please explain what happened, and if possible the steps to reproduce this "
@@ -181,12 +282,12 @@ msgstr ""
 "Leg alstublieft uit wat er is gebeurd, en indien mogelijk de stappen om deze "
 "crash te reproduceren."
 
-#: ../ui/crashdialog.ui:200
+#: ../ui/crashdialog.ui:206
 msgctxt "CrashDialog|Input box title"
 msgid "Savefile (Optional)"
 msgstr "Savefile (Optioneel)"
 
-#: ../ui/crashdialog.ui:222
+#: ../ui/crashdialog.ui:228
 msgctxt "CrashDialog|Dropdown Placeholder Text"
 msgid ""
 "If you have a game save that could provide us with more information. You can "
@@ -195,32 +296,32 @@ msgstr ""
 "Als je een savefile hebt dat ons meer informatie kan geven kan je deze hier "
 "toevoegen."
 
-#: ../ui/crashdialog.ui:232
+#: ../ui/crashdialog.ui:238
 msgctxt "CrashDialog|Input box title"
 msgid "Contact Information (Optional)"
 msgstr "Contact informatie (Optioneel)"
 
-#: ../ui/crashdialog.ui:248
+#: ../ui/crashdialog.ui:254
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Discord handle"
 msgstr "Discord gebruikersnaam"
 
-#: ../ui/crashdialog.ui:255
+#: ../ui/crashdialog.ui:261
 msgctxt "CrashDialog|Input Placeholder"
 msgid "KeeperFX.net username"
 msgstr "KeeperFX.net account"
 
-#: ../ui/crashdialog.ui:262
+#: ../ui/crashdialog.ui:268
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Email Address"
 msgstr "E-mailadres"
 
-#: ../ui/crashdialog.ui:296
+#: ../ui/crashdialog.ui:302
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/crashdialog.ui:318
+#: ../ui/crashdialog.ui:324
 msgctxt "CrashDialog|Button"
 msgid "Send"
 msgstr "Verzenden"
@@ -953,13 +1054,13 @@ msgstr "Netwerk scannen"
 #: ../ui/scannetworkdialog.ui:41
 msgctxt "ScanNetworkDialog|Information Label"
 msgid ""
-"Scan your local LAN network for open ENET lobbies. The other person should "
+"Scan your local network (LAN) for open ENET lobbies. The other person should "
 "be on the same network and must have opened a game lobby in KeeperFX. "
 "(Multiplayer -> ENET -> Create Game). When the other person has an open "
 "lobby this tool should be able to find their IP address."
 msgstr ""
-"Scan je lokale LAN-netwerk op open ENET-lobby's. De andere persoon moet zich "
-"op hetzelfde netwerk bevinden en moet een game lobby in KeeperFX hebben "
+"Scan je lokale netwerk (LAN) op open ENET-lobby's. De andere persoon moet "
+"zich op hetzelfde netwerk bevinden en moet een game lobby in KeeperFX hebben "
 "geopend. (Meerspeler -> ENET -> Spel maken). Als de andere persoon een open "
 "lobby heeft, moet deze tool zijn IP-adres kunnen vinden."
 
@@ -1301,121 +1402,121 @@ msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr "Info"
 
-#: ../src/settingsdialog.cpp:122
+#: ../src/settingsdialog.cpp:101
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr "Passend (standaard)"
 
-#: ../src/settingsdialog.cpp:123
+#: ../src/settingsdialog.cpp:102
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr "Uit"
 
-#: ../src/settingsdialog.cpp:124
+#: ../src/settingsdialog.cpp:103
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr "Uitstrekken"
 
-#: ../src/settingsdialog.cpp:125
+#: ../src/settingsdialog.cpp:104
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr "Bijsnijden"
 
-#: ../src/settingsdialog.cpp:126
+#: ../src/settingsdialog.cpp:105
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr "Pixel perfect"
 
-#: ../src/settingsdialog.cpp:138
+#: ../src/settingsdialog.cpp:111
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr "Automatisch"
 
-#: ../src/settingsdialog.cpp:175
+#: ../src/settingsdialog.cpp:148
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr "Volledig scherm"
 
-#: ../src/settingsdialog.cpp:176
+#: ../src/settingsdialog.cpp:149
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr "Venster"
 
-#: ../src/settingsdialog.cpp:192
+#: ../src/settingsdialog.cpp:165
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Low"
 msgstr "Laag"
 
-#: ../src/settingsdialog.cpp:193
+#: ../src/settingsdialog.cpp:166
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Medium"
 msgstr "Medium"
 
-#: ../src/settingsdialog.cpp:194
+#: ../src/settingsdialog.cpp:167
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "High"
 msgstr "Hoog"
 
-#: ../src/settingsdialog.cpp:197
+#: ../src/settingsdialog.cpp:170
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
 msgstr "Laag"
 
-#: ../src/settingsdialog.cpp:198
+#: ../src/settingsdialog.cpp:171
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr "Medium"
 
-#: ../src/settingsdialog.cpp:199
+#: ../src/settingsdialog.cpp:172
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "High"
 msgstr "Hoog"
 
-#: ../src/settingsdialog.cpp:203
+#: ../src/settingsdialog.cpp:175
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "Stabiel (Standaard)"
 
-#: ../src/settingsdialog.cpp:204
+#: ../src/settingsdialog.cpp:176
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Alpha"
 
-#: ../src/settingsdialog.cpp:289
+#: ../src/settingsdialog.cpp:253
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX v%1"
 msgstr "KeeperFX v%1"
 
-#: ../src/settingsdialog.cpp:294
+#: ../src/settingsdialog.cpp:258
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX Launcher v%1"
 msgstr "KeeperFX Launcher v%1"
 
-#: ../src/settingsdialog.cpp:296
+#: ../src/settingsdialog.cpp:260
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
 msgstr "Launcher Libraries:"
 
-#: ../src/settingsdialog.cpp:301
+#: ../src/settingsdialog.cpp:265
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "Join us Discord: %1"
 msgstr "Word lid van onze Discord: %1"
 
-#: ../src/settingsdialog.cpp:325
+#: ../src/settingsdialog.cpp:289
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "KeeperFX Bijdragers: %1"
 
-#: ../src/settingsdialog.cpp:777
+#: ../src/settingsdialog.cpp:741
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFX Instellingen"
 
-#: ../src/settingsdialog.cpp:778
+#: ../src/settingsdialog.cpp:742
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
@@ -1829,75 +1930,6 @@ msgstr "Het is niet gelukt om alle gedownloade bestanden te verplaatsen"
 #~ msgctxt "UpdateDialog|"
 #~ msgid "Cancel"
 #~ msgstr "Annuleer"
-
-#~ msgid "OK"
-#~ msgstr "Ok"
-
-#~ msgid "&OK"
-#~ msgstr "&Ok"
-
-#~ msgid "&Cancel"
-#~ msgstr "&Annuleer"
-
-#~ msgid "Yes"
-#~ msgstr "Ja"
-
-#~ msgid "&Yes"
-#~ msgstr "&Ja"
-
-#~ msgid "No"
-#~ msgstr "Nee"
-
-#~ msgid "&No"
-#~ msgstr "&Nee"
-
-#~ msgid "Apply"
-#~ msgstr "Toepassen"
-
-#~ msgid "&Apply"
-#~ msgstr "&Toepassen"
-
-#~ msgid "&Close"
-#~ msgstr "&Sluiten"
-
-#~ msgid "Help"
-#~ msgstr "Help"
-
-#~ msgid "&Help"
-#~ msgstr "&Help"
-
-#~ msgid "Reset"
-#~ msgstr "Reset"
-
-#~ msgid "&Reset"
-#~ msgstr "&Reset"
-
-#~ msgid "Retry"
-#~ msgstr "Opnieuw proberen"
-
-#~ msgid "&Retry"
-#~ msgstr "&Opnieuw proberen"
-
-#~ msgid "Ignore"
-#~ msgstr "Negeer"
-
-#~ msgid "&Ignore"
-#~ msgstr "&Negeer"
-
-#~ msgid "Abort"
-#~ msgstr "Abreken"
-
-#~ msgid "&Abort"
-#~ msgstr "&Afbreken"
-
-#~ msgid "Save"
-#~ msgstr "Opslaan"
-
-#~ msgid "&Save"
-#~ msgstr "&Opslaan"
-
-#~ msgid "Restore Defaults"
-#~ msgstr "Standaardinstellingen herstellen"
 
 #~ msgid "Are you sure?"
 #~ msgstr "Ben je zeker?"
