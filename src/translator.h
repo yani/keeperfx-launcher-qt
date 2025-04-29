@@ -9,7 +9,10 @@ class Translator : public QTranslator {
 
 public:
     explicit Translator(QObject *parent = nullptr);
-    void loadPoTranslations(const QString &languageCode);
+
+    void loadLanguage(const QString &languageCode);
+    void loadPoFile(const QString &poFilePath);
+
     QString translate(const char *context, const char *sourceText, const char *disambiguation = nullptr, int n = -1) const override;
 
 private:

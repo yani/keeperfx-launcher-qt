@@ -256,9 +256,18 @@ int main(int argc, char *argv[])
 
     // Load translator if the launcher language is not English or a custom language file path is set
     if (launcherLanguage != "en" || LauncherOptions::isSet("translation-file")) {
-        qInfo() << "Loading launcher translation:" << launcherLanguage;
         Translator *translator = new Translator;
-        translator->loadPoTranslations(launcherLanguage);
+
+        // Load either a custom translation file or a different language from the resources
+        if (LauncherOptions::isSet("translation-file")) {
+            QString translationFilePath = LauncherOptions::getValue("translation-file");
+            qDebug() << "Loading translation file directly:" << translationFilePath;
+            translator->loadPoFile(translationFilePath);
+        } else {
+            qInfo() << "Loading launcher translation:" << launcherLanguage;
+            translator->loadLanguage(launcherLanguage);
+        }
+
         app.installTranslator(translator);
     }
 

@@ -13,22 +13,18 @@ Translator::Translator(QObject *parent)
     translations = QMap<QString, QString>();
 }
 
-void Translator::loadPoTranslations(const QString &languageCode)
+void Translator::loadLanguage(const QString &languageCode)
 {
     // Translation filepath in resources
-    QString translationFilePath = QString(":/i18n/i18n/translations_%1.po").arg(languageCode);
+    Translator::loadPoFile(QString(":/i18n/i18n/translations_%1.po").arg(languageCode));
+}
 
-    // Check if custom translation file is set
-    // TODO: make a loadPoTranslationFile() function
-    if (LauncherOptions::isSet("translation-file")) {
-        translationFilePath = LauncherOptions::getValue("translation-file");
-        qDebug() << "Loading translation file directly:" << translationFilePath;
-    }
-
+void Translator::loadPoFile(const QString &poFilePath)
+{
     // Open translation file
-    QFile file(translationFilePath);
+    QFile file(poFilePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << "Could not open translation file:" << translationFilePath;
+        qWarning() << "Could not open translation file:" << poFilePath;
         return;
     }
 
