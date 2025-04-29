@@ -20,6 +20,8 @@ DisableDirPage=no
 DisableFinishedPage=yes
 ; Add extra bytes to the calculated total size (because we download KeeperFX ourselves)
 ExtraDiskSpaceRequired=640329910
+; disable the "Select Setup Language" dialog and have it rely solely on auto-detection
+ShowLanguageDialog=no
 
 [Files]
 Source: "release\win64\keeperfx-launcher-qt.exe"; DestDir: "{app}"; Flags: ignoreversion
@@ -37,3 +39,20 @@ Filename: "{app}\keeperfx-launcher-qt.exe"; Parameters: "--install"; Flags: nowa
 ; Reason being that the launcher downloads KeeperFX and the uninstaller would otherwise only uninstall the launcher
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}"
+
+[Languages]
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
+Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
+Name: "sv"; MessagesFile: "compiler:Languages\Swedish.isl"
+Name: "ja"; MessagesFile: "compiler:Languages\Japanese.isl"
+Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
+Name: "cs"; MessagesFile: "compiler:Languages\Czech.isl"
+Name: "uk"; MessagesFile: "compiler:Languages\Ukrainian.isl"
+Name: "zh_Hans"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
+Name: "zh_Hant"; MessagesFile: "compiler:Languages\ChineseTraditional.isl"
