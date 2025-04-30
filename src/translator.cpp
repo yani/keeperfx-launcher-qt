@@ -65,12 +65,24 @@ void Translator::loadPoFile(const QString &poFilePath)
         }
     }
 
+    // Close last open translation
     if (!msgid.isEmpty() && !msgstr.isEmpty()) {
         translations[msgid] = msgstr;
         translationsLoaded++;
     }
 
-    qDebug() << "Translations loaded:" << translationsLoaded;
+    // Fix translations that contain newlines
+    for (const QString &msgIdString : translations.keys()) {
+        if (msgIdString.contains("\\n")) {
+            QString newMsgId = msgIdString;
+            newMsgId.replace("\\n", "\n");
+            translations[newMsgId] = translations.value(msgIdString).replace("\\n", "\n");
+            translationsLoaded++;
+        }
+    }
+
+    // Log translation count
+    qInfo() << "Translations loaded:" << translationsLoaded;
 }
 
 QString Translator::translate(const char *context, const char *sourceText, const char *disambiguation, int n) const {
