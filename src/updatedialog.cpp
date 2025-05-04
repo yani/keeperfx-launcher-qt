@@ -470,6 +470,13 @@ void UpdateDialog::onFileDownloadProgress()
             // Get destination path
             QString destFilePath = appDir.absolutePath() + destFileName;
 
+            // Make sure destination directory exists
+            QFileInfo destInfo(destFilePath);
+            if (QDir().mkpath(destInfo.absolutePath()) == false) {
+                emit appendLog(tr("Failed to create destination directory: %1", "Log Message").arg(destInfo.absolutePath()));
+                return;
+            }
+
             // Remove destination file if it exists
             QFile destFile(destFilePath);
             if (destFile.exists()) {
