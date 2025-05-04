@@ -60,7 +60,7 @@ You can find the used POT file here: [i18n/translations.pot](/i18n/translations.
 | Korean | KO | | Desert |
 | Chinese (Simplified) | ZH-HANS | | [JieLeTian](https://github.com/jieletian) |
 | Chinese (Traditional) | ZH-HANT | | |
-| Czech | CS | | |
+| Czech | CS | ✅ | Gotrek |
 | Latin | LA | | |
 | Ukrainian | UK | | Mr.Negative |
 

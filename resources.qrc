@@ -13,5 +13,6 @@
     </qresource>
     <qresource prefix="/i18n">
         <file>i18n/translations_nl.po</file>
+        <file>i18n/translations_cs.po</file>
     </qresource>
 </RCC>

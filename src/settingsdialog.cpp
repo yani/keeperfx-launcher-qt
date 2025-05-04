@@ -87,7 +87,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     //ui->comboBoxLauncherLanguage->addItem("\uD55C\uAD6D\uC5B4", "ko"); // Korean
     //ui->comboBoxLauncherLanguage->addItem("\u7B80\u4F53\u4E2D\u6587", "zh-Hans"); // Chinese (Simplified)
     //ui->comboBoxLauncherLanguage->addItem("\u7E41\u9AD4\u4E2D\u6587", "zh-Hant"); // Chinese (Traditional)
-    //ui->comboBoxLauncherLanguage->addItem("\u010Ce\u0161ka", "cs"); // Czech
+    ui->comboBoxLauncherLanguage->addItem("\u010Ce\u0161ka", "cs"); // Czech
     //ui->comboBoxLauncherLanguage->addItem("Lat\u012Bna", "la"); // Latin
     //ui->comboBoxLauncherLanguage->addItem("\u0423\u043A\u0440\u0430\u0454\u043D\u044C\u0441\u043A\u0430", "uk"); // Ukrainian
 
