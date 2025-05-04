@@ -107,5 +107,10 @@ QString Translator::translate(const char *context, const char *sourceText, const
         }
     }
 
+    // Log missing translation
+    if (LauncherOptions::isSet("log-missing-translations") == true) {
+        qWarning() << "Translation not found:" << sourceText;
+    }
+
     return source;
 }
