@@ -60,7 +60,7 @@ void WorkshopItemWidget::setImage(QUrl imageUrl)
     }
 
     // Get image cache path
-    QString cachePath = cacheDir + "/" + urlHash + "." + ext;
+    QString cachePath = cacheDir + "/" + urlHash + "_" + QString::number(targetSize.width()) + "x" + QString::number(targetSize.height()) + "." + ext;
 
     // Get pixmap
     QPixmap imagePixmap;
