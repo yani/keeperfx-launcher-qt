@@ -29,6 +29,7 @@ void LauncherOptions::processApp(QApplication &app)
         {"install",                     "Start the KeeperFX install procedure"},
         {"skip-launcher-update",        "Do not update the launcher itself"},
         {"log-missing-translations",    "Log missing translations to debug"},
+        {"no-image-cache",              "Bypass image caching"},
 
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},

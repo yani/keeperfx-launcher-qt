@@ -7,6 +7,7 @@
 #include <QPainter>
 
 #include "apiclient.h"
+#include "launcheroptions.h"
 
 WorkshopItemWidget::WorkshopItemWidget(QWidget *parent)
     : ClickableHighlightedWidget(parent)
@@ -63,7 +64,7 @@ void WorkshopItemWidget::setImage(QUrl imageUrl)
 
     // Get pixmap
     QPixmap imagePixmap;
-    if (QFile::exists(cachePath)) {
+    if (QFile::exists(cachePath) && LauncherOptions::isSet("no-image-cache") == false) {
         imagePixmap.load(cachePath);
         qDebug() << "Image loaded from cache:" << cachePath;
     } else {
@@ -95,10 +96,12 @@ void WorkshopItemWidget::setImage(QUrl imageUrl)
         painter.end();
 
         // Cache the image pixmap
-        if (imagePixmap.save(cachePath, ext.toUpper().toLatin1().constData())) {
-            qDebug() << "Image saved in cache:" << cachePath;
-        } else {
-            qDebug() << "Failed to cache image pixmap:" << cachePath;
+        if (LauncherOptions::isSet("no-image-cache") == false) {
+            if (imagePixmap.save(cachePath, ext.toUpper().toLatin1().constData())) {
+                qDebug() << "Image saved in cache:" << cachePath;
+            } else {
+                qDebug() << "Failed to cache image pixmap:" << cachePath;
+            }
         }
     }
 
