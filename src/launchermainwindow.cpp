@@ -25,6 +25,7 @@
 #include "fileremover.h"
 #include "fileremoverdialog.h"
 #include "game.h"
+#include "imagehelper.h"
 #include "installkfxdialog.h"
 #include "kfxversion.h"
 #include "launcheroptions.h"
@@ -565,22 +566,98 @@ void LauncherMainWindow::loadLatestFromKfxNet()
 
 void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews)
 {
+    QMutex mapMutex;
+    QThreadPool *threadPool = QThreadPool::globalInstance();
+
+    QList<QJsonObject> workshopItemList;
+    QList<QJsonObject> newsArticleList;
+
+    QMap<QString, QPixmap> pixmapMap;
+
+    QSize workshopItemThumbnailSize(80, 80);
+    QSize newsArticleThumbnailSize(100, 100);
+
     if (workshopItems.isEmpty() == false) {
         QJsonObject workshopItemsObj = workshopItems.object();
         QJsonArray workshopItemsArray = workshopItemsObj["workshop_items"].toArray();
 
-        int count = 0;
+        // Loop trough workshop items
+        int currentLoopCount = 0;
         for (const QJsonValue &workshopItemValue : workshopItemsArray) {
-            // Variables
-            QJsonObject workshopItem = workshopItemValue.toObject();
-            QJsonObject submitterObj = workshopItem["submitter"].toObject();
+            // Only allow the max amount of items
+            if (currentLoopCount++ >= MAX_WORKSHOP_ITEMS_SHOWN) {
+                break;
+            }
 
+            // Get workshop item as object
+            QJsonObject workshopItem = workshopItemValue.toObject();
+            workshopItemList.append(workshopItem);
+
+            // Get thumbnail URL
+            QString thumbnailUrl;
+            if (workshopItem["thumbnail"].isNull() == false) {
+                thumbnailUrl = workshopItem["thumbnail"].toString();
+            } else {
+                // The API returns a default image for items without one so we can just use it
+                thumbnailUrl = workshopItem["image"].toString();
+            }
+
+            // Start a thread to get the pixmap
+            threadPool->start([thumbnailUrl, workshopItemThumbnailSize, &pixmapMap, &mapMutex]() {
+                QPixmap pixmap = ImageHelper::getOnlineScaledPixmap(QUrl(thumbnailUrl), workshopItemThumbnailSize);
+
+                // Use a mutex to protect shared access to the QMap
+                QMutexLocker locker(&mapMutex);
+                pixmapMap[thumbnailUrl] = pixmap;
+            });
+        }
+    }
+
+    if (latestNews.isEmpty() == false) {
+        QJsonObject latestNewsArticleObj = latestNews.object();
+        QJsonArray newsArticlesArray = latestNewsArticleObj["articles"].toArray();
+
+        // Loop trough news articles
+        int currentLoopCount = 0;
+        for (const QJsonValue &newsArticleValue : newsArticlesArray) {
+            // Only allow the max amount of items
+            if (currentLoopCount++ >= MAX_NEWS_ARTICLES_SHOWN) {
+                break;
+            }
+
+            // Get workshop item as object
+            QJsonObject newsArticle = newsArticleValue.toObject();
+            newsArticleList.append(newsArticle);
+
+            // Get thumbnail URL
+            QString thumbnailUrl = newsArticle["image"].toString();
+
+            // Start a thread to get the pixmap
+            threadPool->start([thumbnailUrl, newsArticleThumbnailSize, &pixmapMap, &mapMutex]() {
+                QPixmap pixmap = ImageHelper::getOnlineScaledPixmap(QUrl(thumbnailUrl), newsArticleThumbnailSize);
+
+                // Use a mutex to protect shared access to the QMap
+                QMutexLocker locker(&mapMutex);
+                pixmapMap[thumbnailUrl] = pixmap;
+            });
+        }
+    }
+
+    // Wait for all tasks to finish
+    threadPool->waitForDone();
+
+    // Create widget lists
+    QList<QWidget *> workshopItemWidgets;
+    QList<QWidget *> newsArticleWidgets;
+
+    if (workshopItemList.isEmpty() == false) {
+        for (const QJsonObject &workshopItem : workshopItemList) {
             // Create the widget
             WorkshopItemWidget *workshopItemWidget = new WorkshopItemWidget(ui->KfxWorkshopItemList);
             workshopItemWidget->setTitle(workshopItem["name"].toString());
             workshopItemWidget->setType(workshopItem["category"].toString());
             workshopItemWidget->setDate(workshopItem["created_timestamp"].toString());
-            workshopItemWidget->setAuthor(submitterObj["username"].toString());
+            workshopItemWidget->setAuthor(workshopItem["submitter"].toObject()["username"].toString());
             workshopItemWidget->setTargetUrl(workshopItem["url"].toString());
 
             // Set the size of the widget
@@ -588,32 +665,20 @@ void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDoc
             workshopItemWidget->setMaximumWidth(250);
             workshopItemWidget->setMaximumHeight(110);
 
+            // Set image
             if (workshopItem["thumbnail"].isNull() == false) {
-                workshopItemWidget->setImage(QUrl(workshopItem["thumbnail"].toString()));
+                workshopItemWidget->setImagePixmap(pixmapMap[workshopItem["thumbnail"].toString()]);
             } else {
-                // The API returns a default image for items without one so we can just pass it
-                workshopItemWidget->setImage(QUrl(workshopItem["image"].toString()));
+                workshopItemWidget->setImagePixmap(pixmapMap[workshopItem["image"].toString()]);
             }
 
             // Add the widget to the list
-            ui->KfxWorkshopItemList->layout()->addWidget(workshopItemWidget);
-
-            // Only allow the max amount of items
-            if (++count >= MAX_WORKSHOP_ITEMS_SHOWN) {
-                break;
-            }
+            workshopItemWidgets.append(workshopItemWidget);
         }
     }
 
-    if (latestNews.isEmpty() == false) {
-        QJsonObject newsArticlesObj = latestNews.object();
-        QJsonArray newsArticlesArray = newsArticlesObj["articles"].toArray();
-
-        int count = 0;
-        for (const QJsonValue &newsArticleValue : newsArticlesArray) {
-            // Get the json object
-            QJsonObject newsArticle = newsArticleValue.toObject();
-
+    if (newsArticleList.isEmpty() == false) {
+        for (const QJsonObject &newsArticle : newsArticleList) {
             // Create the widget
             NewsArticleWidget *newsArticleWidget = new NewsArticleWidget(ui->KfxNewsList);
             newsArticleWidget->setTitle(newsArticle["title"].toString());
@@ -632,17 +697,29 @@ void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDoc
             newsArticleWidget->setMaximumHeight(110);
 
             // The API returns a default image for items without one so we can just pass it
-            newsArticleWidget->setImage(QUrl(newsArticle["image"].toString()));
+            newsArticleWidget->setImagePixmap(pixmapMap[newsArticle["image"].toString()]);
 
             // Add the widget to the list
-            ui->KfxNewsList->layout()->addWidget(newsArticleWidget);
-
-            // Only allow the max amount of items
-            if (++count >= MAX_NEWS_ARTICLES_SHOWN) {
-                break;
-            }
+            newsArticleWidgets.append(newsArticleWidget);
         }
     }
+
+    // Disable updating UI widgets while adding child widgets
+    ui->KfxWorkshopItemList->setUpdatesEnabled(false);
+    ui->KfxNewsList->setUpdatesEnabled(false);
+
+    // Add widgets
+    for (QWidget *widget : workshopItemWidgets) {
+        ui->KfxWorkshopItemList->layout()->addWidget(widget);
+    }
+
+    for (QWidget *widget : newsArticleWidgets) {
+        ui->KfxNewsList->layout()->addWidget(widget);
+    }
+
+    // Enable updating UI widgets after adding child widgets
+    ui->KfxWorkshopItemList->setUpdatesEnabled(true);
+    ui->KfxNewsList->setUpdatesEnabled(true);
 
     this->hideLoadingSpinner(true);
     isLoadingLatestFromKfxNet = false;

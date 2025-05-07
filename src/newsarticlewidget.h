@@ -19,7 +19,7 @@ public:
     void setDate(QString date);
     void setExcerpt(QString author);
 
-    void setImage(QUrl imageUrl);
+    void setImagePixmap(QPixmap pixmap);
 
 private:
     Ui::NewsArticleWidget *ui;

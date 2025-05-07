@@ -21,7 +21,7 @@ public:
     void setDate(QString date);
     void setAuthor(QString author);
 
-    void setImage(QUrl imageUrl);
+    void setImagePixmap(QPixmap pixmap);
 
 private:
     Ui::WorkshopItemWidget *ui;

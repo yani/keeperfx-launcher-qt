@@ -42,12 +42,8 @@ void WorkshopItemWidget::setAuthor(QString author)
     ui->authorLabel->setText(author);
 }
 
-void WorkshopItemWidget::setImage(QUrl imageUrl)
+void WorkshopItemWidget::setImagePixmap(QPixmap pixmap)
 {
-    // Get target size of widget
-    QSize targetSize(ui->frame->width(), ui->frame->height());
-
-    // Create image label
     QLabel *imageLabel = new QLabel(ui->frame);
-    imageLabel->setPixmap(ImageHelper::getOnlineScaledPixmap(imageUrl, targetSize));
+    imageLabel->setPixmap(pixmap);
 }
