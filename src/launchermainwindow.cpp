@@ -48,7 +48,8 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // Connect signals and slots
-    connect(this, &LauncherMainWindow::kfxNetRetrieval, this, &LauncherMainWindow::onKfxNetRetrieval);
+    connect(this, &LauncherMainWindow::kfxNetRetrieval, this, &LauncherMainWindow::onKfxNetRetrieval, Qt::QueuedConnection);
+    connect(this, &LauncherMainWindow::kfxNetImagesLoaded, this, &LauncherMainWindow::onKfxNetImagesLoaded, Qt::QueuedConnection);
     connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
     connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
 
@@ -560,92 +561,104 @@ void LauncherMainWindow::loadLatestFromKfxNet()
         fetchLatestNews.waitForFinished();
 
         // Emit a signal to pass the data to the main thread
-        emit kfxNetRetrieval(fetchWorkshopItems.result(), fetchLatestNews.result());
+        QMetaObject::invokeMethod(
+            this, [this, fetchWorkshopItems, fetchLatestNews]() { emit kfxNetRetrieval(fetchWorkshopItems.result(), fetchLatestNews.result()); }, Qt::QueuedConnection);
+        
     })->start();
 }
 
 void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews)
 {
-    QMutex mapMutex;
-    QThreadPool *threadPool = QThreadPool::globalInstance();
+    // Create a thread so we don't lock the main thread while grabbing the images
+    QThread::create([this, workshopItems, latestNews]() {
+        QMutex mapMutex;
+        QThreadPool *threadPool = QThreadPool::globalInstance();
 
-    QList<QJsonObject> workshopItemList;
-    QList<QJsonObject> newsArticleList;
+        QList<QJsonObject> workshopItemList;
+        QList<QJsonObject> newsArticleList;
 
-    QMap<QString, QPixmap> pixmapMap;
+        QMap<QString, QPixmap> pixmapMap;
 
-    QSize workshopItemThumbnailSize(80, 80);
-    QSize newsArticleThumbnailSize(100, 100);
+        QSize workshopItemThumbnailSize(80, 80);
+        QSize newsArticleThumbnailSize(100, 100);
 
-    if (workshopItems.isEmpty() == false) {
-        QJsonObject workshopItemsObj = workshopItems.object();
-        QJsonArray workshopItemsArray = workshopItemsObj["workshop_items"].toArray();
+        if (workshopItems.isEmpty() == false) {
+            QJsonObject workshopItemsObj = workshopItems.object();
+            QJsonArray workshopItemsArray = workshopItemsObj["workshop_items"].toArray();
 
-        // Loop trough workshop items
-        int currentLoopCount = 0;
-        for (const QJsonValue &workshopItemValue : workshopItemsArray) {
-            // Only allow the max amount of items
-            if (currentLoopCount++ >= MAX_WORKSHOP_ITEMS_SHOWN) {
-                break;
+            // Loop trough workshop items
+            int currentLoopCount = 0;
+            for (const QJsonValue &workshopItemValue : workshopItemsArray) {
+                // Only allow the max amount of items
+                if (currentLoopCount++ >= MAX_WORKSHOP_ITEMS_SHOWN) {
+                    break;
+                }
+
+                // Get workshop item as object
+                QJsonObject workshopItem = workshopItemValue.toObject();
+                workshopItemList.append(workshopItem);
+
+                // Get thumbnail URL
+                QString thumbnailUrl;
+                if (workshopItem["thumbnail"].isNull() == false) {
+                    thumbnailUrl = workshopItem["thumbnail"].toString();
+                } else {
+                    // The API returns a default image for items without one so we can just use it
+                    thumbnailUrl = workshopItem["image"].toString();
+                }
+
+                // Start a thread to get the pixmap and convert it to an image
+                threadPool->start([thumbnailUrl, workshopItemThumbnailSize, &pixmapMap, &mapMutex]() {
+                    QPixmap pixmap = ImageHelper::getOnlineScaledPixmap(QUrl(thumbnailUrl), workshopItemThumbnailSize);
+
+                    // Use a mutex to protect shared access to the QMap
+                    QMutexLocker locker(&mapMutex);
+                    pixmapMap[thumbnailUrl] = pixmap;
+                });
             }
-
-            // Get workshop item as object
-            QJsonObject workshopItem = workshopItemValue.toObject();
-            workshopItemList.append(workshopItem);
-
-            // Get thumbnail URL
-            QString thumbnailUrl;
-            if (workshopItem["thumbnail"].isNull() == false) {
-                thumbnailUrl = workshopItem["thumbnail"].toString();
-            } else {
-                // The API returns a default image for items without one so we can just use it
-                thumbnailUrl = workshopItem["image"].toString();
-            }
-
-            // Start a thread to get the pixmap
-            threadPool->start([thumbnailUrl, workshopItemThumbnailSize, &pixmapMap, &mapMutex]() {
-                QPixmap pixmap = ImageHelper::getOnlineScaledPixmap(QUrl(thumbnailUrl), workshopItemThumbnailSize);
-
-                // Use a mutex to protect shared access to the QMap
-                QMutexLocker locker(&mapMutex);
-                pixmapMap[thumbnailUrl] = pixmap;
-            });
         }
-    }
 
-    if (latestNews.isEmpty() == false) {
-        QJsonObject latestNewsArticleObj = latestNews.object();
-        QJsonArray newsArticlesArray = latestNewsArticleObj["articles"].toArray();
+        if (latestNews.isEmpty() == false) {
+            QJsonObject latestNewsArticleObj = latestNews.object();
+            QJsonArray newsArticlesArray = latestNewsArticleObj["articles"].toArray();
 
-        // Loop trough news articles
-        int currentLoopCount = 0;
-        for (const QJsonValue &newsArticleValue : newsArticlesArray) {
-            // Only allow the max amount of items
-            if (currentLoopCount++ >= MAX_NEWS_ARTICLES_SHOWN) {
-                break;
+            // Loop trough news articles
+            int currentLoopCount = 0;
+            for (const QJsonValue &newsArticleValue : newsArticlesArray) {
+                // Only allow the max amount of items
+                if (currentLoopCount++ >= MAX_NEWS_ARTICLES_SHOWN) {
+                    break;
+                }
+
+                // Get workshop item as object
+                QJsonObject newsArticle = newsArticleValue.toObject();
+                newsArticleList.append(newsArticle);
+
+                // Get thumbnail URL
+                QString thumbnailUrl = newsArticle["image"].toString();
+
+                // Start a thread to get the pixmap and convert it to an image
+                threadPool->start([thumbnailUrl, newsArticleThumbnailSize, &pixmapMap, &mapMutex]() {
+                    QPixmap pixmap = ImageHelper::getOnlineScaledPixmap(QUrl(thumbnailUrl), newsArticleThumbnailSize);
+
+                    // Use a mutex to protect shared access to the QMap
+                    QMutexLocker locker(&mapMutex);
+                    pixmapMap[thumbnailUrl] = pixmap;
+                });
             }
-
-            // Get workshop item as object
-            QJsonObject newsArticle = newsArticleValue.toObject();
-            newsArticleList.append(newsArticle);
-
-            // Get thumbnail URL
-            QString thumbnailUrl = newsArticle["image"].toString();
-
-            // Start a thread to get the pixmap
-            threadPool->start([thumbnailUrl, newsArticleThumbnailSize, &pixmapMap, &mapMutex]() {
-                QPixmap pixmap = ImageHelper::getOnlineScaledPixmap(QUrl(thumbnailUrl), newsArticleThumbnailSize);
-
-                // Use a mutex to protect shared access to the QMap
-                QMutexLocker locker(&mapMutex);
-                pixmapMap[thumbnailUrl] = pixmap;
-            });
         }
-    }
 
-    // Wait for all tasks to finish
-    threadPool->waitForDone();
+        // Wait for all tasks to finish
+        threadPool->waitForDone();
 
+        // Emit signal so we can update the GUI
+        QMetaObject::invokeMethod(
+            this, [this, workshopItemList, newsArticleList, pixmapMap]() { emit kfxNetImagesLoaded(workshopItemList, newsArticleList, pixmapMap); }, Qt::QueuedConnection);
+    })->start();
+}
+
+void LauncherMainWindow::onKfxNetImagesLoaded(QList<QJsonObject> workshopItemList, QList<QJsonObject> newsArticleList, QMap<QString, QPixmap> pixmapMap)
+{
     // Create widget lists
     QList<QWidget *> workshopItemWidgets;
     QList<QWidget *> newsArticleWidgets;
@@ -653,7 +666,7 @@ void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDoc
     if (workshopItemList.isEmpty() == false) {
         for (const QJsonObject &workshopItem : workshopItemList) {
             // Create the widget
-            WorkshopItemWidget *workshopItemWidget = new WorkshopItemWidget(ui->KfxWorkshopItemList);
+            WorkshopItemWidget *workshopItemWidget = new WorkshopItemWidget(this);
             workshopItemWidget->setTitle(workshopItem["name"].toString());
             workshopItemWidget->setType(workshopItem["category"].toString());
             workshopItemWidget->setDate(workshopItem["created_timestamp"].toString());
@@ -680,7 +693,7 @@ void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDoc
     if (newsArticleList.isEmpty() == false) {
         for (const QJsonObject &newsArticle : newsArticleList) {
             // Create the widget
-            NewsArticleWidget *newsArticleWidget = new NewsArticleWidget(ui->KfxNewsList);
+            NewsArticleWidget *newsArticleWidget = new NewsArticleWidget(this);
             newsArticleWidget->setTitle(newsArticle["title"].toString());
             newsArticleWidget->setDate(newsArticle["created_timestamp"].toString());
             newsArticleWidget->setTargetUrl(newsArticle["url"].toString());

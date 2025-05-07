@@ -5,6 +5,7 @@
 
 #include <QApplication>
 #include <QJsonDocument>
+#include <QJsonObject>
 #include <QMainWindow>
 #include <QProcess>
 #include <QTimer>
@@ -22,6 +23,7 @@ class LauncherMainWindow : public QMainWindow
 signals:
     void updateFound(KfxVersion::VersionInfo versionInfo);
     void kfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNew);
+    void kfxNetImagesLoaded(QList<QJsonObject> workshopItemList, QList<QJsonObject> newsArticleList, QMap<QString, QPixmap> pixmapMap);
 
 public:
     LauncherMainWindow(QWidget *parent = nullptr);
@@ -36,7 +38,9 @@ private slots:
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
     void onGameEnded(int exitCode, QProcess::ExitStatus exitStatus);
+
     void onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews);
+    void onKfxNetImagesLoaded(QList<QJsonObject> workshopItemList, QList<QJsonObject> newsArticleList, QMap<QString, QPixmap> pixmapMap);
 
 private:
     Ui::LauncherMainWindow *ui;
