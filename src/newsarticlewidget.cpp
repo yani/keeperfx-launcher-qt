@@ -4,6 +4,7 @@
 #include <QCryptographicHash>
 #include <QDir>
 #include <QFile>
+#include <QPainter>
 
 #include "apiclient.h"
 
@@ -42,6 +43,9 @@ void NewsArticleWidget::setExcerpt(QString excerpt)
 
 void NewsArticleWidget::setImage(QUrl imageUrl)
 {
+    // Get target size of widget
+    QSize targetSize(ui->frame->width(), ui->frame->height());
+
     // Create a dedicated temp directory
     QString cacheDir = QDir::temp().filePath("kfx-launcher-img-cache");
     QDir().mkpath(cacheDir); // Ensure the directory exists
@@ -75,11 +79,21 @@ void NewsArticleWidget::setImage(QUrl imageUrl)
         }
 
         // Create image pixmap
-        imagePixmap = QPixmap::fromImage(image).scaled(ui->frame->width(), ui->frame->height(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-        if (imagePixmap.isNull() == true) {
+        QPixmap scaledPixmap = QPixmap::fromImage(image).scaled(targetSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+        if (scaledPixmap.isNull() == true) {
             qWarning() << "Failed to convert image to pixmap:" << imageUrl;
             return;
         }
+
+        // Create a final pixmap and center-crop it
+        imagePixmap = QPixmap(targetSize);
+        imagePixmap.fill(Qt::transparent); // Optional, use Qt::black or similar for background
+
+        // Paint the image in the center
+        QPainter painter(&imagePixmap);
+        painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.drawPixmap((targetSize.width() - scaledPixmap.width()) / 2, (targetSize.height() - scaledPixmap.height()) / 2, scaledPixmap);
+        painter.end();
 
         // Cache the image pixmap
         if (imagePixmap.save(cachePath, ext.toUpper().toLatin1().constData())) {
