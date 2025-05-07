@@ -24,41 +24,6 @@ QString ApiClient::getApiEndpoint()
     return QString(API_ENDPOINT);
 }
 
-QImage ApiClient::downloadImage(QUrl url)
-{
-    // Initialize the network request and manager
-    QNetworkRequest request(url);
-    QNetworkAccessManager manager;
-
-    // Make the network request
-    QNetworkReply *reply = manager.get(request);
-
-    // Create an event loop to wait for the request to finish
-    QEventLoop loop;
-    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec();  // Block until the request is finished
-
-    // Check for errors
-    if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "Failed to download image from" << url.toString() << ":" << reply->errorString();
-        reply->deleteLater();
-        return QImage(); // Return an empty image on failure
-    }
-
-    // Load the image from the reply data
-    QByteArray imageData = reply->readAll();
-    QImage image;
-    if (!image.loadFromData(imageData)) {
-        qWarning() << "Failed to load image from data";
-        reply->deleteLater();
-        return QImage(); // Return an empty image if the loading failed
-    }
-
-    // Clean up and return the image
-    reply->deleteLater();
-    return image;
-}
-
 QJsonDocument ApiClient::getJsonResponse(QUrl endpointPath, HttpMethod method, QJsonObject jsonPostObject)
 {
     // Strip '/api' and slashes from the endpoint path
