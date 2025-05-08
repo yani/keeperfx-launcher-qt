@@ -18,7 +18,7 @@ class UpdateDialog : public QDialog
     Q_OBJECT
 
 public:
-    UpdateDialog(QWidget *parent = nullptr, KfxVersion::VersionInfo versionInfo = KfxVersion::VersionInfo());
+    UpdateDialog(QWidget *parent = nullptr, KfxVersion::VersionInfo versionInfo = KfxVersion::VersionInfo(), bool autoUpdate = false);
     ~UpdateDialog();
 
 private slots:
@@ -59,4 +59,7 @@ private:
     int totalFiles;
     int downloadedFiles;
     void downloadFiles(const QString &baseUrl);
+
+    bool autoUpdate;
+    QString originalTitleText;
 };

@@ -15,18 +15,21 @@
 #include <QStandardPaths>
 #include <QThread>
 #include <QThreadPool>
+#include <QTimer>
 
 #include <zlib.h>
 
 #define GAME_FILE_BASE_URL "https://keeperfx.net/game-files"
+#define AUTO_UPDATE_MESSAGEBOX_TIMER 2500
 
-UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo)
+UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo, bool autoUpdate)
     : QDialog(parent)
     , ui(new Ui::UpdateDialog)
     , networkManager(new QNetworkAccessManager(this))
 {
     // Setup this UI
     ui->setupUi(this);
+    this->originalTitleText = ui->titleLabel->text();
 
     // Disable resizing and remove maximize button
     setFixedSize(size());
@@ -65,6 +68,14 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo)
     connect(this, &UpdateDialog::updateProgress, ui->progressBar, &QProgressBar::setValue);
     connect(this, &UpdateDialog::setProgressMaximum, ui->progressBar, &QProgressBar::setMaximum);
     connect(this, &UpdateDialog::setProgressBarFormat, ui->progressBar, &QProgressBar::setFormat);
+
+    // Handle auto update
+    this->autoUpdate = autoUpdate;
+    if (this->autoUpdate) {
+        qDebug() << "Automatically starting update process";
+        // Start process automatically
+        ui->updateButton->click();
+    }
 }
 
 UpdateDialog::~UpdateDialog()
@@ -117,6 +128,7 @@ void UpdateDialog::onClearProgressBar()
 void UpdateDialog::onUpdateFailed(const QString &reason)
 {
     ui->updateButton->setDisabled(false);
+    ui->titleLabel->setText(this->originalTitleText);
     onClearProgressBar();
     onAppendLog(reason);
     QMessageBox::warning(this, tr("Update failed", "MessageBox Title"), reason);
@@ -127,6 +139,7 @@ void UpdateDialog::on_updateButton_clicked()
     // Update GUI
     ui->updateButton->setDisabled(true);
     ui->progressBar->setTextVisible(true);
+    ui->titleLabel->setText(tr("Updating...", "Title label"));
 
     // Tell user we start the installation
     emit appendLog(tr("Updating to version %1", "Log Message").arg(versionInfo.fullString));
@@ -297,6 +310,7 @@ void UpdateDialog::onArchiveTestComplete(uint64_t archiveSize){
 
 void UpdateDialog::onUpdateComplete()
 {
+    ui->titleLabel->setText(tr("Update complete!", "Title label"));
     emit appendLog(tr("Extraction completed", "Log Message"));
     emit clearProgressBar();
 
@@ -311,8 +325,24 @@ void UpdateDialog::onUpdateComplete()
     emit appendLog(tr("Copying over any new settings", "Log Message"));
     Settings::load();
 
+    // We are done!
     emit appendLog(tr("Done!", "Log Message"));
-    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version));
+
+    // Create message box
+    QMessageBox *msgBox = new QMessageBox(QMessageBox::Information,
+                                          "KeeperFX",
+                                          tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version),
+                                          QMessageBox::Ok);
+
+    // Close messagebox after a delay if auto updating
+    if (this->autoUpdate) {
+        QTimer::singleShot(AUTO_UPDATE_MESSAGEBOX_TIMER, msgBox, &QMessageBox::accept);
+    }
+
+    // Show messagebox
+    msgBox->exec();
+
+    // Accept and close the update dialog
     accept();
 }
 
@@ -496,6 +526,7 @@ void UpdateDialog::onFileDownloadProgress()
 
         // If all files have been updated
         if (copiedFiles == updateList.count()) {
+            ui->titleLabel->setText(tr("Update complete!", "Title label"));
             emit clearProgressBar();
 
             // Copy new settings
@@ -504,7 +535,22 @@ void UpdateDialog::onFileDownloadProgress()
 
             // Success!
             emit appendLog(tr("Done!", "Log Message"));
-            QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version));
+
+            // Create message box
+            QMessageBox *msgBox = new QMessageBox(QMessageBox::Information,
+                                                  "KeeperFX",
+                                                  tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version),
+                                                  QMessageBox::Ok);
+
+            // Close messagebox after a delay if auto updating
+            if (this->autoUpdate) {
+                QTimer::singleShot(AUTO_UPDATE_MESSAGEBOX_TIMER, msgBox, &QMessageBox::accept);
+            }
+
+            // Show messagebox
+            msgBox->exec();
+
+            // Accept and close update dialog
             accept();
             return;
 

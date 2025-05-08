@@ -769,7 +769,8 @@ void LauncherMainWindow::checkForFileRemoval()
 void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
 {
     // Start updater
-    UpdateDialog updateDialog(this, versionInfo);
+    bool autoUpdate = Settings::getLauncherSetting("AUTO_UPDATE") == true;
+    UpdateDialog updateDialog(this, versionInfo, autoUpdate);
     updateDialog.exec();
 
     // Reload current version

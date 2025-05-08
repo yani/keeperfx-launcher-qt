@@ -15,6 +15,7 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     // Launcher settings
     {"CHECK_FOR_UPDATES_ENABLED", true},
     {"CHECK_FOR_UPDATES_RELEASE", "STABLE"},
+    {"AUTO_UPDATE", false},
     {"WEBSITE_INTEGRATION_ENABLED", true},
     {"CRASH_REPORTING_ENABLED", true},
     {"CRASH_REPORTING_CONTACT", ""},

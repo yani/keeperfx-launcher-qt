@@ -1204,7 +1204,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>230</y>
+         <y>280</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1230,7 +1230,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>180</y>
+         <y>230</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1243,7 +1243,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>280</y>
+         <y>330</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1278,6 +1278,19 @@ height: 35px;
         <font>
          <family>Arial</family>
         </font>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxAutoUpdate">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>180</y>
+         <width>361</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Update automatically</string>
        </property>
       </widget>
      </widget>

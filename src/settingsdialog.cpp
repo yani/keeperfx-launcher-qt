@@ -219,6 +219,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         bool isChecked = ui->checkBoxCheckForUpdates->isChecked();
         ui->labelRelease->setDisabled(!isChecked);
         ui->comboBoxRelease->setDisabled(!isChecked);
+        ui->checkBoxAutoUpdate->setDisabled(!isChecked);
     });
 
     // Connect the atmospheric sounds enabled checkbox
@@ -515,8 +516,10 @@ void SettingsDialog::loadSettings()
     ui->checkBoxCheckForUpdates->setChecked(isUpdateCheckEnabled);
     ui->labelRelease->setDisabled(!isUpdateCheckEnabled);
     ui->comboBoxRelease->setDisabled(!isUpdateCheckEnabled);
+    ui->checkBoxAutoUpdate->setDisabled(!isUpdateCheckEnabled);
 
     ui->comboBoxRelease->setCurrentIndex(ui->comboBoxRelease->findData(Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()));
+    ui->checkBoxAutoUpdate->setChecked(Settings::getLauncherSetting("AUTO_UPDATE") == true);
     ui->checkBoxWebsiteIntegration->setChecked(Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == true);
     ui->checkBoxCrashReporting->setChecked(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true);
     ui->checkBoxOpenOnGameScreen->setChecked(Settings::getLauncherSetting("OPEN_ON_GAME_SCREEN") == true);
@@ -683,6 +686,7 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("LAUNCHER_LANGUAGE", ui->comboBoxLauncherLanguage->currentData().toString());
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_ENABLED", ui->checkBoxCheckForUpdates->isChecked() == true);
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", ui->comboBoxRelease->currentData().toString());
+    Settings::setLauncherSetting("AUTO_UPDATE", ui->checkBoxAutoUpdate->isChecked() == true);
     Settings::setLauncherSetting("WEBSITE_INTEGRATION_ENABLED", ui->checkBoxWebsiteIntegration->isChecked() == true);
     Settings::setLauncherSetting("CRASH_REPORTING_ENABLED", ui->checkBoxCrashReporting->isChecked() == true);
     Settings::setLauncherSetting("OPEN_ON_GAME_SCREEN", ui->checkBoxOpenOnGameScreen->isChecked() == true);
