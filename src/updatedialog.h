@@ -62,4 +62,6 @@ private:
 
     bool autoUpdate;
     QString originalTitleText;
+
+    void backupSaves();
 };

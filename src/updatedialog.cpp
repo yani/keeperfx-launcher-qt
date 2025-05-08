@@ -2,6 +2,7 @@
 #include "archiver.h"
 #include "downloader.h"
 #include "launcheroptions.h"
+#include "savefile.h"
 #include "settings.h"
 #include "updater.h"
 
@@ -136,8 +137,34 @@ void UpdateDialog::onUpdateFailed(const QString &reason)
 
 void UpdateDialog::on_updateButton_clicked()
 {
-    // Update GUI
+    // Disable update button
     ui->updateButton->setDisabled(true);
+
+    // Ask if user wants to backup their saves
+    if (this->autoUpdate == true) {
+        backupSaves();
+    } else {
+        auto backupAnswer = QMessageBox::question(this,
+                                                  tr("KeeperFX Update", "Messagebox Title"),
+                                                  tr("Updating KeeperFX might break your save files.\n\nDo you want to back them up?", "Messagebox Text"),
+                                                  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+
+        // Handle backup answer
+        if (backupAnswer == QMessageBox::No) {
+            onAppendLog(tr("Skipping save backup", "Log message"));
+        } else if (backupAnswer == QMessageBox::Cancel) {
+            // Cancel update process
+            ui->updateButton->setDisabled(false);
+            ui->titleLabel->setText(this->originalTitleText);
+            emit clearProgressBar();
+            emit appendLog(tr("Update canceled", "Log message"));
+            return;
+        } else if (backupAnswer == QMessageBox::Yes) {
+            backupSaves();
+        }
+    }
+
+    // Update GUI to show we are updating
     ui->progressBar->setTextVisible(true);
     ui->titleLabel->setText(tr("Updating...", "Title label"));
 
@@ -159,6 +186,16 @@ void UpdateDialog::on_updateButton_clicked()
         emit appendLog(tr("No filemap found", "Log Message"));
         // Update using download URL
         updateUsingArchive(versionInfo.downloadUrl);
+    }
+}
+
+void UpdateDialog::backupSaves()
+{
+    onAppendLog(tr("Backing up save files...", "Log message"));
+
+    // Backup all save files
+    if (SaveFile::backupAll()) {
+        emit appendLog(tr("Savefiles have been backed up", "Log Message"));
     }
 }
 

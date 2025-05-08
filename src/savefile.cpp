@@ -1,5 +1,8 @@
 #include "savefile.h"
 
+#include "archiver.h"
+#include "kfxversion.h"
+
 #include <QApplication>
 #include <QDir>
 
@@ -108,4 +111,47 @@ bool SaveFile::checkFileHeader(QFile& file) {
     file.seek(0x4);
     QByteArray header = file.read(4);
     return (header == "INFO");
+}
+
+bool SaveFile::backupAll()
+{
+    // Get all savefiles
+    QList<SaveFile *> saveFiles = SaveFile::getAll();
+
+    // Check if there are savefiles to backup
+    if (saveFiles.length() == 0) {
+        qDebug() << "No save files found to backup";
+        return true;
+    }
+
+    // Get the backup dir and make it if it does not exist yet
+    QString backupDirPath = QCoreApplication::applicationDirPath() + "/save/backup";
+    QDir dir;
+    if (!dir.exists(backupDirPath)) {
+        dir.mkpath(backupDirPath);
+    }
+
+    // Create filename and path
+    QString archiveFileName = "keeperfx-save-backup-" + QDate::currentDate().toString("yyyy-MM-dd") + "-v" + KfxVersion::currentVersion.version + ".7z";
+    QString archiveFilePath = backupDirPath + "/" + archiveFileName;
+    QFile archive(archiveFilePath);
+
+    // Make sure archive output file does not exist
+    if (archive.exists()) {
+        archive.remove();
+    }
+
+    // Debug
+    qDebug() << "Save backup archive path:" << archiveFilePath;
+    qDebug().noquote() << QString("Archiving %1 save(s)").arg(saveFiles.length()).toStdString();
+
+    // Archive all saves
+    for (SaveFile *saveFile : saveFiles) {
+        qDebug() << "Archiving:" << saveFile->saveName;
+        if (Archiver::compressSingleFile(&saveFile->file, archiveFilePath.toStdString()) == false) {
+            return false;
+        }
+    }
+
+    return true;
 }
