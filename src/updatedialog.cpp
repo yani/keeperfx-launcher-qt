@@ -140,27 +140,31 @@ void UpdateDialog::on_updateButton_clicked()
     // Disable update button
     ui->updateButton->setDisabled(true);
 
-    // Ask if user wants to backup their saves
-    if (this->autoUpdate == true) {
-        backupSaves();
-    } else {
-        auto backupAnswer = QMessageBox::question(this,
-                                                  tr("KeeperFX Update", "Messagebox Title"),
-                                                  tr("Updating KeeperFX might break your save files.\n\nDo you want to back them up?", "Messagebox Text"),
-                                                  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+    // Check if the user has any save files
+    QList<SaveFile *> saveFiles = SaveFile::getAll();
+    if (saveFiles.length() > 0) {
+        // Ask if user wants to backup their saves
+        if (this->autoUpdate == true) {
+            backupSaves(saveFiles);
+        } else {
+            auto backupAnswer = QMessageBox::question(this,
+                                                      tr("KeeperFX Update", "Messagebox Title"),
+                                                      tr("Updating KeeperFX might break your save files.\n\nDo you want to back them up?", "Messagebox Text"),
+                                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
 
-        // Handle backup answer
-        if (backupAnswer == QMessageBox::No) {
-            onAppendLog(tr("Skipping save backup", "Log message"));
-        } else if (backupAnswer == QMessageBox::Cancel) {
-            // Cancel update process
-            ui->updateButton->setDisabled(false);
-            ui->titleLabel->setText(this->originalTitleText);
-            emit clearProgressBar();
-            emit appendLog(tr("Update canceled", "Log message"));
-            return;
-        } else if (backupAnswer == QMessageBox::Yes) {
-            backupSaves();
+            // Handle backup answer
+            if (backupAnswer == QMessageBox::No) {
+                onAppendLog(tr("Skipping save backup", "Log message"));
+            } else if (backupAnswer == QMessageBox::Cancel) {
+                // Cancel update process
+                ui->updateButton->setDisabled(false);
+                ui->titleLabel->setText(this->originalTitleText);
+                emit clearProgressBar();
+                emit appendLog(tr("Update canceled", "Log message"));
+                return;
+            } else if (backupAnswer == QMessageBox::Yes) {
+                backupSaves(saveFiles);
+            }
         }
     }
 
@@ -189,12 +193,12 @@ void UpdateDialog::on_updateButton_clicked()
     }
 }
 
-void UpdateDialog::backupSaves()
+void UpdateDialog::backupSaves(QList<SaveFile *> saveFiles)
 {
-    onAppendLog(tr("Backing up save files...", "Log message"));
+    onAppendLog(tr("Backing up %1 save file(s)...", "Log message").arg(saveFiles.length()));
 
     // Backup all save files
-    if (SaveFile::backupAll()) {
+    if (SaveFile::backupAll(saveFiles)) {
         emit appendLog(tr("Savefiles have been backed up", "Log Message"));
     }
 }

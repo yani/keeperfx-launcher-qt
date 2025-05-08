@@ -7,6 +7,7 @@
 #include <QNetworkAccessManager>
 
 #include "kfxversion.h"
+#include "savefile.h"
 #include "ui_updatedialog.h"
 
 namespace Ui {
@@ -63,5 +64,5 @@ private:
     bool autoUpdate;
     QString originalTitleText;
 
-    void backupSaves();
+    void backupSaves(QList<SaveFile *> saveFiles);
 };

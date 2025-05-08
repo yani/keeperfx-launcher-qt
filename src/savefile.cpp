@@ -115,9 +115,11 @@ bool SaveFile::checkFileHeader(QFile& file) {
 
 bool SaveFile::backupAll()
 {
-    // Get all savefiles
-    QList<SaveFile *> saveFiles = SaveFile::getAll();
+    return SaveFile::backupAll(SaveFile::getAll());
+}
 
+bool SaveFile::backupAll(QList<SaveFile *> saveFiles)
+{
     // Check if there are savefiles to backup
     if (saveFiles.length() == 0) {
         qDebug() << "No save files found to backup";

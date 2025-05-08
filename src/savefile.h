@@ -24,4 +24,5 @@ public:
     static bool checkFileHeader(QFile& file);
 
     static bool backupAll();
+    static bool backupAll(QList<SaveFile *> saveFiles);
 };
