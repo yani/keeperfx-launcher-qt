@@ -140,31 +140,11 @@ void UpdateDialog::on_updateButton_clicked()
     // Disable update button
     ui->updateButton->setDisabled(true);
 
-    // Check if the user has any save files
-    QList<SaveFile *> saveFiles = SaveFile::getAll();
-    if (saveFiles.length() > 0) {
-        // Ask if user wants to backup their saves
-        if (this->autoUpdate == true) {
+    // Backup saves if enabled
+    if (Settings::getLauncherSetting("BACKUP_SAVES") == true) {
+        QList<SaveFile *> saveFiles = SaveFile::getAll();
+        if (saveFiles.length() > 0) {
             backupSaves(saveFiles);
-        } else {
-            auto backupAnswer = QMessageBox::question(this,
-                                                      tr("KeeperFX Update", "Messagebox Title"),
-                                                      tr("Updating KeeperFX might break your save files.\n\nDo you want to back them up?", "Messagebox Text"),
-                                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-
-            // Handle backup answer
-            if (backupAnswer == QMessageBox::No) {
-                onAppendLog(tr("Skipping save backup", "Log message"));
-            } else if (backupAnswer == QMessageBox::Cancel) {
-                // Cancel update process
-                ui->updateButton->setDisabled(false);
-                ui->titleLabel->setText(this->originalTitleText);
-                emit clearProgressBar();
-                emit appendLog(tr("Update canceled", "Log message"));
-                return;
-            } else if (backupAnswer == QMessageBox::Yes) {
-                backupSaves(saveFiles);
-            }
         }
     }
 

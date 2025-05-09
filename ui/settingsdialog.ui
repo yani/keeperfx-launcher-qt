@@ -1180,8 +1180,8 @@ height: 35px;
       <widget class="QCheckBox" name="checkBoxCheckForUpdates">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>90</y>
+         <x>440</x>
+         <y>40</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1193,8 +1193,8 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxRelease">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>120</y>
+         <x>620</x>
+         <y>80</y>
          <width>191</width>
          <height>25</height>
         </rect>
@@ -1204,7 +1204,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>280</y>
+         <y>140</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1216,8 +1216,8 @@ height: 35px;
       <widget class="QLabel" name="labelRelease">
        <property name="geometry">
         <rect>
-         <x>50</x>
-         <y>125</y>
+         <x>460</x>
+         <y>85</y>
          <width>141</width>
          <height>17</height>
         </rect>
@@ -1230,7 +1230,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>230</y>
+         <y>90</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1243,7 +1243,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>330</y>
+         <y>190</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -1283,14 +1283,27 @@ height: 35px;
       <widget class="QCheckBox" name="checkBoxAutoUpdate">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>180</y>
+         <x>460</x>
+         <y>120</y>
          <width>361</width>
          <height>23</height>
         </rect>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Update automatically</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxBackupSaves">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>160</y>
+         <width>361</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Backup savefiles during update</string>
        </property>
       </widget>
      </widget>
