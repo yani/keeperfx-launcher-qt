@@ -50,6 +50,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         this,
         &SettingsDialog::restoreSettings);*/
 
+    // Disable Save button when nothing is changed
+    ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(true);
+
     // Game languages dropdown
     ui->comboBoxLanguage->addItem("English", "ENG");                                    // English
     ui->comboBoxLanguage->addItem("Italiano", "ITA");                                   // Italian
@@ -713,6 +716,7 @@ void SettingsDialog::addSettingsChangedHandler()
     for (QCheckBox *checkBox : checkBoxes) {
         connect(checkBox, &QCheckBox::checkStateChanged, this, [this]() {
             this->settingHasChanged = true;
+            ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
         });
     }
 
@@ -721,6 +725,7 @@ void SettingsDialog::addSettingsChangedHandler()
     for (QComboBox *comboBox : comboBoxes) {
         connect(comboBox, &QComboBox::currentIndexChanged, this, [this]() {
             this->settingHasChanged = true;
+            ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
         });
     }
 
@@ -729,6 +734,7 @@ void SettingsDialog::addSettingsChangedHandler()
     for (QLineEdit *lineEdit : lineEdits) {
         connect(lineEdit, &QLineEdit::textChanged, this, [this]() {
             this->settingHasChanged = true;
+            ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
         });
     }
 
@@ -737,6 +743,7 @@ void SettingsDialog::addSettingsChangedHandler()
     for (PopupSignalComboBox *popupComboBox : popupComboBoxes) {
         connect(popupComboBox, &PopupSignalComboBox::currentIndexChanged, this, [this]() {
             this->settingHasChanged = true;
+            ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
         });
     }
 }
