@@ -10,6 +10,8 @@
         <file>res/img/dead_body_horny.png</file>
         <file>res/img/dead_body_mistress.png</file>
         <file>res/contributors.txt</file>
+        <file>res/img/caret-down.png</file>
+        <file>res/img/caret-down-disabled.png</file>
     </qresource>
     <qresource prefix="/i18n">
         <file>i18n/translations_nl.po</file>

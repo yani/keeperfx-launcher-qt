@@ -58,6 +58,13 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     ui->spinnerLabel->setText("");
     clearLatestFromKfxNet();
 
+    // Add enabled and disabled caret icon to "play extra" button
+    // Note: The normal icon file is also set in the .ui file
+    QIcon caretDownIcon;
+    caretDownIcon.addFile("://res/img/caret-down.png", QSize(), QIcon::Normal);
+    caretDownIcon.addFile("://res/img/caret-down-disabled.png", QSize(), QIcon::Disabled);
+    ui->playExtraButton->setIcon(caretDownIcon);
+
     // Disable resizing and remove maximize button
     // This does not work on Wayland (for now)
     setFixedSize(size());
