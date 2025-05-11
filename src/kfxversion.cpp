@@ -88,10 +88,10 @@ QString KfxVersion::getVersionString(QFile binary){
 
     // Get regex match
     if (match.hasMatch()) {
-        qDebug() << "Grabbed 'ProductVersion'" << match.captured(1) << "from" << filePath;
+        qDebug() << "Grabbed ProductVersion" << match.captured(1) << "from" << filePath;
         return match.captured(1);
     } else {
-        qDebug() << "Error: Version not found in PE file";
+        qWarning() << "Error: Version not found in PE file";
     }
 
     return QString();

@@ -227,7 +227,7 @@ int main(int argc, char *argv[])
     // We need this info to start the game with a different command
     // The flatpak should be given the '--filesystem=host' permission
     if (qEnvironmentVariableIsSet("FLATPAK_ID")) {
-        qInfo() << "Running inside Flatpak: " << qgetenv("FLATPAK_ID");
+        qInfo() << "Running inside Flatpak:" << qgetenv("FLATPAK_ID");
     }
 
 // Info: Running under Wine
