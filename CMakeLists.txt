@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.24)
 project(keeperfx-launcher-qt VERSION 0.1 LANGUAGES CXX)
 
 # Check for supported operating systems
-if(NOT (LINUX OR WINDOWS))
-    message(FATAL_ERROR "Only Linux and Windows compilation is implemented")
+if(NOT (UNIX OR WIN32))
+    message(FATAL_ERROR "Only UNIX and WIN32 compilation is implemented")
 endif()
 
 # CMake settings
@@ -54,12 +54,12 @@ if (NOT LIEF_FOUND)
     message(STATUS "LIEF library not found, using local dependency")
 
     # Download LIEF if it is not downloaded yet
-    if(LINUX)
+    if(UNIX)
         set(LIEF_INSTALL_DIR ${CMAKE_SOURCE_DIR}/deps/LIEF-0.17.0-Linux-x86_64)
         if(NOT EXISTS LIEF_INSTALL_DIR)
             download_and_extract("https://lief.s3-website.fr-par.scw.cloud/latest/sdk/LIEF-0.17.0-Linux-x86_64.tar.gz" ${CMAKE_SOURCE_DIR}/deps)
         endif()
-    elseif(WINDOWS)
+    elseif(WIN32)
         set(LIEF_INSTALL_DIR ${CMAKE_SOURCE_DIR}/deps/LIEF-0.17.0-win64)
         if(NOT EXISTS LIEF_INSTALL_DIR)
             download_and_extract("https://lief.s3-website.fr-par.scw.cloud/latest/sdk/LIEF-0.17.0-win64.zip" ${CMAKE_SOURCE_DIR}/deps)
@@ -77,7 +77,7 @@ endif()
 file(GLOB PROJECT_SOURCES src/*.cpp src/*.h)
 file(GLOB UI_FILES ui/*.ui)
 
-if(WINDOWS)
+if(WIN32)
     qt_add_executable(keeperfx-launcher-qt
         MANUAL_FINALIZATION
         WIN32
@@ -111,9 +111,9 @@ target_link_libraries(
 if (LIEF_FOUND)
     target_link_libraries(keeperfx-launcher-qt PRIVATE LIEF::LIEF)
 else()
-    if(LINUX)
+    if(UNIX)
         target_link_libraries(keeperfx-launcher-qt PRIVATE ${LIEF_LIB_DIR}/libLIEF.a)
-    elseif(WINDOWS)
+    elseif(WIN32)
         if (CMAKE_BUILD_TYPE STREQUAL "Release")
             target_link_libraries(keeperfx-launcher-qt PRIVATE ${LIEF_LIB_DIR}/LIEF_static.lib)
         else()
@@ -141,10 +141,10 @@ install(TARGETS keeperfx-launcher-qt
 # Finalize executable
 qt_finalize_executable(keeperfx-launcher-qt)
 
-# Copy compiled libraries
-if (LINUX)
+# Copy pre-compiled libraries
+if (UNIX)
     file(GLOB COMPILED_LIBS "${CMAKE_SOURCE_DIR}/ext/*.so")
-elseif (WINDOWS)
+elseif (WIN32)
     file(GLOB COMPILED_LIBS "${CMAKE_SOURCE_DIR}/ext/*.dll")
 endif()
 foreach(LIB ${COMPILED_LIBS})
