@@ -301,6 +301,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="text">
          <string comment="Button">Cancel</string>
         </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::EditClear"/>
+        </property>
         <property name="autoDefault">
          <bool>false</bool>
         </property>

@@ -121,6 +121,9 @@
         <property name="text">
          <string comment="Button">Cancel</string>
         </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::EditClear"/>
+        </property>
         <property name="autoDefault">
          <bool>false</bool>
         </property>
@@ -142,6 +145,9 @@
         </property>
         <property name="text">
          <string comment="Button">Connect</string>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::NetworkWired"/>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

@@ -141,6 +141,9 @@ Choose the stable release for reliability or the alpha version if you want to he
         <property name="text">
          <string comment="Button">Cancel</string>
         </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::EditClear"/>
+        </property>
         <property name="autoDefault">
          <bool>false</bool>
         </property>
@@ -162,6 +165,9 @@ Choose the stable release for reliability or the alpha version if you want to he
         </property>
         <property name="text">
          <string comment="Button">Install</string>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::SoftwareUpdateAvailable"/>
         </property>
         <property name="autoDefault">
          <bool>false</bool>

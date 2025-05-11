@@ -83,6 +83,9 @@
         <property name="text">
          <string comment="Button">Close</string>
         </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::EditClear"/>
+        </property>
         <property name="autoDefault">
          <bool>false</bool>
         </property>
@@ -105,8 +108,14 @@
         <property name="text">
          <string comment="Button">Scan</string>
         </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::NetworkWireless"/>
+        </property>
         <property name="autoDefault">
          <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -127,11 +136,14 @@
         <property name="text">
          <string comment="Button">Connect</string>
         </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::NetworkWired"/>
+        </property>
         <property name="autoDefault">
          <bool>false</bool>
         </property>
         <property name="default">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </item>

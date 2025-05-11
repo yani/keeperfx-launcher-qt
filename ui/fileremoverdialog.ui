@@ -107,6 +107,9 @@ Please review the files and remove them.</string>
         <property name="text">
          <string comment="Button">Cancel</string>
         </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::EditClear"/>
+        </property>
         <property name="autoDefault">
          <bool>false</bool>
         </property>
