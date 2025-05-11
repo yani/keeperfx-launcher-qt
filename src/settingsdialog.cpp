@@ -76,7 +76,22 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxLanguage->addItem("\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430", "UKR"); // Ukrainian
     }
 
-    // Launcher language dropdown (
+    // Player colors
+    ui->comboBoxHumanPlayer->addItem(tr("0: Red (Default)", "Player Color Dropdown"), "0");
+    ui->comboBoxHumanPlayer->addItem(tr("1: Blue", "Player Color Dropdown"), "1");
+    ui->comboBoxHumanPlayer->addItem(tr("2: Green", "Player Color Dropdown"), "2");
+    ui->comboBoxHumanPlayer->addItem(tr("3: Yellow", "Player Color Dropdown"), "3");
+    ui->comboBoxHumanPlayer->addItem(tr("4: White / Heroes", "Player Color Dropdown"), "4");
+    // 5 = neutral but that would just break
+
+    // Add new player colors
+    if (KfxVersion::hasFunctionality("player_colors_purple_orange_black") == true) {
+        ui->comboBoxHumanPlayer->addItem(tr("6: Purple", "Player Color Dropdown"), "6");
+        ui->comboBoxHumanPlayer->addItem(tr("7: Black", "Player Color Dropdown"), "7");
+        ui->comboBoxHumanPlayer->addItem(tr("8: Orange", "Player Color Dropdown"), "8");
+    }
+
+    // Launcher language dropdown
     ui->comboBoxLauncherLanguage->addItem("English", "en");    // English
     ui->comboBoxLauncherLanguage->addItem("Nederlands", "nl"); // Dutch
     //ui->comboBoxLauncherLanguage->addItem("Italiano", "it"); // Italian
@@ -322,13 +337,13 @@ void SettingsDialog::loadSettings()
     ui->checkBoxDeltaTime->setChecked(Settings::getKfxSetting("DELTA_TIME") == true);
     ui->checkBoxFreezeGameNoFocus->setChecked(Settings::getKfxSetting("FREEZE_GAME_ON_FOCUS_LOST")
                                               == true);
+    ui->comboBoxHumanPlayer->setCurrentIndex(ui->comboBoxHumanPlayer->findData(Settings::getLauncherSetting("GAME_PARAM_HUMAN_PLAYER").toString()));
 
     // ============================================================================
     // ================================ GRAPHICS ==================================
     // ============================================================================
 
-    popupComboBoxMonitorDisplay->setCurrentIndex(popupComboBoxMonitorDisplay->findData(
-        Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
+    popupComboBoxMonitorDisplay->setCurrentIndex(popupComboBoxMonitorDisplay->findData(Settings::getKfxSetting("DISPLAY_NUMBER").toString()));
     ui->checkBoxSmoothenVideo->setChecked(Settings::getLauncherSetting("GAME_PARAM_VID_SMOOTH")
                                           == true);
 
@@ -549,7 +564,7 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("COMMAND_CHAR", ui->lineEditCommandChar->text());
     Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
     Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
-
+    Settings::setLauncherSetting("GAME_PARAM_HUMAN_PLAYER", ui->comboBoxHumanPlayer->currentData().toString());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================

@@ -31,6 +31,7 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"GAME_PARAM_NO_INTRO", false},
     {"GAME_PARAM_ALEX", false},
     {"GAME_PARAM_FPS", "20"},
+    {"GAME_PARAM_HUMAN_PLAYER", "0"},
     {"GAME_PARAM_VID_SMOOTH", false},
 };
 
@@ -41,6 +42,7 @@ QMap<QString, QString> Settings::gameSettingsParameterMap = {
     {"GAME_PARAM_ALEX", "-alex"},
     {"GAME_PARAM_VID_SMOOTH", "-vidsmooth"},
     // {"GAME_PARAM_FPS", "-fps %d"}, // Hardcoded
+    // {"GAME_PARAM_HUMAN_PLAYER", "-human %d"}, // Hardcoded
 };
 
 QMap<QString, QString> Settings::localeToGameLanguageMap = {
@@ -246,6 +248,12 @@ QStringList Settings::getGameSettingsParameters()
     QString fps = Settings::getLauncherSetting("GAME_PARAM_FPS").toString();
     if (fps != Settings::defaultLauncherSettingsMap["GAME_PARAM_FPS"]) {
         paramList << "-fps" << fps;
+    }
+
+    // Add human player
+    QString humanPlayer = Settings::getLauncherSetting("GAME_PARAM_HUMAN_PLAYER").toString();
+    if (humanPlayer != Settings::defaultLauncherSettingsMap["GAME_PARAM_HUMAN_PLAYER"]) {
+        paramList << "-human" << humanPlayer;
     }
 
     return paramList;

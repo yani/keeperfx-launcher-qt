@@ -214,7 +214,7 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditCommandChar">
        <property name="geometry">
         <rect>
-         <x>600</x>
+         <x>610</x>
          <y>40</y>
          <width>41</width>
          <height>25</height>
@@ -278,6 +278,39 @@ height: 35px;
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Freeze game when not focused</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelHumanPlayer">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>193</y>
+         <width>171</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Dropdown Title Label">Human Player</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxHumanPlayer">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>190</y>
+         <width>181</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
        </property>
       </widget>
      </widget>

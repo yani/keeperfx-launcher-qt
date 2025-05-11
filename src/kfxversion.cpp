@@ -15,6 +15,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"direct_enet_connect", "1.0.0"}, // '-connect' parameter
     {"splash_screen_ordering", "1.2.0.4427"},
     {"ukrainian_game_language", "1.2.0.4471"},
+    {"player_colors_purple_orange_black", "1.0.0.3729"},
 
     // Absolute Config path is temporary disabled because we still want support for multiple KFX installations
     {"absolute_config_path", "999.999.999"}, // '-config' absolute path was added in 1.2.0.4408
