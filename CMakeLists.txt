@@ -46,7 +46,17 @@ add_subdirectory(${BIT7Z_DIR})
 
 # Find packages
 find_package(Qt6 REQUIRED COMPONENTS Widgets Network Gui)
-find_package(ZLIB REQUIRED)
+
+# Add Zlib
+find_package(ZLIB)
+if (NOT ZLIB_FOUND)
+    message(STATUS "Zlib library not found, using local dependency")
+    set(ZLIB_DIR ${CMAKE_SOURCE_DIR}/deps/zlib-1.3.1)
+    if(NOT EXISTS ${ZLIB_DIR})
+        download_and_extract("https://zlib.net/zlib131.zip" ${CMAKE_SOURCE_DIR}/deps)
+    endif()
+    add_subdirectory(${ZLIB_DIR})
+endif()
 
 # Add LIEF
 find_package(LIEF)
@@ -104,8 +114,15 @@ target_link_libraries(
     Qt6::Network
     Qt6::Gui
     bit7z
-    ZLIB::ZLIB
 )
+
+# Link Zlib
+if (ZLIB_FOUND)
+    target_link_libraries(keeperfx-launcher-qt PRIVATE ZLIB::ZLIB)
+else()
+    target_include_directories(keeperfx-launcher-qt PRIVATE ${ZLIB_DIR})
+    target_link_libraries(keeperfx-launcher-qt PRIVATE zlibstatic)
+endif()
 
 # Link LIEF
 if (LIEF_FOUND)
