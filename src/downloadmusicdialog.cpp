@@ -205,7 +205,9 @@ void DownloadMusicDialog::onDownloadFailed(const QString &reason)
 void DownloadMusicDialog::closeEvent(QCloseEvent *event)
 {
     // Ask if user is sure
-    int result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure?\n\nYou will be unable to enjoy the background music.", "MessageBox Text"));
+    int result = QMessageBox::question(this,
+                                       tr("Confirmation", "MessageBox Title"),
+                                       tr("Are you sure?\n\nYou will not be able to hear the background music without having your CD in your disk drive.", "MessageBox Text"));
 
     // Handle answer
     if (result == QMessageBox::Yes) {

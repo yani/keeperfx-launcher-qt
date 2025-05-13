@@ -60,7 +60,9 @@
      <property name="text">
       <string comment="Information">It seems the background music files were not found. This might happen when you copied over the Dungeon Keeper files from the CD instead of a digital release.
 
-You can let the launcher automatically download them because you have already proven your ownership of the original Dungeon Keeper game files.</string>
+You can let the launcher automatically download them because you have already proven your ownership of the original Dungeon Keeper game files.
+
+If you do not download the music files you will need to have the original CD in your disk drive to hear the background music.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
