@@ -973,7 +973,7 @@ void LauncherMainWindow::startGame(Game::StartType startType, QVariant data1, QV
             QMessageBox::warning(this,
                                  tr("KeeperFX Error", "MessageBox Title"),
                                  tr("Failed to start KeeperFX.\n\n"
-                                    "Error:\n",
+                                    "Error:\n%1",
                                     "MessageBox Text")
                                      .arg(errorString));
         } else {
