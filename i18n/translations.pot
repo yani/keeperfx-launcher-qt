@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 22:05+0200\n"
+"POT-Creation-Date: 2025-05-13 19:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,12 +122,12 @@ msgctxt "CopyDkFilesDialog|Window Title"
 msgid "Copy DK Files"
 msgstr ""
 
-#: ../ui/copydkfilesdialog.ui:32
+#: ../ui/copydkfilesdialog.ui:36
 msgctxt "CopyDkFilesDialog|Header"
 msgid "Copy Dungeon Keeper Files"
 msgstr ""
 
-#: ../ui/copydkfilesdialog.ui:61
+#: ../ui/copydkfilesdialog.ui:65
 msgctxt "CopyDkFilesDialog|Information"
 msgid ""
 "KeeperFX requires the original Dungeon Keeper files for copyright reasons.\n"
@@ -137,74 +137,74 @@ msgid ""
 "If you want to use a digital version you will have to install it first."
 msgstr ""
 
-#: ../ui/copydkfilesdialog.ui:94
+#: ../ui/copydkfilesdialog.ui:98
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Browse"
 msgstr ""
 
-#: ../ui/copydkfilesdialog.ui:125
+#: ../ui/copydkfilesdialog.ui:135
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/copydkfilesdialog.ui:147
+#: ../ui/copydkfilesdialog.ui:160
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Copy"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:29
+#: ../src/copydkfilesdialog.cpp:30
 msgctxt "CopyDkFilesDialog|Label"
 msgid "A suitable DK installation has been automatically detected."
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:42
+#: ../src/copydkfilesdialog.cpp:43
 msgctxt "CopyDkFilesDialog|Directory Browse Dialog"
 msgid "Select Directory containing Dungeon Keeper files"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:51 ../src/copydkfilesdialog.cpp:72
+#: ../src/copydkfilesdialog.cpp:52 ../src/copydkfilesdialog.cpp:73
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Original DK files not found"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:52 ../src/copydkfilesdialog.cpp:73
+#: ../src/copydkfilesdialog.cpp:53 ../src/copydkfilesdialog.cpp:74
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The chosen directory does not contain all of the required files. Please "
 "select an original Dungeon Keeper installation."
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:63
+#: ../src/copydkfilesdialog.cpp:64
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Select a directory"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:63
+#: ../src/copydkfilesdialog.cpp:64
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Please select an original Dungeon Keeper installation location."
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:80 ../src/copydkfilesdialog.cpp:86
+#: ../src/copydkfilesdialog.cpp:81 ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Failed to copy files"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:80
+#: ../src/copydkfilesdialog.cpp:81
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "The current directory is not writable."
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:86
+#: ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Something went wrong while copying the files."
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:92
+#: ../src/copydkfilesdialog.cpp:99
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "DK files copied!"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:93
+#: ../src/copydkfilesdialog.cpp:100
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The required Dungeon Keeper files have been copied.\n"
@@ -212,12 +212,12 @@ msgid ""
 "You can now play KeeperFX!"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:106
+#: ../src/copydkfilesdialog.cpp:113
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr ""
 
-#: ../src/copydkfilesdialog.cpp:107
+#: ../src/copydkfilesdialog.cpp:114
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -230,12 +230,12 @@ msgctxt "CrashDialog|Window Title"
 msgid "KeeperFX Crash Report"
 msgstr ""
 
-#: ../ui/crashdialog.ui:70
+#: ../ui/crashdialog.ui:74
 msgctxt "CrashDialog|Header"
 msgid "KeeperFX has crashed"
 msgstr ""
 
-#: ../ui/crashdialog.ui:127
+#: ../ui/crashdialog.ui:131
 msgctxt "CrashDialog|Information Label"
 msgid ""
 "It seems that KeeperFX has crashed and is unable to recover. If you wish to "
@@ -245,62 +245,62 @@ msgid ""
 "and configuration will be sent too."
 msgstr ""
 
-#: ../ui/crashdialog.ui:148
+#: ../ui/crashdialog.ui:152
 #, qt-format
 msgctxt "CrashDialog|Information Label"
 msgid "You can also raise an issue on Github: %1"
 msgstr ""
 
-#: ../ui/crashdialog.ui:164
+#: ../ui/crashdialog.ui:168
 msgctxt "CrashDialog|Input box title"
 msgid "Information (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:196
+#: ../ui/crashdialog.ui:200
 msgctxt "CrashDialog|Textarea Placeholder"
 msgid ""
 "Please explain what happened, and if possible the steps to reproduce this "
 "crash."
 msgstr ""
 
-#: ../ui/crashdialog.ui:206
+#: ../ui/crashdialog.ui:210
 msgctxt "CrashDialog|Input box title"
 msgid "Savefile (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:228
+#: ../ui/crashdialog.ui:232
 msgctxt "CrashDialog|Dropdown Placeholder Text"
 msgid ""
 "If you have a game save that could provide us with more information. You can "
 "add it here."
 msgstr ""
 
-#: ../ui/crashdialog.ui:238
+#: ../ui/crashdialog.ui:242
 msgctxt "CrashDialog|Input box title"
 msgid "Contact Information (Optional)"
 msgstr ""
 
-#: ../ui/crashdialog.ui:254
+#: ../ui/crashdialog.ui:258
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Discord handle"
 msgstr ""
 
-#: ../ui/crashdialog.ui:261
+#: ../ui/crashdialog.ui:265
 msgctxt "CrashDialog|Input Placeholder"
 msgid "KeeperFX.net username"
 msgstr ""
 
-#: ../ui/crashdialog.ui:268
+#: ../ui/crashdialog.ui:272
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Email Address"
 msgstr ""
 
-#: ../ui/crashdialog.ui:302
+#: ../ui/crashdialog.ui:306
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/crashdialog.ui:324
+#: ../ui/crashdialog.ui:331
 msgctxt "CrashDialog|Button"
 msgid "Send"
 msgstr ""
@@ -342,34 +342,34 @@ msgctxt "DirectConnectDialog|Window Title"
 msgid "Direct Connect"
 msgstr ""
 
-#: ../ui/directconnectdialog.ui:29
+#: ../ui/directconnectdialog.ui:33
 msgctxt "DirectConnectDialog|Header"
 msgid "Direct Connect"
 msgstr ""
 
-#: ../ui/directconnectdialog.ui:47
+#: ../ui/directconnectdialog.ui:51
 msgctxt "DirectConnectDialog|Information Label"
 msgid ""
 "Directly connect to an open ENET lobby. Enter the IP address of the host. "
 "Only ENET is supported."
 msgstr ""
 
-#: ../ui/directconnectdialog.ui:72
+#: ../ui/directconnectdialog.ui:76
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "IP Address"
 msgstr ""
 
-#: ../ui/directconnectdialog.ui:88
+#: ../ui/directconnectdialog.ui:92
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "Port"
 msgstr ""
 
-#: ../ui/directconnectdialog.ui:122
+#: ../ui/directconnectdialog.ui:126
 msgctxt "DirectConnectDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/directconnectdialog.ui:144
+#: ../ui/directconnectdialog.ui:151
 msgctxt "DirectConnectDialog|Button"
 msgid "Connect"
 msgstr ""
@@ -389,17 +389,157 @@ msgctxt "DirectConnectDialog|MessageBox Text"
 msgid "IPv6 addresses are not supported."
 msgstr ""
 
+#: ../ui/downloadmusicdialog.ui:14
+msgctxt "DownloadMusicDialog|Dialog Title"
+msgid "KeeperFX Background Music"
+msgstr ""
+
+#: ../ui/downloadmusicdialog.ui:36
+msgctxt "DownloadMusicDialog|Header"
+msgid "Download Music Files"
+msgstr ""
+
+#: ../ui/downloadmusicdialog.ui:65
+msgctxt "DownloadMusicDialog|Information"
+msgid ""
+"It seems the background music files were not found. This might happen when "
+"you copied over the Dungeon Keeper files from the CD instead of a digital "
+"release.\n"
+"\n"
+"You can let the launcher automatically download them because you have "
+"already proven your ownership of the original Dungeon Keeper game files.\n"
+"\n"
+"If you do not download the music files you will need to have the original CD "
+"in your disk drive to hear the background music."
+msgstr ""
+
+#: ../ui/downloadmusicdialog.ui:138
+msgctxt "DownloadMusicDialog|Button"
+msgid "Cancel"
+msgstr ""
+
+#: ../ui/downloadmusicdialog.ui:163
+msgctxt "DownloadMusicDialog|Button"
+msgid "Download"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:63
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Getting download URL for music archive"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:66
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Failed to get download URL for music archive"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:71
+#, qt-format
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Music archive URL: %1"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:75
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Invalid music archive file extension. It must be a 7zip archive."
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:92
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Failed to download music archive"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:96
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Music archive successfully downloaded"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:102
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Testing music archive..."
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:113
+msgctxt "DownloadMusicDialog|Failure message"
+msgid "Music archive test failed. It may be corrupted."
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:121
+#, qt-format
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Total size: %1MiB"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:125
+msgctxt "DownloadMusicDialog|Progress bar"
+msgid "Extracting: %p%"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:126
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Extracting..."
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:141
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Extraction completed"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:145
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Removing temporary archive"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:152
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Disabling CD music setting"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:156
+msgctxt "DownloadMusicDialog|Log Message"
+msgid "Done!"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:157
+msgctxt "DownloadMusicDialog|MessageBox Text"
+msgid "The KeeperFX background music has been successfully downloaded!"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:166
+msgctxt "DownloadMusicDialog|Progress bar"
+msgid "Downloading: %p% (%vMiB)"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:208
+msgctxt "DownloadMusicDialog|MessageBox Title"
+msgid "Download failed"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:215
+msgctxt "DownloadMusicDialog|MessageBox Title"
+msgid "Confirmation"
+msgstr ""
+
+#: ../src/downloadmusicdialog.cpp:216
+msgctxt "DownloadMusicDialog|MessageBox Text"
+msgid ""
+"Are you sure?\n"
+"\n"
+"You will not be able to hear the background music without having your CD in "
+"your disk drive."
+msgstr ""
+
 #: ../ui/enetservertestdialog.ui:14
 msgctxt "EnetServerTestDialog|Window Title"
 msgid "Test internet lobby"
 msgstr ""
 
-#: ../ui/enetservertestdialog.ui:26
+#: ../ui/enetservertestdialog.ui:30
 msgctxt "EnetServerTestDialog|Header"
 msgid "Multiplayer Lobby Portforwarding Test"
 msgstr ""
 
-#: ../ui/enetservertestdialog.ui:56
+#: ../ui/enetservertestdialog.ui:60
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "This tool checks if your KeeperFX multiplayer lobby can be reached from the "
@@ -407,7 +547,7 @@ msgid ""
 "accessible within your network."
 msgstr ""
 
-#: ../ui/enetservertestdialog.ui:74
+#: ../ui/enetservertestdialog.ui:78
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "To host a game online, you must open port 5556 in your router. How to do "
@@ -415,7 +555,7 @@ msgid ""
 "for instructions or ask your provider for help."
 msgstr ""
 
-#: ../ui/enetservertestdialog.ui:95
+#: ../ui/enetservertestdialog.ui:99
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "KeeperFX only works with IPv4. If you don't have an IPv4 address or you are "
@@ -423,12 +563,12 @@ msgid ""
 "can ask your internet provider if they can give you an IPv4 address."
 msgstr ""
 
-#: ../ui/enetservertestdialog.ui:183
+#: ../ui/enetservertestdialog.ui:187
 msgctxt "EnetServerTestDialog|Button"
 msgid "Close"
 msgstr ""
 
-#: ../ui/enetservertestdialog.ui:205
+#: ../ui/enetservertestdialog.ui:212
 msgctxt "EnetServerTestDialog|Button"
 msgid "Test"
 msgstr ""
@@ -519,12 +659,12 @@ msgctxt "FileRemoverDialog|Window Title"
 msgid "Remove unwanted files"
 msgstr ""
 
-#: ../ui/fileremoverdialog.ui:32
+#: ../ui/fileremoverdialog.ui:36
 msgctxt "FileRemoverDialog|Header"
 msgid "Remove unwanted files"
 msgstr ""
 
-#: ../ui/fileremoverdialog.ui:56
+#: ../ui/fileremoverdialog.ui:60
 msgctxt "FileRemoverDialog|Information Label"
 msgid ""
 "The KeeperFX launcher has found some files that might cause problems with "
@@ -537,12 +677,12 @@ msgid ""
 "Please review the files and remove them."
 msgstr ""
 
-#: ../ui/fileremoverdialog.ui:108
+#: ../ui/fileremoverdialog.ui:112
 msgctxt "FileRemoverDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/fileremoverdialog.ui:130
+#: ../ui/fileremoverdialog.ui:137
 msgctxt "FileRemoverDialog|Button"
 msgid "Remove All"
 msgstr ""
@@ -575,12 +715,12 @@ msgctxt "InstallKfxDialog|Window Title"
 msgid "Install KeeperFX"
 msgstr ""
 
-#: ../ui/installkfxdialog.ui:26
+#: ../ui/installkfxdialog.ui:30
 msgctxt "InstallKfxDialog|Header"
 msgid "Download and Install KeeperFX"
 msgstr ""
 
-#: ../ui/installkfxdialog.ui:41
+#: ../ui/installkfxdialog.ui:45
 msgctxt "InstallKfxDialog|Information Label"
 msgid ""
 "Select your version, and this installer will download and install KeeperFX.\n"
@@ -589,17 +729,17 @@ msgid ""
 "to help us out with testing."
 msgstr ""
 
-#: ../ui/installkfxdialog.ui:70
+#: ../ui/installkfxdialog.ui:74
 msgctxt "InstallKfxDialog|Label"
 msgid "Release version:"
 msgstr ""
 
-#: ../ui/installkfxdialog.ui:142
+#: ../ui/installkfxdialog.ui:146
 msgctxt "InstallKfxDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/installkfxdialog.ui:164
+#: ../ui/installkfxdialog.ui:171
 msgctxt "InstallKfxDialog|Button"
 msgid "Install"
 msgstr ""
@@ -786,48 +926,48 @@ msgctxt "LauncherMainWindow|"
 msgid "KeeperFX Launcher"
 msgstr ""
 
-#: ../ui/launchermainwindow.ui:122
+#: ../ui/launchermainwindow.ui:126
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest workshop items"
 msgstr ""
 
-#: ../ui/launchermainwindow.ui:208
+#: ../ui/launchermainwindow.ui:212
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest News"
 msgstr ""
 
-#: ../ui/launchermainwindow.ui:293
+#: ../ui/launchermainwindow.ui:297
 msgctxt "LauncherMainWindow|Button"
 msgid "Settings"
 msgstr ""
 
-#: ../ui/launchermainwindow.ui:309
+#: ../ui/launchermainwindow.ui:313
 msgctxt "LauncherMainWindow|Button"
 msgid "Workshop"
 msgstr ""
 
-#: ../ui/launchermainwindow.ui:325
+#: ../ui/launchermainwindow.ui:329
 msgctxt "LauncherMainWindow|Button"
 msgid "Logfile"
 msgstr ""
 
-#: ../ui/launchermainwindow.ui:338
+#: ../ui/launchermainwindow.ui:342
 msgctxt "LauncherMainWindow|Button"
 msgid "Open Folder"
 msgstr ""
 
-#: ../ui/launchermainwindow.ui:441
+#: ../ui/launchermainwindow.ui:445
 msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:157 ../src/launchermainwindow.cpp:178
-#: ../src/launchermainwindow.cpp:847 ../src/launchermainwindow.cpp:853
+#: ../src/launchermainwindow.cpp:174 ../src/launchermainwindow.cpp:195
+#: ../src/launchermainwindow.cpp:974 ../src/launchermainwindow.cpp:980
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:158
+#: ../src/launchermainwindow.cpp:175
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. It's possible your "
@@ -836,59 +976,59 @@ msgid ""
 "Do you want to automatically reinstall KeeperFX?"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:179
+#: ../src/launchermainwindow.cpp:196
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
 "error to the KeeperFX team."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:270
+#: ../src/launchermainwindow.cpp:287
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:278
+#: ../src/launchermainwindow.cpp:295
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:285
+#: ../src/launchermainwindow.cpp:302
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:296
+#: ../src/launchermainwindow.cpp:313
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:307
+#: ../src/launchermainwindow.cpp:324
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:315
+#: ../src/launchermainwindow.cpp:332
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:326
+#: ../src/launchermainwindow.cpp:343
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:333 ../src/launchermainwindow.cpp:337
+#: ../src/launchermainwindow.cpp:350 ../src/launchermainwindow.cpp:354
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:333 ../src/launchermainwindow.cpp:337
+#: ../src/launchermainwindow.cpp:350 ../src/launchermainwindow.cpp:354
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:438
+#: ../src/launchermainwindow.cpp:473
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -896,12 +1036,12 @@ msgid ""
 "Do you want to download and install KeeperFX?"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:444
+#: ../src/launchermainwindow.cpp:479
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:444
+#: ../src/launchermainwindow.cpp:479
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -909,24 +1049,24 @@ msgid ""
 "You will be unable to play KeeperFX."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:474
+#: ../src/launchermainwindow.cpp:512
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:475
+#: ../src/launchermainwindow.cpp:513
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
 "now?"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:813
+#: ../src/launchermainwindow.cpp:940
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:814
+#: ../src/launchermainwindow.cpp:941
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -936,20 +1076,22 @@ msgid ""
 "It is highly suggested to only use official KeeperFX files."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:848
+#: ../src/launchermainwindow.cpp:975
+#, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Failed to start KeeperFX.\n"
 "\n"
 "Error:\n"
+"%1"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:853
+#: ../src/launchermainwindow.cpp:980
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:877
+#: ../src/launchermainwindow.cpp:1004
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr ""
@@ -959,12 +1101,12 @@ msgctxt "ScanNetworkDialog|Window Title"
 msgid "Scan Network"
 msgstr ""
 
-#: ../ui/scannetworkdialog.ui:26
+#: ../ui/scannetworkdialog.ui:30
 msgctxt "ScanNetworkDialog|Header"
 msgid "Scan Network"
 msgstr ""
 
-#: ../ui/scannetworkdialog.ui:41
+#: ../ui/scannetworkdialog.ui:45
 msgctxt "ScanNetworkDialog|Information Label"
 msgid ""
 "Scan your local network (LAN) for open ENET lobbies. The other person should "
@@ -973,17 +1115,17 @@ msgid ""
 "lobby this tool should be able to find their IP address."
 msgstr ""
 
-#: ../ui/scannetworkdialog.ui:84
+#: ../ui/scannetworkdialog.ui:88
 msgctxt "ScanNetworkDialog|Button"
 msgid "Close"
 msgstr ""
 
-#: ../ui/scannetworkdialog.ui:106
+#: ../ui/scannetworkdialog.ui:113
 msgctxt "ScanNetworkDialog|Button"
 msgid "Scan"
 msgstr ""
 
-#: ../ui/scannetworkdialog.ui:128
+#: ../ui/scannetworkdialog.ui:141
 msgctxt "ScanNetworkDialog|Button"
 msgid "Connect"
 msgstr ""
@@ -1023,406 +1165,476 @@ msgctxt "SettingsDialog|Window Title"
 msgid "KeeperFX Settings"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:37
+#: ../ui/settingsdialog.ui:41
 msgctxt "SettingsDialog|Tab Title"
 msgid "Game"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:69
+#: ../ui/settingsdialog.ui:73
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Game language"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:87
+#: ../ui/settingsdialog.ui:91
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Skip Intro"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:105
+#: ../ui/settingsdialog.ui:109
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Cheats"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:123
+#: ../ui/settingsdialog.ui:127
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:156
+#: ../ui/settingsdialog.ui:160
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Screenshot type"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:174
+#: ../ui/settingsdialog.ui:178
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
 "Gameturns per second\n"
 "(default = 20)"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:211
+#: ../ui/settingsdialog.ui:215
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Command character"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:244
+#: ../ui/settingsdialog.ui:248
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display splash screens"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:262
+#: ../ui/settingsdialog.ui:266
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable delta time"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:280
+#: ../ui/settingsdialog.ui:284
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Freeze game when not focused"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:286
+#: ../ui/settingsdialog.ui:302
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Human Player"
+msgstr ""
+
+#: ../ui/settingsdialog.ui:323
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:298
+#: ../ui/settingsdialog.ui:335
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Smoothen video"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:316 ../ui/settingsdialog.ui:677
+#: ../ui/settingsdialog.ui:353 ../ui/settingsdialog.ui:714
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resolution"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:364 ../ui/settingsdialog.ui:824
+#: ../ui/settingsdialog.ui:401 ../ui/settingsdialog.ui:861
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display mode"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:397
+#: ../ui/settingsdialog.ui:434
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display monitor"
 msgstr ""
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:415
+#: ../ui/settingsdialog.ui:452
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 1"
 msgstr ""
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:433
+#: ../ui/settingsdialog.ui:470
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 2"
 msgstr ""
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:451
+#: ../ui/settingsdialog.ui:488
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 3"
 msgstr ""
 
 #. This is shown under the views configuration
-#: ../ui/settingsdialog.ui:527
+#: ../ui/settingsdialog.ui:564
 msgctxt "SettingsDialog|Information Label"
 msgid ""
 "<i>Switch between in-game views by pressing <strong>Alt + R</strong></i>"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:545
+#: ../ui/settingsdialog.ui:582
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:578
+#: ../ui/settingsdialog.ui:615
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Creature flower size (px)"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:611
+#: ../ui/settingsdialog.ui:648
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Hand size %"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:659
+#: ../ui/settingsdialog.ui:696
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Select box line size %"
 msgstr ""
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:755
+#: ../ui/settingsdialog.ui:792
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Menu"
 msgstr ""
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:788
+#: ../ui/settingsdialog.ui:825
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Failsafe"
 msgstr ""
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:806
+#: ../ui/settingsdialog.ui:843
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Movies"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:845
+#: ../ui/settingsdialog.ui:882
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:862
+#: ../ui/settingsdialog.ui:899
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable sound"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:880
+#: ../ui/settingsdialog.ui:917
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Use CD music instead of local files"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:898
+#: ../ui/settingsdialog.ui:935
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:916
+#: ../ui/settingsdialog.ui:953
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable atmospheric sounds"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:939
+#: ../ui/settingsdialog.ui:976
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:962
+#: ../ui/settingsdialog.ui:999
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Volume"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:980
+#: ../ui/settingsdialog.ui:1017
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Mute audio when game is not focused"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:986
+#: ../ui/settingsdialog.ui:1023
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1003
+#: ../ui/settingsdialog.ui:1040
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1021
+#: ../ui/settingsdialog.ui:1058
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1039
+#: ../ui/settingsdialog.ui:1076
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Alternative Input"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1057
+#: ../ui/settingsdialog.ui:1094
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Screen edge camera panning"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1075
+#: ../ui/settingsdialog.ui:1112
 msgctxt "SettingsDialog|Slider Title Label"
 msgid "Mouse sensitivity"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1139
+#: ../ui/settingsdialog.ui:1176
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Raw mouse input"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1145
+#: ../ui/settingsdialog.ui:1182
 msgctxt "SettingsDialog|Tab Title"
 msgid "Multiplayer"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1172
+#: ../ui/settingsdialog.ui:1209
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Masterserver"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1178
+#: ../ui/settingsdialog.ui:1215
 msgctxt "SettingsDialog|Tab Title"
 msgid "Launcher"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1190
+#: ../ui/settingsdialog.ui:1227
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Check for KeeperFX updates"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1213
+#: ../ui/settingsdialog.ui:1250
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable crash reporting"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1226
+#: ../ui/settingsdialog.ui:1263
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Release"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1239
+#: ../ui/settingsdialog.ui:1276
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1252
+#: ../ui/settingsdialog.ui:1289
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1265
+#: ../ui/settingsdialog.ui:1302
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Launcher language"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1286
+#: ../ui/settingsdialog.ui:1330
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Update automatically"
+msgstr ""
+
+#: ../ui/settingsdialog.ui:1343
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Backup savefiles during update"
+msgstr ""
+
+#: ../ui/settingsdialog.ui:1371
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Play button theme"
+msgstr ""
+
+#: ../ui/settingsdialog.ui:1377
 msgctxt "SettingsDialog|Tab Title"
 msgid "API"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1303
+#: ../ui/settingsdialog.ui:1394
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable API"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1339
+#: ../ui/settingsdialog.ui:1430
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "API port"
 msgstr ""
 
-#: ../ui/settingsdialog.ui:1345
+#: ../ui/settingsdialog.ui:1436
 msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:101
+#: ../src/settingsdialog.cpp:80
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "0: Red (Default)"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:81
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "1: Blue"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:82
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "2: Green"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:83
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "3: Yellow"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:84
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "4: White / Heroes"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:89
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "6: Purple"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:90
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "7: Black"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:91
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "8: Orange"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:113
+msgctxt "SettingsDialog|Play Button Theme Dropdown"
+msgid "Qt Fusion Dark"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:114
+msgctxt "SettingsDialog|Play Button Theme Dropdown"
+msgid "DK Orange (default)"
+msgstr ""
+
+#: ../src/settingsdialog.cpp:123
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:102
+#: ../src/settingsdialog.cpp:124
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:103
+#: ../src/settingsdialog.cpp:125
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:104
+#: ../src/settingsdialog.cpp:126
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:105
+#: ../src/settingsdialog.cpp:127
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:111
+#: ../src/settingsdialog.cpp:133
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:148
+#: ../src/settingsdialog.cpp:170
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:149
+#: ../src/settingsdialog.cpp:171
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:165
+#: ../src/settingsdialog.cpp:187
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Low"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:166
+#: ../src/settingsdialog.cpp:188
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Medium"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:167
+#: ../src/settingsdialog.cpp:189
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "High"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:170
+#: ../src/settingsdialog.cpp:192
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:171
+#: ../src/settingsdialog.cpp:193
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:172
+#: ../src/settingsdialog.cpp:194
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "High"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:175
+#: ../src/settingsdialog.cpp:197
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:176
+#: ../src/settingsdialog.cpp:198
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Alpha"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:253
+#: ../src/settingsdialog.cpp:278
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX v%1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:258
+#: ../src/settingsdialog.cpp:283
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX Launcher v%1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:260
+#: ../src/settingsdialog.cpp:285
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:265
+#: ../src/settingsdialog.cpp:290
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "Join us Discord: %1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:289
+#: ../src/settingsdialog.cpp:314
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:741
+#: ../src/settingsdialog.cpp:780
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:742
+#: ../src/settingsdialog.cpp:781
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
@@ -1434,269 +1646,296 @@ msgctxt "UpdateDialog|Window Title"
 msgid "KeeperFX Update"
 msgstr ""
 
-#: ../ui/updatedialog.ui:26
+#: ../ui/updatedialog.ui:30
 msgctxt "UpdateDialog|Header"
 msgid "New KeeperFX version found!"
 msgstr ""
 
-#: ../ui/updatedialog.ui:131
+#: ../ui/updatedialog.ui:135
 msgctxt "UpdateDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/updatedialog.ui:153
+#: ../ui/updatedialog.ui:160
 msgctxt "UpdateDialog|Button"
 msgid "Update"
 msgstr ""
 
-#: ../src/updatedialog.cpp:42 ../src/updatedialog.cpp:48
+#: ../src/updatedialog.cpp:46 ../src/updatedialog.cpp:52
 msgctxt "UpdateDialog|Appended to version string"
 msgid "Alpha"
 msgstr ""
 
-#: ../src/updatedialog.cpp:53
+#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "Current version:"
 msgstr ""
 
-#: ../src/updatedialog.cpp:53
+#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "New version:"
 msgstr ""
 
-#: ../src/updatedialog.cpp:56
+#: ../src/updatedialog.cpp:60
 #, qt-format
 msgctxt "UpdateDialog|Log Message"
 msgid "Update path: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:106
+#: ../src/updatedialog.cpp:118
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr ""
 
-#: ../src/updatedialog.cpp:122
+#: ../src/updatedialog.cpp:135
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Update failed"
 msgstr ""
 
-#: ../src/updatedialog.cpp:132
+#: ../src/updatedialog.cpp:153
+msgctxt "UpdateDialog|Title label"
+msgid "Updating..."
+msgstr ""
+
+#: ../src/updatedialog.cpp:156
 #, qt-format
 msgctxt "UpdateDialog|Log Message"
 msgid "Updating to version %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:135
+#: ../src/updatedialog.cpp:159
 msgctxt "UpdateDialog|Log Message"
 msgid "Trying to get filemap"
 msgstr ""
 
-#: ../src/updatedialog.cpp:142
+#: ../src/updatedialog.cpp:166
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=count)"
 msgid "Filemap with %1 files retrieved"
 msgstr ""
 
-#: ../src/updatedialog.cpp:146
+#: ../src/updatedialog.cpp:170
 msgctxt "UpdateDialog|Log Message"
 msgid "No filemap found"
 msgstr ""
 
-#: ../src/updatedialog.cpp:154
+#: ../src/updatedialog.cpp:178
+#, qt-format
+msgctxt "UpdateDialog|Log message"
+msgid "Backing up %1 save file(s)..."
+msgstr ""
+
+#: ../src/updatedialog.cpp:182
+msgctxt "UpdateDialog|Log Message"
+msgid "Savefiles have been backed up"
+msgstr ""
+
+#: ../src/updatedialog.cpp:188
 msgctxt "UpdateDialog|Log Message"
 msgid "Comparing filemap against local files"
 msgstr ""
 
-#: ../src/updatedialog.cpp:158
+#: ../src/updatedialog.cpp:192
 msgctxt "UpdateDialog|Progress bar (%p=percentage)"
 msgid "Comparing: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:185
+#: ../src/updatedialog.cpp:219
 #, qt-format
 msgctxt "UpdateDialog|Failure message (%1=local filepath)"
 msgid "Failed to open file: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:211
+#: ../src/updatedialog.cpp:245
 msgctxt "UpdateDialog|Log Message"
 msgid "No changes in the files have been detected"
 msgstr ""
 
-#: ../src/updatedialog.cpp:212
+#: ../src/updatedialog.cpp:246
 msgctxt "UpdateDialog|Log Message"
 msgid "Switching to archive download"
 msgstr ""
 
-#: ../src/updatedialog.cpp:219
+#: ../src/updatedialog.cpp:253
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=count)"
 msgid "%1 files need to be updated"
 msgstr ""
 
-#: ../src/updatedialog.cpp:241
+#: ../src/updatedialog.cpp:275
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=archive download URL)"
 msgid "Downloading archive: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:259
+#: ../src/updatedialog.cpp:293
 msgctxt "UpdateDialog|Log Message"
 msgid "Archive download failed."
 msgstr ""
 
-#: ../src/updatedialog.cpp:263
+#: ../src/updatedialog.cpp:297
 msgctxt "UpdateDialog|Log Message"
 msgid "Archive successfully downloaded"
 msgstr ""
 
-#: ../src/updatedialog.cpp:269
+#: ../src/updatedialog.cpp:303
 msgctxt "UpdateDialog|Log Message"
 msgid "Testing archive..."
 msgstr ""
 
-#: ../src/updatedialog.cpp:283
+#: ../src/updatedialog.cpp:317
 #, qt-format
 msgctxt "UpdateDialog|Log Message"
 msgid "Total size: %1MiB"
 msgstr ""
 
-#: ../src/updatedialog.cpp:287
+#: ../src/updatedialog.cpp:321
 msgctxt "UpdateDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:288
+#: ../src/updatedialog.cpp:322
 msgctxt "UpdateDialog|Log Message"
 msgid "Extracting..."
 msgstr ""
 
-#: ../src/updatedialog.cpp:300
+#: ../src/updatedialog.cpp:334 ../src/updatedialog.cpp:550
+msgctxt "UpdateDialog|Title label"
+msgid "Update complete!"
+msgstr ""
+
+#: ../src/updatedialog.cpp:335
 msgctxt "UpdateDialog|Log Message"
 msgid "Extraction completed"
 msgstr ""
 
-#: ../src/updatedialog.cpp:304
+#: ../src/updatedialog.cpp:339
 msgctxt "UpdateDialog|Log Message"
 msgid "Removing temporary archive"
 msgstr ""
 
-#: ../src/updatedialog.cpp:311
+#: ../src/updatedialog.cpp:346
 msgctxt "UpdateDialog|Log Message"
 msgid "Copying over any new settings"
 msgstr ""
 
-#: ../src/updatedialog.cpp:314 ../src/updatedialog.cpp:499
+#: ../src/updatedialog.cpp:350 ../src/updatedialog.cpp:558
 msgctxt "UpdateDialog|Log Message"
 msgid "Done!"
 msgstr ""
 
-#: ../src/updatedialog.cpp:315 ../src/updatedialog.cpp:500
+#: ../src/updatedialog.cpp:355 ../src/updatedialog.cpp:563
 #, qt-format
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "KeeperFX has been successfully updated to version %1!"
 msgstr ""
 
-#: ../src/updatedialog.cpp:327
+#: ../src/updatedialog.cpp:378
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr ""
 
-#: ../src/updatedialog.cpp:327
+#: ../src/updatedialog.cpp:378
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "Are you sure you want to cancel the update?"
 msgstr ""
 
-#: ../src/updatedialog.cpp:340
+#: ../src/updatedialog.cpp:391
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=temp dir path)"
 msgid "Temp directory path: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:349
+#: ../src/updatedialog.cpp:400
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to create temp directory"
 msgstr ""
 
-#: ../src/updatedialog.cpp:360
+#: ../src/updatedialog.cpp:411
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:392
+#: ../src/updatedialog.cpp:443
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath)"
 msgid "Downloaded: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:394
+#: ../src/updatedialog.cpp:445
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath)"
 msgid "Failed to write: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:397
+#: ../src/updatedialog.cpp:448
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath)"
 msgid "Failed to open file for writing: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:400
+#: ../src/updatedialog.cpp:451
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath,%2=error message)"
 msgid "Failed to download: %1 -> %2"
 msgstr ""
 
-#: ../src/updatedialog.cpp:419
+#: ../src/updatedialog.cpp:470
 msgctxt "UpdateDialog|Log Message"
 msgid "All files downloaded successfully"
 msgstr ""
 
-#: ../src/updatedialog.cpp:422
+#: ../src/updatedialog.cpp:473
 msgctxt "UpdateDialog|Log Message"
 msgid "Moving files to KeeperFX directory"
 msgstr ""
 
-#: ../src/updatedialog.cpp:426
+#: ../src/updatedialog.cpp:477
 msgctxt "UpdateDialog|Log Message"
 msgid "The temporary directory does not exist"
 msgstr ""
 
-#: ../src/updatedialog.cpp:437
+#: ../src/updatedialog.cpp:488
 msgctxt "UpdateDialog|Progress bar"
 msgid "Copying: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:460
+#: ../src/updatedialog.cpp:511
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath)"
 msgid "File does not exist: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:467
+#: ../src/updatedialog.cpp:518
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath,2%=renamed filepath)"
 msgid "Renaming file during copy: %1 -> %2"
 msgstr ""
 
-#: ../src/updatedialog.cpp:481
+#: ../src/updatedialog.cpp:527
+#, qt-format
+msgctxt "UpdateDialog|Log Message"
+msgid "Failed to create destination directory: %1"
+msgstr ""
+
+#: ../src/updatedialog.cpp:539
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath)"
 msgid "File moved: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:483
+#: ../src/updatedialog.cpp:541
 #, qt-format
 msgctxt "UpdateDialog|Log Message (%1=filepath)"
 msgid "Failed to move file: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:495
+#: ../src/updatedialog.cpp:554
 msgctxt "UpdateDialog|Log Message"
 msgid "Copying any new settings"
 msgstr ""
 
-#: ../src/updatedialog.cpp:505
+#: ../src/updatedialog.cpp:579
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr ""
