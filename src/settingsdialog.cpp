@@ -264,6 +264,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         {"libLIEF", "https://github.com/lief-project/LIEF"},
         {"bit7z", "https://github.com/rikyoz/bit7z"},
         {"7z", "https://www.7-zip.org/"},
+        {"zlib", "https://www.zlib.net/"},
     };
 
     // Create libraries string
