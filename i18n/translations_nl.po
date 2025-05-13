@@ -460,7 +460,7 @@ msgstr "Annuleer"
 #: ../ui/downloadmusicdialog.ui:163
 msgctxt "DownloadMusicDialog|Button"
 msgid "Download"
-msgstr "Gedownload: %1"
+msgstr "Download"
 
 #: ../src/downloadmusicdialog.cpp:63
 msgctxt "DownloadMusicDialog|Log Message"
