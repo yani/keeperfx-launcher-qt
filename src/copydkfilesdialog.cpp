@@ -6,6 +6,7 @@
 #include <QCloseEvent>
 
 #include "dkfiles.h"
+#include "downloadmusicdialog.h"
 
 CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     : QDialog(parent)
@@ -85,6 +86,12 @@ void CopyDkFilesDialog::on_copyButton_clicked()
     if(!DkFiles::copyDkDirToDir(dkDir, toDir)){
         QMessageBox::warning(this, tr("Failed to copy files", "MessageBox Title"), tr("Something went wrong while copying the files.", "MessageBox Text"));
         return;
+    }
+
+    // Check if music files have been copied
+    if (DkFiles::areAllSoundFilesPresent() == false) {
+        DownloadMusicDialog downloadMusicDialog(this);
+        downloadMusicDialog.exec();
     }
 
     // Success!

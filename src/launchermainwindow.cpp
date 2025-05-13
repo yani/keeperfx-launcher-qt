@@ -21,6 +21,7 @@
 #include "copydkfilesdialog.h"
 #include "directconnectdialog.h"
 #include "dkfiles.h"
+#include "downloadmusicdialog.h"
 #include "enetservertestdialog.h"
 #include "fileremover.h"
 #include "fileremoverdialog.h"
@@ -126,6 +127,13 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             // We use left() and top() here because the position is absolute and not relative to the screen
             geometry.left() + ((geometry.width() - this->width()) / 2),
             geometry.top() + ((geometry.height() - this->height()) / 2) - 50); // minus 50 to put it a bit higher
+    }
+
+    // Autostart music download procedure when '--download-music' launcher option is set
+    // We do this before the --install one because the installer might already move them over
+    if (LauncherOptions::isSet("download-music")) {
+        DownloadMusicDialog downloadMusicDialog(this);
+        downloadMusicDialog.exec();
     }
 
     // Autostart install procedure when '--install' launcher option is set

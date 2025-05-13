@@ -347,3 +347,20 @@ std::optional<QDir> DkFiles::findSteamDkInstallDir()
 
     return std::nullopt;
 }
+
+bool DkFiles::areAllSoundFilesPresent()
+{
+    // Loop trough music files
+    for (const QString& musicFileName : musicFiles) {
+        // Get the destination file
+        QString destFilePath = QCoreApplication::applicationDirPath() + "/music/" + musicFileName.toLower();
+        QFile destFile(destFilePath);
+
+        // Check if file exists
+        if (destFile.exists() == false) {
+            return false;
+        }
+    }
+
+    return true;
+}

@@ -4,6 +4,7 @@
 
 #include <QEventLoop>
 #include <QImage>
+#include <QJsonArray>
 #include <QJsonObject>
 #include <QMap>
 
@@ -139,6 +140,56 @@ QUrl ApiClient::getDownloadUrlAlpha()
 
     // Return
     return QUrl(downloadUrlString);
+}
+
+QUrl ApiClient::getDownloadUrlMusic()
+{
+    // URL of the API endpoint
+    // API endpoints can be found at: https://github.com/dkfans/keeperfx-website
+    QUrl url("v1/workshop/item/393");
+
+    // Get the JSON response
+    QJsonDocument jsonDoc = ApiClient::getJsonResponse(url);
+    if (jsonDoc.isObject() == false) {
+        qWarning() << "Download music URL: Invalid response";
+        return QUrl();
+    }
+
+    // Convert response
+    QJsonObject jsonObj = jsonDoc.object();
+
+    // Get workshop item obj
+    QJsonObject workshopItemObj = jsonObj["workshop_item"].toObject();
+    if (workshopItemObj.isEmpty()) {
+        qWarning() << "Download music URL: Workshop item object not found";
+        return QUrl();
+    }
+
+    // Get files obj
+    QJsonArray filesArray = workshopItemObj["files"].toArray();
+    if (filesArray.isEmpty()) {
+        qWarning() << "Download music URL: Files array not found";
+        return QUrl();
+    }
+
+    // Get first file
+    QJsonObject fileObj = filesArray[0].toObject();
+    if (fileObj.isEmpty()) {
+        qWarning() << "Download music URL: First file object not found";
+        return QUrl();
+    }
+
+    // Get URL
+    QString fileDownloadString = fileObj["url"].toString();
+    if (fileDownloadString.isEmpty() || fileDownloadString.isNull()) {
+        qWarning() << "Download music URL: File download string not found";
+        return QUrl();
+    }
+
+    qDebug() << "Download music URL:" << fileDownloadString;
+
+    // Return
+    return QUrl(fileDownloadString);
 }
 
 std::optional<QMap<QString, QString>> ApiClient::getGameFileList(KfxVersion::ReleaseType type,

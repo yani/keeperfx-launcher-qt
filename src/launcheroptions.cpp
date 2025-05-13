@@ -30,6 +30,7 @@ void LauncherOptions::processApp(QApplication &app)
         {"skip-launcher-update",        "Do not update the launcher itself"},
         {"log-missing-translations",    "Log missing translations to debug"},
         {"no-image-cache",              "Bypass image caching"},
+        {"download-music",              "Start the music download procedure"},
 
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},
