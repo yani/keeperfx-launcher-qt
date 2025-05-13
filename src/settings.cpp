@@ -22,6 +22,7 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"CRASH_REPORTING_CONTACT", ""},
     {"OPEN_ON_GAME_SCREEN", false},
     {"GAME_HEAVY_LOG_ENABLED", false},
+    {"PLAY_BUTTON_THEME", "dk-orange"},
     {"LAUNCHER_LANGUAGE", QLocale::system().bcp47Name()}, // Get 2 letter language identifier from system locale
 
     // Game executable parameters

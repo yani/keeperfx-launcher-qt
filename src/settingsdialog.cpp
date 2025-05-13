@@ -109,6 +109,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     //ui->comboBoxLauncherLanguage->addItem("Lat\u012Bna", "la"); // Latin
     //ui->comboBoxLauncherLanguage->addItem("\u0423\u043A\u0440\u0430\u0454\u043D\u044C\u0441\u043A\u0430", "uk"); // Ukrainian
 
+    // Launcher play button theme dropdown
+    ui->comboBoxPlayButtonTheme->addItem(tr("Qt Fusion Dark", "Play Button Theme Dropdown"), "qt-fusion-dark");
+    ui->comboBoxPlayButtonTheme->addItem(tr("DK Orange (default)", "Play Button Theme Dropdown"), "dk-orange");
+
     // Screenshot type dropdown
     ui->comboBoxScreenshots->addItem("PNG (Portable Network Graphics)", "PNG");
     ui->comboBoxScreenshots->addItem("JPG (Joint photographic experts group)", "JPG");
@@ -533,6 +537,7 @@ void SettingsDialog::loadSettings()
     ui->checkBoxWebsiteIntegration->setChecked(Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == true);
     ui->checkBoxCrashReporting->setChecked(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true);
     ui->checkBoxOpenOnGameScreen->setChecked(Settings::getLauncherSetting("OPEN_ON_GAME_SCREEN") == true);
+    ui->comboBoxPlayButtonTheme->setCurrentIndex(ui->comboBoxPlayButtonTheme->findData(Settings::getLauncherSetting("PLAY_BUTTON_THEME").toString()));
 
     // Updates
     bool isUpdateCheckEnabled = Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool();
@@ -708,6 +713,7 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("WEBSITE_INTEGRATION_ENABLED", ui->checkBoxWebsiteIntegration->isChecked() == true);
     Settings::setLauncherSetting("CRASH_REPORTING_ENABLED", ui->checkBoxCrashReporting->isChecked() == true);
     Settings::setLauncherSetting("OPEN_ON_GAME_SCREEN", ui->checkBoxOpenOnGameScreen->isChecked() == true);
+    Settings::setLauncherSetting("PLAY_BUTTON_THEME", ui->comboBoxPlayButtonTheme->currentData().toString());
 
     // Updates
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_ENABLED", ui->checkBoxCheckForUpdates->isChecked() == true);

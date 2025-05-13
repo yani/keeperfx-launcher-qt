@@ -1339,6 +1339,34 @@ height: 35px;
         <string comment="Checkbox Toggle">Backup savefiles during update</string>
        </property>
       </widget>
+      <widget class="QComboBox" name="comboBoxPlayButtonTheme">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>240</y>
+         <width>191</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelPlayButtonTheme">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>243</y>
+         <width>171</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Dropdown Title Label">Play button theme</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab7_api">
       <attribute name="title">

@@ -408,6 +408,24 @@ void LauncherMainWindow::refreshInstallationAwareButtons() {
     ui->settingsButton->setDisabled(isKfxInstalled == false);
     ui->playButton->setDisabled(isKfxInstalled == false);
     ui->playExtraButton->setDisabled(isKfxInstalled == false);
+
+    // Play button theme
+    QString playButtonTheme = Settings::getLauncherSetting("PLAY_BUTTON_THEME").toString();
+    if (playButtonTheme == "qt-fusion-dark") {
+        ui->playButton->setStyleSheet("");
+        ui->playExtraButton->setStyleSheet("QPushButton::menu-indicator{image:none;width:0px;height:0px;}");
+    } else {
+        QFile styleSheetFile(QString(":/theme/res/play-button-theme/%1.css").arg(playButtonTheme));
+        if (styleSheetFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QString styleSheetString = QString::fromUtf8(styleSheetFile.readAll());
+            if (styleSheetString.isEmpty() == false) {
+                ui->playButton->setStyleSheet(styleSheetString);
+                ui->playExtraButton->setStyleSheet(styleSheetString);
+            }
+        } else {
+            qWarning() << "Failed to load play button theme stylesheet:" << styleSheetFile.fileName();
+        }
+    }
 }
 
 void LauncherMainWindow::refreshLogfileButton() {
@@ -473,6 +491,9 @@ void LauncherMainWindow::on_settingsButton_clicked() {
     // Open settings dialog
     SettingsDialog settingsDialog(this);
     settingsDialog.exec();
+
+    // Refresh buttons
+    refreshInstallationAwareButtons();
 
     // Check if launcher language has changed
     if(oldLauncherLanguage != Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString()){
