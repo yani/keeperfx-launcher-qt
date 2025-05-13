@@ -58,15 +58,22 @@ void DownloadMusicDialog::on_downloadButton_clicked()
 
 void DownloadMusicDialog::startDownload()
 {
+    // Get download URL
     emit appendLog(tr("Getting download URL for music archive", "Log Message"));
     this->downloadUrl = ApiClient::getDownloadUrlMusic();
-
     if (downloadUrl.isEmpty()) {
-        emit appendLog(tr("Failed to get download URL for music archive", "Log Message"));
+        emit setDownloadFailed(tr("Failed to get download URL for music archive", "Log Message"));
         return;
     }
 
+    // Show download URL to end user
     emit appendLog(tr("Music archive URL: %1", "Log Message").arg(downloadUrl.toString()));
+
+    // Make sure file is a 7zip archive
+    if (downloadUrl.toString().endsWith(".7z") == false) {
+        emit setDownloadFailed(tr("Invalid music archive file extension. It must be a 7zip archive.", "Log Message"));
+        return;
+    }
 
     QString outputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrl.fileName() + ".tmp";
     QFile *outputFile = new QFile(outputFilePath);

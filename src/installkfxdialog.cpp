@@ -78,7 +78,7 @@ void InstallKfxDialog::startStableDownload()
     downloadUrlStable = ApiClient::getDownloadUrlStable();
 
     if (downloadUrlStable.isEmpty()) {
-        emit appendLog(tr("Failed to get download URL for stable release", "Log Message"));
+        emit setInstallFailed(tr("Failed to get download URL for stable release", "Log Message"));
         return;
     }
 
