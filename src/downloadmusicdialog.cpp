@@ -2,6 +2,7 @@
 #include "apiclient.h"
 #include "archiver.h"
 #include "downloader.h"
+#include "settings.h"
 #include "ui_downloadmusicdialog.h"
 #include "updater.h"
 
@@ -147,6 +148,11 @@ void DownloadMusicDialog::onExtractComplete()
         archiveFile->remove();
     }
 
+    // Disable CD music setting
+    emit appendLog(tr("Disabling CD music setting", "Log Message"));
+    Settings::setLauncherSetting("GAME_PARAM_USE_CD_MUSIC", false);
+
+    // Done!
     emit appendLog(tr("Done!", "Log Message"));
     QMessageBox::information(this, "KeeperFX", tr("The KeeperFX background music has been successfully downloaded!", "MessageBox Text"));
     accept();
