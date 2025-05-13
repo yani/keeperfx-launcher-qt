@@ -28,6 +28,10 @@
   <property name="windowTitle">
    <string>KeeperFX Launcher</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/res/img/horny-face.png</normaloff>:/res/img/horny-face.png</iconset>
+  </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
   </property>

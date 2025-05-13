@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string comment="Window Title">Install KeeperFX</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/res/img/horny-face.png</normaloff>:/res/img/horny-face.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="titleLabel">
@@ -185,6 +189,8 @@ Choose the stable release for reliability or the alpha version if you want to he
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string comment="Window Title">KeeperFX Settings</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/res/img/horny-face.png</normaloff>:/res/img/horny-face.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QTabWidget" name="tabWidget">

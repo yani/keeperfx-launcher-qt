@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string comment="Window Title">KeeperFX Crash Report</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/res/img/creatr_portrt_troll.png</normaloff>:/res/img/creatr_portrt_troll.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QWidget" name="topWidget" native="true">

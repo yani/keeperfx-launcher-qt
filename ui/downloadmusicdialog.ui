@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string comment="Dialog Title">KeeperFX Background Music</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../resources.qrc">
+    <normaloff>:/res/img/horny-face.png</normaloff>:/res/img/horny-face.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="titleLabel">
@@ -177,6 +181,8 @@ If you do not download the music files you will need to have the original CD in 
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
