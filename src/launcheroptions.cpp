@@ -45,4 +45,24 @@ void LauncherOptions::processApp(QApplication &app)
 
     // Process
     parser.process(app);
+
+    // Get active options
+    QStringList activeOptions;
+    for (const QCommandLineOption &option : options) {
+        const QStringList names = option.names();
+        QString name = !names.isEmpty() ? names.first() : QStringLiteral("<unnamed>");
+        if (parser.isSet(option)) {
+            if (!option.valueName().isEmpty()) {
+                QString value = parser.value(option);
+                activeOptions << "--" + name + "=" + value;
+            } else {
+                activeOptions << "--" + name;
+            }
+        }
+    }
+
+    // Log active options
+    if (activeOptions.empty() == false) {
+        qDebug().noquote() << "Active command line option(s):" << activeOptions.join(" ");
+    }
 }
