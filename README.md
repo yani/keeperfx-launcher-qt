@@ -45,24 +45,24 @@ Because it allows you to update translation files (PO) with the original transla
 
 You can find the used POT file here: [i18n/translations.pot](/i18n/translations.pot)
 
-| Language | Code | Status | Maintainer |
-|---|---|---|---|
-| English | EN | ✅ | [Yani](https://github.com/yani) |
-| Dutch | NL | ✅ | [Yani](https://github.com/yani) |
-| Italian | IT | | |
-| French | FR | | AncientWay |
-| Spanish | ES | | |
-| German | DE | | Aqua, Dofi |
-| Polish | PL | | |
-| Swedish | SV | | |
-| Japanese | JA | | [AdamPlenty](https://github.com/AdamPlenty) |
-| Russian | RU | | |
-| Korean | KO | | Desert |
-| Chinese (Simplified) | ZH-HANS | | [JieLeTian](https://github.com/jieletian) |
-| Chinese (Traditional) | ZH-HANT | | |
-| Czech | CS | ✅ | Gotrek |
-| Latin | LA | | |
-| Ukrainian | UK | | Mr.Negative |
+| Language              | Code     | Maintainer                                       |
+|-----------------------|----------|--------------------------------------------------|
+| English               | EN       | [Yani](https://github.com/yani)                  |
+| Dutch                 | NL       | [Yani](https://github.com/yani)                  |
+| Italian               | IT       |                                                  |
+| French                | FR       | AncientWay                                       |
+| Spanish               | ES       |                                                  |
+| German                | DE       | Aqua, Dofi                                       |
+| Polish                | PL       |                                                  |
+| Swedish               | SV       |                                                  |
+| Japanese              | JA       | [AdamPlenty](https://github.com/AdamPlenty)      |
+| Russian               | RU       |                                                  |
+| Korean                | KO       | Desert                                           |
+| Chinese (Simplified)  | ZH-HANS  | [JieLeTian](https://github.com/jieletian)        |
+| Chinese (Traditional) | ZH-HANT  |                                                  |
+| Czech                 | CS       | Gotrek                                           |
+| Latin                 | LA       |                                                  |
+| Ukrainian             | UK       | Mr.Negative                                      |
 
 ## License
 
