@@ -60,19 +60,21 @@ void DownloadMusicDialog::on_downloadButton_clicked()
 void DownloadMusicDialog::startDownload()
 {
     // Get download URL
-    emit appendLog(tr("Getting download URL for music archive", "Log Message"));
+    emit appendLog("Getting download URL for music archive");
     this->downloadUrl = ApiClient::getDownloadUrlMusic();
     if (downloadUrl.isEmpty()) {
-        emit setDownloadFailed(tr("Failed to get download URL for music archive", "Log Message"));
+        emit appendLog("Failed to get download URL for music archive");
+        emit setDownloadFailed(tr("Failed to get download URL for music archive", "Failure Message"));
         return;
     }
 
     // Show download URL to end user
-    emit appendLog(tr("Music archive URL: %1", "Log Message").arg(downloadUrl.toString()));
+    emit appendLog(QString("Music archive URL: %1").arg(downloadUrl.toString()));
 
     // Make sure file is a 7zip archive
     if (downloadUrl.toString().endsWith(".7z") == false) {
-        emit setDownloadFailed(tr("Invalid music archive file extension. It must be a 7zip archive.", "Log Message"));
+        emit appendLog("Invalid music archive file extension.");
+        emit setDownloadFailed(tr("Invalid music archive file extension. It must be a 7zip archive.", "Failure Message"));
         return;
     }
 
@@ -89,17 +91,18 @@ void DownloadMusicDialog::startDownload()
 void DownloadMusicDialog::onDownloadFinished(bool success)
 {
     if (!success) {
-        emit setDownloadFailed(tr("Failed to download music archive", "Log Message"));
+        emit appendLog("Failed to download music archive");
+        emit setDownloadFailed(tr("Failed to download music archive", "Failure Message"));
         return;
     }
 
-    emit appendLog(tr("Music archive successfully downloaded", "Log Message"));
+    emit appendLog("Music archive successfully downloaded");
     emit clearProgressBar();
 
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + this->downloadUrl.fileName() + ".tmp");
 
     // Test archive
-    emit appendLog(tr("Testing music archive...", "Log Message"));
+    emit appendLog("Testing music archive...");
     QThreadPool::globalInstance()->start([this, outputFile]() {
         uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
         QMetaObject::invokeMethod(this, "onArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
@@ -110,6 +113,7 @@ void DownloadMusicDialog::onArchiveTestComplete(uint64_t archiveSize)
 {
     // Make sure test is successful and archive size is valid
     if (archiveSize < 0) {
+        emit appendLog("Music archive test failed");
         emit setDownloadFailed(tr("Music archive test failed. It may be corrupted.", "Failure message"));
         return;
     }
@@ -118,12 +122,12 @@ void DownloadMusicDialog::onArchiveTestComplete(uint64_t archiveSize)
     double archiveSizeInMiB = static_cast<double>(archiveSize) / (1024 * 1024);
     QString archiveSizeString = QString::number(archiveSizeInMiB, 'f',
                                                 2); // Format to 2 decimal places
-    emit appendLog(tr("Total size: %1MiB", "Log Message").arg(archiveSizeString));
+    emit appendLog(QString("Total size: %1MiB").arg(archiveSizeString));
 
     // Start extraction process
     emit setProgressMaximum(static_cast<int>(archiveSize));
     emit setProgressBarFormat(tr("Extracting: %p%", "Progress bar"));
-    emit appendLog(tr("Extracting...", "Log Message"));
+    emit appendLog("Extracting...");
 
     // TODO: use temp file
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrl.fileName() + ".tmp");
@@ -138,22 +142,22 @@ void DownloadMusicDialog::onArchiveTestComplete(uint64_t archiveSize)
 
 void DownloadMusicDialog::onExtractComplete()
 {
-    emit appendLog(tr("Extraction completed", "Log Message"));
+    emit appendLog("Extraction completed");
     emit clearProgressBar();
 
     // Remove temp archive
-    emit appendLog(tr("Removing temporary archive", "Log Message"));
+    emit appendLog("Removing temporary archive");
     QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrl.fileName() + ".tmp");
     if (archiveFile->exists()) {
         archiveFile->remove();
     }
 
     // Disable CD music setting
-    emit appendLog(tr("Disabling CD music setting", "Log Message"));
+    emit appendLog("Disabling CD music setting");
     Settings::setLauncherSetting("GAME_PARAM_USE_CD_MUSIC", false);
 
     // Done!
-    emit appendLog(tr("Done!", "Log Message"));
+    emit appendLog("Done!");
     QMessageBox::information(this, "KeeperFX", tr("The KeeperFX background music has been successfully downloaded!", "MessageBox Text"));
     accept();
 }
@@ -170,7 +174,7 @@ void DownloadMusicDialog::updateProgressBarDownload(qint64 bytesReceived, qint64
 void DownloadMusicDialog::onAppendLog(const QString &string)
 {
     // Log to debug output
-    qDebug() << "Download log:" << string;
+    qDebug() << "Download music log:" << string;
 
     // Add string to log with timestamp
     QDateTime currentDateTime = QDateTime::currentDateTime();
@@ -204,7 +208,6 @@ void DownloadMusicDialog::onDownloadFailed(const QString &reason)
 {
     ui->downloadButton->setDisabled(false);
     onClearProgressBar();
-    onAppendLog(reason);
     QMessageBox::warning(this, tr("Download failed", "MessageBox Title"), reason);
 }
 

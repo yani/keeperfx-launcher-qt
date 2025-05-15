@@ -45,7 +45,7 @@ void EnetServerTestDialog::on_testButton_clicked()
 
     // Grab public IP
     // Afterwards we run handleIpReply()
-    appendLog(tr("Grabbing public IP address", "Log Message"));
+    appendLog("Grabbing public IP address");
     QNetworkRequest request(QUrl("https://api.ipify.org/?format=text"));
     connect(networkManager, &QNetworkAccessManager::finished, this, &EnetServerTestDialog::handleIpReply);
     networkManager->get(request);
@@ -58,14 +58,15 @@ void EnetServerTestDialog::handleIpReply(QNetworkReply *reply)
 
     // Make sure we got a response from the public IP API
     if (reply->error() != QNetworkReply::NoError) {
-        appendLog(tr("Failed to retrieve public IP address", "Log Message"));
+        appendLog("Failed to retrieve public IP address");
+        QMessageBox::warning(this, tr("IPv6 Detected", "MessageBox Title"), tr("Failed to retrieve public IP address.", "MessageBox Text"));
         ui->testButton->setEnabled(true);
         return;
     }
 
     // Get public IP from response
     publicIp = reply->readAll().trimmed();
-    appendLog(tr("Public IP: %1", "Log Message").arg(publicIp));
+    appendLog(QString("Public IP: %1").arg(publicIp));
 
     // Clean up
     reply->deleteLater();
@@ -87,12 +88,13 @@ void EnetServerTestDialog::handleIpReply(QNetworkReply *reply)
 
 void EnetServerTestDialog::startUdpServer()
 {
-    appendLog(tr("Starting spoofed ENET server", "Log Message"));
+    appendLog("Starting spoofed ENET server");
 
     // Try to start server
     udpSocket = new QUdpSocket(this);
     if (!udpSocket->bind(QHostAddress::AnyIPv4, 5556)) {
-        appendLog(tr("Failed to start ENET server", "Log Message"));
+        appendLog("Failed to start ENET server");
+        QMessageBox::warning(this, tr("Portforwarding tool", "MessageBox Title"), tr("Failed to start ENET server.", "MessageBox Text"));
         return;
     }
 
@@ -103,7 +105,7 @@ void EnetServerTestDialog::startUdpServer()
 void EnetServerTestDialog::stopUdpServer()
 {
     if (udpSocket) {
-        appendLog(tr("Stopping ENET server", "Log Message"));
+        appendLog("Stopping ENET server");
         udpSocket->close();
         udpSocket->deleteLater();
         udpSocket = nullptr;
@@ -126,7 +128,7 @@ void EnetServerTestDialog::handleUdpDatagram()
 
         // Check if packet matches with our ENET handshake packet
         if (datagram == expectedData) {
-            appendLog(tr("Local ENET server received a valid ENET packet", "Log Message"));
+            appendLog("Local ENET server received a valid ENET packet");
 
             // Send some data back to let the client know we received their packet
             udpSocket->writeDatagram("OK", sender, senderPort);
@@ -136,7 +138,7 @@ void EnetServerTestDialog::handleUdpDatagram()
 
 void EnetServerTestDialog::sendPingRequest()
 {
-    appendLog(tr("Sending IP to KeeperFX.net ENET host checker tool", "Log Message"));
+    appendLog("Sending IP to KeeperFX.net ENET host checker tool");
     QUrl url("https://keeperfx.net/workshop/tools/kfx-host-checker/ping/" + publicIp);
     QNetworkRequest request(url);
     connect(networkManager, &QNetworkAccessManager::finished, this, &EnetServerTestDialog::handlePingReply);
@@ -156,7 +158,8 @@ void EnetServerTestDialog::handlePingReply(QNetworkReply *reply)
 
     // Make sure we got a response from the KeeperFX.net host checker tool
     if (reply->error() != QNetworkReply::NoError) {
-        appendLog(tr("Failed to contact KeeperFX.net", "Log Message"));
+        appendLog("Failed to contact KeeperFX.net");
+        QMessageBox::warning(this, tr("Portforwarding tool", "MessageBox Title"), tr("Failed to contact KeeperFX.net", "MessageBox Text"));
         return;
     }
 
@@ -166,10 +169,10 @@ void EnetServerTestDialog::handlePingReply(QNetworkReply *reply)
 
     // Show result
     if (jsonObject.contains("success") && jsonObject["success"].toBool()) {
-        appendLog(tr("Your router is correctly port forwarded!", "Log Message"));
+        appendLog("Router is correctly port forwarded");
         QMessageBox::information(this, tr("Portforwarding tool", "MessageBox Title"), tr("Your router is correctly port forwarded!", "MessageBox Text"));
     } else {
-        appendLog(tr("Failed to connect to local ENET server", "Log Message"));
+        appendLog("Failed to connect to local ENET server");
         QMessageBox::warning(this, tr("Portforwarding tool", "MessageBox Title"), tr("Failed to connect to local ENET server.", "MessageBox Text"));
     }
 

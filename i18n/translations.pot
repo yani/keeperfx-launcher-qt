@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-13 19:40+0200\n"
+"POT-Creation-Date: 2025-05-15 20:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -423,104 +423,52 @@ msgctxt "DownloadMusicDialog|Button"
 msgid "Download"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:63
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Getting download URL for music archive"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:66
-msgctxt "DownloadMusicDialog|Log Message"
+#: ../src/downloadmusicdialog.cpp:67
+msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to get download URL for music archive"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:71
-#, qt-format
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Music archive URL: %1"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:75
-msgctxt "DownloadMusicDialog|Log Message"
+#: ../src/downloadmusicdialog.cpp:77
+msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Invalid music archive file extension. It must be a 7zip archive."
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:92
-msgctxt "DownloadMusicDialog|Log Message"
+#: ../src/downloadmusicdialog.cpp:95
+msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to download music archive"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:96
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Music archive successfully downloaded"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:102
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Testing music archive..."
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:113
+#: ../src/downloadmusicdialog.cpp:117
 msgctxt "DownloadMusicDialog|Failure message"
 msgid "Music archive test failed. It may be corrupted."
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:121
-#, qt-format
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Total size: %1MiB"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:125
+#: ../src/downloadmusicdialog.cpp:129
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:126
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Extracting..."
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:141
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Extraction completed"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:145
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Removing temporary archive"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:152
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Disabling CD music setting"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:156
-msgctxt "DownloadMusicDialog|Log Message"
-msgid "Done!"
-msgstr ""
-
-#: ../src/downloadmusicdialog.cpp:157
+#: ../src/downloadmusicdialog.cpp:161
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid "The KeeperFX background music has been successfully downloaded!"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:166
+#: ../src/downloadmusicdialog.cpp:170
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:208
+#: ../src/downloadmusicdialog.cpp:211
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Download failed"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:215
+#: ../src/downloadmusicdialog.cpp:218
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr ""
 
-#: ../src/downloadmusicdialog.cpp:216
+#: ../src/downloadmusicdialog.cpp:219
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -573,83 +521,43 @@ msgctxt "EnetServerTestDialog|Button"
 msgid "Test"
 msgstr ""
 
-#: ../src/enetservertestdialog.cpp:48
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Grabbing public IP address"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:61
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to retrieve public IP address"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:68
-#, qt-format
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Public IP: %1"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:77
+#: ../src/enetservertestdialog.cpp:62 ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "IPv6 Detected"
 msgstr ""
 
-#: ../src/enetservertestdialog.cpp:77
+#: ../src/enetservertestdialog.cpp:62
+msgctxt "EnetServerTestDialog|MessageBox Text"
+msgid "Failed to retrieve public IP address."
+msgstr ""
+
+#: ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "This tool only works with IPv4."
 msgstr ""
 
-#: ../src/enetservertestdialog.cpp:90
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Starting spoofed ENET server"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:95
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to start ENET server"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:106
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Stopping ENET server"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:129
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Local ENET server received a valid ENET packet"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:139
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Sending IP to KeeperFX.net ENET host checker tool"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:159
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to contact KeeperFX.net"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:169
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Your router is correctly port forwarded!"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:170 ../src/enetservertestdialog.cpp:173
+#: ../src/enetservertestdialog.cpp:97 ../src/enetservertestdialog.cpp:162
+#: ../src/enetservertestdialog.cpp:173 ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "Portforwarding tool"
 msgstr ""
 
-#: ../src/enetservertestdialog.cpp:170
+#: ../src/enetservertestdialog.cpp:97
+msgctxt "EnetServerTestDialog|MessageBox Text"
+msgid "Failed to start ENET server."
+msgstr ""
+
+#: ../src/enetservertestdialog.cpp:162
+msgctxt "EnetServerTestDialog|MessageBox Text"
+msgid "Failed to contact KeeperFX.net"
+msgstr ""
+
+#: ../src/enetservertestdialog.cpp:173
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Your router is correctly port forwarded!"
 msgstr ""
 
-#: ../src/enetservertestdialog.cpp:172
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to connect to local ENET server"
-msgstr ""
-
-#: ../src/enetservertestdialog.cpp:173
+#: ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to connect to local ENET server."
 msgstr ""
@@ -754,151 +662,62 @@ msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Alpha"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:43
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Install path: %1"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:58
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Installation started"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:77
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Getting download URL for stable release"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:81
-msgctxt "InstallKfxDialog|Log Message"
+#: ../src/installkfxdialog.cpp:82
+msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to get download URL for stable release"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:85
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Stable release URL: %1"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:100
-msgctxt "InstallKfxDialog|Log Message"
+#: ../src/installkfxdialog.cpp:102
+msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to download stable release"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:104
-msgctxt "InstallKfxDialog|Log Message"
-msgid "KeeperFX stable release successfully downloaded"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:110
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Testing stable release archive..."
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:121
+#: ../src/installkfxdialog.cpp:124
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Stable release archive test failed. It may be corrupted."
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:130 ../src/installkfxdialog.cpp:226
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Total size: %1MiB"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:134 ../src/installkfxdialog.cpp:230
+#: ../src/installkfxdialog.cpp:137 ../src/installkfxdialog.cpp:236
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:135 ../src/installkfxdialog.cpp:231
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Extracting..."
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:151 ../src/installkfxdialog.cpp:247
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Extraction completed"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:155 ../src/installkfxdialog.cpp:251
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Removing temporary archive"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:165 ../src/installkfxdialog.cpp:258
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Loading settings"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:168 ../src/installkfxdialog.cpp:264
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Done!"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:169 ../src/installkfxdialog.cpp:265
+#: ../src/installkfxdialog.cpp:172 ../src/installkfxdialog.cpp:271
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid "KeeperFX has been successfully installed!"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:176
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Getting download URL for alpha patch"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:180
+#: ../src/installkfxdialog.cpp:184
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to get download URL for alpha patch"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:184
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Alpha patch URL: %1"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:199
+#: ../src/installkfxdialog.cpp:204
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Alpha patch download failed."
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:203
-msgctxt "InstallKfxDialog|Log Message"
-msgid "KeeperFX alpha patch successfully downloaded"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:208
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Testing alpha patch archive..."
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:219
-msgctxt "InstallKfxDialog|Log Message"
+#: ../src/installkfxdialog.cpp:225
+msgctxt "InstallKfxDialog|Failure Message"
 msgid "Alpha patch archive test failed. It may be corrupted."
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:261
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Setting game language to system language"
-msgstr ""
-
-#: ../src/installkfxdialog.cpp:274
+#: ../src/installkfxdialog.cpp:280
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:316
+#: ../src/installkfxdialog.cpp:321
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Installation failed"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:323
+#: ../src/installkfxdialog.cpp:328
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "KeeperFX Alpha builds"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:324
+#: ../src/installkfxdialog.cpp:329
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Alpha patches may contain new features and changes, but often contain bugs "
@@ -908,12 +727,12 @@ msgid ""
 "Are you sure you want to use Alpha patches?"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:346
+#: ../src/installkfxdialog.cpp:351
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr ""
 
-#: ../src/installkfxdialog.cpp:346
+#: ../src/installkfxdialog.cpp:351
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -1676,12 +1495,6 @@ msgctxt "UpdateDialog|Label"
 msgid "New version:"
 msgstr ""
 
-#: ../src/updatedialog.cpp:60
-#, qt-format
-msgctxt "UpdateDialog|Log Message"
-msgid "Update path: %1"
-msgstr ""
-
 #: ../src/updatedialog.cpp:118
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
@@ -1697,245 +1510,87 @@ msgctxt "UpdateDialog|Title label"
 msgid "Updating..."
 msgstr ""
 
-#: ../src/updatedialog.cpp:156
-#, qt-format
-msgctxt "UpdateDialog|Log Message"
-msgid "Updating to version %1"
-msgstr ""
-
-#: ../src/updatedialog.cpp:159
-msgctxt "UpdateDialog|Log Message"
-msgid "Trying to get filemap"
-msgstr ""
-
-#: ../src/updatedialog.cpp:166
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=count)"
-msgid "Filemap with %1 files retrieved"
-msgstr ""
-
-#: ../src/updatedialog.cpp:170
-msgctxt "UpdateDialog|Log Message"
-msgid "No filemap found"
-msgstr ""
-
-#: ../src/updatedialog.cpp:178
-#, qt-format
-msgctxt "UpdateDialog|Log message"
-msgid "Backing up %1 save file(s)..."
-msgstr ""
-
-#: ../src/updatedialog.cpp:182
-msgctxt "UpdateDialog|Log Message"
-msgid "Savefiles have been backed up"
-msgstr ""
-
-#: ../src/updatedialog.cpp:188
-msgctxt "UpdateDialog|Log Message"
-msgid "Comparing filemap against local files"
-msgstr ""
-
 #: ../src/updatedialog.cpp:192
 msgctxt "UpdateDialog|Progress bar (%p=percentage)"
 msgid "Comparing: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:219
+#: ../src/updatedialog.cpp:220
 #, qt-format
-msgctxt "UpdateDialog|Failure message (%1=local filepath)"
+msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to open file: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:245
-msgctxt "UpdateDialog|Log Message"
-msgid "No changes in the files have been detected"
-msgstr ""
-
-#: ../src/updatedialog.cpp:246
-msgctxt "UpdateDialog|Log Message"
-msgid "Switching to archive download"
-msgstr ""
-
-#: ../src/updatedialog.cpp:253
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=count)"
-msgid "%1 files need to be updated"
-msgstr ""
-
-#: ../src/updatedialog.cpp:275
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=archive download URL)"
-msgid "Downloading archive: %1"
-msgstr ""
-
-#: ../src/updatedialog.cpp:293
-msgctxt "UpdateDialog|Log Message"
+#: ../src/updatedialog.cpp:295
+msgctxt "UpdateDialog|Failure Message"
 msgid "Archive download failed."
 msgstr ""
 
-#: ../src/updatedialog.cpp:297
-msgctxt "UpdateDialog|Log Message"
-msgid "Archive successfully downloaded"
-msgstr ""
-
-#: ../src/updatedialog.cpp:303
-msgctxt "UpdateDialog|Log Message"
-msgid "Testing archive..."
-msgstr ""
-
-#: ../src/updatedialog.cpp:317
-#, qt-format
-msgctxt "UpdateDialog|Log Message"
-msgid "Total size: %1MiB"
-msgstr ""
-
-#: ../src/updatedialog.cpp:321
+#: ../src/updatedialog.cpp:323
 msgctxt "UpdateDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:322
-msgctxt "UpdateDialog|Log Message"
-msgid "Extracting..."
-msgstr ""
-
-#: ../src/updatedialog.cpp:334 ../src/updatedialog.cpp:550
+#: ../src/updatedialog.cpp:336 ../src/updatedialog.cpp:557
 msgctxt "UpdateDialog|Title label"
 msgid "Update complete!"
 msgstr ""
 
-#: ../src/updatedialog.cpp:335
-msgctxt "UpdateDialog|Log Message"
-msgid "Extraction completed"
-msgstr ""
-
-#: ../src/updatedialog.cpp:339
-msgctxt "UpdateDialog|Log Message"
-msgid "Removing temporary archive"
-msgstr ""
-
-#: ../src/updatedialog.cpp:346
-msgctxt "UpdateDialog|Log Message"
-msgid "Copying over any new settings"
-msgstr ""
-
-#: ../src/updatedialog.cpp:350 ../src/updatedialog.cpp:558
-msgctxt "UpdateDialog|Log Message"
-msgid "Done!"
-msgstr ""
-
-#: ../src/updatedialog.cpp:355 ../src/updatedialog.cpp:563
+#: ../src/updatedialog.cpp:357 ../src/updatedialog.cpp:570
 #, qt-format
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "KeeperFX has been successfully updated to version %1!"
 msgstr ""
 
-#: ../src/updatedialog.cpp:378
+#: ../src/updatedialog.cpp:380
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr ""
 
-#: ../src/updatedialog.cpp:378
+#: ../src/updatedialog.cpp:380
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "Are you sure you want to cancel the update?"
 msgstr ""
 
-#: ../src/updatedialog.cpp:391
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=temp dir path)"
-msgid "Temp directory path: %1"
-msgstr ""
-
-#: ../src/updatedialog.cpp:400
+#: ../src/updatedialog.cpp:403
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to create temp directory"
 msgstr ""
 
-#: ../src/updatedialog.cpp:411
+#: ../src/updatedialog.cpp:414
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:443
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "Downloaded: %1"
-msgstr ""
-
-#: ../src/updatedialog.cpp:445
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "Failed to write: %1"
-msgstr ""
-
-#: ../src/updatedialog.cpp:448
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "Failed to open file for writing: %1"
-msgstr ""
-
-#: ../src/updatedialog.cpp:451
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath,%2=error message)"
-msgid "Failed to download: %1 -> %2"
-msgstr ""
-
-#: ../src/updatedialog.cpp:470
-msgctxt "UpdateDialog|Log Message"
-msgid "All files downloaded successfully"
-msgstr ""
-
-#: ../src/updatedialog.cpp:473
-msgctxt "UpdateDialog|Log Message"
-msgid "Moving files to KeeperFX directory"
-msgstr ""
-
-#: ../src/updatedialog.cpp:477
-msgctxt "UpdateDialog|Log Message"
+#: ../src/updatedialog.cpp:481
+msgctxt "UpdateDialog|Failure Message"
 msgid "The temporary directory does not exist"
 msgstr ""
 
-#: ../src/updatedialog.cpp:488
+#: ../src/updatedialog.cpp:492
 msgctxt "UpdateDialog|Progress bar"
 msgid "Copying: %p%"
 msgstr ""
 
-#: ../src/updatedialog.cpp:511
+#: ../src/updatedialog.cpp:516
 #, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
+msgctxt "UpdateDialog|Failure Message"
 msgid "File does not exist: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:518
+#: ../src/updatedialog.cpp:533
 #, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath,2%=renamed filepath)"
-msgid "Renaming file during copy: %1 -> %2"
-msgstr ""
-
-#: ../src/updatedialog.cpp:527
-#, qt-format
-msgctxt "UpdateDialog|Log Message"
+msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to create destination directory: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:539
+#: ../src/updatedialog.cpp:548
 #, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "File moved: %1"
-msgstr ""
-
-#: ../src/updatedialog.cpp:541
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
+msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to move file: %1"
 msgstr ""
 
-#: ../src/updatedialog.cpp:554
-msgctxt "UpdateDialog|Log Message"
-msgid "Copying any new settings"
-msgstr ""
-
-#: ../src/updatedialog.cpp:579
+#: ../src/updatedialog.cpp:587
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr ""
