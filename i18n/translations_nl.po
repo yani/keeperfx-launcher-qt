@@ -866,7 +866,7 @@ msgstr "Speel"
 #: ../src/launchermainwindow.cpp:974 ../src/launchermainwindow.cpp:980
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
-msgstr "KeeperFX Bijdragers"
+msgstr "KeeperFX Fout"
 
 #: ../src/launchermainwindow.cpp:175
 msgctxt "LauncherMainWindow|MessageBox Text"
