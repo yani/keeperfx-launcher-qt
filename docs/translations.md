@@ -1,3 +1,4 @@
+
 ## Translating the KeeperFX Launcher
 
 KeeperFX has players all over the world.
@@ -22,6 +23,8 @@ We're always ready to help you out.
 
 Feel free to submit PRs for translations or
 contact Yani on the Keeper Klan Discord to submit any translations you might have.
+
+
 
 ### Languages and Maintainers
 
@@ -53,6 +56,8 @@ when we need a proof-read or a quick translation.
 | Latin                 | LA       |                                                  |
 | Ukrainian             | UK       | Mr.Negative                                      |
 
+
+
 ### Translating with POEdit
 
 First download the [i18n/translations.pot](../i18n/translations.pot) file which is the template for the translations.
@@ -68,6 +73,17 @@ This is a good one to know.
 When new translation strings are added or when existing ones are updated,
 you can select `Translation > Update from POT file...` to update the list. 
 POEdit will mark the ones that need work.
+
+
+
+### Testing your translation
+
+It's possible to load a language file directly into the launcher with the following command line option:
+```
+keeperfx-launcher-qt.exe --language-file=my_translation.po
+```
+
+
 
 ### Thanks
 

@@ -40,7 +40,7 @@ Just ask if you need it
 
 The launcher uses translations and should have at least the languages that are also available in the game.
 
-If you wish to help out with translations or want more information, you can read the following: [Translating the KeeperFX Launcher](./docs/translating.md).
+If you wish to help out with translations or want more information, you can read the following: [Translating the KeeperFX Launcher](./docs/translations.md).
 
 ## License
 
