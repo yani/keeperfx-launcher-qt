@@ -96,14 +96,14 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->comboBoxLauncherLanguage->addItem("Nederlands", "nl"); // Dutch
     //ui->comboBoxLauncherLanguage->addItem("Italiano", "it"); // Italian
     //ui->comboBoxLauncherLanguage->addItem("Fran\u00E7ais", "fr"); // French
-    //ui->comboBoxLauncherLanguage->addItem("Espa\u00F1ol", "es"); // Spanish
+    ui->comboBoxLauncherLanguage->addItem("Espa\u00F1ol", "es"); // Spanish
     //ui->comboBoxLauncherLanguage->addItem("Deutsch", "de"); // German
     //ui->comboBoxLauncherLanguage->addItem("Polski", "pl"); // Polish
     //ui->comboBoxLauncherLanguage->addItem("Svenska", "sv"); // Swedish
     //ui->comboBoxLauncherLanguage->addItem("\u65E5\u672C\u8A9E", "ja"); // Japanese
     //ui->comboBoxLauncherLanguage->addItem("\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "ru"); // Russian
     //ui->comboBoxLauncherLanguage->addItem("\uD55C\uAD6D\uC5B4", "ko"); // Korean
-    //ui->comboBoxLauncherLanguage->addItem("\u7B80\u4F53\u4E2D\u6587", "zh-Hans"); // Chinese (Simplified)
+    ui->comboBoxLauncherLanguage->addItem("\u7B80\u4F53\u4E2D\u6587", "zh-Hans"); // Chinese (Simplified)
     //ui->comboBoxLauncherLanguage->addItem("\u7E41\u9AD4\u4E2D\u6587", "zh-Hant"); // Chinese (Traditional)
     ui->comboBoxLauncherLanguage->addItem("\u010Ce\u0161ka", "cs"); // Czech
     //ui->comboBoxLauncherLanguage->addItem("Lat\u012Bna", "la"); // Latin

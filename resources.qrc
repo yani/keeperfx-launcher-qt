@@ -16,6 +16,8 @@
     <qresource prefix="/i18n">
         <file>i18n/translations_nl.po</file>
         <file>i18n/translations_cs.po</file>
+        <file>i18n/translations_es.po</file>
+        <file>i18n/translations_zh-Hans.po</file>
     </qresource>
     <qresource prefix="/theme">
         <file>res/play-button-theme/dk-orange.css</file>
