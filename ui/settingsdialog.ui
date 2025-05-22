@@ -164,7 +164,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>356</y>
+         <y>346</y>
          <width>171</width>
          <height>31</height>
         </rect>
@@ -186,7 +186,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>360</y>
+         <y>350</y>
          <width>91</width>
          <height>25</height>
         </rect>
@@ -308,6 +308,47 @@ height: 35px;
          <x>610</x>
          <y>190</y>
          <width>181</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelPacketSaveFileName">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>285</y>
+         <width>141</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Textinput Title Label">Packetsave filename</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxPacketSaveEnabled">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>240</y>
+         <width>361</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Enable Packetsave</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditPackSaveFileName">
+       <property name="geometry">
+        <rect>
+         <x>660</x>
+         <y>280</y>
+         <width>131</width>
          <height>25</height>
         </rect>
        </property>

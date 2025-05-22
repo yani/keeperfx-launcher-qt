@@ -80,6 +80,11 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
         params << "-connect" << QString(data1.toString() + ":" + data2.toString());
     }
 
+    // Run packetsave file
+    if (startType == StartType::LOAD_PACKETSAVE) {
+        params << "-packetload" << QString(data1.toString());
+    }
+
     // Log parameters
     if (params.count() > 0) {
         qInfo() << "Game parameters:" << params.join(" ");

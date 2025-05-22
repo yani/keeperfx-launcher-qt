@@ -254,6 +254,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxAtmoVolume->setDisabled(!isChecked);
     });
 
+    // Connect the API enabled checkbox
+    connect(ui->checkBoxPacketSaveEnabled, &QCheckBox::checkStateChanged, this, [this]() {
+        bool isChecked = ui->checkBoxPacketSaveEnabled->isChecked();
+        ui->labelPacketSaveFileName->setDisabled(!isChecked);
+        ui->lineEditPackSaveFileName->setDisabled(!isChecked);
+    });
+
     // Add handler to remember when a setting has changed
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
@@ -343,6 +350,12 @@ void SettingsDialog::loadSettings()
     ui->checkBoxFreezeGameNoFocus->setChecked(Settings::getKfxSetting("FREEZE_GAME_ON_FOCUS_LOST")
                                               == true);
     ui->comboBoxHumanPlayer->setCurrentIndex(ui->comboBoxHumanPlayer->findData(Settings::getLauncherSetting("GAME_PARAM_HUMAN_PLAYER").toString()));
+
+    bool isPacketSaveEnabled = Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_ENABLED") == true;
+    ui->checkBoxPacketSaveEnabled->setChecked(isPacketSaveEnabled);
+    ui->labelPacketSaveFileName->setDisabled(!isPacketSaveEnabled);
+    ui->lineEditPackSaveFileName->setDisabled(!isPacketSaveEnabled);
+    ui->lineEditPackSaveFileName->setText(Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME").toString());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================
@@ -571,6 +584,17 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
     Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
     Settings::setLauncherSetting("GAME_PARAM_HUMAN_PLAYER", ui->comboBoxHumanPlayer->currentData().toString());
+    Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_ENABLED", ui->checkBoxPacketSaveEnabled->isChecked() == true);
+
+    QString packetSaveFileName = ui->lineEditPackSaveFileName->text();
+    packetSaveFileName = packetSaveFileName.trimmed().replace(" ", "_");
+    if (packetSaveFileName.isEmpty()) {
+        packetSaveFileName = "packetsave.pck";
+    }
+    if (packetSaveFileName.toLower().endsWith(".pck") == false) {
+        packetSaveFileName = packetSaveFileName + ".pck";
+    }
+    Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME", packetSaveFileName);
 
     // ============================================================================
     // ================================ GRAPHICS ==================================

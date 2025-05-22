@@ -31,6 +31,7 @@
 #include "kfxversion.h"
 #include "launcheroptions.h"
 #include "newsarticlewidget.h"
+#include "runpacketfiledialog.h"
 #include "savefile.h"
 #include "scannetworkdialog.h"
 #include "settings.h"
@@ -323,18 +324,21 @@ void LauncherMainWindow::setupPlayExtraMenu()
     // Scan local network (MP)
     menu->addAction(tr("Test internet lobby (MP)", "Menu"), [this]() {
         qDebug() << "Test internet lobby (MP) selected!";
-        // Open the scan dialog
+        // Open the dialog
         EnetServerTestDialog dialog(this);
         dialog.exec();
     });
 
     // Run packetsave action
-    menu->addAction(tr("Run packetfile", "Menu"),
-                    [this]() {
-                        // Handle run packetsave logic here
-                        qDebug() << "Run packetsave selected!";
-                    })
-        ->setDisabled(true); // TODO: disabled until implemented
+    menu->addAction(tr("Run packetfile", "Menu"), [this]() {
+        qDebug() << "Run packetsave selected!";
+        // Open the dialog
+        RunPacketFileDialog dialog(this);
+        if (dialog.exec() == QDialog::Accepted) {
+            // Start the game
+            startGame(Game::StartType::LOAD_PACKETSAVE, dialog.getPacketFileName());
+        }
+    });
 
     // Heavylog toggle
     QFile heavyLogBin(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
