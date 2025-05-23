@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>231</height>
+    <height>291</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,7 +59,40 @@
     </widget>
    </item>
    <item>
-    <widget class="QListView" name="listView"/>
+    <widget class="QLabel" name="infoPacketSaveLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+color: #fff;
+}</string>
+     </property>
+     <property name="text">
+      <string comment="Notice Label">Packetsave will be disabled when loading a packetfile.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="margin">
+      <number>5</number>
+     </property>
+     <property name="indent">
+      <number>5</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListView" name="listView">
+     <property name="styleSheet">
+      <string notr="true">QListView {
+margin-top: 5px;
+}</string>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QWidget" name="buttonsWidget" native="true">

@@ -21,9 +21,10 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"absolute_config_path", "999.999.999"}, // '-config' absolute path was added in 1.2.0.4408
 
     // Not yet supported
-    {"start_campaign_directly", "999.999.999"}, // https://github.com/dkfans/keeperfx/issues/3924
-    {"load_save_directly", "999.999.999"},      // TODO: https://github.com/dkfans/keeperfx/issues/3481
-    {"enet_ipv6_support", "999.999.999"},       // TODO
+    {"start_campaign_directly", "999.999.999"},     // https://github.com/dkfans/keeperfx/issues/3924
+    {"load_save_directly", "999.999.999"},          // TODO: https://github.com/dkfans/keeperfx/issues/3481
+    {"enet_ipv6_support", "999.999.999"},           // TODO
+    {"packetsave_while_packetload", "999.999.999"}, // TODO
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;

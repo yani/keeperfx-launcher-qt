@@ -1,4 +1,6 @@
 #include "runpacketfiledialog.h"
+#include "kfxversion.h"
+#include "settings.h"
 #include "ui_runpacketfiledialog.h"
 
 #include <QDir>
@@ -14,6 +16,12 @@ RunPacketFileDialog::RunPacketFileDialog(QWidget *parent)
     setFixedSize(size());
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
+    // Hide notice about packetsave being disabled when loading a packet when
+    // packetsave works during packetload or packetsave is not enabled
+    if (KfxVersion::hasFunctionality("packetsave_while_packetload") || Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_ENABLED").toBool() == false) {
+        ui->infoPacketSaveLabel->hide();
+    }
 
     // Get packet files
     QDir dir(QCoreApplication::applicationDirPath());

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-22 20:41+0200\n"
+"POT-Creation-Date: 2025-05-23 02:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -932,12 +932,17 @@ msgid ""
 "will automatically start playing."
 msgstr ""
 
-#: ../ui/runpacketfiledialog.ui:91
+#: ../ui/runpacketfiledialog.ui:69
+msgctxt "RunPacketFileDialog|Notice Label"
+msgid "Packetsave will be disabled when loading a packetfile."
+msgstr ""
+
+#: ../ui/runpacketfiledialog.ui:124
 msgctxt "RunPacketFileDialog|Button"
 msgid "Cancel"
 msgstr ""
 
-#: ../ui/runpacketfiledialog.ui:116
+#: ../ui/runpacketfiledialog.ui:149
 msgctxt "RunPacketFileDialog|Button"
 msgid "Start"
 msgstr ""
