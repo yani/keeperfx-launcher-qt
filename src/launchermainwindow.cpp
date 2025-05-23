@@ -141,6 +141,10 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     if(LauncherOptions::isSet("install")){
         InstallKfxDialog installKfxDialog(this);
         installKfxDialog.exec();
+
+        // Remove --install from parameter list because the user might trigger a launcher restart after installation
+        LauncherOptions::removeArgumentOption("install");
+
     } else {
         // If '--install' is not forced we check if we need to install
         if (isKeeperFxInstalled() == false) {
