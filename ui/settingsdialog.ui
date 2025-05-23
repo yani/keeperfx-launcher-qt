@@ -322,7 +322,7 @@ height: 35px;
         <rect>
          <x>450</x>
          <y>285</y>
-         <width>141</width>
+         <width>221</width>
          <height>17</height>
         </rect>
        </property>
@@ -346,9 +346,9 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditPackSaveFileName">
        <property name="geometry">
         <rect>
-         <x>660</x>
+         <x>670</x>
          <y>280</y>
-         <width>131</width>
+         <width>121</width>
          <height>25</height>
         </rect>
        </property>
