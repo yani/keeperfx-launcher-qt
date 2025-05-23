@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-23 02:49+0200\n"
+"POT-Creation-Date: 2025-05-24 01:11+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -862,13 +862,35 @@ msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr "Speel"
 
-#: ../src/launchermainwindow.cpp:175 ../src/launchermainwindow.cpp:196
-#: ../src/launchermainwindow.cpp:978 ../src/launchermainwindow.cpp:984
+#: ../src/launchermainwindow.cpp:143 ../src/launchermainwindow.cpp:228
+#: ../src/launchermainwindow.cpp:249 ../src/launchermainwindow.cpp:1029
+#: ../src/launchermainwindow.cpp:1035
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "KeeperFX Fout"
 
-#: ../src/launchermainwindow.cpp:176
+#: ../src/launchermainwindow.cpp:144
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid ""
+"The launcher has detected that it might have been installed in the original "
+"Dungeon Keeper directory. There is a chance you will encounter issues and "
+"will be unable to play the game.\n"
+"\n"
+"KeeperFX should be installed in its own directory as it is a standalone game."
+msgstr ""
+"De launcher heeft gedetecteerd dat het mogelijk is geïnstalleerd in de "
+"originele Dungeon Keeper-map. Er is een kans dat je problemen ondervindt en "
+"het spel niet kunt spelen.\n"
+"\n"
+"KeeperFX moet in een eigen map worden geïnstalleerd, aangezien het een "
+"zelfstandig spel is."
+
+#: ../src/launchermainwindow.cpp:154
+msgctxt "LauncherMainWindow|Messagebox Checkbox label"
+msgid "Don't show this again"
+msgstr "Deze melding niet meer weergeven"
+
+#: ../src/launchermainwindow.cpp:229
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. It's possible your "
@@ -881,7 +903,7 @@ msgstr ""
 "\n"
 "Wil je KeeperFX automatisch opnieuw installeren?"
 
-#: ../src/launchermainwindow.cpp:197
+#: ../src/launchermainwindow.cpp:250
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
@@ -890,52 +912,52 @@ msgstr ""
 "De launcher kon de versie van KeeperFX niet ophalen. Rapporteer deze fout "
 "alsjeblieft aan het KeeperFX-team."
 
-#: ../src/launchermainwindow.cpp:288
+#: ../src/launchermainwindow.cpp:341
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr "Speel campagne"
 
-#: ../src/launchermainwindow.cpp:296
+#: ../src/launchermainwindow.cpp:349
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr "Savegame laden"
 
-#: ../src/launchermainwindow.cpp:303
+#: ../src/launchermainwindow.cpp:356
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr "Direct verbinden (MP)"
 
-#: ../src/launchermainwindow.cpp:314
+#: ../src/launchermainwindow.cpp:367
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr "Lokaal netwerk scannen (MP)"
 
-#: ../src/launchermainwindow.cpp:325
+#: ../src/launchermainwindow.cpp:378
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr "Internetlobby testen (MP)"
 
-#: ../src/launchermainwindow.cpp:333
+#: ../src/launchermainwindow.cpp:386
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Packetfile starten"
 
-#: ../src/launchermainwindow.cpp:347
+#: ../src/launchermainwindow.cpp:400
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
 msgstr "Heavylog (Extra loggen)"
 
-#: ../src/launchermainwindow.cpp:354 ../src/launchermainwindow.cpp:358
+#: ../src/launchermainwindow.cpp:407 ../src/launchermainwindow.cpp:411
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
 msgstr "Speel (hvlog)"
 
-#: ../src/launchermainwindow.cpp:354 ../src/launchermainwindow.cpp:358
+#: ../src/launchermainwindow.cpp:407 ../src/launchermainwindow.cpp:411
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Speel"
 
-#: ../src/launchermainwindow.cpp:477
+#: ../src/launchermainwindow.cpp:530
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -946,12 +968,12 @@ msgstr ""
 "\n"
 "Wil je KeeperFX downloaden en installeren?"
 
-#: ../src/launchermainwindow.cpp:483
+#: ../src/launchermainwindow.cpp:536
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/launchermainwindow.cpp:483
+#: ../src/launchermainwindow.cpp:536
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -962,12 +984,12 @@ msgstr ""
 "\n"
 "Je zult KeeperFX niet kunnen spelen."
 
-#: ../src/launchermainwindow.cpp:516
+#: ../src/launchermainwindow.cpp:569
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "Taal is veranderd"
 
-#: ../src/launchermainwindow.cpp:517
+#: ../src/launchermainwindow.cpp:570
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -975,12 +997,12 @@ msgid ""
 msgstr ""
 "De launcher moet herstart worden om de taal te wijzigen. Wil je dat nu doen?"
 
-#: ../src/launchermainwindow.cpp:944
+#: ../src/launchermainwindow.cpp:995
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "KeeperFX Verificatie Fout"
 
-#: ../src/launchermainwindow.cpp:945
+#: ../src/launchermainwindow.cpp:996
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -995,7 +1017,7 @@ msgstr ""
 "Het wordt sterk aangeraden om alleen officiële KeeperFX-bestanden te "
 "gebruiken."
 
-#: ../src/launchermainwindow.cpp:979
+#: ../src/launchermainwindow.cpp:1030
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1009,12 +1031,12 @@ msgstr ""
 "Fout:\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:984
+#: ../src/launchermainwindow.cpp:1035
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "KeeperFX kon niet worden gestart. Onbekende fout."
 
-#: ../src/launchermainwindow.cpp:1008
+#: ../src/launchermainwindow.cpp:1059
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
