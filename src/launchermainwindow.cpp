@@ -1,18 +1,19 @@
 #include "launchermainwindow.h"
 #include "./ui_launchermainwindow.h"
 
+#include <QCheckBox>
 #include <QDesktopServices>
 #include <QFile>
+#include <QJsonArray>
+#include <QMenu>
 #include <QMessageBox>
 #include <QMovie>
-#include <QTimer>
-#include <QUrl>
-#include <QJsonArray>
-#include <QShortcut>
-#include <QtConcurrent/QtConcurrentRun>
-#include <QMenu>
 #include <QObject>
 #include <QProcess>
+#include <QShortcut>
+#include <QTimer>
+#include <QUrl>
+#include <QtConcurrent/QtConcurrentRun>
 
 #include "apiclient.h"
 #include "campaign.h"
@@ -128,6 +129,51 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             // We use left() and top() here because the position is absolute and not relative to the screen
             geometry.left() + ((geometry.width() - this->width()) / 2),
             geometry.top() + ((geometry.height() - this->height()) / 2) - 50); // minus 50 to put it a bit higher
+    }
+
+    // Check if an original DK executable is found
+    // This should not be the case and probably means the user installed KeeperFX into
+    // the Dungeon Keeper directory which might cause problems.
+    // It's also possible for the user to surpress the messagebox.
+    if (DkFiles::isOriginalDkExecutableFound() && Settings::getLauncherSetting("SUPPRESS_ORIGINAL_DK_FOUND_MESSAGEBOX").toBool() == false) {
+        qDebug() << "Original DK executable(s) found: Asking if user is wants to ignore or abort";
+
+        // Create messagebox
+        QMessageBox msgBox;
+        msgBox.setWindowTitle(tr("KeeperFX Error", "MessageBox Title"));
+        msgBox.setText(tr("The launcher has detected that it might have been installed in the original Dungeon Keeper directory. "
+                          "There is a chance you will encounter issues and will be unable to play the game."
+                          "\n\n"
+                          "KeeperFX should be installed in its own directory as it is a standalone game.",
+                          "MessageBox Text"));
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setStandardButtons(QMessageBox::Ignore | QMessageBox::Abort);
+        msgBox.setDefaultButton(QMessageBox::Abort);
+
+        // Add "Don't show this again" checkbox
+        QCheckBox dontShowAgain(tr("Don't show this again", "Messagebox Checkbox label"));
+        dontShowAgain.setStyleSheet("margin-top: 12px;");
+        msgBox.setCheckBox(&dontShowAgain);
+
+        // Show the dialog and get the result
+        int result = msgBox.exec();
+
+        // Handle the result
+        if (result == QMessageBox::Abort) {
+            qDebug() << "Original DK executable(s) found: User chose to abort";
+
+            // Exit the application
+            this->hide();
+            QTimer::singleShot(0, []() { QCoreApplication::exit(1); });
+            return;
+        } else {
+            qDebug() << "Original DK executable(s) found: User chose to ignore";
+
+            // Check if user wants to not show the dialog again
+            if (dontShowAgain.isChecked()) {
+                Settings::setLauncherSetting("SUPPRESS_ORIGINAL_DK_FOUND_MESSAGEBOX", true);
+            }
+        }
     }
 
     // Autostart music download procedure when '--download-music' launcher option is set

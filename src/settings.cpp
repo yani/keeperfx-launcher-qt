@@ -25,6 +25,9 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"PLAY_BUTTON_THEME", "dk-orange"},
     {"LAUNCHER_LANGUAGE", QLocale::system().bcp47Name()}, // Get 2 letter language identifier from system locale
 
+    // Stuff to remember
+    {"SUPPRESS_ORIGINAL_DK_FOUND_MESSAGEBOX", false},
+
     // Game executable parameters
     // These also go in the launcher config
     {"GAME_PARAM_NO_SOUND", false},

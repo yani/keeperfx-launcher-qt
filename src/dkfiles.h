@@ -17,6 +17,7 @@ public:
     static bool copyDkDirToDir(QDir dir, QDir toDir);
     static bool isCurrentAppDirValidDkDir();
     static bool areAllSoundFilesPresent();
+    static bool isOriginalDkExecutableFound();
 
 private:
 
@@ -26,6 +27,7 @@ private:
     static const QStringList dataFiles;
     static const QStringList soundFiles;
     static const QStringList musicFiles;
+    static const QStringList originalDkExecutableFiles;
 
     static std::optional<QDir> findSteamDkInstallDir();
 };

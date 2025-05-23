@@ -70,6 +70,15 @@ const QStringList DkFiles::musicFiles = {
     "keeper07.ogg",
 };
 
+// Original Dungeon Keeper executable file list
+// This list is to make sure the user did not try to install KeeperFX into
+// the Dungeon Keeper directory which might cause problems.
+const QStringList DkFiles::originalDkExecutableFiles = {
+    "deeper.exe",
+    "keeper.exe",
+    "keeper95.exe",
+};
+
 QStringList DkFiles::getInstallPaths() {
 
     // Paths to return
@@ -363,4 +372,21 @@ bool DkFiles::areAllSoundFilesPresent()
     }
 
     return true;
+}
+
+bool DkFiles::isOriginalDkExecutableFound()
+{
+    // Get directory and files
+    QDir dir(QCoreApplication::applicationDirPath());
+    QFileInfoList entries = dir.entryInfoList(QDir::Files | QDir::NoSymLinks);
+
+    // Loop trough all files
+    for (const QFileInfo& fileInfo : entries) {
+        // Check if a file matches
+        if (originalDkExecutableFiles.contains(fileInfo.fileName(), Qt::CaseInsensitive)) {
+            return true;
+        }
+    }
+
+    return false;
 }
