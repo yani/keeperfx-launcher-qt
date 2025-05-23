@@ -135,6 +135,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     if (LauncherOptions::isSet("download-music")) {
         DownloadMusicDialog downloadMusicDialog(this);
         downloadMusicDialog.exec();
+
+        // Remove --download-music from parameter list because the user might trigger a launcher restart after installation
+        LauncherOptions::removeArgumentOption("download-music");
     }
 
     // Autostart install procedure when '--install' launcher option is set
