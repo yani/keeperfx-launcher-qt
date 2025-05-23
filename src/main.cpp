@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
 
         // Start the copied launcher
         // This one needs to be detached because we're removing the "-new" binary
-        QProcess::startDetached(defaultAppBinString, QCoreApplication::arguments());
+        QProcess::startDetached(defaultAppBinString, LauncherOptions::getArguments());
         return 0;
 
     } else if (appFileInfo.baseName() == "keeperfx-launcher-qt") {
@@ -196,7 +196,7 @@ int main(int argc, char *argv[])
         // Set platform to xcb
         qputenv("QT_QPA_PLATFORM", "xcb");
         // Run new process and pipe return value
-        return QProcess::execute(QCoreApplication::applicationFilePath(), QCoreApplication::arguments());
+        return QProcess::execute(QCoreApplication::applicationFilePath(), LauncherOptions::getArguments());
     }
 #endif
 

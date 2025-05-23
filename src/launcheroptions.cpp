@@ -1,6 +1,7 @@
 #include "launcheroptions.h"
 
 QCommandLineParser LauncherOptions::parser;
+QStringList LauncherOptions::arguments;
 
 bool LauncherOptions::isSet(const QString option)
 {
@@ -10,6 +11,19 @@ bool LauncherOptions::isSet(const QString option)
 QString LauncherOptions::getValue(const QString option)
 {
     return LauncherOptions::parser.value(option);
+}
+
+QStringList LauncherOptions::getArguments()
+{
+    return LauncherOptions::arguments;
+}
+
+void LauncherOptions::removeArgumentOption(QString option)
+{
+    LauncherOptions::arguments.erase(std::remove_if(LauncherOptions::arguments.begin(),
+                                                    LauncherOptions::arguments.end(),
+                                                    [option](const QString &arg) { return arg == QString("--" + option) || arg.startsWith(QString("--" + option + "=")); }),
+                                     LauncherOptions::arguments.end());
 }
 
 void LauncherOptions::processApp(QApplication &app)
@@ -65,4 +79,8 @@ void LauncherOptions::processApp(QApplication &app)
     if (activeOptions.empty() == false) {
         qDebug().noquote() << "Active command line option(s):" << activeOptions.join(" ");
     }
+
+    // Remember app arguments
+    LauncherOptions::arguments = app.arguments();
+    LauncherOptions::arguments.removeFirst(); // remove executable path
 }

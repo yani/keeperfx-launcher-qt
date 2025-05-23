@@ -522,9 +522,7 @@ void LauncherMainWindow::on_settingsButton_clicked() {
             // Hide this launcher's window and pipe the exit code from the new launcher process to the exit of this one
             // We do this because we want to allow users to keep a handle on the original process
             this->hide();
-            QCoreApplication::exit(
-                QProcess::execute(QCoreApplication::applicationFilePath(), QCoreApplication::arguments())
-            );
+            QCoreApplication::exit(QProcess::execute(QCoreApplication::applicationFilePath(), LauncherOptions::getArguments()));
             return;
         }
     }
@@ -833,7 +831,7 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
         qDebug() << "Starting new launcher";
         // Start the new launcher
         // This needs to be detached because we are going the remove the current running launcher
-        QProcess::startDetached(newAppBinString, QCoreApplication::arguments());
+        QProcess::startDetached(newAppBinString, LauncherOptions::getArguments());
         QApplication::quit();
         return;
     }

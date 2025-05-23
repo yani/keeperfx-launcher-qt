@@ -8,11 +8,16 @@ class LauncherOptions
 {
 
 public:
-
     static QCommandLineParser parser;
 
     static bool isSet(const QString option);
     static QString getValue(const QString option);
 
+    static QStringList getArguments();
+    static void removeArgumentOption(QString option);
+
     static void processApp(QApplication &app);
+
+private:
+    static QStringList arguments;
 };
