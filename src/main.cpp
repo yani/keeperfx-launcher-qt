@@ -249,26 +249,28 @@ int main(int argc, char *argv[])
     // Also try and copy over defaults
     Settings::load();
 
-    // Log system and launcher language
-    QString launcherLanguage = Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
-    qInfo() << "System locale:" << QLocale::system().name();
-    qInfo() << "Launcher language:" << launcherLanguage;
+    // Check if we need to load a translation file
+    if (LauncherOptions::isSet("translation-file")) {
+        QString translationFilePath = LauncherOptions::getValue("translation-file");
+        qInfo() << "Loading translation file directly:" << translationFilePath;
 
-    // Load translator if the launcher language is not English or a custom language file path is set
-    if (launcherLanguage != "en" || LauncherOptions::isSet("translation-file")) {
+        // Create and install translator
         Translator *translator = new Translator;
-
-        // Load either a custom translation file or a different language from the resources
-        if (LauncherOptions::isSet("translation-file")) {
-            QString translationFilePath = LauncherOptions::getValue("translation-file");
-            qDebug() << "Loading translation file directly:" << translationFilePath;
-            translator->loadPoFile(translationFilePath);
-        } else {
-            qInfo() << "Loading launcher translation:" << launcherLanguage;
-            translator->loadLanguage(launcherLanguage);
-        }
-
+        translator->loadPoFile(translationFilePath);
         app.installTranslator(translator);
+
+    } else {
+        // Get wanted launcher language either from --language parameter or from the launcher configuration.
+        // If the launcher configuration does not exist yet it will try and select the system language.
+        QString launcherLanguage = LauncherOptions::isSet("language") ? LauncherOptions::getValue("language") : Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString();
+
+        // Create and install translator if language is not English
+        if (launcherLanguage != "en") {
+            qInfo() << "Loading launcher translation:" << launcherLanguage;
+            Translator *translator = new Translator;
+            translator->loadLanguage(launcherLanguage);
+            app.installTranslator(translator);
+        }
     }
 
     // Force dark theme

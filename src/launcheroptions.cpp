@@ -49,6 +49,7 @@ void LauncherOptions::processApp(QApplication &app)
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},
         {"translation-file",            "Force a PO translation file to be loaded",    "filepath"},
+        {"language",                    "Force a language to be loaded",               "language code"},
     };
     // clang-format on
 

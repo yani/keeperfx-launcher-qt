@@ -572,6 +572,9 @@ void LauncherMainWindow::on_settingsButton_clicked() {
 
             qDebug() << "Restarting launcher to change the language";
 
+            // Remove possible --language parameter because it would be weird if it were still active after changing the language
+            LauncherOptions::removeArgumentOption("language");
+
             // Hide this launcher's window and pipe the exit code from the new launcher process to the exit of this one
             // We do this because we want to allow users to keep a handle on the original process
             this->hide();
