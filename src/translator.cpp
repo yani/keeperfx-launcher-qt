@@ -13,7 +13,7 @@ Translator::Translator(QObject *parent)
     translations = QMap<QString, QString>();
 }
 
-void Translator::loadLanguage(const QString &languageCode)
+bool Translator::loadLanguage(const QString &languageCode)
 {
     // Get string and make ready for file loading
     // All translation files should be lowercase with dashes isntead of underscores
@@ -21,17 +21,22 @@ void Translator::loadLanguage(const QString &languageCode)
     languageCodeString.replace('_', '-');
     languageCodeString = languageCodeString.toLower();
 
+    // Make sure language code string is not empty
+    if (languageCodeString.isEmpty()) {
+        return false;
+    }
+
     // Translation filepath in resources
-    Translator::loadPoFile(QString(":/i18n/i18n/translations_%1.po").arg(languageCodeString));
+    return Translator::loadPoFile(QString(":/i18n/i18n/translations_%1.po").arg(languageCodeString));
 }
 
-void Translator::loadPoFile(const QString &poFilePath)
+bool Translator::loadPoFile(const QString &poFilePath)
 {
     // Open translation file
     QFile file(poFilePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning() << "Could not open translation file:" << poFilePath;
-        return;
+        return false;
     }
 
     // Clear current translations
@@ -87,8 +92,9 @@ void Translator::loadPoFile(const QString &poFilePath)
         }
     }
 
-    // Log translation count
+    // Done!
     qInfo() << "Translations loaded:" << translationsLoaded;
+    return true;
 }
 
 QString Translator::translate(const char *context, const char *sourceText, const char *disambiguation, int n) const {

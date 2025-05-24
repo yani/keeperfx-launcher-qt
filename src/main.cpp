@@ -256,8 +256,11 @@ int main(int argc, char *argv[])
 
         // Create and install translator
         Translator *translator = new Translator;
-        translator->loadPoFile(translationFilePath);
-        app.installTranslator(translator);
+        if (translator->loadPoFile(translationFilePath)) {
+            app.installTranslator(translator);
+        } else {
+            translator->deleteLater();
+        }
 
     } else {
         // Get wanted launcher language either from --language parameter or from the launcher configuration.
@@ -268,8 +271,11 @@ int main(int argc, char *argv[])
         if (launcherLanguage != "en") {
             qInfo() << "Loading launcher translation:" << launcherLanguage;
             Translator *translator = new Translator;
-            translator->loadLanguage(launcherLanguage);
-            app.installTranslator(translator);
+            if (translator->loadLanguage(launcherLanguage)) {
+                app.installTranslator(translator);
+            } else {
+                translator->deleteLater();
+            }
         }
     }
 
