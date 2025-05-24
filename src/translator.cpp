@@ -15,8 +15,14 @@ Translator::Translator(QObject *parent)
 
 void Translator::loadLanguage(const QString &languageCode)
 {
+    // Get string and make ready for file loading
+    // All translation files should be lowercase with dashes isntead of underscores
+    QString languageCodeString = languageCode;
+    languageCodeString.replace('_', '-');
+    languageCodeString = languageCodeString.toLower();
+
     // Translation filepath in resources
-    Translator::loadPoFile(QString(":/i18n/i18n/translations_%1.po").arg(languageCode));
+    Translator::loadPoFile(QString(":/i18n/i18n/translations_%1.po").arg(languageCodeString));
 }
 
 void Translator::loadPoFile(const QString &poFilePath)
