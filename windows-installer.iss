@@ -20,8 +20,8 @@ DisableDirPage=no
 DisableFinishedPage=yes
 ; Add extra bytes to the calculated total size (because we download KeeperFX ourselves)
 ExtraDiskSpaceRequired=640329910
-; disable the "Select Setup Language" dialog and have it rely solely on auto-detection
-ShowLanguageDialog=no
+; Show "Select Setup Language" dialog
+ShowLanguageDialog=yes
 
 [Files]
 Source: "release\win64\keeperfx-launcher-qt.exe"; DestDir: "{app}"; Flags: ignoreversion
@@ -33,7 +33,7 @@ Name: "{group}\KeeperFX"; Filename: "{app}\keeperfx-launcher-qt.exe"
 ; Run the custom installer of the launcher
 ; We do it like this to provide a 'web installer'
 [Run]
-Filename: "{app}\keeperfx-launcher-qt.exe"; Parameters: "--install"; Flags: nowait shellexec
+Filename: "{app}\keeperfx-launcher-qt.exe"; Parameters: "--install --language={language}"; Flags: nowait shellexec
 
 ; Remove complete KeeperFX directory on uninstall
 ; Reason being that the launcher downloads KeeperFX and the uninstaller would otherwise only uninstall the launcher
