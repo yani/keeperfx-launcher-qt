@@ -10,6 +10,8 @@
 QSettings *Settings::kfxSettings;
 QSettings *Settings::launcherSettings;
 
+// clang-format off
+
 QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
 
     // Launcher settings
@@ -44,13 +46,15 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
 QMap<QString, QString> Settings::gameSettingsParameterMap = {
     {"GAME_PARAM_NO_SOUND", "-nosound"},
     {"GAME_PARAM_USE_CD_MUSIC", "-cd"},
-    {"GAME_PARAM_NO_INTRO", "-nointro"},
     {"GAME_PARAM_ALEX", "-alex"},
     {"GAME_PARAM_VID_SMOOTH", "-vidsmooth"},
     // {"GAME_PARAM_FPS", "-fps %d"}, // Hardcoded
     // {"GAME_PARAM_HUMAN_PLAYER", "-human %d"}, // Hardcoded
     // {"GAME_PARAM_PACKET_SAVE_FILE_NAME", "-packetsave %s"}, // Hardcoded
+    // {"GAME_PARAM_NO_INTRO", "-nointro"}, // Hardcoded
 };
+
+// clang-format on
 
 QMap<QString, QString> Settings::localeToGameLanguageMap = {
     {"en", "ENG"},
@@ -248,6 +252,14 @@ QStringList Settings::getGameSettingsParameters()
     for (auto it = Settings::gameSettingsParameterMap.begin(); it != Settings::gameSettingsParameterMap.end(); ++it) {
         if (Settings::getLauncherSetting(it.key()).toBool() == true) {
             paramList << it.value();
+        }
+    }
+
+    // Add no intro
+    // We hardcode this one because it's different for game versions that have the STARTUP cfg option
+    if (KfxVersion::hasFunctionality("startup_config_option") == false) {
+        if (Settings::getLauncherSetting("GAME_PARAM_NO_INTRO").toBool() == true) {
+            paramList << "-nointro";
         }
     }
 

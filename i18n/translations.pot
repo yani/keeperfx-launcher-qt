@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-24 01:11+0200\n"
+"POT-Creation-Date: 2025-05-26 01:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -781,8 +781,8 @@ msgid "Play"
 msgstr ""
 
 #: ../src/launchermainwindow.cpp:143 ../src/launchermainwindow.cpp:228
-#: ../src/launchermainwindow.cpp:249 ../src/launchermainwindow.cpp:1029
-#: ../src/launchermainwindow.cpp:1035
+#: ../src/launchermainwindow.cpp:249 ../src/launchermainwindow.cpp:1032
+#: ../src/launchermainwindow.cpp:1038
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr ""
@@ -896,12 +896,12 @@ msgid ""
 "now?"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:995
+#: ../src/launchermainwindow.cpp:998
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:996
+#: ../src/launchermainwindow.cpp:999
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -911,7 +911,7 @@ msgid ""
 "It is highly suggested to only use official KeeperFX files."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1030
+#: ../src/launchermainwindow.cpp:1033
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -921,12 +921,12 @@ msgid ""
 "%1"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1035
+#: ../src/launchermainwindow.cpp:1038
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1059
+#: ../src/launchermainwindow.cpp:1062
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr ""
@@ -1044,7 +1044,7 @@ msgstr ""
 
 #: ../ui/settingsdialog.ui:91
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Skip Intro"
+msgid "Display Intro"
 msgstr ""
 
 #: ../ui/settingsdialog.ui:109
@@ -1506,12 +1506,12 @@ msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:804
+#: ../src/settingsdialog.cpp:840
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:805
+#: ../src/settingsdialog.cpp:841
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "

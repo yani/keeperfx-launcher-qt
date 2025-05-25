@@ -337,9 +337,26 @@ void SettingsDialog::loadSettings()
 
     ui->comboBoxLanguage->setCurrentIndex(
         ui->comboBoxLanguage->findData(Settings::getKfxSetting("LANGUAGE").toString()));
-    ui->checkBoxSkipIntro->setChecked(Settings::getLauncherSetting("GAME_PARAM_NO_INTRO") == true);
-    ui->checkBoxDisplaySplashScreens->setChecked(Settings::getKfxSetting("DISABLE_SPLASH_SCREENS")
-                                                 == false);
+
+    if (KfxVersion::hasFunctionality("startup_config_option")) {
+        ui->checkBoxDisplayIntro->setChecked(false);
+        ui->checkBoxDisplaySplashScreens->setChecked(false);
+        QString startupString = Settings::getKfxSetting("STARTUP").toString().trimmed();
+        QStringList startupScreens = startupString.split(" ");
+        for (const QString startupScreen : startupScreens) {
+            if (startupScreen == "INTRO") {
+                ui->checkBoxDisplayIntro->setChecked(true);
+            } else if (startupScreen == "FX" || startupScreen == "LEGAL") {
+                ui->checkBoxDisplaySplashScreens->setChecked(true);
+            } else {
+                this->hiddenStartupScreens << startupScreen;
+            }
+        }
+    } else {
+        ui->checkBoxDisplayIntro->setChecked(Settings::getLauncherSetting("GAME_PARAM_NO_INTRO") == false);
+        ui->checkBoxDisplaySplashScreens->setChecked(Settings::getKfxSetting("DISABLE_SPLASH_SCREENS") == false);
+    }
+
     ui->checkBoxCheats->setChecked(Settings::getLauncherSetting("GAME_PARAM_ALEX") == true);
     ui->checkBoxCensorship->setChecked(Settings::getKfxSetting("CENSORSHIP") == true);
     ui->comboBoxScreenshots->setCurrentIndex(
@@ -573,9 +590,28 @@ void SettingsDialog::saveSettings()
     // ========================================================================
 
     Settings::setKfxSetting("LANGUAGE", ui->comboBoxLanguage->currentData().toString());
-    Settings::setLauncherSetting("GAME_PARAM_NO_INTRO", ui->checkBoxSkipIntro->isChecked());
-    Settings::setKfxSetting("DISABLE_SPLASH_SCREENS",
-                            ui->checkBoxDisplaySplashScreens->isChecked() == false);
+
+    if (KfxVersion::hasFunctionality("startup_config_option")) {
+        QStringList startupScreens;
+        // Add legal and FX
+        if (ui->checkBoxDisplaySplashScreens->isChecked() == true) {
+            startupScreens << "LEGAL" << "FX";
+        }
+        // Add intro
+        if (ui->checkBoxDisplayIntro->isChecked() == true) {
+            startupScreens << "INTRO";
+        }
+        // Add any hidden startup screens
+        if (this->hiddenStartupScreens.isEmpty() == false) {
+            qDebug() << "Adding hidden startup screens to STARTUP:" << this->hiddenStartupScreens;
+            startupScreens << this->hiddenStartupScreens;
+        }
+        Settings::setKfxSetting("STARTUP", startupScreens.join(" "));
+    } else {
+        Settings::setLauncherSetting("GAME_PARAM_NO_INTRO", ui->checkBoxDisplayIntro->isChecked() == false);
+        Settings::setKfxSetting("DISABLE_SPLASH_SCREENS", ui->checkBoxDisplaySplashScreens->isChecked() == false);
+    }
+
     Settings::setLauncherSetting("GAME_PARAM_ALEX", ui->checkBoxCheats->isChecked());
     Settings::setKfxSetting("CENSORSHIP", ui->checkBoxCensorship->isChecked());
     Settings::setKfxSetting("SCREENSHOT", ui->comboBoxScreenshots->currentData().toString());

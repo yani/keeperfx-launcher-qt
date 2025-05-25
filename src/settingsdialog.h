@@ -34,4 +34,6 @@ private:
     QList<QWidget *> monitorNumberOverlays;
     void showMonitorNumberOverlays();
     void hideMonitorNumberOverlays();
+
+    QStringList hiddenStartupScreens;
 };

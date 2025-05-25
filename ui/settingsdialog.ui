@@ -73,7 +73,7 @@ height: 35px;
         <string comment="Dropdown Title Label">Game language</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBoxSkipIntro">
+      <widget class="QCheckBox" name="checkBoxDisplayIntro">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -88,7 +88,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string comment="Checkbox Toggle">Skip Intro</string>
+        <string comment="Checkbox Toggle">Display Intro</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxCheats">

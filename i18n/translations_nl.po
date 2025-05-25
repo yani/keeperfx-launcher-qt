@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-24 01:11+0200\n"
+"POT-Creation-Date: 2025-05-26 01:16+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -863,8 +863,8 @@ msgid "Play"
 msgstr "Speel"
 
 #: ../src/launchermainwindow.cpp:143 ../src/launchermainwindow.cpp:228
-#: ../src/launchermainwindow.cpp:249 ../src/launchermainwindow.cpp:1029
-#: ../src/launchermainwindow.cpp:1035
+#: ../src/launchermainwindow.cpp:249 ../src/launchermainwindow.cpp:1032
+#: ../src/launchermainwindow.cpp:1038
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "KeeperFX Fout"
@@ -997,12 +997,12 @@ msgid ""
 msgstr ""
 "De launcher moet herstart worden om de taal te wijzigen. Wil je dat nu doen?"
 
-#: ../src/launchermainwindow.cpp:995
+#: ../src/launchermainwindow.cpp:998
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "KeeperFX Verificatie Fout"
 
-#: ../src/launchermainwindow.cpp:996
+#: ../src/launchermainwindow.cpp:999
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1017,7 +1017,7 @@ msgstr ""
 "Het wordt sterk aangeraden om alleen officiële KeeperFX-bestanden te "
 "gebruiken."
 
-#: ../src/launchermainwindow.cpp:1030
+#: ../src/launchermainwindow.cpp:1033
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1031,12 +1031,12 @@ msgstr ""
 "Fout:\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1035
+#: ../src/launchermainwindow.cpp:1038
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "KeeperFX kon niet worden gestart. Onbekende fout."
 
-#: ../src/launchermainwindow.cpp:1059
+#: ../src/launchermainwindow.cpp:1062
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
@@ -1160,8 +1160,8 @@ msgstr "Spel taal"
 
 #: ../ui/settingsdialog.ui:91
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Skip Intro"
-msgstr "Intro overslaan"
+msgid "Display Intro"
+msgstr "Intro tonen"
 
 #: ../ui/settingsdialog.ui:109
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1195,7 +1195,7 @@ msgstr "Commando karakter"
 #: ../ui/settingsdialog.ui:248
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display splash screens"
-msgstr "Splashschermen weergeven"
+msgstr "Splashschermen tonen"
 
 #: ../ui/settingsdialog.ui:266
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1625,12 +1625,12 @@ msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "KeeperFX Bijdragers: %1"
 
-#: ../src/settingsdialog.cpp:804
+#: ../src/settingsdialog.cpp:840
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFX Instellingen"
 
-#: ../src/settingsdialog.cpp:805
+#: ../src/settingsdialog.cpp:841
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
@@ -1773,6 +1773,10 @@ msgstr "Bestand verplaatsen mislukt: %1"
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr "Het is niet gelukt om alle gedownloade bestanden te verplaatsen"
+
+#~ msgctxt "SettingsDialog|Checkbox Toggle"
+#~ msgid "Skip Intro"
+#~ msgstr "Intro overslaan"
 
 #~ msgctxt "DownloadMusicDialog|Log Message"
 #~ msgid "Getting download URL for music archive"
