@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 22:05+0200\n"
+"POT-Creation-Date: 2025-05-26 01:16+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -118,12 +118,12 @@ msgctxt "CopyDkFilesDialog|Window Title"
 msgid "Copy DK Files"
 msgstr "Kopírování souborů DK"
 
-#: ../ui/copydkfilesdialog.ui:32
+#: ../ui/copydkfilesdialog.ui:36
 msgctxt "CopyDkFilesDialog|Header"
 msgid "Copy Dungeon Keeper Files"
 msgstr "Kopírování Dungeon Keeper souborů"
 
-#: ../ui/copydkfilesdialog.ui:61
+#: ../ui/copydkfilesdialog.ui:65
 msgctxt "CopyDkFilesDialog|Information"
 msgid ""
 "KeeperFX requires the original Dungeon Keeper files for copyright reasons.\n"
@@ -139,37 +139,37 @@ msgstr ""
 "Můžete použít originální CD nebo digitální verzi z GOG, Steam nebo EA.\n"
 "Pokud chcete použít digitální verzi, musíte ji nejprve nainstalovat."
 
-#: ../ui/copydkfilesdialog.ui:94
+#: ../ui/copydkfilesdialog.ui:101
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Browse"
 msgstr "Procházet"
 
-#: ../ui/copydkfilesdialog.ui:125
+#: ../ui/copydkfilesdialog.ui:138
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../ui/copydkfilesdialog.ui:147
+#: ../ui/copydkfilesdialog.ui:163
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: ../src/copydkfilesdialog.cpp:29
+#: ../src/copydkfilesdialog.cpp:30
 msgctxt "CopyDkFilesDialog|Label"
 msgid "A suitable DK installation has been automatically detected."
 msgstr "Automaticky byla rozpoznána vhodná instalace DK."
 
-#: ../src/copydkfilesdialog.cpp:42
+#: ../src/copydkfilesdialog.cpp:43
 msgctxt "CopyDkFilesDialog|Directory Browse Dialog"
 msgid "Select Directory containing Dungeon Keeper files"
 msgstr "Vyberte adresář obsahující soubory Dungeon Keeper"
 
-#: ../src/copydkfilesdialog.cpp:51 ../src/copydkfilesdialog.cpp:72
+#: ../src/copydkfilesdialog.cpp:52 ../src/copydkfilesdialog.cpp:73
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Original DK files not found"
 msgstr "Původní soubory DK nebyly nalezeny"
 
-#: ../src/copydkfilesdialog.cpp:52 ../src/copydkfilesdialog.cpp:73
+#: ../src/copydkfilesdialog.cpp:53 ../src/copydkfilesdialog.cpp:74
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The chosen directory does not contain all of the required files. Please "
@@ -178,37 +178,37 @@ msgstr ""
 "Vybraný adresář neobsahuje všechny požadované soubory. Zvolte prosím "
 "originální Dungeon Keeper instalaci."
 
-#: ../src/copydkfilesdialog.cpp:63
+#: ../src/copydkfilesdialog.cpp:64
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Select a directory"
 msgstr "Vyberte adresář"
 
-#: ../src/copydkfilesdialog.cpp:63
+#: ../src/copydkfilesdialog.cpp:64
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Please select an original Dungeon Keeper installation location."
 msgstr "Zvolte prosím původní umístění instalace Dungeon Keeper."
 
-#: ../src/copydkfilesdialog.cpp:80 ../src/copydkfilesdialog.cpp:86
+#: ../src/copydkfilesdialog.cpp:81 ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Failed to copy files"
 msgstr "Kopírování souborů se nezdařilo"
 
-#: ../src/copydkfilesdialog.cpp:80
+#: ../src/copydkfilesdialog.cpp:81
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "The current directory is not writable."
 msgstr "Do aktuálního adresáře nelze zapisovat."
 
-#: ../src/copydkfilesdialog.cpp:86
+#: ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Something went wrong while copying the files."
 msgstr "Při kopírování souborů se něco pokazilo."
 
-#: ../src/copydkfilesdialog.cpp:92
+#: ../src/copydkfilesdialog.cpp:99
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "DK files copied!"
 msgstr "Soubory DK zkopírovány!"
 
-#: ../src/copydkfilesdialog.cpp:93
+#: ../src/copydkfilesdialog.cpp:100
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The required Dungeon Keeper files have been copied.\n"
@@ -219,12 +219,12 @@ msgstr ""
 "\n"
 "Nyní můžete hrát KeeperFX!"
 
-#: ../src/copydkfilesdialog.cpp:106
+#: ../src/copydkfilesdialog.cpp:113
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Potvrzení"
 
-#: ../src/copydkfilesdialog.cpp:107
+#: ../src/copydkfilesdialog.cpp:114
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -240,12 +240,12 @@ msgctxt "CrashDialog|Window Title"
 msgid "KeeperFX Crash Report"
 msgstr "Zpráva o pádu KeeperFX"
 
-#: ../ui/crashdialog.ui:70
+#: ../ui/crashdialog.ui:74
 msgctxt "CrashDialog|Header"
 msgid "KeeperFX has crashed"
 msgstr "KeeperFX se zhroutil"
 
-#: ../ui/crashdialog.ui:127
+#: ../ui/crashdialog.ui:131
 msgctxt "CrashDialog|Information Label"
 msgid ""
 "It seems that KeeperFX has crashed and is unable to recover. If you wish to "
@@ -260,18 +260,18 @@ msgstr ""
 "údaje, můžeme vás kontaktovat později. Odeslány budou i další informace, "
 "například soubory protokolu a konfigurace aplikace KeeperFX."
 
-#: ../ui/crashdialog.ui:148
+#: ../ui/crashdialog.ui:152
 #, qt-format
 msgctxt "CrashDialog|Information Label"
 msgid "You can also raise an issue on Github: %1"
 msgstr "Můžete také nahlásit problém na Githubu: %1"
 
-#: ../ui/crashdialog.ui:164
+#: ../ui/crashdialog.ui:168
 msgctxt "CrashDialog|Input box title"
 msgid "Information (Optional)"
 msgstr "Informace (volitelné)"
 
-#: ../ui/crashdialog.ui:196
+#: ../ui/crashdialog.ui:200
 msgctxt "CrashDialog|Textarea Placeholder"
 msgid ""
 "Please explain what happened, and if possible the steps to reproduce this "
@@ -280,12 +280,12 @@ msgstr ""
 "Vysvětlete prosím, co se stalo, a pokud je to možné, uveďte kroky k "
 "reprodukci tohoto pádu."
 
-#: ../ui/crashdialog.ui:206
+#: ../ui/crashdialog.ui:210
 msgctxt "CrashDialog|Input box title"
 msgid "Savefile (Optional)"
 msgstr "Soubor s uloženou hrou (volitelné)"
 
-#: ../ui/crashdialog.ui:228
+#: ../ui/crashdialog.ui:232
 msgctxt "CrashDialog|Dropdown Placeholder Text"
 msgid ""
 "If you have a game save that could provide us with more information. You can "
@@ -294,32 +294,32 @@ msgstr ""
 "Pokud máte soubor s uloženou hrou, mohli byste nám poskytnout více "
 "informací. Můžete je přidat zde."
 
-#: ../ui/crashdialog.ui:238
+#: ../ui/crashdialog.ui:242
 msgctxt "CrashDialog|Input box title"
 msgid "Contact Information (Optional)"
 msgstr "Kontaktní údaje (nepovinné)"
 
-#: ../ui/crashdialog.ui:254
+#: ../ui/crashdialog.ui:258
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Discord handle"
 msgstr "Discord přezdívka"
 
-#: ../ui/crashdialog.ui:261
+#: ../ui/crashdialog.ui:265
 msgctxt "CrashDialog|Input Placeholder"
 msgid "KeeperFX.net username"
 msgstr "Uživatelské jméno KeeperFX.net"
 
-#: ../ui/crashdialog.ui:268
+#: ../ui/crashdialog.ui:272
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Email Address"
 msgstr "E-mailová adresa"
 
-#: ../ui/crashdialog.ui:302
+#: ../ui/crashdialog.ui:306
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../ui/crashdialog.ui:324
+#: ../ui/crashdialog.ui:331
 msgctxt "CrashDialog|Button"
 msgid "Send"
 msgstr "Poslat"
@@ -367,12 +367,12 @@ msgctxt "DirectConnectDialog|Window Title"
 msgid "Direct Connect"
 msgstr "Přímé připojení"
 
-#: ../ui/directconnectdialog.ui:29
+#: ../ui/directconnectdialog.ui:33
 msgctxt "DirectConnectDialog|Header"
 msgid "Direct Connect"
 msgstr "Přímé připojení"
 
-#: ../ui/directconnectdialog.ui:47
+#: ../ui/directconnectdialog.ui:51
 msgctxt "DirectConnectDialog|Information Label"
 msgid ""
 "Directly connect to an open ENET lobby. Enter the IP address of the host. "
@@ -381,22 +381,22 @@ msgstr ""
 "Přímé připojení k otevřenému ENET lobby. Zadejte IP adresu hostitele. Je "
 "podporován pouze protokol ENET."
 
-#: ../ui/directconnectdialog.ui:72
+#: ../ui/directconnectdialog.ui:76
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "IP Address"
 msgstr "IP Adresa"
 
-#: ../ui/directconnectdialog.ui:88
+#: ../ui/directconnectdialog.ui:92
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "Port"
 msgstr "Port"
 
-#: ../ui/directconnectdialog.ui:122
+#: ../ui/directconnectdialog.ui:126
 msgctxt "DirectConnectDialog|Button"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../ui/directconnectdialog.ui:144
+#: ../ui/directconnectdialog.ui:151
 msgctxt "DirectConnectDialog|Button"
 msgid "Connect"
 msgstr "Připojit"
@@ -416,17 +416,117 @@ msgctxt "DirectConnectDialog|MessageBox Text"
 msgid "IPv6 addresses are not supported."
 msgstr "Adresy IPv6 nejsou podporovány."
 
+#: ../ui/downloadmusicdialog.ui:14
+msgctxt "DownloadMusicDialog|Dialog Title"
+msgid "KeeperFX Background Music"
+msgstr "Hudba na pozadí KeeperFX"
+
+#: ../ui/downloadmusicdialog.ui:36
+msgctxt "DownloadMusicDialog|Header"
+msgid "Download Music Files"
+msgstr "Stáhnout hudební soubory"
+
+#: ../ui/downloadmusicdialog.ui:65
+msgctxt "DownloadMusicDialog|Information"
+msgid ""
+"It seems the background music files were not found. This might happen when "
+"you copied over the Dungeon Keeper files from the CD instead of a digital "
+"release.\n"
+"\n"
+"You can let the launcher automatically download them because you have "
+"already proven your ownership of the original Dungeon Keeper game files.\n"
+"\n"
+"If you do not download the music files you will need to have the original CD "
+"in your disk drive to hear the background music."
+msgstr ""
+"Zdá se, že soubory s hudbou na pozadí nebyly nalezeny. To se mohlo stát, "
+"když jste zkopírovali soubory Dungeon Keepera z CD místo z digitálního "
+"vydání.\n"
+"\n"
+"Můžete nechat Launcher, aby je automaticky stáhl, protože jste již prokázali "
+"vlastnictví původních souborů hry Dungeon Keeper.\n"
+"\n"
+"Pokud hudební soubory nestáhnete, budete muset mít v diskové jednotce "
+"originální CD, abyste si poslechli hudbu na pozadí."
+
+#: ../ui/downloadmusicdialog.ui:138
+msgctxt "DownloadMusicDialog|Button"
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: ../ui/downloadmusicdialog.ui:163
+msgctxt "DownloadMusicDialog|Button"
+msgid "Download"
+msgstr "Stáhnout"
+
+#: ../src/downloadmusicdialog.cpp:67
+msgctxt "DownloadMusicDialog|Failure Message"
+msgid "Failed to get download URL for music archive"
+msgstr "Nepodařilo se získat adresu URL pro stažení hudebního archivu"
+
+#: ../src/downloadmusicdialog.cpp:77
+msgctxt "DownloadMusicDialog|Failure Message"
+msgid "Invalid music archive file extension. It must be a 7zip archive."
+msgstr "Nesprávná přípona hudebního archivu. Musí to být archiv 7zip."
+
+#: ../src/downloadmusicdialog.cpp:95
+msgctxt "DownloadMusicDialog|Failure Message"
+msgid "Failed to download music archive"
+msgstr "Nepodařilo se stáhnout hudební archiv"
+
+#: ../src/downloadmusicdialog.cpp:117
+msgctxt "DownloadMusicDialog|Failure message"
+msgid "Music archive test failed. It may be corrupted."
+msgstr "Test hudebního archivu se nezdařil. Může být poškozený."
+
+#: ../src/downloadmusicdialog.cpp:129
+msgctxt "DownloadMusicDialog|Progress bar"
+msgid "Extracting: %p%"
+msgstr "Rozbalování: %p%"
+
+#: ../src/downloadmusicdialog.cpp:161
+msgctxt "DownloadMusicDialog|MessageBox Text"
+msgid "The KeeperFX background music has been successfully downloaded!"
+msgstr "Hudba na pozadí KeeperFX byla úspěšně stažena!"
+
+#: ../src/downloadmusicdialog.cpp:170
+msgctxt "DownloadMusicDialog|Progress bar"
+msgid "Downloading: %p% (%vMiB)"
+msgstr "Stahování: %p% (%vMiB)"
+
+#: ../src/downloadmusicdialog.cpp:211
+msgctxt "DownloadMusicDialog|MessageBox Title"
+msgid "Download failed"
+msgstr "Stažení se nezdařilo"
+
+#: ../src/downloadmusicdialog.cpp:218
+msgctxt "DownloadMusicDialog|MessageBox Title"
+msgid "Confirmation"
+msgstr "Potvrzení"
+
+#: ../src/downloadmusicdialog.cpp:219
+msgctxt "DownloadMusicDialog|MessageBox Text"
+msgid ""
+"Are you sure?\n"
+"\n"
+"You will not be able to hear the background music without having your CD in "
+"your disk drive."
+msgstr ""
+"Jste si jistý?\n"
+"\n"
+"Bez CD v diskové jednotce nebudete moci poslouchat hudbu na pozadí."
+
 #: ../ui/enetservertestdialog.ui:14
 msgctxt "EnetServerTestDialog|Window Title"
 msgid "Test internet lobby"
 msgstr "Otestovat internetovou lobby"
 
-#: ../ui/enetservertestdialog.ui:26
+#: ../ui/enetservertestdialog.ui:30
 msgctxt "EnetServerTestDialog|Header"
 msgid "Multiplayer Lobby Portforwarding Test"
 msgstr "Test přeposílání portů v lobby pro více hráčů"
 
-#: ../ui/enetservertestdialog.ui:56
+#: ../ui/enetservertestdialog.ui:60
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "This tool checks if your KeeperFX multiplayer lobby can be reached from the "
@@ -437,7 +537,7 @@ msgstr ""
 "dostupná z internetu. Tento nástroj nemusíte používat pro místní hry, "
 "protože ty jsou již dostupné v rámci vaší sítě."
 
-#: ../ui/enetservertestdialog.ui:74
+#: ../ui/enetservertestdialog.ui:78
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "To host a game online, you must open port 5556 in your router. How to do "
@@ -448,7 +548,7 @@ msgstr ""
 "u každého routeru a poskytovatele internetu liší, proto si pokyny vyhledejte "
 "na internetu nebo požádejte o pomoc svého poskytovatele."
 
-#: ../ui/enetservertestdialog.ui:95
+#: ../ui/enetservertestdialog.ui:99
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "KeeperFX only works with IPv4. If you don't have an IPv4 address or you are "
@@ -459,93 +559,53 @@ msgstr ""
 "používáte sdílenou adresu (CGNAT), nebudete moci hostovat online hru. Můžete "
 "se zeptat svého poskytovatele internetu, zda vám může poskytnout adresu IPv4."
 
-#: ../ui/enetservertestdialog.ui:183
+#: ../ui/enetservertestdialog.ui:187
 msgctxt "EnetServerTestDialog|Button"
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../ui/enetservertestdialog.ui:205
+#: ../ui/enetservertestdialog.ui:212
 msgctxt "EnetServerTestDialog|Button"
 msgid "Test"
 msgstr "Otestovat"
 
-#: ../src/enetservertestdialog.cpp:48
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Grabbing public IP address"
-msgstr "Získání veřejné IP adresy"
-
-#: ../src/enetservertestdialog.cpp:61
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to retrieve public IP address"
-msgstr "Nepodařilo se načíst veřejnou IP adresu"
-
-#: ../src/enetservertestdialog.cpp:68
-#, qt-format
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Public IP: %1"
-msgstr "Veřejná IP adresa: %1"
-
-#: ../src/enetservertestdialog.cpp:77
+#: ../src/enetservertestdialog.cpp:62 ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "IPv6 Detected"
 msgstr "Detekováno IPv6"
 
-#: ../src/enetservertestdialog.cpp:77
+#: ../src/enetservertestdialog.cpp:62
+msgctxt "EnetServerTestDialog|MessageBox Text"
+msgid "Failed to retrieve public IP address."
+msgstr "Nepodařilo se načíst veřejnou IP adresu."
+
+#: ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "This tool only works with IPv4."
 msgstr "Tento nástroj pracuje pouze s protokolem IPv4."
 
-#: ../src/enetservertestdialog.cpp:90
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Starting spoofed ENET server"
-msgstr "Spouštění podvrženého serveru (spoofed server) ENET"
-
-#: ../src/enetservertestdialog.cpp:95
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to start ENET server"
-msgstr "Nepodařilo se spustit server ENET"
-
-#: ../src/enetservertestdialog.cpp:106
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Stopping ENET server"
-msgstr "Zastavování serveru ENET"
-
-#: ../src/enetservertestdialog.cpp:129
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Local ENET server received a valid ENET packet"
-msgstr "Místní server ENET přijal platný packet ENET"
-
-#: ../src/enetservertestdialog.cpp:139
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Sending IP to KeeperFX.net ENET host checker tool"
-msgstr "Odeslání IP adresy do nástroje KeeperFX.net ENET host checker"
-
-#: ../src/enetservertestdialog.cpp:159
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to contact KeeperFX.net"
-msgstr "Nepodařilo se kontaktovat KeeperFX.net"
-
-#: ../src/enetservertestdialog.cpp:169
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Your router is correctly port forwarded!"
-msgstr "Váš router je správně přesměrován na jiný port!"
-
-#: ../src/enetservertestdialog.cpp:170 ../src/enetservertestdialog.cpp:173
+#: ../src/enetservertestdialog.cpp:97 ../src/enetservertestdialog.cpp:162
+#: ../src/enetservertestdialog.cpp:173 ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "Portforwarding tool"
 msgstr "Nástroj pro přesměrování portů (Portforwarding tool)"
 
-#: ../src/enetservertestdialog.cpp:170
+#: ../src/enetservertestdialog.cpp:97
+msgctxt "EnetServerTestDialog|MessageBox Text"
+msgid "Failed to start ENET server."
+msgstr "Nepodařilo se spustit server ENET."
+
+#: ../src/enetservertestdialog.cpp:162
+msgctxt "EnetServerTestDialog|MessageBox Text"
+msgid "Failed to contact KeeperFX.net"
+msgstr "Nepodařilo se kontaktovat KeeperFX.net"
+
+#: ../src/enetservertestdialog.cpp:173
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Your router is correctly port forwarded!"
 msgstr "Váš router je správně přesměrován na jiný port!"
 
-#: ../src/enetservertestdialog.cpp:172
-msgctxt "EnetServerTestDialog|Log Message"
-msgid "Failed to connect to local ENET server"
-msgstr "Nepodařilo se připojit k místnímu serveru ENET"
-
-#: ../src/enetservertestdialog.cpp:173
+#: ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to connect to local ENET server."
 msgstr "Nepodařilo se připojit k místnímu serveru ENET."
@@ -555,12 +615,12 @@ msgctxt "FileRemoverDialog|Window Title"
 msgid "Remove unwanted files"
 msgstr "Odstranění nežádoucích souborů"
 
-#: ../ui/fileremoverdialog.ui:32
+#: ../ui/fileremoverdialog.ui:36
 msgctxt "FileRemoverDialog|Header"
 msgid "Remove unwanted files"
 msgstr "Odstranění nežádoucích souborů"
 
-#: ../ui/fileremoverdialog.ui:56
+#: ../ui/fileremoverdialog.ui:60
 msgctxt "FileRemoverDialog|Information Label"
 msgid ""
 "The KeeperFX launcher has found some files that might cause problems with "
@@ -581,12 +641,12 @@ msgstr ""
 "\n"
 "Prosíme, prohlédněte si tyto soubory a odstraňte je."
 
-#: ../ui/fileremoverdialog.ui:108
+#: ../ui/fileremoverdialog.ui:112
 msgctxt "FileRemoverDialog|Button"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../ui/fileremoverdialog.ui:130
+#: ../ui/fileremoverdialog.ui:137
 msgctxt "FileRemoverDialog|Button"
 msgid "Remove All"
 msgstr "Odstranit vše"
@@ -622,12 +682,12 @@ msgctxt "InstallKfxDialog|Window Title"
 msgid "Install KeeperFX"
 msgstr "Instalace aplikace KeeperFX"
 
-#: ../ui/installkfxdialog.ui:26
+#: ../ui/installkfxdialog.ui:30
 msgctxt "InstallKfxDialog|Header"
 msgid "Download and Install KeeperFX"
 msgstr "Stažení a instalace aplikace KeeperFX"
 
-#: ../ui/installkfxdialog.ui:41
+#: ../ui/installkfxdialog.ui:45
 msgctxt "InstallKfxDialog|Information Label"
 msgid ""
 "Select your version, and this installer will download and install KeeperFX.\n"
@@ -640,17 +700,17 @@ msgstr ""
 "Zvolte stabilní verzi kvůli spolehlivosti nebo alfa verzi, pokud nám chcete "
 "pomoci s testováním."
 
-#: ../ui/installkfxdialog.ui:70
+#: ../ui/installkfxdialog.ui:74
 msgctxt "InstallKfxDialog|Label"
 msgid "Release version:"
 msgstr "Verze vydání:"
 
-#: ../ui/installkfxdialog.ui:142
+#: ../ui/installkfxdialog.ui:146
 msgctxt "InstallKfxDialog|Button"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../ui/installkfxdialog.ui:164
+#: ../ui/installkfxdialog.ui:171
 msgctxt "InstallKfxDialog|Button"
 msgid "Install"
 msgstr "Instalovat"
@@ -665,151 +725,62 @@ msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Alfa"
 
-#: ../src/installkfxdialog.cpp:43
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Install path: %1"
-msgstr "Instalační cesta: %1"
-
-#: ../src/installkfxdialog.cpp:58
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Installation started"
-msgstr "Instalace zahájena"
-
-#: ../src/installkfxdialog.cpp:77
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Getting download URL for stable release"
-msgstr "Získání adresy URL pro stažení stabilní verze"
-
-#: ../src/installkfxdialog.cpp:81
-msgctxt "InstallKfxDialog|Log Message"
+#: ../src/installkfxdialog.cpp:82
+msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to get download URL for stable release"
 msgstr "Nepodařilo se získat adresu URL pro stažení stabilní verze"
 
-#: ../src/installkfxdialog.cpp:85
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Stable release URL: %1"
-msgstr "Adresa URL stabilní verze: %1"
-
-#: ../src/installkfxdialog.cpp:100
-msgctxt "InstallKfxDialog|Log Message"
+#: ../src/installkfxdialog.cpp:102
+msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to download stable release"
 msgstr "Nepodařilo se stáhnout stabilní verzi"
 
-#: ../src/installkfxdialog.cpp:104
-msgctxt "InstallKfxDialog|Log Message"
-msgid "KeeperFX stable release successfully downloaded"
-msgstr "Stabilní verze KeeperFX úspěšně stažena"
-
-#: ../src/installkfxdialog.cpp:110
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Testing stable release archive..."
-msgstr "Testování archivu stabilní verze..."
-
-#: ../src/installkfxdialog.cpp:121
+#: ../src/installkfxdialog.cpp:124
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Stable release archive test failed. It may be corrupted."
 msgstr "Test archivu stabilní verze se nezdařil. Může být poškozený."
 
-#: ../src/installkfxdialog.cpp:130 ../src/installkfxdialog.cpp:226
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Total size: %1MiB"
-msgstr "Celková velikost: %1MiB"
-
-#: ../src/installkfxdialog.cpp:134 ../src/installkfxdialog.cpp:230
+#: ../src/installkfxdialog.cpp:137 ../src/installkfxdialog.cpp:236
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Rozbalování: %p%"
 
-#: ../src/installkfxdialog.cpp:135 ../src/installkfxdialog.cpp:231
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Extracting..."
-msgstr "Rozbalování..."
-
-#: ../src/installkfxdialog.cpp:151 ../src/installkfxdialog.cpp:247
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Extraction completed"
-msgstr "Dokončení rozbalování"
-
-#: ../src/installkfxdialog.cpp:155 ../src/installkfxdialog.cpp:251
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Removing temporary archive"
-msgstr "Odstranění dočasného archivu"
-
-#: ../src/installkfxdialog.cpp:165 ../src/installkfxdialog.cpp:258
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Loading settings"
-msgstr "Načítání nastavení"
-
-#: ../src/installkfxdialog.cpp:168 ../src/installkfxdialog.cpp:264
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Done!"
-msgstr "Hotovo!"
-
-#: ../src/installkfxdialog.cpp:169 ../src/installkfxdialog.cpp:265
+#: ../src/installkfxdialog.cpp:172 ../src/installkfxdialog.cpp:271
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid "KeeperFX has been successfully installed!"
 msgstr "KeeperFX byl úspěšně nainstalován!"
 
-#: ../src/installkfxdialog.cpp:176
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Getting download URL for alpha patch"
-msgstr "Získání adresy URL pro stažení aktualizace alfa verze"
-
-#: ../src/installkfxdialog.cpp:180
+#: ../src/installkfxdialog.cpp:184
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to get download URL for alpha patch"
 msgstr "Nepodařilo se získat adresu URL pro stažení aktualizace alfa verze"
 
-#: ../src/installkfxdialog.cpp:184
-#, qt-format
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Alpha patch URL: %1"
-msgstr "Adresa URL aktualizace Alpha verze: %1"
-
-#: ../src/installkfxdialog.cpp:199
+#: ../src/installkfxdialog.cpp:204
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Alpha patch download failed."
 msgstr "Stažení aktualizace Alpha verze se nezdařilo."
 
-#: ../src/installkfxdialog.cpp:203
-msgctxt "InstallKfxDialog|Log Message"
-msgid "KeeperFX alpha patch successfully downloaded"
-msgstr "KeeperFX aktualizace alfa verze úspěšně stažena"
-
-#: ../src/installkfxdialog.cpp:208
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Testing alpha patch archive..."
-msgstr "Testování archivu aktualizací alfa verze..."
-
-#: ../src/installkfxdialog.cpp:219
-msgctxt "InstallKfxDialog|Log Message"
+#: ../src/installkfxdialog.cpp:225
+msgctxt "InstallKfxDialog|Failure Message"
 msgid "Alpha patch archive test failed. It may be corrupted."
 msgstr "Test archivu aktualizací alfa verze se nezdařil. Může být poškozený."
 
-#: ../src/installkfxdialog.cpp:261
-msgctxt "InstallKfxDialog|Log Message"
-msgid "Setting game language to system language"
-msgstr "Nastavení jazyka hry na jazyk systému"
-
-#: ../src/installkfxdialog.cpp:274
+#: ../src/installkfxdialog.cpp:280
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Stahování: %p% (%vMiB)"
 
-#: ../src/installkfxdialog.cpp:316
+#: ../src/installkfxdialog.cpp:321
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Installation failed"
 msgstr "Instalace se nezdařila"
 
-#: ../src/installkfxdialog.cpp:323
+#: ../src/installkfxdialog.cpp:328
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "KeeperFX Alpha builds"
 msgstr "Alpha verze KeeperFX"
 
-#: ../src/installkfxdialog.cpp:324
+#: ../src/installkfxdialog.cpp:329
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Alpha patches may contain new features and changes, but often contain bugs "
@@ -825,12 +796,12 @@ msgstr ""
 "\n"
 "Jste si jisti, že chcete používat aktualizace alfa verze?"
 
-#: ../src/installkfxdialog.cpp:346
+#: ../src/installkfxdialog.cpp:351
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Potvrzení"
 
-#: ../src/installkfxdialog.cpp:346
+#: ../src/installkfxdialog.cpp:351
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -846,48 +817,70 @@ msgctxt "LauncherMainWindow|"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
 
-#: ../ui/launchermainwindow.ui:122
+#: ../ui/launchermainwindow.ui:126
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest workshop items"
 msgstr "Nejnovější položky z workshopu"
 
-#: ../ui/launchermainwindow.ui:208
+#: ../ui/launchermainwindow.ui:212
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest News"
 msgstr "Nejnovější zprávy"
 
-#: ../ui/launchermainwindow.ui:293
+#: ../ui/launchermainwindow.ui:297
 msgctxt "LauncherMainWindow|Button"
 msgid "Settings"
 msgstr "Nastavení"
 
-#: ../ui/launchermainwindow.ui:309
+#: ../ui/launchermainwindow.ui:313
 msgctxt "LauncherMainWindow|Button"
 msgid "Workshop"
 msgstr "Workshop"
 
-#: ../ui/launchermainwindow.ui:325
+#: ../ui/launchermainwindow.ui:329
 msgctxt "LauncherMainWindow|Button"
 msgid "Logfile"
 msgstr "Soubor protokolu"
 
-#: ../ui/launchermainwindow.ui:338
+#: ../ui/launchermainwindow.ui:342
 msgctxt "LauncherMainWindow|Button"
 msgid "Open Folder"
 msgstr "Otevřít složku"
 
-#: ../ui/launchermainwindow.ui:441
+#: ../ui/launchermainwindow.ui:445
 msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr "Hrát"
 
-#: ../src/launchermainwindow.cpp:157 ../src/launchermainwindow.cpp:178
-#: ../src/launchermainwindow.cpp:847 ../src/launchermainwindow.cpp:853
+#: ../src/launchermainwindow.cpp:143 ../src/launchermainwindow.cpp:228
+#: ../src/launchermainwindow.cpp:249 ../src/launchermainwindow.cpp:1032
+#: ../src/launchermainwindow.cpp:1038
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "Chyba KeeperFX"
 
-#: ../src/launchermainwindow.cpp:158
+#: ../src/launchermainwindow.cpp:144
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid ""
+"The launcher has detected that it might have been installed in the original "
+"Dungeon Keeper directory. There is a chance you will encounter issues and "
+"will be unable to play the game.\n"
+"\n"
+"KeeperFX should be installed in its own directory as it is a standalone game."
+msgstr ""
+"Launcher zjistil, že KeeeperFX mohl být nainstalován do původního adresáře "
+"Dungeon Keeper. Je možné, že se setkáte s problémy a nebudete moci hru "
+"hrát.\n"
+"\n"
+"KeeperFX by měl být nainstalován do vlastního adresáře, protože se jedná o "
+"samostatnou hru."
+
+#: ../src/launchermainwindow.cpp:154
+msgctxt "LauncherMainWindow|Messagebox Checkbox label"
+msgid "Don't show this again"
+msgstr "Znovu nezobrazovat"
+
+#: ../src/launchermainwindow.cpp:229
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. It's possible your "
@@ -900,7 +893,7 @@ msgstr ""
 "\n"
 "Chcete KeeperFX automaticky přeinstalovat?"
 
-#: ../src/launchermainwindow.cpp:179
+#: ../src/launchermainwindow.cpp:250
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
@@ -909,52 +902,52 @@ msgstr ""
 "Launcheru se nepodařilo zachytit verzi KeeperFX. Nahlaste prosím tuto chybu "
 "týmu KeeperFX."
 
-#: ../src/launchermainwindow.cpp:270
+#: ../src/launchermainwindow.cpp:341
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr "Hrát kampaň"
 
-#: ../src/launchermainwindow.cpp:278
+#: ../src/launchermainwindow.cpp:349
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr "Načíst uloženou hru"
 
-#: ../src/launchermainwindow.cpp:285
+#: ../src/launchermainwindow.cpp:356
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr "Přímé připojení (MP)"
 
-#: ../src/launchermainwindow.cpp:296
+#: ../src/launchermainwindow.cpp:367
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr "Prohledat místní síť (MP)"
 
-#: ../src/launchermainwindow.cpp:307
+#: ../src/launchermainwindow.cpp:378
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr "Testování internetové lobby (MP)"
 
-#: ../src/launchermainwindow.cpp:315
+#: ../src/launchermainwindow.cpp:386
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Spustit paketový soubor"
 
-#: ../src/launchermainwindow.cpp:326
+#: ../src/launchermainwindow.cpp:400
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
 msgstr "Heavylog (velmi detailní logování)"
 
-#: ../src/launchermainwindow.cpp:333 ../src/launchermainwindow.cpp:337
+#: ../src/launchermainwindow.cpp:407 ../src/launchermainwindow.cpp:411
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
 msgstr "Hrát (hvlog)"
 
-#: ../src/launchermainwindow.cpp:333 ../src/launchermainwindow.cpp:337
+#: ../src/launchermainwindow.cpp:407 ../src/launchermainwindow.cpp:411
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Hrát"
 
-#: ../src/launchermainwindow.cpp:438
+#: ../src/launchermainwindow.cpp:530
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -965,12 +958,12 @@ msgstr ""
 "\n"
 "Chcete stáhnout a nainstalovat KeeperFX?"
 
-#: ../src/launchermainwindow.cpp:444
+#: ../src/launchermainwindow.cpp:536
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Potvrzení"
 
-#: ../src/launchermainwindow.cpp:444
+#: ../src/launchermainwindow.cpp:536
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -981,24 +974,24 @@ msgstr ""
 "\n"
 "Nebudete moci hrát KeeperFX."
 
-#: ../src/launchermainwindow.cpp:474
+#: ../src/launchermainwindow.cpp:569
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "Jazyk se změnil"
 
-#: ../src/launchermainwindow.cpp:475
+#: ../src/launchermainwindow.cpp:570
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
 "now?"
 msgstr "Pro změnu jazyka je nutné restartovat Launcher. Chcete to udělat nyní?"
 
-#: ../src/launchermainwindow.cpp:813
+#: ../src/launchermainwindow.cpp:998
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "Chyba ověření KeeperFX"
 
-#: ../src/launchermainwindow.cpp:814
+#: ../src/launchermainwindow.cpp:999
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1012,38 +1005,75 @@ msgstr ""
 "%1\n"
 "Doporučujeme používat pouze oficiální soubory KeeperFX."
 
-#: ../src/launchermainwindow.cpp:848
+#: ../src/launchermainwindow.cpp:1033
+#, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Failed to start KeeperFX.\n"
 "\n"
 "Error:\n"
+"%1"
 msgstr ""
 "Nepodařilo se spustit KeeperFX.\n"
 "\n"
 "Chyba:\n"
+"%1"
 
-#: ../src/launchermainwindow.cpp:853
+#: ../src/launchermainwindow.cpp:1038
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "Nepodařilo se spustit KeeperFX. Neznámá chyba."
 
-#: ../src/launchermainwindow.cpp:877
+#: ../src/launchermainwindow.cpp:1062
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
+
+#: ../ui/runpacketfiledialog.ui:14
+msgctxt "RunPacketFileDialog|Dialog Title"
+msgid "Run Packetfile"
+msgstr "Spustit packetfile (nahrávka hry)"
+
+#: ../ui/runpacketfiledialog.ui:30
+msgctxt "RunPacketFileDialog|Header"
+msgid "Run Packetfile"
+msgstr "Spustit packetfile (nahrávka hry)"
+
+#: ../ui/runpacketfiledialog.ui:48
+msgctxt "RunPacketFileDialog|Information Label"
+msgid ""
+"Select a packetfile to replay. KeeperFX will be started and the packetfile "
+"will automatically start playing."
+msgstr ""
+"Vyberte packetfile (nahrávku hry), kterou chcete přehrát. Spustí se KeeperFX "
+"a packetfile (nahrávka hry) se začne automaticky přehrávat."
+
+#: ../ui/runpacketfiledialog.ui:69
+msgctxt "RunPacketFileDialog|Notice Label"
+msgid "Packetsave will be disabled when loading a packetfile."
+msgstr "Packetsave bude vypnut při načítání packetfile (nahrávka hry)."
+
+#: ../ui/runpacketfiledialog.ui:124
+msgctxt "RunPacketFileDialog|Button"
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: ../ui/runpacketfiledialog.ui:149
+msgctxt "RunPacketFileDialog|Button"
+msgid "Start"
+msgstr "Spustit"
 
 #: ../ui/scannetworkdialog.ui:14
 msgctxt "ScanNetworkDialog|Window Title"
 msgid "Scan Network"
 msgstr "Prohledat síť"
 
-#: ../ui/scannetworkdialog.ui:26
+#: ../ui/scannetworkdialog.ui:30
 msgctxt "ScanNetworkDialog|Header"
 msgid "Scan Network"
 msgstr "Prohledat síť"
 
-#: ../ui/scannetworkdialog.ui:41
+#: ../ui/scannetworkdialog.ui:45
 msgctxt "ScanNetworkDialog|Information Label"
 msgid ""
 "Scan your local network (LAN) for open ENET lobbies. The other person should "
@@ -1056,17 +1086,17 @@ msgstr ""
 "KeeperFX (Hra více hráčů -> ENET -> Vytvořit hru). Pokud má druhý hráč "
 "místnost otevřenou, tento nástroj by měl být schopen najít jeho IP adresu."
 
-#: ../ui/scannetworkdialog.ui:84
+#: ../ui/scannetworkdialog.ui:88
 msgctxt "ScanNetworkDialog|Button"
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../ui/scannetworkdialog.ui:106
+#: ../ui/scannetworkdialog.ui:113
 msgctxt "ScanNetworkDialog|Button"
 msgid "Scan"
 msgstr "Vyhledat"
 
-#: ../ui/scannetworkdialog.ui:128
+#: ../ui/scannetworkdialog.ui:141
 msgctxt "ScanNetworkDialog|Button"
 msgid "Connect"
 msgstr "Připoj"
@@ -1084,7 +1114,7 @@ msgstr "Název hostitele"
 #: ../src/scannetworkdialog.cpp:73
 msgctxt "ScanNetworkDialog|Button text"
 msgid "Stop Scan"
-msgstr "Zastavit vyhledávání"
+msgstr "Zastavit hledání"
 
 #: ../src/scannetworkdialog.cpp:83
 msgctxt "ScanNetworkDialog|Progress bar"
@@ -1106,110 +1136,125 @@ msgctxt "SettingsDialog|Window Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFX nastavení"
 
-#: ../ui/settingsdialog.ui:37
+#: ../ui/settingsdialog.ui:41
 msgctxt "SettingsDialog|Tab Title"
 msgid "Game"
 msgstr "Hra"
 
-#: ../ui/settingsdialog.ui:69
+#: ../ui/settingsdialog.ui:73
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Game language"
 msgstr "Jazyk hry"
 
-#: ../ui/settingsdialog.ui:87
+#: ../ui/settingsdialog.ui:91
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Skip Intro"
-msgstr "Přeskočit intro"
+msgid "Display Intro"
+msgstr "Zobrazit intro"
 
-#: ../ui/settingsdialog.ui:105
+#: ../ui/settingsdialog.ui:109
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Cheats"
 msgstr "Povolit podvody (cheaty)"
 
-#: ../ui/settingsdialog.ui:123
+#: ../ui/settingsdialog.ui:127
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
 msgstr "Povolit cenzuru"
 
-#: ../ui/settingsdialog.ui:156
+#: ../ui/settingsdialog.ui:160
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Screenshot type"
 msgstr "Typ snímku obrazovky"
 
-#: ../ui/settingsdialog.ui:174
+#: ../ui/settingsdialog.ui:178
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
 "Gameturns per second\n"
 "(default = 20)"
 msgstr ""
-"Gameturns za sekundu\n"
+"Herních tahů za sekundu\n"
 "(výchozí = 20)"
 
-#: ../ui/settingsdialog.ui:211
+#: ../ui/settingsdialog.ui:215
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Command character"
 msgstr "Příkazový znak"
 
-#: ../ui/settingsdialog.ui:244
+#: ../ui/settingsdialog.ui:248
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display splash screens"
 msgstr "Zobrazení úvodních obrazovek"
 
-#: ../ui/settingsdialog.ui:262
+#: ../ui/settingsdialog.ui:266
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable delta time"
 msgstr "Povolení delta času"
 
-#: ../ui/settingsdialog.ui:280
+#: ../ui/settingsdialog.ui:284
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Freeze game when not focused"
 msgstr "Pozastavit hru, když není aktivní okno"
 
-#: ../ui/settingsdialog.ui:286
+#: ../ui/settingsdialog.ui:302
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Human Player"
+msgstr "Lidský hráč"
+
+#: ../ui/settingsdialog.ui:330
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Packetsave filename"
+msgstr "Název Packetsave souboru"
+
+#: ../ui/settingsdialog.ui:343
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable Packetsave"
+msgstr "Zapnout Packetsave"
+
+#: ../ui/settingsdialog.ui:364
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
 msgstr "Grafika"
 
-#: ../ui/settingsdialog.ui:298
+#: ../ui/settingsdialog.ui:376
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Smoothen video"
 msgstr "Vyhlazení videa"
 
-#: ../ui/settingsdialog.ui:316 ../ui/settingsdialog.ui:677
+#: ../ui/settingsdialog.ui:394 ../ui/settingsdialog.ui:755
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resolution"
 msgstr "Rozlišení"
 
-#: ../ui/settingsdialog.ui:364 ../ui/settingsdialog.ui:824
+#: ../ui/settingsdialog.ui:442 ../ui/settingsdialog.ui:902
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display mode"
 msgstr "Režim zobrazení"
 
-#: ../ui/settingsdialog.ui:397
+#: ../ui/settingsdialog.ui:475
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display monitor"
 msgstr "Monitor displeje"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:415
+#: ../ui/settingsdialog.ui:493
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 1"
 msgstr "Pohled 1"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:433
+#: ../ui/settingsdialog.ui:511
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 2"
 msgstr "Pohled 2"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:451
+#: ../ui/settingsdialog.ui:529
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 3"
 msgstr "Pohled 3"
 
 #. This is shown under the views configuration
-#: ../ui/settingsdialog.ui:527
+#: ../ui/settingsdialog.ui:605
 msgctxt "SettingsDialog|Information Label"
 msgid ""
 "<i>Switch between in-game views by pressing <strong>Alt + R</strong></i>"
@@ -1217,299 +1262,364 @@ msgstr ""
 "<i>Stisknutím kláves <strong>Alt + R</strong> můžete přepínat mezi "
 "nastavením herních pohledů (rozlišení)</i>"
 
-#: ../ui/settingsdialog.ui:545
+#: ../ui/settingsdialog.ui:623
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
 msgstr "Změna velikosti videí"
 
-#: ../ui/settingsdialog.ui:578
+#: ../ui/settingsdialog.ui:656
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Creature flower size (px)"
 msgstr "Velikost životů tvora (px)"
 
-#: ../ui/settingsdialog.ui:611
+#: ../ui/settingsdialog.ui:689
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Hand size %"
 msgstr "Velikost ruky %"
 
-#: ../ui/settingsdialog.ui:659
+#: ../ui/settingsdialog.ui:737
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Select box line size %"
-msgstr "Tloušťka čáry kolem vybrané dlaždice %"
+msgstr "Tloušťka orámování dlaždice %"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:755
+#: ../ui/settingsdialog.ui:833
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Menu"
 msgstr "Menu"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:788
+#: ../ui/settingsdialog.ui:866
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Failsafe"
-msgstr "Zabezpečení proti selhání"
+msgstr "Nouzové"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:806
+#: ../ui/settingsdialog.ui:884
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Movies"
 msgstr "Videa"
 
-#: ../ui/settingsdialog.ui:845
+#: ../ui/settingsdialog.ui:923
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
 msgstr "Zvuk"
 
-#: ../ui/settingsdialog.ui:862
+#: ../ui/settingsdialog.ui:940
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable sound"
 msgstr "Zapnout zvuk"
 
-#: ../ui/settingsdialog.ui:880
+#: ../ui/settingsdialog.ui:958
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Use CD music instead of local files"
 msgstr "Použití hudby z CD místo místních souborů"
 
-#: ../ui/settingsdialog.ui:898
+#: ../ui/settingsdialog.ui:976
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
 msgstr "Pozastavení hudby při pozastavení hry"
 
-#: ../ui/settingsdialog.ui:916
+#: ../ui/settingsdialog.ui:994
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable atmospheric sounds"
 msgstr "Povolení atmosférických zvuků"
 
-#: ../ui/settingsdialog.ui:939
+#: ../ui/settingsdialog.ui:1017
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
 msgstr "Frekvence"
 
-#: ../ui/settingsdialog.ui:962
+#: ../ui/settingsdialog.ui:1040
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Volume"
 msgstr "Hlasitost"
 
-#: ../ui/settingsdialog.ui:980
+#: ../ui/settingsdialog.ui:1058
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Mute audio when game is not focused"
 msgstr "Ztlumení zvuku, když není aktivní okno"
 
-#: ../ui/settingsdialog.ui:986
+#: ../ui/settingsdialog.ui:1064
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
 msgstr "Vstup"
 
-#: ../ui/settingsdialog.ui:1003
+#: ../ui/settingsdialog.ui:1081
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
 msgstr "Uzamčení kurzoru při ovládání tvora"
 
-#: ../ui/settingsdialog.ui:1021
+#: ../ui/settingsdialog.ui:1099
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr "Odemknutí kurzoru při pozastavení hry"
 
-#: ../ui/settingsdialog.ui:1039
+#: ../ui/settingsdialog.ui:1117
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Alternative Input"
 msgstr "Alternativní vstup"
 
-#: ../ui/settingsdialog.ui:1057
+#: ../ui/settingsdialog.ui:1135
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Screen edge camera panning"
 msgstr "Posouvání kamery na okraji obrazovky"
 
-#: ../ui/settingsdialog.ui:1075
+#: ../ui/settingsdialog.ui:1153
 msgctxt "SettingsDialog|Slider Title Label"
 msgid "Mouse sensitivity"
 msgstr "Citlivost myši"
 
-#: ../ui/settingsdialog.ui:1139
+#: ../ui/settingsdialog.ui:1217
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Raw mouse input"
 msgstr "Neupravený vstup myši"
 
-#: ../ui/settingsdialog.ui:1145
+#: ../ui/settingsdialog.ui:1223
 msgctxt "SettingsDialog|Tab Title"
 msgid "Multiplayer"
 msgstr "Hra pro více hráčů"
 
-#: ../ui/settingsdialog.ui:1172
+#: ../ui/settingsdialog.ui:1250
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Masterserver"
 msgstr "Hlavní server"
 
-#: ../ui/settingsdialog.ui:1178
+#: ../ui/settingsdialog.ui:1256
 msgctxt "SettingsDialog|Tab Title"
 msgid "Launcher"
 msgstr "Launcher"
 
-#: ../ui/settingsdialog.ui:1190
+#: ../ui/settingsdialog.ui:1268
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Check for KeeperFX updates"
 msgstr "Kontrola aktualizací KeeperFX"
 
-#: ../ui/settingsdialog.ui:1213
+#: ../ui/settingsdialog.ui:1291
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable crash reporting"
 msgstr "Povolení hlášení havárií"
 
-#: ../ui/settingsdialog.ui:1226
+#: ../ui/settingsdialog.ui:1304
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Release"
 msgstr "Vydání"
 
-#: ../ui/settingsdialog.ui:1239
+#: ../ui/settingsdialog.ui:1317
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
 msgstr "Povolení integrace webových stránek"
 
-#: ../ui/settingsdialog.ui:1252
+#: ../ui/settingsdialog.ui:1330
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
 msgstr "Otevření na stejné obrazovce jako hra"
 
-#: ../ui/settingsdialog.ui:1265
+#: ../ui/settingsdialog.ui:1343
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Launcher language"
 msgstr "Jazyk Launcheru"
 
-#: ../ui/settingsdialog.ui:1286
+#: ../ui/settingsdialog.ui:1371
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Update automatically"
+msgstr "Aktualizovat automaticky"
+
+#: ../ui/settingsdialog.ui:1384
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Backup savefiles during update"
+msgstr "Zálohovat uložené pozice během aktualizace"
+
+#: ../ui/settingsdialog.ui:1412
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Play button theme"
+msgstr "Motiv tlačítka Play"
+
+#: ../ui/settingsdialog.ui:1418
 msgctxt "SettingsDialog|Tab Title"
 msgid "API"
 msgstr "API"
 
-#: ../ui/settingsdialog.ui:1303
+#: ../ui/settingsdialog.ui:1435
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable API"
 msgstr "Povolení rozhraní API"
 
-#: ../ui/settingsdialog.ui:1339
+#: ../ui/settingsdialog.ui:1471
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "API port"
 msgstr "Port API"
 
-#: ../ui/settingsdialog.ui:1345
+#: ../ui/settingsdialog.ui:1477
 msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr "Informace o"
 
-#: ../src/settingsdialog.cpp:101
+#: ../src/settingsdialog.cpp:80
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "0: Red (Default)"
+msgstr "0: Červená (výchozí)"
+
+#: ../src/settingsdialog.cpp:81
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "1: Blue"
+msgstr "1: Modrá"
+
+#: ../src/settingsdialog.cpp:82
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "2: Green"
+msgstr "2: Zelená"
+
+#: ../src/settingsdialog.cpp:83
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "3: Yellow"
+msgstr "3: Žlutá"
+
+#: ../src/settingsdialog.cpp:84
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "4: White / Heroes"
+msgstr "4: Bílá / Hrdinové"
+
+#: ../src/settingsdialog.cpp:89
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "6: Purple"
+msgstr "6: Fialová"
+
+#: ../src/settingsdialog.cpp:90
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "7: Black"
+msgstr "7: Černá"
+
+#: ../src/settingsdialog.cpp:91
+msgctxt "SettingsDialog|Player Color Dropdown"
+msgid "8: Orange"
+msgstr "8: Oranžová"
+
+#: ../src/settingsdialog.cpp:113
+msgctxt "SettingsDialog|Play Button Theme Dropdown"
+msgid "Qt Fusion Dark"
+msgstr "Qt Fusion tmavý"
+
+#: ../src/settingsdialog.cpp:114
+msgctxt "SettingsDialog|Play Button Theme Dropdown"
+msgid "DK Orange (default)"
+msgstr "DK Oranžový (výchozí)"
+
+#: ../src/settingsdialog.cpp:123
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr "Přizpůsobit (výchozí)"
 
-#: ../src/settingsdialog.cpp:102
+#: ../src/settingsdialog.cpp:124
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr "Vypnuto"
 
-#: ../src/settingsdialog.cpp:103
+#: ../src/settingsdialog.cpp:125
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr "Roztáhnout"
 
-#: ../src/settingsdialog.cpp:104
+#: ../src/settingsdialog.cpp:126
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr "Oříznout"
 
-#: ../src/settingsdialog.cpp:105
+#: ../src/settingsdialog.cpp:127
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr "Perfektní pixel"
 
-#: ../src/settingsdialog.cpp:111
+#: ../src/settingsdialog.cpp:133
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
-msgstr "Shodný s plochou"
+msgstr "Shodné s plochou"
 
-#: ../src/settingsdialog.cpp:148
+#: ../src/settingsdialog.cpp:170
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: ../src/settingsdialog.cpp:149
+#: ../src/settingsdialog.cpp:171
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr "V okně"
 
-#: ../src/settingsdialog.cpp:165
+#: ../src/settingsdialog.cpp:187
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Low"
-msgstr "Nízký"
+msgstr "Nízká"
 
-#: ../src/settingsdialog.cpp:166
+#: ../src/settingsdialog.cpp:188
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Medium"
 msgstr "Střední"
 
-#: ../src/settingsdialog.cpp:167
+#: ../src/settingsdialog.cpp:189
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "High"
-msgstr "Vysoký"
+msgstr "Vysoká"
 
-#: ../src/settingsdialog.cpp:170
+#: ../src/settingsdialog.cpp:192
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
-msgstr "Nízký"
+msgstr "Nízká"
 
-#: ../src/settingsdialog.cpp:171
+#: ../src/settingsdialog.cpp:193
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr "Střední"
 
-#: ../src/settingsdialog.cpp:172
+#: ../src/settingsdialog.cpp:194
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "High"
-msgstr "Vysoký"
+msgstr "Vysoká"
 
-#: ../src/settingsdialog.cpp:175
+#: ../src/settingsdialog.cpp:197
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "Stabilní (výchozí)"
 
-#: ../src/settingsdialog.cpp:176
+#: ../src/settingsdialog.cpp:198
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Alfa verze"
 
-#: ../src/settingsdialog.cpp:253
+#: ../src/settingsdialog.cpp:285
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX v%1"
 msgstr "KeeperFX v%1"
 
-#: ../src/settingsdialog.cpp:258
+#: ../src/settingsdialog.cpp:290
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX Launcher v%1"
 msgstr "KeeperFX Launcher v%1"
 
-#: ../src/settingsdialog.cpp:260
+#: ../src/settingsdialog.cpp:292
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
 msgstr "Knihovny Launcheru:"
 
-#: ../src/settingsdialog.cpp:265
+#: ../src/settingsdialog.cpp:297
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "Join us Discord: %1"
 msgstr "Připojte se k nám na Discord: %1"
 
-#: ../src/settingsdialog.cpp:289
+#: ../src/settingsdialog.cpp:321
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "Přispěvatelé KeeperFX: %1"
 
-#: ../src/settingsdialog.cpp:741
+#: ../src/settingsdialog.cpp:840
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFX nastavení"
 
-#: ../src/settingsdialog.cpp:742
+#: ../src/settingsdialog.cpp:841
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
@@ -1522,269 +1632,357 @@ msgctxt "UpdateDialog|Window Title"
 msgid "KeeperFX Update"
 msgstr "Aktualizace KeeperFX"
 
-#: ../ui/updatedialog.ui:26
+#: ../ui/updatedialog.ui:30
 msgctxt "UpdateDialog|Header"
 msgid "New KeeperFX version found!"
 msgstr "Nalezena nová verze KeeperFX!"
 
-#: ../ui/updatedialog.ui:131
+#: ../ui/updatedialog.ui:135
 msgctxt "UpdateDialog|Button"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../ui/updatedialog.ui:153
+#: ../ui/updatedialog.ui:160
 msgctxt "UpdateDialog|Button"
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: ../src/updatedialog.cpp:42 ../src/updatedialog.cpp:48
+#: ../src/updatedialog.cpp:46 ../src/updatedialog.cpp:52
 msgctxt "UpdateDialog|Appended to version string"
 msgid "Alpha"
 msgstr "Alfa"
 
-#: ../src/updatedialog.cpp:53
+#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "Current version:"
 msgstr "Aktuální verze:"
 
-#: ../src/updatedialog.cpp:53
+#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "New version:"
 msgstr "Nová verze:"
 
-#: ../src/updatedialog.cpp:56
-#, qt-format
-msgctxt "UpdateDialog|Log Message"
-msgid "Update path: %1"
-msgstr "Cesta k aktualizaci: %1"
-
-#: ../src/updatedialog.cpp:106
+#: ../src/updatedialog.cpp:118
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Stahování: %p% (%vMiB)"
 
-#: ../src/updatedialog.cpp:122
+#: ../src/updatedialog.cpp:135
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Update failed"
 msgstr "Aktualizace se nezdařila"
 
-#: ../src/updatedialog.cpp:132
-#, qt-format
-msgctxt "UpdateDialog|Log Message"
-msgid "Updating to version %1"
-msgstr "Aktualizace na verzi %1"
+#: ../src/updatedialog.cpp:153
+msgctxt "UpdateDialog|Title label"
+msgid "Updating..."
+msgstr "Aktualizace..."
 
-#: ../src/updatedialog.cpp:135
-msgctxt "UpdateDialog|Log Message"
-msgid "Trying to get filemap"
-msgstr "Pokus o získání definovaného seznam souborů"
-
-#: ../src/updatedialog.cpp:142
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=count)"
-msgid "Filemap with %1 files retrieved"
-msgstr "Seznam obsahuje %1 načtených souborů"
-
-#: ../src/updatedialog.cpp:146
-msgctxt "UpdateDialog|Log Message"
-msgid "No filemap found"
-msgstr "Nebyl nalezen žádný seznam souborů"
-
-#: ../src/updatedialog.cpp:154
-msgctxt "UpdateDialog|Log Message"
-msgid "Comparing filemap against local files"
-msgstr "Porovnání seznamu souborů s místními soubory"
-
-#: ../src/updatedialog.cpp:158
+#: ../src/updatedialog.cpp:192
 msgctxt "UpdateDialog|Progress bar (%p=percentage)"
 msgid "Comparing: %p%"
 msgstr "Porovnávání: %p%"
 
-#: ../src/updatedialog.cpp:185
+#: ../src/updatedialog.cpp:220
 #, qt-format
-msgctxt "UpdateDialog|Failure message (%1=local filepath)"
+msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to open file: %1"
 msgstr "Nepodařilo se otevřít soubor: %1"
 
-#: ../src/updatedialog.cpp:211
-msgctxt "UpdateDialog|Log Message"
-msgid "No changes in the files have been detected"
-msgstr "Nebyly zjištěny žádné změny v souborech"
-
-#: ../src/updatedialog.cpp:212
-msgctxt "UpdateDialog|Log Message"
-msgid "Switching to archive download"
-msgstr "Přepnutí na stahování archivů"
-
-#: ../src/updatedialog.cpp:219
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=count)"
-msgid "%1 files need to be updated"
-msgstr "Je třeba aktualizovat %1 souborů"
-
-#: ../src/updatedialog.cpp:241
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=archive download URL)"
-msgid "Downloading archive: %1"
-msgstr "Stahování archivu: %1"
-
-#: ../src/updatedialog.cpp:259
-msgctxt "UpdateDialog|Log Message"
+#: ../src/updatedialog.cpp:295
+msgctxt "UpdateDialog|Failure Message"
 msgid "Archive download failed."
 msgstr "Stažení archivu se nezdařilo."
 
-#: ../src/updatedialog.cpp:263
-msgctxt "UpdateDialog|Log Message"
-msgid "Archive successfully downloaded"
-msgstr "Archiv byl úspěšně stažen"
-
-#: ../src/updatedialog.cpp:269
-msgctxt "UpdateDialog|Log Message"
-msgid "Testing archive..."
-msgstr "Testovací archiv..."
-
-#: ../src/updatedialog.cpp:283
-#, qt-format
-msgctxt "UpdateDialog|Log Message"
-msgid "Total size: %1MiB"
-msgstr "Celková velikost: %1MiB"
-
-#: ../src/updatedialog.cpp:287
+#: ../src/updatedialog.cpp:323
 msgctxt "UpdateDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Rozbalování: %p%"
 
-#: ../src/updatedialog.cpp:288
-msgctxt "UpdateDialog|Log Message"
-msgid "Extracting..."
-msgstr "Rozbalování..."
+#: ../src/updatedialog.cpp:336 ../src/updatedialog.cpp:557
+msgctxt "UpdateDialog|Title label"
+msgid "Update complete!"
+msgstr "Aktualizace dokončena!"
 
-#: ../src/updatedialog.cpp:300
-msgctxt "UpdateDialog|Log Message"
-msgid "Extraction completed"
-msgstr "Rozbalování dokončeno"
-
-#: ../src/updatedialog.cpp:304
-msgctxt "UpdateDialog|Log Message"
-msgid "Removing temporary archive"
-msgstr "Odstranění dočasného archivu"
-
-#: ../src/updatedialog.cpp:311
-msgctxt "UpdateDialog|Log Message"
-msgid "Copying over any new settings"
-msgstr "Kopírování nových nastavení"
-
-#: ../src/updatedialog.cpp:314 ../src/updatedialog.cpp:499
-msgctxt "UpdateDialog|Log Message"
-msgid "Done!"
-msgstr "Hotovo!"
-
-#: ../src/updatedialog.cpp:315 ../src/updatedialog.cpp:500
+#: ../src/updatedialog.cpp:357 ../src/updatedialog.cpp:570
 #, qt-format
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "KeeperFX has been successfully updated to version %1!"
 msgstr "KeeperFX byl úspěšně aktualizován na verzi %1!"
 
-#: ../src/updatedialog.cpp:327
+#: ../src/updatedialog.cpp:380
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Potvrzení"
 
-#: ../src/updatedialog.cpp:327
+#: ../src/updatedialog.cpp:380
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "Are you sure you want to cancel the update?"
 msgstr "Opravdu chcete zrušit aktualizaci?"
 
-#: ../src/updatedialog.cpp:340
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=temp dir path)"
-msgid "Temp directory path: %1"
-msgstr "Cesta k dočasnému adresáři: %1"
-
-#: ../src/updatedialog.cpp:349
+#: ../src/updatedialog.cpp:403
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to create temp directory"
 msgstr "Nepodařilo se vytvořit dočasný adresář"
 
-#: ../src/updatedialog.cpp:360
+#: ../src/updatedialog.cpp:414
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p%"
 msgstr "Stahování: %p%"
 
-#: ../src/updatedialog.cpp:392
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "Downloaded: %1"
-msgstr "Staženo: %1"
-
-#: ../src/updatedialog.cpp:394
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "Failed to write: %1"
-msgstr "Nepodařilo se zapsat: %1"
-
-#: ../src/updatedialog.cpp:397
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "Failed to open file for writing: %1"
-msgstr "Nepodařilo se otevřít soubor pro zápis: %1"
-
-#: ../src/updatedialog.cpp:400
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath,%2=error message)"
-msgid "Failed to download: %1 -> %2"
-msgstr "Nepodařilo se stáhnout: %1 -> %2"
-
-#: ../src/updatedialog.cpp:419
-msgctxt "UpdateDialog|Log Message"
-msgid "All files downloaded successfully"
-msgstr "Všechny soubory byly úspěšně staženy"
-
-#: ../src/updatedialog.cpp:422
-msgctxt "UpdateDialog|Log Message"
-msgid "Moving files to KeeperFX directory"
-msgstr "Přesouvání souborů do adresáře KeeperFX"
-
-#: ../src/updatedialog.cpp:426
-msgctxt "UpdateDialog|Log Message"
+#: ../src/updatedialog.cpp:481
+msgctxt "UpdateDialog|Failure Message"
 msgid "The temporary directory does not exist"
 msgstr "Dočasný adresář neexistuje"
 
-#: ../src/updatedialog.cpp:437
+#: ../src/updatedialog.cpp:492
 msgctxt "UpdateDialog|Progress bar"
 msgid "Copying: %p%"
 msgstr "Kopírování: %p%"
 
-#: ../src/updatedialog.cpp:460
+#: ../src/updatedialog.cpp:516
 #, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
+msgctxt "UpdateDialog|Failure Message"
 msgid "File does not exist: %1"
 msgstr "Soubor neexistuje: %1"
 
-#: ../src/updatedialog.cpp:467
+#: ../src/updatedialog.cpp:533
 #, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath,2%=renamed filepath)"
-msgid "Renaming file during copy: %1 -> %2"
-msgstr "Přejmenování souboru během kopírování: %1 -> %2"
+msgctxt "UpdateDialog|Failure Message"
+msgid "Failed to create destination directory: %1"
+msgstr "Nepodařilo se vytvořit cílový adresář: %1"
 
-#: ../src/updatedialog.cpp:481
+#: ../src/updatedialog.cpp:548
 #, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
-msgid "File moved: %1"
-msgstr "Přesun souboru: %1"
-
-#: ../src/updatedialog.cpp:483
-#, qt-format
-msgctxt "UpdateDialog|Log Message (%1=filepath)"
+msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to move file: %1"
 msgstr "Nepodařilo se přesunout soubor: %1"
 
-#: ../src/updatedialog.cpp:495
-msgctxt "UpdateDialog|Log Message"
-msgid "Copying any new settings"
-msgstr "Kopírují se případná nová nastavení"
-
-#: ../src/updatedialog.cpp:505
+#: ../src/updatedialog.cpp:587
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr "Nepodařilo se přesunout všechny stažené soubory"
+
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Grabbing public IP address"
+#~ msgstr "Získání veřejné IP adresy"
+
+#, qt-format
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Public IP: %1"
+#~ msgstr "Veřejná IP adresa: %1"
+
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Starting spoofed ENET server"
+#~ msgstr "Spouštění podvrženého serveru (spoofed server) ENET"
+
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Stopping ENET server"
+#~ msgstr "Zastavování serveru ENET"
+
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Local ENET server received a valid ENET packet"
+#~ msgstr "Místní server ENET přijal platný packet ENET"
+
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Sending IP to KeeperFX.net ENET host checker tool"
+#~ msgstr "Odeslání IP adresy do nástroje KeeperFX.net ENET host checker"
+
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Your router is correctly port forwarded!"
+#~ msgstr "Váš router je správně přesměrován na jiný port!"
+
+#~ msgctxt "EnetServerTestDialog|Log Message"
+#~ msgid "Failed to connect to local ENET server"
+#~ msgstr "Nepodařilo se připojit k místnímu serveru ENET"
+
+#, qt-format
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Install path: %1"
+#~ msgstr "Instalační cesta: %1"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Installation started"
+#~ msgstr "Instalace zahájena"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Getting download URL for stable release"
+#~ msgstr "Získání adresy URL pro stažení stabilní verze"
+
+#, qt-format
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Stable release URL: %1"
+#~ msgstr "Adresa URL stabilní verze: %1"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "KeeperFX stable release successfully downloaded"
+#~ msgstr "Stabilní verze KeeperFX úspěšně stažena"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Testing stable release archive..."
+#~ msgstr "Testování archivu stabilní verze..."
+
+#, qt-format
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Total size: %1MiB"
+#~ msgstr "Celková velikost: %1MiB"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Extraction completed"
+#~ msgstr "Dokončení rozbalování"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Removing temporary archive"
+#~ msgstr "Odstranění dočasného archivu"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Loading settings"
+#~ msgstr "Načítání nastavení"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Done!"
+#~ msgstr "Hotovo!"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Getting download URL for alpha patch"
+#~ msgstr "Získání adresy URL pro stažení aktualizace alfa verze"
+
+#, qt-format
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Alpha patch URL: %1"
+#~ msgstr "Adresa URL aktualizace Alpha verze: %1"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "KeeperFX alpha patch successfully downloaded"
+#~ msgstr "KeeperFX aktualizace alfa verze úspěšně stažena"
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Testing alpha patch archive..."
+#~ msgstr "Testování archivu aktualizací alfa verze..."
+
+#~ msgctxt "InstallKfxDialog|Log Message"
+#~ msgid "Setting game language to system language"
+#~ msgstr "Nastavení jazyka hry na jazyk systému"
+
+#~ msgctxt "SettingsDialog|Checkbox Toggle"
+#~ msgid "Skip Intro"
+#~ msgstr "Přeskočit intro"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Update path: %1"
+#~ msgstr "Cesta k aktualizaci: %1"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Updating to version %1"
+#~ msgstr "Aktualizace na verzi %1"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Trying to get filemap"
+#~ msgstr "Pokus o získání definovaného seznam souborů"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=count)"
+#~ msgid "Filemap with %1 files retrieved"
+#~ msgstr "Seznam obsahuje %1 načtených souborů"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "No filemap found"
+#~ msgstr "Nebyl nalezen žádný seznam souborů"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Comparing filemap against local files"
+#~ msgstr "Porovnání seznamu souborů s místními soubory"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "No changes in the files have been detected"
+#~ msgstr "Nebyly zjištěny žádné změny v souborech"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Switching to archive download"
+#~ msgstr "Přepnutí na stahování archivů"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=count)"
+#~ msgid "%1 files need to be updated"
+#~ msgstr "Je třeba aktualizovat %1 souborů"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=archive download URL)"
+#~ msgid "Downloading archive: %1"
+#~ msgstr "Stahování archivu: %1"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Archive successfully downloaded"
+#~ msgstr "Archiv byl úspěšně stažen"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Testing archive..."
+#~ msgstr "Testovací archiv..."
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Total size: %1MiB"
+#~ msgstr "Celková velikost: %1MiB"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Extracting..."
+#~ msgstr "Rozbalování..."
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Extraction completed"
+#~ msgstr "Rozbalování dokončeno"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Removing temporary archive"
+#~ msgstr "Odstranění dočasného archivu"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Copying over any new settings"
+#~ msgstr "Kopírování nových nastavení"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Done!"
+#~ msgstr "Hotovo!"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=temp dir path)"
+#~ msgid "Temp directory path: %1"
+#~ msgstr "Cesta k dočasnému adresáři: %1"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=filepath)"
+#~ msgid "Failed to write: %1"
+#~ msgstr "Nepodařilo se zapsat: %1"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=filepath)"
+#~ msgid "Failed to open file for writing: %1"
+#~ msgstr "Nepodařilo se otevřít soubor pro zápis: %1"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=filepath,%2=error message)"
+#~ msgid "Failed to download: %1 -> %2"
+#~ msgstr "Nepodařilo se stáhnout: %1 -> %2"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "All files downloaded successfully"
+#~ msgstr "Všechny soubory byly úspěšně staženy"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Moving files to KeeperFX directory"
+#~ msgstr "Přesouvání souborů do adresáře KeeperFX"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=filepath,2%=renamed filepath)"
+#~ msgid "Renaming file during copy: %1 -> %2"
+#~ msgstr "Přejmenování souboru během kopírování: %1 -> %2"
+
+#, qt-format
+#~ msgctxt "UpdateDialog|Log Message (%1=filepath)"
+#~ msgid "File moved: %1"
+#~ msgstr "Přesun souboru: %1"
+
+#~ msgctxt "UpdateDialog|Log Message"
+#~ msgid "Copying any new settings"
+#~ msgstr "Kopírují se případná nová nastavení"
