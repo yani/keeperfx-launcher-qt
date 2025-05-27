@@ -418,6 +418,12 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
         if (skipLauncherUpdate) {
             if (filePath == "/keeperfx-launcher-qt.exe") {
                 qDebug() << "Skipping launcher update:" << filePath;
+
+                // We also need to remove 1 file of the total
+                totalFiles--;
+                emit setProgressMaximum(totalFiles);
+
+                // Continue the other files
                 continue;
             }
         }
@@ -553,7 +559,7 @@ void UpdateDialog::onFileDownloadProgress()
         }
 
         // If all files have been updated
-        if (copiedFiles == updateList.count()) {
+        if (copiedFiles == totalFiles) {
             ui->titleLabel->setText(tr("Update complete!", "Title label"));
             emit clearProgressBar();
 
