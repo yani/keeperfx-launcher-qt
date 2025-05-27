@@ -37,24 +37,24 @@ Maintainers are the people in charge of a language translation.
 They will not always be the ones that do the translations, but they will be contacted
 when we need a proof-read or a quick translation.
 
-| Language              | Code     | Maintainer                                       |
-|-----------------------|----------|--------------------------------------------------|
-| English               | EN       | [Yani](https://github.com/yani)                  |
-| Dutch                 | NL       | [Yani](https://github.com/yani)                  |
-| Italian               | IT       |                                                  |
-| French                | FR       | AncientWay                                       |
-| Spanish               | ES       | Alniarez                                         |
-| German                | DE       | Aqua, Dofi                                       |
-| Polish                | PL       |                                                  |
-| Swedish               | SV       |                                                  |
-| Japanese              | JA       | [AdamPlenty](https://github.com/AdamPlenty)      |
-| Russian               | RU       |                                                  |
-| Korean                | KO       | Desert                                           |
-| Chinese (Simplified)  | ZH-HANS  | [JieLeTian](https://github.com/jieletian)        |
-| Chinese (Traditional) | ZH-HANT  |                                                  |
-| Czech                 | CS       | Gotrek                                           |
-| Latin                 | LA       |                                                  |
-| Ukrainian             | UK       | Mr.Negative                                      |
+| Language              | Code     | Completed | Done/Total     | Maintainer(s)                                    |
+|-----------------------|----------|-----------|----------------|--------------------------------------------------|
+| English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)                  |
+| Dutch                 | NL       | 100%      | 305/305        | [Yani](https://github.com/yani)                  |
+| Italian               | IT       |           |                |                                                  |
+| French                | FR       |           |                | AncientWay                                       |
+| Spanish               | ES       | 95.7%     | 292/305        | Alniarez                                         |
+| German                | DE       |           |                | Aqua, Dofi                                       |
+| Polish                | PL       |           |                |                                                  |
+| Swedish               | SV       |           |                |                                                  |
+| Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
+| Russian               | RU       |           |                |                                                  |
+| Korean                | KO       |           |                | Desert                                           |
+| Chinese (Simplified)  | ZH-HANS  | 91.5%     | 279/305        | [JieLeTian](https://github.com/jieletian)        |
+| Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
+| Czech                 | CS       | 100%      | 305/305        | Gotrek                                           |
+| Latin                 | LA       |           |                |                                                  |
+| Ukrainian             | UK       |           |                | Mr.Negative                                      |
 
 
 
