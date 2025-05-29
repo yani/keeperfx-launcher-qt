@@ -241,8 +241,11 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
     // Clear progress bar
     emit clearProgressBar();
 
+    // Get total files
+    this->totalFiles = updateList.count();
+
     // If no files are found
-    if (updateList.count() == 0) {
+    if (this->totalFiles == 0) {
         emit appendLog("No changes in the files have been detected");
         emit appendLog("Switching to archive download");
         // Switch to archive download
@@ -250,8 +253,16 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
         return;
     }
 
+    // Check if we need to remove the launcher from the update list
+    if (LauncherOptions::isSet("skip-launcher-update") && updateList.contains("/keeperfx-launcher-qt.exe")) {
+        qInfo() << "Skipping launcher self-update ( --skip-launcher-update)";
+        if (updateList.removeOne("/keeperfx-launcher-qt.exe")) {
+            totalFiles--;
+        }
+    }
+
     // Log filecount
-    emit appendLog(QString("%1 files need to be updated").arg(updateList.count()));
+    emit appendLog(QString("%1 files need to be updated").arg(totalFiles));
 
     // Get type as string
     QString typeString;
@@ -404,30 +415,14 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
         return;
     }
 
-    // Set Variables
-    totalFiles = updateList.size();
-    downloadedFiles = 0;
-    bool skipLauncherUpdate = LauncherOptions::isSet("skip-launcher-update");
-
     // Set progress bar to track total files
     emit setProgressMaximum(totalFiles);
     emit setProgressBarFormat(tr("Downloading: %p%", "Progress bar"));
 
+    // Count downloaded files
+    downloadedFiles = 0;
+
     for (const QString &filePath : updateList) {
-        // Check if we need to skip the launcher binary itself
-        if (skipLauncherUpdate) {
-            if (filePath == "/keeperfx-launcher-qt.exe") {
-                qDebug() << "Skipping launcher update:" << filePath;
-
-                // We also need to remove 1 file of the total
-                totalFiles--;
-                emit setProgressMaximum(totalFiles);
-
-                // Continue the other files
-                continue;
-            }
-        }
-
         QUrl url(baseUrl + filePath);
         QNetworkRequest request(url);
 
@@ -501,18 +496,9 @@ void UpdateDialog::onFileDownloadProgress()
         // Vars
         QDir appDir(QCoreApplication::applicationDirPath());
         int copiedFiles = 0;
-        bool skipLauncherUpdate = LauncherOptions::isSet("skip-launcher-update");
 
         // Move and rename files
         for (const QString &filePath : updateList) {
-            // Check if we need to skip the launcher binary itself
-            if (skipLauncherUpdate) {
-                if (filePath == "/keeperfx-launcher-qt.exe") {
-                    qDebug() << "Skipping launcher update:" << filePath;
-                    continue;
-                }
-            }
-
             QString srcFilePath = tempDir.absolutePath() + filePath;
 
             // Make sure source file exists
