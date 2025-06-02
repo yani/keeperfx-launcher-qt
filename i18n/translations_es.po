@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-26 01:16+0200\n"
-"PO-Revision-Date: 2025-05-26 17:23+0200\n"
+"PO-Revision-Date: 2025-06-01 13:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #: Qt default
 msgid "OK"
@@ -229,7 +229,7 @@ msgstr ""
 #: ../src/copydkfilesdialog.cpp:113
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
-msgstr "Confirmación"
+msgstr "Confirmar"
 
 #: ../src/copydkfilesdialog.cpp:114
 msgctxt "CopyDkFilesDialog|MessageBox Text"
@@ -843,7 +843,7 @@ msgstr "Lanzador de KeeperFX"
 #: ../ui/launchermainwindow.ui:126
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest workshop items"
-msgstr "Últimos objetos del Workshop"
+msgstr "Últimos artículos del Workshop"
 
 #: ../ui/launchermainwindow.ui:212
 msgctxt "LauncherMainWindow|Header"
@@ -891,11 +891,16 @@ msgid ""
 "\n"
 "KeeperFX should be installed in its own directory as it is a standalone game."
 msgstr ""
+"El lanzador ha detectado que podría haberse instalado en el directorio "
+"original de Dungeon Keeper. Existe la posibilidad de que se produzcan "
+"errores y no pueda jugar al juego.\n"
+"\n"
+"KeeperFX debe instalarse en su propio directorio independiente."
 
 #: ../src/launchermainwindow.cpp:154
 msgctxt "LauncherMainWindow|Messagebox Checkbox label"
 msgid "Don't show this again"
-msgstr ""
+msgstr "No volver a mostrar"
 
 #: ../src/launchermainwindow.cpp:229
 msgctxt "LauncherMainWindow|MessageBox Text"
@@ -947,13 +952,13 @@ msgstr "Probar sala en línea (Multijugador)"
 #: ../src/launchermainwindow.cpp:386
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
-msgstr "Ejecutar paquete"
+msgstr "Ejecutar archivo de repetición (Packetfile)"
 
 # Could add (Heavylog) after the translation if that helps with troubleshooting
 #: ../src/launchermainwindow.cpp:400
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
-msgstr "Registro detallado"
+msgstr "Registro detallado (Heavylog)"
 
 #: ../src/launchermainwindow.cpp:407 ../src/launchermainwindow.cpp:411
 msgctxt "LauncherMainWindow|Button text"
@@ -1050,20 +1055,14 @@ msgid "KeeperFX Launcher"
 msgstr "Lanzador de KeeperFX"
 
 #: ../ui/runpacketfiledialog.ui:14
-#, fuzzy
-#| msgctxt "LauncherMainWindow|Menu"
-#| msgid "Run packetfile"
 msgctxt "RunPacketFileDialog|Dialog Title"
 msgid "Run Packetfile"
-msgstr "Ejecutar paquete"
+msgstr "Ejecutar archivo packetfile"
 
 #: ../ui/runpacketfiledialog.ui:30
-#, fuzzy
-#| msgctxt "LauncherMainWindow|Menu"
-#| msgid "Run packetfile"
 msgctxt "RunPacketFileDialog|Header"
 msgid "Run Packetfile"
-msgstr "Ejecutar paquete"
+msgstr "Ejecutar archivo de repetición (Packetfile)"
 
 #: ../ui/runpacketfiledialog.ui:48
 msgctxt "RunPacketFileDialog|Information Label"
@@ -1071,15 +1070,17 @@ msgid ""
 "Select a packetfile to replay. KeeperFX will be started and the packetfile "
 "will automatically start playing."
 msgstr ""
+"Seleccione un archivo de repetición (Packetfile) para reproducir. KeeperFX "
+"se iniciará y el archivo se reproducirá automáticamente."
 
 #: ../ui/runpacketfiledialog.ui:69
 msgctxt "RunPacketFileDialog|Notice Label"
 msgid "Packetsave will be disabled when loading a packetfile."
 msgstr ""
+"La creación de archivos de repetición (Packetsave) se desactivará "
+"automáticamente al cargar un archivo de repetición (Packetfile)."
 
 #: ../ui/runpacketfiledialog.ui:124
-#, fuzzy
-#| msgid "Cancel"
 msgctxt "RunPacketFileDialog|Button"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -1087,7 +1088,7 @@ msgstr "Cancelar"
 #: ../ui/runpacketfiledialog.ui:149
 msgctxt "RunPacketFileDialog|Button"
 msgid "Start"
-msgstr ""
+msgstr "Comenzar"
 
 #: ../ui/scannetworkdialog.ui:14
 msgctxt "ScanNetworkDialog|Window Title"
@@ -1173,12 +1174,9 @@ msgid "Game language"
 msgstr "Idioma del juego"
 
 #: ../ui/settingsdialog.ui:91
-#, fuzzy
-#| msgctxt "SettingsDialog|Dropdown Title Label"
-#| msgid "Display monitor"
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display Intro"
-msgstr "Monitor"
+msgstr "Mostrar introducción"
 
 #: ../ui/settingsdialog.ui:109
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1233,15 +1231,12 @@ msgstr "Jugador humano"
 #: ../ui/settingsdialog.ui:330
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Packetsave filename"
-msgstr ""
+msgstr "Nombre del archivo de repetición (Packetsave)"
 
 #: ../ui/settingsdialog.ui:343
-#, fuzzy
-#| msgctxt "SettingsDialog|Checkbox Toggle"
-#| msgid "Enable Cheats"
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Packetsave"
-msgstr "Activar trucos"
+msgstr "Activar creación de archivos de repetición (Packetsave)"
 
 #: ../ui/settingsdialog.ui:364
 msgctxt "SettingsDialog|Tab Title"
@@ -1324,7 +1319,6 @@ msgstr "Menú"
 # Would be the optimal explicative translation but its too long
 #. Should be kept very short
 #: ../ui/settingsdialog.ui:866
-#, fuzzy
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Failsafe"
 msgstr "Modo seguro"
@@ -1394,7 +1388,6 @@ msgstr "Liberar el cursor cuando el juego esté en pausa"
 # I am not even sure what this settings do.
 # Is it hardware cursor?
 #: ../ui/settingsdialog.ui:1117
-#, fuzzy
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Alternative Input"
 msgstr "Entrada alternativa"
