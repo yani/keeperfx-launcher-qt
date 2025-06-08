@@ -250,8 +250,15 @@ int main(int argc, char *argv[])
     Settings::load();
 
     // Check if we need to load a translation file
-    if (LauncherOptions::isSet("translation-file")) {
-        QString translationFilePath = LauncherOptions::getValue("translation-file");
+    if (LauncherOptions::isSet("translation-file") || LauncherOptions::isSet("language-file")) {
+        // Get translation file path
+        QString translationFilePath;
+        if (LauncherOptions::isSet("translation-file")) {
+            translationFilePath = LauncherOptions::getValue("translation-file");
+        } else if (LauncherOptions::isSet("language-file")) {
+            translationFilePath = LauncherOptions::getValue("language-file");
+        }
+
         qInfo() << "Loading translation file directly:" << translationFilePath;
 
         // Create and install translator
