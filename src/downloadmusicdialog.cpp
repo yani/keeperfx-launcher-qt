@@ -23,9 +23,10 @@ DownloadMusicDialog::DownloadMusicDialog(QWidget *parent)
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
-    // Disable resizing and remove maximize button
-    setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
-    setFixedSize(size()); // Prevent resizing by setting fixed size
+    // Raise and activate window
+    setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+    raise();
+    activateWindow();
 
     // Setup signals and slots
     connect(this, &DownloadMusicDialog::appendLog, this, &DownloadMusicDialog::onAppendLog);

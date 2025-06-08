@@ -25,6 +25,11 @@ InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
+    // Raise and activate window
+    setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+    raise();
+    activateWindow();
+
     // Release dropdown
     ui->versionComboBox->addItem(tr("Stable (Default)", "Game Release Build"), "STABLE");
     ui->versionComboBox->addItem(tr("Alpha", "Game Release Build"), "ALPHA");

@@ -74,6 +74,11 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
+    // Raise and activate window
+    setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+    raise();
+    activateWindow();
+
     // Create clickable version label
     ClickableLabel *clickableVersionLabel = new ClickableLabel(this);
     clickableVersionLabel->setBaseColor(QColor("#999999"));
