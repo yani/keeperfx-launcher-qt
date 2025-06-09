@@ -3,6 +3,7 @@
 
 #include <QDateTime>
 #include <QFileInfo>
+#include <QMainWindow>
 #include <QMessageBox>
 #include <QScrollBar>
 #include <QStandardPaths>
@@ -26,6 +27,23 @@ InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     setFixedSize(size());
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+
+    // Create dummy main window and anchor this dialog to it
+    // This makes it so we can already show a taskbar icon on Windows
+    QMainWindow *dummyWindow = new QMainWindow();
+    dummyWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    dummyWindow->setAttribute(Qt::WA_TranslucentBackground);
+    dummyWindow->resize(1, 1);
+    dummyWindow->show();
+    this->setParent(dummyWindow);
+    this->setWindowFlags(Qt::Window);
+
+    // Move to center of screen
+    QRect geometry = QGuiApplication::primaryScreen()->geometry();
+    this->move(
+        // We use left() and top() here because the position is absolute and not relative to the screen
+        geometry.left() + ((geometry.width() - this->width()) / 2),
+        geometry.top() + ((geometry.height() - this->height()) / 2) - 75); // minus 75 to put it a bit higher
 
     // Raise and activate window
     setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
