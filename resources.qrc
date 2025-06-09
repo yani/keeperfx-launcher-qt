@@ -19,6 +19,7 @@
         <file>i18n/translations_es.po</file>
         <file>i18n/translations_zh-hans.po</file>
         <file>i18n/translations_ko.po</file>
+        <file>i18n/translations_fr.po</file>
     </qresource>
     <qresource prefix="/theme">
         <file>res/play-button-theme/dk-orange.css</file>
