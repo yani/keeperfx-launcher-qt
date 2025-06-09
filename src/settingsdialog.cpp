@@ -54,27 +54,29 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(true);
 
     // Game languages dropdown
-    ui->comboBoxLanguage->addItem("English", "ENG");                                    // English
-    ui->comboBoxLanguage->addItem("Italiano", "ITA");                                   // Italian
-    ui->comboBoxLanguage->addItem("Fran\u00E7ais", "FRE");                              // French
-    ui->comboBoxLanguage->addItem("Espa\u00F1ol", "SPA");                               // Spanish
-    ui->comboBoxLanguage->addItem("Nederlands", "DUT");                                 // Dutch
-    ui->comboBoxLanguage->addItem("Deutsch", "GER");                                    // German
-    ui->comboBoxLanguage->addItem("Polski", "POL");                                     // Polish
-    ui->comboBoxLanguage->addItem("Svenska", "SWE");                                    // Swedish
-    ui->comboBoxLanguage->addItem("\u65E5\u672C\u8A9E", "JAP");                         // Japanese
-    ui->comboBoxLanguage->addItem("\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "RUS"); // Russian
-    ui->comboBoxLanguage->addItem("\uD55C\uAD6D\uC5B4", "KOR");                         // Korean
-    ui->comboBoxLanguage->addItem("\u7B80\u4F53\u4E2D\u6587", "CHI");                   // Chinese (Simplified)
-    ui->comboBoxLanguage->addItem("\u7E41\u9AD4\u4E2D\u6587", "CHT");                   // Chinese (Traditional)
-    ui->comboBoxLanguage->addItem("\u010Ce\u0161ka", "CZE");                            // Czech
-    ui->comboBoxLanguage->addItem("Lat\u012Bna", "LAT");                                // Latin
+    ui->comboBoxLanguage->addItem("English", "ENG");    // English
+    ui->comboBoxLanguage->addItem("Deutsch", "GER");    // German
+    ui->comboBoxLanguage->addItem("Français", "FRE");   // French
+    ui->comboBoxLanguage->addItem("Nederlands", "DUT"); // Dutch
+    ui->comboBoxLanguage->addItem("Español", "SPA");    // Spanish
+    ui->comboBoxLanguage->addItem("Italiano", "ITA");   // Italian
+    ui->comboBoxLanguage->addItem("Polski", "POL");     // Polish
+    ui->comboBoxLanguage->addItem("Svenska", "SWE");    // Swedish
+    ui->comboBoxLanguage->addItem("Русский", "RUS");    // Russian
+    ui->comboBoxLanguage->addItem("Čeština", "CZE");    // Czech
+    ui->comboBoxLanguage->addItem("Latīna", "LAT");     // Latin
+    ui->comboBoxLanguage->addItem("日本語", "JAP");     // Japanese
+    ui->comboBoxLanguage->addItem("한국어", "KOR");     // Korean
+    ui->comboBoxLanguage->addItem("简体中文", "CHI");   // Chinese (Simplified)
+    ui->comboBoxLanguage->addItem("繁體中文", "CHT");   // Chinese (Traditional)
 
     // Add Ukrainian Game Language
     // We do this after the list of languages because this one was added later
     if (KfxVersion::hasFunctionality("ukrainian_game_language") == true) {
-        ui->comboBoxLanguage->addItem("\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430", "UKR"); // Ukrainian
+        ui->comboBoxLanguage->addItem("Українська", "UKR"); // Ukrainian
     }
+
+    sortLanguageComboBox(ui->comboBoxLanguage);
 
     // Player colors
     ui->comboBoxHumanPlayer->addItem(tr("0: Red (Default)", "Player Color Dropdown"), "0");
@@ -92,22 +94,23 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     }
 
     // Launcher language dropdown
-    ui->comboBoxLauncherLanguage->addItem("English", "en");    // English
+    ui->comboBoxLauncherLanguage->addItem("English", "en"); // English
+    //ui->comboBoxLauncherLanguage->addItem("Deutsch", "de");     // German
+    ui->comboBoxLauncherLanguage->addItem("Français", "fr");   // French
     ui->comboBoxLauncherLanguage->addItem("Nederlands", "nl"); // Dutch
-    //ui->comboBoxLauncherLanguage->addItem("Italiano", "it"); // Italian
-    ui->comboBoxLauncherLanguage->addItem("Français", "fr");     // French
-    ui->comboBoxLauncherLanguage->addItem("Espa\u00F1ol", "es"); // Spanish
-    //ui->comboBoxLauncherLanguage->addItem("Deutsch", "de"); // German
-    //ui->comboBoxLauncherLanguage->addItem("Polski", "pl"); // Polish
-    //ui->comboBoxLauncherLanguage->addItem("Svenska", "sv"); // Swedish
-    //ui->comboBoxLauncherLanguage->addItem("\u65E5\u672C\u8A9E", "ja"); // Japanese
-    //ui->comboBoxLauncherLanguage->addItem("\u0420\u0443\u0441\u0441\u043A\u0438\u0439", "ru"); // Russian
-    ui->comboBoxLauncherLanguage->addItem("\uD55C\uAD6D\uC5B4", "ko");            // Korean
-    ui->comboBoxLauncherLanguage->addItem("\u7B80\u4F53\u4E2D\u6587", "zh-hans"); // Chinese (Simplified)
-    //ui->comboBoxLauncherLanguage->addItem("\u7E41\u9AD4\u4E2D\u6587", "zh-hant"); // Chinese (Traditional)
-    ui->comboBoxLauncherLanguage->addItem("\u010Ce\u0161ka", "cs"); // Czech
-    //ui->comboBoxLauncherLanguage->addItem("Lat\u012Bna", "la"); // Latin
-    //ui->comboBoxLauncherLanguage->addItem("\u0423\u043A\u0440\u0430\u0454\u043D\u044C\u0441\u043A\u0430", "uk"); // Ukrainian
+    ui->comboBoxLauncherLanguage->addItem("Español", "es");    // Spanish
+    //ui->comboBoxLauncherLanguage->addItem("Italiano", "it");    // Italian
+    //ui->comboBoxLauncherLanguage->addItem("Polski", "pl");      // Polish
+    //ui->comboBoxLauncherLanguage->addItem("Svenska", "sv");     // Swedish
+    //ui->comboBoxLauncherLanguage->addItem("日本語", "ja");       // Japanese
+    //ui->comboBoxLauncherLanguage->addItem("Русский", "ru");     // Russian
+    //ui->comboBoxLauncherLanguage->addItem("Українська", "uk");  // Ukrainian
+    ui->comboBoxLauncherLanguage->addItem("한국어", "ko");        // Korean
+    ui->comboBoxLauncherLanguage->addItem("简体中文", "zh-hans"); // Chinese (Simplified)
+    //ui->comboBoxLauncherLanguage->addItem("繁體中文", "zh-hant"); // Chinese (Traditional)
+    ui->comboBoxLauncherLanguage->addItem("Čeština", "cs"); // Czech
+    //ui->comboBoxLauncherLanguage->addItem("Latīna", "la");      // Latin
+    sortLanguageComboBox(ui->comboBoxLauncherLanguage);
 
     // Launcher play button theme dropdown
     ui->comboBoxPlayButtonTheme->addItem(tr("Qt Fusion Dark", "Play Button Theme Dropdown"), "qt-fusion-dark");
@@ -950,4 +953,23 @@ void SettingsDialog::hideMonitorNumberOverlays()
         delete overlay;
     }
     monitorNumberOverlays.clear();
+}
+
+void SettingsDialog::sortLanguageComboBox(QComboBox *comboBox)
+{
+    QList<QPair<QString, QVariant>> items;
+
+    // Collect all items
+    for (int i = 0; i < comboBox->count(); ++i) {
+        items.append(qMakePair(comboBox->itemText(i), comboBox->itemData(i)));
+    }
+
+    // Sort items alphabetically by text
+    std::sort(items.begin(), items.end(), [](const auto &a, const auto &b) { return a.first.localeAwareCompare(b.first) < 0; });
+
+    // Clear and repopulate comboBox
+    comboBox->clear();
+    for (const auto &item : items) {
+        comboBox->addItem(item.first, item.second);
+    }
 }

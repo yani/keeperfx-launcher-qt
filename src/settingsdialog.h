@@ -36,4 +36,6 @@ private:
     void hideMonitorNumberOverlays();
 
     QStringList hiddenStartupScreens;
+
+    void sortLanguageComboBox(QComboBox *comboBox);
 };
