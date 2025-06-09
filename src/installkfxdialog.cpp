@@ -11,7 +11,9 @@
 #include "apiclient.h"
 #include "archiver.h"
 #include "downloader.h"
+#include "launcheroptions.h"
 #include "settings.h"
+#include "translator.h"
 #include "updater.h"
 
 InstallKfxDialog::InstallKfxDialog(QWidget *parent)
@@ -74,6 +76,20 @@ void InstallKfxDialog::on_installButton_clicked()
     } else if (ui->versionComboBox->currentData() == "ALPHA") {
         this->installReleaseType = KfxVersion::ReleaseType::ALPHA;
         Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", "ALPHA");
+    }
+
+    // Set launcher language to installation language
+    if (LauncherOptions::isSet("language")) {
+        QString languageCode = LauncherOptions::getValue("language").toLower();
+        if (languageCode == "en") {
+            Settings::setLauncherSetting("LAUNCHER_LANGUAGE", "en");
+        } else {
+            // Create dummy translator to check if this language works
+            Translator *translator = new Translator;
+            if (translator->loadLanguage(languageCode)) {
+                Settings::setLauncherSetting("LAUNCHER_LANGUAGE", languageCode);
+            }
+        }
     }
 
     // Start the installation process
