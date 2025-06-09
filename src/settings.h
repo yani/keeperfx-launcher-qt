@@ -21,6 +21,9 @@ public:
 
     static bool autoSetGameLanguageToLocaleLanguage();
 
+    static void resetKfxSettings();
+    static void resetLauncherSettings();
+
 private:
     static QMap<QString, QVariant> defaultLauncherSettingsMap;
     static QMap<QString, QString> gameSettingsParameterMap;

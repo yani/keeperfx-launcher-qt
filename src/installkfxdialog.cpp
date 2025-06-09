@@ -62,6 +62,10 @@ void InstallKfxDialog::on_installButton_clicked()
     // Tell user we start the installation
     emit appendLog("Installation started");
 
+    // Reset settings
+    Settings::resetKfxSettings();
+    Settings::resetLauncherSettings();
+
     // Get release type to install
     // Also remember that we want this release version for later updates
     if (ui->versionComboBox->currentData() == "STABLE") {

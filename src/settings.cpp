@@ -301,3 +301,19 @@ bool Settings::autoSetGameLanguageToLocaleLanguage()
 
     return true;
 }
+
+void Settings::resetKfxSettings()
+{
+    if (Settings::kfxSettings) {
+        Settings::kfxSettings->clear();
+        Settings::copyMissingDefaultSettings();
+    }
+}
+
+void Settings::resetLauncherSettings()
+{
+    if (Settings::launcherSettings) {
+        Settings::launcherSettings->clear();
+        Settings::copyMissingLauncherSettings();
+    }
+}
