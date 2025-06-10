@@ -54,7 +54,7 @@ when we need a proof-read or a quick translation.
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
 | Czech                 | CS       | 100%      | 305/305        | Gotrek                                           |
 | Latin                 | LA       |           |                |                                                  |
-| Ukrainian             | UK       |           |                | Mr.Negative                                      |
+| Ukrainian             | UK       |           |                | Mr.Negative, Renegade_Glitch                     |
 
 
 
