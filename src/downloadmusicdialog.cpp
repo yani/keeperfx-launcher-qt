@@ -19,29 +19,17 @@ DownloadMusicDialog::DownloadMusicDialog(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Disable resizing and remove maximize button
+    // Turn this dialog into a normal window
+    setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint | Qt::MSWindowsFixedSizeDialogHint);
+
+    // Fixed size, portable across Wayland/X11/Windows
     setFixedSize(size());
-    setWindowFlag(Qt::WindowMaximizeButtonHint, false);
-    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
-    // Create dummy main window and anchor this dialog to it
-    // This makes it so we can already show a taskbar icon on Windows
-    QMainWindow *dummyWindow = new QMainWindow();
-    dummyWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    dummyWindow->setAttribute(Qt::WA_TranslucentBackground);
-    dummyWindow->resize(1, 1);
-    dummyWindow->show();
-    this->setParent(dummyWindow);
-    this->setWindowFlags(Qt::Window);
-
-    // Move to center of screen
+    // Move to center of primary screen
     QRect geometry = QGuiApplication::primaryScreen()->geometry();
-    this->move(
-        // We use left() and top() here because the position is absolute and not relative to the screen
-        geometry.left() + ((geometry.width() - this->width()) / 2),
-        geometry.top() + ((geometry.height() - this->height()) / 2) - 75); // minus 75 to put it a bit higher
+    move(geometry.left() + (geometry.width() - width()) / 2, geometry.top() + (geometry.height() - height()) / 2 - 75); // move 75 pixels up
 
-    // Raise and activate window
+    // Bring to foreground
     setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
     raise();
     activateWindow();
