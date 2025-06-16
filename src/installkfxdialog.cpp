@@ -378,13 +378,41 @@ void InstallKfxDialog::on_cancelButton_clicked()
 
 void InstallKfxDialog::closeEvent(QCloseEvent *event)
 {
-    // Ask if user is sure
-    int result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure?\n\nYou will be unable to play KeeperFX.", "MessageBox Text"));
+    // Check if we have a windows build
+#ifdef Q_OS_WINDOWS
+    bool isWindows = true;
+#else
+    bool isWindows = false;
+#endif
 
-    // Handle answer
-    if (result == QMessageBox::Yes) {
-        event->accept();
+    // Get uninstaller binary path
+    QFile uninstallerPath(QCoreApplication::applicationDirPath() + "/unins000.exe");
+
+    // Check if --install is passed on Windows and an uninstaller is present
+    if (isWindows && LauncherOptions::isSet("install") && uninstallerPath.exists()) {
+        // Ask if user wants to start uninstaller
+        int result = QMessageBox::question(this,
+                                           tr("Uninstall KeeperFX", "MessageBox Title"),
+                                           tr("Do you want to uninstall KeeperFX?\n\nThis will remove any leftover files.", "MessageBox Text"));
+
+        // Handle answer
+        if (result == QMessageBox::Yes) {
+            QProcess::startDetached(uninstallerPath.fileName(), LauncherOptions::getArguments());
+        }
+
+        // Exit the installer
+        QTimer::singleShot(0, []() { QCoreApplication::exit(1); });
+        return;
+
     } else {
-        event->ignore();
+        // Ask if user is sure
+        int result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure?\n\nYou will be unable to play KeeperFX.", "MessageBox Text"));
+
+        // Handle answer
+        if (result == QMessageBox::Yes) {
+            event->accept();
+        } else {
+            event->ignore();
+        }
     }
 }
