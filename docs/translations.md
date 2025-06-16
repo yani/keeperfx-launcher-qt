@@ -40,19 +40,19 @@ when we need a proof-read or a quick translation.
 | Language              | Code     | Completed | Done/Total     | Maintainer(s)                                    |
 |-----------------------|----------|-----------|----------------|--------------------------------------------------|
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)                  |
-| Dutch                 | NL       | 100%      | 305/305        | [Yani](https://github.com/yani)                  |
+| Dutch                 | NL       | 100%      | 307/307        | [Yani](https://github.com/yani)                  |
 | Italian               | IT       |           |                |                                                  |
-| French                | FR       | 100%      | 305/305        | AncientWay                                       |
-| Spanish               | ES       | 100%      | 305/305        | Alniarez                                         |
+| French                | FR       | 99.3%     | 305/307        | AncientWay                                       |
+| Spanish               | ES       | 99.3%     | 305/307        | Alniarez                                         |
 | German                | DE       |           |                | Aqua, Dofi                                       |
 | Polish                | PL       |           |                |                                                  |
 | Swedish               | SV       |           |                |                                                  |
 | Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
 | Russian               | RU       |           |                |                                                  |
-| Korean                | KO       | 100%      | 305/305        | Desert                                           |
-| Chinese (Simplified)  | ZH-HANS  | 91.5%     | 279/305        | [JieLeTian](https://github.com/jieletian)        |
+| Korean                | KO       | 99.3%     | 305/307        | Desert                                           |
+| Chinese (Simplified)  | ZH-HANS  | 90.9%     | 279/307        | [JieLeTian](https://github.com/jieletian)        |
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
-| Czech                 | CS       | 100%      | 305/305        | Gotrek                                           |
+| Czech                 | CS       | 99.3%     | 305/307        | Gotrek                                           |
 | Latin                 | LA       |           |                |                                                  |
 | Ukrainian             | UK       |           |                | Mr.Negative, Renegade_Glitch                     |
 
