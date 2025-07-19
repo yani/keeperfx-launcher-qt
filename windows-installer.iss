@@ -23,6 +23,8 @@ ArchitecturesAllowed=x64os
 PrivilegesRequired=lowest
 ; Allow users to change the installation directory
 DisableDirPage=no
+; Do not show the Select Start Menu Folder wizard page
+DisableProgramGroupPage=yes
 ; Skip the final "Click to finish setup" screen
 DisableFinishedPage=yes
 ; Add extra bytes to the calculated total size (because we download KeeperFX ourselves)
