@@ -967,7 +967,7 @@ void LauncherMainWindow::verifyBinaryCertificates()
 
     // List of files to check
     QStringList filesToCheck = {
-        "keeperfx.exe", "keeperfx_hvlog.exe",
+        // "keeperfx.exe", "keeperfx_hvlog.exe",
         // "keeperfx-launcher-qt.exe",
     };
 
