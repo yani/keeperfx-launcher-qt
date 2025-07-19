@@ -16,7 +16,14 @@ CopyDkFilesDialog::CopyDkFilesDialog(QWidget *parent)
     ui->setupUi(this);
 
     // Turn this dialog into a normal window
-    setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint | Qt::MSWindowsFixedSizeDialogHint);
+    setWindowFlags(Qt::Window
+                   | Qt::WindowTitleHint
+                   | Qt::WindowSystemMenuHint
+                   | Qt::WindowMinimizeButtonHint
+                   | Qt::WindowCloseButtonHint
+                   | Qt::MSWindowsFixedSizeDialogHint
+                   | Qt::WindowStaysOnTopHint // Always on top
+        );
 
     // Fixed size, portable across Wayland/X11/Windows
     setFixedSize(size());
