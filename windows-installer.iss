@@ -2,15 +2,18 @@
 ; App
 AppName=KeeperFX
 AppVerName=KeeperFX
+; Installation directory
+; {sd} -> System Drive: The drive Windows is installed on, typically "C:"
 DefaultDirName={sd}\Games\KeeperFX
+; Start Menu group name
 DefaultGroupName=KeeperFX
-; Where to build the installer
+; Installer build output
 OutputDir=release\win64
 OutputBaseFilename=keeperfx-web-installer
 ; Compression
 Compression=lzma2
 SolidCompression=yes
-; Launcher is 64bit
+; Force 64 bit support because the launcher is 64bit
 ArchitecturesAllowed=x64os
 ; Ensure no admin rights are needed
 PrivilegesRequired=lowest
