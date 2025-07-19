@@ -2,6 +2,10 @@
 ; App
 AppName=KeeperFX
 AppVerName=KeeperFX
+; Publisher
+; This is used on the "Support" dialog of the Add/Remove Programs Control Panel applet
+AppPublisher=KeeperFX
+AppPublisherURL=https://keeperfx.net
 ; Installation directory
 ; {sd} -> System Drive: The drive Windows is installed on, typically "C:"
 DefaultDirName={sd}\Games\KeeperFX
