@@ -29,6 +29,7 @@ Source: "release\win64\*.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\KeeperFX"; Filename: "{app}\keeperfx-launcher-qt.exe"
+Name: "{autodesktop}\KeeperFX"; Filename: "{app}\keeperfx-launcher-qt.exe";
 
 ; Run the custom installer of the launcher
 ; We do it like this to provide a 'web installer'
