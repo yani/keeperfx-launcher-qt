@@ -85,7 +85,8 @@ QStringList FileRemover::processFile(QFile &file, const QString &currentVersion)
     }
 
     // Check if files that should be removed exist
-    for (const QString &filePath : filesToCheck) {
+    for (int i = 0; i < filesToCheck.size(); ++i) {
+        const QString &filePath = filesToCheck.at(i);
         if (baseDir.exists(filePath)) {
             existingFiles.append(filePath);
         }
