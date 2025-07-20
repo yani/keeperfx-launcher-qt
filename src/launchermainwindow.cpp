@@ -973,12 +973,11 @@ void LauncherMainWindow::verifyBinaryCertificates()
 
     QStringList failedFiles;
 
-    // Loop through and load each certificate
+    // Loop through the files we need to verify
     for (const QString &filePath : filesToCheck) {
+
         // Load file
         QFile file(QApplication::applicationDirPath() + "/" + filePath);
-
-        // Make sure file exists
         if (file.exists() == false) {
             continue;
         }
