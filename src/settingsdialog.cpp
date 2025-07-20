@@ -104,7 +104,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     //ui->comboBoxLauncherLanguage->addItem("Svenska", "sv");     // Swedish
     //ui->comboBoxLauncherLanguage->addItem("日本語", "ja");       // Japanese
     //ui->comboBoxLauncherLanguage->addItem("Русский", "ru");     // Russian
-    //ui->comboBoxLauncherLanguage->addItem("Українська", "uk");  // Ukrainian
+    ui->comboBoxLauncherLanguage->addItem("Українська", "uk");  // Ukrainian
     ui->comboBoxLauncherLanguage->addItem("한국어", "ko");        // Korean
     ui->comboBoxLauncherLanguage->addItem("简体中文", "zh-hans"); // Chinese (Simplified)
     //ui->comboBoxLauncherLanguage->addItem("繁體中文", "zh-hant"); // Chinese (Traditional)
