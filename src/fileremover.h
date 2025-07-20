@@ -52,7 +52,7 @@ QStringList FileRemover::processFile(QFile &file, const QString &currentVersion)
             if (regex.match(versionString).hasMatch() == false) {
 
                 // Invalid version string
-                qDebug() << "Invalid version in 'files-to-remove.txt':" << versionString;
+                qWarning() << "Invalid version in" << file.fileName() << ":" << versionString;
                 fileVersion = "999.999.999.999";
                 continue;
             }

@@ -851,8 +851,9 @@ void LauncherMainWindow::checkForFileRemoval()
     // We do this in a thread so we can already show the launcher main window in the meanwhile
     QThread::create([this]() {
 
-        // Check if 'files-to-remove.txt' file exists
-        QFile fileRemovalFile(QCoreApplication::applicationDirPath() + "/files-to-remove.txt");
+        // Check if file exists that contains files that should be removed
+        QString fileRemovalFilename = QString("launcher-auto-file-removal.txt");
+        QFile fileRemovalFile(QCoreApplication::applicationDirPath() + "/" + fileRemovalFilename);
         if (fileRemovalFile.exists()) {
 
             // Get files to remove based on KfxVersion
@@ -869,7 +870,7 @@ void LauncherMainWindow::checkForFileRemoval()
                 qDebug() << "No files to remove found.";
             }
         } else {
-            qInfo() << "'files-to-remove.txt' not found";
+            qInfo() << "File-removal file not found:" << fileRemovalFilename;
         }
 
     })->start();
