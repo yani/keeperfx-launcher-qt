@@ -877,6 +877,14 @@ void LauncherMainWindow::checkForFileRemoval()
 
 void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
 {
+    // Workaround to make sure main launcher window is visible
+    if (!this->isVisible()) {
+        QTimer::singleShot(100, this, [this, filesToRemove]() {
+            emit this->filesToRemoveFound(filesToRemove);
+        });
+        return;
+    }
+
     // Show file removal dialog
     FileRemoverDialog fileRemoverDialog(this, filesToRemove);
     fileRemoverDialog.exec();
