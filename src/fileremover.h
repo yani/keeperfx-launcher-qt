@@ -48,7 +48,7 @@ QStringList FileRemover::processFile(QFile &file, const QString &currentVersion)
             QString versionString = line.mid(1, line.length() - 2);
 
             // Check if this is a valid version string
-            QRegularExpression regex("^\\d+\\.\\d+(\\.\\d+){0,2}$");
+            static const QRegularExpression regex("^\\d+\\.\\d+(\\.\\d+){0,2}$");
             if (regex.match(versionString).hasMatch() == false) {
 
                 // Invalid version string
