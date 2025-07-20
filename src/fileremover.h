@@ -68,10 +68,17 @@ QStringList FileRemover::processFile(QFile &file, const QString &currentVersion)
         }
 
         // Normalize path
+#ifdef Q_OS_WINDOWS
+        QString normalizedPath = QDir::cleanPath(line).replace("/", "\\");
+        if (normalizedPath.startsWith("\\")) {
+            normalizedPath.remove(0, 1);
+        }
+#else
         QString normalizedPath = QDir::cleanPath(line).replace("\\", "/");
         if (normalizedPath.startsWith("/")) {
             normalizedPath.remove(0, 1);
         }
+#endif
 
         // Remember file to be checked
         filesToCheck.append(normalizedPath);
