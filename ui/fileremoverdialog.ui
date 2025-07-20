@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>636</width>
-    <height>388</height>
+    <width>572</width>
+    <height>378</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
       </font>
      </property>
      <property name="text">
-      <string comment="Header">Remove unwanted files</string>
+      <string comment="Header">Remove leftover files</string>
      </property>
      <property name="margin">
       <number>10</number>
@@ -60,12 +60,9 @@
 }</string>
      </property>
      <property name="text">
-      <string comment="Information Label">The KeeperFX launcher has found some files that might cause problems with KeeperFX.
+      <string comment="Information Label">The KeeperFX launcher has found files that were left over after KeeperFX updates. These files might cause issues and should be removed.
 
-This list is managed by the KeeperFX team and is meant to clean up files that are left over
-after KeeperFX updates. 
-
-Please review the files and remove them.</string>
+This list is maintained by the KeeperFX team, and the files are considered safe to remove. You can review the files that will be removed before proceeding.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
