@@ -22,6 +22,7 @@ class LauncherMainWindow : public QMainWindow
 
 signals:
     void updateFound(KfxVersion::VersionInfo versionInfo);
+    void filesToRemoveFound(QStringList filesToRemove);
     void kfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNew);
     void kfxNetImagesLoaded(QList<QJsonObject> workshopItemList, QList<QJsonObject> newsArticleList, QMap<QString, QPixmap> pixmapMap);
 
@@ -37,6 +38,7 @@ private slots:
     void on_openFolderButton_clicked();
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
+    void onFilesToRemoveFound(QStringList filesToRemove);
     void onGameEnded(int exitCode, QProcess::ExitStatus exitStatus);
 
     void onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews);

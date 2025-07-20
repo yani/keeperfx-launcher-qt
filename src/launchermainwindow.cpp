@@ -54,6 +54,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     connect(this, &LauncherMainWindow::kfxNetRetrieval, this, &LauncherMainWindow::onKfxNetRetrieval, Qt::QueuedConnection);
     connect(this, &LauncherMainWindow::kfxNetImagesLoaded, this, &LauncherMainWindow::onKfxNetImagesLoaded, Qt::QueuedConnection);
     connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
+    connect(this, &LauncherMainWindow::filesToRemoveFound, this, &LauncherMainWindow::onFilesToRemoveFound);
     connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
 
     // Clear placeholders
@@ -846,23 +847,39 @@ void LauncherMainWindow::checkForFileRemoval()
         saveDeleteMeFile.remove();
     }
 
-    // Check if 'files-to-remove.txt' file exists
-    QFile fileRemovalFile(QCoreApplication::applicationDirPath() + "/files-to-remove.txt");
-    if (fileRemovalFile.exists()) {
+    // Spawn a thread for the file removal
+    // We do this in a thread so we can already show the launcher main window in the meanwhile
+    QThread::create([this]() {
 
-        // Get files to remove based on KfxVersion
-        QStringList filesToRemove = FileRemover::processFile(fileRemovalFile,
-                                                             KfxVersion::currentVersion.version);
+        // Check if 'files-to-remove.txt' file exists
+        QFile fileRemovalFile = QCoreApplication::applicationDirPath() + "/files-to-remove.txt";
+        if (fileRemovalFile.exists()) {
 
-        // If there are files that should be removed
-        if(filesToRemove.length() > 0){
-            qDebug() << "Files found that should be removed:" << filesToRemove;
+            // Get files to remove based on KfxVersion
+            QStringList filesToRemove = FileRemover::processFile(fileRemovalFile, KfxVersion::currentVersion.version);
 
-            // Show file removal dialog
-            FileRemoverDialog fileRemoverDialog(this, filesToRemove);
-            fileRemoverDialog.exec();
+            // If there are files that should be removed
+            if(filesToRemove.length() > 0){
+                qDebug() << "Files found that should be removed:" << filesToRemove;
+
+                // Emit signal for file removal
+                emit this->filesToRemoveFound(filesToRemove);
+
+            } else {
+                qDebug() << "No files to remove found.";
+            }
+        } else {
+            qInfo() << "'files-to-remove.txt' not found";
         }
-    }
+
+    })->start();
+}
+
+void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
+{
+    // Show file removal dialog
+    FileRemoverDialog fileRemoverDialog(this, filesToRemove);
+    fileRemoverDialog.exec();
 }
 
 void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
