@@ -852,7 +852,7 @@ void LauncherMainWindow::checkForFileRemoval()
     QThread::create([this]() {
 
         // Check if 'files-to-remove.txt' file exists
-        QFile fileRemovalFile = QCoreApplication::applicationDirPath() + "/files-to-remove.txt";
+        QFile fileRemovalFile(QCoreApplication::applicationDirPath() + "/files-to-remove.txt");
         if (fileRemovalFile.exists()) {
 
             // Get files to remove based on KfxVersion
