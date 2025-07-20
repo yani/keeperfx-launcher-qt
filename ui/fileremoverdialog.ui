@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>645</width>
+    <width>636</width>
     <height>388</height>
    </rect>
   </property>
@@ -16,6 +16,9 @@
   <property name="windowIcon">
    <iconset resource="../resources.qrc">
     <normaloff>:/res/img/horny-face.png</normaloff>:/res/img/horny-face.png</iconset>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
