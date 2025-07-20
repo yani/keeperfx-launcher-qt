@@ -2,7 +2,7 @@
 # These are files that should not be present anymore starting from a specific version.
 # The launcher will ask if the user wants to remove these files.
 
-[<version the new launcher gets added>]
+[1.2.0.4560]
 campgns/pstunded/text_eng.dat
 campgns/pstunded/text_pol.dat
 campgns/ami2019_crtr/barbarian.cfg
