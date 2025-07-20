@@ -330,10 +330,6 @@ fxdata/trapcolors.zip
 fxdata/waterplants.zip
 fxdata/whiteflag.zip
 fxdata/windbanner.zip
-fxdata/creatures.zip
-fxdata/decorative_objects.zip
-fxdata/natural_features.zip
-fxdata/trapsdoors.zip
 
 [1.0.0]
 SDL.dll
