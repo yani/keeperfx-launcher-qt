@@ -5,10 +5,7 @@
 #include <QDir>
 #include <QFile>
 #include <QPainter>
-
-#include "apiclient.h"
-#include "imagehelper.h"
-#include "launcheroptions.h"
+#include <QRegularExpression>
 
 WorkshopItemWidget::WorkshopItemWidget(QWidget *parent)
     : ClickableHighlightedWidget(parent)
