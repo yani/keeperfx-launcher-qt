@@ -29,7 +29,12 @@ void WorkshopItemWidget::setTitle(QString title)
 
 void WorkshopItemWidget::setType(QString type)
 {
-    ui->typeLabel->setText(type);
+    // Convert PascalCase to space-separated words
+    static const QRegularExpression regex("(?<!^)([A-Z])");
+    QString typeString = type.replace(regex, " \\1");
+
+    // Set label text
+    ui->typeLabel->setText(typeString);
 }
 
 void WorkshopItemWidget::setDate(QString date)
