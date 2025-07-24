@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 23:03+0200\n"
-"PO-Revision-Date: 2025-06-20 20:22+0200\n"
+"POT-Creation-Date: 2025-07-21 01:07+0200\n"
+"PO-Revision-Date: 2025-07-24 09:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -158,23 +158,23 @@ msgctxt "CopyDkFilesDialog|Button"
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../src/copydkfilesdialog.cpp:37
+#: ../src/copydkfilesdialog.cpp:44
 msgctxt "CopyDkFilesDialog|Label"
 msgid "A suitable DK installation has been automatically detected."
 msgstr ""
 "Se ha detectado automáticamente una instalación compatible de Dungeon Keeper."
 
-#: ../src/copydkfilesdialog.cpp:50
+#: ../src/copydkfilesdialog.cpp:57
 msgctxt "CopyDkFilesDialog|Directory Browse Dialog"
 msgid "Select Directory containing Dungeon Keeper files"
 msgstr "Seleccione el directorio que contiene los archivos de Dungeon Keeper"
 
-#: ../src/copydkfilesdialog.cpp:59 ../src/copydkfilesdialog.cpp:80
+#: ../src/copydkfilesdialog.cpp:66 ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Original DK files not found"
 msgstr "No se han detectado los archivos originales de Dungeon Keeper"
 
-#: ../src/copydkfilesdialog.cpp:60 ../src/copydkfilesdialog.cpp:81
+#: ../src/copydkfilesdialog.cpp:67 ../src/copydkfilesdialog.cpp:88
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The chosen directory does not contain all of the required files. Please "
@@ -183,39 +183,39 @@ msgstr ""
 "El directorio seleccionado no contiene todos los archivos requeridos. Por "
 "favor, seleccione una instalación original de Dungeon Keeper."
 
-#: ../src/copydkfilesdialog.cpp:71
+#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Select a directory"
 msgstr "Seleccione un directorio"
 
-#: ../src/copydkfilesdialog.cpp:71
+#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Please select an original Dungeon Keeper installation location."
 msgstr ""
 "Por favor, seleccione la ubicación de una instalación original de Dungeon "
 "Keeper."
 
-#: ../src/copydkfilesdialog.cpp:88 ../src/copydkfilesdialog.cpp:94
+#: ../src/copydkfilesdialog.cpp:95 ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Failed to copy files"
 msgstr "No se pudo copiar los archivos"
 
-#: ../src/copydkfilesdialog.cpp:88
+#: ../src/copydkfilesdialog.cpp:95
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "The current directory is not writable."
 msgstr "El directorio actual no tiene permisos de escritura."
 
-#: ../src/copydkfilesdialog.cpp:94
+#: ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Something went wrong while copying the files."
 msgstr "Error inesperado al copiar los archivos."
 
-#: ../src/copydkfilesdialog.cpp:106
+#: ../src/copydkfilesdialog.cpp:113
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "DK files copied!"
 msgstr "¡Los archivos de Dungeon Keeper se han copiado correctamente!"
 
-#: ../src/copydkfilesdialog.cpp:107
+#: ../src/copydkfilesdialog.cpp:114
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The required Dungeon Keeper files have been copied.\n"
@@ -226,12 +226,12 @@ msgstr ""
 "\n"
 "¡Ya puede jugar a KeeperFX!"
 
-#: ../src/copydkfilesdialog.cpp:120
+#: ../src/copydkfilesdialog.cpp:127
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Confirmar"
 
-#: ../src/copydkfilesdialog.cpp:121
+#: ../src/copydkfilesdialog.cpp:128
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -471,55 +471,55 @@ msgctxt "DownloadMusicDialog|Button"
 msgid "Download"
 msgstr "Descargar"
 
-#: ../src/downloadmusicdialog.cpp:74
+#: ../src/downloadmusicdialog.cpp:81
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to get download URL for music archive"
 msgstr "Error al obtener la URL de descarga del archivo de música"
 
-#: ../src/downloadmusicdialog.cpp:84
+#: ../src/downloadmusicdialog.cpp:91
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Invalid music archive file extension. It must be a 7zip archive."
 msgstr ""
 "La extensión del archivo de música no es válida. Debe tratarse de un archivo "
 "comprimido en formato 7zip."
 
-#: ../src/downloadmusicdialog.cpp:102
+#: ../src/downloadmusicdialog.cpp:109
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to download music archive"
 msgstr "Error al descargar el archivo de música"
 
-#: ../src/downloadmusicdialog.cpp:124
+#: ../src/downloadmusicdialog.cpp:131
 msgctxt "DownloadMusicDialog|Failure message"
 msgid "Music archive test failed. It may be corrupted."
 msgstr ""
 "Error en la comprobación del archivo de música. Es posible que esté dañado."
 
-#: ../src/downloadmusicdialog.cpp:136
+#: ../src/downloadmusicdialog.cpp:143
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Extrayendo: %p%"
 
-#: ../src/downloadmusicdialog.cpp:168
+#: ../src/downloadmusicdialog.cpp:175
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid "The KeeperFX background music has been successfully downloaded!"
 msgstr "¡La música de KeeperFX se ha descargado correctamente!"
 
-#: ../src/downloadmusicdialog.cpp:177
+#: ../src/downloadmusicdialog.cpp:184
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Descargando: %p% (%vMiB)"
 
-#: ../src/downloadmusicdialog.cpp:218
+#: ../src/downloadmusicdialog.cpp:225
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Download failed"
 msgstr "Error en la descarga"
 
-#: ../src/downloadmusicdialog.cpp:225
+#: ../src/downloadmusicdialog.cpp:232
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Confirmar"
 
-#: ../src/downloadmusicdialog.cpp:226
+#: ../src/downloadmusicdialog.cpp:233
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -632,37 +632,35 @@ msgctxt "FileRemoverDialog|Window Title"
 msgid "Remove unwanted files"
 msgstr "Eliminar archivos no deseados"
 
-#: ../ui/fileremoverdialog.ui:36
+#: ../ui/fileremoverdialog.ui:39
 msgctxt "FileRemoverDialog|Header"
-msgid "Remove unwanted files"
-msgstr "Eliminar archivos no deseados"
+msgid "Remove leftover files"
+msgstr "Eliminar archivos residuales"
 
-#: ../ui/fileremoverdialog.ui:60
+#: ../ui/fileremoverdialog.ui:63
 msgctxt "FileRemoverDialog|Information Label"
 msgid ""
-"The KeeperFX launcher has found some files that might cause problems with "
-"KeeperFX.\n"
+"The KeeperFX launcher has found files that were left over after KeeperFX "
+"updates. These files might cause issues and should be removed.\n"
 "\n"
-"This list is managed by the KeeperFX team and is meant to clean up files "
-"that are left over\n"
-"after KeeperFX updates. \n"
-"\n"
-"Please review the files and remove them."
+"This list is maintained by the KeeperFX team, and the files are considered "
+"safe to remove. You can review the files that will be removed before "
+"proceeding."
 msgstr ""
-"El lanzador de KeeperFX ha encontrado algunos archivos que podrían causar "
-"problemas con KeeperFX.\n"
+"El lanzador de KeeperFX ha encontrado archivos que quedaron tras "
+"actualizaciones anteriores. Estos archivos podrían causar problemas y "
+"deberían eliminarse.\n"
 "\n"
-"Esta lista está gestionada por el equipo de KeeperFX y tiene como objetivo "
-"limpiar archivos que quedan tras las actualizaciones del juego.\n"
-"\n"
-"Por favor, revise los archivos y elimínelos."
+"Esta lista está gestionada por el equipo de KeeperFX, y los archivos se "
+"consideran seguros para eliminar. Puede revisar los archivos que se "
+"eliminarán antes de continuar."
 
-#: ../ui/fileremoverdialog.ui:112
+#: ../ui/fileremoverdialog.ui:115
 msgctxt "FileRemoverDialog|Button"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../ui/fileremoverdialog.ui:137
+#: ../ui/fileremoverdialog.ui:140
 msgctxt "FileRemoverDialog|Button"
 msgid "Remove All"
 msgstr "Eliminar todos los archivos"
@@ -731,76 +729,76 @@ msgctxt "InstallKfxDialog|Button"
 msgid "Install"
 msgstr "Instalar"
 
-#: ../src/installkfxdialog.cpp:42
+#: ../src/installkfxdialog.cpp:49
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "Estable (predeterminado)"
 
-#: ../src/installkfxdialog.cpp:43
+#: ../src/installkfxdialog.cpp:50
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Versión alfa"
 
-#: ../src/installkfxdialog.cpp:113
+#: ../src/installkfxdialog.cpp:120
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to get download URL for stable release"
 msgstr "Error al obtener la URL de descarga de la versión estable"
 
-#: ../src/installkfxdialog.cpp:133
+#: ../src/installkfxdialog.cpp:140
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to download stable release"
 msgstr "Error al descargar la versión estable"
 
-#: ../src/installkfxdialog.cpp:155
+#: ../src/installkfxdialog.cpp:162
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Stable release archive test failed. It may be corrupted."
 msgstr ""
 "Se ha producido un error al comprobar el archivo de la versión estable. El "
 "archivo podría estar dañado."
 
-#: ../src/installkfxdialog.cpp:168 ../src/installkfxdialog.cpp:267
+#: ../src/installkfxdialog.cpp:175 ../src/installkfxdialog.cpp:274
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Extrayendo: %p%"
 
-#: ../src/installkfxdialog.cpp:203 ../src/installkfxdialog.cpp:302
+#: ../src/installkfxdialog.cpp:210 ../src/installkfxdialog.cpp:309
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid "KeeperFX has been successfully installed!"
 msgstr "¡KeeperFX se ha instalado correctamente!"
 
-#: ../src/installkfxdialog.cpp:215
+#: ../src/installkfxdialog.cpp:222
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to get download URL for alpha patch"
 msgstr "Error al obtener la URL de descarga del parche alfa"
 
-#: ../src/installkfxdialog.cpp:235
+#: ../src/installkfxdialog.cpp:242
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Alpha patch download failed."
 msgstr "Error al descargar el parche alfa."
 
-#: ../src/installkfxdialog.cpp:256
+#: ../src/installkfxdialog.cpp:263
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Alpha patch archive test failed. It may be corrupted."
 msgstr ""
 "Error al comprobar el archivo del parche alfa. El archivo podría estar "
 "dañado."
 
-#: ../src/installkfxdialog.cpp:311
+#: ../src/installkfxdialog.cpp:318
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Descargando: %p% (%vMiB)"
 
-#: ../src/installkfxdialog.cpp:352
+#: ../src/installkfxdialog.cpp:359
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Installation failed"
 msgstr "Instalación fallida"
 
-#: ../src/installkfxdialog.cpp:359
+#: ../src/installkfxdialog.cpp:366
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "KeeperFX Alpha builds"
 msgstr "Versiones alfa de KeeperFX"
 
-#: ../src/installkfxdialog.cpp:360
+#: ../src/installkfxdialog.cpp:367
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Alpha patches may contain new features and changes, but often contain bugs "
@@ -816,12 +814,12 @@ msgstr ""
 "\n"
 "¿Está seguro de que desea usar la versión alfa?"
 
-#: ../src/installkfxdialog.cpp:395
+#: ../src/installkfxdialog.cpp:402
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Uninstall KeeperFX"
 msgstr "Desinstalar KeeperFX"
 
-#: ../src/installkfxdialog.cpp:396
+#: ../src/installkfxdialog.cpp:403
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Do you want to uninstall KeeperFX?\n"
@@ -832,12 +830,12 @@ msgstr ""
 "\n"
 "Esto eliminará cualquier archivo restante."
 
-#: ../src/installkfxdialog.cpp:409
+#: ../src/installkfxdialog.cpp:416
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Confirmar"
 
-#: ../src/installkfxdialog.cpp:409
+#: ../src/installkfxdialog.cpp:416
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -891,14 +889,14 @@ msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr "Jugar"
 
-#: ../src/launchermainwindow.cpp:148 ../src/launchermainwindow.cpp:233
-#: ../src/launchermainwindow.cpp:254 ../src/launchermainwindow.cpp:1037
-#: ../src/launchermainwindow.cpp:1043
+#: ../src/launchermainwindow.cpp:149 ../src/launchermainwindow.cpp:234
+#: ../src/launchermainwindow.cpp:255 ../src/launchermainwindow.cpp:1062
+#: ../src/launchermainwindow.cpp:1068
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "Error de KeeperFX"
 
-#: ../src/launchermainwindow.cpp:149
+#: ../src/launchermainwindow.cpp:150
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has detected that it might have been installed in the original "
@@ -913,12 +911,12 @@ msgstr ""
 "\n"
 "KeeperFX debe instalarse en su propio directorio independiente."
 
-#: ../src/launchermainwindow.cpp:159
+#: ../src/launchermainwindow.cpp:160
 msgctxt "LauncherMainWindow|Messagebox Checkbox label"
 msgid "Don't show this again"
 msgstr "No volver a mostrar"
 
-#: ../src/launchermainwindow.cpp:234
+#: ../src/launchermainwindow.cpp:235
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. It's possible your "
@@ -931,7 +929,7 @@ msgstr ""
 "\n"
 "¿Desea reinstalar KeeperFX automáticamente?"
 
-#: ../src/launchermainwindow.cpp:255
+#: ../src/launchermainwindow.cpp:256
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
@@ -940,53 +938,53 @@ msgstr ""
 "Error al obtener la versión de KeeperFX. Por favor, informe de este error al "
 "equipo de KeeperFX."
 
-#: ../src/launchermainwindow.cpp:346
+#: ../src/launchermainwindow.cpp:347
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr "Jugar campaña"
 
-#: ../src/launchermainwindow.cpp:354
+#: ../src/launchermainwindow.cpp:355
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr "Cargar Partida guardada"
 
-#: ../src/launchermainwindow.cpp:361
+#: ../src/launchermainwindow.cpp:362
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr "Conexión directa (Multijugador)"
 
-#: ../src/launchermainwindow.cpp:372
+#: ../src/launchermainwindow.cpp:373
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr "Escanear red local (Multijugador)"
 
-#: ../src/launchermainwindow.cpp:383
+#: ../src/launchermainwindow.cpp:384
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr "Probar sala en línea (Multijugador)"
 
-#: ../src/launchermainwindow.cpp:391
+#: ../src/launchermainwindow.cpp:392
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Ejecutar archivo de repetición (Packetfile)"
 
 # Could add (Heavylog) after the translation if that helps with troubleshooting
-#: ../src/launchermainwindow.cpp:405
+#: ../src/launchermainwindow.cpp:406
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
 msgstr "Registro detallado (Heavylog)"
 
-#: ../src/launchermainwindow.cpp:412 ../src/launchermainwindow.cpp:416
+#: ../src/launchermainwindow.cpp:413 ../src/launchermainwindow.cpp:417
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
 msgstr "Jugar (Registro detallado)"
 
-#: ../src/launchermainwindow.cpp:412 ../src/launchermainwindow.cpp:416
+#: ../src/launchermainwindow.cpp:413 ../src/launchermainwindow.cpp:417
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Jugar"
 
-#: ../src/launchermainwindow.cpp:535
+#: ../src/launchermainwindow.cpp:536
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -997,12 +995,12 @@ msgstr ""
 "\n"
 "¿Desea descargar e instalar KeeperFX?"
 
-#: ../src/launchermainwindow.cpp:541
+#: ../src/launchermainwindow.cpp:542
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Confirmar"
 
-#: ../src/launchermainwindow.cpp:541
+#: ../src/launchermainwindow.cpp:542
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -1013,12 +1011,12 @@ msgstr ""
 "\n"
 "No podrá jugar a KeeperFX."
 
-#: ../src/launchermainwindow.cpp:574
+#: ../src/launchermainwindow.cpp:575
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "El idioma ha cambiado"
 
-#: ../src/launchermainwindow.cpp:575
+#: ../src/launchermainwindow.cpp:576
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -1027,12 +1025,12 @@ msgstr ""
 "El lanzador debe reiniciarse para aplicar el cambio de idioma. ¿Desea "
 "hacerlo ahora?"
 
-#: ../src/launchermainwindow.cpp:1003
+#: ../src/launchermainwindow.cpp:1028
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "Error de verificación de KeeperFX"
 
-#: ../src/launchermainwindow.cpp:1004
+#: ../src/launchermainwindow.cpp:1029
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1046,7 +1044,7 @@ msgstr ""
 "\n"
 "Se recomienda encarecidamente usar solo archivos oficiales de KeeperFX."
 
-#: ../src/launchermainwindow.cpp:1038
+#: ../src/launchermainwindow.cpp:1063
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1060,12 +1058,12 @@ msgstr ""
 "Error:\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1043
+#: ../src/launchermainwindow.cpp:1068
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "Error desconocido al iniciar KeeperFX."
 
-#: ../src/launchermainwindow.cpp:1067
+#: ../src/launchermainwindow.cpp:1092
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "Lanzador de KeeperFX"
