@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 23:03+0200\n"
-"PO-Revision-Date: 2025-07-20 20:40+0300\n"
+"POT-Creation-Date: 2025-07-21 01:07+0200\n"
+"PO-Revision-Date: 2025-07-24 20:21+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk_UA\n"
@@ -161,22 +161,22 @@ msgctxt "CopyDkFilesDialog|Button"
 msgid "Copy"
 msgstr "Копіювати"
 
-#: ../src/copydkfilesdialog.cpp:37
+#: ../src/copydkfilesdialog.cpp:44
 msgctxt "CopyDkFilesDialog|Label"
 msgid "A suitable DK installation has been automatically detected."
 msgstr "Відповідну установку DK було визначено автоматично."
 
-#: ../src/copydkfilesdialog.cpp:50
+#: ../src/copydkfilesdialog.cpp:57
 msgctxt "CopyDkFilesDialog|Directory Browse Dialog"
 msgid "Select Directory containing Dungeon Keeper files"
 msgstr "Виберіть каталог, що містить файли Dungeon Keeper"
 
-#: ../src/copydkfilesdialog.cpp:59 ../src/copydkfilesdialog.cpp:80
+#: ../src/copydkfilesdialog.cpp:66 ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Original DK files not found"
 msgstr "Оригінальні файли DK не знайдено"
 
-#: ../src/copydkfilesdialog.cpp:60 ../src/copydkfilesdialog.cpp:81
+#: ../src/copydkfilesdialog.cpp:67 ../src/copydkfilesdialog.cpp:88
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The chosen directory does not contain all of the required files. Please "
@@ -185,37 +185,37 @@ msgstr ""
 "Вибраний каталог не містить усіх необхідних файлів. Будь ласка, виберіть "
 "оригінальну інсталяцію Dungeon Keeper."
 
-#: ../src/copydkfilesdialog.cpp:71
+#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Select a directory"
 msgstr "Виберіть папку"
 
-#: ../src/copydkfilesdialog.cpp:71
+#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Please select an original Dungeon Keeper installation location."
 msgstr "Виберіть оригінальне місце встановлення Dungeon Keeper."
 
-#: ../src/copydkfilesdialog.cpp:88 ../src/copydkfilesdialog.cpp:94
+#: ../src/copydkfilesdialog.cpp:95 ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Failed to copy files"
 msgstr "Не вдалося скопіювати файли"
 
-#: ../src/copydkfilesdialog.cpp:88
+#: ../src/copydkfilesdialog.cpp:95
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "The current directory is not writable."
 msgstr "Поточний каталог є недоступним для запису."
 
-#: ../src/copydkfilesdialog.cpp:94
+#: ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Something went wrong while copying the files."
 msgstr "Під час копіювання файлів щось пішло не так."
 
-#: ../src/copydkfilesdialog.cpp:106
+#: ../src/copydkfilesdialog.cpp:113
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "DK files copied!"
 msgstr "Файли DK скопійовано!"
 
-#: ../src/copydkfilesdialog.cpp:107
+#: ../src/copydkfilesdialog.cpp:114
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The required Dungeon Keeper files have been copied.\n"
@@ -226,12 +226,12 @@ msgstr ""
 "\n"
 "Тепер ви можете грати у KeeperFX!"
 
-#: ../src/copydkfilesdialog.cpp:120
+#: ../src/copydkfilesdialog.cpp:127
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Підтвердження"
 
-#: ../src/copydkfilesdialog.cpp:121
+#: ../src/copydkfilesdialog.cpp:128
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -466,53 +466,53 @@ msgctxt "DownloadMusicDialog|Button"
 msgid "Download"
 msgstr "Завантажити"
 
-#: ../src/downloadmusicdialog.cpp:74
+#: ../src/downloadmusicdialog.cpp:81
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to get download URL for music archive"
 msgstr "Не вдалося отримати URL-адресу для завантаження музичного архіву"
 
-#: ../src/downloadmusicdialog.cpp:84
+#: ../src/downloadmusicdialog.cpp:91
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Invalid music archive file extension. It must be a 7zip archive."
 msgstr "Неправильне розширення файлу музичного архіву. Це має бути 7zip-архів."
 
-#: ../src/downloadmusicdialog.cpp:102
+#: ../src/downloadmusicdialog.cpp:109
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to download music archive"
 msgstr "Не вдалося завантажити музичний архів"
 
-#: ../src/downloadmusicdialog.cpp:124
+#: ../src/downloadmusicdialog.cpp:131
 msgctxt "DownloadMusicDialog|Failure message"
 msgid "Music archive test failed. It may be corrupted."
 msgstr ""
 "Перевірка музичного архіву завершилася невдало. Можливо, він пошкоджений."
 
-#: ../src/downloadmusicdialog.cpp:136
+#: ../src/downloadmusicdialog.cpp:143
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Вилучення: %p%"
 
-#: ../src/downloadmusicdialog.cpp:168
+#: ../src/downloadmusicdialog.cpp:175
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid "The KeeperFX background music has been successfully downloaded!"
 msgstr "Фонову музику KeeperFX успішно завантажено!"
 
-#: ../src/downloadmusicdialog.cpp:177
+#: ../src/downloadmusicdialog.cpp:184
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Завантаження: %p% (%vMiB)"
 
-#: ../src/downloadmusicdialog.cpp:218
+#: ../src/downloadmusicdialog.cpp:225
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Download failed"
 msgstr "Не вдалося завантажити"
 
-#: ../src/downloadmusicdialog.cpp:225
+#: ../src/downloadmusicdialog.cpp:232
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Підтвердження"
 
-#: ../src/downloadmusicdialog.cpp:226
+#: ../src/downloadmusicdialog.cpp:233
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -626,38 +626,44 @@ msgctxt "FileRemoverDialog|Window Title"
 msgid "Remove unwanted files"
 msgstr "Видалення небажаних файлів"
 
-#: ../ui/fileremoverdialog.ui:36
+#: ../ui/fileremoverdialog.ui:39
 msgctxt "FileRemoverDialog|Header"
-msgid "Remove unwanted files"
-msgstr "Видалення небажаних файлів"
+msgid "Remove leftover files"
+msgstr "Видалити залишкові файли"
 
-#: ../ui/fileremoverdialog.ui:60
+#: ../ui/fileremoverdialog.ui:63
+#| msgctxt "FileRemoverDialog|Information Label"
+#| msgid ""
+#| "The KeeperFX launcher has found some files that might cause problems with "
+#| "KeeperFX.\n"
+#| "\n"
+#| "This list is managed by the KeeperFX team and is meant to clean up files "
+#| "that are left over\n"
+#| "after KeeperFX updates. \n"
+#| "\n"
+#| "Please review the files and remove them."
 msgctxt "FileRemoverDialog|Information Label"
 msgid ""
-"The KeeperFX launcher has found some files that might cause problems with "
-"KeeperFX.\n"
+"The KeeperFX launcher has found files that were left over after KeeperFX "
+"updates. These files might cause issues and should be removed.\n"
 "\n"
-"This list is managed by the KeeperFX team and is meant to clean up files "
-"that are left over\n"
-"after KeeperFX updates. \n"
-"\n"
-"Please review the files and remove them."
+"This list is maintained by the KeeperFX team, and the files are considered "
+"safe to remove. You can review the files that will be removed before "
+"proceeding."
 msgstr ""
-"Програма запуску KeeperFX виявила деякі файли, які можуть спричинити "
-"проблеми у роботі KeeperFX.\n"
+"Програма запуску KeeperFX виявила файли, що залишилися після оновлень "
+"KeeperFX. Ці файли можуть спричинити проблеми і їх слід видалити.\n"
 "\n"
-"Цей список ведеться командою KeeperFX і призначений для очищення файлів, які "
-"залишилися на\n"
-"після оновлень KeeperFX.\n"
-"\n"
-"Будь ласка, перегляньте ці файли і видаліть їх."
+"Цей список ведеться командою KeeperFX, і ці файли вважаються безпечними для "
+"видалення. Ви можете переглянути файли, які будуть видалені, перш ніж "
+"продовжувати."
 
-#: ../ui/fileremoverdialog.ui:112
+#: ../ui/fileremoverdialog.ui:115
 msgctxt "FileRemoverDialog|Button"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: ../ui/fileremoverdialog.ui:137
+#: ../ui/fileremoverdialog.ui:140
 msgctxt "FileRemoverDialog|Button"
 msgid "Remove All"
 msgstr "Видалити все"
@@ -726,74 +732,74 @@ msgctxt "InstallKfxDialog|Button"
 msgid "Install"
 msgstr "Встановити"
 
-#: ../src/installkfxdialog.cpp:42
+#: ../src/installkfxdialog.cpp:49
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "Стабільний (за замовчуванням)"
 
-#: ../src/installkfxdialog.cpp:43
+#: ../src/installkfxdialog.cpp:50
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Альфа"
 
-#: ../src/installkfxdialog.cpp:113
+#: ../src/installkfxdialog.cpp:120
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to get download URL for stable release"
 msgstr "Не вдалося отримати URL-адресу для завантаження стабільного випуску"
 
-#: ../src/installkfxdialog.cpp:133
+#: ../src/installkfxdialog.cpp:140
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to download stable release"
 msgstr "Не вдалося завантажити стабільний випуск"
 
-#: ../src/installkfxdialog.cpp:155
+#: ../src/installkfxdialog.cpp:162
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Stable release archive test failed. It may be corrupted."
 msgstr ""
 "Тест архіву стабільного випуску завершився невдало. Можливо, він пошкоджений."
 
-#: ../src/installkfxdialog.cpp:168 ../src/installkfxdialog.cpp:267
+#: ../src/installkfxdialog.cpp:175 ../src/installkfxdialog.cpp:274
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Вилучення: %p%"
 
-#: ../src/installkfxdialog.cpp:203 ../src/installkfxdialog.cpp:302
+#: ../src/installkfxdialog.cpp:210 ../src/installkfxdialog.cpp:309
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid "KeeperFX has been successfully installed!"
 msgstr "KeeperFX успішно встановлено!"
 
-#: ../src/installkfxdialog.cpp:215
+#: ../src/installkfxdialog.cpp:222
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to get download URL for alpha patch"
 msgstr "Не вдалося отримати URL-адресу для завантаження альфа-виправлення"
 
-#: ../src/installkfxdialog.cpp:235
+#: ../src/installkfxdialog.cpp:242
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Alpha patch download failed."
 msgstr "Не вдалося завантажити альфа-виправлення."
 
-#: ../src/installkfxdialog.cpp:256
+#: ../src/installkfxdialog.cpp:263
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Alpha patch archive test failed. It may be corrupted."
 msgstr ""
 "Не вдалося виконати тест архіву альфа-виправлення. Можливо, він пошкоджений."
 
-#: ../src/installkfxdialog.cpp:311
+#: ../src/installkfxdialog.cpp:318
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Завантаження: %p% (%vMiB)"
 
-#: ../src/installkfxdialog.cpp:352
+#: ../src/installkfxdialog.cpp:359
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Installation failed"
 msgstr "Інсталяція завершилася невдало"
 
-#: ../src/installkfxdialog.cpp:359
+#: ../src/installkfxdialog.cpp:366
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "KeeperFX Alpha builds"
 msgstr "Альфа-збірки KeeperFX"
 
-#: ../src/installkfxdialog.cpp:360
+#: ../src/installkfxdialog.cpp:367
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Alpha patches may contain new features and changes, but often contain bugs "
@@ -809,12 +815,12 @@ msgstr ""
 "\n"
 "Ви впевнені, що хочете використовувати Альфа-випуск?"
 
-#: ../src/installkfxdialog.cpp:395
+#: ../src/installkfxdialog.cpp:402
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Uninstall KeeperFX"
 msgstr "Деінсталяція KeeperFX"
 
-#: ../src/installkfxdialog.cpp:396
+#: ../src/installkfxdialog.cpp:403
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Do you want to uninstall KeeperFX?\n"
@@ -825,12 +831,12 @@ msgstr ""
 "\n"
 "Це призведе до видалення всіх файлів, що залишилися."
 
-#: ../src/installkfxdialog.cpp:409
+#: ../src/installkfxdialog.cpp:416
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Підтвердження"
 
-#: ../src/installkfxdialog.cpp:409
+#: ../src/installkfxdialog.cpp:416
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -881,14 +887,14 @@ msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr "Грати"
 
-#: ../src/launchermainwindow.cpp:148 ../src/launchermainwindow.cpp:233
-#: ../src/launchermainwindow.cpp:254 ../src/launchermainwindow.cpp:1037
-#: ../src/launchermainwindow.cpp:1043
+#: ../src/launchermainwindow.cpp:149 ../src/launchermainwindow.cpp:234
+#: ../src/launchermainwindow.cpp:255 ../src/launchermainwindow.cpp:1062
+#: ../src/launchermainwindow.cpp:1068
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "KeeperFX Помилка"
 
-#: ../src/launchermainwindow.cpp:149
+#: ../src/launchermainwindow.cpp:150
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has detected that it might have been installed in the original "
@@ -903,12 +909,12 @@ msgstr ""
 "\n"
 "KeeperFX має бути встановлений у власну директорію, оскільки це окрема гра."
 
-#: ../src/launchermainwindow.cpp:159
+#: ../src/launchermainwindow.cpp:160
 msgctxt "LauncherMainWindow|Messagebox Checkbox label"
 msgid "Don't show this again"
 msgstr "Не показуйте це знову"
 
-#: ../src/launchermainwindow.cpp:234
+#: ../src/launchermainwindow.cpp:235
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. It's possible your "
@@ -921,7 +927,7 @@ msgstr ""
 "\n"
 "Ви хочете автоматично перевстановити KeeperFX?"
 
-#: ../src/launchermainwindow.cpp:255
+#: ../src/launchermainwindow.cpp:256
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
@@ -930,52 +936,52 @@ msgstr ""
 "Засіб запуску не зміг захопити версію KeeperFX. Будь ласка, повідомте про цю "
 "помилку команді KeeperFX."
 
-#: ../src/launchermainwindow.cpp:346
+#: ../src/launchermainwindow.cpp:347
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr "Ігрова кампанія"
 
-#: ../src/launchermainwindow.cpp:354
+#: ../src/launchermainwindow.cpp:355
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr "Завантажити збережену гру"
 
-#: ../src/launchermainwindow.cpp:361
+#: ../src/launchermainwindow.cpp:362
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr "Пряме підключення (MP)"
 
-#: ../src/launchermainwindow.cpp:372
+#: ../src/launchermainwindow.cpp:373
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr "Сканування локальної мережі (MP)"
 
-#: ../src/launchermainwindow.cpp:383
+#: ../src/launchermainwindow.cpp:384
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr "Випробувати інтернет-лобі (MP)"
 
-#: ../src/launchermainwindow.cpp:391
+#: ../src/launchermainwindow.cpp:392
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Запустити файл пакету"
 
-#: ../src/launchermainwindow.cpp:405
+#: ../src/launchermainwindow.cpp:406
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
 msgstr "Розширений лог"
 
-#: ../src/launchermainwindow.cpp:412 ../src/launchermainwindow.cpp:416
+#: ../src/launchermainwindow.cpp:413 ../src/launchermainwindow.cpp:417
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
 msgstr "Гра (hvlog)"
 
-#: ../src/launchermainwindow.cpp:412 ../src/launchermainwindow.cpp:416
+#: ../src/launchermainwindow.cpp:413 ../src/launchermainwindow.cpp:417
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Грати"
 
-#: ../src/launchermainwindow.cpp:535
+#: ../src/launchermainwindow.cpp:536
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -986,12 +992,12 @@ msgstr ""
 "\n"
 "Ви хочете завантажити та встановити KeeperFX?"
 
-#: ../src/launchermainwindow.cpp:541
+#: ../src/launchermainwindow.cpp:542
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Підтвердження"
 
-#: ../src/launchermainwindow.cpp:541
+#: ../src/launchermainwindow.cpp:542
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -1002,12 +1008,12 @@ msgstr ""
 "\n"
 "Ви не зможете грати в KeeperFX."
 
-#: ../src/launchermainwindow.cpp:574
+#: ../src/launchermainwindow.cpp:575
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "Змінено мову"
 
-#: ../src/launchermainwindow.cpp:575
+#: ../src/launchermainwindow.cpp:576
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -1015,12 +1021,12 @@ msgid ""
 msgstr ""
 "Щоб змінити мову, потрібно перезапустити лаунчер. Ви хочете зробити це зараз?"
 
-#: ../src/launchermainwindow.cpp:1003
+#: ../src/launchermainwindow.cpp:1028
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "Помилка верифікації KeeperFX"
 
-#: ../src/launchermainwindow.cpp:1004
+#: ../src/launchermainwindow.cpp:1029
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1034,7 +1040,7 @@ msgstr ""
 "%1\n"
 "Наполегливо рекомендується використовувати лише офіційні файли KeeperFX."
 
-#: ../src/launchermainwindow.cpp:1038
+#: ../src/launchermainwindow.cpp:1063
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1048,12 +1054,12 @@ msgstr ""
 "Помилка:\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1043
+#: ../src/launchermainwindow.cpp:1068
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "Не вдалося запустити KeeperFX. Невідома помилка."
 
-#: ../src/launchermainwindow.cpp:1067
+#: ../src/launchermainwindow.cpp:1092
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "Лаунчер KeeperFX"
