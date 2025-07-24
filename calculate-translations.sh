@@ -3,6 +3,14 @@
 # Stop execution on any error
 set -e
 
+# Check required gettext utilities
+for tool in msgmerge msgfmt; do
+    if ! command -v "$tool" &>/dev/null; then
+        echo "[-] Required tool '$tool' is not installed or not in PATH."
+        exit 1
+    fi
+done
+
 # Variables
 translationTemplateFile="$(dirname "$0")/i18n/translations.pot"
 translationPoFileMask="$(dirname "$0")/i18n/translations_*.po"
@@ -29,9 +37,23 @@ for poFile in $translationPoFileMask; do
         # Get language code
         code="${BASH_REMATCH[1]}"; code="${code^^}"
 
-        # Count translated strings
-        translated=$(msgattrib --no-fuzzy --translated --no-obsolete "$poFile" | grep -c '^msgid ')
-        [[ "$translated" -gt 0 ]] && translated=$((translated - 1)) # Remove 1 because of metadata msgid
+        # Merge POT file into temporary PO file so we can get the current stats
+        tmpMergedPo="$(mktemp)"
+        msgmerge --quiet --no-fuzzy-matching "$poFile" "$translationTemplateFile" -o "$tmpMergedPo"
+
+        # Use msgfmt to get translation statistics
+        # The output of msgfmt --statistics goes to stderr, so capture it
+        stats=$(msgfmt --statistics -o /dev/null "$tmpMergedPo" 2>&1)
+
+        # Extract the number of translated messages from the output
+        if [[ "$stats" =~ ([0-9]+)\ translated ]]; then
+            translated="${BASH_REMATCH[1]}"
+        else
+            translated=0
+        fi
+
+        # Remove leftover temp file
+        rm -f "$tmpMergedPo"
 
         # Get formatted percentage and remove decimals on round numbers
         percent=$(awk "BEGIN { p=($translated/$totalStrings)*100; printf(\"%.1f\", p) }")
