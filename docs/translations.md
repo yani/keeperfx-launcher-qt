@@ -49,7 +49,7 @@ when we need a proof-read or a quick translation.
 | Swedish               | SV       |           |                |                                                  |
 | Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
 | Russian               | RU       |           |                |                                                  |
-| Korean                | KO       | 99.3%     | 305/307        | Desert                                           |
+| Korean                | KO       | 100%      | 307/307        | Desert                                           |
 | Chinese (Simplified)  | ZH-HANS  | 100%      | 307/307        | [JieLeTian](https://github.com/jieletian)        |
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
 | Czech                 | CS       | 100%      | 307/307        | Gotrek                                           |
