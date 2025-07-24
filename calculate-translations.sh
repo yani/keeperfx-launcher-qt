@@ -3,8 +3,9 @@
 # Stop execution on any error
 set -e
 
-# Check required gettext utilities
-for tool in msgmerge msgfmt; do
+# Check required tools
+required_tools=(msgmerge msgfmt msgattrib awk sed)
+for tool in "${required_tools[@]}"; do
     if ! command -v "$tool" &>/dev/null; then
         echo "[-] Required tool '$tool' is not installed or not in PATH."
         exit 1
