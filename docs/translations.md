@@ -42,7 +42,7 @@ when we need a proof-read or a quick translation.
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)                  |
 | Dutch                 | NL       | 100%      | 307/307        | [Yani](https://github.com/yani)                  |
 | Italian               | IT       |           |                |                                                  |
-| French                | FR       | 99.3%     | 305/307        | AncientWay                                       |
+| French                | FR       | 98.7%     | 303/307        | AncientWay                                       |
 | Spanish               | ES       | 100%      | 307/307        | Alniarez                                         |
 | German                | DE       |           |                | Aqua, Dofi                                       |
 | Polish                | PL       |           |                |                                                  |
@@ -50,11 +50,11 @@ when we need a proof-read or a quick translation.
 | Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
 | Russian               | RU       |           |                |                                                  |
 | Korean                | KO       | 100%      | 307/307        | Desert                                           |
-| Chinese (Simplified)  | ZH-HANS  | 100%      | 307/307        | [JieLeTian](https://github.com/jieletian)        |
+| Chinese (Simplified)  | ZH-HANS  | 99.3%     | 305/307        | [JieLeTian](https://github.com/jieletian)        |
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
 | Czech                 | CS       | 100%      | 307/307        | Gotrek                                           |
 | Latin                 | LA       |           |                |                                                  |
-| Ukrainian             | UK       | 100%      | 307/307        | Mr.Negative, Renegade_Glitch                     |
+| Ukrainian             | UK       | 99.3%     | 305/307        | Mr.Negative, Renegade_Glitch                     |
 
 
 
