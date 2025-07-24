@@ -52,7 +52,7 @@ when we need a proof-read or a quick translation.
 | Korean                | KO       | 99.3%     | 305/307        | Desert                                           |
 | Chinese (Simplified)  | ZH-HANS  | 100%      | 307/307        | [JieLeTian](https://github.com/jieletian)        |
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
-| Czech                 | CS       | 99.3%     | 305/307        | Gotrek                                           |
+| Czech                 | CS       | 100%      | 307/307        | Gotrek                                           |
 | Latin                 | LA       |           |                |                                                  |
 | Ukrainian             | UK       | 100%      | 307/307        | Mr.Negative, Renegade_Glitch                     |
 
