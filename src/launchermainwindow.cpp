@@ -27,6 +27,7 @@
 #include "fileremover.h"
 #include "fileremoverdialog.h"
 #include "game.h"
+#include "helper.h"
 #include "imagehelper.h"
 #include "installkfxdialog.h"
 #include "kfxversion.h"
@@ -497,6 +498,11 @@ void LauncherMainWindow::refreshInstallationAwareButtons() {
             qWarning() << "Failed to load play button theme stylesheet:" << styleSheetFile.fileName();
         }
     }
+
+    // Unearth button visibility
+    QString unearthBinaryPath = Helper::getUnearthBinaryPath();
+    QFile unearthBinaryFile(unearthBinaryPath);
+    ui->unearthButton->setVisible(unearthBinaryFile.exists());
 }
 
 void LauncherMainWindow::refreshLogfileButton() {
@@ -1103,4 +1109,19 @@ void LauncherMainWindow::on_openFolderButton_clicked()
     // Use default file browser to open Application Folder
     QUrl url = QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + QDir::separator());
     QDesktopServices::openUrl(url);
+}
+
+void LauncherMainWindow::on_unearthButton_clicked()
+{
+    // File path
+    QString unearthBinaryPath = Helper::getUnearthBinaryPath();
+
+    // Get file and make sure it is accessible
+    QFile unearthBinaryFile(unearthBinaryPath);
+    if (unearthBinaryFile.exists() == false) {
+        qWarning() << "Unearth Binary can not be started because it does not exist or is not accessible:" << unearthBinaryPath;
+        return;
+    }
+
+    QProcess::startDetached(unearthBinaryPath);
 }

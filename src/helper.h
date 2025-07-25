@@ -1,9 +1,11 @@
 #pragma once
 
-#include <QVariant>
-#include <QString>
+#include <QCoreApplication>
+#include <QDir>
 #include <QObject>
 #include <QProcess>
+#include <QString>
+#include <QVariant>
 
 #ifdef Q_OS_WINDOWS
     #include <windows.h>
@@ -26,6 +28,17 @@ public:
     }
 
     static bool is64BitDll(QString dllPath) { return Helper::is64BitDLL(dllPath.toStdString()); }
+
+    static QString getUnearthBinaryPath()
+    {
+        // File path
+        QString unearthBinaryPath(QCoreApplication::applicationDirPath() + QDir::separator() + "unearth" + QDir::separator() + "unearth.x86_64");
+#ifdef Q_OS_WINDOWS
+        // Add .exe to windows path
+        unearthBinaryPath.append(".exe");
+#endif
+        return unearthBinaryPath;
+    }
 
 #ifdef Q_OS_WINDOWS
     // Function to check if we are running under Wine
