@@ -500,9 +500,8 @@ void LauncherMainWindow::refreshInstallationAwareButtons() {
     }
 
     // Unearth button visibility
-    QString unearthBinaryPath = Helper::getUnearthBinaryPath();
-    QFile unearthBinaryFile(unearthBinaryPath);
-    ui->unearthButton->setVisible(unearthBinaryFile.exists());
+    QFile unearthBinary = Helper::getUnearthBinary();
+    ui->unearthButton->setVisible(unearthBinary.exists());
 }
 
 void LauncherMainWindow::refreshLogfileButton() {
@@ -1113,15 +1112,14 @@ void LauncherMainWindow::on_openFolderButton_clicked()
 
 void LauncherMainWindow::on_unearthButton_clicked()
 {
-    // File path
-    QString unearthBinaryPath = Helper::getUnearthBinaryPath();
+    // Get file
+    QFile unearthBinary = Helper::getUnearthBinary();
 
-    // Get file and make sure it is accessible
-    QFile unearthBinaryFile(unearthBinaryPath);
-    if (unearthBinaryFile.exists() == false) {
-        qWarning() << "Unearth Binary can not be started because it does not exist or is not accessible:" << unearthBinaryPath;
+    // Make sure it is accessible
+    if (unearthBinary.exists() == false) {
+        qWarning() << "Unearth Binary can not be started because it does not exist or is not accessible:" << unearthBinary.fileName();
         return;
     }
 
-    QProcess::startDetached(unearthBinaryPath);
+    QProcess::startDetached(unearthBinary.fileName());
 }

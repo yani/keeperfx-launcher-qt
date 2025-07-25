@@ -29,15 +29,34 @@ public:
 
     static bool is64BitDll(QString dllPath) { return Helper::is64BitDLL(dllPath.toStdString()); }
 
-    static QString getUnearthBinaryPath()
+    static QFile getUnearthBinary()
     {
-        // File path
-        QString unearthBinaryPath(QCoreApplication::applicationDirPath() + QDir::separator() + "unearth" + QDir::separator() + "unearth.x86_64");
+        const QString rootDir = QCoreApplication::applicationDirPath();
+        const QStringList subdirs = {"unearth", "Unearth"};
+
 #ifdef Q_OS_WINDOWS
-        // Add .exe to windows path
-        unearthBinaryPath.append(".exe");
+        const QStringList filenames = {"unearth.exe"};
+#else
+        const QStringList filenames = {"unearth", "unearth.x86_64"};
 #endif
-        return unearthBinaryPath;
+
+        for (const QString &subdir : subdirs) {
+            QDir dir(rootDir + QDir::separator() + subdir);
+            if (!dir.exists())
+                continue;
+
+            const QStringList entries = dir.entryList(QDir::Files | QDir::NoSymLinks);
+            for (const QString &entry : entries) {
+                for (const QString &expected : filenames) {
+                    if (entry.compare(expected, Qt::CaseInsensitive) == 0) {
+                        return QFile(dir.absoluteFilePath(entry));
+                    }
+                }
+            }
+        }
+
+        // Not found
+        return QFile();
     }
 
 #ifdef Q_OS_WINDOWS
