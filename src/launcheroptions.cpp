@@ -45,6 +45,7 @@ void LauncherOptions::processApp(QApplication &app)
         {"log-missing-translations",    "Log missing translations to debug"},
         {"no-image-cache",              "Bypass image caching"},
         {"download-music",              "Start the music download procedure"},
+        {"skip-file-removal",           "Do not ask for the removal of leftover files"},
 
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},

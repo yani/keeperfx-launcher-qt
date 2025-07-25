@@ -840,6 +840,12 @@ void LauncherMainWindow::onKfxNetImagesLoaded(QList<QJsonObject> workshopItemLis
 
 void LauncherMainWindow::checkForFileRemoval()
 {
+    // Check if we need to skip leftover file removal
+    if (LauncherOptions::isSet("skip-file-removal") == true) {
+        qDebug() << "Skipping leftover file removal (skip-file-removal)";
+        return;
+    }
+
     // Remove 'save/deleteme.txt'
     // We remove it manually because this will almost always be present after an install (or update)
     QFile saveDeleteMeFile(QCoreApplication::applicationDirPath() + "/save/deleteme.txt");
