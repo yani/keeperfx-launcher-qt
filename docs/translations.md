@@ -42,7 +42,7 @@ when we need a proof-read or a quick translation.
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)                  |
 | Dutch                 | NL       | 100%      | 307/307        | [Yani](https://github.com/yani)                  |
 | Italian               | IT       |           |                |                                                  |
-| French                | FR       | 98.7%     | 303/307        | AncientWay                                       |
+| French                | FR       | 100%      | 307/307        | AncientWay                                       |
 | Spanish               | ES       | 100%      | 307/307        | Alniarez                                         |
 | German                | DE       |           |                | Aqua, Dofi                                       |
 | Polish                | PL       |           |                |                                                  |
