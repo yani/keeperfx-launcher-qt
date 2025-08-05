@@ -24,8 +24,11 @@ totalStrings=$((totalStrings - 1)) # Remove 1 because of the metadata msgid
 # Make sure we got some strings
 if [ "$totalStrings" -le 0 ]; then echo "[-] No strings found in POT file."; exit 1; fi
 
-# Show total strings
-echo "[+] Total translation strings in POT file: $totalStrings"
+# Show that we are calculating the translation stats
+echo "[>] Calculating translations..."
+
+# Show English strings, which is the base
+echo "[+] $(printf '%-7s' "EN:")	100%	$totalStrings/$totalStrings"
 
 # Declare arrays for temporary storing the translation statistics
 declare -A poStats_done poStats_percent
