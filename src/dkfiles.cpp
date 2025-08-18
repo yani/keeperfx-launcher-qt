@@ -182,12 +182,24 @@ bool DkFiles::isValidDkDirPath(QString path)
 std::optional<QDir> DkFiles::findExistingDkInstallDir()
 {
     // Search hardcoded paths
-    for (const QString& path : getInstallPaths()) {
-        QDir dir(path);
+    QStringList checkedInstallPaths;
+    const QStringList paths = getInstallPaths();
+    for (const QString& path : paths) {
 
+        // Make sure directory is not checked yet
+        // We double check here because we use multiple ways to determine some paths that might produce the same result
+        if(checkedInstallPaths.contains(path)){
+            continue;
+        }
+
+        // Check for valid dir
+        QDir dir(path);
         if(dir.exists() && isValidDkDir(dir)){
             return dir;
         }
+
+        // Remember that we have checked this path
+        checkedInstallPaths.append(path);
     }
 
     // Search for path in a possible Steam installation
