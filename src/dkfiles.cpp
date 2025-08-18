@@ -14,17 +14,36 @@
 #ifdef Q_OS_WINDOWS
 // Common DK installation paths under Windows
 const QStringList DkFiles::installPaths = {
+
     "C:\\GOG Games\\Dungeon Keeper Gold",
+    (qEnvironmentVariableIsEmpty("SystemDrive") ? "C:" : qgetenv("SystemDrive")) + "\\GOG Games\\Dungeon Keeper Gold",
+
     "C:\\Program Files (x86)\\GOG Galaxy\\Games\\Dungeon Keeper Gold",
-    "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\Data",
+    (qEnvironmentVariableIsEmpty("SystemDrive") ? "C:" : qgetenv("SystemDrive")) + "\\Program Files (x86)\\GOG Galaxy\\Games\\Dungeon Keeper Gold",
+    QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "\\GOG Galaxy\\Games\\Dungeon Keeper Gold",
+
     "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\DATA",
+    (qEnvironmentVariableIsEmpty("SystemDrive") ? "C:" : qgetenv("SystemDrive")) + "\\Program Files (x86)\\Origin Games\\Dungeon Keeper\\DATA",
+    QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "\\Origin Games\\Dungeon Keeper\\DATA",
+
     "C:\\Program Files (x86)\\Origin Games\\Dungeon Keeper",
+    (qEnvironmentVariableIsEmpty("SystemDrive") ? "C:" : qgetenv("SystemDrive")) + "\\Program Files (x86)\\Origin Games\\Dungeon Keeper",
+    QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "\\Origin Games\\Dungeon Keeper",
+
+    "C:\\Program Files\\EA Games\\Dungeon Keeper",
+    (qEnvironmentVariableIsEmpty("SystemDrive") ? "C:" : qgetenv("SystemDrive")) + "\\Program Files\\EA Games\\Dungeon Keeper",
+    QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "\\EA Games\\Dungeon Keeper",
+
+    "C:\\Program Files\\EA Games\\Dungeon Keeper\\DATA",
+    (qEnvironmentVariableIsEmpty("SystemDrive") ? "C:" : qgetenv("SystemDrive")) + "\\Program Files\\EA Games\\Dungeon Keeper\\DATA",
+    QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "\\EA Games\\Dungeon Keeper\\DATA",
 };
 
 // Common Dk installation paths when running under Wine
 // These would map to the UNIX filesystem of the host
 const QStringList DkFiles::wineInstallPaths = {
-    "Z:\\home\\" + qgetenv("USER") + "\\.steam\\steam\\steamapps\\common\\Dungeon Keeper",
+    "Z:\\home\\deck\\.steam\\steam\\steamapps\\common\\Dungeon Keeper", // Steam Deck default
+    "Z:\\home\\" + (qEnvironmentVariableIsEmpty("USER") ? "user" : qgetenv("USER")) + "\\.steam\\steam\\steamapps\\common\\Dungeon Keeper",
 };
 #else
 // Common DK installation paths under UNIX
