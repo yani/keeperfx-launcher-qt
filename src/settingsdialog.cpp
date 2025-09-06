@@ -95,7 +95,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Launcher language dropdown
     ui->comboBoxLauncherLanguage->addItem("English", "en"); // English
-    //ui->comboBoxLauncherLanguage->addItem("Deutsch", "de");     // German
+    ui->comboBoxLauncherLanguage->addItem("Deutsch", "de");     // German
     ui->comboBoxLauncherLanguage->addItem("Français", "fr");   // French
     ui->comboBoxLauncherLanguage->addItem("Nederlands", "nl"); // Dutch
     ui->comboBoxLauncherLanguage->addItem("Español", "es");    // Spanish

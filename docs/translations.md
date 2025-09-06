@@ -44,7 +44,7 @@ when we need a proof-read or a quick translation.
 | Italian               | IT       |           |                |                                                  |
 | French                | FR       | 100%      | 307/307        | AncientWay                                       |
 | Spanish               | ES       | 100%      | 307/307        | Alniarez                                         |
-| German                | DE       |           |                | Aqua, Dofi                                       |
+| German                | DE       | 100%      | 307/307        | Aqua, Dofi                                       |
 | Polish                | PL       |           |                |                                                  |
 | Swedish               | SV       |           |                |                                                  |
 | Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
