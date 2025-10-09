@@ -32,6 +32,8 @@
 #include "installkfxdialog.h"
 #include "kfxversion.h"
 #include "launcheroptions.h"
+#include "modmanager.h"
+#include "modmanagerdialog.h"
 #include "newsarticlewidget.h"
 #include "runpacketfiledialog.h"
 #include "savefile.h"
@@ -502,6 +504,9 @@ void LauncherMainWindow::refreshInstallationAwareButtons() {
     // Unearth button visibility
     QFile unearthBinary = Helper::getUnearthBinary();
     ui->unearthButton->setVisible(unearthBinary.exists());
+
+    // Mods button visibility
+    ui->modsButton->setVisible(ModManager::isModsFunctionalityAvailable());
 }
 
 void LauncherMainWindow::refreshLogfileButton() {
@@ -1122,4 +1127,12 @@ void LauncherMainWindow::on_unearthButton_clicked()
     }
 
     QProcess::startDetached(unearthBinary.fileName());
+}
+
+void LauncherMainWindow::on_modsButton_clicked()
+{
+    qDebug() << "Mods button clicked. Opening mods dialog";
+
+    ModManagerDialog modManagerDialog(this);
+    modManagerDialog.exec();
 }

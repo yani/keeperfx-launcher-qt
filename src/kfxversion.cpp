@@ -17,6 +17,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"ukrainian_game_language", "1.2.0.4471"},
     {"player_colors_purple_orange_black", "1.0.0.3729"},
     {"startup_config_option", "1.2.0.4427"},
+    {"mod_support", "1.2.0.4658"},
 
     // Absolute Config path is temporary disabled because we still want support for multiple KFX installations
     {"absolute_config_path", "999.999.999"}, // '-config' absolute path was added in 1.2.0.4408

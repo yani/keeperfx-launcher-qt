@@ -37,6 +37,7 @@ private slots:
     void on_playButton_clicked();
     void on_openFolderButton_clicked();
     void on_unearthButton_clicked();
+    void on_modsButton_clicked();
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
     void onFilesToRemoveFound(QStringList filesToRemove);
