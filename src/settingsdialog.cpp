@@ -100,6 +100,34 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxHumanPlayer->addItem(tr("8: Orange", "Player Color Dropdown"), "8");
     }
 
+    // Tag Mode
+    if (KfxVersion::hasFunctionality("tag_mode") == true) {
+        // Add default tag mode dropdown options
+        ui->comboBoxDefaultTagMode->addItem(tr("Single", "Default Tag Mode Dropdown"), "SINGLE");
+        ui->comboBoxDefaultTagMode->addItem(tr("Drag", "Default Tag Mode Dropdown"), "DRAG");
+        ui->comboBoxDefaultTagMode->addItem(tr("Remember Last", "Default Tag Mode Dropdown"), "REMEMBER");
+
+        // Make "Remember Last" default tag mode enable tag mode toggle
+        connect(ui->comboBoxDefaultTagMode, &QComboBox::currentIndexChanged, this, [this](int index) {
+            QString mode = ui->comboBoxDefaultTagMode->itemData(index).toString();
+            if (mode == "REMEMBER") {
+                ui->checkBoxEnableTagModeToggle->setChecked(true);
+            }
+        });
+
+        // Make disabling tag mode change "Remember Last" to "Single"
+        connect(ui->checkBoxEnableTagModeToggle, &QCheckBox::toggled, this, [this](bool checked) {
+            if (!checked && ui->comboBoxDefaultTagMode->currentIndex() == ui->comboBoxDefaultTagMode->findData("REMEMBER")) {
+                ui->comboBoxDefaultTagMode->setCurrentIndex(ui->comboBoxDefaultTagMode->findData("SINGLE"));
+            }
+        });
+
+    } else {
+        ui->comboBoxDefaultTagMode->setDisabled(true);
+        ui->labelTagMode->setDisabled(true);
+        ui->checkBoxEnableTagModeToggle->setDisabled(true);
+    }
+
     // Launcher language dropdown
     ui->comboBoxLauncherLanguage->addItem("English", "en"); // English
     ui->comboBoxLauncherLanguage->addItem("Deutsch", "de");     // German
@@ -553,6 +581,9 @@ void SettingsDialog::loadSettings()
     ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
     ui->checkBoxScreenEdgePanning->setChecked(Settings::getKfxSetting("CURSOR_EDGE_CAMERA_PANNING") == true);
 
+    ui->checkBoxEnableTagModeToggle->setChecked(Settings::getKfxSetting("TAG_MODE_TOGGLING") == true);
+    ui->comboBoxDefaultTagMode->setCurrentIndex(ui->comboBoxDefaultTagMode->findData(Settings::getKfxSetting("DEFAULT_TAG_MODE").toString()));
+
     // ===============================================================================
     // ================================ MULTIPLAYER ==================================
     // ===============================================================================
@@ -762,6 +793,9 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED", ui->checkBoxUnlockCursorWhenPaused->isChecked() == true);
     Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
     Settings::setKfxSetting("CURSOR_EDGE_CAMERA_PANNING", ui->checkBoxScreenEdgePanning->isChecked() == true);
+
+    Settings::setKfxSetting("TAG_MODE_TOGGLING", ui->checkBoxEnableTagModeToggle->isChecked() == true);
+    Settings::setKfxSetting("DEFAULT_TAG_MODE", ui->comboBoxDefaultTagMode->currentData().toString());
 
     // ===============================================================================
     // ================================ MULTIPLAYER ==================================

@@ -1158,7 +1158,7 @@ height: 35px;
         <rect>
          <x>180</x>
          <y>90</y>
-         <width>221</width>
+         <width>191</width>
          <height>21</height>
         </rect>
        </property>
@@ -1184,9 +1184,9 @@ height: 35px;
       <widget class="QLabel" name="labelMouseSensPercentage">
        <property name="geometry">
         <rect>
-         <x>410</x>
+         <x>380</x>
          <y>90</y>
-         <width>151</width>
+         <width>61</width>
          <height>17</height>
         </rect>
        </property>
@@ -1215,6 +1215,47 @@ height: 35px;
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Raw mouse input</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelTagMode">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>44</y>
+         <width>141</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Dropdown Title Label">Default tag mode</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxEnableTagModeToggle">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>90</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Enable tag mode toggle (Right-click)</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxDefaultTagMode">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>39</y>
+         <width>151</width>
+         <height>25</height>
+        </rect>
        </property>
       </widget>
      </widget>
