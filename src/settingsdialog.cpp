@@ -6,11 +6,12 @@
 #include "popupsignalcombobox.h"
 #include "settings.h"
 
+#include <QDesktopServices>
 #include <QEvent>
-#include <QMouseEvent>
-#include <QScreen>
-#include <QPushButton>
 #include <QMessageBox>
+#include <QMouseEvent>
+#include <QPushButton>
+#include <QScreen>
 
 SettingsDialog::SettingsDialog(QWidget *parent)
     : QDialog(parent)
@@ -49,6 +50,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         &QPushButton::clicked,
         this,
         &SettingsDialog::restoreSettings);*/
+
+    // Add a "Open config file" button to the buttonbox
+    QPushButton *configButton = new QPushButton(tr("Open config file", "Dialog Button"), this);
+    configButton->setIcon(QIcon::fromTheme("text-x-generic")); // typical "text file" icon
+    ui->buttonBox->addButton(configButton, QDialogButtonBox::ActionRole);
+    connect(configButton, &QPushButton::clicked, this, &SettingsDialog::onOpenConfigButtonClicked);
 
     // Disable Save button when nothing is changed
     ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(true);
@@ -972,4 +979,10 @@ void SettingsDialog::sortLanguageComboBox(QComboBox *comboBox)
     for (const auto &item : items) {
         comboBox->addItem(item.first, item.second);
     }
+}
+
+void SettingsDialog::onOpenConfigButtonClicked()
+{
+    // Open configuration file in default text editor
+    QDesktopServices::openUrl(QUrl::fromLocalFile(Settings::getKfxConfigFile().fileName()));
 }
