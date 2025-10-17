@@ -37,11 +37,11 @@ Mod::Mod(const QDir directory)
     }
 
     // Load info [mod]
-    this->name = modMetadata->value("info/Name").toString();
-    this->author = modMetadata->value("info/Author").toString();
-    this->description = modMetadata->value("info/Description").toString();
-    this->version = modMetadata->value("info/Version").toString();
-    this->minimumGameVersion = modMetadata->value("info/MinimumGameVersion").toString();
+    this->name = modMetadata->value("mod/Name").toString();
+    this->author = modMetadata->value("mod/Author").toString();
+    this->description = modMetadata->value("mod/Description").toString();
+    this->version = modMetadata->value("mod/Version").toString();
+    this->minimumGameVersion = modMetadata->value("mod/MinimumGameVersion").toString();
 
     // Load translated info [mod]
     // TODO
@@ -54,7 +54,7 @@ Mod::Mod(const QDir directory)
     QDate lastUpdatedDate;
 
     // Load thumbnail [mod]
-    this->thumbnailFilename = modMetadata->value("info/ThumbnailFilename").toString();
+    this->thumbnailFilename = modMetadata->value("mod/Thumbnail").toString();
     if (this->thumbnailFilename.isEmpty() == false) {
         // Get thumbnail filepath
         QString thumbnailFilepath = this->directory.absoluteFilePath(this->thumbnailFilename);
@@ -74,7 +74,7 @@ Mod::Mod(const QDir directory)
     this->kfxNetAuthorUsername = modMetadata->value("web/KfxNetAuthorUsername").toString();
     this->kfxNetWorkshopItemId = modMetadata->value("web/KfxNetWorkshopItemId").toString();
 
-    //qDebug() << "Translation test:" << modMetadata->value("info/Name[DUT]").toString();
+    //qDebug() << "Translation test:" << modMetadata->value("mod/Name[DUT]").toString();
 }
 
 bool Mod::isGameVersionCompatible()

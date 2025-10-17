@@ -14,18 +14,16 @@ ModManagerDialog::ModManagerDialog(QWidget *parent)
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
+    // Get mods
     ModManager *manager = new ModManager();
-
     QList<Mod *> mods = manager->getMods();
 
+    // Add the mods
     if (mods.isEmpty() == false) {
         for (auto mod : mods) {
             // Create the widget
             ModWidget *modWidget = new ModWidget(mod, this);
-
             ui->scrollAreaWidgetContents->layout()->addWidget(modWidget);
-
-            qDebug() << manager;
         }
     }
 }

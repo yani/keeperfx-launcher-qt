@@ -13,23 +13,30 @@ public:
 
     QString toString() const;
 
-private:
+    // Identifier
     QString identifier;
     QDir directory;
-    // Mod information
+
+    // Info
+    QString name;
     QString author;
+    QString description;
     QString version;
     QString minimumGameVersion;
-    QString name;
+
+    // Translations
+    // TODO: do this
     QString nameTranslated;
-    QString description;
     QString descriptionTranslated;
+
     // Thumbnail
     QString thumbnailFilename;
     QPixmap thumbnailPixmap;
+
     // Dates
     QDate createdDate;
     QDate lastUpdatedDate;
+
     // Online information
     QString kfxNetAuthorUsername;
     QString kfxNetWorkshopItemId;
