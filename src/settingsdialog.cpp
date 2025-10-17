@@ -100,6 +100,17 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxHumanPlayer->addItem(tr("8: Orange", "Player Color Dropdown"), "8");
     }
 
+    // Exit on LUA error
+    if (KfxVersion::hasFunctionality("exit_on_lua_error") == false) {
+        ui->checkBoxExitOnLuaError->setDisabled(true);
+    }
+
+    // Flee and Imprison button
+    if (KfxVersion::hasFunctionality("flee_imprison_defaults") == false) {
+        ui->checkBoxAutoEnableFlee->setDisabled(true);
+        ui->checkBoxAutoEnableImprison->setDisabled(true);
+    }
+
     // Tag Mode
     if (KfxVersion::hasFunctionality("tag_mode") == true) {
         // Add default tag mode dropdown options
@@ -412,6 +423,11 @@ void SettingsDialog::loadSettings()
     ui->lineEditPackSaveFileName->setDisabled(!isPacketSaveEnabled);
     ui->lineEditPackSaveFileName->setText(Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME").toString());
 
+    ui->checkBoxExitOnLuaError->setChecked(Settings::getKfxSetting("EXIT_ON_LUA_ERROR") == true);
+
+    ui->checkBoxAutoEnableFlee->setChecked(Settings::getKfxSetting("FLEE_BUTTON_DEFAULT") == true);
+    ui->checkBoxAutoEnableImprison->setChecked(Settings::getKfxSetting("IMPRISON_BUTTON_DEFAULT") == true);
+
     // ============================================================================
     // ================================ GRAPHICS ==================================
     // ============================================================================
@@ -672,6 +688,11 @@ void SettingsDialog::saveSettings()
         packetSaveFileName = packetSaveFileName + ".pck";
     }
     Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME", packetSaveFileName);
+
+    Settings::setKfxSetting("EXIT_ON_LUA_ERROR", ui->checkBoxExitOnLuaError->isChecked());
+
+    Settings::setKfxSetting("FLEE_BUTTON_DEFAULT", ui->checkBoxAutoEnableFlee->isChecked());
+    Settings::setKfxSetting("IMPRISON_BUTTON_DEFAULT", ui->checkBoxAutoEnableImprison->isChecked());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================

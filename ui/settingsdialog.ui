@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>871</width>
-    <height>544</height>
+    <height>573</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -163,8 +163,8 @@ height: 35px;
       <widget class="QLabel" name="labelGameturns">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>346</y>
+         <x>430</x>
+         <y>396</y>
          <width>171</width>
          <height>31</height>
         </rect>
@@ -185,8 +185,8 @@ height: 35px;
       <widget class="QLineEdit" name="lineEditGameturns">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>350</y>
+         <x>610</x>
+         <y>400</y>
          <width>91</width>
          <height>25</height>
         </rect>
@@ -356,6 +356,60 @@ height: 35px;
         <font>
          <family>Arial</family>
         </font>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxExitOnLuaError">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>340</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Exit on LUA error</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxAutoEnableFlee">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>340</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Automatically enable flee</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxAutoEnableImprison">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>390</y>
+         <width>321</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Automatically enable imprison</string>
        </property>
       </widget>
      </widget>
