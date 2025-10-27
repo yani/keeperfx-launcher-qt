@@ -316,6 +316,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Map: Libraries for about page
     // We use QStringLiterals here so we can determine the order we want (Qt6 first)
+    // The second string is the URL of the project and is used for when the user clicks the link
     QList<QPair<QString, QString>> aboutLibrariesMap = {
         { QStringLiteral("Qt6 (" QT_VERSION_STR ")"), "https://www.qt.io/product/qt6" },
         { QStringLiteral("libLIEF"), "https://github.com/lief-project/LIEF" },
