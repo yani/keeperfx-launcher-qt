@@ -2,6 +2,7 @@
 
 QCommandLineParser LauncherOptions::parser;
 QStringList LauncherOptions::arguments;
+QStringList LauncherOptions::activeOptions;
 
 bool LauncherOptions::isSet(const QString option)
 {
@@ -64,7 +65,6 @@ void LauncherOptions::processApp(QApplication &app)
     parser.process(app);
 
     // Get active options
-    QStringList activeOptions;
     for (const QCommandLineOption &option : options) {
         const QStringList names = option.names();
         QString name = !names.isEmpty() ? names.first() : QStringLiteral("<unnamed>");
@@ -76,11 +76,6 @@ void LauncherOptions::processApp(QApplication &app)
                 activeOptions << "--" + name;
             }
         }
-    }
-
-    // Log active options
-    if (activeOptions.empty() == false) {
-        qDebug().noquote() << "Active command line option(s):" << activeOptions.join(" ");
     }
 
     // Remember app arguments

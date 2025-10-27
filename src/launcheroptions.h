@@ -9,6 +9,7 @@ class LauncherOptions
 
 public:
     static QCommandLineParser parser;
+    static QStringList activeOptions;
 
     static bool isSet(const QString option);
     static QString getValue(const QString option);

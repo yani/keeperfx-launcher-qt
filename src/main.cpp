@@ -44,24 +44,21 @@ void setDarkTheme()
 
 void launcherLogFileHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-    // Set logfile to '<application filename>.log'
+    // Set logfile to '<application filename>.log' in the directory of the launcher
     static QFile logFile(
             QCoreApplication::applicationDirPath()
-            + "/"
+            + QDir::separator()
             + QFileInfo(QCoreApplication::applicationFilePath()).baseName()
             + ".log"
         );
 
-    // Check if static logfile is already open
-    // and open it if it isn't
+    // Check if static logfile is already open and open it if it isn't
     if (!logFile.isOpen()) {
         logFile.open(QIODevice::Append | QIODevice::Text);
     }
 
-    QTextStream out(&logFile);
-    QString timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    // Create a string with the type of the message
     QString typeStr;
-
     switch (type) {
     case QtDebugMsg:
         typeStr = "[DEBUG]"; break;
@@ -75,9 +72,20 @@ void launcherLogFileHandler(QtMsgType type, const QMessageLogContext &context, c
         typeStr = "[FATAL]"; break;
     }
 
+    // Get the timestamp
+    QString timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+
+    // Log to file
+    QTextStream out(&logFile);
     out << timeStamp << " " << typeStr << ": " << msg << Qt::endl;
     out.flush(); // Ensure data is written immediately
 
+    // Log to console
+    QTextStream consoleOut(stderr); // use stdout if you prefer
+    consoleOut << timeStamp << " " << typeStr << ": " << msg << Qt::endl;
+    consoleOut.flush();
+
+    // Make sure the application aborts on a fatal error
     if (type == QtFatalMsg) {
         abort();
     }
@@ -97,6 +105,9 @@ int main(int argc, char *argv[])
     if (LauncherOptions::isSet("log-debug") == true) {
         qInstallMessageHandler(launcherLogFileHandler);
     }
+
+    // Start the log
+    qInfo().noquote() << "KeeperFX Launcher " << LAUNCHER_VERSION;
 
     // Create Qt objects for this application binary
     QFile appFile(QCoreApplication::applicationFilePath());
@@ -199,6 +210,12 @@ int main(int argc, char *argv[])
         return QProcess::execute(QCoreApplication::applicationFilePath(), LauncherOptions::getArguments());
     }
 #endif
+
+
+    // Info: Active command line options
+    if (LauncherOptions::activeOptions.empty() == false) {
+        qInfo().noquote() << "Active command line option(s):" << LauncherOptions::activeOptions.join(" ");
+    }
 
     // Info: Log some stuff
     qInfo() << "Launcher Binary:" << QCoreApplication::applicationFilePath();
