@@ -315,18 +315,19 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     addSettingsChangedHandler();
 
     // Map: Libraries for about page
-    QMap<QString, QString> aboutLibrariesMap = {
-        {"Qt6", "https://www.qt.io/product/qt6"},
-        {"libLIEF", "https://github.com/lief-project/LIEF"},
-        {"bit7z", "https://github.com/rikyoz/bit7z"},
-        {"7z", "https://www.7-zip.org/"},
-        {"zlib", "https://www.zlib.net/"},
+    // We use QStringLiterals here so we can determine the order we want (Qt6 first)
+    QList<QPair<QString, QString>> aboutLibrariesMap = {
+        { QStringLiteral("Qt6 (" QT_VERSION_STR ")"), "https://www.qt.io/product/qt6" },
+        { QStringLiteral("libLIEF"), "https://github.com/lief-project/LIEF" },
+        { QStringLiteral("bit7z"), "https://github.com/rikyoz/bit7z" },
+        { QStringLiteral("7z"), "https://www.7-zip.org/" },
+        { QStringLiteral("zlib"), "https://www.zlib.net/" }
     };
 
     // Create libraries string
     QStringList libraries;
-    for (auto it = aboutLibrariesMap.begin(); it != aboutLibrariesMap.end(); ++it) {
-        libraries << "<a href=\"" + it.value() + "\">" + it.key() + "</a>";
+    for (const auto &p : aboutLibrariesMap) {
+        libraries << QStringLiteral("<a href=\"%1\">%2</a>").arg(p.second, p.first);
     }
 
     // Load about page string

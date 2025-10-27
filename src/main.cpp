@@ -212,6 +212,10 @@ int main(int argc, char *argv[])
     qInfo() << "Launcher Build: UNIX";
 #endif
 
+    // Info: Log Qt stuff
+    qInfo() << "Compiled with Qt version:" << QT_VERSION_STR;
+    qInfo() << "Running with Qt version:" << qVersion();
+
     // Info: Platform
     qInfo() << "Platform:" << QGuiApplication::platformName();
 
