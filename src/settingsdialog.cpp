@@ -83,6 +83,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxLanguage->addItem("Українська", "UKR"); // Ukrainian
     }
 
+    // Add Portuguese (Brazilian) Game Language
+    // We do this after the list of languages because this one was added later
+    if (KfxVersion::hasFunctionality("portuguese_game_language") == true) {
+        ui->comboBoxLanguage->addItem("Português", "POR"); // Portuguese (Brazilian)
+    }
+
     sortLanguageComboBox(ui->comboBoxLanguage);
 
     // Player colors

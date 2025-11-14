@@ -15,6 +15,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"direct_enet_connect", "1.0.0"}, // '-connect' parameter
     {"splash_screen_ordering", "1.2.0.4427"},
     {"ukrainian_game_language", "1.2.0.4471"},
+    {"portuguese_game_language", "1.2.0.4625"},
     {"player_colors_purple_orange_black", "1.0.0.3729"},
     {"startup_config_option", "1.2.0.4427"},
     {"mod_support", "1.2.0.4658"},
