@@ -71,6 +71,7 @@ QMap<QString, QString> Settings::localeToGameLanguageMap = {
     {"cs", "CZE"},
     {"la", "LAT"},
     {"uk", "UKR"},
+    {"pt", "POR"},
     {"zh-Hans", "CHI"}, // Simplified Chinese
     {"zh-Hant", "CHT"}, // Traditional Chinese
 };
