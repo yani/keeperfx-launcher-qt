@@ -70,6 +70,7 @@ QMap<QString, QString> Settings::localeToGameLanguageMap = {
     {"ko", "KOR"},
     {"cs", "CZE"},
     {"la", "LAT"},
+    {"uk", "UKR"},
     {"zh-Hans", "CHI"}, // Simplified Chinese
     {"zh-Hant", "CHT"}, // Traditional Chinese
 };
