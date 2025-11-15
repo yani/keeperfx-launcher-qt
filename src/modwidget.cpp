@@ -1,6 +1,7 @@
 #include "modwidget.h"
 #include "ui_modwidget.h"
-#include <qpainter.h>
+
+#include <QPainter>
 
 ModWidget::ModWidget(Mod *mod, QWidget *parent)
     : QWidget(parent)
