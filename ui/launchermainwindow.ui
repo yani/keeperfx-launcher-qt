@@ -299,6 +299,19 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="modsButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="text">
+          <string comment="Button">Mods</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="workshopButton">
          <property name="minimumSize">
           <size>
@@ -311,19 +324,6 @@
          </property>
          <property name="text">
           <string comment="Button">Workshop</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="modsButton">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="text">
-          <string comment="Button">Mods</string>
          </property>
         </widget>
        </item>
