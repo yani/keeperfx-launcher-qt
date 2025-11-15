@@ -506,7 +506,8 @@ void LauncherMainWindow::refreshInstallationAwareButtons() {
     ui->unearthButton->setVisible(unearthBinary.exists());
 
     // Mods button visibility
-    ui->modsButton->setVisible(ModManager::isModsFunctionalityAvailable());
+    //ui->modsButton->setVisible(ModManager::isModsFunctionalityAvailable());
+    ui->modsButton->setVisible(false);
 }
 
 void LauncherMainWindow::refreshLogfileButton() {
