@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-21 01:07+0200\n"
+"POT-Creation-Date: 2025-11-15 10:32+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -866,34 +866,39 @@ msgctxt "LauncherMainWindow|Button"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: ../ui/launchermainwindow.ui:313
+#: ../ui/launchermainwindow.ui:310
+msgctxt "LauncherMainWindow|Button"
+msgid "Mods"
+msgstr "Mods"
+
+#: ../ui/launchermainwindow.ui:326
 msgctxt "LauncherMainWindow|Button"
 msgid "Workshop"
 msgstr "Atelier"
 
-#: ../ui/launchermainwindow.ui:329
+#: ../ui/launchermainwindow.ui:358
 msgctxt "LauncherMainWindow|Button"
 msgid "Logfile"
 msgstr "Fichier journal"
 
-#: ../ui/launchermainwindow.ui:342
+#: ../ui/launchermainwindow.ui:371
 msgctxt "LauncherMainWindow|Button"
 msgid "Open Folder"
 msgstr "Ouvrir dossier"
 
-#: ../ui/launchermainwindow.ui:445
+#: ../ui/launchermainwindow.ui:474
 msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr "Jouer"
 
-#: ../src/launchermainwindow.cpp:149 ../src/launchermainwindow.cpp:234
-#: ../src/launchermainwindow.cpp:255 ../src/launchermainwindow.cpp:1062
-#: ../src/launchermainwindow.cpp:1068
+#: ../src/launchermainwindow.cpp:152 ../src/launchermainwindow.cpp:237
+#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1078
+#: ../src/launchermainwindow.cpp:1084
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "Erreur de KeeperFX"
 
-#: ../src/launchermainwindow.cpp:150
+#: ../src/launchermainwindow.cpp:153
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has detected that it might have been installed in the original "
@@ -909,12 +914,12 @@ msgstr ""
 "KeeperFX devrait être installé dans un répertoire dédié car il s'agit d'un "
 "jeu distinct."
 
-#: ../src/launchermainwindow.cpp:160
+#: ../src/launchermainwindow.cpp:163
 msgctxt "LauncherMainWindow|Messagebox Checkbox label"
 msgid "Don't show this again"
 msgstr "Ne plus afficher ceci"
 
-#: ../src/launchermainwindow.cpp:235
+#: ../src/launchermainwindow.cpp:238
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. It's possible your "
@@ -927,7 +932,7 @@ msgstr ""
 "\n"
 "Voulez-vous réinstaller automatiquement KeeperFX ?"
 
-#: ../src/launchermainwindow.cpp:256
+#: ../src/launchermainwindow.cpp:259
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
@@ -936,52 +941,52 @@ msgstr ""
 "Le lanceur n'a pas réussi à récupérer la version de KeeperFX. Merci de "
 "communiquer cette erreur à l'équipe de KeeperFX."
 
-#: ../src/launchermainwindow.cpp:347
+#: ../src/launchermainwindow.cpp:350
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr "Jouer à la campagne"
 
-#: ../src/launchermainwindow.cpp:355
+#: ../src/launchermainwindow.cpp:358
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr "Charger une sauvegarde"
 
-#: ../src/launchermainwindow.cpp:362
+#: ../src/launchermainwindow.cpp:365
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr "Connexion directe (MP)"
 
-#: ../src/launchermainwindow.cpp:373
+#: ../src/launchermainwindow.cpp:376
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr "Scanner le réseau local (MP)"
 
-#: ../src/launchermainwindow.cpp:384
+#: ../src/launchermainwindow.cpp:387
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr "Tester le salon internet (MP)"
 
-#: ../src/launchermainwindow.cpp:392
+#: ../src/launchermainwindow.cpp:395
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Lancer le fichier de paquets"
 
-#: ../src/launchermainwindow.cpp:406
+#: ../src/launchermainwindow.cpp:409
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
 msgstr "Journal détaillé"
 
-#: ../src/launchermainwindow.cpp:413 ../src/launchermainwindow.cpp:417
+#: ../src/launchermainwindow.cpp:416 ../src/launchermainwindow.cpp:420
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
 msgstr "Jouer (journal détaillé)"
 
-#: ../src/launchermainwindow.cpp:413 ../src/launchermainwindow.cpp:417
+#: ../src/launchermainwindow.cpp:416 ../src/launchermainwindow.cpp:420
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Jouer"
 
-#: ../src/launchermainwindow.cpp:536
+#: ../src/launchermainwindow.cpp:546
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -992,12 +997,12 @@ msgstr ""
 "\n"
 "Voulez-vous télécharger et installer KeeperFX ?"
 
-#: ../src/launchermainwindow.cpp:542
+#: ../src/launchermainwindow.cpp:552
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Confirmation"
 
-#: ../src/launchermainwindow.cpp:542
+#: ../src/launchermainwindow.cpp:552
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -1008,12 +1013,12 @@ msgstr ""
 "\n"
 "Vous ne pourrez pas jouer à KeeperFX."
 
-#: ../src/launchermainwindow.cpp:575
+#: ../src/launchermainwindow.cpp:585
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "La langue a changé"
 
-#: ../src/launchermainwindow.cpp:576
+#: ../src/launchermainwindow.cpp:586
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -1022,12 +1027,12 @@ msgstr ""
 "Le lanceur doit redémarrer pour changer de langue. Voulez-vous redémarrer "
 "maintenant ?"
 
-#: ../src/launchermainwindow.cpp:1028
+#: ../src/launchermainwindow.cpp:1044
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "Erreur de vérification de KeeperFX"
 
-#: ../src/launchermainwindow.cpp:1029
+#: ../src/launchermainwindow.cpp:1045
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1042,7 +1047,7 @@ msgstr ""
 "Il est fortement recommandé d'utiliser uniquement les fichiers officiels "
 "KeeperFX."
 
-#: ../src/launchermainwindow.cpp:1063
+#: ../src/launchermainwindow.cpp:1079
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1056,15 +1061,25 @@ msgstr ""
 "Erreur :\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1068
+#: ../src/launchermainwindow.cpp:1084
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "Échec de démarrage de KeeperFX. Erreur inconnue."
 
-#: ../src/launchermainwindow.cpp:1092
+#: ../src/launchermainwindow.cpp:1108
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "Lanceur KeeperFX"
+
+#: ../ui/modmanagerdialog.ui:17
+msgctxt "ModManagerDialog|"
+msgid "KeeperFX Mod Manager"
+msgstr "Gestionnaire de mods KeeperFX"
+
+#: ../ui/modmanagerdialog.ui:42
+msgctxt "ModManagerDialog|Header"
+msgid "Mod Manager"
+msgstr "Gestionnaire de mods"
 
 #: ../ui/runpacketfiledialog.ui:14
 msgctxt "RunPacketFileDialog|Dialog Title"
@@ -1250,415 +1265,460 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Packetsave"
 msgstr "Activer la sauvegarde des paquets"
 
-#: ../ui/settingsdialog.ui:364
+#: ../ui/settingsdialog.ui:376
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Exit on LUA error"
+msgstr "Fermer en cas d'erreur LUA"
+
+#: ../ui/settingsdialog.ui:394
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically enable flee"
+msgstr "Activer le mode \"fuite\" automatiquement"
+
+#: ../ui/settingsdialog.ui:412
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically enable imprison"
+msgstr "Activer le mode \"emprisonnement\" automatiquement"
+
+#: ../ui/settingsdialog.ui:418
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
 msgstr "Graphismes"
 
-#: ../ui/settingsdialog.ui:376
+#: ../ui/settingsdialog.ui:430
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Smoothen video"
 msgstr "Lisser l'affichage"
 
-#: ../ui/settingsdialog.ui:394 ../ui/settingsdialog.ui:755
+#: ../ui/settingsdialog.ui:448 ../ui/settingsdialog.ui:809
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resolution"
 msgstr "Résolution"
 
-#: ../ui/settingsdialog.ui:442 ../ui/settingsdialog.ui:902
+#: ../ui/settingsdialog.ui:496 ../ui/settingsdialog.ui:956
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display mode"
 msgstr "Mode d'affichage"
 
-#: ../ui/settingsdialog.ui:475
+#: ../ui/settingsdialog.ui:529
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display monitor"
 msgstr "Afficher le moniteur"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:493
+#: ../ui/settingsdialog.ui:547
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 1"
 msgstr "Vue 1"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:511
+#: ../ui/settingsdialog.ui:565
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 2"
 msgstr "Vue 2"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:529
+#: ../ui/settingsdialog.ui:583
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 3"
 msgstr "Vue 3"
 
 #. This is shown under the views configuration
-#: ../ui/settingsdialog.ui:605
+#: ../ui/settingsdialog.ui:659
 msgctxt "SettingsDialog|Information Label"
 msgid ""
 "<i>Switch between in-game views by pressing <strong>Alt + R</strong></i>"
 msgstr ""
 "<i>Changer entre les vues en jeu en appuyant sur <strong>Alt + R</strong></i>"
 
-#: ../ui/settingsdialog.ui:623
+#: ../ui/settingsdialog.ui:677
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
 msgstr "Redimensionner les vidéos"
 
-#: ../ui/settingsdialog.ui:656
+#: ../ui/settingsdialog.ui:710
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Creature flower size (px)"
 msgstr "Taille des PV des créatures (px)"
 
-#: ../ui/settingsdialog.ui:689
+#: ../ui/settingsdialog.ui:743
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Hand size %"
 msgstr "Taille de la main %"
 
-#: ../ui/settingsdialog.ui:737
+#: ../ui/settingsdialog.ui:791
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Select box line size %"
 msgstr "Epaisseur de sélection des blocs %"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:833
+#: ../ui/settingsdialog.ui:887
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Menu"
 msgstr "Menu"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:866
+#: ../ui/settingsdialog.ui:920
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Failsafe"
 msgstr "Failsafe"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:884
+#: ../ui/settingsdialog.ui:938
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Movies"
 msgstr "Vidéos"
 
-#: ../ui/settingsdialog.ui:923
+#: ../ui/settingsdialog.ui:977
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
 msgstr "Audio"
 
-#: ../ui/settingsdialog.ui:940
+#: ../ui/settingsdialog.ui:994
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable sound"
 msgstr "Activer le son"
 
-#: ../ui/settingsdialog.ui:958
+#: ../ui/settingsdialog.ui:1012
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Use CD music instead of local files"
 msgstr "Utiliser la musique du CD au lieu des fichiers locaux"
 
-#: ../ui/settingsdialog.ui:976
+#: ../ui/settingsdialog.ui:1030
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
 msgstr "Mettre en pause la musique lorsque le jeu est en pause"
 
-#: ../ui/settingsdialog.ui:994
+#: ../ui/settingsdialog.ui:1048
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable atmospheric sounds"
 msgstr "Activer les sons d'ambiance"
 
-#: ../ui/settingsdialog.ui:1017
+#: ../ui/settingsdialog.ui:1071
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
 msgstr "Fréquence"
 
-#: ../ui/settingsdialog.ui:1040
+#: ../ui/settingsdialog.ui:1094
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Volume"
 msgstr "Volume"
 
-#: ../ui/settingsdialog.ui:1058
+#: ../ui/settingsdialog.ui:1112
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Mute audio when game is not focused"
 msgstr "Couper le son lorsqu'une autre fenêtre est active"
 
-#: ../ui/settingsdialog.ui:1064
+#: ../ui/settingsdialog.ui:1118
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
 msgstr "Entrée"
 
-#: ../ui/settingsdialog.ui:1081
+#: ../ui/settingsdialog.ui:1135
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
 msgstr "Verrouiller le curseur en possession"
 
-#: ../ui/settingsdialog.ui:1099
+#: ../ui/settingsdialog.ui:1153
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr "Déverrouiller le curseur lorsque le jeu est en pause"
 
-#: ../ui/settingsdialog.ui:1117
+#: ../ui/settingsdialog.ui:1171
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Alternative Input"
 msgstr "Saisie alternative"
 
-#: ../ui/settingsdialog.ui:1135
+#: ../ui/settingsdialog.ui:1189
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Screen edge camera panning"
 msgstr "Mouvement de l'écran quand la souris est au bord"
 
-#: ../ui/settingsdialog.ui:1153
+#: ../ui/settingsdialog.ui:1207
 msgctxt "SettingsDialog|Slider Title Label"
 msgid "Mouse sensitivity"
 msgstr "Sensibilité de la souris"
 
-#: ../ui/settingsdialog.ui:1217
+#: ../ui/settingsdialog.ui:1271
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Raw mouse input"
 msgstr "Entrée brute de la souris"
 
-#: ../ui/settingsdialog.ui:1223
+#: ../ui/settingsdialog.ui:1284
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Default tag mode"
+msgstr "Mode de marquage par défaut"
+
+#: ../ui/settingsdialog.ui:1302
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable tag mode toggle (Right-click)"
+msgstr "Activer le changement de mode de marquage (clic droit)"
+
+#: ../ui/settingsdialog.ui:1318
 msgctxt "SettingsDialog|Tab Title"
 msgid "Multiplayer"
 msgstr "Multijoueur"
 
-#: ../ui/settingsdialog.ui:1250
+#: ../ui/settingsdialog.ui:1345
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Masterserver"
 msgstr "Serveur maître"
 
-#: ../ui/settingsdialog.ui:1256
+#: ../ui/settingsdialog.ui:1351
 msgctxt "SettingsDialog|Tab Title"
 msgid "Launcher"
 msgstr "Lanceur"
 
-#: ../ui/settingsdialog.ui:1268
+#: ../ui/settingsdialog.ui:1363
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Check for KeeperFX updates"
 msgstr "Vérifier les mises à jour KeeperFX"
 
-#: ../ui/settingsdialog.ui:1291
+#: ../ui/settingsdialog.ui:1386
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable crash reporting"
 msgstr "Activer le rapport de plantage"
 
-#: ../ui/settingsdialog.ui:1304
+#: ../ui/settingsdialog.ui:1399
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Release"
 msgstr "Version"
 
-#: ../ui/settingsdialog.ui:1317
+#: ../ui/settingsdialog.ui:1412
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
 msgstr "Activer l'intégration Web"
 
-#: ../ui/settingsdialog.ui:1330
+#: ../ui/settingsdialog.ui:1425
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
 msgstr "Ouvrir sur le même écran que le jeu"
 
-#: ../ui/settingsdialog.ui:1343
+#: ../ui/settingsdialog.ui:1438
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Launcher language"
 msgstr "Langue du lanceur"
 
-#: ../ui/settingsdialog.ui:1371
+#: ../ui/settingsdialog.ui:1466
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Update automatically"
 msgstr "Mettre à jour automatiquement"
 
-#: ../ui/settingsdialog.ui:1384
+#: ../ui/settingsdialog.ui:1479
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Backup savefiles during update"
 msgstr "Conserver les sauvegardes durant la mise à jour"
 
-#: ../ui/settingsdialog.ui:1412
+#: ../ui/settingsdialog.ui:1507
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Play button theme"
 msgstr "Apparence du bouton Jouer"
 
-#: ../ui/settingsdialog.ui:1418
+#: ../ui/settingsdialog.ui:1513
 msgctxt "SettingsDialog|Tab Title"
 msgid "API"
 msgstr "API"
 
-#: ../ui/settingsdialog.ui:1435
+#: ../ui/settingsdialog.ui:1530
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable API"
 msgstr "Activer l'API"
 
-#: ../ui/settingsdialog.ui:1471
+#: ../ui/settingsdialog.ui:1566
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "API port"
 msgstr "Port API"
 
-#: ../ui/settingsdialog.ui:1477
+#: ../ui/settingsdialog.ui:1572
 msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr "À propos"
 
-#: ../src/settingsdialog.cpp:82
+#: ../src/settingsdialog.cpp:55
+msgctxt "SettingsDialog|Dialog Button"
+msgid "Open config file"
+msgstr "Ouvrir le fichier de configuration"
+
+#: ../src/settingsdialog.cpp:95
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "0: Red (Default)"
 msgstr "0 : Rouge (par défaut)"
 
-#: ../src/settingsdialog.cpp:83
+#: ../src/settingsdialog.cpp:96
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "1: Blue"
 msgstr "1 : Bleu"
 
-#: ../src/settingsdialog.cpp:84
+#: ../src/settingsdialog.cpp:97
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "2: Green"
 msgstr "2 : Vert"
 
-#: ../src/settingsdialog.cpp:85
+#: ../src/settingsdialog.cpp:98
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "3: Yellow"
 msgstr "3 : Jaune"
 
-#: ../src/settingsdialog.cpp:86
+#: ../src/settingsdialog.cpp:99
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "4: White / Heroes"
 msgstr "4 : Blanc / Héros"
 
-#: ../src/settingsdialog.cpp:91
+#: ../src/settingsdialog.cpp:104
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "6: Purple"
 msgstr "6 : Violet"
 
-#: ../src/settingsdialog.cpp:92
+#: ../src/settingsdialog.cpp:105
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "7: Black"
 msgstr "7 : Noir"
 
-#: ../src/settingsdialog.cpp:93
+#: ../src/settingsdialog.cpp:106
 msgctxt "SettingsDialog|Player Color Dropdown"
 msgid "8: Orange"
 msgstr "8 : Orange"
 
-#: ../src/settingsdialog.cpp:116
+#: ../src/settingsdialog.cpp:123
+msgctxt "SettingsDialog|Default Tag Mode Dropdown"
+msgid "Single"
+msgstr "Simple"
+
+#: ../src/settingsdialog.cpp:124
+msgctxt "SettingsDialog|Default Tag Mode Dropdown"
+msgid "Drag"
+msgstr "Cliquer-glisser"
+
+#: ../src/settingsdialog.cpp:125
+msgctxt "SettingsDialog|Default Tag Mode Dropdown"
+msgid "Remember Last"
+msgstr "Réutiliser le mode précédent"
+
+#: ../src/settingsdialog.cpp:169
 msgctxt "SettingsDialog|Play Button Theme Dropdown"
 msgid "Qt Fusion Dark"
 msgstr "Qt Fusion Dark"
 
-#: ../src/settingsdialog.cpp:117
+#: ../src/settingsdialog.cpp:170
 msgctxt "SettingsDialog|Play Button Theme Dropdown"
 msgid "DK Orange (default)"
 msgstr "DK Orange (par défaut)"
 
-#: ../src/settingsdialog.cpp:126
+#: ../src/settingsdialog.cpp:179
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr "Adapter (par défaut)"
 
-#: ../src/settingsdialog.cpp:127
+#: ../src/settingsdialog.cpp:180
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr "Désactivé"
 
-#: ../src/settingsdialog.cpp:128
+#: ../src/settingsdialog.cpp:181
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr "Étirer"
 
-#: ../src/settingsdialog.cpp:129
+#: ../src/settingsdialog.cpp:182
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr "Recadrer"
 
-#: ../src/settingsdialog.cpp:130
+#: ../src/settingsdialog.cpp:183
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr "Au pixel près"
 
-#: ../src/settingsdialog.cpp:136
+#: ../src/settingsdialog.cpp:189
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr "Correspondre au bureau"
 
-#: ../src/settingsdialog.cpp:173
+#: ../src/settingsdialog.cpp:226
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr "Plein écran"
 
-#: ../src/settingsdialog.cpp:174
+#: ../src/settingsdialog.cpp:227
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr "Fenêtré"
 
-#: ../src/settingsdialog.cpp:190
+#: ../src/settingsdialog.cpp:243
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Low"
 msgstr "Bas"
 
-#: ../src/settingsdialog.cpp:191
+#: ../src/settingsdialog.cpp:244
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Medium"
 msgstr "Moyen"
 
-#: ../src/settingsdialog.cpp:192
+#: ../src/settingsdialog.cpp:245
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "High"
 msgstr "Haut"
 
-#: ../src/settingsdialog.cpp:195
+#: ../src/settingsdialog.cpp:248
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
 msgstr "Bas"
 
-#: ../src/settingsdialog.cpp:196
+#: ../src/settingsdialog.cpp:249
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr "Moyen"
 
-#: ../src/settingsdialog.cpp:197
+#: ../src/settingsdialog.cpp:250
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "High"
 msgstr "Haut"
 
-#: ../src/settingsdialog.cpp:200
+#: ../src/settingsdialog.cpp:253
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "Version stable (par défaut)"
 
-#: ../src/settingsdialog.cpp:201
+#: ../src/settingsdialog.cpp:254
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Version alpha"
 
-#: ../src/settingsdialog.cpp:288
+#: ../src/settingsdialog.cpp:343
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX v%1"
 msgstr "KeeperFX v%1"
 
-#: ../src/settingsdialog.cpp:293
+#: ../src/settingsdialog.cpp:348
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX Launcher v%1"
 msgstr "Lanceur KeeperFX v%1"
 
-#: ../src/settingsdialog.cpp:295
+#: ../src/settingsdialog.cpp:350
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
 msgstr "Librairies du lanceur :"
 
-#: ../src/settingsdialog.cpp:300
+#: ../src/settingsdialog.cpp:355
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "Join us Discord: %1"
 msgstr "Rejoignez-nous sur Discord : %1"
 
-#: ../src/settingsdialog.cpp:324
+#: ../src/settingsdialog.cpp:379
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "Contributeurs à KeeperFX : %1"
 
-#: ../src/settingsdialog.cpp:843
+#: ../src/settingsdialog.cpp:914
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "Paramètres de KeeperFX"
 
-#: ../src/settingsdialog.cpp:844
+#: ../src/settingsdialog.cpp:915
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
