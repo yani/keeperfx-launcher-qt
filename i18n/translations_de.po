@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-15 10:32+0100\n"
-"PO-Revision-Date: 2025-11-15 18:51+0100\n"
+"PO-Revision-Date: 2025-11-16 09:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -1069,17 +1069,14 @@ msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
 
 #: ../ui/modmanagerdialog.ui:17
-#, fuzzy
-#| msgctxt "LauncherMainWindow|"
-#| msgid "KeeperFX Launcher"
 msgctxt "ModManagerDialog|"
 msgid "KeeperFX Mod Manager"
-msgstr "KeeperFX Launcher"
+msgstr "KeeperFX Mod Manager"
 
 #: ../ui/modmanagerdialog.ui:42
 msgctxt "ModManagerDialog|Header"
 msgid "Mod Manager"
-msgstr "Mods verwalten"
+msgstr "Mod Manager"
 
 #: ../ui/runpacketfiledialog.ui:14
 msgctxt "RunPacketFileDialog|Dialog Title"
