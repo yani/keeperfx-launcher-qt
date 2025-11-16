@@ -1433,12 +1433,12 @@ msgstr "Ruwe muisinvoer"
 #: ../ui/settingsdialog.ui:1284
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Default tag mode"
-msgstr "Standaard tag-modus"
+msgstr "Standaard markeermodus"
 
 #: ../ui/settingsdialog.ui:1302
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable tag mode toggle (Right-click)"
-msgstr "Tag-modus omschakelen inschakelen (Rechterklik)"
+msgstr "Markeermodus omschakelen inschakelen (Rechtsklik)"
 
 #: ../ui/settingsdialog.ui:1318
 msgctxt "SettingsDialog|Tab Title"
