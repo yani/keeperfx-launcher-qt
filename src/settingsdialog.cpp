@@ -656,7 +656,19 @@ void SettingsDialog::saveSettings()
     // ========================================================================
 
     Settings::setKfxSetting("LANGUAGE", ui->comboBoxLanguage->currentData().toString());
+    Settings::setLauncherSetting("GAME_PARAM_ALEX", ui->checkBoxCheats->isChecked());
+    Settings::setKfxSetting("CENSORSHIP", ui->checkBoxCensorship->isChecked());
+    Settings::setKfxSetting("SCREENSHOT", ui->comboBoxScreenshots->currentData().toString());
+    Settings::setLauncherSetting("GAME_PARAM_FPS", ui->lineEditGameturns->text());
+    Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
+    Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
+    Settings::setLauncherSetting("GAME_PARAM_HUMAN_PLAYER", ui->comboBoxHumanPlayer->currentData().toString());
+    Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_ENABLED", ui->checkBoxPacketSaveEnabled->isChecked() == true);
+    Settings::setKfxSetting("EXIT_ON_LUA_ERROR", ui->checkBoxExitOnLuaError->isChecked());
+    Settings::setKfxSetting("FLEE_BUTTON_DEFAULT", ui->checkBoxAutoEnableFlee->isChecked());
+    Settings::setKfxSetting("IMPRISON_BUTTON_DEFAULT", ui->checkBoxAutoEnableImprison->isChecked());
 
+    // Handle different ways of the startup screens depending on KFX version
     if (KfxVersion::hasFunctionality("startup_config_option")) {
         QStringList startupScreens;
         // Add legal and FX
@@ -678,16 +690,13 @@ void SettingsDialog::saveSettings()
         Settings::setKfxSetting("DISABLE_SPLASH_SCREENS", ui->checkBoxDisplaySplashScreens->isChecked() == false);
     }
 
-    Settings::setLauncherSetting("GAME_PARAM_ALEX", ui->checkBoxCheats->isChecked());
-    Settings::setKfxSetting("CENSORSHIP", ui->checkBoxCensorship->isChecked());
-    Settings::setKfxSetting("SCREENSHOT", ui->comboBoxScreenshots->currentData().toString());
-    Settings::setLauncherSetting("GAME_PARAM_FPS", ui->lineEditGameturns->text());
+    // Make sure command char is not empty
+    if(ui->lineEditCommandChar->text().isEmpty() == true){
+        ui->lineEditCommandChar->setText("!");
+    }
     Settings::setKfxSetting("COMMAND_CHAR", ui->lineEditCommandChar->text());
-    Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
-    Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
-    Settings::setLauncherSetting("GAME_PARAM_HUMAN_PLAYER", ui->comboBoxHumanPlayer->currentData().toString());
-    Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_ENABLED", ui->checkBoxPacketSaveEnabled->isChecked() == true);
 
+    // Packet save
     QString packetSaveFileName = ui->lineEditPackSaveFileName->text();
     packetSaveFileName = packetSaveFileName.trimmed().replace(" ", "_");
     if (packetSaveFileName.isEmpty()) {
@@ -697,11 +706,6 @@ void SettingsDialog::saveSettings()
         packetSaveFileName = packetSaveFileName + ".pck";
     }
     Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME", packetSaveFileName);
-
-    Settings::setKfxSetting("EXIT_ON_LUA_ERROR", ui->checkBoxExitOnLuaError->isChecked());
-
-    Settings::setKfxSetting("FLEE_BUTTON_DEFAULT", ui->checkBoxAutoEnableFlee->isChecked());
-    Settings::setKfxSetting("IMPRISON_BUTTON_DEFAULT", ui->checkBoxAutoEnableImprison->isChecked());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================
