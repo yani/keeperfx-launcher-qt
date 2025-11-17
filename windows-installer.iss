@@ -31,6 +31,9 @@ DisableFinishedPage=yes
 ExtraDiskSpaceRequired=640329910
 ; Show "Select Setup Language" dialog
 ShowLanguageDialog=yes
+; Theme style of the wizard
+; 'dynamic' switches between light and dark mode depending on the OS settings
+WizardStyle=modern dynamic
 
 [Files]
 Source: "release\win64\keeperfx-launcher-qt.exe"; DestDir: "{app}"; Flags: ignoreversion
