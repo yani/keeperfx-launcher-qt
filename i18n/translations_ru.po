@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-15 10:32+0100\n"
-"PO-Revision-Date: 2025-11-19 08:31+0100\n"
+"PO-Revision-Date: 2025-11-19 08:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -1715,7 +1715,7 @@ msgstr "Обновление KeeperFX"
 #: ../ui/updatedialog.ui:30
 msgctxt "UpdateDialog|Header"
 msgid "New KeeperFX version found!"
-msgstr "Обнаружено обновление KeeperFX."
+msgstr "Обнаружено обновление KeeperFX"
 
 #: ../ui/updatedialog.ui:135
 msgctxt "UpdateDialog|Button"
@@ -1787,7 +1787,7 @@ msgstr "Обновление установлено."
 #, qt-format
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "KeeperFX has been successfully updated to version %1!"
-msgstr "KeeperFX успешно обновлен до версии %1!"
+msgstr "KeeperFX успешно обновлен до версии %1."
 
 #: ../src/updatedialog.cpp:391
 msgctxt "UpdateDialog|MessageBox Title"
