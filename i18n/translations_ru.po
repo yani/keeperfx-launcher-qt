@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-15 10:32+0100\n"
-"PO-Revision-Date: 2025-11-18 11:56+0100\n"
+"PO-Revision-Date: 2025-11-19 08:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -862,7 +862,7 @@ msgstr "Мастерская"
 #: ../ui/launchermainwindow.ui:358
 msgctxt "LauncherMainWindow|Button"
 msgid "Logfile"
-msgstr "Журнал логов"
+msgstr "Файл журнала"
 
 #: ../ui/launchermainwindow.ui:371
 msgctxt "LauncherMainWindow|Button"
