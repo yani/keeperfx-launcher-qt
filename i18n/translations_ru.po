@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-15 10:32+0100\n"
-"PO-Revision-Date: 2025-11-19 08:50+0100\n"
+"PO-Revision-Date: 2025-11-21 13:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -1397,7 +1397,7 @@ msgstr "Устройства ввода"
 #: ../ui/settingsdialog.ui:1135
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
-msgstr "Блокировка курсора при вселении в создание"
+msgstr "Захват курсора при вселении в создание"
 
 #: ../ui/settingsdialog.ui:1153
 msgctxt "SettingsDialog|Checkbox Toggle"
