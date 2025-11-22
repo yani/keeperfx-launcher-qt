@@ -43,19 +43,19 @@ when we need a proof-read or a quick translation.
 | Dutch                 | NL       | 100%      | 319/319        | [Yani](https://github.com/yani)                  |
 | Italian               | IT       |           |                |                                                  |
 | French                | FR       | 100%      | 319/319        | AncientWay                                       |
-| Spanish               | ES       | 96.2%     | 307/319        | Alniarez                                         |
+| Spanish               | ES       | 100%      | 319/319        | Alniarez                                         |
 | German                | DE       | 100%      | 319/319        | Aqua, Dofi                                       |
 | Polish                | PL       |           |                |                                                  |
 | Swedish               | SV       |           |                |                                                  |
 | Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
-| Russian               | RU       | 100%      | 319/319        |                                                  |
+| Russian               | RU       | 100%      | 319/319        | Quuz                                             |
 | Korean                | KO       | 100%      | 319/319        | Desert                                           |
 | Chinese (Simplified)  | ZH-HANS  | 95.6%     | 305/319        | [JieLeTian](https://github.com/jieletian)        |
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
 | Czech                 | CS       | 96.2%     | 307/319        | Gotrek                                           |
 | Latin                 | LA       |           |                |                                                  |
 | Ukrainian             | UK       | 96.2%     | 307/319        | Mr.Negative, Renegade_Glitch                     |
-
+| Portuguese (Brazil)   | PT       | 96.2%     | 307/319        |                                                  |
 
 
 ### Translating with POEdit
