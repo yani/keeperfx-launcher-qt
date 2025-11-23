@@ -1168,7 +1168,7 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string comment="Checkbox Toggle">Alternative Input</string>
+        <string comment="Checkbox Toggle" extracomment="&quot;Alternative Input&quot;">Unlock cursor from game window</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxScreenEdgePanning">
