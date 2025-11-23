@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-15 10:32+0100\n"
+"POT-Creation-Date: 2025-11-23 13:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -797,8 +797,8 @@ msgid "Play"
 msgstr ""
 
 #: ../src/launchermainwindow.cpp:152 ../src/launchermainwindow.cpp:237
-#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1078
-#: ../src/launchermainwindow.cpp:1084
+#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1079
+#: ../src/launchermainwindow.cpp:1085
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr ""
@@ -879,7 +879,7 @@ msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:546
+#: ../src/launchermainwindow.cpp:547
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -887,12 +887,12 @@ msgid ""
 "Do you want to download and install KeeperFX?"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:552
+#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:552
+#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -900,24 +900,24 @@ msgid ""
 "You will be unable to play KeeperFX."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:585
+#: ../src/launchermainwindow.cpp:586
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:586
+#: ../src/launchermainwindow.cpp:587
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
 "now?"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1044
+#: ../src/launchermainwindow.cpp:1045
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1045
+#: ../src/launchermainwindow.cpp:1046
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -927,7 +927,7 @@ msgid ""
 "It is highly suggested to only use official KeeperFX files."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1079
+#: ../src/launchermainwindow.cpp:1080
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -937,12 +937,12 @@ msgid ""
 "%1"
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1084
+#: ../src/launchermainwindow.cpp:1085
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr ""
 
-#: ../src/launchermainwindow.cpp:1108
+#: ../src/launchermainwindow.cpp:1109
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr ""
@@ -1288,9 +1288,10 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr ""
 
+#. "Alternative Input"
 #: ../ui/settingsdialog.ui:1171
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Alternative Input"
+msgid "Unlock cursor from game window"
 msgstr ""
 
 #: ../ui/settingsdialog.ui:1189
@@ -1568,7 +1569,7 @@ msgstr ""
 #: ../src/settingsdialog.cpp:355
 #, qt-format
 msgctxt "SettingsDialog|About Label"
-msgid "Join us Discord: %1"
+msgid "Join us on Discord: %1"
 msgstr ""
 
 #: ../src/settingsdialog.cpp:379
@@ -1577,12 +1578,12 @@ msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:914
+#: ../src/settingsdialog.cpp:918
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr ""
 
-#: ../src/settingsdialog.cpp:915
+#: ../src/settingsdialog.cpp:919
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
