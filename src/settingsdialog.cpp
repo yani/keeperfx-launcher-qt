@@ -91,21 +91,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     sortLanguageComboBox(ui->comboBoxLanguage);
 
-    // Player colors
-    ui->comboBoxHumanPlayer->addItem(tr("0: Red (Default)", "Player Color Dropdown"), "0");
-    ui->comboBoxHumanPlayer->addItem(tr("1: Blue", "Player Color Dropdown"), "1");
-    ui->comboBoxHumanPlayer->addItem(tr("2: Green", "Player Color Dropdown"), "2");
-    ui->comboBoxHumanPlayer->addItem(tr("3: Yellow", "Player Color Dropdown"), "3");
-    ui->comboBoxHumanPlayer->addItem(tr("4: White / Heroes", "Player Color Dropdown"), "4");
-    // 5 = neutral but that would just break
-
-    // Add new player colors
-    if (KfxVersion::hasFunctionality("player_colors_purple_orange_black") == true) {
-        ui->comboBoxHumanPlayer->addItem(tr("6: Purple", "Player Color Dropdown"), "6");
-        ui->comboBoxHumanPlayer->addItem(tr("7: Black", "Player Color Dropdown"), "7");
-        ui->comboBoxHumanPlayer->addItem(tr("8: Orange", "Player Color Dropdown"), "8");
-    }
-
     // Exit on LUA error
     if (KfxVersion::hasFunctionality("exit_on_lua_error") == false) {
         ui->checkBoxExitOnLuaError->setDisabled(true);
@@ -422,7 +407,6 @@ void SettingsDialog::loadSettings()
     ui->checkBoxDeltaTime->setChecked(Settings::getKfxSetting("DELTA_TIME") == true);
     ui->checkBoxFreezeGameNoFocus->setChecked(Settings::getKfxSetting("FREEZE_GAME_ON_FOCUS_LOST")
                                               == true);
-    ui->comboBoxHumanPlayer->setCurrentIndex(ui->comboBoxHumanPlayer->findData(Settings::getLauncherSetting("GAME_PARAM_HUMAN_PLAYER").toString()));
 
     bool isPacketSaveEnabled = Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_ENABLED") == true;
     ui->checkBoxPacketSaveEnabled->setChecked(isPacketSaveEnabled);
@@ -660,7 +644,6 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("GAME_PARAM_FPS", ui->lineEditGameturns->text());
     Settings::setKfxSetting("DELTA_TIME", ui->checkBoxDeltaTime->isChecked());
     Settings::setKfxSetting("FREEZE_GAME_ON_FOCUS_LOST", ui->checkBoxFreezeGameNoFocus->isChecked());
-    Settings::setLauncherSetting("GAME_PARAM_HUMAN_PLAYER", ui->comboBoxHumanPlayer->currentData().toString());
     Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_ENABLED", ui->checkBoxPacketSaveEnabled->isChecked() == true);
     Settings::setKfxSetting("EXIT_ON_LUA_ERROR", ui->checkBoxExitOnLuaError->isChecked());
     Settings::setKfxSetting("FLEE_BUTTON_DEFAULT", ui->checkBoxAutoEnableFlee->isChecked());
