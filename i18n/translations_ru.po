@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-15 10:32+0100\n"
-"PO-Revision-Date: 2025-11-21 13:26+0100\n"
+"PO-Revision-Date: 2025-11-23 14:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -867,7 +868,7 @@ msgstr "Файл журнала"
 #: ../ui/launchermainwindow.ui:371
 msgctxt "LauncherMainWindow|Button"
 msgid "Open Folder"
-msgstr "Открыть директорию"
+msgstr "Директория игры"
 
 #: ../ui/launchermainwindow.ui:474
 msgctxt "LauncherMainWindow|Button"
@@ -875,8 +876,8 @@ msgid "Play"
 msgstr "Запуск"
 
 #: ../src/launchermainwindow.cpp:152 ../src/launchermainwindow.cpp:237
-#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1078
-#: ../src/launchermainwindow.cpp:1084
+#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1079
+#: ../src/launchermainwindow.cpp:1085
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "Ошибки KeeperFX"
@@ -969,7 +970,7 @@ msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Запуск"
 
-#: ../src/launchermainwindow.cpp:546
+#: ../src/launchermainwindow.cpp:547
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -980,12 +981,12 @@ msgstr ""
 "\n"
 "Хотите загрузить и установить KeeperFX?"
 
-#: ../src/launchermainwindow.cpp:552
+#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Подтверждение"
 
-#: ../src/launchermainwindow.cpp:552
+#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -996,12 +997,12 @@ msgstr ""
 "\n"
 "Вы не сможете играть в KeeperFX."
 
-#: ../src/launchermainwindow.cpp:585
+#: ../src/launchermainwindow.cpp:586
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "Язык изменен"
 
-#: ../src/launchermainwindow.cpp:586
+#: ../src/launchermainwindow.cpp:587
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -1010,12 +1011,12 @@ msgstr ""
 "Для изменения языка необходимо перезапустить Центр управления. Сделать это "
 "сейчас?"
 
-#: ../src/launchermainwindow.cpp:1044
+#: ../src/launchermainwindow.cpp:1045
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "Ошибка проверки KeeperFX"
 
-#: ../src/launchermainwindow.cpp:1045
+#: ../src/launchermainwindow.cpp:1046
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1029,7 +1030,7 @@ msgstr ""
 "%1\n"
 "Используйте только официальные файлы KeeperFX."
 
-#: ../src/launchermainwindow.cpp:1079
+#: ../src/launchermainwindow.cpp:1080
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1043,12 +1044,12 @@ msgstr ""
 "Ошибка:\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1084
+#: ../src/launchermainwindow.cpp:1085
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "Не удалось запустить KeeperFX. Неизвестная ошибка."
 
-#: ../src/launchermainwindow.cpp:1108
+#: ../src/launchermainwindow.cpp:1109
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "Центр управления KeeperFX"
@@ -1404,10 +1405,11 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr "Разблокировать курсор в режиме паузы"
 
+#. "Alternative Input"
 #: ../ui/settingsdialog.ui:1171
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Alternative Input"
-msgstr "Альтернативные устройства ввода"
+msgid "Unlock cursor from game window"
+msgstr "Не привязывать положение курсора к окну игры"
 
 #: ../ui/settingsdialog.ui:1189
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1427,12 +1429,12 @@ msgstr "Прямой ввод с мыши"
 #: ../ui/settingsdialog.ui:1284
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Default tag mode"
-msgstr "Режим выделения по умолчанию"
+msgstr "Выделять по умолчанию"
 
 #: ../ui/settingsdialog.ui:1302
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable tag mode toggle (Right-click)"
-msgstr "Включить переключение способа выделения (по ПКМ)"
+msgstr "Включить переключение режима выделения (ПКМ)"
 
 #: ../ui/settingsdialog.ui:1318
 msgctxt "SettingsDialog|Tab Title"
@@ -1684,7 +1686,7 @@ msgstr "Использованные библиотеки:"
 #: ../src/settingsdialog.cpp:355
 #, qt-format
 msgctxt "SettingsDialog|About Label"
-msgid "Join us Discord: %1"
+msgid "Join us on Discord: %1"
 msgstr "Присоединяйтесь к нам в Discord: %1"
 
 #: ../src/settingsdialog.cpp:379
@@ -1693,12 +1695,12 @@ msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "Разработчики KeeperFX: %1"
 
-#: ../src/settingsdialog.cpp:914
+#: ../src/settingsdialog.cpp:918
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "Настройки KeeperFX"
 
-#: ../src/settingsdialog.cpp:915
+#: ../src/settingsdialog.cpp:919
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
