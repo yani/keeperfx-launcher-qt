@@ -42,20 +42,20 @@ when we need a proof-read or a quick translation.
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)                  |
 | Dutch                 | NL       | 100%      | 319/319        | [Yani](https://github.com/yani)                  |
 | Italian               | IT       |           |                |                                                  |
-| French                | FR       | 100%      | 319/319        | AncientWay                                       |
-| Spanish               | ES       | 100%      | 319/319        | Alniarez                                         |
-| German                | DE       | 100%      | 319/319        | Aqua, Dofi                                       |
+| French                | FR       | 99.4%     | 317/319        | AncientWay                                       |
+| Spanish               | ES       | 99.4%     | 317/319        | Alniarez                                         |
+| German                | DE       | 99.4%     | 317/319        | Aqua, Dofi                                       |
 | Polish                | PL       |           |                |                                                  |
 | Swedish               | SV       |           |                |                                                  |
 | Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
 | Russian               | RU       | 100%      | 319/319        | Quuz                                             |
-| Korean                | KO       | 100%      | 319/319        | Desert                                           |
-| Chinese (Simplified)  | ZH-HANS  | 95.6%     | 305/319        | [JieLeTian](https://github.com/jieletian)        |
+| Korean                | KO       | 99.4%     | 317/319        | Desert                                           |
+| Chinese (Simplified)  | ZH-HANS  | 95%       | 303/319        | [JieLeTian](https://github.com/jieletian)        |
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
-| Czech                 | CS       | 96.2%     | 307/319        | Gotrek                                           |
+| Czech                 | CS       | 95.6%     | 305/319        | Gotrek                                           |
 | Latin                 | LA       |           |                |                                                  |
-| Ukrainian             | UK       | 96.2%     | 307/319        | Mr.Negative, Renegade_Glitch                     |
-| Portuguese (Brazil)   | PT       | 96.2%     | 307/319        |                                                  |
+| Ukrainian             | UK       | 95.6%     | 305/319        | Mr.Negative, Renegade_Glitch                     |
+| Portuguese (Brazil)   | PT       | 95.6%     | 305/319        |                                                  |
 
 
 ### Translating with POEdit
