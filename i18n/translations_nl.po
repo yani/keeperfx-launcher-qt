@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-15 10:32+0100\n"
+"POT-Creation-Date: 2025-11-23 13:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -882,8 +882,8 @@ msgid "Play"
 msgstr "Speel"
 
 #: ../src/launchermainwindow.cpp:152 ../src/launchermainwindow.cpp:237
-#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1078
-#: ../src/launchermainwindow.cpp:1084
+#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1079
+#: ../src/launchermainwindow.cpp:1085
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "KeeperFX Fout"
@@ -976,7 +976,7 @@ msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Speel"
 
-#: ../src/launchermainwindow.cpp:546
+#: ../src/launchermainwindow.cpp:547
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -987,12 +987,12 @@ msgstr ""
 "\n"
 "Wil je KeeperFX downloaden en installeren?"
 
-#: ../src/launchermainwindow.cpp:552
+#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/launchermainwindow.cpp:552
+#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -1003,12 +1003,12 @@ msgstr ""
 "\n"
 "Je zult KeeperFX niet kunnen spelen."
 
-#: ../src/launchermainwindow.cpp:585
+#: ../src/launchermainwindow.cpp:586
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "Taal is veranderd"
 
-#: ../src/launchermainwindow.cpp:586
+#: ../src/launchermainwindow.cpp:587
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -1016,12 +1016,12 @@ msgid ""
 msgstr ""
 "De launcher moet herstart worden om de taal te wijzigen. Wil je dat nu doen?"
 
-#: ../src/launchermainwindow.cpp:1044
+#: ../src/launchermainwindow.cpp:1045
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "KeeperFX Verificatie Fout"
 
-#: ../src/launchermainwindow.cpp:1045
+#: ../src/launchermainwindow.cpp:1046
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1036,7 +1036,7 @@ msgstr ""
 "Het wordt sterk aangeraden om alleen officiële KeeperFX-bestanden te "
 "gebruiken."
 
-#: ../src/launchermainwindow.cpp:1079
+#: ../src/launchermainwindow.cpp:1080
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1050,12 +1050,12 @@ msgstr ""
 "Fout:\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1084
+#: ../src/launchermainwindow.cpp:1085
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "KeeperFX kon niet worden gestart. Onbekende fout."
 
-#: ../src/launchermainwindow.cpp:1108
+#: ../src/launchermainwindow.cpp:1109
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
@@ -1410,10 +1410,11 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr "Cursor ontgrendelen wanneer het spel gepauzeerd is"
 
+#. "Alternative Input"
 #: ../ui/settingsdialog.ui:1171
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Alternative Input"
-msgstr "Alternatieve Invoer"
+msgid "Unlock cursor from game window"
+msgstr "Cursor ontgrendelen van spelvenster"
 
 #: ../ui/settingsdialog.ui:1189
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1690,7 +1691,7 @@ msgstr "Launcher Libraries:"
 #: ../src/settingsdialog.cpp:355
 #, qt-format
 msgctxt "SettingsDialog|About Label"
-msgid "Join us Discord: %1"
+msgid "Join us on Discord: %1"
 msgstr "Word lid van onze Discord: %1"
 
 #: ../src/settingsdialog.cpp:379
@@ -1699,12 +1700,12 @@ msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "KeeperFX Bijdragers: %1"
 
-#: ../src/settingsdialog.cpp:914
+#: ../src/settingsdialog.cpp:918
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFX Instellingen"
 
-#: ../src/settingsdialog.cpp:915
+#: ../src/settingsdialog.cpp:919
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
@@ -1847,6 +1848,10 @@ msgstr "Bestand verplaatsen mislukt: %1"
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr "Het is niet gelukt om alle gedownloade bestanden te verplaatsen"
+
+#~ msgctxt "SettingsDialog|Checkbox Toggle"
+#~ msgid "Alternative Input"
+#~ msgstr "Alternatieve Invoer"
 
 #~ msgctxt "SettingsDialog|Checkbox Toggle"
 #~ msgid "Skip Intro"
