@@ -171,9 +171,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Screenshot type dropdown
     ui->comboBoxScreenshots->addItem("PNG (Portable Network Graphics)", "PNG");
-    ui->comboBoxScreenshots->addItem("JPG (Joint photographic experts group)", "JPG");
     ui->comboBoxScreenshots->addItem("BMP (Windows bitmap)", "BMP");
-    ui->comboBoxScreenshots->addItem("RAW (HSI 'mhwanh')", "RAW");
 
     // Resize movies dropdown
     ui->comboBoxResizeMovies->addItem(tr("Fit (default)", "Resize Movies Dropdown"), "FIT");
