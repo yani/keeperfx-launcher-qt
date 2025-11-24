@@ -1275,13 +1275,16 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>450</x>
-         <y>44</y>
+         <y>36</y>
          <width>141</width>
-         <height>17</height>
+         <height>31</height>
         </rect>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Default tag mode</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxEnableTagModeToggle">
@@ -1289,7 +1292,7 @@ height: 35px;
         <rect>
          <x>450</x>
          <y>90</y>
-         <width>321</width>
+         <width>391</width>
          <height>23</height>
         </rect>
        </property>
