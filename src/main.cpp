@@ -40,6 +40,16 @@ void setDarkTheme()
     darkPalette.setColor(QPalette::Disabled, QPalette::Text, QColor(100, 100, 100));
     darkPalette.setColor(QPalette::Disabled, QPalette::WindowText, QColor(100, 100, 100));
     qApp->setPalette(darkPalette);
+
+    qApp->setStyleSheet(R"(
+        QToolTip {
+            background-color: rgb(42, 42, 42);
+            color: white;
+            border: 1px solid rgb(80, 80, 80);
+            padding: 6px;
+            font-size: 11pt;
+        }
+    )");
 }
 
 void launcherLogFileHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
