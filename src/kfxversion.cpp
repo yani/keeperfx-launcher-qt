@@ -31,6 +31,10 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"load_save_directly", "999.999.999"},          // TODO: https://github.com/dkfans/keeperfx/issues/3481
     {"enet_ipv6_support", "999.999.999"},           // TODO
     {"packetsave_while_packetload", "999.999.999"}, // TODO
+
+    // Use configuration files in the user appdata
+    // Temporary disabled until KeeperFX can also handle this
+    {"use_appdata_configs", "999.999.999"}, // TODO
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;

@@ -139,38 +139,31 @@ void Settings::load()
     // Get the CFG format used by the original keeperfx.cfg
     QSettings::Format settingsCfgFormat = SettingsCfgFormat::registerFormat();
 
-    // KeeperFX settings
-    if (KfxVersion::hasFunctionality("absolute_config_path") == false) {
-        // Use 'keeperfx.cfg' in app folder if kfx version is too old
-        // This is bad because eventually we don't want to change any files in the
-        // application folder. But older kfx versions do not allow passing a custom config path.
-        kfxSettings = new QSettings(QCoreApplication::applicationDirPath() + "/keeperfx.cfg",
-                                    settingsCfgFormat);
+    // Check if we need to load config files from the user appdata config
+    if(KfxVersion::hasFunctionality("use_appdata_configs")){
 
-        qInfo() << "KeeperFX Settings File (App):" << kfxSettings->fileName();
+        qInfo() << "Using AppData configs";
 
-    } else {
-        // Put kfx settings in a user folder
-        kfxSettings = new QSettings(
-            settingsCfgFormat, QSettings::UserScope, "keeperfx", "keeperfx");
+        kfxSettings = new QSettings(settingsCfgFormat, QSettings::UserScope, "keeperfx", "keeperfx");
+        launcherSettings = new QSettings(settingsCfgFormat, QSettings::UserScope, "keeperfx", "launcher");
 
-        // Copy any settings that are present in the 'keeperfx.cfg' file in the application dir
+        // Load default settings from config file in application directory
+        // This is only done when we use config files in the appdata
+        // Otherwise this file would be the one where we update our own settings
         copyMissingDefaultSettings();
 
-        qInfo() << "KeeperFX Settings File (User):" << kfxSettings->fileName();
+    } else {
+
+        kfxSettings = new QSettings(QCoreApplication::applicationDirPath() + "/keeperfx.cfg", settingsCfgFormat);
+        launcherSettings = new QSettings(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt.cfg", settingsCfgFormat);
     }
 
-    // Copy missing alpha settings
-    // This would be the '_keeperfx.cfg' file
+    // Copy missing alpha settings from the '_keeperfx.cfg' file
     copyMissingAlphaSettings();
 
-    // Launcher settings
-    // Will create a file in a user folder
-    launcherSettings = new QSettings(
-        settingsCfgFormat, QSettings::UserScope, "keeperfx", "launcher");
-
     // Log the paths
-    qInfo() << "Launcher Settings File (User):" << launcherSettings->fileName();
+    qInfo() << "KeeperFX Settings File:" << kfxSettings->fileName();
+    qInfo() << "Launcher Settings File:" << launcherSettings->fileName();
 
     // Copy missing launcher settings
     Settings::copyMissingLauncherSettings();
@@ -208,26 +201,32 @@ void Settings::copyMissingSettings(QSettings *fromSettingsFile, QSettings *toSet
 
 void Settings::copyMissingDefaultSettings()
 {
-    // Try and load default KFX settings
-    // 'keeperfx.cfg' from the app dir
+    // This is only useful when we use config files in the user appdata dir
+    if(KfxVersion::hasFunctionality("use_appdata_configs") == false){
+        return;
+    }
+
+    // Try and load default KFX settings from 'keeperfx.cfg' in the app dir
     QSettings *defaultKfxSettings = new QSettings(
         QCoreApplication::applicationDirPath() + "/keeperfx.cfg",
         SettingsCfgFormat::registerFormat()
-        );
+    );
 
     copyMissingSettings(defaultKfxSettings, kfxSettings);
-
 }
 
 void Settings::copyMissingAlphaSettings()
 {
-    // Try and load default KFX settings
-    // 'keeperfx.cfg' from the app dir
-    QSettings *newAlphaSettings = new QSettings(
-        QCoreApplication::applicationDirPath() + "/_keeperfx.cfg",
-        SettingsCfgFormat::registerFormat()
-    );
+    QString alphaSettingsFilePath(QCoreApplication::applicationDirPath() + "/_keeperfx.cfg");
 
+    // Check if settings file exists
+    QFile alphaSettingsFile(alphaSettingsFilePath);
+    if(alphaSettingsFile.exists() == false){
+        return;
+    }
+
+    // Copy new settings
+    QSettings *newAlphaSettings = new QSettings(alphaSettingsFilePath, SettingsCfgFormat::registerFormat());
     copyMissingSettings(newAlphaSettings, kfxSettings);
 }
 
