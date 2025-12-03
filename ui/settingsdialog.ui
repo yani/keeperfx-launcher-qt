@@ -1477,6 +1477,19 @@ height: 35px;
         <string comment="Dropdown Title Label">Play button theme</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="pushButtonShowLauncherParams">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>440</y>
+         <width>371</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Button">Show launcher command line options</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab7_api">
       <attribute name="title">

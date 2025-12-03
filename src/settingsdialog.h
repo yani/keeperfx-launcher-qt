@@ -18,6 +18,7 @@ public:
 
 private slots:
     void onOpenConfigButtonClicked();
+    void on_pushButtonShowLauncherParams_clicked();
 
 private:
     Ui::SettingsDialog *ui;

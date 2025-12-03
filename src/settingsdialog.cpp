@@ -5,11 +5,14 @@
 #include "kfxversion.h"
 #include "popupsignalcombobox.h"
 #include "settings.h"
+#include "launcheroptions.h"
 
 #include <QDesktopServices>
 #include <QEvent>
+#include <QFontDatabase>
 #include <QMessageBox>
 #include <QMouseEvent>
+#include <QPlainTextEdit>
 #include <QPushButton>
 #include <QScreen>
 
@@ -1035,3 +1038,63 @@ void SettingsDialog::onOpenConfigButtonClicked()
     // Open configuration file in default text editor
     QDesktopServices::openUrl(QUrl::fromLocalFile(Settings::getKfxConfigFile().fileName()));
 }
+
+void SettingsDialog::on_pushButtonShowLauncherParams_clicked()
+{
+    // Get original Qt help text of the command line options
+    QString help = LauncherOptions::parser.helpText();
+
+    // Modal dialog
+    QDialog dlg(this);
+    dlg.setWindowTitle(tr("Launcher command line options", "MessageBox Title"));
+    dlg.setModal(true);
+
+    QVBoxLayout *layout = new QVBoxLayout(&dlg);
+
+    // Monospaced font
+    QFont mono = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+    QFontMetrics fm(mono);
+
+    // Measure longest line
+    int maxWidth = 0;
+    const QStringList lines = help.split('\n');
+    for (const QString &line : lines) {
+        maxWidth = qMax(maxWidth, fm.horizontalAdvance(line));
+    }
+
+    // Measure total height for lines
+    int totalHeight = fm.lineSpacing() * lines.size();
+
+    // Add plain text viewer box
+    QPlainTextEdit *edit = new QPlainTextEdit(&dlg);
+    edit->setReadOnly(true);
+    edit->setPlainText(help);
+    edit->setFont(mono);
+    edit->setLineWrapMode(QPlainTextEdit::NoWrap);
+    layout->addWidget(edit);
+
+    // Add close button
+    QDialogButtonBox *buttons =
+        new QDialogButtonBox(QDialogButtonBox::Close, &dlg);
+    connect(buttons, &QDialogButtonBox::rejected, &dlg, &QDialog::reject);
+    layout->addWidget(buttons);
+
+    // Manual sizing based on content
+    // Add reasonable padding for margins + scrollbar
+    const int paddingW = 50;
+    const int paddingH = 100;
+    int targetWidth = maxWidth + paddingW;
+    int targetHeight = totalHeight + paddingH;
+
+    // Limit to available screen space
+    QSize screen = this->screen()->availableGeometry().size();
+    targetWidth = qMin(targetWidth, screen.width() - 150);
+    targetHeight = qMin(targetHeight, screen.height() - 150);
+
+    // Set messagebox size
+    dlg.resize(targetWidth, targetHeight);
+
+    // Show messagebox
+    dlg.exec();
+}
+
