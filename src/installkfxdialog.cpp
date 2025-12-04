@@ -15,7 +15,8 @@
 #include "launcheroptions.h"
 #include "settings.h"
 #include "translator.h"
-#include "updater.h"
+#include "extractor.h"
+#include "helper.h"
 
 InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     : QDialog(parent)
@@ -124,13 +125,13 @@ void InstallKfxDialog::startStableDownload()
     emit appendLog(QString("Stable release URL: %1").arg(downloadUrlStable.toString()));
 
     QString outputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrlStable.fileName() + ".tmp";
-    QFile *outputFile = new QFile(outputFilePath);
+    tempArchiveStable = new QFile(outputFilePath);
 
     Downloader *downloader = new Downloader(this);
     connect(downloader, &Downloader::downloadProgress, this, &InstallKfxDialog::updateProgressBarDownload);
     connect(downloader, &Downloader::downloadCompleted, this, &InstallKfxDialog::onStableDownloadFinished);
 
-    downloader->download(downloadUrlStable, outputFile);
+    downloader->download(downloadUrlStable, tempArchiveStable);
 }
 
 void InstallKfxDialog::onStableDownloadFinished(bool success)
@@ -144,12 +145,10 @@ void InstallKfxDialog::onStableDownloadFinished(bool success)
     emit appendLog("KeeperFX stable release successfully downloaded");
     emit clearProgressBar();
 
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + this->downloadUrlStable.fileName() + ".tmp");
-
     // Test archive
     emit appendLog("Testing stable release archive...");
-    QThreadPool::globalInstance()->start([this, outputFile]() {
-        uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
+    QThreadPool::globalInstance()->start([this]() {
+        uint64_t archiveSize = Archiver::testArchiveAndGetSize(this->tempArchiveStable);
         QMetaObject::invokeMethod(this, "onStableArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
     });
 }
@@ -175,16 +174,31 @@ void InstallKfxDialog::onStableArchiveTestComplete(uint64_t archiveSize) {
     emit setProgressBarFormat(tr("Extracting: %p%", "Progress bar"));
     emit appendLog("Extracting...");
 
-    // TODO: use temp file
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/"
-                                  + downloadUrlStable.fileName() + ".tmp");
+    // Set temp directory
+    QString dirHash = QCryptographicHash::hash(downloadUrlStable.fileName().toUtf8(), QCryptographicHash::Sha256).toHex().left(16);
+    tempDirStable = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/kfx-install-" + dirHash);
+    emit appendLog(QString("Temp directory path: %1").arg(tempDirStable.absolutePath()));
 
-    Updater *updater = new Updater(this);
-    connect(updater, &Updater::progress, this, &InstallKfxDialog::updateProgressBar);
-    connect(updater, &Updater::updateComplete, this, &InstallKfxDialog::onStableExtractComplete);
-    connect(updater, &Updater::updateFailed, this, &InstallKfxDialog::setInstallFailed);
+    // Make temp directory
+    if (!tempDirStable.exists()) {
+        tempDirStable.mkpath(".");
+    }
 
-    updater->updateFromArchive(outputFile);
+    // Make sure temp directory exists now
+    if (!tempDirStable.exists()) {
+        emit appendLog("Failed to create temp directory");
+        emit setInstallFailed(tr("Failed to create temp directory", "Failure message"));
+        return;
+    }
+
+    // Create extractor and connect signals
+    Extractor *extractor = new Extractor(this);
+    connect(extractor, &Extractor::progress, this, &InstallKfxDialog::updateProgressBar);
+    connect(extractor, &Extractor::extractComplete, this, &InstallKfxDialog::onStableExtractComplete);
+    connect(extractor, &Extractor::extractFailed, this, &InstallKfxDialog::setInstallFailed);
+
+    // Start extraction
+    extractor->extract(tempArchiveStable, tempDirStable.absolutePath());
 }
 
 void InstallKfxDialog::onStableExtractComplete()
@@ -194,22 +208,37 @@ void InstallKfxDialog::onStableExtractComplete()
 
     // Remove temp archive
     emit appendLog("Removing temporary archive");
-    QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlStable.fileName() + ".tmp");
-    if (archiveFile->exists()) {
-        archiveFile->remove();
+    if (tempArchiveStable->exists()) {
+        tempArchiveStable->remove();
     }
 
+    // Move temp files to app dir
+    if(this->moveTempFilesToAppDir(tempDirStable) == false){
+        return;
+    }
+
+    // Remove temp dir
+    if(tempDirStable.removeRecursively() == false){
+        emit appendLog("Failed to remove temp dir");
+    }
+
+    // Move to alpha download if user wants it
     if (this->installReleaseType == KfxVersion::ReleaseType::ALPHA) {
         startAlphaDownload();
-    } else {
-        // Handle any settings update
-        emit appendLog("Loading settings");
-        Settings::load();
-
-        emit appendLog("Done!");
-        QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
-        accept();
+        return;
     }
+
+    // Handle any settings update
+    emit appendLog("Loading settings");
+    Settings::load();
+
+    emit appendLog("Setting game language to system language");
+    Settings::autoSetGameLanguageToLocaleLanguage();
+
+    // Done!
+    emit appendLog("Done!");
+    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
+    accept();
 }
 
 void InstallKfxDialog::startAlphaDownload()
@@ -226,13 +255,13 @@ void InstallKfxDialog::startAlphaDownload()
     emit appendLog(QString("Alpha patch URL: %1").arg(downloadUrlAlpha.toString()));
 
     QString outputFilePath = QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp";
-    QFile *outputFile = new QFile(outputFilePath);
+    tempArchiveAlpha = new QFile(outputFilePath);
 
     Downloader *downloader = new Downloader(this);
     connect(downloader, &Downloader::downloadProgress, this, &InstallKfxDialog::updateProgressBarDownload);
     connect(downloader, &Downloader::downloadCompleted, this, &InstallKfxDialog::onAlphaDownloadFinished);
 
-    downloader->download(downloadUrlAlpha, outputFile);
+    downloader->download(downloadUrlAlpha, tempArchiveAlpha);
 }
 
 void InstallKfxDialog::onAlphaDownloadFinished(bool success)
@@ -245,12 +274,10 @@ void InstallKfxDialog::onAlphaDownloadFinished(bool success)
 
     emit appendLog("KeeperFX alpha patch successfully downloaded");
 
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp");
-
     // Test archive
     emit appendLog("Testing alpha patch archive...");
-    QThreadPool::globalInstance()->start([this, outputFile]() {
-        uint64_t archiveSize = Archiver::testArchiveAndGetSize(outputFile);
+    QThreadPool::globalInstance()->start([this]() {
+        uint64_t archiveSize = Archiver::testArchiveAndGetSize(this->tempArchiveAlpha);
         QMetaObject::invokeMethod(this, "onAlphaArchiveTestComplete", Qt::QueuedConnection, Q_ARG(uint64_t, archiveSize));
     });
 }
@@ -274,16 +301,29 @@ void InstallKfxDialog::onAlphaArchiveTestComplete(uint64_t archiveSize)
     emit setProgressBarFormat(tr("Extracting: %p%", "Progress bar"));
     emit appendLog("Extracting...");
 
-    // TODO: use temp file
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/"
-                                  + downloadUrlAlpha.fileName() + ".tmp");
+    // Create temp dir
+    QString dirHash = QCryptographicHash::hash(downloadUrlAlpha.fileName().toUtf8(), QCryptographicHash::Sha256).toHex().left(16);
+    tempDirAlpha = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/kfx-install-alpha-" + dirHash);
+    emit appendLog(QString("Temp directory path: %1").arg(tempDirAlpha.absolutePath()));
 
-    Updater *updater = new Updater(this);
-    connect(updater, &Updater::progress, this, &InstallKfxDialog::updateProgressBar);
-    connect(updater, &Updater::updateComplete, this, &InstallKfxDialog::onAlphaExtractComplete);
-    connect(updater, &Updater::updateFailed, this, &InstallKfxDialog::setInstallFailed);
+    // Make temp directory
+    if (!tempDirAlpha.exists()) {
+        tempDirAlpha.mkpath(".");
+    }
 
-    updater->updateFromArchive(outputFile);
+    // Make sure temp directory exists now
+    if (!tempDirAlpha.exists()) {
+        emit appendLog("Failed to create temp directory");
+        emit setInstallFailed(tr("Failed to create temp directory", "Failure message"));
+        return;
+    }
+
+    Extractor *extractor = new Extractor(this);
+    connect(extractor, &Extractor::progress, this, &InstallKfxDialog::updateProgressBar);
+    connect(extractor, &Extractor::extractComplete, this, &InstallKfxDialog::onAlphaExtractComplete);
+    connect(extractor, &Extractor::extractFailed, this, &InstallKfxDialog::setInstallFailed);
+
+    extractor->extract(tempArchiveAlpha, tempDirAlpha.absolutePath());
 }
 
 void InstallKfxDialog::onAlphaExtractComplete()
@@ -293,9 +333,18 @@ void InstallKfxDialog::onAlphaExtractComplete()
 
     // Remove temp archive
     emit appendLog("Removing temporary archive");
-    QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrlAlpha.fileName() + ".tmp");
-    if (archiveFile->exists()) {
-        archiveFile->remove();
+    if (tempArchiveAlpha->exists()) {
+        tempArchiveAlpha->remove();
+    }
+
+    // Move temp files to app dir
+    if(this->moveTempFilesToAppDir(tempDirAlpha) == false){
+        return;
+    }
+
+    // Remove temp dir
+    if(tempDirAlpha.removeRecursively() == false){
+        emit appendLog("Failed to remove temp dir");
     }
 
     // Handle any settings update
@@ -425,4 +474,77 @@ void InstallKfxDialog::closeEvent(QCloseEvent *event)
             event->ignore();
         }
     }
+}
+
+bool InstallKfxDialog::moveTempFilesToAppDir(QDir sourceDir)
+{
+    // Define rename rules
+    QMap<QString, QString> renameRules = {
+        {"keeperfx.cfg", "_keeperfx.cfg"},
+        {"keeperfx-launcher-qt.exe", "keeperfx-launcher-qt-new.exe"},
+        {"7z.dll", "7z-new.dll"},
+        {"7za.dll", "7za-new.dll"},
+    };
+
+    // Count total files to copy (recursive)
+    int totalFiles = Helper::countFilesRecursive(sourceDir);
+
+    // Tell user we're copying
+    emit appendLog(QString("Copying %1 files from temp dir").arg(totalFiles));
+
+    // Set progress bar
+    emit setProgressBarFormat(tr("Copying: %p%", "Progress bar"));
+    emit setProgressMaximum(totalFiles);
+
+    // Vars
+    QDir appDir(QCoreApplication::applicationDirPath());
+    int copiedFiles = 0;
+
+    qDebug() << "Source copy dir:" << sourceDir.absolutePath();
+
+    // Iterate recursively
+    QDirIterator it(sourceDir.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+
+        QString srcFilePath = it.next();
+        QFileInfo info(srcFilePath);
+
+        // Build relative path for destination
+        QString relPath = sourceDir.relativeFilePath(srcFilePath);   // e.g. "data/file.txt"
+
+        // Apply rename rule
+        QString destRelPath = renameRules.value(relPath, relPath);
+        if (destRelPath != relPath) {
+            qDebug() << QString("Renaming file during copy: %1 -> %2").arg(relPath).arg(destRelPath);
+        }
+
+        QString destFilePath = appDir.absoluteFilePath(destRelPath);
+
+        // Ensure destination directory exists
+        QFileInfo destInfo(destFilePath);
+        if (QDir().mkpath(destInfo.absolutePath()) == false) {
+            emit appendLog(QString("Failed to create destination directory: %1").arg(destInfo.absolutePath()));
+            emit setInstallFailed(tr("Failed to create destination directory: %1", "Failure Message").arg(destInfo.absolutePath()));
+            return false;
+        }
+
+        // Remove existing destination
+        QFile destFile(destFilePath);
+        if (destFile.exists()){
+            qDebug() << "Removing existing file in appdir:" << destFilePath;
+            destFile.remove();
+        }
+
+        // Move file
+        if (!QFile::rename(srcFilePath, destFilePath)) {
+            emit appendLog("Failed to move file: " + srcFilePath);
+            emit setInstallFailed(tr("Failed to move file: %1").arg(srcFilePath));
+            return false;
+        }
+
+        //emit appendLog("Moved: " + relPath);
+        emit updateProgressBar(++copiedFiles);
+    }
+
+    return true;
 }

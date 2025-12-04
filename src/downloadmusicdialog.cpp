@@ -4,7 +4,7 @@
 #include "downloader.h"
 #include "settings.h"
 #include "ui_downloadmusicdialog.h"
-#include "updater.h"
+#include "extractor.h"
 
 #include <QCloseEvent>
 #include <QDateTime>
@@ -146,12 +146,12 @@ void DownloadMusicDialog::onArchiveTestComplete(uint64_t archiveSize)
     // TODO: use temp file
     QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + downloadUrl.fileName() + ".tmp");
 
-    Updater *updater = new Updater(this);
-    connect(updater, &Updater::progress, this, &DownloadMusicDialog::updateProgressBar);
-    connect(updater, &Updater::updateComplete, this, &DownloadMusicDialog::onExtractComplete);
-    connect(updater, &Updater::updateFailed, this, &DownloadMusicDialog::setDownloadFailed);
+    Extractor *extractor = new Extractor(this);
+    connect(extractor, &Extractor::progress, this, &DownloadMusicDialog::updateProgressBar);
+    connect(extractor, &Extractor::extractComplete, this, &DownloadMusicDialog::onExtractComplete);
+    connect(extractor, &Extractor::extractFailed, this, &DownloadMusicDialog::setDownloadFailed);
 
-    updater->updateFromArchive(outputFile);
+    extractor->extract(outputFile, QApplication::applicationDirPath());
 }
 
 void DownloadMusicDialog::onExtractComplete()

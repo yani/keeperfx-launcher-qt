@@ -4,7 +4,7 @@
 #include "launcheroptions.h"
 #include "savefile.h"
 #include "settings.h"
-#include "updater.h"
+#include "extractor.h"
 
 #include <QCloseEvent>
 #include <QDir>
@@ -337,12 +337,12 @@ void UpdateDialog::onArchiveTestComplete(uint64_t archiveSize){
     emit setProgressBarFormat(tr("Extracting: %p%", "Progress bar"));
     emit appendLog("Extracting...");
 
-    Updater *updater = new Updater(this);
-    connect(updater, &Updater::progress, this, &UpdateDialog::updateProgress);
-    connect(updater, &Updater::updateComplete, this, &UpdateDialog::onUpdateComplete);
-    connect(updater, &Updater::updateFailed, this, &UpdateDialog::setUpdateFailed);
+    Extractor *extractor = new Extractor(this);
+    connect(extractor, &Extractor::progress, this, &UpdateDialog::updateProgress);
+    connect(extractor, &Extractor::extractComplete, this, &UpdateDialog::onUpdateComplete);
+    connect(extractor, &Extractor::extractFailed, this, &UpdateDialog::setUpdateFailed);
 
-    updater->updateFromArchive(outputFile);
+    extractor->extract(outputFile, QCoreApplication::applicationDirPath());
 }
 
 void UpdateDialog::onUpdateComplete()

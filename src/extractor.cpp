@@ -1,4 +1,4 @@
-#include "updater.h"
+#include "extractor.h"
 #include "archiver.h"
 
 #include <QFileInfo>
@@ -11,14 +11,14 @@
 #include <bit7z/bitabstractarchivehandler.hpp>
 #include <bit7z/bitarchivereader.hpp>
 
-Updater::Updater(QObject *parent)
+Extractor::Extractor(QObject *parent)
     : QObject(parent)
 {
 }
 
-void Updater::updateFromArchive(QFile *archiveFile)
+void Extractor::extract(QFile *archiveFile, QString outputDir)
 {
-    QThread::create([this, archiveFile]() {
+    QThread::create([this, archiveFile, outputDir]() {
 
         try {
             // Get file info for the archive file
@@ -29,9 +29,6 @@ void Updater::updateFromArchive(QFile *archiveFile)
                 archiveFileInfo.absoluteFilePath().toStdString()
                 ));
 
-            // Destination folder for extraction
-            std::string outputDir = QCoreApplication::applicationDirPath().toStdString();
-
             // Set progress callback
             archive.setProgressCallback([this](uint64_t processedSize) -> bool {
                 emit progress(processedSize);
@@ -39,14 +36,14 @@ void Updater::updateFromArchive(QFile *archiveFile)
             });
 
             // Extract it
-            archive.extractTo(outputDir);
+            archive.extractTo(outputDir.toStdString());
 
-            emit updateComplete();
+            emit extractComplete();
 
         } catch (const bit7z::BitException &ex) {
 
             qWarning() << "bit7z BitException:" << ex.what();
-            emit updateFailed(QString::fromStdString(ex.what()));
+            emit extractFailed(QString::fromStdString(ex.what()));
         }
 
     })->start();

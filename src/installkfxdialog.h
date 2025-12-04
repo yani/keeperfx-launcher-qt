@@ -2,6 +2,7 @@
 
 #include <QDialog>
 #include <QCloseEvent>
+#include <QDir>
 
 #include "kfxversion.h"
 
@@ -53,6 +54,15 @@ private:
 
     Ui::InstallKfxDialog *ui;
     KfxVersion::ReleaseType installReleaseType;
+
     QUrl downloadUrlStable;
     QUrl downloadUrlAlpha;
+
+    QFile *tempArchiveStable;
+    QFile *tempArchiveAlpha;
+
+    QDir tempDirStable;
+    QDir tempDirAlpha;
+
+    bool moveTempFilesToAppDir(QDir sourceDir);
 };
