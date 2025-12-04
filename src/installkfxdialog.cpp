@@ -217,6 +217,9 @@ void InstallKfxDialog::onStableExtractComplete()
         return;
     }
 
+    emit appendLog("All files are copied");
+    emit clearProgressBar();
+
     // Remove temp dir
     if(tempDirStable.removeRecursively() == false){
         emit appendLog("Failed to remove temp dir");
@@ -341,6 +344,9 @@ void InstallKfxDialog::onAlphaExtractComplete()
     if(this->moveTempFilesToAppDir(tempDirAlpha) == false){
         return;
     }
+
+    emit appendLog("All files are copied");
+    emit clearProgressBar();
 
     // Remove temp dir
     if(tempDirAlpha.removeRecursively() == false){
