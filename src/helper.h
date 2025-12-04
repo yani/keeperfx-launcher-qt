@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QString>
 #include <QVariant>
+#include <QDirIterator>
 
 #ifdef Q_OS_WINDOWS
     #include <windows.h>
@@ -16,6 +17,21 @@
 class Helper
 {
 public:
+
+    static int countFilesRecursive(const QDir &dir) {
+
+        int count = 0;
+
+        // Loop trough all files
+        QDirIterator it(dir.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
+        while (it.hasNext()) {
+            it.next();
+            ++count;
+        }
+
+        return count;
+    }
+
     static bool is64BitDLL(const std::string &dllPath)
     {
         try {
