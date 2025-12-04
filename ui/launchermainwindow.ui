@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>LauncherMainWindow</class>
  <widget class="QMainWindow" name="LauncherMainWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModality::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,15 +13,9 @@
     <height>500</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="minimumSize">
+  <property name="maximumSize">
    <size>
-    <width>250</width>
+    <width>750</width>
     <height>500</height>
    </size>
   </property>

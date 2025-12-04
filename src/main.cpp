@@ -210,7 +210,7 @@ int main(int argc, char *argv[])
     // - position our window in the middle of the screen
     // - show the monitor number on the screen when selecting what monitor to play the game on
 #ifdef Q_OS_UNIX
-    if (qgetenv("QT_QPA_PLATFORM") != "xcb" && QGuiApplication::platformName() == "wayland") {
+    /*if (qgetenv("QT_QPA_PLATFORM") != "xcb" && QGuiApplication::platformName() == "wayland") {
         qDebug() << "Switching from 'wayland' to 'xcb' by spawning child process";
         // Prevent child Qt application from reusing the session manager
         qunsetenv("SESSION_MANAGER");
@@ -218,7 +218,7 @@ int main(int argc, char *argv[])
         qputenv("QT_QPA_PLATFORM", "xcb");
         // Run new process and pipe return value
         return QProcess::execute(QCoreApplication::applicationFilePath(), LauncherOptions::getArguments());
-    }
+    }*/
 #endif
 
 

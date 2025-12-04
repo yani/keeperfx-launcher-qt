@@ -13,6 +13,7 @@
 #include <QShortcut>
 #include <QTimer>
 #include <QUrl>
+#include <QWindow>
 #include <QtConcurrent/QtConcurrentRun>
 
 #include "apiclient.h"
@@ -118,7 +119,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     shortcut->setAutoRepeat(false);
     connect(shortcut, &QShortcut::activated, this, &LauncherMainWindow::loadLatestFromKfxNet);
 
-    // Move window to the center of the main screen
+    // Move window to main screen
     QList<QScreen *> screens = QGuiApplication::screens();
     if (screens.isEmpty() == false) {
         int screenIndex = 0;
@@ -131,9 +132,12 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             }
         }
 
-        // Set in middle
-        QRect geometry = screens[screenIndex]->geometry();
         this->setScreen(screens[screenIndex]);
+    }
+
+    // Set in middle of screen if not on Wayland
+    if (QGuiApplication::platformName() != "wayland") {
+        QRect geometry = this->screen()->geometry();
         this->move(
             // We use left() and top() here because the position is absolute and not relative to the screen
             geometry.left() + ((geometry.width() - this->width()) / 2),
