@@ -324,6 +324,9 @@ void InstallKfxDialog::onAppendLog(const QString &string)
     // Log to debug output
     qDebug() << "Install log:" << string;
 
+    // Set the cursor to the end
+    ui->logTextArea->moveCursor(QTextCursor::End);
+
     // Add string to log with timestamp
     QDateTime currentDateTime = QDateTime::currentDateTime();
     QString timestampString = currentDateTime.toString("HH:mm:ss");
