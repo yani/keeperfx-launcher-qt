@@ -49,10 +49,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         &QPushButton::clicked,
         this,
         &SettingsDialog::cancel);
-    /*connect(ui->buttonBox->button(QDialogButtonBox::RestoreDefaults),
+    connect(ui->buttonBox->button(QDialogButtonBox::RestoreDefaults),
         &QPushButton::clicked,
         this,
-        &SettingsDialog::restoreSettings);*/
+        &SettingsDialog::restoreSettings);
 
     // Add a "Open config file" button to the buttonbox
     QPushButton *configButton = new QPushButton(tr("Open config file", "Dialog Button"), this);
@@ -865,7 +865,66 @@ void SettingsDialog::saveSettings()
 
 void SettingsDialog::restoreSettings()
 {
-    // restore
+    // Ask if the user is sure
+    int result = QMessageBox::question(this,
+        tr("KeeperFX Settings", "MessageBox Title"),
+        tr("Do you want to restore the default settings?\n\nAll your custom settings will be lost.", "MessageBox Text"));
+
+    // Cancel close if user is not sure
+    if (result != QMessageBox::Yes) {
+        return;
+    }
+
+    // Remember original KeeperFX release path because we don't want that to change
+    QString kfxReleasePath = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
+
+    // Get '_keeperfx.cfg' file
+    QFile originalSettingsFile(QCoreApplication::applicationDirPath() + "/_keeperfx.cfg");
+    if(originalSettingsFile.exists() == false){
+        return;
+    }
+
+    // Get current keeperfx settings file
+    QFile currentSettingsFile = Settings::getKfxConfigFile();
+    if(currentSettingsFile.exists() == false){
+        return;
+    }
+
+    // Get path
+    QString currentSettingsFilePath = currentSettingsFile.fileName();
+    if(currentSettingsFilePath.isEmpty()){
+        return;
+    }
+
+    // Try to remove current settings file
+    if(currentSettingsFile.remove() == false){
+        return;
+    }
+
+    // Copy original settings file
+    if(originalSettingsFile.copy(currentSettingsFilePath) == false){
+        return;
+    }
+
+    // Reset launcher settings
+    Settings::resetLauncherSettings();
+
+    // Reload settings
+    Settings::load();
+
+    // Restore the original release path
+    // We don't want the reset to change it and possibly trigger updates
+    Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", kfxReleasePath);
+
+    QMessageBox::information(this,
+        tr("KeeperFX Settings", "MessageBox Title"),
+        tr("The default settings have been restored.", "MessageBox Text"));
+
+    // Accept the dialog
+    // It would be nicer to update the GUI, but we have already updated the settings files.
+    // This means that a user might get confused if they click 'Cancel' thinking they didn't save the restore.
+    // Eventually we would like to just update the GUI so the user can cancel it.
+    this->accept();
 }
 
 void SettingsDialog::addSettingsChangedHandler()
