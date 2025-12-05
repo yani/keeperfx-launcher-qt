@@ -288,8 +288,10 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Check if there are any files that should be removed
     checkForFileRemoval();
 
-    // Check for updates
-    checkForKfxUpdate();
+    // Automatically check for updates if that's enabled
+    if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") == true) {
+        checkForKfxUpdate();
+    }
 }
 
 LauncherMainWindow::~LauncherMainWindow()
@@ -957,12 +959,6 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
 
 void LauncherMainWindow::checkForKfxUpdate()
 {
-    // Check for updates if they are enabled
-    if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") != true) {
-        qInfo() << "Checking for updates is disabled";
-        return;
-    }
-
     // Only update from stable and alpha
     if (KfxVersion::currentVersion.type != KfxVersion::ReleaseType::STABLE &&
         KfxVersion::currentVersion.type != KfxVersion::ReleaseType::ALPHA) {
