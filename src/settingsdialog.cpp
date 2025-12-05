@@ -1128,8 +1128,12 @@ void SettingsDialog::sortLanguageComboBox(QComboBox *comboBox)
 
 void SettingsDialog::onOpenConfigButtonClicked()
 {
-    // Open configuration file in default text editor
-    QDesktopServices::openUrl(QUrl::fromLocalFile(Settings::getKfxConfigFile().fileName()));
+    QString configFilePath = Settings::getKfxConfigFile().fileName();
+
+    qDebug() << "Trying to open KeeperFX settings config file:" << configFilePath;
+
+    // Open file using OS functionality
+    QDesktopServices::openUrl(QUrl::fromLocalFile(configFilePath));
 }
 
 void SettingsDialog::on_pushButtonShowLauncherParams_clicked()
