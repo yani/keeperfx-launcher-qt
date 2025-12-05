@@ -298,7 +298,7 @@ bool Settings::autoSetGameLanguageToLocaleLanguage()
     }
 
     // Update game language
-    Settings::setKfxSetting("GAME_LANGUAGE", localeToGameLanguageMap[localeLanguage]);
+    Settings::setKfxSetting("LANGUAGE", localeToGameLanguageMap[localeLanguage]);
 
     return true;
 }
