@@ -297,19 +297,39 @@ bool DkFiles::copyDkDirToDir(QDir dir, QDir toDir)
             }
         }
 
-        // Lowercase
-        // Music files are in the root Digital OG DK dir, and not in "/music"
+        // Digital installation music files (lowercase)
+        // These music files are in the root dir, and not in "/music"
         QFile musicFileLowercase(dir.absolutePath() + "/" + musicFileName.toLower());
         if(musicFileLowercase.exists()){
             musicFileLowercase.copy(destFilePath);
             continue;
         }
 
-        // Uppercase
-        // Music files are in the root Digital OG DK dir, and not in "/music"
+        // Digital installation music files (uppercase)
+        // These music files are in the root dir, and not in "/music"
         QFile musicFileUppercase(dir.absolutePath() + "/" + musicFileName.toUpper());
         if(musicFileUppercase.exists()){
             musicFileUppercase.copy(destFilePath);
+            continue;
+        }
+
+        // KeeperFX installation music files (lowercase)
+        // These music files are in the "/music" dir
+        // This allows copying them over from another existing KFX installation
+        QFile kfxMusicFileLowercase(dir.absolutePath() + "/music/" + musicFileName.toLower());
+        if(kfxMusicFileLowercase.exists()){
+            kfxMusicFileLowercase.copy(destFilePath);
+            continue;
+        }
+
+        // KeeperFX installation music files (uppercase)
+        // These music files are in the "/music" dir
+        // This allows copying them over from another existing KFX installation
+        // We also check uppercase here because they might have been copied manually or downloaded as uppercase
+        QFile kfxMusicFileUppercase(dir.absolutePath() + "/music/" + musicFileName.toUpper());
+        if(kfxMusicFileUppercase.exists()){
+            kfxMusicFileUppercase.copy(destFilePath);
+            continue;
         }
     }
 
