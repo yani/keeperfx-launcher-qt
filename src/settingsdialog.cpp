@@ -111,6 +111,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditMaxFps->setDisabled(true);
     }
 
+    if (KfxVersion::hasFunctionality("gui_and_neutral_blink_speed") == false) {
+        ui->labelGuiBlinkRate->setDisabled(true);
+        ui->lineEditGuiBlinkRate->setDisabled(true);
+        ui->labelNeutralFlashRate->setDisabled(true);
+        ui->lineEditNeutralFlashRate->setDisabled(true);
+    }
+
     // Tag Mode
     if (KfxVersion::hasFunctionality("tag_mode") == true) {
         // Add default tag mode dropdown options
@@ -255,6 +262,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->lineEditLineBoxSize->setValidator(new QIntValidator(0, 500, this));
     ui->lineEditGameturns->setValidator(new QIntValidator(0, 512, this));
     ui->lineEditMaxFps->setValidator(new QIntValidator(0, 65535, this));
+    ui->lineEditGuiBlinkRate->setValidator(new QIntValidator(0, 65535, this));
+    ui->lineEditNeutralFlashRate->setValidator(new QIntValidator(0, 65535, this));
 
     // Set other input masks
     ui->lineEditCommandChar->setValidator(
@@ -550,6 +559,11 @@ void SettingsDialog::loadSettings()
         ui->lineEditMaxFps->setText(Settings::getKfxSetting("FRAMES_PER_SECOND").toString());
     }
 
+    if (KfxVersion::hasFunctionality("gui_and_neutral_blink_speed") == true) {
+        ui->lineEditGuiBlinkRate->setText(Settings::getKfxSetting("GUI_BLINK_RATE").toString());
+        ui->lineEditNeutralFlashRate->setText(Settings::getKfxSetting("NEUTRAL_FLASH_RATE").toString());
+    }
+
     // =========================================================================
     // ================================ SOUND ==================================
     // =========================================================================
@@ -798,6 +812,11 @@ void SettingsDialog::saveSettings()
 
     if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {
         Settings::setKfxSetting("FRAMES_PER_SECOND", ui->lineEditMaxFps->text());
+    }
+
+    if (KfxVersion::hasFunctionality("gui_and_neutral_blink_speed") == true) {
+        Settings::setKfxSetting("GUI_BLINK_RATE", ui->lineEditGuiBlinkRate->text());
+        Settings::setKfxSetting("NEUTRAL_FLASH_RATE", ui->lineEditNeutralFlashRate->text());
     }
 
     // =========================================================================
