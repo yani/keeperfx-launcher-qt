@@ -392,12 +392,12 @@ height: 35px;
         <rect>
          <x>30</x>
          <y>410</y>
-         <width>291</width>
+         <width>361</width>
          <height>23</height>
         </rect>
        </property>
        <property name="text">
-        <string comment="Checkbox Toggle">Smoothen video</string>
+        <string comment="Checkbox Toggle">Smoothen edges</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution">
