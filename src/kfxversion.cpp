@@ -23,6 +23,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"exit_on_lua_error", "1.2.0.4479"},
     {"flee_imprison_defaults", "1.2.0.4681"},
     {"max_frames_per_second", "1.2.0.4653"},
+    {"start_without_mods_param", "1.2.0.4753"},
 
     // Absolute Config path is temporary disabled because we still want support for multiple KFX installations
     {"absolute_config_path", "999.999.999"}, // '-config' absolute path was added in 1.2.0.4408

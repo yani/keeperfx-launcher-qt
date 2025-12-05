@@ -408,6 +408,15 @@ void LauncherMainWindow::setupPlayExtraMenu()
         }
     });
 
+    // Start without mods action
+    if (KfxVersion::hasFunctionality("start_without_mods_param") == true) {
+        menu->addAction(tr("Start without mods", "Menu"), [this]() {
+            qDebug() << "Start without mods selected!";
+            // Start the game
+            startGame(Game::StartType::START_WITHOUT_MODS);
+        });
+    }
+
     // Heavylog toggle
     QFile heavyLogBin(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
     if (heavyLogBin.exists()) {

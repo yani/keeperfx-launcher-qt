@@ -18,6 +18,7 @@ public:
         CAMPAIGN,
         LOAD_SAVE,
         LOAD_PACKETSAVE,
+        START_WITHOUT_MODS,
     };
 
     explicit Game(QWidget *parent = nullptr);

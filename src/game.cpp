@@ -85,6 +85,11 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
         params << "-packetload" << QString(data1.toString());
     }
 
+    // Start without mods
+    if (startType == StartType::START_WITHOUT_MODS) {
+        params << "-nomods";
+    }
+
     // Log parameters
     if (params.count() > 0) {
         qInfo() << "Game parameters:" << params.join(" ");
