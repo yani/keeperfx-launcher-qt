@@ -231,17 +231,9 @@ void InstallKfxDialog::onStableExtractComplete()
         return;
     }
 
-    // Handle any settings update
-    emit appendLog("Loading settings");
-    Settings::load();
-
-    emit appendLog("Setting game language to system language");
-    Settings::autoSetGameLanguageToLocaleLanguage();
-
-    // Done!
-    emit appendLog("Done!");
-    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
-    accept();
+    // Complete the installation
+    // This will update some settings, show a messagebox and close the window
+    completeInstall();
 }
 
 void InstallKfxDialog::startAlphaDownload()
@@ -353,16 +345,9 @@ void InstallKfxDialog::onAlphaExtractComplete()
         emit appendLog("Failed to remove temp dir");
     }
 
-    // Handle any settings update
-    emit appendLog("Loading settings");
-    Settings::load();
-
-    emit appendLog("Setting game language to system language");
-    Settings::autoSetGameLanguageToLocaleLanguage();
-
-    emit appendLog("Done!");
-    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
-    this->accept();
+    // Complete the installation
+    // This will update some settings, show a messagebox and close the window
+    completeInstall();
 }
 
 void InstallKfxDialog::updateProgressBarDownload(qint64 bytesReceived, qint64 bytesTotal)
@@ -553,4 +538,32 @@ bool InstallKfxDialog::moveTempFilesToAppDir(QDir sourceDir)
     }
 
     return true;
+}
+
+void InstallKfxDialog::completeInstall()
+{
+    // Load the current KeeperFX version
+    // We need it for automatically setting settings depending on the KFX version
+    KfxVersion::loadCurrentVersion();
+
+    // Handle any settings update
+    emit appendLog("Loading settings");
+    Settings::load();
+
+    // Set game language
+    emit appendLog("Setting game language to system language");
+    Settings::autoSetGameLanguageToLocaleLanguage();
+
+    // Set max fps
+    if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {
+        emit appendLog("Setting max FPS to screen refresh rate");
+        if(Settings::autoSetMaxFpsToScreenRefreshRate() == true){
+            emit appendLog(QString("Max FPS set to: %1").arg(Settings::getKfxSetting("FRAMES_PER_SECOND").toString()));
+        }
+    }
+
+    // Done!
+    emit appendLog("Done!");
+    QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
+    accept();
 }

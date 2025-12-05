@@ -20,6 +20,7 @@ public:
     static QStringList getGameSettingsParameters();
 
     static bool autoSetGameLanguageToLocaleLanguage();
+    static bool autoSetMaxFpsToScreenRefreshRate(QWidget *widget = nullptr);
 
     static void resetKfxSettings();
     static void resetLauncherSettings();

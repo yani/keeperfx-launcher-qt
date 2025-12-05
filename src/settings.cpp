@@ -2,7 +2,10 @@
 
 #include <QCoreApplication>
 #include <QLocale>
+#include <QScreen>
 #include <QSettings>
+#include <QWidget>
+#include <QWindow>
 
 #include "kfxversion.h"
 #include "settingscfgformat.h"
@@ -300,6 +303,52 @@ bool Settings::autoSetGameLanguageToLocaleLanguage()
     // Update game language
     Settings::setKfxSetting("LANGUAGE", localeToGameLanguageMap[localeLanguage]);
 
+    return true;
+}
+
+bool Settings::autoSetMaxFpsToScreenRefreshRate(QWidget *widget)
+{
+    // Make sure the current game version supports it
+    if (KfxVersion::hasFunctionality("max_frames_per_second") == false) {
+        return false;
+    }
+
+    QScreen *screen = nullptr;
+
+    // Try to get screen from optionally passed widget
+    if (widget && widget->windowHandle()){
+        screen = widget->windowHandle()->screen();
+    }
+
+    // Otherwise try to get primary screen
+    if(!screen){
+        screen = QGuiApplication::primaryScreen();
+    }
+
+    // No screen found
+    if(!screen){
+        qWarning() << "Failed to find screen when trying to find refresh rate for automatically setting max fps";
+        return false;
+    }
+
+    // Try to get refresh rate of screen
+    int refreshRate = qRound(screen->refreshRate());
+    if(refreshRate == 0){
+        return false;
+    }
+
+    // Make sure we at least have the FPS of the default game speed
+    if (refreshRate < 20) {
+        refreshRate = 20;
+    }
+
+    // Let's also limit it to something reasonable
+    if(refreshRate > 200) {
+        refreshRate = 200;
+    }
+
+    // Update max fps setting
+    Settings::setKfxSetting("FRAMES_PER_SECOND", refreshRate);
     return true;
 }
 

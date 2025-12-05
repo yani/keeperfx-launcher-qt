@@ -105,6 +105,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->checkBoxAutoEnableImprison->setDisabled(true);
     }
 
+    // Max frames per second
+    if (KfxVersion::hasFunctionality("max_frames_per_second") == false) {
+        ui->labelMaxFps->setDisabled(true);
+        ui->lineEditMaxFps->setDisabled(true);
+    }
+
     // Tag Mode
     if (KfxVersion::hasFunctionality("tag_mode") == true) {
         // Add default tag mode dropdown options
@@ -248,6 +254,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->lineEditHandSize->setValidator(new QIntValidator(0, 500, this));
     ui->lineEditLineBoxSize->setValidator(new QIntValidator(0, 500, this));
     ui->lineEditGameturns->setValidator(new QIntValidator(0, 512, this));
+    ui->lineEditMaxFps->setValidator(new QIntValidator(0, 65535, this));
 
     // Set other input masks
     ui->lineEditCommandChar->setValidator(
@@ -539,6 +546,10 @@ void SettingsDialog::loadSettings()
     ui->lineEditLineBoxSize->setText(Settings::getKfxSetting("LINE_BOX_SIZE").toString());
     ui->lineEditHandSize->setText(Settings::getKfxSetting("HAND_SIZE").toString());
 
+    if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {
+        ui->lineEditMaxFps->setText(Settings::getKfxSetting("FRAMES_PER_SECOND").toString());
+    }
+
     // =========================================================================
     // ================================ SOUND ==================================
     // =========================================================================
@@ -784,6 +795,10 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("CREATURE_STATUS_SIZE", ui->lineEditCreatureFlowerSize->text());
     Settings::setKfxSetting("LINE_BOX_SIZE", ui->lineEditLineBoxSize->text());
     Settings::setKfxSetting("HAND_SIZE", ui->lineEditHandSize->text());
+
+    if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {
+        Settings::setKfxSetting("FRAMES_PER_SECOND", ui->lineEditMaxFps->text());
+    }
 
     // =========================================================================
     // ================================ SOUND ==================================

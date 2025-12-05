@@ -391,7 +391,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>360</y>
+         <y>410</y>
          <width>291</width>
          <height>23</height>
         </rect>
@@ -633,7 +633,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>314</y>
+         <y>364</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -651,7 +651,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>200</x>
-         <y>310</y>
+         <y>360</y>
          <width>201</width>
          <height>25</height>
         </rect>
@@ -939,6 +939,39 @@ height: 35px;
         <font>
          <family>Arial</family>
         </font>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditMaxFps">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>310</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelMaxFps">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>314</y>
+         <width>301</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Textinput Title Label">Max. FPS (0 = unlimited)</string>
        </property>
       </widget>
      </widget>

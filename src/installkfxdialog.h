@@ -65,4 +65,6 @@ private:
     QDir tempDirAlpha;
 
     bool moveTempFilesToAppDir(QDir sourceDir);
+
+    void completeInstall();
 };
