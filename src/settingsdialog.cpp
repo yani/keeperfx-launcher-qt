@@ -598,7 +598,7 @@ void SettingsDialog::loadSettings()
     // ================================ MULTIPLAYER ==================================
     // ===============================================================================
 
-    ui->lineEditMasterServer->setText(Settings::getKfxSetting("MASTERSERVER_HOST").toString());
+    //ui->lineEditMasterServer->setText(Settings::getKfxSetting("MASTERSERVER_HOST").toString());
 
     // =======================================================================
     // ================================ API ==================================
@@ -819,7 +819,7 @@ void SettingsDialog::saveSettings()
     // ================================ MULTIPLAYER ==================================
     // ===============================================================================
 
-    Settings::setKfxSetting("MASTERSERVER_HOST", ui->lineEditMasterServer->text());
+    //Settings::setKfxSetting("MASTERSERVER_HOST", ui->lineEditMasterServer->text());
 
     // =======================================================================
     // ================================ API ==================================
