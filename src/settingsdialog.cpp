@@ -319,6 +319,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditPackSaveFileName->setDisabled(!isChecked);
     });
 
+    // Connect 'Unlock cursor from game window' checkbox (alt input)
+    connect(ui->checkBoxAltInput, &QCheckBox::checkStateChanged, this, [this]() {
+        bool isChecked = ui->checkBoxAltInput->isChecked();
+        ui->checkBoxUnlockCursorWhenPaused->setEnabled(!isChecked); // When alt input is DISABLED
+        ui->checkBoxLockCursorPossession->setEnabled(isChecked); // When alt input is ENABLED
+    });
+
     // Add handler to remember when a setting has changed
     // This should be executed at the end when the widgets and their contents are final
     addSettingsChangedHandler();
@@ -615,6 +622,9 @@ void SettingsDialog::loadSettings()
     ui->checkBoxUnlockCursorWhenPaused->setChecked(Settings::getKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED") == true);
     ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
     ui->checkBoxScreenEdgePanning->setChecked(Settings::getKfxSetting("CURSOR_EDGE_CAMERA_PANNING") == true);
+
+    ui->checkBoxUnlockCursorWhenPaused->setEnabled(Settings::getLauncherSetting("GAME_PARAM_ALT_INPUT") == false); // When alt input is DISABLED
+    ui->checkBoxLockCursorPossession->setEnabled(Settings::getLauncherSetting("GAME_PARAM_ALT_INPUT") == true); // When alt input is ENABLED
 
     ui->checkBoxEnableTagModeToggle->setChecked(Settings::getKfxSetting("TAG_MODE_TOGGLING") == true);
     ui->comboBoxDefaultTagMode->setCurrentIndex(ui->comboBoxDefaultTagMode->findData(Settings::getKfxSetting("DEFAULT_TAG_MODE").toString()));
