@@ -37,11 +37,11 @@ hold out on adding them until the game also supports the language.
 |-----------------------|----------|-----------|----------------|--------------
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)
 | Dutch                 | NL       | 100%      | 322/322        | [Yani](https://github.com/yani)
-| Italian               | IT       |           |                | 
+| Italian               | IT       |           |                | [kammerer](https://github.com/Kammerer001)
 | French                | FR       | 95.3%     | 307/322        | AncientWay
 | Spanish               | ES       | 95.3%     | 307/322        | Alniarez
 | German                | DE       | 95.3%     | 307/322        | Aqua, Dofi
-| Polish                | PL       |           |                | 
+| Polish                | PL       |           |                | [Rusty](https://github.com/rustyspoonz)
 | Swedish               | SV       |           |                | 
 | Japanese              | JA       | 96%       | 309/322        | [AdamPlenty](https://github.com/AdamPlenty)
 | Russian               | RU       | 96%       | 309/322        | Quuz, [kammerer](https://github.com/Kammerer001)
