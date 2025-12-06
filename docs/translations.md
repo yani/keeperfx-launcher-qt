@@ -40,22 +40,22 @@ when we need a proof-read or a quick translation.
 | Language              | Code     | Completed | Done/Total     | Maintainer(s)                                    |
 |-----------------------|----------|-----------|----------------|--------------------------------------------------|
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)                  |
-| Dutch                 | NL       | 100%      | 319/319        | [Yani](https://github.com/yani)                  |
+| Dutch                 | NL       | 100%      | 322/322        | [Yani](https://github.com/yani)                  |
 | Italian               | IT       |           |                |                                                  |
-| French                | FR       | 99.4%     | 317/319        | AncientWay                                       |
-| Spanish               | ES       | 99.4%     | 317/319        | Alniarez                                         |
-| German                | DE       | 99.4%     | 317/319        | Aqua, Dofi                                       |
+| French                | FR       | 95.3%     | 307/322        | AncientWay                                       |
+| Spanish               | ES       | 95.3%     | 307/322        | Alniarez                                         |
+| German                | DE       | 95.3%     | 307/322        | Aqua, Dofi                                       |
 | Polish                | PL       |           |                |                                                  |
 | Swedish               | SV       |           |                |                                                  |
-| Japanese              | JA       |           |                | [AdamPlenty](https://github.com/AdamPlenty)      |
-| Russian               | RU       | 100%      | 319/319        | Quuz                                             |
-| Korean                | KO       | 99.4%     | 317/319        | Desert                                           |
-| Chinese (Simplified)  | ZH-HANS  | 95%       | 303/319        | [JieLeTian](https://github.com/jieletian)        |
+| Japanese              | JA       | 96%       | 309/322        | [AdamPlenty](https://github.com/AdamPlenty)      |
+| Russian               | RU       | 96%       | 309/322        | Quuz                                             |
+| Korean                | KO       | 95.3%     | 307/322        | Desert                                           |
+| Chinese (Simplified)  | ZH-HANS  | 91%       | 293/322        | [JieLeTian](https://github.com/jieletian)        |
 | Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
-| Czech                 | CS       | 95.6%     | 305/319        | Gotrek                                           |
+| Czech                 | CS       | 91.6%     | 295/322        | Gotrek                                           |
 | Latin                 | LA       |           |                |                                                  |
-| Ukrainian             | UK       | 95.6%     | 305/319        | Mr.Negative, Renegade_Glitch                     |
-| Portuguese (Brazil)   | PT       | 95.6%     | 305/319        |                                                  |
+| Ukrainian             | UK       | 91.6%     | 295/322        | Mr.Negative, Renegade_Glitch                     |
+| Portuguese (Brazil)   | PT       | 91.6%     | 295/322        |                                                  |
 
 
 ### Translating with POEdit
