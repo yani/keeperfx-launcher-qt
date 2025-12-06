@@ -15,47 +15,43 @@ You can find instructions on how to use POEdit below.
 
 If you need help with specific translations, using both [DeepL](https://www.deepl.com) and [ChatGPT](https://chatgpt.com/)
 together with your own understanding of the language seems to be an easy way to get the correct translations. 
-You could also contact the maintainer of the language to get some input on your translations.
+You could also contact other translators of the language to get some input on your translations.
 
 If any translations are not clear or you don't know how they are used,
-feel free to ask the maintainer of the language or ask us in the [Keeper Klan Discord](https://discord.gg/hE4p7vy2Hb).
-We're always ready to help you out.
+feel free to ask us in the [Keeper Klan Discord](https://discord.gg/hE4p7vy2Hb).
+We're always there to help you out.
 
 Feel free to submit PRs for translations or
 contact Yani on the Keeper Klan Discord to submit any translations you might have.
 
 
 
-### Languages and Maintainers
+### Languages and Translators
 
 The current languages that we are translating for the Launcher are
 the ones that are also present in KeeperFX.
 Other languages are allowed too, but if they are not in KeeperFX we might
 hold out on adding them until the game also supports the language.
 
-Maintainers are the people in charge of a language translation.
-They will not always be the ones that do the translations, but they will be contacted
-when we need a proof-read or a quick translation.
-
-| Language              | Code     | Completed | Done/Total     | Maintainer(s)                                    |
-|-----------------------|----------|-----------|----------------|--------------------------------------------------|
-| English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)                  |
-| Dutch                 | NL       | 100%      | 322/322        | [Yani](https://github.com/yani)                  |
-| Italian               | IT       |           |                |                                                  |
-| French                | FR       | 95.3%     | 307/322        | AncientWay                                       |
-| Spanish               | ES       | 95.3%     | 307/322        | Alniarez                                         |
-| German                | DE       | 95.3%     | 307/322        | Aqua, Dofi                                       |
-| Polish                | PL       |           |                |                                                  |
-| Swedish               | SV       |           |                |                                                  |
-| Japanese              | JA       | 96%       | 309/322        | [AdamPlenty](https://github.com/AdamPlenty)      |
-| Russian               | RU       | 96%       | 309/322        | Quuz                                             |
-| Korean                | KO       | 95.3%     | 307/322        | Desert                                           |
-| Chinese (Simplified)  | ZH-HANS  | 91%       | 293/322        | [JieLeTian](https://github.com/jieletian)        |
-| Chinese (Traditional) | ZH-HANT  |           |                |                                                  |
-| Czech                 | CS       | 91.6%     | 295/322        | Gotrek                                           |
-| Latin                 | LA       |           |                |                                                  |
-| Ukrainian             | UK       | 91.6%     | 295/322        | Mr.Negative, Renegade_Glitch                     |
-| Portuguese (Brazil)   | PT       | 91.6%     | 295/322        |                                                  |
+| Language              | Code     | Completed | Done/Total     | Translator(s)
+|-----------------------|----------|-----------|----------------|--------------
+| English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)
+| Dutch                 | NL       | 100%      | 322/322        | [Yani](https://github.com/yani)
+| Italian               | IT       |           |                | 
+| French                | FR       | 95.3%     | 307/322        | AncientWay
+| Spanish               | ES       | 95.3%     | 307/322        | Alniarez
+| German                | DE       | 95.3%     | 307/322        | Aqua, Dofi
+| Polish                | PL       |           |                | 
+| Swedish               | SV       |           |                | 
+| Japanese              | JA       | 96%       | 309/322        | [AdamPlenty](https://github.com/AdamPlenty)
+| Russian               | RU       | 96%       | 309/322        | Quuz, [kammerer](https://github.com/Kammerer001)
+| Korean                | KO       | 95.3%     | 307/322        | Desert
+| Chinese (Simplified)  | ZH-HANS  | 91%       | 293/322        | [JieLeTian](https://github.com/jieletian)
+| Chinese (Traditional) | ZH-HANT  |           |                | 
+| Czech                 | CS       | 91.6%     | 295/322        | Gotrek
+| Latin                 | LA       |           |                | 
+| Ukrainian             | UK       | 91.6%     | 295/322        | Mr.Negative, Renegade_Glitch
+| Portuguese (Brazil)   | PT       | 91.6%     | 295/322        | [altiereslima](https://github.com/altiereslima)
 
 
 ### Translating with POEdit
