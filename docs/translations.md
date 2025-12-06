@@ -54,6 +54,7 @@ hold out on adding them until the game also supports the language.
 | Portuguese (Brazil)   | PT       | 91.6%     | 295/322        | [altiereslima](https://github.com/altiereslima)
 
 
+
 ### Translating with POEdit
 
 First download the [i18n/translations.pot](../i18n/translations.pot) file which is the template for the translations.
@@ -69,6 +70,33 @@ This is a good one to know.
 When new translation strings are added or when existing ones are updated,
 you can select `Translation > Update from POT file...` to update the list. 
 POEdit will mark the ones that need work.
+
+
+
+### Some notes
+
+- If you come across translations that use an ampersand (`&`) it means that this translation is also used for a shortcut.
+These shortcuts are common for buttons and menu items.
+They are added to the translations because they might be different in other languages.
+Some languages also use a different alphabet and add the shortcut keys separately.
+For example in Japanese: 
+    - `&Yes` -> `はい（&Y）`
+    - `&No` -> `いいえ（&N）`
+
+- Another thing that's important is that some translations are better if they use the English word.
+Here's a list of terms that are best kept in English because we use them a lot during international
+discussion or when the developers are troubleshooting a problem the user might have:
+    - Launcher
+    - Workshop
+    - Cheats
+    - Screenshot
+    - Backup
+    - Packetsave
+    - Heavylog
+
+- If your language uses gendered translations, it's best to rewrite it in a gender-neutral way so it always makes sense.
+Translations don't need to be perfect 1:1 translations so feel free to rewrite them in way that feels natural.
+You can look at common UI translations in your language if you are unsure.
 
 
 
