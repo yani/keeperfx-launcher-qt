@@ -12,6 +12,8 @@
         <file>res/contributors.txt</file>
         <file>res/img/caret-down.png</file>
         <file>res/img/caret-down-disabled.png</file>
+        <file>res/img/folder-icon.png</file>
+        <file>res/img/logfile-icon.png</file>
     </qresource>
     <qresource prefix="/i18n">
         <file>i18n/translations_nl.po</file>
