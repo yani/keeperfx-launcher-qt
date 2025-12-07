@@ -1136,7 +1136,34 @@ void LauncherMainWindow::on_unearthButton_clicked()
         return;
     }
 
-    QProcess::startDetached(unearthBinary.fileName());
+    qDebug() << "Starting Unearth:" << unearthBinary.fileName();
+
+    // Start the process
+    if(QProcess::startDetached(unearthBinary.fileName()) == true){
+        qDebug() << "Unearth process started";
+        return;
+    }
+
+    // At this point the binary would have failed to start
+    qWarning() << "Failed to start Unearth";
+
+#ifdef Q_OS_UNIX
+        qDebug() << "Unearth binary might not be executable. Trying to set permission (UNIX)";
+
+        if(Helper::makeBinaryExecutable(unearthBinary.fileName()) == false){
+            qWarning() << "Failed to update Unearth binary file permissions";
+            return;
+        }
+
+        qDebug() << "Unearth binary file permissions updated";
+
+        if(QProcess::startDetached(unearthBinary.fileName()) == false){
+            qWarning() << "Failed to start Unearth binary even after updating file permissions";
+            return;
+        }
+
+        qDebug() << "Unearth process started";
+#endif
 }
 
 void LauncherMainWindow::on_modsButton_clicked()

@@ -117,4 +117,31 @@ public:
         return QString();
     }
 #endif
+
+    static bool makeBinaryExecutable(const QString &path)
+    {
+#ifdef Q_OS_UNIX
+
+        QFile file(path);
+        if (!file.exists()){
+            return false;
+        }
+
+        // Get file permissions object
+        QFile::Permissions perms = file.permissions();
+
+        // Add execute bits for owner, group, and others
+        perms |= QFileDevice::ExeOwner;
+        perms |= QFileDevice::ExeGroup;
+        perms |= QFileDevice::ExeOther;
+
+        // Set file permissions
+        return file.setPermissions(perms);
+
+#else
+        // On Windows executability is not a permission flag
+        Q_UNUSED(path);
+        return true;
+#endif
+    }
 };
