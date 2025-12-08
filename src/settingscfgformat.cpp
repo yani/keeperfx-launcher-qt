@@ -88,13 +88,20 @@ bool SettingsCfgFormat::writeFile(QIODevice &device, const QSettings::SettingsMa
     QStringList output = lines;
 
     // Add missing keys at the end with a double newline
+    // Launcher configs are ignored
     bool firstMissing = true;
 
     for (auto it = tmpMap.constBegin(); it != tmpMap.constEnd(); ++it) {
         if (!updatedKeys.contains(it.key())) {
+
             if (firstMissing) {
-                output.append(""); // blank line 1
-                output.append(""); // blank line 2
+
+                // Don't add newlines in launcher config
+                if(fileName.endsWith("keeperfx-launcher-qt.cfg") == false && fileName.endsWith("launcher.cfg") == false){
+                    output.append("");
+                    output.append("");
+                }
+
                 firstMissing = false;
             }
 
