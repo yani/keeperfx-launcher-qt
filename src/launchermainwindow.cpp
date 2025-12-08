@@ -86,7 +86,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Create clickable version label
     ClickableLabel *clickableVersionLabel = new ClickableLabel(this);
-    clickableVersionLabel->setBaseColor(QColor("#999999"));
+    clickableVersionLabel->setBaseColor(QColor(0x99, 0x99, 0x99));
     clickableVersionLabel->setFont(ui->versionLabel->font());
     connect(clickableVersionLabel, &ClickableLabel::clicked, this, &LauncherMainWindow::checkForKfxUpdate);
 
@@ -457,7 +457,7 @@ void LauncherMainWindow::refreshSaveFilesMenu()
         this->saveFilesMenu->setDisabled(true);
     } else {
         this->saveFilesMenu->setDisabled(false);
-        for (SaveFile *saveFile : saveFileList) {
+        for (auto &saveFile : saveFileList) {
             this->saveFilesMenu->addAction(saveFile->toString(), [this, saveFile]() {
                 // Handle loading the save file
                 qDebug() << "Loading save file:" << saveFile;
@@ -482,7 +482,7 @@ void LauncherMainWindow::refreshCampaignMenu()
         this->campaignMenu->setDisabled(true);
     } else {
         this->campaignMenu->setDisabled(false);
-        for (Campaign *campaign : campaignList) {
+        for (auto &campaign : campaignList) {
             this->campaignMenu->addAction(campaign->toString(), [this, campaign]() {
                 // Start campaign
                 qDebug() << "Starting campaign:" << campaign->toString();
@@ -714,7 +714,10 @@ void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDoc
 
             // Loop trough workshop items
             int currentLoopCount = 0;
-            for (const QJsonValue &workshopItemValue : workshopItemsArray) {
+            for (int i = 0; i < workshopItemsArray.size(); ++i) {
+
+                const QJsonValue workshopItemValue = workshopItemsArray[i];
+
                 // Only allow the max amount of items
                 if (currentLoopCount++ >= MAX_WORKSHOP_ITEMS_SHOWN) {
                     break;
@@ -750,7 +753,10 @@ void LauncherMainWindow::onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDoc
 
             // Loop trough news articles
             int currentLoopCount = 0;
-            for (const QJsonValue &newsArticleValue : newsArticlesArray) {
+            for (int i = 0; i < newsArticlesArray.size(); ++i) {
+
+                const QJsonValue newsArticleValue = newsArticlesArray[i];
+
                 // Only allow the max amount of items
                 if (currentLoopCount++ >= MAX_NEWS_ARTICLES_SHOWN) {
                     break;
