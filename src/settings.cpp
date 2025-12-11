@@ -350,7 +350,12 @@ bool Settings::autoSetMaxFpsToScreenRefreshRate(QWidget *widget)
         refreshRate = 200;
     }
 
-    // Update max fps setting
+    // Add automatic monitor refresh rate determinitation built into KeeperFX
+    if (KfxVersion::hasFunctionality("auto_determine_monitor_refresh_rate") == true) {
+        Settings::setKfxSetting("FRAMES_PER_SECOND", QString("AUTO ") + QString::number(refreshRate));
+        return true;
+    }
+
     Settings::setKfxSetting("FRAMES_PER_SECOND", refreshRate);
     return true;
 }

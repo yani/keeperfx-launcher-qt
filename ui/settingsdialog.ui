@@ -391,7 +391,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>390</y>
+         <y>440</y>
          <width>361</width>
          <height>23</height>
         </rect>
@@ -633,7 +633,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>344</y>
+         <y>394</y>
          <width>151</width>
          <height>17</height>
         </rect>
@@ -651,7 +651,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>200</x>
-         <y>340</y>
+         <y>390</y>
          <width>201</width>
          <height>25</height>
         </rect>
@@ -1046,6 +1046,19 @@ height: 35px;
         <font>
          <family>Arial</family>
         </font>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxAutoDetermineMaxFps">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>340</y>
+         <width>361</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Automatically determine max. FPS</string>
        </property>
       </widget>
      </widget>

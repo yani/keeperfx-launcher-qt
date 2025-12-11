@@ -559,6 +559,11 @@ void InstallKfxDialog::completeInstall()
         emit appendLog("Setting max FPS to screen refresh rate");
         if(Settings::autoSetMaxFpsToScreenRefreshRate() == true){
             emit appendLog(QString("Max FPS set to: %1").arg(Settings::getKfxSetting("FRAMES_PER_SECOND").toString()));
+        } else {
+            if (KfxVersion::hasFunctionality("auto_determine_monitor_refresh_rate") == true) {
+                Settings::setKfxSetting("FRAMES_PER_SECOND", "AUTO 0");
+                emit appendLog(QString("Max FPS set to: AUTO 0"));
+            }
         }
     }
 

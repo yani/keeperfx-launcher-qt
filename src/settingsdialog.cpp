@@ -111,6 +111,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditMaxFps->setDisabled(true);
     }
 
+    // Auto determine max fps
+    if (KfxVersion::hasFunctionality("auto_determine_monitor_refresh_rate") == false) {
+        ui->checkBoxAutoDetermineMaxFps->setDisabled(true);
+    }
+
     if (KfxVersion::hasFunctionality("gui_and_neutral_blink_speed") == false) {
         ui->labelGuiBlinkRate->setDisabled(true);
         ui->lineEditGuiBlinkRate->setDisabled(true);
@@ -566,7 +571,23 @@ void SettingsDialog::loadSettings()
     ui->lineEditHandSize->setText(Settings::getKfxSetting("HAND_SIZE").toString());
 
     if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {
-        ui->lineEditMaxFps->setText(Settings::getKfxSetting("FRAMES_PER_SECOND").toString());
+        if (KfxVersion::hasFunctionality("auto_determine_monitor_refresh_rate") == true) {
+            QString maxFps = Settings::getKfxSetting("FRAMES_PER_SECOND").toString();
+            if(maxFps.contains("AUTO")){
+                ui->checkBoxAutoDetermineMaxFps->setChecked(true);
+                QString maxFpsNumber = maxFps.split(" ").last();
+                if(maxFpsNumber.isEmpty() == false){
+                    ui->lineEditMaxFps->setText(maxFpsNumber);
+                } else {
+                    ui->lineEditMaxFps->setText("0");
+                }
+            } else {
+                ui->checkBoxAutoDetermineMaxFps->setChecked(false);
+                ui->lineEditMaxFps->setText(QString::number(Settings::getKfxSetting("FRAMES_PER_SECOND").toInt()));
+            }
+        } else {
+            ui->lineEditMaxFps->setText(QString::number(Settings::getKfxSetting("FRAMES_PER_SECOND").toInt()));
+        }
     }
 
     if (KfxVersion::hasFunctionality("gui_and_neutral_blink_speed") == true) {
@@ -827,7 +848,11 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("HAND_SIZE", ui->lineEditHandSize->text());
 
     if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {
-        Settings::setKfxSetting("FRAMES_PER_SECOND", ui->lineEditMaxFps->text());
+        if (KfxVersion::hasFunctionality("auto_determine_monitor_refresh_rate") == true && ui->checkBoxAutoDetermineMaxFps->isChecked()) {
+            Settings::setKfxSetting("FRAMES_PER_SECOND", "AUTO " + ui->lineEditMaxFps->text());
+        } else {
+            Settings::setKfxSetting("FRAMES_PER_SECOND", ui->lineEditMaxFps->text());
+        }
     }
 
     if (KfxVersion::hasFunctionality("gui_and_neutral_blink_speed") == true) {
