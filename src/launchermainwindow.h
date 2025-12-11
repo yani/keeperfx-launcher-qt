@@ -74,7 +74,9 @@ private:
     void clearLatestFromKfxNet();
 
     void checkForFileRemoval();
-    void checkForKfxUpdate();
+
+    void forceKfxUpdateCheck();
+    void checkForKfxUpdate(bool ignoreInterval = false);
 
     void verifyBinaryCertificates();
 

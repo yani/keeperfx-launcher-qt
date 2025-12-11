@@ -88,7 +88,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     ClickableLabel *clickableVersionLabel = new ClickableLabel(this);
     clickableVersionLabel->setBaseColor(QColor(0x99, 0x99, 0x99));
     clickableVersionLabel->setFont(ui->versionLabel->font());
-    connect(clickableVersionLabel, &ClickableLabel::clicked, this, &LauncherMainWindow::checkForKfxUpdate);
+    connect(clickableVersionLabel, &ClickableLabel::clicked, this, &LauncherMainWindow::forceKfxUpdateCheck);
 
     // Replace version label with clickable one
     ui->versionLabel->parentWidget()->layout()->replaceWidget(ui->versionLabel, clickableVersionLabel);
@@ -623,7 +623,7 @@ void LauncherMainWindow::on_settingsButton_clicked() {
             oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
     )){
         qDebug() << "Settings regarding updates have been enabled or changed so asking for update";
-        checkForKfxUpdate();
+        checkForKfxUpdate(true);
     }
 
     // Website integration
@@ -972,14 +972,60 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
     refreshInstallationAwareButtons();
 }
 
-void LauncherMainWindow::checkForKfxUpdate()
+// Wrapper function because we can't use the 'ignoreInterval' parameter in slots
+void LauncherMainWindow::forceKfxUpdateCheck() {
+    this->checkForKfxUpdate(true);
+}
+
+void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
 {
+    qDebug() << "Checking for KeeperFX update";
+
     // Only update from stable and alpha
     if (KfxVersion::currentVersion.type != KfxVersion::ReleaseType::STABLE &&
         KfxVersion::currentVersion.type != KfxVersion::ReleaseType::ALPHA) {
         qDebug() << "Not updating because we are not on stable or alpha version";
         return;
     }
+
+    // Get the current timestamp
+    QDateTime currentTimestamp = QDateTime::currentDateTimeUtc();
+
+    // Check if we need to handle the interval
+    // This depends on whether it's an automatic or manual check
+    if(ignoreInterval == false){
+
+        // Get interval and check if we need to use intervals
+        // Anything below 1 means we'll not use an interval for checking
+        int intervalDays = Settings::getLauncherSetting("CHECK_FOR_UPDATES_INTERVAL_DAYS").toInt();
+        if(intervalDays > 0){
+
+            // Get last timestamp of update
+            QString lastTimestampString = Settings::getLauncherSetting("CHECK_FOR_UPDATES_LAST_TIMESTAMP").toString();
+            QDateTime lastTimestamp = QDateTime::fromString(lastTimestampString, Qt::ISODate);
+
+            // Make sure timestamp is valid
+            if(lastTimestamp.isValid() == false){
+                qWarning() << "Invalid timestamp for 'CHECK_FOR_UPDATES_LAST_TIMESTAMP' launcher setting:" << lastTimestampString;
+                return;
+            }
+
+            // Check if we need to update
+            if(lastTimestamp.addDays(intervalDays) > currentTimestamp) {
+                qDebug() << "Not updating because we have not passed the interval for updates yet:" << QString(QString::number(intervalDays) + " day");
+                return;
+            } else {
+                qDebug() << "Update interval is passed, checking for update";
+            }
+        } else {
+            qDebug() << "Interval is disabled for this update check";
+        }
+    } else {
+        qDebug() << "Bypassing possible interval for this update check";
+    }
+
+    // Remember current timestamp for interval checks
+    Settings::setLauncherSetting("CHECK_FOR_UPDATES_LAST_TIMESTAMP", currentTimestamp.toString(Qt::ISODate));
 
     // Spawn a thread
     // We don't want any slow internet connections block our main thread
@@ -1009,7 +1055,7 @@ void LauncherMainWindow::checkForKfxUpdate()
                 emit this->updateFound(latestVersionInfo.value());
 
             } else {
-                qDebug() << "No updates found.";
+                qDebug() << "No updates found";
             }
         }
     })->start();

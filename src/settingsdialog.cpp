@@ -264,6 +264,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->lineEditMaxFps->setValidator(new QIntValidator(0, 65535, this));
     ui->lineEditGuiBlinkRate->setValidator(new QIntValidator(0, 65535, this));
     ui->lineEditNeutralFlashRate->setValidator(new QIntValidator(0, 65535, this));
+    ui->lineEditUpdateInterval->setValidator(new QIntValidator(0, 365, this));
 
     // Set other input masks
     ui->lineEditCommandChar->setValidator(
@@ -301,6 +302,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxRelease->setDisabled(!isChecked);
         ui->checkBoxAutoUpdate->setDisabled(!isChecked);
         ui->checkBoxBackupSaves->setDisabled(!isChecked);
+        ui->lineEditUpdateInterval->setDisabled(!isChecked);
+        ui->labelUpdateInterval->setDisabled(!isChecked);
     });
 
     // Connect the atmospheric sounds enabled checkbox
@@ -666,6 +669,9 @@ void SettingsDialog::loadSettings()
     ui->checkBoxAutoUpdate->setChecked(Settings::getLauncherSetting("AUTO_UPDATE") == true);
     ui->checkBoxBackupSaves->setDisabled(!isUpdateCheckEnabled);
     ui->checkBoxBackupSaves->setChecked(Settings::getLauncherSetting("BACKUP_SAVES") == true);
+    ui->lineEditUpdateInterval->setText(Settings::getLauncherSetting("CHECK_FOR_UPDATES_INTERVAL_DAYS").toString());
+    ui->lineEditUpdateInterval->setDisabled(!isUpdateCheckEnabled);
+    ui->labelUpdateInterval->setDisabled(!isUpdateCheckEnabled);
 }
 
 void SettingsDialog::saveSettings()
@@ -887,6 +893,7 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", ui->comboBoxRelease->currentData().toString());
     Settings::setLauncherSetting("AUTO_UPDATE", ui->checkBoxAutoUpdate->isChecked() == true);
     Settings::setLauncherSetting("BACKUP_SAVES", ui->checkBoxBackupSaves->isChecked() == true);
+    Settings::setLauncherSetting("CHECK_FOR_UPDATES_INTERVAL_DAYS", ui->lineEditUpdateInterval->text());
 
     // Close the settings screen
     this->close();

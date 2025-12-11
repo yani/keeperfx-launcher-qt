@@ -1600,6 +1600,42 @@ height: 35px;
         <string comment="Button">Show launcher command line options</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="lineEditUpdateInterval">
+       <property name="geometry">
+        <rect>
+         <x>750</x>
+         <y>198</y>
+         <width>61</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Textinput Title Label"/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelUpdateInterval">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>202</y>
+         <width>291</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="text">
+        <string comment="Textinput Title Label">Update interval (days, 0 = no interval)</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab7_api">
       <attribute name="title">

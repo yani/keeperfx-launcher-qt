@@ -1,6 +1,7 @@
 #include "settings.h"
 
 #include <QCoreApplication>
+#include <QDateTime>
 #include <QLocale>
 #include <QScreen>
 #include <QSettings>
@@ -20,6 +21,8 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     // Launcher settings
     {"CHECK_FOR_UPDATES_ENABLED", true},
     {"CHECK_FOR_UPDATES_RELEASE", "STABLE"},
+    {"CHECK_FOR_UPDATES_INTERVAL_DAYS", 0},
+    {"CHECK_FOR_UPDATES_LAST_TIMESTAMP", QDateTime::currentDateTimeUtc().toString(Qt::ISODate)},
     {"AUTO_UPDATE", false},
     {"BACKUP_SAVES", false},
     {"WEBSITE_INTEGRATION_ENABLED", true},
