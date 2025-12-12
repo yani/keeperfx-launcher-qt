@@ -41,7 +41,7 @@ if ! command -v msgfmt &> /dev/null; then
 fi
 
 # Grab translations
-$lupdate_bin "$(pwd)/src" "$(pwd)/ui" -ts "$(pwd)/i18n/translations_temp.ts" > /dev/null
+$lupdate_bin -locations none "$(pwd)/src" "$(pwd)/ui" -ts "$(pwd)/i18n/translations_temp.ts" > /dev/null
 
 # Convert translations to POT
 $lconvert_bin -i "$(pwd)/i18n/translations_temp.ts" -o "$(pwd)/i18n/translations_temp.pot" > /dev/null
