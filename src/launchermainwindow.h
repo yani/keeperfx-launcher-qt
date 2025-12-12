@@ -46,6 +46,9 @@ private slots:
     void onKfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNews);
     void onKfxNetImagesLoaded(QList<QJsonObject> workshopItemList, QList<QJsonObject> newsArticleList, QMap<QString, QPixmap> pixmapMap);
 
+    void on_discordButton_clicked();
+    void on_websiteButton_clicked();
+
 private:
     Ui::LauncherMainWindow *ui;
     Game *game;

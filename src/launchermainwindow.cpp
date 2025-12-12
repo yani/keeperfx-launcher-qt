@@ -1225,3 +1225,19 @@ void LauncherMainWindow::on_modsButton_clicked()
     ModManagerDialog modManagerDialog(this);
     modManagerDialog.exec();
 }
+
+void LauncherMainWindow::on_discordButton_clicked()
+{
+    // Use default browser to open Discord invite
+    QUrl url("https://discord.gg/WxgE8WZBku");
+    QDesktopServices::openUrl(url);
+}
+
+void LauncherMainWindow::on_websiteButton_clicked()
+{
+    // Use default browser to open KeeperFX.net
+    QUrl url("https://keeperfx.net");
+    QDesktopServices::openUrl(url);
+
+}
+
