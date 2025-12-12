@@ -834,7 +834,6 @@ msgctxt "ModManagerDialog|Header"
 msgid "Mod Manager"
 msgstr ""
 
-#: ../ui/runpacketfiledialog.ui:14
 msgctxt "RunPacketFileDialog|Dialog Title"
 msgid "Run Packetfile"
 msgstr ""
