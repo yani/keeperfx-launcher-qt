@@ -382,7 +382,7 @@
              <font/>
             </property>
             <property name="toolTip">
-             <string comment="Button Tooltip">Open log file</string>
+             <string comment="Button tooltip text">Open log file</string>
             </property>
             <property name="icon">
              <iconset resource="../resources.qrc">
@@ -405,7 +405,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string comment="Button Tooltip">Open game folder</string>
+             <string comment="Button tooltip text">Open game folder</string>
             </property>
             <property name="text">
              <string notr="true"/>
@@ -521,7 +521,7 @@ QPushButton:hover {
              <font/>
             </property>
             <property name="toolTip">
-             <string>Discord - Keeper Klan (English)</string>
+             <string comment="Social button tooltip text">Discord - Keeper Klan (English)</string>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
