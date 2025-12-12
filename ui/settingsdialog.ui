@@ -1617,7 +1617,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>750</x>
-         <y>198</y>
+         <y>205</y>
          <width>61</width>
          <height>25</height>
         </rect>
@@ -1635,9 +1635,9 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>460</x>
-         <y>202</y>
-         <width>291</width>
-         <height>17</height>
+         <y>198</y>
+         <width>301</width>
+         <height>41</height>
         </rect>
        </property>
        <property name="font">
@@ -1646,7 +1646,8 @@ height: 35px;
         </font>
        </property>
        <property name="text">
-        <string comment="Textinput Title Label">Update interval (days, 0 = no interval)</string>
+        <string comment="Textinput Title Label">Update check interval in days
+(0 = always check)</string>
        </property>
       </widget>
      </widget>
