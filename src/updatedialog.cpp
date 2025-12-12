@@ -54,7 +54,14 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo,
 
     // Update version text in UI
     QString infoLabelText = ui->infoLabel->text();
-    ui->infoLabel->setText(infoLabelText.arg(tr("Current version:", "Label")).arg(currentVersionString).arg(tr("New version:", "Label")).arg(newVersionString));
+    ui->infoLabel->setText(
+        infoLabelText.arg(
+            tr("Current version:", "Label"),
+            currentVersionString,
+            tr("New version:", "Label"),
+            newVersionString
+        )
+    );
 
     // Log the update path
     emit appendLog(QString("Update path: %1").arg(QCoreApplication::applicationDirPath()));
