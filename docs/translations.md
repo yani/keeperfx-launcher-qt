@@ -37,7 +37,7 @@ hold out on adding them until the game also supports the language.
 |-----------------------|----------|-----------|----------------|--------------
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)
 | Dutch                 | NL       | 100%      | 322/322        | [Yani](https://github.com/yani)
-| Italian               | IT       |           |                | [kammerer](https://github.com/Kammerer001)
+| Italian               | IT       | 92.2%     | 297/322        | [kammerer](https://github.com/Kammerer001)
 | French                | FR       | 95.3%     | 307/322        | AncientWay
 | Spanish               | ES       | 95.3%     | 307/322        | Alniarez
 | German                | DE       | 95.3%     | 307/322        | Aqua, Dofi
