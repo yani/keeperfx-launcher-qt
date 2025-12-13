@@ -19,8 +19,8 @@ QSettings *Settings::launcherSettings;
 QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
 
     // Launcher settings
+    // "CHECK_FOR_UPDATES_RELEASE" is hardcoded in 'copyMissingLauncherSettings()'
     {"CHECK_FOR_UPDATES_ENABLED", true},
-    {"CHECK_FOR_UPDATES_RELEASE", KfxVersion::currentVersion.type == KfxVersion::ReleaseType::ALPHA ? "ALPHA" : "STABLE"},
     {"CHECK_FOR_UPDATES_INTERVAL_DAYS", 0},
     {"CHECK_FOR_UPDATES_LAST_TIMESTAMP", QDateTime::currentDateTimeUtc().toString(Qt::ISODate)},
     {"AUTO_UPDATE", false},
@@ -248,6 +248,23 @@ void Settings::copyMissingLauncherSettings()
             launcherSettings->setValue(it.key(), it.value());
             qDebug() << "Copied launcher setting from defaults:" << it.key() << "=" << it.value().toString();
         }
+    }
+
+    // Set correct release type path
+    QString updateReleaseTypeKey("CHECK_FOR_UPDATES_RELEASE");
+    QString updateReleaseTypeValue;
+    if(!launcherSettings->contains(updateReleaseTypeKey)){
+
+        // Get current version from KeeperFX binary
+        if(KfxVersion::loadCurrentVersion() == true){
+            updateReleaseTypeValue = KfxVersion::currentVersion.type == KfxVersion::ReleaseType::ALPHA ? "ALPHA" : "STABLE";
+        } else {
+            updateReleaseTypeValue = "STABLE";
+        }
+
+        // Set key
+        launcherSettings->setValue(updateReleaseTypeKey, updateReleaseTypeValue);
+        qDebug() << "Set launcher setting automatically:" << updateReleaseTypeKey << "=" << updateReleaseTypeValue;
     }
 }
 
