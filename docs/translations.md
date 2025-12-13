@@ -44,7 +44,7 @@ hold out on adding them until the game also supports the language.
 | Polish                | PL       | 98.2%     | 320/326        | [Rusty](https://github.com/rustyspoonz)
 | Swedish               | SV       |           |                | 
 | Japanese              | JA       | 94.2%     | 307/326        | [AdamPlenty](https://github.com/AdamPlenty)
-| Russian               | RU       | 94.2%     | 307/326        | Quuz, [kammerer](https://github.com/Kammerer001)
+| Russian               | RU       | 100%      | 326/326        | Quuz, [kammerer](https://github.com/Kammerer001)
 | Korean                | KO       | 93.6%     | 305/326        | Desert
 | Chinese (Simplified)  | ZH-HANS  | 89.3%     | 291/326        | [JieLeTian](https://github.com/jieletian)
 | Chinese (Traditional) | ZH-HANT  |           |                | 
