@@ -79,8 +79,11 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo,
 
     // Check if alpha needs a new stable version
     if(currentUpdateVersionInfo.type == KfxVersion::ReleaseType::ALPHA) {
-        updateToNewStableFirst = KfxVersion::checkIfAlphaUpdateNeedsNewStable(currentVersionString, newVersionString);
-        emit appendLog(QString("Launcher will download a new stable version first"));
+        updateToNewStableFirst = KfxVersion::checkIfAlphaUpdateNeedsNewStable(
+            KfxVersion::currentVersion.version, this->currentUpdateVersionInfo.version);
+        if(updateToNewStableFirst){
+            emit appendLog(QString("Launcher will download a new stable version first"));
+        }
     }
 
     // Handle auto update
@@ -167,17 +170,21 @@ void UpdateDialog::on_updateButton_clicked()
     // Check if we need a new stable version first
     if(updateToNewStableFirst) {
 
+        // Get latest stable version
         std::optional<KfxVersion::VersionInfo> latestStableVersionInfo = KfxVersion::getLatestVersion(KfxVersion::ReleaseType::STABLE);
-
         if(!latestStableVersionInfo){
             emit appendLog("Failed to grab latest stable version");
             emit setUpdateFailed(tr("The updater failed to grab the latest stable version which is required for this alpha.", "Failure Message"));
             return;
         }
 
-        // Switch versions
-        nextUpdateVersionInfo = currentUpdateVersionInfo;
-        currentUpdateVersionInfo = latestStableVersionInfo.value(); // value() gets the VersionInfo from the std::optional
+        // Make sure alpha is newer than latest stable
+        if(KfxVersion::isNewerVersion(currentUpdateVersionInfo.version, latestStableVersionInfo.value().version)){
+
+            // Switch versions
+            nextUpdateVersionInfo = currentUpdateVersionInfo;
+            currentUpdateVersionInfo = latestStableVersionInfo.value(); // value() gets the VersionInfo from the std::optional
+        }
     }
 
     this->update();
