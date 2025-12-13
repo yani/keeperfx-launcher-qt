@@ -248,6 +248,24 @@ bool KfxVersion::isNewerVersion(const QString &version1, const QString &version2
     return false;
 }
 
+bool KfxVersion::checkIfAlphaUpdateNeedsNewStable(const QString &version1, const QString &version2)
+{
+    // Split versions
+    QStringList v1 = version1.split(".");
+    QStringList v2 = version2.split(".");
+
+    // Compare only first 3 version parts (major, minor, patch)
+    for (int i = 0; i < 3; ++i)
+    {
+        // Check if they are different
+        if (v1[i].toInt() != v2[i].toInt()) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 std::optional<KfxVersion::VersionInfo> KfxVersion::getLatestVersion(KfxVersion::ReleaseType type)
 {
     // Only check version for stable and alpha

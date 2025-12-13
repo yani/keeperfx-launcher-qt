@@ -37,8 +37,19 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo,
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
     setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
 
+    // Connect signals to slots
+    connect(this, &UpdateDialog::fileDownloadProgress, this, &UpdateDialog::onFileDownloadProgress);
+    // GUI signals
+    connect(this, &UpdateDialog::appendLog, this, &UpdateDialog::onAppendLog);
+    connect(this, &UpdateDialog::clearProgressBar, this, &UpdateDialog::onClearProgressBar);
+    connect(this, &UpdateDialog::setUpdateFailed, this, &UpdateDialog::onUpdateFailed);
+    // Progress bar signals
+    connect(this, &UpdateDialog::updateProgress, ui->progressBar, &QProgressBar::setValue);
+    connect(this, &UpdateDialog::setProgressMaximum, ui->progressBar, &QProgressBar::setMaximum);
+    connect(this, &UpdateDialog::setProgressBarFormat, ui->progressBar, &QProgressBar::setFormat);
+
     // Store version info in this dialog
-    this->versionInfo = versionInfo;
+    this->currentUpdateVersionInfo = versionInfo;
 
     // Get current version string
     QString currentVersionString = KfxVersion::currentVersion.version;
@@ -47,8 +58,8 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo,
     }
 
     // Get new version string
-    QString newVersionString = this->versionInfo.version;
-    if (this->versionInfo.type == KfxVersion::ReleaseType::ALPHA) {
+    QString newVersionString = this->currentUpdateVersionInfo.version;
+    if (this->currentUpdateVersionInfo.type == KfxVersion::ReleaseType::ALPHA) {
         newVersionString += " " + tr("Alpha", "Appended to version string");
     }
 
@@ -66,16 +77,11 @@ UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo,
     // Log the update path
     emit appendLog(QString("Update path: %1").arg(QCoreApplication::applicationDirPath()));
 
-    // Connect signals to slots
-    connect(this, &UpdateDialog::fileDownloadProgress, this, &UpdateDialog::onFileDownloadProgress);
-
-    connect(this, &UpdateDialog::appendLog, this, &UpdateDialog::onAppendLog);
-    connect(this, &UpdateDialog::clearProgressBar, this, &UpdateDialog::onClearProgressBar);
-    connect(this, &UpdateDialog::setUpdateFailed, this, &UpdateDialog::onUpdateFailed);
-
-    connect(this, &UpdateDialog::updateProgress, ui->progressBar, &QProgressBar::setValue);
-    connect(this, &UpdateDialog::setProgressMaximum, ui->progressBar, &QProgressBar::setMaximum);
-    connect(this, &UpdateDialog::setProgressBarFormat, ui->progressBar, &QProgressBar::setFormat);
+    // Check if alpha needs a new stable version
+    if(currentUpdateVersionInfo.type == KfxVersion::ReleaseType::ALPHA) {
+        updateToNewStableFirst = KfxVersion::checkIfAlphaUpdateNeedsNewStable(currentVersionString, newVersionString);
+        emit appendLog(QString("Launcher will download a new stable version first"));
+    }
 
     // Handle auto update
     this->autoUpdate = autoUpdate;
@@ -158,16 +164,37 @@ void UpdateDialog::on_updateButton_clicked()
         }
     }
 
+    // Check if we need a new stable version first
+    if(updateToNewStableFirst) {
+
+        std::optional<KfxVersion::VersionInfo> latestStableVersionInfo = KfxVersion::getLatestVersion(KfxVersion::ReleaseType::STABLE);
+
+        if(!latestStableVersionInfo){
+            emit appendLog("Failed to grab latest stable version");
+            emit setUpdateFailed(tr("The updater failed to grab the latest stable version.\n\nA new stable version is required.", "Failure Message"));
+            return;
+        }
+
+        // Switch versions
+        nextUpdateVersionInfo = currentUpdateVersionInfo;
+        currentUpdateVersionInfo = latestStableVersionInfo.value(); // value() gets the VersionInfo from the std::optional
+    }
+
+    this->update();
+}
+
+void UpdateDialog::update()
+{
     // Update GUI to show we are updating
     ui->progressBar->setTextVisible(true);
     ui->titleLabel->setText(tr("Updating...", "Title label"));
 
     // Tell user we start the installation
-    emit appendLog(QString("Updating to version %1").arg(versionInfo.fullString));
+    emit appendLog(QString("Updating to version %1").arg(currentUpdateVersionInfo.fullString));
 
     // Try and get filemap
     emit appendLog("Trying to get filemap");
-    auto fileMap = KfxVersion::getGameFileMap(versionInfo.type, versionInfo.version);
+    auto fileMap = KfxVersion::getGameFileMap(currentUpdateVersionInfo.type, currentUpdateVersionInfo.version);
 
     // Check if filemap is found
     if (fileMap.has_value() && !fileMap->isEmpty()) {
@@ -179,7 +206,7 @@ void UpdateDialog::on_updateButton_clicked()
     } else {
         emit appendLog("No filemap found");
         // Update using download URL
-        updateUsingArchive(versionInfo.downloadUrl);
+        updateUsingArchive(currentUpdateVersionInfo.downloadUrl);
     }
 }
 
@@ -259,7 +286,7 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
         emit appendLog("No changes in the files have been detected");
         emit appendLog("Switching to archive download");
         // Switch to archive download
-        updateUsingArchive(versionInfo.downloadUrl);
+        updateUsingArchive(currentUpdateVersionInfo.downloadUrl);
         return;
     }
 
@@ -276,9 +303,9 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 
     // Get type as string
     QString typeString;
-    if (versionInfo.type == KfxVersion::ReleaseType::STABLE) {
+    if (currentUpdateVersionInfo.type == KfxVersion::ReleaseType::STABLE) {
         typeString = "stable";
-    } else if (versionInfo.type == KfxVersion::ReleaseType::ALPHA) {
+    } else if (currentUpdateVersionInfo.type == KfxVersion::ReleaseType::ALPHA) {
         typeString = "alpha";
     } else {
         return;
@@ -286,7 +313,7 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
 
     // Get download base URL
     QString baseUrl = QString(GAME_FILE_BASE_URL) + "/" + typeString + "/"
-                      + versionInfo.version;
+                      + currentUpdateVersionInfo.version;
 
     // Start downloading files
     downloadFiles(baseUrl);
@@ -320,7 +347,7 @@ void UpdateDialog::onArchiveDownloadFinished(bool success)
     emit appendLog("Archive successfully downloaded");
     emit clearProgressBar();
 
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(versionInfo.downloadUrl).fileName() + ".tmp");
+    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(currentUpdateVersionInfo.downloadUrl).fileName() + ".tmp");
 
     // Test archive
     emit appendLog("Testing archive...");
@@ -332,7 +359,7 @@ void UpdateDialog::onArchiveDownloadFinished(bool success)
 
 void UpdateDialog::onArchiveTestComplete(uint64_t archiveSize){
 
-    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(versionInfo.downloadUrl).fileName() + ".tmp");
+    QFile *outputFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(currentUpdateVersionInfo.downloadUrl).fileName() + ".tmp");
 
     // Show total size
     double archiveSizeInMiB = static_cast<double>(archiveSize) / (1024 * 1024);
@@ -354,15 +381,24 @@ void UpdateDialog::onArchiveTestComplete(uint64_t archiveSize){
 
 void UpdateDialog::onUpdateComplete()
 {
-    ui->titleLabel->setText(tr("Update complete!", "Title label"));
     emit appendLog("Extraction completed");
     emit clearProgressBar();
 
     // Remove temp archive
     emit appendLog("Removing temporary archive...");
-    QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(versionInfo.downloadUrl).fileName() + ".tmp");
+    QFile *archiveFile = new QFile(QCoreApplication::applicationDirPath() + "/" + QUrl(currentUpdateVersionInfo.downloadUrl).fileName() + ".tmp");
     if (archiveFile->exists()) {
         archiveFile->remove();
+    }
+
+    // Check if this is the first update and we have another one that needs to be done
+    if(nextUpdateVersionInfo.type != KfxVersion::ReleaseType::UNKNOWN){
+        currentUpdateVersionInfo = nextUpdateVersionInfo;
+        nextUpdateVersionInfo = KfxVersion::VersionInfo{}; // reset var
+
+        // Do another update
+        this->update();
+        return;
     }
 
     // Handle any settings update
@@ -370,12 +406,13 @@ void UpdateDialog::onUpdateComplete()
     Settings::load();
 
     // We are done!
+    ui->titleLabel->setText(tr("Update complete!", "Title label"));
     emit appendLog("Done!");
 
     // Create message box
     QMessageBox *msgBox = new QMessageBox(QMessageBox::Information,
                                           "KeeperFX",
-                                          tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version),
+                                          tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(currentUpdateVersionInfo.version),
                                           QMessageBox::Ok);
 
     // Close messagebox after a delay if auto updating
@@ -410,7 +447,7 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
 {
     // Create temp dir
     tempDir = QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation)
-                   + "/kfx-update-" + versionInfo.version);
+                   + "/kfx-update-" + currentUpdateVersionInfo.version);
     emit appendLog(QString("Temp directory path: %1").arg(tempDir.absolutePath()));
 
     // Make temp directory
@@ -556,6 +593,17 @@ void UpdateDialog::onFileDownloadProgress()
 
         // If all files have been updated
         if (copiedFiles == totalFiles) {
+
+            // Check if this is the first update and we have another one that needs to be done
+            if(nextUpdateVersionInfo.type != KfxVersion::ReleaseType::UNKNOWN){
+                currentUpdateVersionInfo = nextUpdateVersionInfo;
+                nextUpdateVersionInfo = KfxVersion::VersionInfo{}; // reset var
+
+                // Do another update
+                this->update();
+                return;
+            }
+
             ui->titleLabel->setText(tr("Update complete!", "Title label"));
             emit clearProgressBar();
 
@@ -569,7 +617,7 @@ void UpdateDialog::onFileDownloadProgress()
             // Create message box
             QMessageBox *msgBox = new QMessageBox(QMessageBox::Information,
                                                   "KeeperFX",
-                                                  tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(versionInfo.version),
+                                                  tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(currentUpdateVersionInfo.version),
                                                   QMessageBox::Ok);
 
             // Close messagebox after a delay if auto updating

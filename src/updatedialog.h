@@ -47,14 +47,18 @@ signals:
 
 private:
     Ui::UpdateDialog *ui;
-    KfxVersion::VersionInfo versionInfo;
     QNetworkAccessManager *networkManager;
+
+    KfxVersion::VersionInfo currentUpdateVersionInfo;
+    KfxVersion::VersionInfo nextUpdateVersionInfo;
+    bool updateToNewStableFirst = false;
 
     void closeEvent(QCloseEvent *event) override;
 
     QStringList updateList;
     void updateUsingFilemap(QMap<QString, QString> fileMap);
     void updateUsingArchive(QString downloadUrl);
+    void update();
 
     QDir tempDir;
     int totalFiles;

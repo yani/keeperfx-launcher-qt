@@ -46,6 +46,7 @@ public:
     static bool isVersionLowerOrEqual(const QString &fileVersion, const QString &currentVersion);
     static bool isVersionHigherOrEqual(const QString &fileVersion, const QString &currentVersion);
     static bool isNewerVersion(const QString &fileVersion, const QString &currentVersion);
+    static bool checkIfAlphaUpdateNeedsNewStable(const QString &version1, const QString &version2);
 
     static std::optional<VersionInfo> getLatestVersion(ReleaseType type);
     static std::optional<QMap<QString, QString>> getGameFileMap(ReleaseType type, QString version);
