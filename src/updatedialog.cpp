@@ -171,7 +171,7 @@ void UpdateDialog::on_updateButton_clicked()
 
         if(!latestStableVersionInfo){
             emit appendLog("Failed to grab latest stable version");
-            emit setUpdateFailed(tr("The updater failed to grab the latest stable version.\n\nA new stable version is required.", "Failure Message"));
+            emit setUpdateFailed(tr("The updater failed to grab the latest stable version which is required for this alpha.", "Failure Message"));
             return;
         }
 
