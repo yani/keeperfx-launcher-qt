@@ -25,6 +25,7 @@ signals:
     void filesToRemoveFound(QStringList filesToRemove);
     void kfxNetRetrieval(QJsonDocument workshopItems, QJsonDocument latestNew);
     void kfxNetImagesLoaded(QList<QJsonObject> workshopItemList, QList<QJsonObject> newsArticleList, QMap<QString, QPixmap> pixmapMap);
+    void showUpdateIcon(bool show);
 
 public:
     LauncherMainWindow(QWidget *parent = nullptr);
@@ -40,6 +41,8 @@ private slots:
     void on_modsButton_clicked();
 
     void onUpdateFound(KfxVersion::VersionInfo versionInfo);
+    void onShowUpdateIcon(bool show);
+
     void onFilesToRemoveFound(QStringList filesToRemove);
     void onGameEnded(int exitCode, QProcess::ExitStatus exitStatus);
 

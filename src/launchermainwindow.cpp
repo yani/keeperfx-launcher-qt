@@ -58,6 +58,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     connect(this, &LauncherMainWindow::kfxNetRetrieval, this, &LauncherMainWindow::onKfxNetRetrieval, Qt::QueuedConnection);
     connect(this, &LauncherMainWindow::kfxNetImagesLoaded, this, &LauncherMainWindow::onKfxNetImagesLoaded, Qt::QueuedConnection);
     connect(this, &LauncherMainWindow::updateFound, this, &LauncherMainWindow::onUpdateFound);
+    connect(this, &LauncherMainWindow::showUpdateIcon, this, &LauncherMainWindow::onShowUpdateIcon);
     connect(this, &LauncherMainWindow::filesToRemoveFound, this, &LauncherMainWindow::onFilesToRemoveFound);
     connect(game, &Game::gameEnded, this, &LauncherMainWindow::onGameEnded);
 
@@ -105,6 +106,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         // Fallback to text
         ui->spinnerLabel->setText("Loading...");
     }
+
+    // Clear version update spinner label
+    ui->versionUpdateSpinnerLabel->setText("");
 
     // Show the loading spinner during startup
     showLoadingSpinner();
@@ -931,6 +935,9 @@ void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
 
 void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
 {
+    // Hide update icon
+    this->onShowUpdateIcon(false);
+
     // Start updater
     bool autoUpdate = Settings::getLauncherSetting("AUTO_UPDATE") == true;
     UpdateDialog updateDialog(this, versionInfo, autoUpdate);
@@ -970,6 +977,30 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
     // Refresh the installation-aware buttons
     // It's possible an update is done that fixes the installation and adds the binary again
     refreshInstallationAwareButtons();
+}
+
+void LauncherMainWindow::onShowUpdateIcon(bool show)
+{
+    if(show == false){
+        if (QMovie* movie = ui->versionUpdateSpinnerLabel->movie()) {
+            movie->stop();
+            movie->deleteLater();
+        }
+        ui->versionUpdateSpinnerLabel->clear();
+        return;
+    }
+
+    // Load animated loading spinner GIF
+    QMovie* movie = new QMovie(":/res/img/spinner.gif");
+    movie->setScaledSize(QSize(16, 16));
+    if (movie->isValid()) {
+        // Load GIF into the placeholder label
+        ui->versionUpdateSpinnerLabel->setMovie(movie);
+        movie->start();
+    } else {
+        // Fallback to text
+        ui->versionUpdateSpinnerLabel->setText("...");
+    }
 }
 
 // Wrapper function because we can't use the 'ignoreInterval' parameter in slots
@@ -1041,6 +1072,9 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
             return;
         }
 
+        // Show update icon
+        emit this->showUpdateIcon(true);
+
         // Get latest version for this release type
         auto latestVersionInfo = KfxVersion::getLatestVersion(type);
         if (latestVersionInfo) {
@@ -1053,11 +1087,16 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
 
                 // Emit signal for update
                 emit this->updateFound(latestVersionInfo.value());
+                return;
 
             } else {
                 qDebug() << "No updates found";
             }
         }
+
+        // Hide update icon
+        emit this->showUpdateIcon(false);
+
     })->start();
 }
 
