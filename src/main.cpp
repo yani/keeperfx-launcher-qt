@@ -270,11 +270,11 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    // Disable SSL verification
-    // TODO: eventually add SSL certs
+    // Setup SSL verification using Mozilla's CA bundle
     QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
-    sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
+    sslConfig.setCaCertificates(QSslCertificate::fromPath(":/res/cert/cacert.pem"));
     QSslConfiguration::setDefaultConfiguration(sslConfig);
+    qDebug() << "Loaded CAs:" << QSslConfiguration::defaultConfiguration().caCertificates().size();
 
     // Load the launcher and kfx settings
     // Also try and copy over defaults
