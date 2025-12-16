@@ -260,6 +260,15 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
         // Make sure local file is readable
         // It needs to be for the checksum to work
         if (!file.open(QIODevice::ReadOnly)) {
+
+            // We'll try to fallback to removing the file because the file might be corrupted or something
+            // This shouldn't really happen but it might fix a weird issue
+            if(file.remove() == true){
+                qDebug() << "Deleted file during update:" << localFilePath;
+                updateList.append(filePath);
+                continue;
+            }
+
             emit appendLog(QString("Failed to open file: %1").arg(localFilePath));
             emit setUpdateFailed(tr("Failed to open file: %1", "Failure Message").arg(localFilePath));
             return;
