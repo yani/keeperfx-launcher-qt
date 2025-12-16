@@ -57,7 +57,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Add a "Open config file" button to the buttonbox
     QPushButton *configButton = new QPushButton(tr("Open config file", "Dialog Button"), this);
     configButton->setIcon(QIcon::fromTheme("text-x-generic")); // typical "text file" icon
-    ui->buttonBox->addButton(configButton, QDialogButtonBox::ActionRole);
+    ui->buttonBox->addButton(configButton, QDialogButtonBox::HelpRole);
     connect(configButton, &QPushButton::clicked, this, &SettingsDialog::onOpenConfigButtonClicked);
 
     // Disable Save button when nothing is changed
