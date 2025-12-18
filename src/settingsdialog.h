@@ -18,6 +18,7 @@ public:
 
 private slots:
     void onOpenConfigButtonClicked();
+    void onResolutionChanged(int index);
     void on_pushButtonShowLauncherParams_clicked();
 
 private:
@@ -42,4 +43,7 @@ private:
     QStringList hiddenStartupScreens;
 
     void sortLanguageComboBox(QComboBox *comboBox);
+
+    void showCustomResolutionDialog(QComboBox *sourceCombo);
+    void addCustomResolution(int width, int height, QComboBox *sourceCombo);
 };

@@ -191,6 +191,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Map: Resolutions
     QMap<QString, QString> resolutionsMap = {
         {tr("Match desktop", "Resolution Dropdown"), "MATCH_DESKTOP"},
+        {tr("Custom...", "Resolution Dropdown"), "CUSTOM"},
         {"640 x 400 (8:5)", "640x400"},
         {"640 x 480 (4:3)", "640x480"},
         {"800 x 600 (4:3)", "800x600"},
@@ -224,6 +225,14 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxResolution2_2->addItem(it.key(), it.value());
         ui->comboBoxResolution3_2->addItem(it.key(), it.value());
     }
+
+    // Connect custom resolution signals and slots
+    connect(ui->comboBoxResolution1, &QComboBox::currentIndexChanged, this, &SettingsDialog::onResolutionChanged);
+    connect(ui->comboBoxResolution2, &QComboBox::currentIndexChanged, this, &SettingsDialog::onResolutionChanged);
+    connect(ui->comboBoxResolution3, &QComboBox::currentIndexChanged, this, &SettingsDialog::onResolutionChanged);
+    connect(ui->comboBoxResolution1_2, &QComboBox::currentIndexChanged, this, &SettingsDialog::onResolutionChanged);
+    connect(ui->comboBoxResolution2_2, &QComboBox::currentIndexChanged, this, &SettingsDialog::onResolutionChanged);
+    connect(ui->comboBoxResolution3_2, &QComboBox::currentIndexChanged, this, &SettingsDialog::onResolutionChanged);
 
     // Map: Display mode
     QMap<QString, QString> displayModesMap = {
@@ -500,21 +509,40 @@ void SettingsDialog::loadSettings()
             mode = match.captured(1);
         }
 
-        // Update the widgets
+        // Select combobox widgets
+        QComboBox *resolutionComboBox;
+        QComboBox *displayModeComboBox;
         switch (resolutionIndex) {
-        case 0:
-            ui->comboBoxResolution1->setCurrentIndex(ui->comboBoxResolution1->findData(res));
-            ui->comboBoxDisplayMode1->setCurrentIndex(ui->comboBoxDisplayMode1->findData(mode));
-            break;
-        case 1:
-            ui->comboBoxResolution2->setCurrentIndex(ui->comboBoxResolution2->findData(res));
-            ui->comboBoxDisplayMode2->setCurrentIndex(ui->comboBoxDisplayMode2->findData(mode));
-            break;
-        case 2:
-            ui->comboBoxResolution3->setCurrentIndex(ui->comboBoxResolution3->findData(res));
-            ui->comboBoxDisplayMode3->setCurrentIndex(ui->comboBoxDisplayMode3->findData(mode));
-            break;
+            case 0:
+                resolutionComboBox = ui->comboBoxResolution1;
+                displayModeComboBox = ui->comboBoxDisplayMode1;
+                break;
+            case 1:
+                resolutionComboBox = ui->comboBoxResolution2;
+                displayModeComboBox = ui->comboBoxDisplayMode2;
+                break;
+            case 2:
+                resolutionComboBox = ui->comboBoxResolution3;
+                displayModeComboBox = ui->comboBoxDisplayMode3;
+                break;
         }
+
+        if(res.toLower().contains("x")) {
+
+            // Split width and height
+            QStringList sizes = res.toLower().split("x");
+            int width = sizes[0].toInt();
+            int height = sizes[1].toInt();
+
+            // Add missing custom resolutions
+            if (resolutionComboBox->findData(res) == -1) {
+                addCustomResolution(width, height, nullptr);
+            }
+        }
+
+        resolutionComboBox->setCurrentIndex(resolutionComboBox->findData(res));
+        displayModeComboBox->setCurrentIndex(displayModeComboBox->findData(mode));
+        resolutionComboBox->setProperty("previousIndex", resolutionComboBox->currentIndex());
 
         resolutionIndex++;
     }
@@ -547,21 +575,40 @@ void SettingsDialog::loadSettings()
             mode = match.captured(1);
         }
 
-        // Update the widgets
+        // Select combobox widgets
+        QComboBox *resolutionComboBox;
+        QComboBox *displayModeComboBox;
         switch (resolutionIndex) {
-        case 0:
-            ui->comboBoxResolution1_2->setCurrentIndex(ui->comboBoxResolution1->findData(res));
-            ui->comboBoxDisplayMode1_2->setCurrentIndex(ui->comboBoxDisplayMode1->findData(mode));
-            break;
-        case 1:
-            ui->comboBoxResolution2_2->setCurrentIndex(ui->comboBoxResolution2->findData(res));
-            ui->comboBoxDisplayMode2_2->setCurrentIndex(ui->comboBoxDisplayMode2->findData(mode));
-            break;
-        case 2:
-            ui->comboBoxResolution3_2->setCurrentIndex(ui->comboBoxResolution3->findData(res));
-            ui->comboBoxDisplayMode3_2->setCurrentIndex(ui->comboBoxDisplayMode3->findData(mode));
-            break;
+            case 0:
+                resolutionComboBox = ui->comboBoxResolution1_2;
+                displayModeComboBox = ui->comboBoxDisplayMode1_2;
+                break;
+            case 1:
+                resolutionComboBox = ui->comboBoxResolution2_2;
+                displayModeComboBox = ui->comboBoxDisplayMode2_2;
+                break;
+            case 2:
+                resolutionComboBox = ui->comboBoxResolution3_2;
+                displayModeComboBox = ui->comboBoxDisplayMode3_2;
+                break;
         }
+
+        if(res.toLower().contains("x")) {
+
+            // Split width and height
+            QStringList sizes = res.toLower().split("x");
+            int width = sizes[0].toInt();
+            int height = sizes[1].toInt();
+
+            // Add missing custom resolutions
+            if (resolutionComboBox->findData(res) == -1) {
+                addCustomResolution(width, height, nullptr);
+            }
+        }
+
+        resolutionComboBox->setCurrentIndex(resolutionComboBox->findData(res));
+        displayModeComboBox->setCurrentIndex(displayModeComboBox->findData(mode));
+        resolutionComboBox->setProperty("previousIndex", resolutionComboBox->currentIndex());
 
         resolutionIndex++;
     }
@@ -1237,3 +1284,98 @@ void SettingsDialog::on_pushButtonShowLauncherParams_clicked()
     dlg.exec();
 }
 
+void SettingsDialog::onResolutionChanged(int index)
+{
+    // Get sender combobox
+    QComboBox *combo = qobject_cast<QComboBox *>(sender());
+    if (!combo) {
+        return;
+    }
+
+    // Check if selected item is the custom resolution
+    if (combo->itemData(index).toString() != "CUSTOM") {
+        combo->setProperty("previousIndex", index);
+        return;
+    }
+
+    showCustomResolutionDialog(combo);
+}
+
+void SettingsDialog::showCustomResolutionDialog(QComboBox *sourceCombo)
+{
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Custom resolution", "Custom resoltuion dialog title"));
+
+    auto *layout = new QGridLayout(&dialog);
+
+    auto *labelWidth  = new QLabel(tr("Width:", "Custom resolution dialog label"), &dialog);
+    auto *labelHeight = new QLabel(tr("Height:", "Custom resolution dialog label"), &dialog);
+
+    auto *editWidth  = new QLineEdit(&dialog);
+    auto *editHeight = new QLineEdit(&dialog);
+
+    editWidth->setValidator(new QIntValidator(1, 65535, editWidth));
+    editHeight->setValidator(new QIntValidator(1, 65535, editHeight));
+
+    layout->addWidget(labelWidth,  0, 0);
+    layout->addWidget(editWidth,  0, 1);
+    layout->addWidget(labelHeight, 1, 0);
+    layout->addWidget(editHeight, 1, 1);
+
+    auto *buttons = new QDialogButtonBox(
+        QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
+        &dialog
+        );
+
+    layout->addWidget(buttons, 2, 0, 1, 2);
+
+    connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    int previousIndex = sourceCombo->property("previousIndex").toInt();
+
+    if (dialog.exec() != QDialog::Accepted) {
+        sourceCombo->setCurrentIndex(previousIndex != -1 ? previousIndex : sourceCombo->findData(QString("MATCH_DESKTOP")));
+        return;
+    }
+
+    int width  = editWidth->text().toInt();
+    int height = editHeight->text().toInt();
+
+    if (width <= 0 || height <= 0) {
+        sourceCombo->setCurrentIndex(previousIndex != -1 ? previousIndex : sourceCombo->findData(QString("MATCH_DESKTOP")));
+        return;
+    }
+
+    addCustomResolution(width, height, sourceCombo);
+}
+
+void SettingsDialog::addCustomResolution(int width, int height, QComboBox *sourceCombo)
+{
+    const QString value = QString("%1x%2").arg(width).arg(height);
+    const QString text  = tr("%1 x %2 (Custom)", "Resolution Dropdown").arg(width).arg(height);
+
+    QList<QComboBox *> combos = {
+        ui->comboBoxResolution1,
+        ui->comboBoxResolution2,
+        ui->comboBoxResolution3,
+        ui->comboBoxResolution1_2,
+        ui->comboBoxResolution2_2,
+        ui->comboBoxResolution3_2,
+    };
+
+    for (QComboBox *combo : combos) {
+        if (combo->findData(value) == -1) {
+            combo->addItem(text, value);
+        }
+    }
+
+    // Select only in the combo that triggered it
+    if(sourceCombo){
+        int index = sourceCombo->findData(value);
+        if (index != -1) {
+            sourceCombo->setCurrentIndex(index);
+            sourceCombo->setProperty("previousIndex", index);
+        }
+    }
+}
