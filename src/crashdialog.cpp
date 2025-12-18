@@ -1,13 +1,18 @@
 #include "crashdialog.h"
+#include "ui_crashdialog.h"
+
 #include "apiclient.h"
 #include "archiver.h"
+#include "gzip.h"
 #include "savefile.h"
-#include "ui_crashdialog.h"
 #include "version.h"
 #include "settings.h"
+#include "launcheroptions.h"
 
 #include <QDir>
 #include <QMessageBox>
+
+#define COMPRESS_KEEPERFX_LOG_GZIP true
 
 CrashDialog::CrashDialog(QWidget *parent)
     : QDialog(parent)
@@ -122,8 +127,43 @@ void CrashDialog::on_sendButton_clicked()
     // keeperfx.log
     QFile kfxLogFile(QCoreApplication::applicationDirPath() + "/keeperfx.log");
     if (kfxLogFile.exists() && kfxLogFile.open(QIODevice::ReadOnly)) {
-        jsonPostObject["game_log"] = QString(kfxLogFile.readAll());
+
+        // Check if logfile is reasonable size (<8MiB)
+        if (kfxLogFile.size() > 8 * 1024LL * 1024LL) {
+            QMessageBox::warning(this, tr("Crash Report", "MessageBox Title"), tr("Failed to submit crash report.", "MessageBox Text"));
+            qWarning() << "Log file too big to be sent with crash report:" << kfxLogFile.fileName() << "Size:" << kfxLogFile.size();
+            this->close();
+            return;
+        }
+
+        // Read logfile
+        QByteArray logData = kfxLogFile.readAll();
         kfxLogFile.close();
+
+#if COMPRESS_KEEPERFX_LOG_GZIP
+
+        // Check command line override
+        if (LauncherOptions::isSet("disable-gzip-upload") != true) {
+
+            // Compress using gzip
+            QByteArray gzipped = GZip::compress(logData);
+
+            if (!gzipped.isEmpty()) {
+                jsonPostObject["game_log"] = QString(gzipped.toBase64());
+                jsonPostObject["game_log_encoding"] = "gzip+base64";
+            } else {
+                qDebug() << "GZip::Compress failed, sending plain text log";
+                jsonPostObject["game_log"] = QString(logData);
+            }
+
+        } else {
+            qDebug() << "--disable-gzip set, sending plain text log";
+            jsonPostObject["game_log"] = QString(logData);
+        }
+#else
+        // gzip disabled at compile time
+        jsonPostObject["game_log"] = QString(logData);
+#endif
     }
 
     // Game std output

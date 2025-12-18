@@ -47,6 +47,7 @@ void LauncherOptions::processApp(QApplication &app)
         {"no-image-cache",              "Bypass image caching"},
         {"download-music",              "Start the music download procedure"},
         {"skip-file-removal",           "Do not ask for the removal of leftover files"},
+        {"disable-gzip-upload",         "Disable GZip compression of uploads"},
 
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},
