@@ -25,7 +25,12 @@ void Logger::handler(QtMsgType type,
 
     // Console output
     {
-        QTextStream consoleOut(stderr);
+        FILE *stream =
+            (type == QtDebugMsg || type == QtInfoMsg)
+                ? stdout
+                : stderr;
+
+        QTextStream consoleOut(stream);
         consoleOut << timeStamp << " " << typeStr << ": " << msg << Qt::endl;
         consoleOut.flush();
     }
