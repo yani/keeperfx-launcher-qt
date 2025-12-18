@@ -144,8 +144,10 @@ void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
     // Check for crash
     if (exitStatus == QProcess::ExitStatus::CrashExit || exitCode != 0) {
 
-        // Open crash dialog if enabled
-        if(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true){
+        // Open crash dialog if enabled and this is not a heavy log
+        if(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED").toBool() == true &&
+           Settings::getLauncherSetting("GAME_HEAVY_LOG_ENABLED").toBool() != true
+        ){
 
             // Create dialog
             CrashDialog crashDialog(this->parentWidget);
