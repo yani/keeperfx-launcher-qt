@@ -18,7 +18,7 @@ Downloader::~Downloader() {
 void Downloader::download(const QUrl &url, QFile *localFileOutput) {
     this->localFileOutput = localFileOutput;
     if (!localFileOutput->open(QIODevice::WriteOnly)) {
-        qDebug() << "Failed to open file for writing:" << localFileOutput->errorString();
+        qWarning() << "Failed to open file for writing:" << localFileOutput->errorString();
         emit downloadCompleted(false);
         delete localFileOutput;
         localFileOutput = nullptr;
