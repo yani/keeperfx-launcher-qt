@@ -41,11 +41,12 @@ void Downloader::onReadyRead() {
     if (localFileOutput->isOpen()) {
         localFileOutput->write(reply->readAll());
     } else {
-        qDebug() << "File is not open for writing.";
+        qWarning() << "File is not open for writing.";
     }
 }
 
 void Downloader::onFinished() {
+
     if (localFileOutput->isOpen()) {
         localFileOutput->close();
     }
@@ -53,7 +54,7 @@ void Downloader::onFinished() {
     bool success = (reply->error() == QNetworkReply::NoError);
 
     if (!success) {
-        qDebug() << "Download failed:" << reply->errorString();
+        qWarning() << "Download failed:" << reply->errorString();
     }
 
     emit downloadCompleted(success);
