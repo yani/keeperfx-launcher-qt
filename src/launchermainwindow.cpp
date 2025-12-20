@@ -289,12 +289,13 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     // Verify the binaries against known certificates
     verifyBinaryCertificates();
 
-    // Check if there are any files that should be removed
-    checkForFileRemoval();
-
     // Automatically check for updates if that's enabled
     if (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED") == true) {
         checkForKfxUpdate();
+    } else {
+        // Check if there are any files that should be removed
+        // We do this if we're not checking for updates because when checking for updates we do this as well
+        checkForFileRemoval();
     }
 }
 
@@ -921,12 +922,12 @@ void LauncherMainWindow::checkForFileRemoval()
 void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
 {
     // Workaround to make sure main launcher window is visible
-    /*if (!this->isVisible()) {
+    if (!this->isVisible()) {
         QTimer::singleShot(100, this, [this, filesToRemove]() {
             emit this->filesToRemoveFound(filesToRemove);
         });
         return;
-    }*/
+    }
 
     // Show file removal dialog
     FileRemoverDialog fileRemoverDialog(this, filesToRemove);
@@ -1016,6 +1017,7 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
     if (KfxVersion::currentVersion.type != KfxVersion::ReleaseType::STABLE &&
         KfxVersion::currentVersion.type != KfxVersion::ReleaseType::ALPHA) {
         qDebug() << "Not updating because we are not on stable or alpha version";
+        checkForFileRemoval(); // Check if there are any files that should be removed
         return;
     }
 
@@ -1044,6 +1046,7 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
             // Check if we need to update
             if(lastTimestamp.addDays(intervalDays) > currentTimestamp) {
                 qDebug() << "Not updating because we have not passed the interval for updates yet:" << QString(QString::number(intervalDays) + " day");
+                checkForFileRemoval(); // Check if there are any files that should be removed
                 return;
             } else {
                 qDebug() << "Update interval is passed, checking for update";
@@ -1069,6 +1072,7 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
         // Only update to stable and alpha
         if (type != KfxVersion::ReleaseType::STABLE && type != KfxVersion::ReleaseType::ALPHA) {
             qDebug() << "Invalid auto update release type:" << typeString;
+            checkForFileRemoval(); // Check if there are any files that should be removed
             return;
         }
 
@@ -1096,6 +1100,9 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
 
         // Hide update icon
         emit this->showUpdateIcon(false);
+
+        // Check if there are any files that should be removed
+        checkForFileRemoval();
 
     })->start();
 }
