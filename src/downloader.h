@@ -27,4 +27,7 @@ private:
     QNetworkAccessManager *manager;
     QNetworkReply *reply;
     QFile *localFileOutput;
+
+    qint64 bytesWritten = 0;
+    qint64 bytesTotal   = -1;
 };
