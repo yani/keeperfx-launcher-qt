@@ -48,6 +48,7 @@ void LauncherOptions::processApp(QApplication &app)
         {"download-music",              "Start the music download procedure"},
         {"skip-file-removal",           "Do not ask for the removal of leftover files"},
         {"disable-gzip-upload",         "Disable GZip compression of uploads"},
+        {"crash-report",                "Force a crash report dialog"},
 
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},
