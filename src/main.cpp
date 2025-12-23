@@ -9,9 +9,11 @@
 #include <QStyleFactory>
 #include <QFontDatabase>
 #include <QThread>
+#include <QMessageBox>
 
 using namespace Qt::StringLiterals;
 
+#include "crashdialog.h"
 #include "helper.h"
 #include "launchermainwindow.h"
 #include "launcheroptions.h"
@@ -269,6 +271,21 @@ int main(int argc, char *argv[])
 
     // Force dark theme
     setDarkTheme();
+
+    // Check if we want to force a crash report dialog
+    // This is useful for development
+    if (LauncherOptions::isSet("crash-report") == true) {
+        qDebug() << "Forcing a crash report dialog (crash-report)";
+        // Load game version because we need it to submit crash reports
+        if (KfxVersion::loadCurrentVersion() == true) {
+            CrashDialog dialog;
+            dialog.exec();
+        } else {
+            qWarning() << "Failed to determine KeeperFX version. This is required for crash reports";
+            QMessageBox::warning(nullptr, "Error", "Failed to determine the KeeperFX version. This is required to submit a crash report.");
+        }
+        return 0;
+    }
 
     // Create the main window and show it
     LauncherMainWindow mainWindow;

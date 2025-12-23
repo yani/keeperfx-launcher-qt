@@ -21,7 +21,6 @@
 #include "certificate.h"
 #include "clickablelabel.h"
 #include "copydkfilesdialog.h"
-#include "crashdialog.h"
 #include "directconnectdialog.h"
 #include "dkfiles.h"
 #include "downloadmusicdialog.h"
@@ -297,15 +296,6 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         // Check if there are any files that should be removed
         // We do this if we're not checking for updates because when checking for updates we do this as well
         checkForFileRemoval();
-    }
-
-    // Check if we want to force a crash report dialog
-    // This is useful for development
-    if (LauncherOptions::isSet("crash-report") == true) {
-        qDebug() << "Forcing a crash report dialog (crash-report)";
-        CrashDialog *crashDialog = new CrashDialog(this);
-        crashDialog->exec();
-        return;
     }
 }
 
