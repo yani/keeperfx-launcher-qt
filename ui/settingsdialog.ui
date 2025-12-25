@@ -23,11 +23,6 @@
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QTabWidget" name="tabWidget">
-     <property name="font">
-      <font>
-       <family>Arial</family>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true">QTabBar::tab {
 height: 35px;
@@ -52,25 +47,15 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelLanguage">
        <property name="geometry">
         <rect>
          <x>30</x>
          <y>43</y>
-         <width>151</width>
+         <width>171</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Game language</string>
@@ -85,11 +70,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Display Intro</string>
        </property>
@@ -102,11 +82,6 @@ height: 35px;
          <width>321</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Enable Cheats</string>
@@ -121,11 +96,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Enable Censorship</string>
        </property>
@@ -139,11 +109,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelScreenshot">
        <property name="geometry">
@@ -153,11 +118,6 @@ height: 35px;
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Screenshot type</string>
@@ -171,11 +131,6 @@ height: 35px;
          <width>171</width>
          <height>31</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Gameturns per second
@@ -194,11 +149,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelCommandChar">
        <property name="geometry">
@@ -208,11 +158,6 @@ height: 35px;
          <width>161</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Command character</string>
@@ -227,11 +172,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxDisplaySplashScreens">
        <property name="geometry">
@@ -241,11 +181,6 @@ height: 35px;
          <width>321</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Display splash screens</string>
@@ -260,11 +195,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Enable delta time</string>
        </property>
@@ -277,11 +207,6 @@ height: 35px;
          <width>321</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Freeze game when not focused</string>
@@ -322,11 +247,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxExitOnLuaError">
        <property name="geometry">
@@ -336,11 +256,6 @@ height: 35px;
          <width>321</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Exit on LUA error</string>
@@ -355,11 +270,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Automatically enable flee</string>
        </property>
@@ -372,11 +282,6 @@ height: 35px;
          <width>321</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Automatically enable imprison</string>
@@ -403,16 +308,11 @@ height: 35px;
       <widget class="QLabel" name="labelResolution">
        <property name="geometry">
         <rect>
-         <x>100</x>
+         <x>111</x>
          <y>30</y>
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Resolution</string>
@@ -421,16 +321,11 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxResolution1">
        <property name="geometry">
         <rect>
-         <x>99</x>
+         <x>110</x>
          <y>60</y>
          <width>161</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxDisplayMode1">
@@ -442,11 +337,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelDisplayMode">
        <property name="geometry">
@@ -456,11 +346,6 @@ height: 35px;
          <width>131</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Display mode</string>
@@ -475,11 +360,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelDisplayMonitor">
        <property name="geometry">
@@ -489,11 +369,6 @@ height: 35px;
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Display monitor</string>
@@ -508,11 +383,6 @@ height: 35px;
          <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Dropdown Title Label" extracomment="Should be kept very short">View 1</string>
        </property>
@@ -525,11 +395,6 @@ height: 35px;
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label" extracomment="Should be kept very short">View 2</string>
@@ -544,11 +409,6 @@ height: 35px;
          <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Dropdown Title Label" extracomment="Should be kept very short">View 3</string>
        </property>
@@ -556,31 +416,21 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxResolution2">
        <property name="geometry">
         <rect>
-         <x>99</x>
+         <x>110</x>
          <y>100</y>
          <width>161</width>
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QComboBox" name="comboBoxResolution3">
        <property name="geometry">
         <rect>
-         <x>99</x>
+         <x>110</x>
          <y>140</y>
          <width>161</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxDisplayMode2">
@@ -592,11 +442,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QComboBox" name="comboBoxDisplayMode3">
        <property name="geometry">
@@ -607,13 +452,8 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="labelViewsInfo">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -638,11 +478,6 @@ height: 35px;
          <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Dropdown Title Label">Resize Movies</string>
        </property>
@@ -656,11 +491,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelCreatureFlowerSize">
        <property name="geometry">
@@ -670,11 +500,6 @@ height: 35px;
          <width>201</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Creature flower size (px)</string>
@@ -689,11 +514,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelHandSize">
        <property name="geometry">
@@ -703,11 +523,6 @@ height: 35px;
          <width>201</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Hand size %</string>
@@ -722,11 +537,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLineEdit" name="lineEditLineBoxSize">
        <property name="geometry">
@@ -736,11 +546,6 @@ height: 35px;
          <width>61</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QLabel" name="labelLineBoxSize">
@@ -752,11 +557,6 @@ height: 35px;
          <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Textinput Title Label">Select box line size %</string>
        </property>
@@ -764,16 +564,11 @@ height: 35px;
       <widget class="QLabel" name="labelResolution_2">
        <property name="geometry">
         <rect>
-         <x>511</x>
+         <x>522</x>
          <y>30</y>
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Resolution</string>
@@ -782,61 +577,41 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxDisplayMode1_2">
        <property name="geometry">
         <rect>
-         <x>701</x>
+         <x>700</x>
          <y>140</y>
          <width>111</width>
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QComboBox" name="comboBoxDisplayMode2_2">
        <property name="geometry">
         <rect>
-         <x>701</x>
+         <x>700</x>
          <y>100</y>
          <width>111</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QComboBox" name="comboBoxResolution2_2">
        <property name="geometry">
         <rect>
-         <x>510</x>
+         <x>521</x>
          <y>100</y>
          <width>161</width>
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QComboBox" name="comboBoxDisplayMode3_2">
        <property name="geometry">
         <rect>
-         <x>701</x>
+         <x>700</x>
          <y>60</y>
          <width>111</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution_6">
@@ -848,11 +623,6 @@ height: 35px;
          <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Dropdown Title Label" extracomment="Should be kept very short">Menu</string>
        </property>
@@ -860,16 +630,11 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxResolution1_2">
        <property name="geometry">
         <rect>
-         <x>510</x>
+         <x>521</x>
          <y>140</y>
          <width>161</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QLabel" name="labelResolution_7">
@@ -880,11 +645,6 @@ height: 35px;
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label" extracomment="Should be kept very short">Failsafe</string>
@@ -899,11 +659,6 @@ height: 35px;
          <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Dropdown Title Label" extracomment="Should be kept very short">Movies</string>
        </property>
@@ -911,16 +666,11 @@ height: 35px;
       <widget class="QLabel" name="labelDisplayMode_2">
        <property name="geometry">
         <rect>
-         <x>702</x>
+         <x>701</x>
          <y>30</y>
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Dropdown Title Label">Display mode</string>
@@ -929,16 +679,11 @@ height: 35px;
       <widget class="QComboBox" name="comboBoxResolution3_2">
        <property name="geometry">
         <rect>
-         <x>510</x>
+         <x>521</x>
          <y>60</y>
          <width>161</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEditMaxFps">
@@ -950,11 +695,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelMaxFps">
        <property name="geometry">
@@ -964,11 +704,6 @@ height: 35px;
          <width>301</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Max. FPS (0 = unlimited)</string>
@@ -983,25 +718,15 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QLabel" name="labelGuiBlinkRate">
        <property name="geometry">
         <rect>
          <x>440</x>
          <y>386</y>
-         <width>171</width>
+         <width>201</width>
          <height>31</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">GUI blink rate
@@ -1016,14 +741,9 @@ height: 35px;
         <rect>
          <x>440</x>
          <y>436</y>
-         <width>171</width>
+         <width>201</width>
          <height>31</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Neutral flash rate
@@ -1041,11 +761,6 @@ height: 35px;
          <width>61</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxAutoDetermineMaxFps">
@@ -1075,11 +790,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Enable sound</string>
        </property>
@@ -1092,11 +802,6 @@ height: 35px;
          <width>391</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Use CD music instead of local files</string>
@@ -1111,11 +816,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Pause music when game is paused</string>
        </property>
@@ -1128,11 +828,6 @@ height: 35px;
          <width>321</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Enable atmospheric sounds</string>
@@ -1193,11 +888,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Mute audio when game is not focused</string>
        </property>
@@ -1216,11 +906,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Lock cursor in possession</string>
        </property>
@@ -1233,11 +918,6 @@ height: 35px;
          <width>381</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Unlock cursor when game is paused</string>
@@ -1252,11 +932,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle" extracomment="&quot;Alternative Input&quot;">Unlock cursor from game window</string>
        </property>
@@ -1270,11 +945,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Screen edge camera panning</string>
        </property>
@@ -1287,11 +957,6 @@ height: 35px;
          <width>151</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Slider Title Label">Mouse sensitivity</string>
@@ -1334,11 +999,6 @@ height: 35px;
          <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string notr="true">0%</string>
        </property>
@@ -1351,11 +1011,6 @@ height: 35px;
          <width>381</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Raw mouse input</string>
@@ -1385,11 +1040,6 @@ height: 35px;
          <width>391</width>
          <height>23</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Enable tag mode toggle (Right-click)</string>
@@ -1428,11 +1078,6 @@ height: 35px;
          <width>161</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Masterserver</string>
@@ -1540,11 +1185,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
       </widget>
       <widget class="QCheckBox" name="checkBoxAutoUpdate">
        <property name="geometry">
@@ -1580,11 +1220,6 @@ height: 35px;
          <width>191</width>
          <height>25</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
       </widget>
       <widget class="QLabel" name="labelPlayButtonTheme">
@@ -1622,11 +1257,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Textinput Title Label"/>
        </property>
@@ -1639,11 +1269,6 @@ height: 35px;
          <width>301</width>
          <height>41</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">Update check interval in days
@@ -1664,11 +1289,6 @@ height: 35px;
          <height>23</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string comment="Checkbox Toggle">Enable API</string>
        </property>
@@ -1682,11 +1302,6 @@ height: 35px;
          <height>25</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
        <property name="text">
         <string/>
        </property>
@@ -1699,11 +1314,6 @@ height: 35px;
          <width>111</width>
          <height>17</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
        </property>
        <property name="text">
         <string comment="Textinput Title Label">API port</string>
@@ -1827,11 +1437,6 @@ height: 35px;
        <width>0</width>
        <height>0</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-      </font>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::RestoreDefaults|QDialogButtonBox::StandardButton::Save</set>

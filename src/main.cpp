@@ -222,6 +222,9 @@ int main(int argc, char *argv[])
     }
 #endif
 
+    // Info: The font used for the launcher UI
+    qInfo() << "UI font:" << qApp->font().family();
+
     // Setup SSL verification using Mozilla's CA bundle
     QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
     sslConfig.setCaCertificates(QSslCertificate::fromPath(":/res/cert/cacert.pem"));
