@@ -223,7 +223,7 @@ int main(int argc, char *argv[])
 #endif
 
     // Info: The font used for the launcher UI
-    qInfo() << "UI font:" << qApp->font().family();
+    qInfo() << "Using UI font:" << QString(qApp->font().family() + " (" + QString::number(qApp->font().pointSize()) + "pt)");
 
     // Setup SSL verification using Mozilla's CA bundle
     QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
