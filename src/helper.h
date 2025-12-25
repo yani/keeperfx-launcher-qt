@@ -43,7 +43,9 @@ public:
         }
     }
 
-    static bool is64BitDll(QString dllPath) { return Helper::is64BitDLL(dllPath.toStdString()); }
+    static bool is64BitDll(QString dllPath) {
+        return Helper::is64BitDLL(dllPath.toStdString());
+    }
 
     static QFile getUnearthBinary()
     {
@@ -75,10 +77,10 @@ public:
         return QFile();
     }
 
-#ifdef Q_OS_WINDOWS
     // Function to check if we are running under Wine
     static bool isRunningUnderWine()
     {
+#ifdef Q_OS_WINDOWS
         HMODULE hModule = GetModuleHandleA("ntdll.dll");
         if (hModule) {
             // Check for Wine-specific function
@@ -86,12 +88,14 @@ public:
                 return true;
             }
         }
+#endif
         return false;
     }
 
     // Function to get the Wine version as a QString
     static QString getWineVersion()
     {
+#ifdef Q_OS_WINDOWS
         typedef const char *(__cdecl * wine_get_version_func)();
         HMODULE hModule = GetModuleHandleA("ntdll.dll");
         if (hModule) {
@@ -100,12 +104,14 @@ public:
                 return QString::fromUtf8(wine_get_version());
             }
         }
+#endif
         return QString();
     }
 
     // Function to get the Wine host machine name as a QString
     static QString getWineHostMachineName()
     {
+#ifdef Q_OS_WINDOWS
         typedef const char *(__cdecl * wine_get_host_machine_name_func)();
         HMODULE hModule = GetModuleHandleA("ntdll.dll");
         if (hModule) {
@@ -114,9 +120,9 @@ public:
                 return QString::fromUtf8(wine_get_host_machine_name());
             }
         }
+#endif
         return QString();
     }
-#endif
 
     static bool makeBinaryExecutable(const QString &path)
     {
