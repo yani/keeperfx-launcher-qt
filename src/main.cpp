@@ -282,7 +282,11 @@ int main(int argc, char *argv[])
             dialog.exec();
         } else {
             qWarning() << "Failed to determine KeeperFX version. This is required for crash reports";
-            QMessageBox::warning(nullptr, "Error", "Failed to determine the KeeperFX version. This is required to submit a crash report.");
+            QMessageBox::warning(nullptr,
+                // Use QCoreApplication::translate() here because we can't use tr() outside of a Qt object
+                QCoreApplication::translate("main", "KeeperFX Error", "MessageBox Title"),
+                QCoreApplication::translate("main", "Failed to determine the KeeperFX version. This is required to submit a crash report.", "MessageBox Text")
+            );
         }
         return 0;
     }
