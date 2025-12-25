@@ -634,7 +634,7 @@ QPushButton:hover {
                 </font>
                </property>
                <property name="text">
-                <string>&lt;SPINNER&gt;</string>
+                <string notr="true">&lt;SPINNER&gt;</string>
                </property>
               </widget>
              </item>
