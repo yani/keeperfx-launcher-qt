@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>res/cert/release_certificate_2025.cer</file>
         <file>res/cert/test_certificate.cer</file>
-        <file>res/font/Ubuntu-R.ttf</file>
         <file>res/img/horny-face.png</file>
         <file>res/img/launchermn.jpg</file>
         <file>res/img/spinner.gif</file>
