@@ -75,7 +75,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->comboBoxLanguage->addItem("Русский", "RUS");    // Russian
     ui->comboBoxLanguage->addItem("Čeština", "CZE");    // Czech
     ui->comboBoxLanguage->addItem("Latīna", "LAT");     // Latin
-    ui->comboBoxLanguage->addItem("日本語", "JAP");     // Japanese
+    ui->comboBoxLanguage->addItem("日本語", "JPN");     // Japanese
     ui->comboBoxLanguage->addItem("한국어", "KOR");     // Korean
     ui->comboBoxLanguage->addItem("简体中文", "CHI");   // Chinese (Simplified)
     ui->comboBoxLanguage->addItem("繁體中文", "CHT");   // Chinese (Traditional)

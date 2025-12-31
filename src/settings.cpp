@@ -71,7 +71,7 @@ QMap<QString, QString> Settings::localeToGameLanguageMap = {
     {"de", "GER"},
     {"pl", "POL"},
     {"sv", "SWE"},
-    {"ja", "JAP"},
+    {"ja", "JPN"},
     {"ru", "RUS"},
     {"ko", "KOR"},
     {"cs", "CZE"},
