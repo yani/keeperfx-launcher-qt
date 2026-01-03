@@ -42,6 +42,7 @@
 #include "settings.h"
 #include "settingsdialog.h"
 #include "updatedialog.h"
+#include "version.h"
 #include "workshopitemwidget.h"
 
 #define MAX_WORKSHOP_ITEMS_SHOWN 4
@@ -146,6 +147,13 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             // We use left() and top() here because the position is absolute and not relative to the screen
             geometry.left() + ((geometry.width() - this->width()) / 2),
             geometry.top() + ((geometry.height() - this->height()) / 2) - 50); // minus 50 to put it a bit higher
+    }
+
+    // Let user know if this launcher is a prototype
+    if(LAUNCHER_IS_PROTOTYPE){
+        QMessageBox::information(this,
+            tr("KeeperFX Launcher", "MessageBox Title"),
+            tr("This launcher version is a prototype and should only be used for testing.", "MessageBox Text"));
     }
 
     // Check if an original DK executable is found
