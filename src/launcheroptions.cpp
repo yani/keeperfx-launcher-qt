@@ -49,6 +49,7 @@ void LauncherOptions::processApp(QApplication &app)
         {"skip-file-removal",           "Do not ask for the removal of leftover files"},
         {"disable-gzip-upload",         "Disable GZip compression of uploads"},
         {"crash-report",                "Force a crash report dialog"},
+        {"disable-tls-verification",    "Disable certificate validation for web requests"},
 
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},

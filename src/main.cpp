@@ -225,11 +225,24 @@ int main(int argc, char *argv[])
     // Info: The font used for the launcher UI
     qInfo() << "Using UI font:" << QString(qApp->font().family() + " (" + QString::number(qApp->font().pointSize()) + "pt)");
 
-    // Setup SSL verification using Mozilla's CA bundle
+    // Setup SSL verification
     QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
-    sslConfig.setCaCertificates(QSslCertificate::fromPath(":/res/cert/cacert.pem"));
+    if (LauncherOptions::isSet("disable-tls-verification") == true) {
+        // Disable certificate verification
+        sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
+        sslConfig.setProtocol(QSsl::AnyProtocol);
+        qInfo() << "TLS certificate verification disabled (--disable-tls-verification)";
+    } else {
+        // Use Mozilla's CA bundle
+        sslConfig.setCaCertificates(QSslCertificate::fromPath(":/res/cert/cacert.pem"));
+        qInfo() << "TLS certificate verification uses Mozilla's CA bundle";
+    }
     QSslConfiguration::setDefaultConfiguration(sslConfig);
-    qDebug() << "Loaded CAs:" << QSslConfiguration::defaultConfiguration().caCertificates().size();
+
+    // Info: The amount of loaded Certificate Authorities
+    if (LauncherOptions::isSet("disable-tls-verification") == false) {
+        qDebug() << "Loaded CAs:" << QSslConfiguration::defaultConfiguration().caCertificates().size();
+    }
 
     // Load the launcher and kfx settings
     // Also try and copy over defaults
