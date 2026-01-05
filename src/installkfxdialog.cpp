@@ -455,13 +455,22 @@ void InstallKfxDialog::closeEvent(QCloseEvent *event)
         return;
 
     } else {
-        // Ask if user is sure
-        int result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure?\n\nYou will be unable to play KeeperFX.", "MessageBox Text"));
 
-        // Handle answer
+        // Check if KeeperFX is already installed
+        if (Helper::isKeeperFxInstalled() == true){
+            // Close the installer
+            event->accept();
+            return;
+        }
+
+        // User will not be able to play KeeperFX at this point,
+        // so ask if they are sure about stopping the installation
+        int result = QMessageBox::question(this, tr("Confirmation", "MessageBox Title"), tr("Are you sure?\n\nYou will be unable to play KeeperFX.", "MessageBox Text"));
         if (result == QMessageBox::Yes) {
+            // Close the installer
             event->accept();
         } else {
+            // Keep the installer open
             event->ignore();
         }
     }
