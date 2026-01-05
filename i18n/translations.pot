@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-13 01:36+0100\n"
+"POT-Creation-Date: 2026-01-05 13:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -528,6 +528,20 @@ msgctxt "FileRemoverDialog|MessageBox Text"
 msgid "Unwanted files have been removed!"
 msgstr ""
 
+msgctxt "Game|MessageBox Title"
+msgid "KeeperFX has crashed"
+msgstr ""
+
+msgctxt "Game|MessageBox Text"
+msgid ""
+"It seems that KeeperFX has crashed and is unable to recover.\n"
+"\n"
+"Crash reporting is disabled because you are using the heavylog option.\n"
+"\n"
+"If you require assistance, please create an issue on Github or contact us on "
+"the Keeper Klan Discord."
+msgstr ""
+
 msgctxt "InstallKfxDialog|Window Title"
 msgid "Install KeeperFX"
 msgstr ""
@@ -695,6 +709,15 @@ msgstr ""
 
 msgctxt "LauncherMainWindow|Button"
 msgid "Play"
+msgstr ""
+
+msgctxt "LauncherMainWindow|MessageBox Title"
+msgid "KeeperFX Launcher"
+msgstr ""
+
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid ""
+"This launcher version is a prototype and should only be used for testing."
 msgstr ""
 
 msgctxt "LauncherMainWindow|MessageBox Title"
@@ -1265,6 +1288,10 @@ msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr ""
 
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "Custom..."
+msgstr ""
+
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr ""
@@ -1352,6 +1379,23 @@ msgstr ""
 
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "Launcher command line options"
+msgstr ""
+
+msgctxt "SettingsDialog|Custom resoltuion dialog title"
+msgid "Custom resolution"
+msgstr ""
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Width:"
+msgstr ""
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Height:"
+msgstr ""
+
+#, qt-format
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "%1 x %2 (Custom)"
 msgstr ""
 
 msgctxt "UpdateDialog|Window Title"
@@ -1467,4 +1511,14 @@ msgstr ""
 
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
+msgstr ""
+
+msgctxt "main|MessageBox Title"
+msgid "KeeperFX Error"
+msgstr ""
+
+msgctxt "main|MessageBox Text"
+msgid ""
+"Failed to determine the KeeperFX version. This is required to submit a crash "
+"report."
 msgstr ""
