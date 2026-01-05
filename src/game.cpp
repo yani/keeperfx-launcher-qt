@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
+#include <QMessageBox>
 #include "crashdialog.h"
 #include "kfxversion.h"
 #include "settings.h"
@@ -144,23 +145,34 @@ void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
     // Check for crash
     if (exitStatus == QProcess::ExitStatus::CrashExit || exitCode != 0) {
 
-        // Open crash dialog if enabled and this is not a heavy log
-        if(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED").toBool() == true &&
-           Settings::getLauncherSetting("GAME_HEAVY_LOG_ENABLED").toBool() != true
-        ){
+        // Check if crash reporting is enabled
+        if(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED").toBool() == true){
 
-            // Create dialog
-            CrashDialog crashDialog(this->parentWidget);
+            // Check if heavy log is enabled
+            if(Settings::getLauncherSetting("GAME_HEAVY_LOG_ENABLED").toBool() == true){
 
-            // Check if there is process output and add it to the dialog object
-            QString stdErrorString = this->process->readAllStandardError();
-            if (stdErrorString.isEmpty() == false) {
-                qDebug() << "Process StdError:" << stdErrorString;
-                crashDialog.setStdErrorString(stdErrorString);
+                // Tell user we crashed but will not submit heavylog logs
+                QMessageBox::warning(this->parentWidget,
+                    tr("KeeperFX has crashed", "MessageBox Title"),
+                    tr("It seems that KeeperFX has crashed and is unable to recover.\n\n"
+                       "Crash reporting is disabled because you are using the heavylog option.\n\n"
+                        "If you require assistance, please create an issue on Github or contact us on the Keeper Klan Discord.", "MessageBox Text"));
+
+            } else {
+
+                // Create Crash Report dialog
+                CrashDialog crashDialog(this->parentWidget);
+
+                // Check if there is process output and add it to the dialog object
+                QString stdErrorString = this->process->readAllStandardError();
+                if (stdErrorString.isEmpty() == false) {
+                    qDebug() << "Process StdError:" << stdErrorString;
+                    crashDialog.setStdErrorString(stdErrorString);
+                }
+
+                // Open the crash dialog
+                crashDialog.exec();
             }
-
-            // Open the crash dialog
-            crashDialog.exec();
         }
     }
 
