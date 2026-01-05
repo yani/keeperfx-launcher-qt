@@ -69,7 +69,6 @@ private:
     void refreshInstallationAwareButtons();
     void refreshLogfileButton();
 
-    bool isKeeperFxInstalled();
     bool askForKeeperFxInstall();
 
     void showLoadingSpinner();

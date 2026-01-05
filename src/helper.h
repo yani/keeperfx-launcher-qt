@@ -18,6 +18,13 @@ class Helper
 {
 public:
 
+    static bool isKeeperFxInstalled()
+    {
+        // Check for 'keeperfx.exe' file in app directory
+        QFile keeperFxBin (QCoreApplication::applicationDirPath() + "/keeperfx.exe");
+        return (keeperFxBin.exists());
+    }
+
     static int countFilesRecursive(const QDir &dir) {
 
         int count = 0;

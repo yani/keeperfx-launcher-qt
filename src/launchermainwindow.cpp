@@ -221,7 +221,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     } else {
         // If '--install' is not forced we check if we need to install
-        if (isKeeperFxInstalled() == false) {
+        if (Helper::isKeeperFxInstalled() == false) {
             qDebug() << "'keeperfx.exe' seems to be missing, asking if user wants a fresh install";
             if (askForKeeperFxInstall() == true) {
                 qDebug() << "User wants fresh install, opening kfx install dialog";
@@ -233,14 +233,14 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
 
     // Check if we need to copy over DK files
     // Only do this if keeperfx is installed
-    if (isKeeperFxInstalled() == true && DkFiles::isCurrentAppDirValidDkDir() == false) {
+    if (Helper::isKeeperFxInstalled() == true && DkFiles::isCurrentAppDirValidDkDir() == false) {
         qDebug() << "One or more original DK files not found, opening copy dialog";
         CopyDkFilesDialog copyDkFilesWindow(this);
         copyDkFilesWindow.exec();
     }
 
     // Load keeperfx version if keeperfx is installed
-    if (isKeeperFxInstalled()) {
+    if (Helper::isKeeperFxInstalled()) {
         if (KfxVersion::loadCurrentVersion() == true) {
             // Refresh GUI
             refreshKfxVersionInGui();
@@ -506,7 +506,7 @@ void LauncherMainWindow::refreshCampaignMenu()
 }
 
 void LauncherMainWindow::refreshInstallationAwareButtons() {
-    bool isKfxInstalled = isKeeperFxInstalled();
+    bool isKfxInstalled = Helper::isKeeperFxInstalled();
     ui->settingsButton->setDisabled(isKfxInstalled == false);
     ui->playButton->setDisabled(isKfxInstalled == false);
     ui->playExtraButton->setDisabled(isKfxInstalled == false);
@@ -560,13 +560,6 @@ void LauncherMainWindow::on_workshopButton_clicked()
     // Use default browser to open the workshop URL
     QUrl url("https://keeperfx.net/workshop");
     QDesktopServices::openUrl(url);
-}
-
-bool LauncherMainWindow::isKeeperFxInstalled()
-{
-    // Check for 'keeperfx.exe' file in app directory
-    QFile keeperFxBin (QCoreApplication::applicationDirPath() + "/keeperfx.exe");
-    return (keeperFxBin.exists());
 }
 
 bool LauncherMainWindow::askForKeeperFxInstall()
