@@ -74,7 +74,7 @@ void CrashDialog::on_sendButton_clicked()
 
     // Game and launcher version
     jsonPostObject["game_version"] = KfxVersion::currentVersion.fullString;
-    jsonPostObject["source"] = "KfxLauncherQt " + QString(LAUNCHER_VERSION);
+    jsonPostObject["source"] = "keeperfx-launcher-qt " + QString(LAUNCHER_VERSION);
 
     // Description of the crash
     QString infoDetails = ui->infoTextEdit->toPlainText();
