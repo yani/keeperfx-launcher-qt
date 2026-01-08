@@ -489,6 +489,11 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
         QUrl url(baseUrl + filePath);
         QNetworkRequest request(url);
 
+        // Disable HTTP/2 usage
+        // We do this because otherwise we flood the server with requests
+        // TODO: queue and limit parallel requests
+        request.setAttribute(QNetworkRequest::Http2AllowedAttribute, false);
+
         QNetworkReply *reply = networkManager->get(request);
         connect(reply, &QNetworkReply::finished, this, [this, reply, filePath]() {
             if (reply->error() == QNetworkReply::NoError) {
