@@ -32,7 +32,7 @@ CrashDialog::CrashDialog(QWidget *parent)
         ui->saveFileComboBox->setPlaceholderText(tr("No saves found", "Menu Placeholder"));
     } else {
         ui->saveFileComboBox->addItem(tr("None", "Default Savefile"));
-        for (SaveFile *saveFile : saveFileList) {
+        for (SaveFile *saveFile : std::as_const(saveFileList)) {
             ui->saveFileComboBox->addItem(saveFile->toString());
         }
     }

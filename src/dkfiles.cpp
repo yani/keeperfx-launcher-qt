@@ -432,7 +432,7 @@ bool DkFiles::isOriginalDkExecutableFound()
     QFileInfoList entries = dir.entryInfoList(QDir::Files | QDir::NoSymLinks);
 
     // Loop trough all files
-    for (const QFileInfo& fileInfo : entries) {
+    for (const QFileInfo& fileInfo : std::as_const(entries)) {
         // Check if a file matches
         if (originalDkExecutableFiles.contains(fileInfo.fileName(), Qt::CaseInsensitive)) {
             return true;

@@ -73,7 +73,7 @@ bool Certificate::verify(QFile &file)
                 QSslCertificate signedCertificate(certData);
 
                 // Compare to our own list of valid certificates
-                for (const QSslCertificate &cert : Certificate::certificateList) {
+                for (const QSslCertificate &cert : std::as_const(Certificate::certificateList)) {
                     if (signedCertificate == cert) {
 
                         // Success

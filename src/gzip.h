@@ -86,7 +86,7 @@ namespace GZip {
                                   : 0.0;
 
         qDebug().noquote()
-            << QString("GZip::Compress: %1%3 -> %2%4 (%5%)")
+            << QString("GZip::Compress: %1%3 -> %2%4 (%5%)") // clazy:exclude=qstring-arg
                    .arg(origValue, 0, 'f', 1)
                    .arg(compValue, 0, 'f', 1)
                    .arg(origUnit)

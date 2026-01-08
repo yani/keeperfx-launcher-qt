@@ -378,7 +378,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     aboutString += libraries.join(", ");
     aboutString += "<br/>";
     aboutString += "<br/>";
-    aboutString += tr("Join us on Discord: %1", "About Label").arg(QString("<a href=\"%1\">%2</a>").arg("https://discord.gg/WxgE8WZBku").arg("Keeper Klan Discord"));
+    aboutString += tr("Join us on Discord: %1", "About Label").arg(QString("<a href=\"%1\">%2</a>").arg("https://discord.gg/WxgE8WZBku", "Keeper Klan Discord"));
 
     // Load about page
     ui->labelAbout->setTextFormat(Qt::RichText);
@@ -427,7 +427,7 @@ void SettingsDialog::loadSettings()
         ui->checkBoxDisplaySplashScreens->setChecked(false);
         QString startupString = Settings::getKfxSetting("STARTUP").toString().trimmed();
         QStringList startupScreens = startupString.split(" ");
-        for (const QString startupScreen : startupScreens) {
+        for (const QString &startupScreen : std::as_const(startupScreens)) {
             if (startupScreen == "INTRO") {
                 ui->checkBoxDisplayIntro->setChecked(true);
             } else if (startupScreen == "FX" || startupScreen == "LEGAL") {
@@ -481,8 +481,8 @@ void SettingsDialog::loadSettings()
 
     // Loop trough the in-game resolutions
     int resolutionIndex = 0;
-    for (QString resolutionString :
-         Settings::getKfxSetting("INGAME_RES").toString().trimmed().split(" ")) {
+    for (const QString &resolutionString : Settings::getKfxSetting("INGAME_RES").toString().trimmed().split(" "))
+    {
         // Vars
         QString res, mode;
 
@@ -549,7 +549,7 @@ void SettingsDialog::loadSettings()
 
     // Loop trough the front end resolutions
     resolutionIndex = 0;
-    for (QString resolutionString : Settings::getKfxSetting("FRONTEND_RES").toString().trimmed().split(" ")) {
+    for (const QString &resolutionString : Settings::getKfxSetting("FRONTEND_RES").toString().trimmed().split(" ")) {
         // Vars
         QString res, mode;
 
@@ -1039,7 +1039,7 @@ void SettingsDialog::addSettingsChangedHandler()
 {
     // Find all QCheckBox
     QList<QCheckBox *> checkBoxes = ui->tabWidget->findChildren<QCheckBox *>();
-    for (QCheckBox *checkBox : checkBoxes) {
+    for (QCheckBox *checkBox : std::as_const(checkBoxes)) {
         connect(checkBox, &QCheckBox::checkStateChanged, this, [this]() {
             this->settingHasChanged = true;
             ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
@@ -1048,7 +1048,7 @@ void SettingsDialog::addSettingsChangedHandler()
 
     // Find all QComboBox
     QList<QComboBox *> comboBoxes = ui->tabWidget->findChildren<QComboBox *>();
-    for (QComboBox *comboBox : comboBoxes) {
+    for (QComboBox *comboBox : std::as_const(comboBoxes)) {
         connect(comboBox, &QComboBox::currentIndexChanged, this, [this]() {
             this->settingHasChanged = true;
             ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
@@ -1057,7 +1057,7 @@ void SettingsDialog::addSettingsChangedHandler()
 
     // Find all QLineEdit
     QList<QLineEdit *> lineEdits = ui->tabWidget->findChildren<QLineEdit *>();
-    for (QLineEdit *lineEdit : lineEdits) {
+    for (QLineEdit *lineEdit : std::as_const(lineEdits)) {
         connect(lineEdit, &QLineEdit::textChanged, this, [this]() {
             this->settingHasChanged = true;
             ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
@@ -1066,7 +1066,7 @@ void SettingsDialog::addSettingsChangedHandler()
 
     // Find all PopupSignalComboBox
     QList<PopupSignalComboBox *> popupComboBoxes = ui->tabWidget->findChildren<PopupSignalComboBox *>();
-    for (PopupSignalComboBox *popupComboBox : popupComboBoxes) {
+    for (PopupSignalComboBox *popupComboBox : std::as_const(popupComboBoxes)) {
         connect(popupComboBox, &PopupSignalComboBox::currentIndexChanged, this, [this]() {
             this->settingHasChanged = true;
             ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
@@ -1189,7 +1189,7 @@ void SettingsDialog::hideMonitorNumberOverlays()
     qDebug() << "Hide monitor number overlays";
 
     // Remove all the overlays
-    for (QWidget *overlay : monitorNumberOverlays) {
+    for (QWidget *overlay : std::as_const(monitorNumberOverlays)) {
         overlay->hide();
         delete overlay;
     }

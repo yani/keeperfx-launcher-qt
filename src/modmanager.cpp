@@ -23,7 +23,7 @@ ModManager::ModManager()
     }
 
     // Loop trough all folders
-    for (const QString &modFolderName : modFolders) {
+    for (const QString &modFolderName : std::as_const(modFolders)) {
         // Ignore directories that start with a dot
         // Linux (POSIX) filesystems use this naming scheme for hidden folders
         // Note: dot and dotdot dirs are already filtered before this check
@@ -45,7 +45,7 @@ ModManager::ModManager()
         qInfo() << "0 mods found";
     } else {
         qInfo().noquote() << QString("%1 mods found:").arg(count);
-        for (const Mod *mod : this->mods) {
+        for (const Mod *mod : std::as_const(this->mods)) {
             qInfo().noquote() << QString("- %1").arg(mod->toString());
         }
     }

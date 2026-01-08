@@ -69,7 +69,7 @@ QList<Campaign *> Campaign::getAll()
     }
 
     // Loop trough all files
-    for (const QString &campaignFilename : campaignFiles) {
+    for (const QString &campaignFilename : std::as_const(campaignFiles)) {
         // Try to load this file as a campaign
         Campaign *campaignFile = new Campaign(campaignFileDir.absoluteFilePath(campaignFilename));
 

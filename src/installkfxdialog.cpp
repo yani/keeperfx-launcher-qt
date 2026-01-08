@@ -515,7 +515,7 @@ bool InstallKfxDialog::moveTempFilesToAppDir(QDir sourceDir)
         // Apply rename rule
         QString destRelPath = renameRules.value(relPath, relPath);
         if (destRelPath != relPath) {
-            qDebug() << QString("Renaming file during copy: %1 -> %2").arg(relPath).arg(destRelPath);
+            qDebug() << QString("Renaming file during copy: %1 -> %2").arg(relPath, destRelPath);
         }
 
         QString destFilePath = appDir.absoluteFilePath(destRelPath);

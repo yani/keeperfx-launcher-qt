@@ -95,7 +95,7 @@ QList<SaveFile *> SaveFile::getAll()
     }
 
     // Loop trough all files
-    for (const QString &saveFileFilename : saveFiles) {
+    for (const QString &saveFileFilename : std::as_const(saveFiles)) {
         // Try to load this file as a SaveFile
         SaveFile *saveFile = new SaveFile(saveFileDir.absoluteFilePath(saveFileFilename));
 

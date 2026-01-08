@@ -485,7 +485,7 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
     // Count downloaded files
     downloadedFiles = 0;
 
-    for (const QString &filePath : updateList) {
+    for (const QString &filePath : std::as_const(updateList)) {
         QUrl url(baseUrl + filePath);
         QNetworkRequest request(url);
 
@@ -520,7 +520,7 @@ void UpdateDialog::downloadFiles(const QString &baseUrl)
                     emit appendLog(QString("Failed to open file for writing: %1").arg(tempFilePath));
                 }
             } else {
-                emit appendLog(QString("Failed to download: %1 -> %2").arg(filePath).arg(reply->errorString()));
+                emit appendLog(QString("Failed to download: %1 -> %2").arg(filePath, reply->errorString()));
             }
             reply->deleteLater();
 
@@ -566,7 +566,7 @@ void UpdateDialog::onFileDownloadProgress()
         int copiedFiles = 0;
 
         // Move and rename files
-        for (const QString &filePath : updateList) {
+        for (const QString &filePath : std::as_const(updateList)) {
             QString srcFilePath = tempDir.absolutePath() + filePath;
 
             // Make sure source file exists
@@ -580,7 +580,7 @@ void UpdateDialog::onFileDownloadProgress()
             // Use the new name if exists, otherwise use the same name
             QString destFileName = renameRules.value(filePath, filePath);
             if (destFileName != filePath) {
-                emit appendLog(QString("Renaming file during copy: %1 -> %2").arg(filePath).arg(destFileName));
+                emit appendLog(QString("Renaming file during copy: %1 -> %2").arg(filePath, destFileName));
             }
 
             // Get destination path

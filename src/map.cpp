@@ -53,7 +53,7 @@ Map::Map(const Map::Type type, const QString campaignOrMapPackName, const int ma
     mapFileFilter << QString("*" + mapNumberString + ".*");
 
     // Loop trough map files
-    for (const QString mapFileNameString : campaignOrMapPackDir.entryList(mapFileFilter, QDir::Files)) {
+    for (QString &mapFileNameString : campaignOrMapPackDir.entryList(mapFileFilter, QDir::Files)) {
         QString mapFileNameStringLowerCase = mapFileNameString.toLower();
 
         // Check for LOF file
@@ -72,7 +72,7 @@ Map::Map(const Map::Type type, const QString campaignOrMapPackName, const int ma
     }
 
     // Loop trough map files again for .txt level name workaround
-    for (const QString mapFileNameString : campaignOrMapPackDir.entryList(mapFileFilter, QDir::Files)) {
+    for (QString &mapFileNameString : campaignOrMapPackDir.entryList(mapFileFilter, QDir::Files)) {
         QString mapFileNameStringLowerCase = mapFileNameString.toLower();
 
         // Check for LOF file
@@ -238,7 +238,7 @@ QList<Map *> Map::getAll(const Map::Type type, const QString campaignOrMapPackNa
     }
 
     // Loop trough the files
-    for (const QString fileNameString : campaignOrMapPackDir.entryList(QDir::Filter::Files)) {
+    for (QString &fileNameString : campaignOrMapPackDir.entryList(QDir::Filter::Files)) {
         QString fileNameStringLowerCase = fileNameString.toLower();
 
         // Check if this is a mapXXXXX.dat file

@@ -48,6 +48,6 @@ protected:
     }
 
 private:
-    QColor baseColor = QColor("#999999");
+    QColor baseColor = QColor(0x999999); // #999999
     QColor hoverColor = baseColor.lighter(120);
 };

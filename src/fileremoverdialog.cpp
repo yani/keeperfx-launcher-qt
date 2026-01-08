@@ -54,7 +54,7 @@ void FileRemoverDialog::on_removeButton_clicked()
     qDebug() << "Removing unwanted files";
 
     // Loop through the list of files
-    for (const QString &filePath : list) {
+    for (const QString &filePath : std::as_const(list)) {
 
         // Get the file
         QFile file(QCoreApplication::applicationDirPath() + "/" + filePath);

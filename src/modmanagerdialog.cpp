@@ -20,7 +20,7 @@ ModManagerDialog::ModManagerDialog(QWidget *parent)
 
     // Add the mods
     if (mods.isEmpty() == false) {
-        for (auto mod : mods) {
+        for (auto mod : std::as_const(mods)) {
             // Create the widget
             ModWidget *modWidget = new ModWidget(mod, this);
             ui->scrollAreaWidgetContents->layout()->addWidget(modWidget);
