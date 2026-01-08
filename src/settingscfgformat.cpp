@@ -1,5 +1,7 @@
 #include <QSaveFile>
 #include <QFile>
+#include <QCoreApplication>
+#include <QDir>
 
 #include "settingscfgformat.h"
 
@@ -33,31 +35,47 @@ bool SettingsCfgFormat::readFile(QIODevice &device, QSettings::SettingsMap &map)
 
 bool SettingsCfgFormat::writeFile(QIODevice &device, const QSettings::SettingsMap &map)
 {
-    // Original settings file content
-    QString originalContent;
+    // Original file content
+    // We will use this as a template to update
+    QString contents;
 
     // Try to get the filename
-    QString fileName;
+    QString filePath;
     if (QSaveFile *sf = qobject_cast<QSaveFile*>(&device)) {
-        fileName = sf->fileName();
+        filePath = sf->fileName();
     } else if (QFile *f = qobject_cast<QFile*>(&device)) {
-        fileName = f->fileName();
+        filePath = f->fileName();
     }
 
     // Check if we got the filename of the device
-    if (!fileName.isEmpty()) {
-        QFile readFile(fileName);
-        if (readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    if (!filePath.isEmpty()) {
 
-            // Read the original content
-            QTextStream in(&readFile);
-            originalContent = in.readAll();
-            readFile.close();
+        // Check if this is the standard KeeperFX config file
+        QFileInfo fileInfo(filePath);
+        QString fileName = fileInfo.fileName();
+        if(fileName == "keeperfx.cfg") {
+            // Check for the defaults file
+            // We can use this as a template so we always get all the new comments in it after updates
+            QFile kfxDefaultConfigFile(QCoreApplication::applicationDirPath() + QDir::separator() + "_keeperfx.cfg");
+            if(kfxDefaultConfigFile.open(QIODevice::ReadOnly | QIODevice::Text)){
+                contents = kfxDefaultConfigFile.readAll();
+            }
+        }
+
+        if(contents.isEmpty()){
+
+            // Read the original content of the current config file
+            QFile readFile(filePath);
+            if (readFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                QTextStream in(&readFile);
+                contents = in.readAll();
+                readFile.close();
+            }
         }
     }
 
     // Split into lines
-    QStringList lines = originalContent.split('\n');
+    QStringList lines = contents.split('\n');
     QSet<QString> updatedKeys;
 
     // Copy the map so we can track unhandled keys
@@ -97,7 +115,7 @@ bool SettingsCfgFormat::writeFile(QIODevice &device, const QSettings::SettingsMa
             if (firstMissing) {
 
                 // Don't add newlines in launcher config
-                if(fileName.endsWith("keeperfx-launcher-qt.cfg") == false && fileName.endsWith("launcher.cfg") == false){
+                if(filePath.endsWith("keeperfx-launcher-qt.cfg") == false && filePath.endsWith("launcher.cfg") == false){
                     output.append("");
                     output.append("");
                 }
