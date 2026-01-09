@@ -333,5 +333,40 @@ std::optional<QMap<QString, QString>> KfxVersion::getGameFileMap(KfxVersion::Rel
 
 bool KfxVersion::hasFunctionality(QString functionalityString)
 {
-    return isVersionHigherOrEqual(currentVersion.version, versionFunctionaltyMap.value(functionalityString));
+    // Get version parts
+    QStringList version1Parts = currentVersion.version.split(".");
+    QStringList version2Parts = versionFunctionaltyMap.value(functionalityString).split(".");
+
+    // Normalize version parts to equal sizes
+    int maxLength = qMax(version1Parts.size(), version2Parts.size());
+    while (version1Parts.size() < maxLength)
+        version1Parts.append("0");
+    while (version2Parts.size() < maxLength)
+        version2Parts.append("0");
+
+    // Loop trough the version parts
+    for (int i = 0; i < maxLength; ++i) {
+
+        // Skip patch version (<major>.<minor>.<PATCH>.<build>)
+        // We do this so the launcher does not think a patch has any
+        // new functionality that was introduced after the latest minor version.
+        // For example:
+        // - 1.3.0
+        // - 1.3.0.1 -> bugfix
+        // - 1.3.0.2 -> new functionality
+        // - 1.3.1 -> only contains the bugfix from 1.3.0.1
+        if(maxLength >= 2 && i == 2){
+            continue;
+        }
+
+        // Check if version is newer or older
+        if (version1Parts[i].toInt() > version2Parts[i].toInt()) {
+            return true;
+        } else if (version1Parts[i].toInt() < version2Parts[i].toInt()) {
+            return false;
+        }
+    }
+
+    // Versions are equal
+    return true;
 }
