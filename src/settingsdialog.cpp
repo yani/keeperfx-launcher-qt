@@ -778,6 +778,7 @@ void SettingsDialog::saveSettings()
             startupScreens << this->hiddenStartupScreens;
         }
         Settings::setKfxSetting("STARTUP", startupScreens.join(" "));
+        Settings::removeKfxSetting("DISABLE_SPLASH_SCREENS");
     } else {
         Settings::setLauncherSetting("GAME_PARAM_NO_INTRO", ui->checkBoxDisplayIntro->isChecked() == false);
         Settings::setKfxSetting("DISABLE_SPLASH_SCREENS", ui->checkBoxDisplaySplashScreens->isChecked() == false);
