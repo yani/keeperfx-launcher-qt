@@ -9,6 +9,7 @@ class Settings
 public:
     static QVariant getKfxSetting(QAnyStringView key);
     static void setKfxSetting(QAnyStringView key, const QVariant &value);
+    static void removeKfxSetting(QAnyStringView key);
 
     static QVariant getLauncherSetting(QAnyStringView key);
     static void setLauncherSetting(QAnyStringView key, const QVariant &value);
