@@ -127,7 +127,9 @@ void Settings::setKfxSetting(QAnyStringView key, const QVariant &value)
 
 void Settings::removeKfxSetting(QAnyStringView key)
 {
-    kfxSettings->remove(key);
+    if(kfxSettings->contains(key)){
+        kfxSettings->remove(key);
+    }
 }
 
 QVariant Settings::getLauncherSetting(QAnyStringView key)
