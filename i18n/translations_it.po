@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-21 01:07+0200\n"
-"PO-Revision-Date: 2025-12-27 22:12+0100\n"
+"PO-Revision-Date: 2026-01-12 10:21+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -20,19 +20,19 @@ msgstr ""
 
 #: Qt default
 msgid "OK"
-msgstr "Accettare"
+msgstr "Accetta"
 
 #: Qt default
 msgid "&OK"
-msgstr "&Accettare"
+msgstr "&Accetta"
 
 #: Qt default
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 #: Qt default
 msgid "&Cancel"
-msgstr "&Cancellare"
+msgstr "&Cancella"
 
 #: Qt default
 msgid "Yes"
@@ -52,19 +52,19 @@ msgstr "&No"
 
 #: Qt default
 msgid "Apply"
-msgstr "Applicare"
+msgstr "Applica"
 
 #: Qt default
 msgid "&Apply"
-msgstr "&Applicare"
+msgstr "&Applica"
 
 #: Qt default
 msgid "Close"
-msgstr "Chiudere"
+msgstr "Chiudi"
 
 #: Qt default
 msgid "&Close"
-msgstr "&Chiudere"
+msgstr "&Chiudi"
 
 #: Qt default
 msgid "Help"
@@ -76,43 +76,43 @@ msgstr "&Aiuta"
 
 #: Qt default
 msgid "Reset"
-msgstr "Reimpostare"
+msgstr "Reimposta"
 
 #: Qt default
 msgid "&Reset"
-msgstr "&Reimpostare"
+msgstr "&Reimposta"
 
 #: Qt default
 msgid "Retry"
-msgstr "Riprovare"
+msgstr "Riprova"
 
 #: Qt default
 msgid "&Retry"
-msgstr "&Riprovare"
+msgstr "&Riprova"
 
 #: Qt default
 msgid "Ignore"
-msgstr "Ignorare"
+msgstr "Ignora"
 
 #: Qt default
 msgid "&Ignore"
-msgstr "&Ignorare"
+msgstr "&Ignora"
 
 #: Qt default
 msgid "Abort"
-msgstr "Abortire"
+msgstr "Interrompi"
 
 #: Qt default
 msgid "&Abort"
-msgstr "&Abortire"
+msgstr "&Interrompi"
 
 #: Qt default
 msgid "Save"
-msgstr "Salvare"
+msgstr "Salva"
 
 #: Qt default
 msgid "&Save"
-msgstr "&Salvare"
+msgstr "&Salva"
 
 #: Qt default
 msgid "Restore Defaults"
@@ -120,11 +120,11 @@ msgstr "Ripristina le impostazioni predefinite"
 
 msgctxt "CopyDkFilesDialog|Window Title"
 msgid "Copy DK Files"
-msgstr "Copiare i file DK"
+msgstr "Copia i file di DK"
 
 msgctxt "CopyDkFilesDialog|Header"
 msgid "Copy Dungeon Keeper Files"
-msgstr "Copiare i file di Dungeon Keeper"
+msgstr "Copia i file di Dungeon Keeper"
 
 msgctxt "CopyDkFilesDialog|Information"
 msgid ""
@@ -147,11 +147,11 @@ msgstr "Sfoglia"
 
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Copy"
-msgstr "Copiare"
+msgstr "Copia"
 
 msgctxt "CopyDkFilesDialog|Label"
 msgid "A suitable DK installation has been automatically detected."
@@ -185,7 +185,7 @@ msgstr ""
 
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Failed to copy files"
-msgstr "Copiare i file non riuscito"
+msgstr "Copiare dei file non riuscito"
 
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "The current directory is not writable."
@@ -211,7 +211,7 @@ msgstr ""
 
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
-msgstr "Confirmare"
+msgstr "Confirmazione"
 
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
@@ -225,7 +225,7 @@ msgstr ""
 
 msgctxt "CrashDialog|Window Title"
 msgid "KeeperFX Crash Report"
-msgstr "Segnalazione di arresto anomalo di KeeperFX"
+msgstr "Segnalazione di un arresto anomalo di KeeperFX"
 
 msgctxt "CrashDialog|Header"
 msgid "KeeperFX has crashed"
@@ -242,7 +242,7 @@ msgstr ""
 "Sembra che KeeperFX ha subito un arresto anomalo e non può gestire l'errore "
 "in modo appropriato. Se desideri fornire dettagli tecnici sul arresto ai "
 "sviluppatori, descrive il problema nella forma qui di seguito e click su il "
-"pulsante «Inviare». Se aggiungi tuoi dettagli di contatto, il team potrebbe "
+"pulsante «Invia». Se aggiungi i tuoi dettagli di contatto, il team potrebbe "
 "contattarti più tardi. Informazione supplementare, compresi i file di log e "
 "di configurazione di KeeperFX, verrà anche inviata."
 
@@ -293,11 +293,11 @@ msgstr "Indirizzo e-mail"
 
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 msgctxt "CrashDialog|Button"
 msgid "Send"
-msgstr "Inviare"
+msgstr "Invia"
 
 msgctxt "CrashDialog|Menu Placeholder"
 msgid "No saves found"
@@ -309,11 +309,11 @@ msgstr "Non disponibile"
 
 msgctxt "CrashDialog|MessageBox Title"
 msgid "Crash Report"
-msgstr "Segnalazione di arresto anomalo"
+msgstr "Segnalazione del arresto anomalo"
 
 msgctxt "CrashDialog|MessageBox Text"
 msgid "Failed to submit crash report."
-msgstr "Segnalare l'arresto anomalo non riuscito."
+msgstr "Segnalazione dell'arresto anomalo non riuscito."
 
 #, qt-format
 msgctxt "CrashDialog|MessageBox Text"
@@ -359,11 +359,11 @@ msgstr "Porta"
 
 msgctxt "DirectConnectDialog|Button"
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 msgctxt "DirectConnectDialog|Button"
 msgid "Connect"
-msgstr "Collegare"
+msgstr "Collega"
 
 msgctxt "DirectConnectDialog|MessageBox Title"
 msgid "Direct Connect"
@@ -383,7 +383,7 @@ msgstr "Musica di sottofondo di KeeperFX"
 
 msgctxt "DownloadMusicDialog|Header"
 msgid "Download Music Files"
-msgstr "Scaricare i file della musica di sottofondo"
+msgstr "Scarica dei file della musica di sottofondo"
 
 msgctxt "DownloadMusicDialog|Information"
 msgid ""
@@ -410,11 +410,11 @@ msgstr ""
 
 msgctxt "DownloadMusicDialog|Button"
 msgid "Cancel"
-msgstr "Cancelllare"
+msgstr "Cancellla"
 
 msgctxt "DownloadMusicDialog|Button"
 msgid "Download"
-msgstr "Scaricare"
+msgstr "Scarica"
 
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to get download URL for music archive"
@@ -454,7 +454,7 @@ msgstr "Scaricare non riuscito"
 
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Confirmation"
-msgstr "Confirmare"
+msgstr "Confirmazione"
 
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid ""
@@ -465,8 +465,8 @@ msgid ""
 msgstr ""
 "Sei sicuro?\n"
 "\n"
-"Non potrai sentire la musica di sottofondo di KeeperFX senza il CD originale "
-"nel lettore CD."
+"Non sara possibile sentire la musica di sottofondo di KeeperFX senza il CD "
+"originale nel lettore CD."
 
 msgctxt "EnetServerTestDialog|Window Title"
 msgid "Test internet lobby"
@@ -504,20 +504,21 @@ msgid ""
 "can ask your internet provider if they can give you an IPv4 address."
 msgstr ""
 "KeeperFX accetta solo indirizzi IPv4. Se l'indirizzo IPv4 non è disponibile "
-"o un indirizzo IP condiviso è unitlizzato, non potrei ospitare un gioco "
-"online. Contatta il tuo provider internet per ottenere un indirizzo IPv4."
+"o un indirizzo IP condiviso è unitlizzato, non sarebbe possibile ospitare un "
+"gioco online. Contatta il tuo provider internet per ottenere un indirizzo "
+"IPv4."
 
 msgctxt "EnetServerTestDialog|Button"
 msgid "Close"
-msgstr "Chiudere"
+msgstr "Chiudi"
 
 msgctxt "EnetServerTestDialog|Button"
 msgid "Test"
-msgstr "Provare"
+msgstr "Prova"
 
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "IPv6 Detected"
-msgstr "Rilevato indirizzo IPv6"
+msgstr "Un indirizzo IPv6 rilevato"
 
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to retrieve public IP address."
@@ -549,11 +550,11 @@ msgstr "Impossibile collegarsi al server ENET locale."
 
 msgctxt "FileRemoverDialog|Window Title"
 msgid "Remove unwanted files"
-msgstr "Rimuovere i file indesiderati"
+msgstr "Rimozione dei file indesiderati"
 
 msgctxt "FileRemoverDialog|Header"
 msgid "Remove leftover files"
-msgstr "Rimuovere i file rimanenti"
+msgstr "Rimozione dei file rimanenti"
 
 msgctxt "FileRemoverDialog|Information Label"
 msgid ""
@@ -564,7 +565,7 @@ msgid ""
 "safe to remove. You can review the files that will be removed before "
 "proceeding."
 msgstr ""
-"Il lanciatore di KeeperFX ha trovato file orfani rimanenti dopo "
+"Il lanciatore di KeeperFX ha trovato dei file orfani rimanenti dopo "
 "aggiornamenti di KeeperFX precedenti. Questi file potrebbero causare "
 "problema e quindi devono essere rimossi.\n"
 "\n"
@@ -574,15 +575,15 @@ msgstr ""
 
 msgctxt "FileRemoverDialog|Button"
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 msgctxt "FileRemoverDialog|Button"
 msgid "Remove All"
-msgstr "Rimuovere tutto"
+msgstr "Rimuovi tutto"
 
 msgctxt "FileRemoverDialog|MessageBox Title"
 msgid "Confirmation"
-msgstr "Confirmare"
+msgstr "Confirma"
 
 msgctxt "FileRemoverDialog|MessageBox Text"
 msgid ""
@@ -603,13 +604,35 @@ msgctxt "FileRemoverDialog|MessageBox Text"
 msgid "Unwanted files have been removed!"
 msgstr "I file indesiderati sono stati rimossi!"
 
+msgctxt "Game|MessageBox Title"
+msgid "KeeperFX has crashed"
+msgstr "Arresto anomalo di KeeperFX"
+
+msgctxt "Game|MessageBox Text"
+msgid ""
+"It seems that KeeperFX has crashed and is unable to recover.\n"
+"\n"
+"Crash reporting is disabled because you are using the heavylog option.\n"
+"\n"
+"If you require assistance, please create an issue on Github or contact us on "
+"the Keeper Klan Discord."
+msgstr ""
+"Sembra che KeeperFX ha subito un arresto anomalo e non può gestire l'errore "
+"in modo appropriato.\n"
+"\n"
+"La segnalazione dei arresti anomali è disattivata perchè la registrazione "
+"dei log dettagliati è attivata.\n"
+"\n"
+"Se hai bisogno di assistenza, segnala per favore il problema su GitHub o "
+"contattaci al server Keeper Klan su Discord."
+
 msgctxt "InstallKfxDialog|Window Title"
 msgid "Install KeeperFX"
-msgstr "Installare KeeperFX"
+msgstr "Installazione di KeeperFX"
 
 msgctxt "InstallKfxDialog|Header"
 msgid "Download and Install KeeperFX"
-msgstr "Scaricare e installare KeeperFX"
+msgstr "Scarica e installazione di KeeperFX"
 
 msgctxt "InstallKfxDialog|Information Label"
 msgid ""
@@ -630,11 +653,11 @@ msgstr "Versione del lanciatore:"
 
 msgctxt "InstallKfxDialog|Button"
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 msgctxt "InstallKfxDialog|Button"
 msgid "Install"
-msgstr "Installare"
+msgstr "Installa"
 
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Stable (Default)"
@@ -661,6 +684,10 @@ msgstr ""
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Estraggo: %p%"
+
+msgctxt "InstallKfxDialog|Failure message"
+msgid "Failed to create temp directory"
+msgstr "Creare una cartella temporanea non riuscito"
 
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to get download URL for alpha patch"
@@ -697,7 +724,7 @@ msgid ""
 "Are you sure you want to use Alpha patches?"
 msgstr ""
 "Le versioni alfa potrebbero contenere nuove funzionalità o cambiamenti, ma "
-"anche spesso contengono bug o funzionalità incomplete. Le patch sono "
+"anche spesso contengono dei bug o funzionalità incomplete. Le patch sono "
 "sopratutto designate per scopi di test, e quindi vi consigliamo di unirti al "
 "nostro server Keeper Klan su Discord se le sfogli.\n"
 "\n"
@@ -719,7 +746,7 @@ msgstr ""
 
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Confirmation"
-msgstr "Confirmare"
+msgstr "Confirmazione"
 
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
@@ -775,11 +802,11 @@ msgstr "Sala Lavoro"
 
 msgctxt "LauncherMainWindow|Button tooltip text"
 msgid "Open log file"
-msgstr "Aprire il file di log"
+msgstr "Apri il file di log"
 
 msgctxt "LauncherMainWindow|Button tooltip text"
 msgid "Open game folder"
-msgstr "Aprire la cartella del gioco"
+msgstr "Apri la cartella del gioco"
 
 msgctxt "LauncherMainWindow|Social button tooltip text"
 msgid "Discord - Keeper Klan (English)"
@@ -787,7 +814,18 @@ msgstr "Server Discord - Keeper Klan (inglese)"
 
 msgctxt "LauncherMainWindow|Button"
 msgid "Play"
-msgstr "Giocare"
+msgstr "Gioca"
+
+msgctxt "LauncherMainWindow|MessageBox Title"
+msgid "KeeperFX Launcher"
+msgstr "Lanciatore di KeeperFX"
+
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid ""
+"This launcher version is a prototype and should only be used for testing."
+msgstr ""
+"Questa versione del lanciatore è prototipiale e quindi deve essere "
+"utilizzata per i test."
 
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
@@ -834,11 +872,11 @@ msgstr ""
 
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
-msgstr "Giocare alla campagna"
+msgstr "Gioca alla campagna"
 
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
-msgstr "Caricare un gioco salvato"
+msgstr "Carica un gioco salvato"
 
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
@@ -858,7 +896,7 @@ msgstr "Riproduzione dei replay"
 
 msgctxt "LauncherMainWindow|Menu"
 msgid "Start without mods"
-msgstr "Iniziare senza i mod"
+msgstr "Inizia senza i mod"
 
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
@@ -866,11 +904,11 @@ msgstr "File di log dettagliato"
 
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
-msgstr "Giocare (log)"
+msgstr "Gioca (log)"
 
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
-msgstr "Giocare"
+msgstr "Gioca"
 
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -919,8 +957,8 @@ msgid ""
 "It is highly suggested to only use official KeeperFX files."
 msgstr ""
 "Il lanciatore non ha riuscito a verificare la firma di:\n"
-"%1\n"
 "\n"
+"%1\n"
 "Si consiglia vivamente di utilizzare solo i file officili di KeeperFX."
 
 #, qt-format
@@ -976,11 +1014,11 @@ msgstr ""
 
 msgctxt "RunPacketFileDialog|Button"
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 msgctxt "RunPacketFileDialog|Button"
 msgid "Start"
-msgstr "Iniziare"
+msgstr "Inizia"
 
 msgctxt "ScanNetworkDialog|Window Title"
 msgid "Scan Network"
@@ -1005,15 +1043,15 @@ msgstr ""
 
 msgctxt "ScanNetworkDialog|Button"
 msgid "Close"
-msgstr "Chiudere"
+msgstr "Chiudi"
 
 msgctxt "ScanNetworkDialog|Button"
 msgid "Scan"
-msgstr "Scansionare"
+msgstr "Scansiona"
 
 msgctxt "ScanNetworkDialog|Button"
 msgid "Connect"
-msgstr "Collegarsi"
+msgstr "Collegati"
 
 msgctxt "ScanNetworkDialog|Table Header"
 msgid "IP Address"
@@ -1025,7 +1063,7 @@ msgstr "Nome della host"
 
 msgctxt "ScanNetworkDialog|Button text"
 msgid "Stop Scan"
-msgstr "Interrompere"
+msgstr "Interrompi"
 
 msgctxt "ScanNetworkDialog|Progress bar"
 msgid "Scanning..."
@@ -1033,7 +1071,7 @@ msgstr "Scansione in corso..."
 
 msgctxt "ScanNetworkDialog|Button text"
 msgid "Scan"
-msgstr "Scansionare"
+msgstr "Scansiona"
 
 msgctxt "ScanNetworkDialog|Progress bar"
 msgid "Scanning: %p% (%v/%m)"
@@ -1053,15 +1091,15 @@ msgstr "Lingua del gioco"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display Intro"
-msgstr "Mostrare l'intro"
+msgstr "Mostra l'intro"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Cheats"
-msgstr "Attivare trucchi"
+msgstr "Attiva trucchi"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
-msgstr "Attivare censura"
+msgstr "Attiva censura"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Screenshot type"
@@ -1081,15 +1119,15 @@ msgstr "Pulsante della console"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display splash screens"
-msgstr "Mostrare le schermate di caricamento"
+msgstr "Mostra le schermate di caricamento"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable delta time"
-msgstr "Attivare sincronizzazione delta"
+msgstr "Attiva la sincronizzazione delta"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Freeze game when not focused"
-msgstr "Sospendere il gioco se la finestra è in sfondo"
+msgstr "Sospendi il gioco se la finestra è in sfondo"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Human Player"
@@ -1101,19 +1139,19 @@ msgstr "Nome del file di replay"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Packetsave"
-msgstr "Attivare registrazione dei file di replay"
+msgstr "Attiva registrazione dei file di replay"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Exit on LUA error"
-msgstr "Chiudere su errore di LUA"
+msgstr "Chiudi su errore di LUA"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable flee"
-msgstr "Attivare Fuggi automaticamente"
+msgstr "Attiva Fuggi automaticamente"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable imprison"
-msgstr "Attivare Imprigiona automaticamente"
+msgstr "Attiva Imprigiona automaticamente"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
@@ -1121,7 +1159,7 @@ msgstr "Grafica"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Smoothen edges"
-msgstr "Attenuare bordi"
+msgstr "Attenua bordi"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resolution"
@@ -1158,7 +1196,7 @@ msgstr "<i>Passa tra le viste premendo <strong>Alt + R</strong></i>"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
-msgstr "Redimensionare i video"
+msgstr "Redimensiona i video"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Creature flower size (px)"
@@ -1209,7 +1247,7 @@ msgstr ""
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically determine max. FPS"
-msgstr "Impostare un limite FPS automaticamente"
+msgstr "Imposta un limite FPS automaticamente"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
@@ -1217,19 +1255,19 @@ msgstr "Suono"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable sound"
-msgstr "Attivare suono"
+msgstr "Attiva il suono"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Use CD music instead of local files"
-msgstr "Usare la musica del CD al posto dei file locali"
+msgstr "Usa la musica del CD al posto dei file locali"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
-msgstr "Mettere la musica in pausa se il gioco è sospinto"
+msgstr "Metti la musica in pausa se il gioco è sospinto"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable atmospheric sounds"
-msgstr "Attivare suoni ambientali"
+msgstr "Attiva i suoni ambientali"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
@@ -1241,7 +1279,7 @@ msgstr "Volume"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Mute audio when game is not focused"
-msgstr "Disattivare l'audio se la finestra del gioco è inattiva"
+msgstr "Disattiva l'audio se la finestra del gioco è inattiva"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
@@ -1249,11 +1287,11 @@ msgstr "Input"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
-msgstr "Capturare il cursore quando possiedi una creatura"
+msgstr "Captura il cursore quando possiedi una creatura"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
-msgstr "Sbloccare il cursore durante la pausa del gioco"
+msgstr "Sblocca il cursore durante la pausa del gioco"
 
 #. "Alternative Input"
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1262,7 +1300,7 @@ msgstr "Input alternativi"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Screen edge camera panning"
-msgstr "Spostare la camera ai bordi dello schermo"
+msgstr "Sposta la camera ai bordi dello schermo"
 
 msgctxt "SettingsDialog|Slider Title Label"
 msgid "Mouse sensitivity"
@@ -1278,7 +1316,7 @@ msgstr "Modalità di selezione"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable tag mode toggle (Right-click)"
-msgstr "Attivare altern. tra le mod. di selezione (pulsante dx)"
+msgstr "Attiva altern. tra le mod. di selezione (pulsante dx)"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Multiplayer"
@@ -1294,11 +1332,11 @@ msgstr "Lanciatore"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Check for KeeperFX updates"
-msgstr "Verificare la disponibilità dei aggiornamenti di KeeperFX"
+msgstr "Verifica la disponibilità dei aggiornamenti di KeeperFX"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable crash reporting"
-msgstr "Attivare la segnalazione di arresto anomalo"
+msgstr "Attiva la segnalazione di arresto anomalo"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Release"
@@ -1306,11 +1344,11 @@ msgstr "Versione"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
-msgstr "Attivare l'integrazione nel sito web"
+msgstr "Attiva l'integrazione nel sito web"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
-msgstr "Aprire sullo schermo stesso che il gioco"
+msgstr "Apri sullo schermo stesso che il gioco"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Launcher language"
@@ -1326,11 +1364,11 @@ msgstr "Eseguire il backup dei file di salvataggio durante l'agg."
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Play button theme"
-msgstr "Tema della pulsante «Giocare»"
+msgstr "Tema del pulsante «Gioca»"
 
 msgctxt "SettingsDialog|Button"
 msgid "Show launcher command line options"
-msgstr "Mostrare le opzioni della riga di commando del lanciatore"
+msgstr "Mostra le opzioni della riga di commando del lanciatore"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
@@ -1382,19 +1420,19 @@ msgstr "Arancia DK (predefinito)"
 
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
-msgstr "Adattare (predefinito)"
+msgstr "Adatta (predefinita)"
 
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
-msgstr "Disattivare"
+msgstr "Disattiva"
 
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
-msgstr "Allungare"
+msgstr "Allunga"
 
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
-msgstr "Ritagliare"
+msgstr "Ritaglia"
 
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
@@ -1402,7 +1440,11 @@ msgstr "Pixel perfetto"
 
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
-msgstr "Stesso che il desktop"
+msgstr "Stessa che il desktop"
+
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "Custom..."
+msgstr "Personalizzata"
 
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
@@ -1498,9 +1540,26 @@ msgctxt "SettingsDialog|MessageBox Title"
 msgid "Launcher command line options"
 msgstr "Opzioni della riga di commando del lanciatore"
 
+msgctxt "SettingsDialog|Custom resoltuion dialog title"
+msgid "Custom resolution"
+msgstr "Risol. personalizzata"
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Width:"
+msgstr "Larghezza:"
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Height:"
+msgstr "Altezza:"
+
+#, qt-format
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "%1 x %2 (Custom)"
+msgstr "%1 x %2 (personalizzata)"
+
 msgctxt "UpdateDialog|Window Title"
 msgid "KeeperFX Update"
-msgstr "Aggiornare KeeperFX"
+msgstr "Aggiornamento di KeeperFX"
 
 msgctxt "UpdateDialog|Header"
 msgid "New KeeperFX version found!"
@@ -1508,11 +1567,11 @@ msgstr "La versione aggiornata di KeeperFX è trovata!"
 
 msgctxt "UpdateDialog|Button"
 msgid "Cancel"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 msgctxt "UpdateDialog|Button"
 msgid "Update"
-msgstr "Aggiornare"
+msgstr "Aggiorna"
 
 msgctxt "UpdateDialog|Appended to version string"
 msgid "Alpha"
@@ -1544,7 +1603,7 @@ msgstr ""
 
 msgctxt "UpdateDialog|Title label"
 msgid "Updating..."
-msgstr "Aggiornamento"
+msgstr "Aggiornamento in corso..."
 
 msgctxt "UpdateDialog|Progress bar (%p=percentage)"
 msgid "Comparing: %p%"
@@ -1614,3 +1673,15 @@ msgstr "Spostamento di un file non riuscito: %1"
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr "Spostamento di tutti i file non riuscito"
+
+msgctxt "main|MessageBox Title"
+msgid "KeeperFX Error"
+msgstr "Errore di KeeperFX"
+
+msgctxt "main|MessageBox Text"
+msgid ""
+"Failed to determine the KeeperFX version. This is required to submit a crash "
+"report."
+msgstr ""
+"Rilevare la versione di KeeperFX non riuscito. È necessaria per segnalare un "
+"arresto anomalo."
