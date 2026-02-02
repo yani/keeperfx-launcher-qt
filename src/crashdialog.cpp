@@ -128,8 +128,8 @@ void CrashDialog::on_sendButton_clicked()
     QFile kfxLogFile(QCoreApplication::applicationDirPath() + "/keeperfx.log");
     if (kfxLogFile.exists() && kfxLogFile.open(QIODevice::ReadOnly)) {
 
-        // Check if logfile is reasonable size (<8MiB)
-        if (kfxLogFile.size() > 8 * 1024LL * 1024LL) {
+        // Check if logfile is reasonable size (<32MiB)
+        if (kfxLogFile.size() > 32 * 1024LL * 1024LL) {
             QMessageBox::warning(this, tr("Crash Report", "MessageBox Title"), tr("Failed to submit crash report.", "MessageBox Text"));
             qWarning() << "Log file too big to be sent with crash report:" << kfxLogFile.fileName() << "Size:" << kfxLogFile.size();
             this->close();
