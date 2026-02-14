@@ -29,30 +29,53 @@ SaveFile::SaveFile(const QString &filePath)
             return;
         }
 
-        // Read save name
+        // Positions and length of data we want to read
         // You can use any hex editor to figure out the starting pos
+        // The values below should be for save files before kfx v1.2.0.4479
+        // Save files after this version have their struct changed
+        qint64 saveNamePos = 0x12;
+        qint64 saveNameLength = 15;
+        qint64 campaignNamePos = 0x25;
+        qint64 campaignNameLength = 160;
+
+        // Positions have changed when LUA was added (1.2.0.4479)
+        if(KfxVersion::hasFunctionality("save_file_struct_lua")){
+            saveNamePos = 0xE;
+            campaignNamePos = 0x21;
+        }
+
+        // Positions have changed when save name length has increased (1.3.1.4881)
+        if(KfxVersion::hasFunctionality("save_file_struct_30_char_name")){
+            saveNameLength = 30;
+            campaignNamePos = 0x30;
+        }
+
+        // The current position in the save file seek
+        qint64 currentPos;
+
+        // Read save name
         // We force the loop to end at the end pos, but we should always return earlier
-        qint64 pos = 0x12;
-        while (pos <= 0x20) {
-            file.seek(pos);
+        currentPos = saveNamePos;
+        while (currentPos < (saveNamePos + saveNameLength)) {
+            file.seek(currentPos);
             QByteArray buff = file.read(1);
             if (buff.isEmpty() || buff.at(0) == '\0') {
                 break;
             }
             saveName += buff;
-            pos++;
+            currentPos++;
         }
 
         // Read campaign/ruleset name
-        pos = 0x25;
-        while (pos < 0xC4) {
-            file.seek(pos);
+        currentPos = campaignNamePos;
+        while (currentPos < (campaignNamePos + campaignNameLength)) {
+            file.seek(currentPos);
             QByteArray buff = file.read(1);
             if (buff.isEmpty() || buff.at(0) == '\0') {
                 break;
             }
             campaignName += buff;
-            pos++;
+            currentPos++;
         }
 
         qDebug() << "Savefile object created:" << toString();
