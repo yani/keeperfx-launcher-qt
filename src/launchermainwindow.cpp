@@ -950,25 +950,75 @@ void LauncherMainWindow::onUpdateFound(KfxVersion::VersionInfo versionInfo)
         refreshKfxVersionInGui();
     }
 
-    // Get the executable path of a possible updated launcher
-#ifdef Q_OS_WINDOWS
-    QString newAppBinString(QCoreApplication::applicationDirPath()
-                            + "/keeperfx-launcher-qt-new.exe");
-#else
-    QString newAppBinString(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt-new");
-#endif
+    // Next we'll check for a possible updated launcher
+    // On Windows we can query the file info of a new launcher binary
+    // But on Linux we just check if a new launcher binary exists
+    // TODO: figure out if we can check the launcher version on linux?
 
-    // Check if new launcher update exists
+#ifdef Q_OS_WINDOWS
+
+    // Windows binary
+    QString newAppBinString(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt-new.exe");
+
+    // Check if a new launcher binary exists
     QFile newAppBin(newAppBinString);
     if (newAppBin.exists()) {
-        qDebug() << "New launcher found:" << newAppBinString;
-        qDebug() << "Starting new launcher";
+
+        // Get the version of the new launcher
+        QString newLauncherVersion = KfxVersion::getVersionString(newAppBin);
+        if(newLauncherVersion.isEmpty()){
+
+            qDebug() << "A new launcher binary was found but we failed to grab its version";
+            qDebug() << "We'll start it just in case";
+
+            // Start the new launcher
+            // This needs to be detached because we are going the remove the current running launcher
+            QProcess::startDetached(newAppBinString, LauncherOptions::getArguments());
+            QApplication::quit();
+            return;
+
+        } else {
+
+            qDebug() << "New launcher found:" << newAppBinString << QString("v" + newLauncherVersion);
+            qDebug() << "Current launcher version:" << LAUNCHER_VERSION;
+
+            // Check if new launcher is newer
+            if(KfxVersion::isNewerVersion(newLauncherVersion, LAUNCHER_VERSION)){
+
+                qDebug() << "Starting new launcher because it is newer";
+                // Start the new launcher
+                // This needs to be detached because we are going the remove the current running launcher
+                QProcess::startDetached(newAppBinString, LauncherOptions::getArguments());
+                QApplication::quit();
+                return;
+
+            } else {
+
+                // The new launcher can be removed because it is not newer than our one
+                newAppBin.remove();
+                qDebug() << "New launcher is removed because it is older";
+            }
+        }
+    }
+
+#else
+    // Linux binary
+    QString newAppBinString(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt-new");
+
+    // Check if a new launcher binary exists
+    QFile newAppBin(newAppBinString);
+    if (newAppBin.exists()) {
+
+        qDebug() << "New launcher found. Starting it now";
+
         // Start the new launcher
         // This needs to be detached because we are going the remove the current running launcher
         QProcess::startDetached(newAppBinString, LauncherOptions::getArguments());
         QApplication::quit();
         return;
     }
+
+#endif
 
     // Verify the binaries against known certificates
     verifyBinaryCertificates();
