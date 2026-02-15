@@ -46,7 +46,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;
 
-QString KfxVersion::getVersionString(QFile binary){
+QString KfxVersion::getVersionString(const QFile& binary){
 
     // Make sure this binary file exists
     if(binary.exists() == false){

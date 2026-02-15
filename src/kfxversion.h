@@ -37,7 +37,7 @@ public:
 
     static VersionInfo currentVersion;
 
-    static QString getVersionString(QFile binary);
+    static QString getVersionString(const QFile& binary);
     static QString getVersionStringFromAppDir();
     static VersionInfo getVersionFromString(QString versionString);
 
