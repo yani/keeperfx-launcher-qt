@@ -26,7 +26,7 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     {"start_without_mods_param", "1.2.0.4753"},
     {"gui_and_neutral_blink_speed", "1.2.0.4529"},
     {"auto_determine_monitor_refresh_rate", "1.3.0.4793"},
-
+    {"enet_ipv6_support", "1.3.1.4877"},
     {"save_file_struct_lua", "1.2.0.4479"},
     {"save_file_struct_30_char_name", "1.3.1.4881"},
 
@@ -36,7 +36,6 @@ const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
     // Not yet supported
     {"start_campaign_directly", "999.999.999"},     // https://github.com/dkfans/keeperfx/issues/3924
     {"load_save_directly", "999.999.999"},          // TODO: https://github.com/dkfans/keeperfx/issues/3481
-    {"enet_ipv6_support", "999.999.999"},           // TODO
     {"packetsave_while_packetload", "999.999.999"}, // TODO
 
     // Use configuration files in the user appdata
