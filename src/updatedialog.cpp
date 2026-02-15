@@ -244,6 +244,25 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
         QString filePath = it.key();
         QString expectedChecksum = it.value();
 
+        // If we are updating to another KeeperFX version after this one,
+        // we can skip some specific files that should always be present.
+        // We do this to make the download go faster
+        if(nextUpdateVersionInfo.type != KfxVersion::ReleaseType::UNKNOWN){
+            QStringList filesToSkip = {
+                {"/keeperfx"},
+                {"/keeperfx.exe"},
+                {"/keeperfx.map"},
+                {"/keeperfx_hvlog.exe"},
+                {"/keeperfx_hvlog.map"},
+                {"/keeperfx-launcher-qt"},
+                {"/keeperfx-launcher-qt.exe"},
+            };
+            if(filesToSkip.contains(filePath)){
+                emit appendLog("Ignoring: " + filePath);
+                continue;
+            }
+        }
+
         // Removed any leading zeros in the checksum
         expectedChecksum.replace(QRegularExpression("^0+(?!$)"), "");
 
