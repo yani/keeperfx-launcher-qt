@@ -52,7 +52,11 @@ void Logger::handler(QtMsgType type,
 
 void Logger::setupHandler()
 {
-    if (LauncherOptions::isSet("log-debug")) {
+    if (LauncherOptions::isSet("disable-logfile") ) {
+        qInfo() << "Logging to the launcher logfile is disabled";
+
+    } else {
+
         Logger::logFile = new QFile(
             QCoreApplication::applicationDirPath()
             + QDir::separator()
