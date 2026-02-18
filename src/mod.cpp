@@ -75,6 +75,8 @@ Mod::Mod(const QDir directory)
     this->kfxNetWorkshopItemId = modMetadata->value("web/KfxNetWorkshopItemId").toString();
 
     //qDebug() << "Translation test:" << modMetadata->value("mod/Name[DUT]").toString();
+
+    this->valid = true;
 }
 
 bool Mod::isGameVersionCompatible()
@@ -97,4 +99,9 @@ QString Mod::toString() const
     }
 
     return QString("[" + this->identifier + "]");
+}
+
+bool Mod::isValid()
+{
+    return this->valid;
 }

@@ -111,7 +111,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QWidget" name="loadOrderAfterBase" native="true">
+          <widget class="QWidget" name="loadOrderAfterBaseTitle" native="true">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -125,9 +125,96 @@ background-color:  #3a81ad;
            </property>
            <layout class="QGridLayout" name="gridLayout">
             <item row="0" column="0">
-             <widget class="QLabel" name="label">
+             <widget class="QLabel" name="labelAfterBaseGame">
               <property name="text">
-               <string>Base game</string>
+               <string>After Base game</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="loadOrderAfterBase" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="labelAfterBasePlaceholder">
+              <property name="text">
+               <string>&lt;PLACEHOLDER&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="loadOrderAfterMapTitle" native="true">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget {
+background-color:  #5855aA;
+}</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="0" column="0">
+             <widget class="QLabel" name="labelAfterMap">
+              <property name="text">
+               <string>After Campaign</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="loadOrderAfterCampaign" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QLabel" name="labelAfterCampaignPlaceholder">
+              <property name="text">
+               <string>&lt;PLACEHOLDER&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="loadOrderAfterCampaignTitle" native="true">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget {
+background-color:  #813aad;
+}</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+             <widget class="QLabel" name="labelAfterCampaign">
+              <property name="text">
+               <string>After Map</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="loadOrderAfterMap" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QLabel" name="labelAfterMapPlaceholder">
+              <property name="text">
+               <string>&lt;PLACEHOLDER&gt;</string>
               </property>
              </widget>
             </item>

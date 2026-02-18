@@ -40,4 +40,9 @@ public:
     // Online information
     QString kfxNetAuthorUsername;
     QString kfxNetWorkshopItemId;
+
+    bool isValid();
+
+private:
+    bool valid = false;
 };

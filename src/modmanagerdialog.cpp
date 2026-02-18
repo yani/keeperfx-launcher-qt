@@ -16,13 +16,16 @@ ModManagerDialog::ModManagerDialog(QWidget *parent)
 
     // Get mods
     ModManager *manager = new ModManager();
-    QList<Mod *> mods = manager->getMods();
+    QList<Mod *> mods = manager->modsAfterBase;
 
     // Add the mods
     if (mods.isEmpty() == false) {
         for (auto mod : std::as_const(mods)) {
             // Create the widget
             ModWidget *modWidget = new ModWidget(mod, this);
+
+            //mod->
+
             ui->scrollAreaWidgetContents->layout()->addWidget(modWidget);
         }
     }

@@ -23,9 +23,12 @@ public:
         return ModManager::isModsFolderAvailable();
     }
 
-    QList<Mod *> getMods();
+    QList<Mod *> modsAfterBase;
+    QList<Mod *> modsAfterCampaign;
+    QList<Mod *> modsAfterMap;
 
 private:
+
     QList<Mod *> mods;
 
     static bool isModsFolderAvailable()
