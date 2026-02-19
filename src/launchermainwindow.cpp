@@ -251,9 +251,9 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
             qDebug() << "Failed to load KeeperFX version";
             int result = QMessageBox::question(this,
                                                tr("KeeperFX Error", "MessageBox Title"),
-                                               tr("The launcher failed to grab the version of KeeperFX. "
-                                                  "It's possible your installation is corrupted.\n\n"
-                                                  "Do you want to automatically reinstall KeeperFX?",
+                                               tr("The launcher failed to determine the version of KeeperFX. "
+                                                  "Your installation may be corrupted or outdated.\n\n"
+                                                  "Would you like to reinstall KeeperFX?",
                                                   "MessageBox Text"));
 
             if (result == QMessageBox::Yes) {
