@@ -661,7 +661,8 @@ void UpdateDialog::onFileDownloadProgress()
             QMessageBox *msgBox = new QMessageBox(QMessageBox::Information,
                                                   "KeeperFX",
                                                   tr("KeeperFX has been successfully updated to version %1!", "MessageBox Text").arg(currentUpdateVersionInfo.version),
-                                                  QMessageBox::Ok);
+                                                  QMessageBox::Ok,
+                                                  this);
 
             // Close messagebox after a delay if auto updating
             if (this->autoUpdate) {
