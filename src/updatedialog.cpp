@@ -617,16 +617,18 @@ void UpdateDialog::onFileDownloadProgress()
             // Remove destination file if it exists
             QFile destFile(destFilePath);
             if (destFile.exists()) {
-                destFile.remove();
+                if(destFile.remove() == false){
+                    emit setUpdateFailed(tr("Failed to remove file (%1): %2", "Failure Message").arg(destFile.errorString(), destFile.fileName()));
+                    return;
+                }
             }
 
             // Move file
-            if (QFile::rename(srcFilePath, destFilePath)) {
-                emit appendLog(QString("File moved: %1").arg(filePath));
-            } else {
-                emit appendLog(QString("Failed to move file: %1").arg(filePath));
-                emit setUpdateFailed(tr("Failed to move file: %1", "Failure Message").arg(filePath));
+            if (srcFile.rename(destFilePath) == false) {
+                emit setUpdateFailed(tr("Failed to move file (%1): %2", "Failure Message").arg(srcFile.errorString(), filePath));
                 return;
+            } else {
+                emit appendLog(QString("File moved: %1").arg(filePath));
             }
 
             emit updateProgress(++copiedFiles);
