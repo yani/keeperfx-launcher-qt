@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 13:37+0100\n"
+"POT-Creation-Date: 2026-02-20 01:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -739,10 +739,10 @@ msgstr ""
 
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
-"The launcher failed to grab the version of KeeperFX. It's possible your "
-"installation is corrupted.\n"
+"The launcher failed to determine the version of KeeperFX. Your installation "
+"may be corrupted or outdated.\n"
 "\n"
-"Do you want to automatically reinstall KeeperFX?"
+"Would you like to reinstall KeeperFX?"
 msgstr ""
 
 msgctxt "LauncherMainWindow|MessageBox Text"
@@ -1506,7 +1506,12 @@ msgstr ""
 
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
-msgid "Failed to move file: %1"
+msgid "Failed to remove file (%1): %2"
+msgstr ""
+
+#, qt-format
+msgctxt "UpdateDialog|Failure Message"
+msgid "Failed to move file (%1): %2"
 msgstr ""
 
 msgctxt "UpdateDialog|Failure message"
