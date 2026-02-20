@@ -37,14 +37,14 @@ hold out on adding them until the game also supports the language.
 |-----------------------|----------|-----------|----------------|--------------
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)
 | Dutch                 | NL       | 100%      | 338/338        | [Yani](https://github.com/yani)
-| Italian               | IT       | 95.6%     | 323/338        | [kammerer](https://github.com/Kammerer001)
+| Italian               | IT       | 100%      | 338/338        | [kammerer](https://github.com/Kammerer001)
 | French                | FR       | 89.6%     | 303/338        | AncientWay
 | Spanish               | ES       | 100%      | 338/338        | [Alniarez](https://github.com/alniarez)
 | German                | DE       | 89.6%     | 303/338        | Aqua, Dofi
 | Polish                | PL       | 95.9%     | 324/338        | [Rusty](https://github.com/rustyspoonz)
 | Swedish               | SV       |           |                | 
 | Japanese              | JA       | 90.2%     | 305/338        | [AdamPlenty](https://github.com/AdamPlenty)
-| Russian               | RU       | 99.1%     | 335/338        | Quuz, [kammerer](https://github.com/Kammerer001)
+| Russian               | RU       | 100%      | 338/338        | Quuz, [kammerer](https://github.com/Kammerer001)
 | Korean                | KO       | 89.6%     | 303/338        | Desert
 | Chinese (Simplified)  | ZH-HANS  | 85.5%     | 289/338        | [JieLeTian](https://github.com/jieletian)
 | Chinese (Traditional) | ZH-HANT  |           |                | 
