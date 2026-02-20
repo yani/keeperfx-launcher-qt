@@ -1161,10 +1161,9 @@ msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display mode"
 msgstr "Mode d'affichage"
 
-#, fuzzy
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display monitor"
-msgstr "Afficher le moniteur"
+msgstr "Écran d'affichage"
 
 #. Should be kept very short
 msgctxt "SettingsDialog|Dropdown Title Label"
