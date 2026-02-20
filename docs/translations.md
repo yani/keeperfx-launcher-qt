@@ -36,7 +36,7 @@ hold out on adding them until the game also supports the language.
 | Language              | Code     | Completed | Done/Total     | Translator(s)
 |-----------------------|----------|-----------|----------------|--------------
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)
-| Dutch                 | NL       | 94.1%     | 318/338        | [Yani](https://github.com/yani)
+| Dutch                 | NL       | 100%      | 338/338        | [Yani](https://github.com/yani)
 | Italian               | IT       | 95.6%     | 323/338        | [kammerer](https://github.com/Kammerer001)
 | French                | FR       | 89.6%     | 303/338        | AncientWay
 | Spanish               | ES       | 89.6%     | 303/338        | Alniarez

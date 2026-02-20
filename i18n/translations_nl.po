@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-06 12:49+0100\n"
+"POT-Creation-Date: 2026-02-20 01:02+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Yani\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -113,17 +113,14 @@ msgstr "&Opslaan"
 msgid "Restore Defaults"
 msgstr "Standaardinstellingen herstellen"
 
-#: ../ui/copydkfilesdialog.ui:17
 msgctxt "CopyDkFilesDialog|Window Title"
 msgid "Copy DK Files"
 msgstr "Kopieer DK-bestanden"
 
-#: ../ui/copydkfilesdialog.ui:39
 msgctxt "CopyDkFilesDialog|Header"
 msgid "Copy Dungeon Keeper Files"
 msgstr "Kopieer Dungeon Keeper-bestanden"
 
-#: ../ui/copydkfilesdialog.ui:68
 msgctxt "CopyDkFilesDialog|Information"
 msgid ""
 "KeeperFX requires the original Dungeon Keeper files for copyright reasons.\n"
@@ -140,37 +137,30 @@ msgstr ""
 "EA.\n"
 "Als je een digitale versie wilt gebruiken, moet je deze eerst installeren."
 
-#: ../ui/copydkfilesdialog.ui:104
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Browse"
 msgstr "Bladeren"
 
-#: ../ui/copydkfilesdialog.ui:141
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/copydkfilesdialog.ui:166
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Copy"
 msgstr "Kopieer"
 
-#: ../src/copydkfilesdialog.cpp:44
 msgctxt "CopyDkFilesDialog|Label"
 msgid "A suitable DK installation has been automatically detected."
 msgstr "Er is automatisch een geschikte DK-installatie gedetecteerd."
 
-#: ../src/copydkfilesdialog.cpp:57
 msgctxt "CopyDkFilesDialog|Directory Browse Dialog"
 msgid "Select Directory containing Dungeon Keeper files"
 msgstr "Selecteer de map met Dungeon Keeper-bestanden"
 
-#: ../src/copydkfilesdialog.cpp:66 ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Original DK files not found"
 msgstr "Originele DK-bestanden niet gevonden"
 
-#: ../src/copydkfilesdialog.cpp:67 ../src/copydkfilesdialog.cpp:88
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The chosen directory does not contain all of the required files. Please "
@@ -179,37 +169,30 @@ msgstr ""
 "De gekozen map bevat niet alle vereiste bestanden. Selecteer een originele "
 "Dungeon Keeper-installatie."
 
-#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Select a directory"
 msgstr "Selecteer een map"
 
-#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Please select an original Dungeon Keeper installation location."
 msgstr "Selecteer een originele Dungeon Keeper installatielocatie."
 
-#: ../src/copydkfilesdialog.cpp:95 ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Failed to copy files"
 msgstr "Kopiëren van bestanden mislukt"
 
-#: ../src/copydkfilesdialog.cpp:95
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "The current directory is not writable."
 msgstr "De huidige map is niet schrijfbaar."
 
-#: ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Something went wrong while copying the files."
 msgstr "Er is iets misgegaan tijdens het kopiëren van de bestanden."
 
-#: ../src/copydkfilesdialog.cpp:113
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "DK files copied!"
 msgstr "DK-bestanden gekopieerd!"
 
-#: ../src/copydkfilesdialog.cpp:114
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The required Dungeon Keeper files have been copied.\n"
@@ -220,12 +203,10 @@ msgstr ""
 "\n"
 "KeeperFX kan nu gespeeld worden!"
 
-#: ../src/copydkfilesdialog.cpp:127
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/copydkfilesdialog.cpp:128
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -236,17 +217,14 @@ msgstr ""
 "\n"
 "KeeperFX werkt niet correct zonder deze bestanden."
 
-#: ../ui/crashdialog.ui:17
 msgctxt "CrashDialog|Window Title"
 msgid "KeeperFX Crash Report"
 msgstr "KeeperFX Crashmelding"
 
-#: ../ui/crashdialog.ui:77
 msgctxt "CrashDialog|Header"
 msgid "KeeperFX has crashed"
 msgstr "KeeperFX is gecrasht"
 
-#: ../ui/crashdialog.ui:134
 msgctxt "CrashDialog|Information Label"
 msgid ""
 "It seems that KeeperFX has crashed and is unable to recover. If you wish to "
@@ -262,18 +240,15 @@ msgstr ""
 "met je opnemen. Aanvullende informatie, zoals KeeperFX-logbestanden en "
 "configuratie, wordt ook verzonden."
 
-#: ../ui/crashdialog.ui:155
 #, qt-format
 msgctxt "CrashDialog|Information Label"
 msgid "You can also raise an issue on Github: %1"
 msgstr "Je kan je probleem ook op Github posten: %1"
 
-#: ../ui/crashdialog.ui:171
 msgctxt "CrashDialog|Input box title"
 msgid "Information (Optional)"
 msgstr "Informatie (Optioneel)"
 
-#: ../ui/crashdialog.ui:203
 msgctxt "CrashDialog|Textarea Placeholder"
 msgid ""
 "Please explain what happened, and if possible the steps to reproduce this "
@@ -282,12 +257,10 @@ msgstr ""
 "Leg alstublieft uit wat er is gebeurd, en indien mogelijk de stappen om deze "
 "crash te reproduceren."
 
-#: ../ui/crashdialog.ui:213
 msgctxt "CrashDialog|Input box title"
 msgid "Savefile (Optional)"
 msgstr "Savefile (Optioneel)"
 
-#: ../ui/crashdialog.ui:235
 msgctxt "CrashDialog|Dropdown Placeholder Text"
 msgid ""
 "If you have a game save that could provide us with more information. You can "
@@ -296,57 +269,46 @@ msgstr ""
 "Als je een savefile hebt dat ons meer informatie kan geven kan je deze hier "
 "toevoegen."
 
-#: ../ui/crashdialog.ui:245
 msgctxt "CrashDialog|Input box title"
 msgid "Contact Information (Optional)"
 msgstr "Contact informatie (Optioneel)"
 
-#: ../ui/crashdialog.ui:261
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Discord handle"
 msgstr "Discord gebruikersnaam"
 
-#: ../ui/crashdialog.ui:268
 msgctxt "CrashDialog|Input Placeholder"
 msgid "KeeperFX.net username"
 msgstr "KeeperFX.net account"
 
-#: ../ui/crashdialog.ui:275
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Email Address"
 msgstr "E-mailadres"
 
-#: ../ui/crashdialog.ui:309
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/crashdialog.ui:334
 msgctxt "CrashDialog|Button"
 msgid "Send"
 msgstr "Verzenden"
 
-#: ../src/crashdialog.cpp:27
 msgctxt "CrashDialog|Menu Placeholder"
 msgid "No saves found"
 msgstr "Geen savefiles gevonden"
 
-#: ../src/crashdialog.cpp:29
 msgctxt "CrashDialog|Default Savefile"
 msgid "None"
 msgstr "Geen"
 
-#: ../src/crashdialog.cpp:183 ../src/crashdialog.cpp:191
 msgctxt "CrashDialog|MessageBox Title"
 msgid "Crash Report"
 msgstr "Crash Rapport"
 
-#: ../src/crashdialog.cpp:183
 msgctxt "CrashDialog|MessageBox Text"
 msgid "Failed to submit crash report."
 msgstr "Crashrapport versturen mislukt."
 
-#: ../src/crashdialog.cpp:192
 #, qt-format
 msgctxt "CrashDialog|MessageBox Text"
 msgid ""
@@ -364,17 +326,14 @@ msgstr ""
 "\n"
 "Rapport ID: %1"
 
-#: ../ui/directconnectdialog.ui:17
 msgctxt "DirectConnectDialog|Window Title"
 msgid "Direct Connect"
 msgstr "Direct Verbinden"
 
-#: ../ui/directconnectdialog.ui:36
 msgctxt "DirectConnectDialog|Header"
 msgid "Direct Connect"
 msgstr "Direct Verbinden"
 
-#: ../ui/directconnectdialog.ui:54
 msgctxt "DirectConnectDialog|Information Label"
 msgid ""
 "Directly connect to an open ENET lobby. Enter the IP address of the host. "
@@ -383,52 +342,42 @@ msgstr ""
 "Maak rechtstreeks verbinding met een open ENET-lobby. Voer het IP-adres van "
 "de host in. Alleen ENET wordt ondersteund."
 
-#: ../ui/directconnectdialog.ui:79
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "IP Address"
 msgstr "IP-adres"
 
-#: ../ui/directconnectdialog.ui:95
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "Port"
 msgstr "Poort"
 
-#: ../ui/directconnectdialog.ui:129
 msgctxt "DirectConnectDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/directconnectdialog.ui:154
 msgctxt "DirectConnectDialog|Button"
 msgid "Connect"
 msgstr "Verbinden"
 
-#: ../src/directconnectdialog.cpp:56 ../src/directconnectdialog.cpp:63
 msgctxt "DirectConnectDialog|MessageBox Title"
 msgid "Direct Connect"
 msgstr "Direct Verbinden"
 
-#: ../src/directconnectdialog.cpp:56
 msgctxt "DirectConnectDialog|MessageBox Text"
 msgid "Invalid IP address"
 msgstr "Ongeldig IP-adres"
 
-#: ../src/directconnectdialog.cpp:63
 msgctxt "DirectConnectDialog|MessageBox Text"
 msgid "IPv6 addresses are not supported."
 msgstr "IPv6-adressen worden niet ondersteund."
 
-#: ../ui/downloadmusicdialog.ui:17
 msgctxt "DownloadMusicDialog|Dialog Title"
 msgid "KeeperFX Background Music"
 msgstr "KeeperFX Achtergrondmuziek"
 
-#: ../ui/downloadmusicdialog.ui:39
 msgctxt "DownloadMusicDialog|Header"
 msgid "Download Music Files"
 msgstr "Download Muziek bestanden"
 
-#: ../ui/downloadmusicdialog.ui:68
 msgctxt "DownloadMusicDialog|Information"
 msgid ""
 "It seems the background music files were not found. This might happen when "
@@ -452,64 +401,52 @@ msgstr ""
 "Als je de muziekbestanden niet downloadt, zul je de originele cd in je "
 "schijfstation moeten hebben om de achtergrondmuziek te kunnen horen."
 
-#: ../ui/downloadmusicdialog.ui:141
 msgctxt "DownloadMusicDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/downloadmusicdialog.ui:166
 msgctxt "DownloadMusicDialog|Button"
 msgid "Download"
 msgstr "Download"
 
-#: ../src/downloadmusicdialog.cpp:81
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to get download URL for music archive"
 msgstr "Ophalen van download-URL voor muziek archief is mislukt"
 
-#: ../src/downloadmusicdialog.cpp:91
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Invalid music archive file extension. It must be a 7zip archive."
 msgstr ""
 "Ongeldige bestandsextensie voor muziekarchief. Het moet een 7zip-archief "
 "zijn."
 
-#: ../src/downloadmusicdialog.cpp:109
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to download music archive"
 msgstr "Downloaden van muziekarchief is mislukt"
 
-#: ../src/downloadmusicdialog.cpp:131
 msgctxt "DownloadMusicDialog|Failure message"
 msgid "Music archive test failed. It may be corrupted."
 msgstr "De test van het muziekarchief is mislukt. Het is mogelijk beschadigd."
 
-#: ../src/downloadmusicdialog.cpp:143
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Uitpakken: %p%"
 
-#: ../src/downloadmusicdialog.cpp:175
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid "The KeeperFX background music has been successfully downloaded!"
 msgstr "De achtergrondmuziek van KeeperFX is succesvol gedownload!"
 
-#: ../src/downloadmusicdialog.cpp:184
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Downloaden: %p% (%vMiB)"
 
-#: ../src/downloadmusicdialog.cpp:228
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Download failed"
 msgstr "Downloaden mislukt"
 
-#: ../src/downloadmusicdialog.cpp:235
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/downloadmusicdialog.cpp:236
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -522,17 +459,14 @@ msgstr ""
 "Je zal de achtergrondmuziek niet kunnen horen zonder de cd in je "
 "schijfstation."
 
-#: ../ui/enetservertestdialog.ui:17
 msgctxt "EnetServerTestDialog|Window Title"
 msgid "Test internet lobby"
 msgstr "Internet lobby testen"
 
-#: ../ui/enetservertestdialog.ui:33
 msgctxt "EnetServerTestDialog|Header"
 msgid "Multiplayer Lobby Portforwarding Test"
 msgstr "Meerspeler Lobby Portforwarding Test"
 
-#: ../ui/enetservertestdialog.ui:63
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "This tool checks if your KeeperFX multiplayer lobby can be reached from the "
@@ -543,7 +477,6 @@ msgstr ""
 "het internet. Je hoeft dit niet te gebruiken voor lokale spellen, omdat die "
 "al toegankelijk zijn binnen je netwerk."
 
-#: ../ui/enetservertestdialog.ui:81
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "To host a game online, you must open port 5556 in your router. How to do "
@@ -554,7 +487,6 @@ msgstr ""
 "dit moet doen verschilt per router en internetprovider, dus kijk online voor "
 "instructies of vraag je provider om hulp."
 
-#: ../ui/enetservertestdialog.ui:102
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "KeeperFX only works with IPv4. If you don't have an IPv4 address or you are "
@@ -565,68 +497,54 @@ msgstr ""
 "adres (CGNAT), kun je geen online spel hosten. Je kunt je internetprovider "
 "vragen of ze je een IPv4-adres kunnen geven."
 
-#: ../ui/enetservertestdialog.ui:190
 msgctxt "EnetServerTestDialog|Button"
 msgid "Close"
 msgstr "Sluiten"
 
-#: ../ui/enetservertestdialog.ui:215
 msgctxt "EnetServerTestDialog|Button"
 msgid "Test"
 msgstr "Test"
 
-#: ../src/enetservertestdialog.cpp:62 ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "IPv6 Detected"
 msgstr "IPv6 Gedetecteerd"
 
-#: ../src/enetservertestdialog.cpp:62
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to retrieve public IP address."
 msgstr "Opvragen van publiek IP-adres is mislukt."
 
-#: ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "This tool only works with IPv4."
 msgstr "Deze tool werkt alleen met IPv4."
 
-#: ../src/enetservertestdialog.cpp:97 ../src/enetservertestdialog.cpp:162
-#: ../src/enetservertestdialog.cpp:173 ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "Portforwarding tool"
 msgstr "Portforwarding-tool"
 
-#: ../src/enetservertestdialog.cpp:97
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to start ENET server."
 msgstr "ENET-server kon niet worden gestart."
 
-#: ../src/enetservertestdialog.cpp:162
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to contact KeeperFX.net"
 msgstr "Contacteren van KeeperFX.net is mislukt"
 
-#: ../src/enetservertestdialog.cpp:173
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Your router is correctly port forwarded!"
 msgstr "Port forwarding is correct ingesteld op je router!"
 
-#: ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to connect to local ENET server."
 msgstr "Verbinding met lokale ENET-server mislukt."
 
-#: ../ui/fileremoverdialog.ui:17
 msgctxt "FileRemoverDialog|Window Title"
 msgid "Remove unwanted files"
 msgstr "Verwijder ongewenste bestanden"
 
-#: ../ui/fileremoverdialog.ui:42
 msgctxt "FileRemoverDialog|Header"
 msgid "Remove leftover files"
 msgstr "Verwijder achtergebleven bestanden"
 
-#: ../ui/fileremoverdialog.ui:66
 msgctxt "FileRemoverDialog|Information Label"
 msgid ""
 "The KeeperFX launcher has found files that were left over after KeeperFX "
@@ -644,22 +562,18 @@ msgstr ""
 "veilig beschouwd om te verwijderen. Je kunt de bestanden die zullen worden "
 "verwijderd eerst bekijken voordat je doorgaat."
 
-#: ../ui/fileremoverdialog.ui:118
 msgctxt "FileRemoverDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/fileremoverdialog.ui:143
 msgctxt "FileRemoverDialog|Button"
 msgid "Remove All"
 msgstr "Alles verwijderen"
 
-#: ../src/fileremoverdialog.cpp:42
 msgctxt "FileRemoverDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/fileremoverdialog.cpp:43
 msgctxt "FileRemoverDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -670,27 +584,42 @@ msgstr ""
 "\n"
 "KeeperFX werkt mogelijk niet correct met deze bestanden."
 
-#: ../src/fileremoverdialog.cpp:67
 msgctxt "FileRemoverDialog|MessageBox Text"
 msgid "Something went wrong while removing unwanted files."
 msgstr "Er is iets misgegaan bij het verwijderen van ongewenste bestanden."
 
-#: ../src/fileremoverdialog.cpp:74
 msgctxt "FileRemoverDialog|MessageBox Text"
 msgid "Unwanted files have been removed!"
 msgstr "Ongewenste bestanden zijn verwijderd!"
 
-#: ../ui/installkfxdialog.ui:17
+msgctxt "Game|MessageBox Title"
+msgid "KeeperFX has crashed"
+msgstr "KeeperFX is gecrasht"
+
+msgctxt "Game|MessageBox Text"
+msgid ""
+"It seems that KeeperFX has crashed and is unable to recover.\n"
+"\n"
+"Crash reporting is disabled because you are using the heavylog option.\n"
+"\n"
+"If you require assistance, please create an issue on Github or contact us on "
+"the Keeper Klan Discord."
+msgstr ""
+"Het lijkt erop dat KeeperFX is gecrasht en niet meer kan worden hersteld.\n"
+"\n"
+"Crashrapportage is uitgeschakeld omdat je heavylog ingeschakeld hebt.\n"
+"\n"
+"Als je hulp nodig hebt, maak dan een issue aan op Github of neem contact met "
+"ons op via de Keeper Klan Discord."
+
 msgctxt "InstallKfxDialog|Window Title"
 msgid "Install KeeperFX"
 msgstr "KeeperFX Installeren"
 
-#: ../ui/installkfxdialog.ui:33
 msgctxt "InstallKfxDialog|Header"
 msgid "Download and Install KeeperFX"
 msgstr "KeeperFX downloaden en installeren"
 
-#: ../ui/installkfxdialog.ui:48
 msgctxt "InstallKfxDialog|Information Label"
 msgid ""
 "Select your version, and this installer will download and install KeeperFX.\n"
@@ -704,91 +633,74 @@ msgstr ""
 "Kies de stabiele versie voor betrouwbaarheid of de alpha-versie als je ons "
 "wilt helpen met testen."
 
-#: ../ui/installkfxdialog.ui:77
 msgctxt "InstallKfxDialog|Label"
 msgid "Release version:"
 msgstr "Release versie:"
 
-#: ../ui/installkfxdialog.ui:149
 msgctxt "InstallKfxDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/installkfxdialog.ui:174
 msgctxt "InstallKfxDialog|Button"
 msgid "Install"
 msgstr "Installeer"
 
-#: ../src/installkfxdialog.cpp:50
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "Stabiel (Standaard)"
 
-#: ../src/installkfxdialog.cpp:51
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Alpha"
 
-#: ../src/installkfxdialog.cpp:121
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to get download URL for stable release"
 msgstr "Ophalen van Download-URL voor stabiele release is mislukt"
 
-#: ../src/installkfxdialog.cpp:141
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to download stable release"
 msgstr "Downloaden van stabiele release is mislukt"
 
-#: ../src/installkfxdialog.cpp:161
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Stable release archive test failed. It may be corrupted."
 msgstr ""
 "De test van het archief van de stabiele release is mislukt. Het is mogelijk "
 "beschadigd."
 
-#: ../src/installkfxdialog.cpp:174 ../src/installkfxdialog.cpp:296
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Uitpakken: %p%"
 
-#: ../src/installkfxdialog.cpp:190 ../src/installkfxdialog.cpp:312
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to create temp directory"
 msgstr "Mislukt om tijdelijke map te maken"
 
-#: ../src/installkfxdialog.cpp:246
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to get download URL for alpha patch"
 msgstr "Ophalen van Download-URL voor alpha patch is mislukt"
 
-#: ../src/installkfxdialog.cpp:266
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Alpha patch download failed."
 msgstr "Downloaden van alpha-patch mislukt."
 
-#: ../src/installkfxdialog.cpp:285
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Alpha patch archive test failed. It may be corrupted."
 msgstr ""
 "De test van het archief van de alpha patch is mislukt. Het is mogelijk "
 "beschadigd."
 
-#: ../src/installkfxdialog.cpp:358
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Downloaden: %p% (%vMiB)"
 
-#: ../src/installkfxdialog.cpp:402
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Installation failed"
 msgstr "Installatie mislukt"
 
-#: ../src/installkfxdialog.cpp:409
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "KeeperFX Alpha builds"
 msgstr "KeeperFX Alpha versies"
 
-#: ../src/installkfxdialog.cpp:410
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Alpha patches may contain new features and changes, but often contain bugs "
@@ -804,12 +716,10 @@ msgstr ""
 "\n"
 "Ben je zeker dat je Alpha patches wilt gebruiken?"
 
-#: ../src/installkfxdialog.cpp:445
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Uninstall KeeperFX"
 msgstr "Verwijder KeeperFX"
 
-#: ../src/installkfxdialog.cpp:446
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Do you want to uninstall KeeperFX?\n"
@@ -820,12 +730,10 @@ msgstr ""
 "\n"
 "Dit verwijdert ook alle achtergebleven bestanden."
 
-#: ../src/installkfxdialog.cpp:459
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/installkfxdialog.cpp:459
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -836,81 +744,79 @@ msgstr ""
 "\n"
 "Je zult KeeperFX niet kunnen spelen."
 
-#: ../src/installkfxdialog.cpp:487
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Copying: %p%"
 msgstr "Kopiëren: %p%"
 
-#: ../src/installkfxdialog.cpp:518
 #, qt-format
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to create destination directory: %1"
 msgstr "Mislukt om de doelmap te maken: %1"
 
-#: ../src/installkfxdialog.cpp:532
 #, qt-format
 msgctxt "InstallKfxDialog|"
 msgid "Failed to move file: %1"
 msgstr "Bestand verplaatsen mislukt: %1"
 
-#: ../src/installkfxdialog.cpp:567
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid "KeeperFX has been successfully installed!"
 msgstr "KeeperFX is succesvol geïnstalleerd!"
 
-#: ../ui/launchermainwindow.ui:26
 msgctxt "LauncherMainWindow|"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
 
-#: ../ui/launchermainwindow.ui:123
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest workshop items"
 msgstr "Nieuwe workshop items"
 
-#: ../ui/launchermainwindow.ui:209
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest News"
 msgstr "Laatste Nieuws"
 
-#: ../ui/launchermainwindow.ui:294
 msgctxt "LauncherMainWindow|Button"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: ../ui/launchermainwindow.ui:307
 msgctxt "LauncherMainWindow|Button"
 msgid "Mods"
 msgstr "Mods"
 
-#: ../ui/launchermainwindow.ui:323
 msgctxt "LauncherMainWindow|Button"
 msgid "Workshop"
 msgstr "Workshop"
 
-#: ../ui/launchermainwindow.ui:355
-msgctxt "LauncherMainWindow|Button"
-msgid "Logfile"
-msgstr "Logbestand"
+msgctxt "LauncherMainWindow|Button tooltip text"
+msgid "Open log file"
+msgstr "Configuratiebestand openen"
 
-#: ../ui/launchermainwindow.ui:368
-msgctxt "LauncherMainWindow|Button"
-msgid "Open Folder"
-msgstr "Folder openen"
+msgctxt "LauncherMainWindow|Button tooltip text"
+msgid "Open game folder"
+msgstr "Open spelmap"
 
-#: ../ui/launchermainwindow.ui:471
+msgctxt "LauncherMainWindow|Social button tooltip text"
+msgid "Discord - Keeper Klan (English)"
+msgstr "Discord - Keeper Klan (Engels)"
+
 msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr "Speel"
 
-#: ../src/launchermainwindow.cpp:156 ../src/launchermainwindow.cpp:241
-#: ../src/launchermainwindow.cpp:262 ../src/launchermainwindow.cpp:1088
-#: ../src/launchermainwindow.cpp:1094
+msgctxt "LauncherMainWindow|MessageBox Title"
+msgid "KeeperFX Launcher"
+msgstr "KeeperFX Launcher"
+
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid ""
+"This launcher version is a prototype and should only be used for testing."
+msgstr ""
+"Deze launcher-versie is een prototype en wordt best gebruikt voor "
+"testdoeleinden."
+
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "KeeperFX Fout"
 
-#: ../src/launchermainwindow.cpp:157
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has detected that it might have been installed in the original "
@@ -926,25 +832,22 @@ msgstr ""
 "KeeperFX moet in een eigen map worden geïnstalleerd, aangezien het een "
 "zelfstandig spel is."
 
-#: ../src/launchermainwindow.cpp:167
 msgctxt "LauncherMainWindow|Messagebox Checkbox label"
 msgid "Don't show this again"
 msgstr "Deze melding niet meer weergeven"
 
-#: ../src/launchermainwindow.cpp:242
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
-"The launcher failed to grab the version of KeeperFX. It's possible your "
-"installation is corrupted.\n"
+"The launcher failed to determine the version of KeeperFX. Your installation "
+"may be corrupted or outdated.\n"
 "\n"
-"Do you want to automatically reinstall KeeperFX?"
+"Would you like to reinstall KeeperFX?"
 msgstr ""
-"De launcher kon de versie van KeeperFX niet ophalen. Het is mogelijk dat je "
-"installatie beschadigd is.\n"
+"De launcher kon de versie van KeeperFX niet bepalen. Je installatie kan "
+"beschadigd of verouderd zijn.\n"
 "\n"
-"Wil je KeeperFX automatisch opnieuw installeren?"
+"Wil je KeeperFX opnieuw installeren?"
 
-#: ../src/launchermainwindow.cpp:263
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
@@ -953,57 +856,46 @@ msgstr ""
 "De launcher kon de versie van KeeperFX niet ophalen. Rapporteer deze fout "
 "alsjeblieft aan het KeeperFX-team."
 
-#: ../src/launchermainwindow.cpp:356
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr "Speel campagne"
 
-#: ../src/launchermainwindow.cpp:364
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr "Savegame laden"
 
-#: ../src/launchermainwindow.cpp:371
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr "Direct verbinden (MP)"
 
-#: ../src/launchermainwindow.cpp:382
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr "Lokaal netwerk scannen (MP)"
 
-#: ../src/launchermainwindow.cpp:393
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr "Internetlobby testen (MP)"
 
-#: ../src/launchermainwindow.cpp:401
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Packetfile starten"
 
-#: ../src/launchermainwindow.cpp:413
 msgctxt "LauncherMainWindow|Menu"
 msgid "Start without mods"
 msgstr "Start zonder mods"
 
-#: ../src/launchermainwindow.cpp:424
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
 msgstr "Heavylog (Extra loggen)"
 
-#: ../src/launchermainwindow.cpp:431 ../src/launchermainwindow.cpp:435
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
 msgstr "Speel (hvlog)"
 
-#: ../src/launchermainwindow.cpp:431 ../src/launchermainwindow.cpp:435
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "Speel"
 
-#: ../src/launchermainwindow.cpp:562
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -1014,12 +906,10 @@ msgstr ""
 "\n"
 "Wil je KeeperFX downloaden en installeren?"
 
-#: ../src/launchermainwindow.cpp:568
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/launchermainwindow.cpp:568
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -1030,12 +920,10 @@ msgstr ""
 "\n"
 "Je zult KeeperFX niet kunnen spelen."
 
-#: ../src/launchermainwindow.cpp:601
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "Taal is veranderd"
 
-#: ../src/launchermainwindow.cpp:602
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -1043,12 +931,10 @@ msgid ""
 msgstr ""
 "De launcher moet herstart worden om de taal te wijzigen. Wil je dat nu doen?"
 
-#: ../src/launchermainwindow.cpp:1054
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "KeeperFX Verificatie Fout"
 
-#: ../src/launchermainwindow.cpp:1055
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1063,7 +949,6 @@ msgstr ""
 "Het wordt sterk aangeraden om alleen officiële KeeperFX-bestanden te "
 "gebruiken."
 
-#: ../src/launchermainwindow.cpp:1089
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1077,37 +962,30 @@ msgstr ""
 "Fout:\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1094
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "KeeperFX kon niet worden gestart. Onbekende fout."
 
-#: ../src/launchermainwindow.cpp:1118
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFX Launcher"
 
-#: ../ui/modmanagerdialog.ui:17
 msgctxt "ModManagerDialog|"
 msgid "KeeperFX Mod Manager"
 msgstr "KeeperFX Modmanager"
 
-#: ../ui/modmanagerdialog.ui:42
 msgctxt "ModManagerDialog|Header"
 msgid "Mod Manager"
 msgstr "Modmanager"
 
-#: ../ui/runpacketfiledialog.ui:14
 msgctxt "RunPacketFileDialog|Dialog Title"
 msgid "Run Packetfile"
 msgstr "Packetfile laden"
 
-#: ../ui/runpacketfiledialog.ui:30
 msgctxt "RunPacketFileDialog|Header"
 msgid "Run Packetfile"
 msgstr "Packetfile laden"
 
-#: ../ui/runpacketfiledialog.ui:48
 msgctxt "RunPacketFileDialog|Information Label"
 msgid ""
 "Select a packetfile to replay. KeeperFX will be started and the packetfile "
@@ -1116,32 +994,26 @@ msgstr ""
 "Selecteer een packetfile om af te spelen. KeeperFX wordt gestart en de "
 "packetfile zal automatisch beginnen afspelen."
 
-#: ../ui/runpacketfiledialog.ui:69
 msgctxt "RunPacketFileDialog|Notice Label"
 msgid "Packetsave will be disabled when loading a packetfile."
 msgstr "Packetsave wordt uitgeschakeld bij het laden van een packetfile."
 
-#: ../ui/runpacketfiledialog.ui:124
 msgctxt "RunPacketFileDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/runpacketfiledialog.ui:149
 msgctxt "RunPacketFileDialog|Button"
 msgid "Start"
 msgstr "Start"
 
-#: ../ui/scannetworkdialog.ui:14
 msgctxt "ScanNetworkDialog|Window Title"
 msgid "Scan Network"
 msgstr "Netwerk scannen"
 
-#: ../ui/scannetworkdialog.ui:30
 msgctxt "ScanNetworkDialog|Header"
 msgid "Scan Network"
 msgstr "Netwerk scannen"
 
-#: ../ui/scannetworkdialog.ui:45
 msgctxt "ScanNetworkDialog|Information Label"
 msgid ""
 "Scan your local network (LAN) for open ENET lobbies. The other person should "
@@ -1154,87 +1026,70 @@ msgstr ""
 "geopend. (Meerspeler -> ENET -> Spel maken). Als de andere persoon een open "
 "lobby heeft, moet deze tool zijn IP-adres kunnen vinden."
 
-#: ../ui/scannetworkdialog.ui:91
 msgctxt "ScanNetworkDialog|Button"
 msgid "Close"
 msgstr "Sluiten"
 
-#: ../ui/scannetworkdialog.ui:116
 msgctxt "ScanNetworkDialog|Button"
 msgid "Scan"
 msgstr "Scan"
 
-#: ../ui/scannetworkdialog.ui:144
 msgctxt "ScanNetworkDialog|Button"
 msgid "Connect"
 msgstr "Verbinden"
 
-#: ../src/scannetworkdialog.cpp:20
 msgctxt "ScanNetworkDialog|Table Header"
 msgid "IP Address"
 msgstr "IP-adres"
 
-#: ../src/scannetworkdialog.cpp:20
 msgctxt "ScanNetworkDialog|Table Header"
 msgid "Hostname"
 msgstr "Hostnaam"
 
-#: ../src/scannetworkdialog.cpp:73
 msgctxt "ScanNetworkDialog|Button text"
 msgid "Stop Scan"
 msgstr "Scan stoppen"
 
-#: ../src/scannetworkdialog.cpp:83
 msgctxt "ScanNetworkDialog|Progress bar"
 msgid "Scanning..."
 msgstr "Scannen..."
 
-#: ../src/scannetworkdialog.cpp:96 ../src/scannetworkdialog.cpp:138
 msgctxt "ScanNetworkDialog|Button text"
 msgid "Scan"
 msgstr "Scan"
 
-#: ../src/scannetworkdialog.cpp:126
 msgctxt "ScanNetworkDialog|Progress bar"
 msgid "Scanning: %p% (%v/%m)"
 msgstr "Scannen: %p% (%v/%m)"
 
-#: ../ui/settingsdialog.ui:17
 msgctxt "SettingsDialog|Window Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFX Instellingen"
 
-#: ../ui/settingsdialog.ui:44
 msgctxt "SettingsDialog|Tab Title"
 msgid "Game"
 msgstr "Spel"
 
-#: ../ui/settingsdialog.ui:76
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Game language"
 msgstr "Spel taal"
 
-#: ../ui/settingsdialog.ui:94
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display Intro"
 msgstr "Intro tonen"
 
-#: ../ui/settingsdialog.ui:112
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Cheats"
 msgstr "Cheats inschakelen"
 
-#: ../ui/settingsdialog.ui:130
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
 msgstr "Censuur inschakelen"
 
-#: ../ui/settingsdialog.ui:163
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Screenshot type"
 msgstr "Screenshot type"
 
-#: ../ui/settingsdialog.ui:181
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
 "Gameturns per second\n"
@@ -1243,146 +1098,119 @@ msgstr ""
 "Gameturns per seconde\n"
 "(standaard = 20)"
 
-#: ../ui/settingsdialog.ui:218
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Command character"
 msgstr "Commando karakter"
 
-#: ../ui/settingsdialog.ui:251
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display splash screens"
 msgstr "Splashschermen tonen"
 
-#: ../ui/settingsdialog.ui:269
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable delta time"
 msgstr "Deltatijd inschakelen"
 
-#: ../ui/settingsdialog.ui:287
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Freeze game when not focused"
 msgstr "Spel bevriezen bij verlies van focus"
 
-#: ../ui/settingsdialog.ui:300
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Packetsave filename"
 msgstr "Packetsave bestandsnaam"
 
-#: ../ui/settingsdialog.ui:313
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Packetsave"
 msgstr "Packetsave inschakelen"
 
-#: ../ui/settingsdialog.ui:346
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Exit on LUA error"
 msgstr "Afsluiten bij LUA-fout"
 
-#: ../ui/settingsdialog.ui:364
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable flee"
 msgstr "Vlucht automatisch inschakelen"
 
-#: ../ui/settingsdialog.ui:382
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable imprison"
 msgstr "Gevangennemen automatisch inschakelen"
 
-#: ../ui/settingsdialog.ui:388
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
 msgstr "Beeld"
 
-#: ../ui/settingsdialog.ui:400
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Smoothen edges"
 msgstr "Randen verzachten"
 
-#: ../ui/settingsdialog.ui:418 ../ui/settingsdialog.ui:779
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resolution"
 msgstr "Resolutie"
 
-#: ../ui/settingsdialog.ui:466 ../ui/settingsdialog.ui:926
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display mode"
 msgstr "Beeldmodus"
 
-#: ../ui/settingsdialog.ui:499
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display monitor"
 msgstr "Beelscherm"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:517
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 1"
 msgstr "Beeld 1"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:535
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 2"
 msgstr "Beeld 2"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:553
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 3"
 msgstr "Beeld 3"
 
 #. This is shown under the views configuration
-#: ../ui/settingsdialog.ui:629
 msgctxt "SettingsDialog|Information Label"
 msgid ""
 "<i>Switch between in-game views by pressing <strong>Alt + R</strong></i>"
 msgstr ""
 "<i>Schakel tussen weergaven in het spel met <strong>Alt + R</strong></i>"
 
-#: ../ui/settingsdialog.ui:647
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
 msgstr "Videoformaat"
 
-#: ../ui/settingsdialog.ui:680
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Creature flower size (px)"
 msgstr "Wezensbloemgrootte (px)"
 
-#: ../ui/settingsdialog.ui:713
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Hand size %"
 msgstr "Hand grootte %"
 
-#: ../ui/settingsdialog.ui:761
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Select box line size %"
 msgstr "Lijngrootte selecteervak %"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:857
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Menu"
 msgstr "Menu"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:890
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Failsafe"
 msgstr "Failsafe"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:908
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Movies"
 msgstr "Videos"
 
-#: ../ui/settingsdialog.ui:974
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Max. FPS (0 = unlimited)"
 msgstr "Max. FPS (0 = ongelimiteerd)"
 
-#: ../ui/settingsdialog.ui:1007
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
 "GUI blink rate\n"
@@ -1391,7 +1219,6 @@ msgstr ""
 "GUI-knipperfrequentie\n"
 "(standaard = 1)"
 
-#: ../ui/settingsdialog.ui:1029
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
 "Neutral flash rate\n"
@@ -1400,323 +1227,275 @@ msgstr ""
 "Neutrale flitsfrequentie\n"
 "(standaard = 1)"
 
-#: ../ui/settingsdialog.ui:1054
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically determine max. FPS"
+msgstr "Max. FPS automatisch bepalen"
+
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
 msgstr "Geluid"
 
-#: ../ui/settingsdialog.ui:1071
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable sound"
 msgstr "Geluid inschakelen"
 
-#: ../ui/settingsdialog.ui:1089
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Use CD music instead of local files"
 msgstr "Gebruik CD-muziek in plaats van lokale bestanden"
 
-#: ../ui/settingsdialog.ui:1107
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
 msgstr "Muziek pauzeren wanneer spel gepauzeerd is"
 
-#: ../ui/settingsdialog.ui:1125
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable atmospheric sounds"
 msgstr "Sfeergeluiden inschakelen"
 
-#: ../ui/settingsdialog.ui:1148
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
 msgstr "Frequentie"
 
-#: ../ui/settingsdialog.ui:1171
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Volume"
 msgstr "Volume"
 
-#: ../ui/settingsdialog.ui:1189
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Mute audio when game is not focused"
 msgstr "Geluid uitschakelen bij verlies van focus"
 
-#: ../ui/settingsdialog.ui:1195
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
 msgstr "Invoer"
 
-#: ../ui/settingsdialog.ui:1212
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
 msgstr "Cursor vergrendelen in wezenbeheersing"
 
-#: ../ui/settingsdialog.ui:1230
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr "Cursor ontgrendelen wanneer het spel gepauzeerd is"
 
 #. "Alternative Input"
-#: ../ui/settingsdialog.ui:1248
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor from game window"
 msgstr "Cursor ontgrendelen van spelvenster"
 
-#: ../ui/settingsdialog.ui:1266
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Screen edge camera panning"
 msgstr "Schermrand camerabeweging"
 
-#: ../ui/settingsdialog.ui:1284
 msgctxt "SettingsDialog|Slider Title Label"
 msgid "Mouse sensitivity"
 msgstr "Muisgevoeligheid"
 
-#: ../ui/settingsdialog.ui:1348
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Raw mouse input"
 msgstr "Ruwe muisinvoer"
 
-#: ../ui/settingsdialog.ui:1361
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Default tag mode"
 msgstr "Standaard markeermodus"
 
-#: ../ui/settingsdialog.ui:1382
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable tag mode toggle (Right-click)"
 msgstr "Markeermodus omschakelen inschakelen (Rechtsklik)"
 
-#: ../ui/settingsdialog.ui:1398
 msgctxt "SettingsDialog|Tab Title"
 msgid "Multiplayer"
 msgstr "Meerspeler"
 
-#: ../ui/settingsdialog.ui:1425
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Masterserver"
 msgstr "Masterserver"
 
-#: ../ui/settingsdialog.ui:1431
 msgctxt "SettingsDialog|Tab Title"
 msgid "Launcher"
 msgstr "Launcher"
 
-#: ../ui/settingsdialog.ui:1443
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Check for KeeperFX updates"
 msgstr "Controleer op KeeperFX-updates"
 
-#: ../ui/settingsdialog.ui:1466
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable crash reporting"
 msgstr "Crashrapportage inschakelen"
 
-#: ../ui/settingsdialog.ui:1479
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Release"
 msgstr "Release"
 
-#: ../ui/settingsdialog.ui:1492
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
 msgstr "Website-integratie inschakelen"
 
-#: ../ui/settingsdialog.ui:1505
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
 msgstr "Openen op hetzelfde scherm als het spel"
 
-#: ../ui/settingsdialog.ui:1518
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Launcher language"
 msgstr "Launcher taal"
 
-#: ../ui/settingsdialog.ui:1546
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Update automatically"
 msgstr "Automatisch updaten"
 
-#: ../ui/settingsdialog.ui:1559
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Backup savefiles during update"
 msgstr "Backup maken van savegames tijdens update"
 
-#: ../ui/settingsdialog.ui:1587
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Play button theme"
 msgstr "Speel knop thema"
 
-#: ../ui/settingsdialog.ui:1600
 msgctxt "SettingsDialog|Button"
 msgid "Show launcher command line options"
 msgstr "Launcher-opstartopties weergeven"
 
-#: ../ui/settingsdialog.ui:1606
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"Update check interval in days\n"
+"(0 = always check)"
+msgstr ""
+"Updatecontrole-interval in dagen\n"
+"(0 = altijd controleren)"
+
 msgctxt "SettingsDialog|Tab Title"
 msgid "API"
 msgstr "API"
 
-#: ../ui/settingsdialog.ui:1623
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable API"
 msgstr "API Inschakelen"
 
-#: ../ui/settingsdialog.ui:1659
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "API port"
 msgstr "API Poort"
 
-#: ../ui/settingsdialog.ui:1665
 msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr "Info"
 
-#: ../src/settingsdialog.cpp:58
 msgctxt "SettingsDialog|Dialog Button"
 msgid "Open config file"
 msgstr "Configuratiebestand openen"
 
-#: ../src/settingsdialog.cpp:124
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Single"
 msgstr "Enkel"
 
-#: ../src/settingsdialog.cpp:125
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Drag"
 msgstr "Slepen"
 
-#: ../src/settingsdialog.cpp:126
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Remember Last"
 msgstr "Laatste onthouden"
 
-#: ../src/settingsdialog.cpp:170
 msgctxt "SettingsDialog|Play Button Theme Dropdown"
 msgid "Qt Fusion Dark"
 msgstr "Qt Fusion Dark"
 
-#: ../src/settingsdialog.cpp:171
 msgctxt "SettingsDialog|Play Button Theme Dropdown"
 msgid "DK Orange (default)"
 msgstr "DK Oranje (standaard)"
 
-#: ../src/settingsdialog.cpp:178
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr "Passend (standaard)"
 
-#: ../src/settingsdialog.cpp:179
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr "Uit"
 
-#: ../src/settingsdialog.cpp:180
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr "Uitstrekken"
 
-#: ../src/settingsdialog.cpp:181
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr "Bijsnijden"
 
-#: ../src/settingsdialog.cpp:182
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr "Pixel perfect"
 
-#: ../src/settingsdialog.cpp:188
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr "Automatisch"
 
-#: ../src/settingsdialog.cpp:225
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "Custom..."
+msgstr "Anders..."
+
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr "Volledig scherm"
 
-#: ../src/settingsdialog.cpp:226
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr "Venster"
 
-#: ../src/settingsdialog.cpp:242
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Low"
 msgstr "Laag"
 
-#: ../src/settingsdialog.cpp:243
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Medium"
 msgstr "Medium"
 
-#: ../src/settingsdialog.cpp:244
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "High"
 msgstr "Hoog"
 
-#: ../src/settingsdialog.cpp:247
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
 msgstr "Laag"
 
-#: ../src/settingsdialog.cpp:248
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr "Medium"
 
-#: ../src/settingsdialog.cpp:249
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "High"
 msgstr "Hoog"
 
-#: ../src/settingsdialog.cpp:252
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "Stabiel (Standaard)"
 
-#: ../src/settingsdialog.cpp:253
 msgctxt "SettingsDialog|Game Release Build"
 msgid "Alpha"
 msgstr "Alpha"
 
-#: ../src/settingsdialog.cpp:352
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX v%1"
 msgstr "KeeperFX v%1"
 
-#: ../src/settingsdialog.cpp:357
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX Launcher v%1"
 msgstr "KeeperFX Launcher v%1"
 
-#: ../src/settingsdialog.cpp:359
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
 msgstr "Launcher Libraries:"
 
-#: ../src/settingsdialog.cpp:364
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "Join us on Discord: %1"
 msgstr "Word lid van onze Discord: %1"
 
-#: ../src/settingsdialog.cpp:388
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "KeeperFX Bijdragers: %1"
 
-#: ../src/settingsdialog.cpp:899 ../src/settingsdialog.cpp:949
-#: ../src/settingsdialog.cpp:1005
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFX Instellingen"
 
-#: ../src/settingsdialog.cpp:900
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "Do you want to restore the default settings?\n"
@@ -1727,12 +1506,10 @@ msgstr ""
 "\n"
 "Al je aangepaste instellingen zullen verloren gaan."
 
-#: ../src/settingsdialog.cpp:950
 msgctxt "SettingsDialog|MessageBox Text"
 msgid "The default settings have been restored."
 msgstr "De standaardinstellingen zijn hersteld."
 
-#: ../src/settingsdialog.cpp:1006
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
@@ -1741,145 +1518,164 @@ msgstr ""
 "Één of meer instellingen zijn veranderd. Weet je zeker dat je wilt "
 "terugkeren zonder op te slaan?"
 
-#: ../src/settingsdialog.cpp:1156
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "Launcher command line options"
 msgstr "Launcher-opstartopties"
 
-#: ../ui/updatedialog.ui:17
+msgctxt "SettingsDialog|Custom resoltuion dialog title"
+msgid "Custom resolution"
+msgstr "Resolutie invoeren"
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Width:"
+msgstr "Breedte:"
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Height:"
+msgstr "Hoogte:"
+
+#, qt-format
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "%1 x %2 (Custom)"
+msgstr "%1 x %2 (Aangepast)"
+
 msgctxt "UpdateDialog|Window Title"
 msgid "KeeperFX Update"
 msgstr "KeeperFX Update"
 
-#: ../ui/updatedialog.ui:33
 msgctxt "UpdateDialog|Header"
 msgid "New KeeperFX version found!"
 msgstr "Nieuwe KeeperFX versie beschikbaar!"
 
-#: ../ui/updatedialog.ui:138
 msgctxt "UpdateDialog|Button"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: ../ui/updatedialog.ui:163
 msgctxt "UpdateDialog|Button"
 msgid "Update"
 msgstr "Updaten"
 
-#: ../src/updatedialog.cpp:46 ../src/updatedialog.cpp:52
 msgctxt "UpdateDialog|Appended to version string"
 msgid "Alpha"
 msgstr "Alpha"
 
-#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "Current version:"
 msgstr "Huidige versie:"
 
-#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "New version:"
 msgstr "Nieuwe versie:"
 
-#: ../src/updatedialog.cpp:121
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "Downloaden: %p% (%vMiB)"
 
-#: ../src/updatedialog.cpp:138
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Update failed"
 msgstr "Update is gefaald"
 
-#: ../src/updatedialog.cpp:156
+msgctxt "UpdateDialog|Failure Message"
+msgid ""
+"The updater failed to grab the latest stable version which is required for "
+"this alpha."
+msgstr ""
+"De updater kon de nieuwste stabiele versie niet ophalen, wat vereist is voor "
+"deze alpha."
+
 msgctxt "UpdateDialog|Title label"
 msgid "Updating..."
 msgstr "Updaten..."
 
-#: ../src/updatedialog.cpp:195
 msgctxt "UpdateDialog|Progress bar (%p=percentage)"
 msgid "Comparing: %p%"
 msgstr "Vergelijken: %p%"
 
-#: ../src/updatedialog.cpp:223
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to open file: %1"
 msgstr "Bestand kon niet worden geopend: %1"
 
-#: ../src/updatedialog.cpp:309
 msgctxt "UpdateDialog|Failure Message"
 msgid "Archive download failed."
 msgstr "Downloaden van archief mislukt."
 
-#: ../src/updatedialog.cpp:337
 msgctxt "UpdateDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "Uitpakken: %p%"
 
-#: ../src/updatedialog.cpp:350 ../src/updatedialog.cpp:552
 msgctxt "UpdateDialog|Title label"
 msgid "Update complete!"
 msgstr "Update compleet!"
 
-#: ../src/updatedialog.cpp:371 ../src/updatedialog.cpp:565
 #, qt-format
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "KeeperFX has been successfully updated to version %1!"
 msgstr "KeeperFX is succesvol bijgewerkt naar versie %1!"
 
-#: ../src/updatedialog.cpp:394
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: ../src/updatedialog.cpp:394
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "Are you sure you want to cancel the update?"
 msgstr "Ben je zeker dat je de update wilt annuleren?"
 
-#: ../src/updatedialog.cpp:417
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to create temp directory"
 msgstr "Mislukt om tijdelijke map te maken"
 
-#: ../src/updatedialog.cpp:423
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p%"
 msgstr "Downloaden: %p%"
 
-#: ../src/updatedialog.cpp:485
 msgctxt "UpdateDialog|Failure Message"
 msgid "The temporary directory does not exist"
 msgstr "De tijdelijke map bestaat niet"
 
-#: ../src/updatedialog.cpp:496
 msgctxt "UpdateDialog|Progress bar"
 msgid "Copying: %p%"
 msgstr "Kopiëren: %p%"
 
-#: ../src/updatedialog.cpp:511
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
 msgid "File does not exist: %1"
 msgstr "Bestand bestaat niet: %1"
 
-#: ../src/updatedialog.cpp:528
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to create destination directory: %1"
 msgstr "Mislukt om de doelmap te maken: %1"
 
-#: ../src/updatedialog.cpp:543
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
-msgid "Failed to move file: %1"
-msgstr "Bestand verplaatsen mislukt: %1"
+msgid "Failed to remove file (%1): %2"
+msgstr "Bestand verplaatsen mislukt (%1): %2"
 
-#: ../src/updatedialog.cpp:582
+#, qt-format
+msgctxt "UpdateDialog|Failure Message"
+msgid "Failed to move file (%1): %2"
+msgstr "Bestand verplaatsen mislukt (%1): %2"
+
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr "Het is niet gelukt om alle gedownloade bestanden te verplaatsen"
+
+msgctxt "main|MessageBox Title"
+msgid "KeeperFX Error"
+msgstr "KeeperFX Fout"
+
+msgctxt "main|MessageBox Text"
+msgid ""
+"Failed to determine the KeeperFX version. This is required to submit a crash "
+"report."
+msgstr ""
+"Kan de KeeperFX-versie niet bepalen. Dit is vereist om een crashrapport te "
+"kunnen indienen."
+
+#~ msgctxt "LauncherMainWindow|Button"
+#~ msgid "Logfile"
+#~ msgstr "Logbestand"
 
 #~ msgctxt "SettingsDialog|Dropdown Title Label"
 #~ msgid "Human Player"
