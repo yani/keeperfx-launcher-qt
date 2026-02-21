@@ -1128,7 +1128,7 @@ msgstr "Afsluiten bij LUA-fout"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable flee"
-msgstr "Vlucht automatisch inschakelen"
+msgstr "Vluchten automatisch inschakelen"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable imprison"
@@ -1245,7 +1245,7 @@ msgstr "Gebruik CD-muziek in plaats van lokale bestanden"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
-msgstr "Muziek pauzeren wanneer spel gepauzeerd is"
+msgstr "Muziek pauzeren wanneer het spel gepauzeerd is"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable atmospheric sounds"
