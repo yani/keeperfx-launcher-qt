@@ -40,7 +40,7 @@ void FileRemoverDialog::closeEvent(QCloseEvent *event)
 {
     int result = QMessageBox::question(this,
                                        tr("Confirmation", "MessageBox Title"),
-                                       tr("Are you sure?\n\nKeeperFX might not function correctly with these files.", "MessageBox Text"));
+                                       tr("KeeperFX might not function correctly if these files are present.\n\nAre you sure you do not want to delete them?", "MessageBox Text"));
 
     if (result == QMessageBox::Yes) {
         event->accept(); // Allow the dialog to close
