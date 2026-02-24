@@ -40,7 +40,7 @@ void FileRemoverDialog::closeEvent(QCloseEvent *event)
 {
     int result = QMessageBox::question(this,
                                        tr("Confirmation", "MessageBox Title"),
-                                       tr("KeeperFX might not function correctly if these files are present.\n\nAre you sure you do not want to delete them?", "MessageBox Text"));
+                                       tr("KeeperFX might not function correctly if these files are present.\n\nAre you sure you want to keep them?", "MessageBox Text"));
 
     if (result == QMessageBox::Yes) {
         event->accept(); // Allow the dialog to close
@@ -51,7 +51,7 @@ void FileRemoverDialog::closeEvent(QCloseEvent *event)
 
 void FileRemoverDialog::on_removeButton_clicked()
 {
-    qDebug() << "Removing unwanted files";
+    qDebug() << "Removing leftover files";
 
     // Loop through the list of files
     for (const QString &filePath : std::as_const(list)) {
@@ -64,13 +64,13 @@ void FileRemoverDialog::on_removeButton_clicked()
             if (!file.remove()) {
 
                 // Something went wrong
-                QMessageBox::warning(this, "KeeperFX", tr("Something went wrong while removing unwanted files.", "MessageBox Text"));
+                QMessageBox::warning(this, "KeeperFX", tr("Something went wrong while removing leftover files.", "MessageBox Text"));
                 return;
             }
         }
     }
 
     // Success
-    QMessageBox::information(this, "KeeperFX", tr("Unwanted files have been removed!", "MessageBox Text"));
+    QMessageBox::information(this, "KeeperFX", tr("Leftover files have been removed!", "MessageBox Text"));
     this->accept();
 }

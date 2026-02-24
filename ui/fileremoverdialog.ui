@@ -63,7 +63,7 @@
 }</string>
      </property>
      <property name="text">
-      <string comment="Information Label">The KeeperFX launcher has found files that were left over after KeeperFX updates. These files might cause issues and should be removed.</string>
+      <string comment="Information Label">The KeeperFX launcher has found files that were left over after KeeperFX was updated. These files might cause issues and should be removed.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
