@@ -406,6 +406,36 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     } else {
         ui->labelContributors->setText(""); // Hide
     }
+
+    // Load launcher translators
+    QFile launcherTranslatorsFile(":/res/launcher-translators.txt");
+    if (launcherTranslatorsFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+
+        QStringList launcherTranslators = QString::fromUtf8(launcherTranslatorsFile.readAll()).split('\n', Qt::SkipEmptyParts);
+
+        // Handle each translator entry
+        for (QString &t : launcherTranslators) {
+            t = t.trimmed();
+            if(t.contains(',')){
+                QStringList parts = t.split(",");
+                if(parts.length() == 2){
+                    t = QString("<a href=\"%1\">%2</a>").arg(parts[1], parts[0]);
+                } else {
+                    qWarning() << "Invalid launcher translator entry:" << t;
+                }
+            }
+        }
+
+        // Setup label properties
+        ui->labelLauncherTranslators->setTextFormat(Qt::RichText);
+        ui->labelLauncherTranslators->setTextInteractionFlags(Qt::TextBrowserInteraction);
+        ui->labelLauncherTranslators->setOpenExternalLinks(true);
+
+        // Set text
+        ui->labelLauncherTranslators->setText(tr("KeeperFX Launcher Translators: %1", "Label Translator List").arg(launcherTranslators.join(", ")));
+    } else {
+        ui->labelLauncherTranslators->setText(""); // Hide
+    }
 }
 
 SettingsDialog::~SettingsDialog()

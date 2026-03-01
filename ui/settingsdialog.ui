@@ -1408,24 +1408,59 @@ height: 35px;
         </item>
        </layout>
       </widget>
-      <widget class="QLabel" name="labelContributors">
+      <widget class="QWidget" name="widget_2" native="true">
        <property name="geometry">
         <rect>
-         <x>35</x>
-         <y>240</y>
-         <width>781</width>
-         <height>191</height>
+         <x>39</x>
+         <y>239</y>
+         <width>771</width>
+         <height>231</height>
         </rect>
        </property>
-       <property name="text">
-        <string notr="true">&lt;PLACEHOLDER_CONTRIBUTORS&gt;</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelContributors">
+          <property name="text">
+           <string notr="true">&lt;PLACEHOLDER_CONTRIBUTORS&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelLauncherTranslators">
+          <property name="text">
+           <string notr="true">&lt;PLACEHOLDER_LAUNCHER_TRANSLATORS&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </widget>
     </widget>

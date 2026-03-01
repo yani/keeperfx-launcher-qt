@@ -17,6 +17,7 @@
         <file>res/img/globe-icon.png</file>
         <file>res/img/reddit-icon.png</file>
         <file>res/cert/cacert.pem</file>
+        <file>res/launcher-translators.txt</file>
     </qresource>
     <qresource prefix="/i18n">
         <file>i18n/translations_nl.po</file>

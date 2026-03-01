@@ -107,7 +107,17 @@ margin-top: 5px;
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QWidget" name="buttonsWidgetSpacer" native="true"/>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <widget class="QPushButton" name="cancelButton">
@@ -115,12 +125,6 @@ margin-top: 5px;
          <size>
           <width>0</width>
           <height>28</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -142,12 +146,6 @@ margin-top: 5px;
           <height>28</height>
          </size>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
-         </size>
-        </property>
         <property name="text">
          <string comment="Button">Start</string>
         </property>
@@ -163,7 +161,17 @@ margin-top: 5px;
        </widget>
       </item>
       <item>
-       <widget class="QWidget" name="buttonsWidgetSpacerRight" native="true"/>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
