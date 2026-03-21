@@ -45,12 +45,12 @@ hold out on adding them until the game also supports the language.
 | Swedish               | SV       |           |                | 
 | Japanese              | JA       | 90.2%     | 305/338        | [AdamPlenty](https://github.com/AdamPlenty)
 | Russian               | RU       | 100%      | 338/338        | Quuz, [kammerer](https://github.com/Kammerer001)
-| Korean                | KO       | 89.6%     | 303/338        | Desert
+| Korean                | KO       | 100%      | 338/338        | Desert
 | Chinese (Simplified)  | ZH-HANS  | 85.5%     | 289/338        | [JieLeTian](https://github.com/jieletian)
 | Chinese (Traditional) | ZH-HANT  |           |                | 
 | Czech                 | CS       | 86.1%     | 291/338        | Gotrek
 | Latin                 | LA       |           |                | 
-| Ukrainian             | UK       | 86.1%     | 291/338        | Mr.Negative, Renegade_Glitch
+| Ukrainian             | UK       | 100%      | 338/338        | Mr.Negative, Renegade_Glitch
 | Portuguese (Brazil)   | PT       | 86.1%     | 291/338        | [altiereslima](https://github.com/altiereslima)
 
 
