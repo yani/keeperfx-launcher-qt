@@ -38,7 +38,7 @@ hold out on adding them until the game also supports the language.
 | English               | EN       | 100%      | Base           | [Yani](https://github.com/yani)
 | Dutch                 | NL       | 100%      | 338/338        | [Yani](https://github.com/yani)
 | Italian               | IT       | 100%      | 338/338        | [kammerer](https://github.com/Kammerer001)
-| French                | FR       | 89.6%     | 303/338        | AncientWay
+| French                | FR       | 100%      | 338/338        | AncientWay, [Thorgal](https://github.com/Thorgal93)
 | Spanish               | ES       | 100%      | 338/338        | [Alniarez](https://github.com/alniarez)
 | German                | DE       | 89.6%     | 303/338        | Aqua, Dofi
 | Polish                | PL       | 95.9%     | 324/338        | [Rusty](https://github.com/rustyspoonz)
