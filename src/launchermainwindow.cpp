@@ -595,8 +595,9 @@ void LauncherMainWindow::on_settingsButton_clicked() {
     SettingsDialog settingsDialog(this);
     settingsDialog.exec();
 
-    // Refresh buttons
+    // Refresh buttons and version UI
     refreshInstallationAwareButtons();
+    refreshKfxVersionInGui(); // This also updates the window title
 
     // Check if launcher language has changed
     if(oldLauncherLanguage != Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString()){
@@ -1264,7 +1265,14 @@ void LauncherMainWindow::refreshKfxVersionInGui()
 {
     qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
     ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
-    this->setWindowTitle(tr("KeeperFX Launcher", "Window Title") + " - v" + KfxVersion::currentVersion.fullString);
+
+    QString windowTitle = tr("KeeperFX Launcher", "Window Title") + " - v" + KfxVersion::currentVersion.fullString;
+
+    if(Settings::getLauncherSetting("SHOW_DIR_NAME_IN_WINDOW_TITLE") == true){
+        windowTitle.prepend("[ " + QDir(QCoreApplication::applicationDirPath()).dirName() + " ] - ");
+    }
+
+    this->setWindowTitle(windowTitle);
 }
 
 void LauncherMainWindow::on_openFolderButton_clicked()

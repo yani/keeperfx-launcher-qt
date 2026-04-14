@@ -1216,7 +1216,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>240</y>
+         <y>290</y>
          <width>191</width>
          <height>25</height>
         </rect>
@@ -1226,7 +1226,7 @@ height: 35px;
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>243</y>
+         <y>293</y>
          <width>171</width>
          <height>17</height>
         </rect>
@@ -1273,6 +1273,19 @@ height: 35px;
        <property name="text">
         <string comment="Textinput Title Label">Update check interval in days
 (0 = always check)</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxShowDirInWindowTitle">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>240</y>
+         <width>361</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Show directory name in window title</string>
        </property>
       </widget>
      </widget>

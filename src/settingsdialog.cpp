@@ -755,6 +755,7 @@ void SettingsDialog::loadSettings()
     ui->checkBoxWebsiteIntegration->setChecked(Settings::getLauncherSetting("WEBSITE_INTEGRATION_ENABLED") == true);
     ui->checkBoxCrashReporting->setChecked(Settings::getLauncherSetting("CRASH_REPORTING_ENABLED") == true);
     ui->checkBoxOpenOnGameScreen->setChecked(Settings::getLauncherSetting("OPEN_ON_GAME_SCREEN") == true);
+    ui->checkBoxShowDirInWindowTitle->setChecked(Settings::getLauncherSetting("SHOW_DIR_NAME_IN_WINDOW_TITLE") == true);
     ui->comboBoxPlayButtonTheme->setCurrentIndex(ui->comboBoxPlayButtonTheme->findData(Settings::getLauncherSetting("PLAY_BUTTON_THEME").toString()));
 
     // Updates
@@ -989,6 +990,7 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("WEBSITE_INTEGRATION_ENABLED", ui->checkBoxWebsiteIntegration->isChecked() == true);
     Settings::setLauncherSetting("CRASH_REPORTING_ENABLED", ui->checkBoxCrashReporting->isChecked() == true);
     Settings::setLauncherSetting("OPEN_ON_GAME_SCREEN", ui->checkBoxOpenOnGameScreen->isChecked() == true);
+    Settings::setLauncherSetting("SHOW_DIR_NAME_IN_WINDOW_TITLE", ui->checkBoxShowDirInWindowTitle->isChecked() == true);
     Settings::setLauncherSetting("PLAY_BUTTON_THEME", ui->comboBoxPlayButtonTheme->currentData().toString());
 
     // Updates
