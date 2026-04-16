@@ -931,6 +931,30 @@ void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
         return;
     }
 
+    // Check if user wants to remove leftover files automatically (silently)
+    if(Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true){
+        qDebug() << "Removing leftover files automatically without user interaction";
+
+        // Loop through the list of files
+        for (const QString &filePath : std::as_const(filesToRemove)) {
+
+            // Get the file
+            QFile file(QCoreApplication::applicationDirPath() + "/" + filePath);
+            if (file.exists()) {
+
+                // Remove the file
+                if (file.remove()) {
+                    qDebug() << "Removed leftover file:" << filePath;
+                } else {
+                    // There isn't really a need to tell the user here
+                    // If they get into trouble the logs will tell us there's a problem here
+                    qWarning() << "Failed to remove leftover file:" << filePath;
+                }
+            }
+        }
+        return;
+    }
+
     // Show file removal dialog
     FileRemoverDialog fileRemoverDialog(this, filesToRemove);
     fileRemoverDialog.exec();

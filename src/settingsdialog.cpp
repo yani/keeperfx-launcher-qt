@@ -771,6 +771,8 @@ void SettingsDialog::loadSettings()
     ui->lineEditUpdateInterval->setText(Settings::getLauncherSetting("CHECK_FOR_UPDATES_INTERVAL_DAYS").toString());
     ui->lineEditUpdateInterval->setDisabled(!isUpdateCheckEnabled);
     ui->labelUpdateInterval->setDisabled(!isUpdateCheckEnabled);
+
+    ui->checkBoxAutoRemoveLeftoverFiles->setChecked(Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true);
 }
 
 void SettingsDialog::saveSettings()
@@ -999,6 +1001,8 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("AUTO_UPDATE", ui->checkBoxAutoUpdate->isChecked() == true);
     Settings::setLauncherSetting("BACKUP_SAVES", ui->checkBoxBackupSaves->isChecked() == true);
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_INTERVAL_DAYS", ui->lineEditUpdateInterval->text());
+
+    Settings::setLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES", ui->checkBoxAutoRemoveLeftoverFiles->isChecked() == true);
 
     // Close the settings screen
     this->close();

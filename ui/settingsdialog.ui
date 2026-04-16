@@ -1288,6 +1288,19 @@ height: 35px;
         <string comment="Checkbox Toggle">Show directory name in window title</string>
        </property>
       </widget>
+      <widget class="QCheckBox" name="checkBoxAutoRemoveLeftoverFiles">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>270</y>
+         <width>361</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Checkbox Toggle">Automatically remove leftover files</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab7_api">
       <attribute name="title">

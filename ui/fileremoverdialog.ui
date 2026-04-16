@@ -93,6 +93,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QCheckBox" name="checkBoxAutoRemoveLeftoverFiles">
+     <property name="text">
+      <string>Always remove leftover files automatically</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
